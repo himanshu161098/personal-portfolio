@@ -1,0 +1,35 @@
+name: Auto-Sync GitHub & LinkedIn Activity
+
+on:
+  schedule:
+    # Runs every 6 hours automatically
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  sync-feed:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Fetch and Sync Latest Profile & Activity
+        run: |
+          node scripts/sync-activity.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USERNAME: "himanshu161098"
+
+      - name: Commit and Push Changes if Updated
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Sync Bot"
+          git add data/social_feed.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(auto-sync): update social and GitHub activity [skip ci]" && git push)

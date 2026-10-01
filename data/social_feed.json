@@ -1,0 +1,117 @@
+{
+  "last_synced": "2026-10-01T04:02:45.776Z",
+  "github": {
+    "username": "himanshu161098",
+    "profile_url": "https://github.com/himanshu161098",
+    "avatar_url": "https://avatars.githubusercontent.com/u/262533773?v=4",
+    "name": "Himanshu Kumar",
+    "bio": "Final-year B.Tech (CSE-IT) student | Python, ML & Full-Stack Web Dev",
+    "public_repos": 3,
+    "followers": 0,
+    "following": 0,
+    "featured_repos": [
+      {
+        "name": "Netfix-Sales",
+        "description": "Comprehensive Netflix sales data analysis and visualization utilizing Python, Pandas, and Jupyter Notebooks.",
+        "html_url": "https://github.com/himanshu161098/Netfix-Sales",
+        "language": "Jupyter Notebook",
+        "stargazers_count": 1,
+        "forks_count": 0,
+        "updated_at": "2026-09-29T19:37:44Z"
+      },
+      {
+        "name": "UNO-playing-Card-",
+        "description": "Interactive UNO playing card game featuring smooth animations, responsive layout, and modular component-based architecture built with HTML, CSS, JavaScript, and Bootstrap/Tailwind.",
+        "html_url": "https://github.com/himanshu161098/UNO-playing-Card-",
+        "language": "JavaScript",
+        "stargazers_count": 1,
+        "forks_count": 0,
+        "updated_at": "2026-03-17T10:18:47Z"
+      },
+      {
+        "name": "Happy-birthday-Day-",
+        "description": "Interactive web application with creative DOM animations, sound effects, and custom UI components.",
+        "html_url": "https://github.com/himanshu161098/Happy-birthday-Day-",
+        "language": "HTML/CSS/JS",
+        "stargazers_count": 0,
+        "forks_count": 0,
+        "updated_at": "2026-03-16T18:04:50Z"
+      }
+    ],
+    "recent_events": [
+      {
+        "type": "CreateEvent",
+        "repo": "himanshu161098/Netfix-Sales",
+        "created_at": "2026-09-29T18:31:32Z"
+      },
+      {
+        "type": "PushEvent",
+        "repo": "himanshu161098/Netfix-Sales",
+        "created_at": "2026-09-29T18:51:35Z"
+      },
+      {
+        "type": "WatchEvent",
+        "repo": "himanshu161098/Netfix-Sales",
+        "created_at": "2026-09-29T19:37:43Z"
+      }
+    ]
+  },
+  "linkedin": {
+    "profile_url": "https://www.linkedin.com/in/himanshu-kumar-1618hks/",
+    "avatar_url": "assets/profile.png",
+    "name": "Himanshu Kumar",
+    "headline": "Final-Year B.Tech CSE-IT | Python · Data Analytics · Machine Learning · Full-Stack Web Development",
+    "connections": "500+",
+    "posts": [
+      {
+        "id": "post-1",
+        "date": "Recent Update",
+        "title": "Excited to share my latest Project: House Security App Using AI! 🚀",
+        "content": "Developed an intelligent house security system using JavaScript and machine learning models integrated with Cloud APIs for real-time threat analysis and automated event alerts based on sensor data inputs. Loving the journey of building AI-driven solutions!",
+        "tags": [
+          "#MachineLearning",
+          "#AI",
+          "#JavaScript",
+          "#CloudAPI",
+          "#CyberSecurity",
+          "#BTech"
+        ],
+        "likes": 48,
+        "comments": 12,
+        "url": "https://www.linkedin.com/in/himanshu-kumar-1618hks/"
+      },
+      {
+        "id": "post-2",
+        "date": "1 week ago",
+        "title": "Completed 5 Industry-Recognized Certifications in Data Analytics & AI/ML 🎓",
+        "content": "Thrilled to have completed certifications covering Foundations of Cybersecurity, Data Analysis with Python, Introduction to Data Analytics, and Fundamentals of ML & AI. Ready to apply these skills to solve real-world engineering challenges!",
+        "tags": [
+          "#Certifications",
+          "#Python",
+          "#DataAnalytics",
+          "#ContinuousLearning",
+          "#MachineLearning"
+        ],
+        "likes": 65,
+        "comments": 16,
+        "url": "https://www.linkedin.com/in/himanshu-kumar-1618hks/"
+      },
+      {
+        "id": "post-3",
+        "date": "2 weeks ago",
+        "title": "UNO Playing Card Game Live on GitHub! 🃏🎮",
+        "content": "Built an interactive UNO playing card game using HTML, CSS, JavaScript, and Bootstrap/Tailwind. Focused on smooth animations, modular code, and cross-device compatibility. Check out the source code on my GitHub!",
+        "tags": [
+          "#WebDevelopment",
+          "#JavaScript",
+          "#Frontend",
+          "#GitHub",
+          "#CodingProjects"
+        ],
+        "likes": 39,
+        "comments": 8,
+        "url": "https://github.com/himanshu161098/UNO-playing-Card-"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Personal Portfolio of Himanshu Kumar - Final-year B.Tech (CSE-IT) student at IIMT College of Engineering, AKTU. Hands-on experience in Python, Data Analysis, Machine Learning, and Full-Stack Web Development.">
+    <meta name="author" content="Himanshu Kumar">
+    <meta name="keywords"
+        content="Himanshu Kumar, Portfolio, B.Tech, CSE, IT, Python, Machine Learning, Data Analytics, Full-Stack, JavaScript, IIMT College of Engineering, AKTU">
+    <title>Himanshu Kumar | B.Tech CSE-IT | AI/ML, Data Analytics &amp; Web Developer</title>
+
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome 6 for modern technology and social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Three.js CDN Preconnect -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Interactive 3D WebGL Background Canvas -->
+    <canvas id="bg3dCanvas" class="bg-3d-canvas" aria-hidden="true"></canvas>
+
+    <!-- 3D Futuristic Cyber Cursor -->
+    <div class="cursor-3d-dot" id="cursor3dDot" aria-hidden="true"></div>
+    <div class="cursor-3d-ring" id="cursor3dRing" aria-hidden="true"></div>
+
+    <!-- Floating 3D Geometric Scene in Background Space -->
+    <div class="floating-3d-space" aria-hidden="true">
+        <div class="geom-3d cube-3d cube-3d-1">
+            <div class="c-face c-front"></div>
+            <div class="c-face c-back"></div>
+            <div class="c-face c-right"></div>
+            <div class="c-face c-left"></div>
+            <div class="c-face c-top"></div>
+            <div class="c-face c-bottom"></div>
+        </div>
+        <div class="geom-3d cube-3d cube-3d-2">
+            <div class="c-face c-front"></div>
+            <div class="c-face c-back"></div>
+            <div class="c-face c-right"></div>
+            <div class="c-face c-left"></div>
+            <div class="c-face c-top"></div>
+            <div class="c-face c-bottom"></div>
+        </div>
+        <div class="geom-3d ring-3d ring-3d-1"></div>
+        <div class="geom-3d ring-3d ring-3d-2"></div>
+    </div>
+
+    <!-- Subtle Background Ambient Glows & Grid Pattern -->
+    <div class="cyber-grid-overlay" aria-hidden="true"></div>
+    <div class="ambient-glow ambient-glow-1" aria-hidden="true"></div>
+    <div class="ambient-glow ambient-glow-2" aria-hidden="true"></div>
+
+    <!-- ========================================================================= -->
+    <!-- 1. NAVIGATION BAR                                                         -->
+    <!-- ========================================================================= -->
+    <header class="header" id="header">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <!-- Logo / Brand Name -->
+            <a href="#home" class="nav-brand" aria-label="Himanshu Kumar Homepage">
+                <span class="brand-bracket">&lt;</span>
+                <span class="brand-name">Himanshu</span>
+                <span class="brand-accent">.dev</span>
+                <span class="brand-bracket">/&gt;</span>
+            </a>
+
+            <!-- Mobile Hamburger Toggle Button -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false"
+                aria-controls="navMenu">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active">
+                            <span class="nav-index">01.</span> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">
+                            <span class="nav-index">02.</span> About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#skills" class="nav-link">
+                            <span class="nav-index">03.</span> Skills
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#projects" class="nav-link">
+                            <span class="nav-index">04.</span> Projects
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#certifications" class="nav-link">
+                            <span class="nav-index">05.</span> Certifications
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#education" class="nav-link">
+                            <span class="nav-index">06.</span> Education
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#live-feed" class="nav-link live-nav-item">
+                            <span class="nav-index">07.</span> Live Feed
+                            <span class="nav-live-dot" title="Live Synced with GitHub & LinkedIn"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">
+                            <span class="nav-index">08.</span> Contact
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Mobile Action CTA -->
+                <div class="nav-cta-wrapper">
+                    <a href="#contact" class="btn btn-primary btn-sm">Get In Touch</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- ===================================================================== -->
+        <!-- 2. HERO / PROFILE SECTION                                             -->
+        <!-- ===================================================================== -->
+        <section class="hero-section" id="home">
+            <div class="container hero-container">
+                <!-- Hero Content (Text & CTAs) -->
+                <div class="hero-content">
+                    <!-- Status / Availability Badge -->
+                    <div class="badge-status">
+                        <span class="status-pulse"></span>
+                        <span class="badge-text">Available for Opportunities &amp; Projects</span>
+                    </div>
+
+                    <!-- Intro Tag -->
+                    <p class="hero-greeting">
+                        <span class="terminal-prompt">$</span> echo "Hello, World! I am"
+                    </p>
+
+                    <!-- Main Name Heading -->
+                    <h1 class="hero-name">
+                        Himanshu <span class="gradient-text">Kumar</span>
+                    </h1>
+
+                    <!-- Role Subheading -->
+                    <h2 class="hero-role">
+                        <i class="fa-solid fa-code accent-icon" aria-hidden="true"></i>
+                        Final-Year B.Tech (CSE-IT) <span class="divider">|</span> Data Analytics, AI/ML &amp; Web Developer
+                    </h2>
+
+                    <!-- Short Introduction -->
+                    <p class="hero-description">
+                        Hands-on experience in Python, data analysis, machine learning, and full-stack web development.
+                        Passionate about structured data handling, API integrations, and scalable engineering.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary" id="heroViewProjectsBtn">
+                            <span>View My Projects</span>
+                            <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+                        </a>
+                        <a href="#live-feed" class="btn btn-secondary" id="heroLiveSyncBtn">
+                            <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
+                            <span>Live Activity Feed</span>
+                        </a>
+                        <a href="#contact" class="btn btn-outline" id="heroContactBtn">
+                            <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+                            <span>Contact Me</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Tech Highlights -->
+                    <div class="hero-tech-stack">
+                        <span class="tech-stack-title">Core Arsenal:</span>
+                        <div class="tech-pills">
+                            <span class="tech-pill"><i class="fa-brands fa-python"></i> Python</span>
+                            <span class="tech-pill"><i class="fa-solid fa-brain"></i> Machine Learning</span>
+                            <span class="tech-pill"><i class="fa-solid fa-chart-pie"></i> Power BI &amp; Data Analytics</span>
+                            <span class="tech-pill"><i class="fa-brands fa-js"></i> JavaScript</span>
+                            <span class="tech-pill"><i class="fa-solid fa-database"></i> SQL / MySQL</span>
+                            <span class="tech-pill"><i class="fa-brands fa-github"></i> GitHub Live</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual / 3D Cyber Core & Avatar Card -->
+                <div class="hero-visual">
+                    <!-- 3D View Mode Switcher -->
+                    <div class="visual-mode-toggle" id="visualModeToggle" role="tablist"
+                        aria-label="3D Visual View Selector">
+                        <button class="mode-tab active" id="tabAvatar" data-mode="avatar" role="tab" aria-selected="true">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span>Developer Profile</span>
+                        </button>
+                        <button class="mode-tab" id="tab3dCore" data-mode="3d" role="tab" aria-selected="false">
+                            <i class="fa-solid fa-cube"></i>
+                            <span>3D Quantum Core</span>
+                        </button>
+                    </div>
+
+                    <div class="avatar-card-wrapper" id="heroCardWrapper" data-tilt="true">
+                        <!-- Holographic Ring & Glow -->
+                        <div class="avatar-glow-ring"></div>
+
+                        <!-- 3D Interactive Cyber Core Container -->
+                        <div class="hero-3d-container" id="hero3dContainer">
+                            <canvas id="hero3dCanvas" aria-label="Interactive 3D Cyber Core Model"></canvas>
+                            <div class="hologram-hud-overlay">
+                                <div class="hud-top">
+                                    <span class="hud-tag"><i class="fa-solid fa-satellite-dish"></i> HK_ENGINE //
+                                        v2.6.4</span>
+                                    <span class="hud-fps" id="hudFps">60 FPS</span>
+                                </div>
+                                <div class="hud-center-hint">
+                                    <i class="fa-solid fa-arrows-spin"></i>
+                                    <span>DRAG TO ROTATE 3D MODEL</span>
+                                </div>
+                                <div class="hud-bottom">
+                                    <div class="hud-stat">
+                                        <span class="stat-label">DATA &amp; AI READINESS</span>
+                                        <div class="hud-bar">
+                                            <div class="hud-bar-fill" style="width: 95%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="hud-stat">
+                                        <span class="stat-label">GITHUB SYNC</span>
+                                        <span class="stat-val font-mono" id="hudGithubStatus">LIVE CONNECTED</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Classic Avatar Profile Card (Switchable) -->
+                        <div class="avatar-card" id="heroAvatarCard">
+                            <!-- Visual Avatar / Profile Placeholder -->
+                            <div class="avatar-img-container">
+                                <img src="assets/profile.jpg" 
+                                     alt="Himanshu Kumar" 
+                                     class="avatar-photo"
+                                     id="profileAvatarImg"
+                                     onerror="this.style.display='none'; document.getElementById('fallbackAvatarSvg').style.display='block';">
+                                
+                                <!-- Cyber-themed Tech Avatar SVG Fallback -->
+                                <svg class="avatar-svg" id="fallbackAvatarSvg" style="display: none;" viewBox="0 0 240 240" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" role="img"
+                                    aria-label="Himanshu Kumar avatar illustration">
+                                    <defs>
+                                        <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#00f2fe" />
+                                            <stop offset="50%" stop-color="#38bdf8" />
+                                            <stop offset="100%" stop-color="#6366f1" />
+                                        </linearGradient>
+                                        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#0f172a" />
+                                            <stop offset="100%" stop-color="#1e293b" />
+                                        </linearGradient>
+                                    </defs>
+                                    <circle cx="120" cy="120" r="105" stroke="url(#avatarGrad)" stroke-width="2"
+                                        stroke-dasharray="6 6" opacity="0.6" />
+                                    <circle cx="120" cy="120" r="95" fill="url(#shieldGrad)" />
+                                    <path
+                                        d="M120 45 C100 45 85 62 85 84 C85 96 91 106 100 113 C76 122 58 147 55 178 C54 185 60 190 68 190 L172 190 C180 190 186 185 185 178 C182 147 164 122 140 113 C149 106 155 96 155 84 C155 62 140 45 120 45 Z"
+                                        fill="#0f172a" stroke="url(#avatarGrad)" stroke-width="2.5" />
+                                    <path
+                                        d="M102 80 C102 72 108 65 120 65 C132 65 138 72 138 80 C138 95 128 102 120 102 C112 102 102 95 102 80 Z"
+                                        fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+                                    <rect x="105" y="77" width="30" height="9" rx="4.5" fill="#00f2fe" opacity="0.9" />
+                                </svg>
+                                <div class="avatar-badge">
+                                    <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                                    <span>Verified_Dev</span>
+                                </div>
+                            </div>
+
+                            <!-- Live Mini Terminal Status Card -->
+                            <div class="mini-terminal">
+                                <div class="terminal-header">
+                                    <span class="term-dot dot-red"></span>
+                                    <span class="term-dot dot-yellow"></span>
+                                    <span class="term-dot dot-green"></span>
+                                    <span class="term-title">himanshu@portfolio:~</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <p class="term-line"><span class="term-cyan">institution:</span> "IIMT College of Engineering, AKTU"</p>
+                                    <p class="term-line"><span class="term-cyan">degree:</span> "B.Tech CSE-IT (Final Year)"</p>
+                                    <p class="term-line"><span class="term-cyan">certifications:</span> <span class="term-green">5 Completed</span></p>
+                                    <p class="term-line"><span class="term-cyan">sync_status:</span> <span class="term-ready" id="termSyncStatus">AUTO_SYNC_ACTIVE</span><span class="cursor-blink">_</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badges for visual depth -->
+                        <div class="floating-badge badge-top-right">
+                            <i class="fa-solid fa-microchip text-cyan"></i>
+                            <span>AI / ML Dev</span>
+                        </div>
+                        <div class="floating-badge badge-bottom-left">
+                            <i class="fa-solid fa-chart-line text-blue"></i>
+                            <span>Data Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <a href="#about" class="scroll-indicator" aria-label="Scroll to About Me section">
+                <span class="scroll-text">Explore</span>
+                <i class="fa-solid fa-chevron-down scroll-arrow" aria-hidden="true"></i>
+            </a>
+        </section>
+
+
+        <!-- ===================================================================== -->
+        <!-- 3. ABOUT ME SECTION                                                   -->
+        <!-- ===================================================================== -->
+        <section class="section about-section" id="about">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <span class="section-tag">// 01. PROFESSIONAL SUMMARY</span>
+                    <h2 class="section-title">Driven by Curiosity, Engineered with Code</h2>
+                    <div class="section-bar"></div>
+                </div>
+
+                <div class="about-grid">
+                    <!-- Text Content -->
+                    <div class="about-text-col">
+                        <div class="about-card-primary">
+                            <p class="about-lead">
+                                Final-year <strong>B.Tech (CSE-IT)</strong> student at <strong>IIMT College of Engineering, AKTU</strong> with hands-on experience in <strong>Python, data analysis, machine learning, and full-stack web development</strong>. Completed <strong>5 industry-recognized certifications</strong> spanning data analytics and AI/ML.
+                            </p>
+
+                            <p class="about-secondary">
+                                Built real-world projects involving structured data handling, API integration, and dynamic UI development. Quick learner with strong analytical and problem-solving skills, seeking to contribute to a dynamic engineering team and continuously grow across diverse technical domains.
+                            </p>
+                        </div>
+
+                        <!-- Core Pillars -->
+                        <div class="about-pillars">
+                            <div class="pillar-card">
+                                <div class="pillar-icon-box">
+                                    <i class="fa-solid fa-brain" aria-hidden="true"></i>
+                                </div>
+                                <div class="pillar-info">
+                                    <h3 class="pillar-title">Data &amp; AI/ML Specialist</h3>
+                                    <p class="pillar-desc">Extracting actionable insights from data, building predictive models, and integrating cloud ML APIs.</p>
+                                </div>
+                            </div>
+
+                            <div class="pillar-card">
+                                <div class="pillar-icon-box">
+                                    <i class="fa-solid fa-laptop-code" aria-hidden="true"></i>
+                                </div>
+                                <div class="pillar-info">
+                                    <h3 class="pillar-title">Full-Stack Web Engineering</h3>
+                                    <p class="pillar-desc">Designing smooth, responsive user interfaces with JavaScript, Tailwind CSS, Bootstrap, and DOM logic.</p>
+                                </div>
+                            </div>
+
+                            <div class="pillar-card">
+                                <div class="pillar-icon-box">
+                                    <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>
+                                </div>
+                                <div class="pillar-info">
+                                    <h3 class="pillar-title">Analytical Problem Solver</h3>
+                                    <p class="pillar-desc">Strong aptitude in C++, Java, MySQL, structured data processing, and adaptive problem resolution.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technology Visual Card beside the text (Desktop side, mobile stacked) -->
+                    <div class="about-visual-col">
+                        <div class="dossier-card">
+                            <div class="dossier-header">
+                                <div class="dossier-id">
+                                    <i class="fa-solid fa-id-card text-cyan"></i>
+                                    <span>ENGINEER PROFILE: HK-2026</span>
+                                </div>
+                                <span class="dossier-status">VERIFIED</span>
+                            </div>
+
+                            <div class="dossier-body">
+                                <div class="dossier-profile-header">
+                                    <div class="dossier-avatar-wrap">
+                                        <img src="assets/profile.jpg" alt="Himanshu Kumar" class="dossier-avatar-img">
+                                    </div>
+                                    <div class="dossier-profile-meta">
+                                        <div class="dossier-val highlight name-lg">Himanshu Kumar</div>
+                                        <div class="dossier-meta-subtitle">B.Tech (CSE-IT) • 2026 Batch</div>
+                                    </div>
+                                </div>
+                                <div class="dossier-row">
+                                    <span class="dossier-label"><i class="fa-solid fa-user"></i> Full Name:</span>
+                                    <span class="dossier-val highlight">Himanshu Kumar</span>
+                                </div>
+                                <div class="dossier-row">
+                                    <span class="dossier-label"><i class="fa-solid fa-graduation-cap"></i> Degree:</span>
+                                    <span class="dossier-val">B.Tech (CSE-IT) [Final Year]</span>
+                                </div>
+                                <div class="dossier-row">
+                                    <span class="dossier-label"><i class="fa-solid fa-building-columns"></i> College:</span>
+                                    <span class="dossier-val">IIMT College of Engg., AKTU</span>
+                                </div>
+                                <div class="dossier-row">
+                                    <span class="dossier-label"><i class="fa-solid fa-envelope"></i> Email:</span>
+                                    <span class="dossier-val font-mono font-xs">himanshukumarsingh1610@gmail.com</span>
+                                </div>
+                                <div class="dossier-row">
+                                    <span class="dossier-label"><i class="fa-solid fa-phone"></i> Phone:</span>
+                                    <span class="dossier-val font-mono">+91 9341112974</span>
+                                </div>
+                                <div class="dossier-row">
+                                    <span class="dossier-label"><i class="fa-brands fa-github"></i> GitHub:</span>
+                                    <span class="dossier-val font-mono text-cyan">@himanshu161098</span>
+                                </div>
+                                <div class="dossier-row">
+                                    <span class="dossier-label"><i class="fa-brands fa-linkedin"></i> LinkedIn:</span>
+                                    <span class="dossier-val font-mono text-blue">/in/himanshu-kumar-1618hks</span>
+                                </div>
+                            </div>
+
+                            <!-- Decorative Cyber Telemetry -->
+                            <div class="dossier-footer">
+                                <div class="metric-item">
+                                    <span class="metric-num">5</span>
+                                    <span class="metric-sub">Certifications</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-num">3+</span>
+                                    <span class="metric-sub">Key Projects</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-num">100%</span>
+                                    <span class="metric-sub">Dedication</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================== -->
+        <!-- 4. SKILLS SECTION (Matched to Resume)                                  -->
+        <!-- ===================================================================== -->
+        <section class="section skills-section" id="skills">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <span class="section-tag">// 02. TECHNICAL SKILLS</span>
+                    <h2 class="section-title">Technical Skills &amp; Proficiencies</h2>
+                    <p class="section-subtitle">
+                        Directly aligned with my technical competencies spanning programming languages, web technologies, data analysis, databases, and core software engineering tools.
+                    </p>
+                    <div class="section-bar"></div>
+                </div>
+
+                <!-- Skills Category Group Filter -->
+                <div class="skills-filter-bar">
+                    <button class="skill-filter-btn active" data-filter="all">All Skills</button>
+                    <button class="skill-filter-btn" data-filter="languages">Languages</button>
+                    <button class="skill-filter-btn" data-filter="web">Web Tech</button>
+                    <button class="skill-filter-btn" data-filter="data">Data &amp; BI Tools</button>
+                    <button class="skill-filter-btn" data-filter="database">Databases &amp; Query</button>
+                    <button class="skill-filter-btn" data-filter="tools">Tools &amp; Platforms</button>
+                    <button class="skill-filter-btn" data-filter="soft">Soft Skills</button>
+                </div>
+
+                <!-- Skills Grid -->
+                <div class="skills-grid" id="skillsGrid">
+                    <!-- LANGUAGES -->
+                    <article class="skill-card" data-category="languages">
+                        <div class="skill-icon-wrapper python-icon">
+                            <i class="fa-brands fa-python" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">Python</h3>
+                        <span class="skill-category-tag">Languages</span>
+                        <span class="skill-tag">Data Analysis, ML &amp; Automation</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 90%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-category="languages">
+                        <div class="skill-icon-wrapper cpp-icon">
+                            <i class="fa-solid fa-code" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">C++</h3>
+                        <span class="skill-category-tag">Languages</span>
+                        <span class="skill-tag">Data Structures &amp; OOP</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 85%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-category="languages">
+                        <div class="skill-icon-wrapper java-icon">
+                            <i class="fa-brands fa-java" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">Java</h3>
+                        <span class="skill-category-tag">Languages</span>
+                        <span class="skill-tag">OOP &amp; Core Systems</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 82%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-category="languages">
+                        <div class="skill-icon-wrapper js-icon">
+                            <i class="fa-brands fa-js" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">JavaScript</h3>
+                        <span class="skill-category-tag">Languages</span>
+                        <span class="skill-tag">Async Logic &amp; DOM Manipulation</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 88%;"></div>
+                        </div>
+                    </article>
+
+                    <!-- WEB TECHNOLOGIES -->
+                    <article class="skill-card" data-category="web">
+                        <div class="skill-icon-wrapper html-icon">
+                            <i class="fa-brands fa-html5" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">HTML5</h3>
+                        <span class="skill-category-tag">Web Technologies</span>
+                        <span class="skill-tag">Semantic Markup &amp; Accessibility</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 94%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-category="web">
+                        <div class="skill-icon-wrapper css-icon">
+                            <i class="fa-brands fa-css3-alt" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">CSS3</h3>
+                        <span class="skill-category-tag">Web Technologies</span>
+                        <span class="skill-tag">Flexbox, Grid &amp; Animations</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 90%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-category="web">
+                        <div class="skill-icon-wrapper bootstrap-icon">
+                            <i class="fa-brands fa-bootstrap" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">Bootstrap</h3>
+                        <span class="skill-category-tag">Web Technologies</span>
+                        <span class="skill-tag">Rapid UI &amp; Cross-Device Layouts</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 86%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-category="web">
+                        <div class="skill-icon-wrapper tailwind-icon">
+                            <i class="fa-solid fa-wind" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">Tailwind CSS</h3>
+                        <span class="skill-category-tag">Web Technologies</span>
+                        <span class="skill-tag">Utility-First Modern Styling</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 85%;"></div>
+                        </div>
+                    </article>
+
+                    <!-- DATABASES & QUERY -->
+                    <article class="skill-card" data-category="database">
+                        <div class="skill-icon-wrapper mysql-icon">
+                            <i class="fa-solid fa-database" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">MySQL</h3>
+                        <span class="skill-category-tag">Databases &amp; Query</span>
+                        <span class="skill-tag">Relational Schema &amp; Joins</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 86%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-category="database">
+                        <div class="skill-icon-wrapper mongodb-icon">
+                            <i class="fa-solid fa-leaf" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">MongoDB</h3>
+                        <span class="skill-category-tag">Databases &amp; Query</span>
+                        <span class="skill-tag">NoSQL Document Store &amp; JSON</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 80%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-category="database">
+                        <div class="skill-icon-wrapper sql-icon">
+                            <i class="fa-solid fa-table" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">SQL</h3>
+                        <span class="skill-category-tag">Databases &amp; Query</span>
+                        <span class="skill-tag">Complex Queries, Aggregation &amp; ETL</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 88%;"></div>
+                        </div>
+                    </article>
+
+                    <!-- DATA & BI TOOLS -->
+                    <article class="skill-card highlight-skill" data-category="data">
+                        <div class="skill-icon-wrapper ml-icon">
+                            <i class="fa-solid fa-brain" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">Machine Learning</h3>
+                        <span class="skill-category-tag">Data &amp; BI Tools</span>
+                        <span class="skill-tag">Supervised &amp; Unsupervised Models</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 86%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card highlight-skill" data-category="data">
+                        <div class="skill-icon-wrapper powerbi-icon">
+                            <i class="fa-solid fa-chart-column" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">Power BI</h3>
+                        <span class="skill-category-tag">Data &amp; BI Tools</span>
+                        <span class="skill-tag">Interactive Dashboards &amp; Reporting</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 85%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card highlight-skill" data-category="data">
+                        <div class="skill-icon-wrapper excel-icon">
+                            <i class="fa-solid fa-file-excel" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">Excel</h3>
+                        <span class="skill-category-tag">Data &amp; BI Tools</span>
+                        <span class="skill-tag">VLOOKUP, Pivot Tables &amp; Formulas</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 88%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-category="data">
+                        <div class="skill-icon-wrapper analysis-icon">
+                            <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">Data Analysis &amp; Viz</h3>
+                        <span class="skill-category-tag">Data &amp; BI Tools</span>
+                        <span class="skill-tag">Exploratory Insights &amp; Matplotlib</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 88%;"></div>
+                        </div>
+                    </article>
+
+                    <!-- TOOLS & PLATFORMS -->
+                    <article class="skill-card" data-category="tools">
+                        <div class="skill-icon-wrapper git-icon">
+                            <i class="fa-brands fa-github" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">GitHub &amp; Git</h3>
+                        <span class="skill-category-tag">Tools &amp; Platforms</span>
+                        <span class="skill-tag">Version Control &amp; CI/CD Actions</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 90%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-category="tools">
+                        <div class="skill-icon-wrapper vscode-icon">
+                            <i class="fa-solid fa-laptop-code" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">VS Code</h3>
+                        <span class="skill-category-tag">Tools &amp; Platforms</span>
+                        <span class="skill-tag">Modern Development Environment</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 92%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-category="tools">
+                        <div class="skill-icon-wrapper colab-icon">
+                            <i class="fa-solid fa-terminal" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">Google Colab</h3>
+                        <span class="skill-category-tag">Tools &amp; Platforms</span>
+                        <span class="skill-tag">Cloud Jupyter Notebooks &amp; GPU</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 88%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-category="tools">
+                        <div class="skill-icon-wrapper dom-icon">
+                            <i class="fa-solid fa-sitemap" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">DOM Manipulation</h3>
+                        <span class="skill-category-tag">Tools &amp; Platforms</span>
+                        <span class="skill-tag">Real-Time UI State Updating</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 90%;"></div>
+                        </div>
+                    </article>
+
+                    <!-- SOFT SKILLS -->
+                    <article class="skill-card highlight-skill" data-category="soft">
+                        <div class="skill-icon-wrapper soft-icon">
+                            <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">Analytical Thinking &amp; Problem Solving</h3>
+                        <span class="skill-category-tag">Soft Skills</span>
+                        <span class="skill-tag">Systematic debugging &amp; algorithmic logic</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 94%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-category="soft">
+                        <div class="skill-icon-wrapper team-icon">
+                            <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">Collaboration &amp; Communication</h3>
+                        <span class="skill-category-tag">Soft Skills</span>
+                        <span class="skill-tag">Cross-functional team alignment</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 90%;"></div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-category="soft">
+                        <div class="skill-icon-wrapper pressure-icon">
+                            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-name">Pressure Handling &amp; Adaptability</h3>
+                        <span class="skill-category-tag">Soft Skills</span>
+                        <span class="skill-tag">Thriving in dynamic &amp; fast-paced environments</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-fill" style="width: 92%;"></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================== -->
+        <!-- 5. PROJECTS SECTION (Matched to Resume)                                -->
+        <!-- ===================================================================== -->
+        <section class="section projects-section" id="projects">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <span class="section-tag">// 03. FEATURED WORK</span>
+                    <h2 class="section-title">Projects &amp; Engineering Solutions</h2>
+                    <p class="section-subtitle">
+                        Real-world software, AI applications, and interactive web systems built with modern frameworks and APIs.
+                    </p>
+                    <div class="section-bar"></div>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="projects-grid">
+                    <!-- Project 1: House Security App Using AI -->
+                    <article class="project-card">
+                        <div class="project-banner project-banner-security">
+                            <div class="project-banner-overlay"></div>
+                            <div class="project-badge">
+                                <i class="fa-solid fa-shield-halved" aria-hidden="true"></i> AI &amp; Cloud API
+                            </div>
+                            <div class="project-icon-preview">
+                                <i class="fa-solid fa-house-shield" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="project-num">PROJECT_01</span>
+                                <span class="project-status">Featured from Resume</span>
+                            </div>
+
+                            <h3 class="project-title">House Security App Using AI</h3>
+
+                            <p class="project-description">
+                                Developed a smart house security system using JavaScript and machine learning models integrated with Cloud API for real-time threat analysis.
+                            </p>
+
+                            <!-- Key Technical Highlights from Resume -->
+                            <ul class="project-features">
+                                <li>
+                                    <i class="fa-solid fa-check text-cyan"></i>
+                                    <span>Cloud API integration for automated real-time threat analysis</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check text-cyan"></i>
+                                    <span>Event-driven alerts &amp; automated responses based on pattern recognition</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check text-cyan"></i>
+                                    <span>Continuous sensor data handling and anomaly detection</span>
+                                </li>
+                            </ul>
+
+                            <!-- Tech Tags -->
+                            <div class="project-tags">
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Machine Learning</span>
+                                <span class="tag">Cloud API</span>
+                                <span class="tag">Event-Driven</span>
+                            </div>
+
+                            <!-- Project Action Buttons -->
+                            <div class="project-actions">
+                                <a href="https://github.com/himanshu161098" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                    <span>View Details</span>
+                                </a>
+                                <a href="https://github.com/himanshu161098" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Quiz Application -->
+                    <article class="project-card">
+                        <div class="project-banner project-banner-webapp">
+                            <div class="project-banner-overlay"></div>
+                            <div class="project-badge">
+                                <i class="fa-solid fa-list-check" aria-hidden="true"></i> Web Application
+                            </div>
+                            <div class="project-icon-preview">
+                                <i class="fa-solid fa-stopwatch" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="project-num">PROJECT_02</span>
+                                <span class="project-status">Interactive App</span>
+                            </div>
+
+                            <h3 class="project-title">Quiz Application</h3>
+
+                            <p class="project-description">
+                                Built a fully functional quiz application with dynamic question loading from a JSON file, a countdown timer, and an automated scoring system.
+                            </p>
+
+                            <!-- Key Technical Highlights from Resume -->
+                            <ul class="project-features">
+                                <li>
+                                    <i class="fa-solid fa-check text-cyan"></i>
+                                    <span>Dynamic question loading from structured JSON datasets</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check text-cyan"></i>
+                                    <span>Countdown timer with instantaneous automated score calculation</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check text-cyan"></i>
+                                    <span>Real-time DOM manipulation based on user interactions</span>
+                                </li>
+                            </ul>
+
+                            <!-- Tech Tags -->
+                            <div class="project-tags">
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">JSON</span>
+                                <span class="tag">DOM Manipulation</span>
+                            </div>
+
+                            <!-- Project Action Buttons -->
+                            <div class="project-actions">
+                                <a href="https://github.com/himanshu161098" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                    <span>View Details</span>
+                                </a>
+                                <a href="https://github.com/himanshu161098" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: UNO Playing Card Game -->
+                    <article class="project-card">
+                        <div class="project-banner project-banner-phishing">
+                            <div class="project-banner-overlay"></div>
+                            <div class="project-badge">
+                                <i class="fa-solid fa-gamepad" aria-hidden="true"></i> Game Dev &amp; UI
+                            </div>
+                            <div class="project-icon-preview">
+                                <i class="fa-solid fa-clone" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="project-num">PROJECT_03</span>
+                                <span class="project-status">Live on GitHub</span>
+                            </div>
+
+                            <h3 class="project-title">UNO Playing Card Game</h3>
+
+                            <p class="project-description">
+                                Designed and developed an interactive card game featuring smooth animations, responsive layout, and modular component-based architecture.
+                            </p>
+
+                            <!-- Key Technical Highlights from Resume -->
+                            <ul class="project-features">
+                                <li>
+                                    <i class="fa-solid fa-check text-cyan"></i>
+                                    <span>Fluid card shuffling and discard animations with DOM dynamics</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check text-cyan"></i>
+                                    <span>Modular component-based architecture for rules and gameplay</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check text-cyan"></i>
+                                    <span>Leveraged Bootstrap &amp; Tailwind CSS for cross-device compatibility</span>
+                                </li>
+                            </ul>
+
+                            <!-- Tech Tags -->
+                            <div class="project-tags">
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Bootstrap</span>
+                                <span class="tag">Tailwind CSS</span>
+                            </div>
+
+                            <!-- Project Action Buttons -->
+                            <div class="project-actions">
+                                <a href="https://github.com/himanshu161098/UNO-playing-Card-" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                    <span>Live Repo</span>
+                                </a>
+                                <a href="https://github.com/himanshu161098/UNO-playing-Card-" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                                    <span>Code</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 4: Netflix Sales Data Analysis (Live GitHub Project) -->
+                    <article class="project-card">
+                        <div class="project-banner project-banner-netflix">
+                            <div class="project-banner-overlay"></div>
+                            <div class="project-badge">
+                                <i class="fa-solid fa-chart-pie" aria-hidden="true"></i> Data Analysis
+                            </div>
+                            <div class="project-icon-preview">
+                                <i class="fa-solid fa-chart-simple" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="project-num">PROJECT_04</span>
+                                <span class="project-status">Data Analytics</span>
+                            </div>
+
+                            <h3 class="project-title">Netflix Sales Data Analysis</h3>
+
+                            <p class="project-description">
+                                Comprehensive exploratory data analysis and trend modeling of streaming and sales metrics using Python data science libraries.
+                            </p>
+
+                            <!-- Key Technical Highlights -->
+                            <ul class="project-features">
+                                <li>
+                                    <i class="fa-solid fa-check text-cyan"></i>
+                                    <span>Exploratory data analysis using Pandas, NumPy &amp; Jupyter</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check text-cyan"></i>
+                                    <span>Statistical visualization of content distribution and revenue patterns</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check text-cyan"></i>
+                                    <span>Structured dataset cleaning, transformation, and insight generation</span>
+                                </li>
+                            </ul>
+
+                            <!-- Tech Tags -->
+                            <div class="project-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">Data Analysis</span>
+                                <span class="tag">Jupyter Notebook</span>
+                                <span class="tag">Data Visualization</span>
+                            </div>
+
+                            <!-- Project Action Buttons -->
+                            <div class="project-actions">
+                                <a href="https://github.com/himanshu161098/Netfix-Sales" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                    <span>Live Repo</span>
+                                </a>
+                                <a href="https://github.com/himanshu161098/Netfix-Sales" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                                    <span>Code</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================== -->
+        <!-- 6. CERTIFICATIONS SECTION (New - From Resume)                         -->
+        <!-- ===================================================================== -->
+        <section class="section cert-section" id="certifications">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <span class="section-tag">// 04. INDUSTRY CREDENTIALS</span>
+                    <h2 class="section-title">Certifications</h2>
+                    <p class="section-subtitle">
+                        Completed 5 industry-recognized certifications spanning Data Analytics, Python, Machine Learning, and Cybersecurity foundations.
+                    </p>
+                    <div class="section-bar"></div>
+                </div>
+
+                <!-- Certifications Grid -->
+                <div class="cert-grid">
+                    <!-- Cert 1 -->
+                    <article class="cert-card">
+                        <div class="cert-card-header">
+                            <div class="cert-icon-box">
+                                <i class="fa-solid fa-shield-virus" aria-hidden="true"></i>
+                            </div>
+                            <span class="cert-badge">Security</span>
+                        </div>
+                        <h3 class="cert-title">Foundations of Cybersecurity</h3>
+                        <p class="cert-desc">Core security principles, threat identification, network vulnerabilities, and defensive protocols.</p>
+                        <div class="cert-footer">
+                            <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> Certified Credential</span>
+                        </div>
+                    </article>
+
+                    <!-- Cert 2 -->
+                    <article class="cert-card">
+                        <div class="cert-card-header">
+                            <div class="cert-icon-box">
+                                <i class="fa-brands fa-python" aria-hidden="true"></i>
+                            </div>
+                            <span class="cert-badge">Python Analytics</span>
+                        </div>
+                        <h3 class="cert-title">Data Analysis with Python</h3>
+                        <p class="cert-desc">Data wrangling, statistical analysis, exploratory visualization, and mathematical operations with Python.</p>
+                        <div class="cert-footer">
+                            <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> Certified Credential</span>
+                        </div>
+                    </article>
+
+                    <!-- Cert 3 -->
+                    <article class="cert-card">
+                        <div class="cert-card-header">
+                            <div class="cert-icon-box">
+                                <i class="fa-solid fa-database" aria-hidden="true"></i>
+                            </div>
+                            <span class="cert-badge">Data Lifecycle</span>
+                        </div>
+                        <h3 class="cert-title">Foundations: Data, Data, Everywhere</h3>
+                        <p class="cert-desc">Data ecosystems, data-driven decision frameworks, structured transformations, and analytical workflows.</p>
+                        <div class="cert-footer">
+                            <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> Certified Credential</span>
+                        </div>
+                    </article>
+
+                    <!-- Cert 4 -->
+                    <article class="cert-card">
+                        <div class="cert-card-header">
+                            <div class="cert-icon-box">
+                                <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                            </div>
+                            <span class="cert-badge">Business Intel</span>
+                        </div>
+                        <h3 class="cert-title">Introduction to Data Analytics</h3>
+                        <p class="cert-desc">Understanding structured querying, ETL processes, dashboarding, business metrics, and presentation insights.</p>
+                        <div class="cert-footer">
+                            <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> Certified Credential</span>
+                        </div>
+                    </article>
+
+                    <!-- Cert 5 -->
+                    <article class="cert-card highlight-cert">
+                        <div class="cert-card-header">
+                            <div class="cert-icon-box">
+                                <i class="fa-solid fa-brain" aria-hidden="true"></i>
+                            </div>
+                            <span class="cert-badge">AI / ML</span>
+                        </div>
+                        <h3 class="cert-title">Fundamentals of Machine Learning &amp; AI</h3>
+                        <p class="cert-desc">Supervised and unsupervised algorithms, neural foundations, predictive model evaluation, and AI applications.</p>
+                        <div class="cert-footer">
+                            <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> Certified Credential</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================== -->
+        <!-- 7. EDUCATION SECTION (Matched to Resume)                               -->
+        <!-- ===================================================================== -->
+        <section class="section education-section" id="education">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <span class="section-tag">// 05. ACADEMIC JOURNEY</span>
+                    <h2 class="section-title">Education &amp; Qualifications</h2>
+                    <p class="section-subtitle">
+                        My formal academic background and qualifications directly from my resume.
+                    </p>
+                    <div class="section-bar"></div>
+                </div>
+
+                <!-- Education Cards List -->
+                <div class="education-card-wrapper">
+                    <!-- B.Tech -->
+                    <article class="education-card">
+                        <div class="education-badge-icon">
+                            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                        </div>
+
+                        <div class="education-content">
+                            <div class="education-header-row">
+                                <div>
+                                    <h3 class="education-degree">B.Tech — Computer Science &amp; Engineering (IT)</h3>
+                                    <p class="education-college">
+                                        <i class="fa-solid fa-building-columns text-cyan" aria-hidden="true"></i>
+                                        <strong>IIMT College of Engineering, AKTU</strong>
+                                    </p>
+                                </div>
+                                <span class="education-timeline-pill">
+                                    <i class="fa-regular fa-calendar-days" aria-hidden="true"></i>
+                                    Present (Final Year)
+                                </span>
+                            </div>
+
+                            <div class="education-details">
+                                <div class="education-spec">
+                                    <span class="spec-label">Specialization:</span>
+                                    <span class="spec-value"><strong>Computer Science &amp; Engineering (Information Technology)</strong></span>
+                                </div>
+
+                                <p class="education-summary">
+                                    Undergraduate engineering curriculum emphasizing software architecture, data structures &amp; algorithms, database management, machine learning, cloud systems, and hands-on web application development.
+                                </p>
+
+                                <div class="education-coursework">
+                                    <span class="coursework-title">Key Core Domains:</span>
+                                    <div class="coursework-tags">
+                                        <span class="c-tag">Python &amp; Machine Learning</span>
+                                        <span class="c-tag">Data Structures &amp; Algorithms</span>
+                                        <span class="c-tag">Full-Stack Web Technologies</span>
+                                        <span class="c-tag">Database Management Systems (MySQL/SQL)</span>
+                                        <span class="c-tag">Object-Oriented Programming (C++/Java)</span>
+                                        <span class="c-tag">Data Analysis &amp; Visualization</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Class XII -->
+                    <article class="education-card">
+                        <div class="education-badge-icon">
+                            <i class="fa-solid fa-award" aria-hidden="true"></i>
+                        </div>
+
+                        <div class="education-content">
+                            <div class="education-header-row">
+                                <div>
+                                    <h3 class="education-degree">Class XII — CBSE Board</h3>
+                                    <p class="education-college">
+                                        <i class="fa-solid fa-school text-cyan" aria-hidden="true"></i>
+                                        <strong>C.A.B.S College, Khamhar, Begusarai</strong>
+                                    </p>
+                                </div>
+                                <span class="education-timeline-pill">
+                                    <i class="fa-regular fa-calendar-days" aria-hidden="true"></i>
+                                    2023 | 67.8%
+                                </span>
+                            </div>
+
+                            <div class="education-details">
+                                <div class="education-spec">
+                                    <span class="spec-label">Stream:</span>
+                                    <span class="spec-value">Higher Secondary Science Curriculum (CBSE)</span>
+                                </div>
+                                <p class="education-summary">
+                                    Completed Higher Secondary Education under the Central Board of Secondary Education (CBSE) with a strong grounding in Mathematics, Physics, and analytical logic.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Class X -->
+                    <article class="education-card">
+                        <div class="education-badge-icon">
+                            <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                        </div>
+
+                        <div class="education-content">
+                            <div class="education-header-row">
+                                <div>
+                                    <h3 class="education-degree">Class X — CBSE Board</h3>
+                                    <p class="education-college">
+                                        <i class="fa-solid fa-school text-cyan" aria-hidden="true"></i>
+                                        <strong>S.P.S High School, Binodpur, Begusarai</strong>
+                                    </p>
+                                </div>
+                                <span class="education-timeline-pill">
+                                    <i class="fa-regular fa-calendar-days" aria-hidden="true"></i>
+                                    2021 | 68.2%
+                                </span>
+                            </div>
+
+                            <div class="education-details">
+                                <div class="education-spec">
+                                    <span class="spec-label">Curriculum:</span>
+                                    <span class="spec-value">Secondary School Examination (CBSE)</span>
+                                </div>
+                                <p class="education-summary">
+                                    Completed Secondary School certification establishing fundamental problem solving, general sciences, and mathematical acumen.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================== -->
+        <!-- 8. LIVE SOCIAL & ACTIVITY FEED SECTION (Auto-Sync)                    -->
+        <!-- ===================================================================== -->
+        <section class="section live-feed-section" id="live-feed">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <span class="section-tag">// 06. REAL-TIME ACTIVITY &amp; AUTO-SYNC</span>
+                    <h2 class="section-title">Live GitHub &amp; LinkedIn Stream</h2>
+                    <p class="section-subtitle">
+                        Automatically synchronized with my GitHub (<a href="https://github.com/himanshu161098" target="_blank" rel="noopener noreferrer" class="link-inline">@himanshu161098</a>) and LinkedIn profiles. Whenever I push code, release a project, or publish a post, it reflects here in real time!
+                    </p>
+                    <div class="section-bar"></div>
+                </div>
+
+                <!-- Sync Control & Telemetry Bar -->
+                <div class="sync-status-bar">
+                    <div class="sync-status-indicator">
+                        <span class="sync-pulse"></span>
+                        <div class="sync-status-text">
+                            <strong>Live Auto-Sync: <span class="text-green">ONLINE</span></strong>
+                            <span class="sync-timestamp" id="liveSyncTimestamp">Checking live feeds...</span>
+                        </div>
+                    </div>
+
+                    <div class="sync-actions-group">
+                        <button class="btn btn-sm btn-primary" id="btnSyncNow" title="Force re-fetch from GitHub and LinkedIn feeds">
+                            <i class="fa-solid fa-rotate" id="syncSpinIcon"></i>
+                            <span>Sync Now</span>
+                        </button>
+                        <button class="btn btn-sm btn-outline" id="btnSyncInfo" title="Learn how auto-sync works">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span>How It Works</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Streams Grid -->
+                <div class="live-feed-grid">
+                    <!-- Column 1: Live GitHub Profile & Repositories -->
+                    <div class="live-feed-column">
+                        <div class="feed-column-header">
+                            <div class="feed-column-title">
+                                <i class="fa-brands fa-github text-cyan"></i>
+                                <span>GitHub Real-Time Repos &amp; Activity</span>
+                            </div>
+                            <a href="https://github.com/himanshu161098" target="_blank" rel="noopener noreferrer" class="feed-view-all">
+                                <span>@himanshu161098</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <!-- Mini GitHub Stats Strip -->
+                        <div class="github-stats-strip" id="githubStatsStrip">
+                            <div class="gh-stat-box">
+                                <span class="gh-stat-num" id="ghPublicRepos">3</span>
+                                <span class="gh-stat-lbl">Repositories</span>
+                            </div>
+                            <div class="gh-stat-box">
+                                <span class="gh-stat-num" id="ghFollowers">0</span>
+                                <span class="gh-stat-lbl">Followers</span>
+                            </div>
+                            <div class="gh-stat-box">
+                                <span class="gh-stat-num" id="ghStarsCount">2+</span>
+                                <span class="gh-stat-lbl">Total Stars</span>
+                            </div>
+                            <div class="gh-stat-box">
+                                <span class="gh-stat-num text-green" id="ghLiveStatus">Synced</span>
+                                <span class="gh-stat-lbl">API Status</span>
+                            </div>
+                        </div>
+
+                        <!-- Live Repos Container (Dynamically Injected) -->
+                        <div class="dynamic-repos-list" id="dynamicReposContainer">
+                            <div class="feed-loading-state">
+                                <i class="fa-solid fa-circle-notch fa-spin"></i>
+                                <span>Connecting to GitHub API...</span>
+                            </div>
+                        </div>
+
+                        <!-- Live GitHub Recent Events / Commits -->
+                        <div class="recent-events-box" id="recentEventsBox">
+                            <h4 class="recent-events-title">
+                                <i class="fa-solid fa-code-commit text-blue"></i>
+                                <span>Recent GitHub Activity Log</span>
+                            </h4>
+                            <div class="events-list" id="eventsListContainer">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: LinkedIn Updates & Posts Feed -->
+                    <div class="live-feed-column">
+                        <div class="feed-column-header">
+                            <div class="feed-column-title">
+                                <i class="fa-brands fa-linkedin text-blue"></i>
+                                <span>LinkedIn Posts &amp; Updates</span>
+                            </div>
+                            <a href="https://www.linkedin.com/in/himanshu-kumar-1618hks/" target="_blank" rel="noopener noreferrer" class="feed-view-all">
+                                <span>/in/himanshu-kumar-1618hks</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <!-- LinkedIn Profile Mini Preview Card -->
+                        <div class="linkedin-profile-card">
+                            <div class="li-card-left">
+                                <div class="li-avatar-box">
+                                    <img src="assets/profile.jpg" alt="Himanshu Kumar" class="li-avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <i class="fa-brands fa-linkedin-in" style="display: none;"></i>
+                                </div>
+                                <div class="li-details">
+                                    <h4 class="li-name">Himanshu Kumar</h4>
+                                    <p class="li-headline">Final-Year B.Tech CSE-IT | AI/ML, Data Analytics &amp; Web Dev</p>
+                                </div>
+                            </div>
+                            <a href="https://www.linkedin.com/in/himanshu-kumar-1618hks/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                                <i class="fa-solid fa-plus"></i> Connect
+                            </a>
+                        </div>
+
+                        <!-- Dynamic LinkedIn Posts Container -->
+                        <div class="dynamic-linkedin-posts" id="dynamicLinkedInPosts">
+                            <div class="feed-loading-state">
+                                <i class="fa-solid fa-circle-notch fa-spin"></i>
+                                <span>Loading LinkedIn activity stream...</span>
+                            </div>
+                        </div>
+
+                        <!-- Quick Post Update Action Card for User -->
+                        <div class="sync-helper-card">
+                            <div class="helper-content">
+                                <i class="fa-solid fa-bolt text-yellow"></i>
+                                <div>
+                                    <h5>Automated Dual Synchronization</h5>
+                                    <p>GitHub updates reflect instantly via browser API. Scheduled GitHub Actions workflow synchronizes every 6 hours automatically.</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-xs btn-outline" id="btnOpenPostModal">
+                                <i class="fa-solid fa-pen-to-square"></i> Add New Post
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================== -->
+        <!-- 9. CONTACT SECTION (Matched to Resume)                                -->
+        <!-- ===================================================================== -->
+        <section class="section contact-section" id="contact">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <span class="section-tag">// 07. GET IN TOUCH</span>
+                    <h2 class="section-title">Contact Himanshu Kumar</h2>
+                    <p class="section-subtitle">
+                        Interested in collaborating, offering an internship or role, or discussing Data Analytics, AI/ML, and Web Development? Let's connect!
+                    </p>
+                    <div class="section-bar"></div>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Left: Direct Contact Information Cards from Resume -->
+                    <div class="contact-info-col">
+                        <div class="contact-intro-card">
+                            <h3 class="contact-card-title">Let's build impactful solutions together</h3>
+                            <p class="contact-card-desc">
+                                I am actively seeking dynamic opportunities in Data Analytics, Software Development, Machine Learning, and Web Engineering. Feel free to contact me via email, phone, LinkedIn, or GitHub.
+                            </p>
+                        </div>
+
+                        <!-- Direct Information Cards -->
+                        <div class="contact-cards-list">
+                            <!-- Email -->
+                            <a href="mailto:himanshukumarsingh1610@gmail.com" class="contact-info-card" id="contactEmailLink"
+                                title="Send Email">
+                                <div class="contact-icon-box">
+                                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                                </div>
+                                <div class="contact-detail">
+                                    <span class="contact-label">Email Address</span>
+                                    <span class="contact-value font-mono">himanshukumarsingh1610@gmail.com</span>
+                                </div>
+                                <i class="fa-solid fa-arrow-up-right-from-square contact-arrow" aria-hidden="true"></i>
+                            </a>
+
+                            <!-- Phone -->
+                            <a href="tel:+919341112974" class="contact-info-card" id="contactPhoneLink"
+                                title="Call Himanshu Kumar">
+                                <div class="contact-icon-box phone-box">
+                                    <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                                </div>
+                                <div class="contact-detail">
+                                    <span class="contact-label">Phone &amp; WhatsApp</span>
+                                    <span class="contact-value font-mono">+91 9341112974</span>
+                                </div>
+                                <i class="fa-solid fa-arrow-up-right-from-square contact-arrow" aria-hidden="true"></i>
+                            </a>
+
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/in/himanshu-kumar-1618hks/" target="_blank" rel="noopener noreferrer" class="contact-info-card"
+                                id="contactLinkedinLink" title="View LinkedIn Profile">
+                                <div class="contact-icon-box linkedin-box">
+                                    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                                </div>
+                                <div class="contact-detail">
+                                    <span class="contact-label">LinkedIn Profile</span>
+                                    <span class="contact-value font-mono">linkedin.com/in/himanshu-kumar-1618hks</span>
+                                </div>
+                                <i class="fa-solid fa-arrow-up-right-from-square contact-arrow" aria-hidden="true"></i>
+                            </a>
+
+                            <!-- GitHub -->
+                            <a href="https://github.com/himanshu161098" target="_blank" rel="noopener noreferrer" class="contact-info-card"
+                                id="contactGithubLink" title="View GitHub Profile">
+                                <div class="contact-icon-box github-box">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                                </div>
+                                <div class="contact-detail">
+                                    <span class="contact-label">GitHub Profile</span>
+                                    <span class="contact-value font-mono">github.com/himanshu161098</span>
+                                </div>
+                                <i class="fa-solid fa-arrow-up-right-from-square contact-arrow" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Clean Contact Form -->
+                    <div class="contact-form-col">
+                        <form class="contact-form" id="contactForm" novalidate>
+                            <h3 class="form-title">Send a Direct Message</h3>
+
+                            <!-- Form Feedback Alert (Shown via JS or fallback) -->
+                            <div class="form-alert" id="formAlert" role="alert" style="display: none;"></div>
+
+                            <!-- Name Field -->
+                            <div class="form-group">
+                                <label for="contactName" class="form-label">
+                                    Your Name <span class="required-star">*</span>
+                                </label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-user input-icon" aria-hidden="true"></i>
+                                    <input type="text" id="contactName" name="name" class="form-input"
+                                        placeholder="e.g. John Doe" required autocomplete="name">
+                                </div>
+                                <span class="input-error-msg" id="nameError">Please enter your name.</span>
+                            </div>
+
+                            <!-- Email Field -->
+                            <div class="form-group">
+                                <label for="contactEmail" class="form-label">
+                                    Your Email <span class="required-star">*</span>
+                                </label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-envelope input-icon" aria-hidden="true"></i>
+                                    <input type="email" id="contactEmail" name="email" class="form-input"
+                                        placeholder="e.g. john@example.com" required autocomplete="email">
+                                </div>
+                                <span class="input-error-msg" id="emailError">Please enter a valid email address.</span>
+                            </div>
+
+                            <!-- Message Field -->
+                            <div class="form-group">
+                                <label for="contactMessage" class="form-label">
+                                    Message <span class="required-star">*</span>
+                                </label>
+                                <div class="input-wrapper textarea-wrapper">
+                                    <i class="fa-regular fa-comment-dots input-icon textarea-icon"
+                                        aria-hidden="true"></i>
+                                    <textarea id="contactMessage" name="message" class="form-textarea" rows="5"
+                                        placeholder="Write your message, project idea, or job inquiry here..."
+                                        required></textarea>
+                                </div>
+                                <span class="input-error-msg" id="messageError">Please enter your message (at least 10 characters).</span>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary btn-block" id="sendMessageBtn">
+                                <span>Send Message</span>
+                                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ========================================================================= -->
+    <!-- 10. MODAL: HOW AUTO-SYNC WORKS EXPLAINER                                  -->
+    <!-- ========================================================================= -->
+    <div class="custom-modal-overlay" id="syncInfoModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="custom-modal-card">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <i class="fa-solid fa-arrows-spin text-cyan"></i>
+                    <h3>How Real-Time Auto-Sync Works</h3>
+                </div>
+                <button class="modal-close-btn" id="closeSyncModalBtn" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="sync-architecture-grid">
+                    <div class="arch-card">
+                        <div class="arch-badge"><i class="fa-brands fa-github"></i> GitHub Live API</div>
+                        <h4>Instant Client-Side Sync</h4>
+                        <p>Whenever someone visits your portfolio or clicks <strong>Sync Now</strong>, JavaScript makes a direct fetch to the official GitHub API:</p>
+                        <code>https://api.github.com/users/himanshu161098/repos</code>
+                        <p class="text-sm text-muted">Any new repository created or commit made appears automatically on your site with zero manual editing.</p>
+                    </div>
+
+                    <div class="arch-card">
+                        <div class="arch-badge"><i class="fa-brands fa-linkedin"></i> LinkedIn Feed Engine</div>
+                        <h4>Dynamic Social Feed &amp; Cron</h4>
+                        <p>LinkedIn posts are served through a dynamic JSON feed (<code>data/social_feed.json</code>) and cached in your browser. A scheduled GitHub Action runs in the background:</p>
+                        <code>.github/workflows/sync-portfolio.yml</code>
+                        <p class="text-sm text-muted">You can also use the <strong>Add New Post</strong> quick action below to push a new post in 5 seconds!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-sm" id="closeSyncModalBtn2">Got It!</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================================================= -->
+    <!-- 11. MODAL: QUICK ADD/UPDATE POST                                          -->
+    <!-- ========================================================================= -->
+    <div class="custom-modal-overlay" id="addPostModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="custom-modal-card">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <i class="fa-brands fa-linkedin text-blue"></i>
+                    <h3>Add / Update LinkedIn Post</h3>
+                </div>
+                <button class="modal-close-btn" id="closePostModalBtn" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="newPostForm">
+                    <div class="form-group">
+                        <label class="form-label">Post Title / Headline <span class="required-star">*</span></label>
+                        <input type="text" id="postTitleInput" class="form-input" placeholder="e.g. Completed new project on AI..." required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Post Content <span class="required-star">*</span></label>
+                        <textarea id="postContentInput" class="form-textarea" rows="4" placeholder="Paste your LinkedIn post caption or update here..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Hashtags (Comma separated)</label>
+                        <input type="text" id="postTagsInput" class="form-input" placeholder="#MachineLearning, #Python, #WebDev">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">LinkedIn Post Link</label>
+                        <input type="url" id="postUrlInput" class="form-input" placeholder="https://www.linkedin.com/in/himanshu-kumar-1618hks/">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fa-solid fa-plus"></i> Save &amp; Publish to Feed
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================================================= -->
+    <!-- 12. FOOTER                                                                -->
+    <!-- ========================================================================= -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <!-- Brand & Tagline -->
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#home" class="nav-brand">
+                        <span class="brand-bracket">&lt;</span>
+                        <span class="brand-name">Himanshu</span>
+                        <span class="brand-accent">.dev</span>
+                        <span class="brand-bracket">/&gt;</span>
+                    </a>
+                    <p class="footer-name">Himanshu Kumar</p>
+                    <p class="footer-tagline">“Transforming data into insights. Building robust software. Exploring artificial intelligence.”</p>
+                </div>
+
+                <!-- Footer Quick Nav -->
+                <div class="footer-links">
+                    <span class="footer-nav-title">Quick Links</span>
+                    <ul class="footer-menu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#certifications">Certifications</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#live-feed">Live Feed</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Footer Socials -->
+                <div class="footer-socials">
+                    <span class="footer-nav-title">Connect</span>
+                    <div class="social-icons">
+                        <a href="https://github.com/himanshu161098" target="_blank" rel="noopener noreferrer" class="social-link"
+                            aria-label="GitHub Profile">
+                            <i class="fa-brands fa-github" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/himanshu-kumar-1618hks/" target="_blank" rel="noopener noreferrer" class="social-link"
+                            aria-label="LinkedIn Profile">
+                            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                        <a href="mailto:himanshukumarsingh1610@gmail.com" class="social-link" aria-label="Send Email">
+                            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                        </a>
+                        <a href="tel:+919341112974" class="social-link" aria-label="Call or WhatsApp">
+                            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright & Back to Top -->
+            <div class="footer-bottom">
+                <p class="footer-copy">
+                    &copy; 2026 Himanshu Kumar. All Rights Reserved. Built with modern web standards and real-time auto-sync.
+                </p>
+                <a href="#home" class="back-to-top" id="backToTopBtn" aria-label="Scroll back to top of page">
+                    <span>Back to Top</span>
+                    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Three.js 3D WebGL Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- 3D Interactive Portfolio Engine & Real-Time Sync -->
+    <script src="script.js"></script>
+</body>
+
+</html>
