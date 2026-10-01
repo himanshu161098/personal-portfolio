@@ -1,15 +1,24 @@
 {
-  "last_synced": "2026-10-01T04:02:45.776Z",
+  "last_synced": "2026-10-01T12:31:23.704Z",
   "github": {
     "username": "himanshu161098",
     "profile_url": "https://github.com/himanshu161098",
     "avatar_url": "https://avatars.githubusercontent.com/u/262533773?v=4",
     "name": "Himanshu Kumar",
     "bio": "Final-year B.Tech (CSE-IT) student | Python, ML & Full-Stack Web Dev",
-    "public_repos": 3,
+    "public_repos": 4,
     "followers": 0,
     "following": 0,
     "featured_repos": [
+      {
+        "name": "personal-portfolio",
+        "description": "Himanshu Kumar - Personal Developer Portfolio with 3D WebGL visuals and automated GitHub activity sync",
+        "html_url": "https://github.com/himanshu161098/personal-portfolio",
+        "language": "HTML",
+        "stargazers_count": 0,
+        "forks_count": 0,
+        "updated_at": "2026-10-01T09:58:04Z"
+      },
       {
         "name": "Netfix-Sales",
         "description": "Comprehensive Netflix sales data analysis and visualization utilizing Python, Pandas, and Jupyter Notebooks.",
@@ -40,19 +49,34 @@
     ],
     "recent_events": [
       {
-        "type": "CreateEvent",
-        "repo": "himanshu161098/Netfix-Sales",
-        "created_at": "2026-09-29T18:31:32Z"
+        "type": "PushEvent",
+        "repo": "himanshu161098/personal-portfolio",
+        "created_at": "2026-10-01T05:59:27Z"
       },
       {
         "type": "PushEvent",
-        "repo": "himanshu161098/Netfix-Sales",
-        "created_at": "2026-09-29T18:51:35Z"
+        "repo": "himanshu161098/personal-portfolio",
+        "created_at": "2026-10-01T09:58:01Z"
       },
       {
-        "type": "WatchEvent",
-        "repo": "himanshu161098/Netfix-Sales",
-        "created_at": "2026-09-29T19:37:43Z"
+        "type": "PushEvent",
+        "repo": "himanshu161098/personal-portfolio",
+        "created_at": "2026-10-01T09:10:07Z"
+      },
+      {
+        "type": "PushEvent",
+        "repo": "himanshu161098/personal-portfolio",
+        "created_at": "2026-10-01T09:10:07Z"
+      },
+      {
+        "type": "PushEvent",
+        "repo": "himanshu161098/personal-portfolio",
+        "created_at": "2026-10-01T07:00:19Z"
+      },
+      {
+        "type": "PushEvent",
+        "repo": "himanshu161098/personal-portfolio",
+        "created_at": "2026-10-01T06:38:30Z"
       }
     ]
   },
