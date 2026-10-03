@@ -375,12 +375,12 @@ class AIChatbotWidget {
     triggerWrap.id = 'cbTriggerWrap';
     triggerWrap.innerHTML = `
       <div class="cb-teaser-tooltip" id="cbTeaserTooltip" role="tooltip" aria-hidden="true">
-        <img src="assets/prachi-logo.png" alt="Quantix AI" class="cb-teaser-logo">
+        <img src="assets/quantix-logo.png" alt="Quantix AI" class="cb-teaser-logo">
         <span>👋 Chat with <strong>Quantix AI</strong> (Portfolio Intelligence)!</span>
         <button class="cb-teaser-close" id="cbTeaserClose" aria-label="Dismiss notification">&times;</button>
       </div>
       <button class="cb-floating-btn" id="cbFloatingBtn" aria-label="Open Quantix AI Assistant" aria-haspopup="dialog" aria-expanded="false">
-        <img src="assets/prachi-logo.png" alt="Quantix AI Logo" class="cb-floating-logo-img" id="cbFloatingImg">
+        <img src="assets/quantix-logo.png" alt="Quantix AI Logo" class="cb-floating-logo-img" id="cbFloatingImg">
         <i class="fa-solid fa-chevron-down cb-floating-close-icon" id="cbFloatingCloseIcon" style="display:none;font-size:1.3rem;"></i>
         <span class="cb-online-badge" aria-hidden="true"></span>
       </button>
@@ -398,7 +398,7 @@ class AIChatbotWidget {
       <header class="cb-header">
         <div class="cb-header-identity">
           <div class="cb-avatar" aria-hidden="true">
-            <img src="assets/prachi-logo.png" alt="Quantix AI Logo" class="cb-header-avatar-img">
+            <img src="assets/quantix-logo.png" alt="Quantix AI Logo" class="cb-header-avatar-img">
             <span class="cb-avatar-dot"></span>
           </div>
           <div class="cb-header-info">
