@@ -401,6 +401,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const canvas = document.getElementById('hero3dCanvas');
         const container = document.getElementById('hero3dContainer');
         const hudFps = document.getElementById('hudFps');
+        const hudUptime = document.getElementById('hudUptime');
+        const hudWaveform = document.getElementById('hudWaveform');
+        const hudCenterHint = document.getElementById('hudCenterHint');
         if (!canvas || !container) return;
 
         if (typeof THREE === 'undefined') {
@@ -414,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const height = container.clientHeight || 380;
 
             const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-            camera.position.z = 7.5;
+            camera.position.z = 8.5;
 
             const renderer = new THREE.WebGLRenderer({
                 canvas: canvas,
@@ -434,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 color: 0x00f2fe,
                 wireframe: true,
                 transparent: true,
-                opacity: 0.65
+                opacity: 0.45
             });
             const icosaMesh = new THREE.Mesh(icosaGeometry, icosaMaterial);
             coreGroup.add(icosaMesh);
@@ -445,37 +448,122 @@ document.addEventListener('DOMContentLoaded', () => {
                 color: 0x38bdf8,
                 wireframe: true,
                 transparent: true,
-                opacity: 0.85
+                opacity: 0.75
             });
             const octaMesh = new THREE.Mesh(octaGeometry, octaMaterial);
             coreGroup.add(octaMesh);
 
             // 3. Center Glowing Quantum Sphere
-            const sphereGeometry = new THREE.SphereGeometry(0.7, 24, 24);
+            const sphereGeometry = new THREE.SphereGeometry(0.55, 24, 24);
             const sphereMaterial = new THREE.MeshBasicMaterial({
                 color: 0x00f2fe,
-                wireframe: true,
+                wireframe: false,
                 transparent: true,
-                opacity: 0.95
+                opacity: 0.85
             });
             const sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
             coreGroup.add(sphereMesh);
 
+            // 3b. Quantum Sphere Inner Wireframe Glow
+            const sphereWire = new THREE.Mesh(
+                new THREE.SphereGeometry(0.58, 16, 16),
+                new THREE.MeshBasicMaterial({ color: 0x00f2fe, wireframe: true, transparent: true, opacity: 0.25 })
+            );
+            coreGroup.add(sphereWire);
+
             // 4. Concentric Counter-Rotating Gyroscope Rings
-            const ring1Geom = new THREE.TorusGeometry(3.0, 0.03, 16, 90);
-            const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x00f2fe, transparent: true, opacity: 0.75 });
+            const ring1Geom = new THREE.TorusGeometry(3.0, 0.025, 16, 100);
+            const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x00f2fe, transparent: true, opacity: 0.6 });
             const ring1 = new THREE.Mesh(ring1Geom, ring1Mat);
             ring1.rotation.x = Math.PI / 3;
             coreGroup.add(ring1);
 
-            const ring2Geom = new THREE.TorusGeometry(3.35, 0.03, 16, 90);
-            const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.75 });
+            const ring2Geom = new THREE.TorusGeometry(3.35, 0.025, 16, 100);
+            const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.6 });
             const ring2 = new THREE.Mesh(ring2Geom, ring2Mat);
             ring2.rotation.y = Math.PI / 4;
             coreGroup.add(ring2);
 
-            // 5. Orbiting Cyber Satellite Nodes
-            const particleCount = 80;
+            // 4b. Third Gyroscope Ring (added depth)
+            const ring3Geom = new THREE.TorusGeometry(2.7, 0.02, 16, 80);
+            const ring3Mat = new THREE.MeshBasicMaterial({ color: 0xa78bfa, transparent: true, opacity: 0.45 });
+            const ring3 = new THREE.Mesh(ring3Geom, ring3Mat);
+            ring3.rotation.x = Math.PI / 2;
+            ring3.rotation.z = Math.PI / 6;
+            coreGroup.add(ring3);
+
+            // 5. SKILL SATELLITE NODES — Labeled positions on orbit
+            const skillNodes = [
+                { name: 'Python',    color: 0x00f2fe, angle: 0 },
+                { name: 'ML / AI',   color: 0xa78bfa, angle: Math.PI / 3 },
+                { name: 'Data Sci',  color: 0x34d399, angle: (2 * Math.PI) / 3 },
+                { name: 'SQL',       color: 0xfbbf24, angle: Math.PI },
+                { name: 'IoT',       color: 0xf472b6, angle: (4 * Math.PI) / 3 },
+                { name: 'Web Dev',   color: 0x38bdf8, angle: (5 * Math.PI) / 3 }
+            ];
+
+            const satelliteGroup = new THREE.Group();
+            const satelliteRefs = [];
+            const beamRefs = [];
+
+            skillNodes.forEach((node) => {
+                // Satellite node sphere
+                const nodeGeom = new THREE.SphereGeometry(0.18, 12, 12);
+                const nodeMat = new THREE.MeshBasicMaterial({ color: node.color, transparent: true, opacity: 0.95 });
+                const nodeMesh = new THREE.Mesh(nodeGeom, nodeMat);
+
+                // Outer glow ring for each satellite
+                const glowRing = new THREE.Mesh(
+                    new THREE.TorusGeometry(0.28, 0.015, 8, 32),
+                    new THREE.MeshBasicMaterial({ color: node.color, transparent: true, opacity: 0.4 })
+                );
+                nodeMesh.add(glowRing);
+
+                satelliteGroup.add(nodeMesh);
+                satelliteRefs.push({ mesh: nodeMesh, data: node, glowRing: glowRing });
+
+                // Energy beam from core to satellite
+                const beamGeom = new THREE.BufferGeometry();
+                const beamMat = new THREE.LineBasicMaterial({ color: node.color, transparent: true, opacity: 0.2 });
+                const beamLine = new THREE.Line(beamGeom, beamMat);
+                coreGroup.add(beamLine);
+                beamRefs.push(beamLine);
+            });
+            coreGroup.add(satelliteGroup);
+
+            // 6. Data Stream Helix Particles
+            const helixCount = 120;
+            const helixGeom = new THREE.BufferGeometry();
+            const helixPositions = new Float32Array(helixCount * 3);
+            const helixColors = new Float32Array(helixCount * 3);
+
+            for (let i = 0; i < helixCount; i++) {
+                const t = (i / helixCount) * Math.PI * 6;
+                const r = 1.6 + Math.sin(t * 0.5) * 0.5;
+                helixPositions[i * 3] = r * Math.cos(t);
+                helixPositions[i * 3 + 1] = (i / helixCount - 0.5) * 5;
+                helixPositions[i * 3 + 2] = r * Math.sin(t);
+
+                // Color gradient cyan -> indigo
+                const blend = i / helixCount;
+                helixColors[i * 3] = 0.0 + blend * 0.39;
+                helixColors[i * 3 + 1] = 0.95 - blend * 0.55;
+                helixColors[i * 3 + 2] = 1.0 - blend * 0.06;
+            }
+            helixGeom.setAttribute('position', new THREE.BufferAttribute(helixPositions, 3));
+            helixGeom.setAttribute('color', new THREE.BufferAttribute(helixColors, 3));
+
+            const helixMat = new THREE.PointsMaterial({
+                size: 0.04,
+                transparent: true,
+                opacity: 0.65,
+                vertexColors: true
+            });
+            const helixParticles = new THREE.Points(helixGeom, helixMat);
+            coreGroup.add(helixParticles);
+
+            // 7. Orbiting Ambient Particles (original but refined)
+            const particleCount = 100;
             const particleGeom = new THREE.BufferGeometry();
             const particlePositions = new Float32Array(particleCount * 3);
 
@@ -484,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const v = Math.random();
                 const theta = u * 2.0 * Math.PI;
                 const phi = Math.acos(2.0 * v - 1.0);
-                const r = 2.6 + Math.random() * 1.2;
+                const r = 2.8 + Math.random() * 1.5;
                 const sinPhi = Math.sin(phi);
 
                 particlePositions[i * 3] = r * sinPhi * Math.cos(theta);
@@ -495,21 +583,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const particleMat = new THREE.PointsMaterial({
                 color: 0x00f2fe,
-                size: 0.08,
+                size: 0.055,
                 transparent: true,
-                opacity: 0.9
+                opacity: 0.7
             });
             const particles = new THREE.Points(particleGeom, particleMat);
             coreGroup.add(particles);
+
+            // 8. Atmosphere Glow Sphere
+            const atmoGeom = new THREE.SphereGeometry(3.8, 32, 32);
+            const atmoMat = new THREE.MeshBasicMaterial({
+                color: 0x00f2fe,
+                transparent: true,
+                opacity: 0.04,
+                side: THREE.BackSide
+            });
+            const atmoSphere = new THREE.Mesh(atmoGeom, atmoMat);
+            coreGroup.add(atmoSphere);
 
             // Interactive Drag Controls with Inertia
             let isDragging = false;
             let prevPointer = { x: 0, y: 0 };
             let rotVelocity = { x: 0, y: 0 };
+            let hasInteracted = false;
 
             container.addEventListener('pointerdown', (e) => {
                 isDragging = true;
                 prevPointer = { x: e.clientX, y: e.clientY };
+                if (!hasInteracted && hudCenterHint) {
+                    hasInteracted = true;
+                    hudCenterHint.style.opacity = '0';
+                    setTimeout(() => { hudCenterHint.style.display = 'none'; }, 600);
+                }
             });
 
             window.addEventListener('pointermove', (e) => {
@@ -546,6 +651,94 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             window.addEventListener('resize', window.resizeHero3D);
 
+            // ---- HUD TELEMETRY LOGIC ----
+            const startTime = Date.now();
+
+            // Uptime Timer
+            function updateUptime() {
+                if (!hudUptime) return;
+                const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                const h = String(Math.floor(elapsed / 3600)).padStart(2, '0');
+                const m = String(Math.floor((elapsed % 3600) / 60)).padStart(2, '0');
+                const s = String(elapsed % 60).padStart(2, '0');
+                hudUptime.textContent = `${h}:${m}:${s}`;
+            }
+            setInterval(updateUptime, 1000);
+
+            // Gauge Animation — simulate fluctuating load
+            function animateGauges() {
+                const gauges = [
+                    { el: document.querySelector('.gauge-cpu'), valEl: document.getElementById('gaugeCpuVal'), base: 72, range: 15 },
+                    { el: document.querySelector('.gauge-mem'), valEl: document.getElementById('gaugeMemVal'), base: 58, range: 12 },
+                    { el: document.querySelector('.gauge-net'), valEl: document.getElementById('gaugeNetVal'), base: 89, range: 8 }
+                ];
+                gauges.forEach(g => {
+                    if (!g.el || !g.valEl) return;
+                    const val = Math.min(99, Math.max(20, g.base + Math.round((Math.random() - 0.5) * g.range)));
+                    g.el.setAttribute('stroke-dasharray', `${val}, 100`);
+                    g.valEl.textContent = `${val}%`;
+                });
+            }
+            setInterval(animateGauges, 2500);
+
+            // Skill Feed Cycling
+            const intelFeed = document.getElementById('hudIntelFeed');
+            let activeIntelIdx = 0;
+            function cycleIntelFeed() {
+                if (!intelFeed) return;
+                const lines = intelFeed.querySelectorAll('.intel-line');
+                lines.forEach(l => l.classList.remove('active'));
+                activeIntelIdx = (activeIntelIdx + 1) % lines.length;
+                lines[activeIntelIdx].classList.add('active');
+            }
+            setInterval(cycleIntelFeed, 2000);
+
+            // Count-Up Animation
+            document.querySelectorAll('.hud-count-up').forEach(el => {
+                const target = parseInt(el.dataset.target, 10);
+                let current = 0;
+                const step = Math.ceil(target / 30);
+                const interval = setInterval(() => {
+                    current += step;
+                    if (current >= target) { current = target; clearInterval(interval); }
+                    el.textContent = current;
+                }, 50);
+            });
+
+            // Neural Waveform Canvas
+            function drawWaveform() {
+                if (!hudWaveform) return;
+                const ctx = hudWaveform.getContext('2d');
+                if (!ctx) return;
+                hudWaveform.width = hudWaveform.clientWidth || 300;
+                const w = hudWaveform.width;
+                const h = hudWaveform.height;
+                ctx.clearRect(0, 0, w, h);
+
+                const now = Date.now() * 0.003;
+                ctx.strokeStyle = 'rgba(0, 242, 254, 0.6)';
+                ctx.lineWidth = 1.2;
+                ctx.beginPath();
+                for (let x = 0; x < w; x++) {
+                    const y = h / 2 + Math.sin(x * 0.08 + now) * (h * 0.3) + Math.sin(x * 0.03 + now * 0.7) * (h * 0.15);
+                    x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                // Second wave (indigo)
+                ctx.strokeStyle = 'rgba(99, 102, 241, 0.4)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                for (let x = 0; x < w; x++) {
+                    const y = h / 2 + Math.sin(x * 0.06 + now * 1.3) * (h * 0.25);
+                    x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                requestAnimationFrame(drawWaveform);
+            }
+            drawWaveform();
+
             // FPS Counter Tracker
             let frameCount = 0;
             let lastFpsCheck = performance.now();
@@ -560,7 +753,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const time = clock.getElapsedTime();
 
                 // Rotational physics with damping
-                coreGroup.rotation.y += rotVelocity.y + 0.007;
+                coreGroup.rotation.y += rotVelocity.y + 0.005;
                 coreGroup.rotation.x += rotVelocity.x;
                 rotVelocity.x *= 0.94;
                 rotVelocity.y *= 0.94;
@@ -570,17 +763,55 @@ document.addEventListener('DOMContentLoaded', () => {
                 coreGroup.position.y += (-hoverTilt.y - coreGroup.position.y) * 0.08;
 
                 // Independent sub-object rotations
-                ring1.rotation.z += 0.012;
-                ring2.rotation.z -= 0.015;
-                octaMesh.rotation.y -= 0.012;
-                octaMesh.rotation.x += 0.008;
+                ring1.rotation.z += 0.01;
+                ring2.rotation.z -= 0.013;
+                ring3.rotation.z += 0.008;
+                octaMesh.rotation.y -= 0.01;
+                octaMesh.rotation.x += 0.006;
 
                 // Pulsing Quantum Core Scale
-                const pulse = 1 + Math.sin(time * 3.5) * 0.12;
+                const pulse = 1 + Math.sin(time * 3.0) * 0.1;
                 sphereMesh.scale.set(pulse, pulse, pulse);
+                sphereWire.scale.set(pulse, pulse, pulse);
+
+                // Atmosphere breathing
+                const atmoPulse = 0.03 + Math.sin(time * 1.5) * 0.015;
+                atmoMat.opacity = atmoPulse;
+
+                // Satellite Nodes orbit and energy beams
+                const orbitRadius = 3.6;
+                satelliteRefs.forEach((sat, i) => {
+                    const angle = sat.data.angle + time * 0.3;
+                    const yOff = Math.sin(time * 0.8 + i) * 0.6;
+                    sat.mesh.position.set(
+                        orbitRadius * Math.cos(angle),
+                        yOff,
+                        orbitRadius * Math.sin(angle)
+                    );
+                    // Pulsing glow
+                    const glowPulse = 0.3 + Math.sin(time * 2.5 + i * 1.2) * 0.15;
+                    sat.glowRing.material.opacity = glowPulse;
+                    sat.glowRing.rotation.z += 0.02;
+
+                    // Update energy beam
+                    const beamPositions = new Float32Array([
+                        0, 0, 0,
+                        sat.mesh.position.x, sat.mesh.position.y, sat.mesh.position.z
+                    ]);
+                    beamRefs[i].geometry.dispose();
+                    beamRefs[i].geometry = new THREE.BufferGeometry();
+                    beamRefs[i].geometry.setAttribute('position', new THREE.BufferAttribute(beamPositions, 3));
+                    // Beam pulse opacity
+                    beamRefs[i].material.opacity = 0.12 + Math.sin(time * 4 + i) * 0.08;
+                });
+
+                // Data Stream Helix rotation
+                helixParticles.rotation.y += 0.008;
+                helixParticles.rotation.x = Math.sin(time * 0.3) * 0.15;
 
                 // Particles Orbit
-                particles.rotation.y -= 0.005;
+                particles.rotation.y -= 0.004;
+                particles.rotation.x = Math.sin(time * 0.2) * 0.05;
 
                 renderer.render(scene, camera);
 

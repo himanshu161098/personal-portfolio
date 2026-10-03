@@ -326,26 +326,95 @@
                         <div class="hero-3d-container" id="hero3dContainer">
                             <canvas id="hero3dCanvas" aria-label="Interactive 3D Cyber Core Model"></canvas>
                             <div class="hologram-hud-overlay">
+                                <!-- Scanline sweep effect -->
+                                <div class="hud-scanline"></div>
+
+                                <!-- Top Bar: Engine tag + FPS + Uptime -->
                                 <div class="hud-top">
-                                    <span class="hud-tag"><i class="fa-solid fa-satellite-dish"></i> HK_ENGINE //
-                                        v2.6.4</span>
-                                    <span class="hud-fps" id="hudFps">60 FPS</span>
+                                    <span class="hud-tag"><i class="fa-solid fa-satellite-dish"></i> HK_ENGINE // v3.0.1</span>
+                                    <div class="hud-top-right">
+                                        <span class="hud-uptime font-mono" id="hudUptime">00:00:00</span>
+                                        <span class="hud-fps" id="hudFps">60 FPS</span>
+                                    </div>
                                 </div>
-                                <div class="hud-center-hint">
+
+                                <!-- Left Sidebar: Telemetry Gauges -->
+                                <div class="hud-sidebar-left">
+                                    <div class="hud-gauge">
+                                        <span class="gauge-label">CPU</span>
+                                        <div class="gauge-ring-container">
+                                            <svg viewBox="0 0 36 36" class="gauge-ring">
+                                                <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                <path class="gauge-fill gauge-cpu" stroke-dasharray="72, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                            </svg>
+                                            <span class="gauge-val" id="gaugeCpuVal">72%</span>
+                                        </div>
+                                    </div>
+                                    <div class="hud-gauge">
+                                        <span class="gauge-label">MEM</span>
+                                        <div class="gauge-ring-container">
+                                            <svg viewBox="0 0 36 36" class="gauge-ring">
+                                                <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                <path class="gauge-fill gauge-mem" stroke-dasharray="58, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                            </svg>
+                                            <span class="gauge-val" id="gaugeMemVal">58%</span>
+                                        </div>
+                                    </div>
+                                    <div class="hud-gauge">
+                                        <span class="gauge-label">NET</span>
+                                        <div class="gauge-ring-container">
+                                            <svg viewBox="0 0 36 36" class="gauge-ring">
+                                                <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                <path class="gauge-fill gauge-net" stroke-dasharray="89, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                            </svg>
+                                            <span class="gauge-val" id="gaugeNetVal">89%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Right Sidebar: Live Skill Telemetry Feed -->
+                                <div class="hud-sidebar-right">
+                                    <div class="hud-intel-title"><i class="fa-solid fa-wave-square"></i> SKILL_NODES</div>
+                                    <div class="hud-intel-feed" id="hudIntelFeed">
+                                        <div class="intel-line active"><span class="il-dot"></span> Python <span class="il-pct">92%</span></div>
+                                        <div class="intel-line"><span class="il-dot"></span> Machine Learning <span class="il-pct">88%</span></div>
+                                        <div class="intel-line"><span class="il-dot"></span> Data Science <span class="il-pct">85%</span></div>
+                                        <div class="intel-line"><span class="il-dot"></span> SQL / BigQuery <span class="il-pct">90%</span></div>
+                                        <div class="intel-line"><span class="il-dot"></span> IoT Systems <span class="il-pct">78%</span></div>
+                                        <div class="intel-line"><span class="il-dot"></span> Web Dev <span class="il-pct">82%</span></div>
+                                    </div>
+                                </div>
+
+                                <!-- Center Drag Hint (fades on interaction) -->
+                                <div class="hud-center-hint" id="hudCenterHint">
                                     <i class="fa-solid fa-arrows-spin"></i>
                                     <span>DRAG TO ROTATE 3D MODEL</span>
                                 </div>
+
+                                <!-- Bottom Panel: System Metrics Dashboard -->
                                 <div class="hud-bottom">
-                                    <div class="hud-stat">
-                                        <span class="stat-label">DATA &amp; AI READINESS</span>
-                                        <div class="hud-bar">
-                                            <div class="hud-bar-fill" style="width: 95%;"></div>
+                                    <div class="hud-metric-row">
+                                        <div class="hud-stat">
+                                            <span class="stat-label">DATA &amp; AI READINESS</span>
+                                            <div class="hud-bar">
+                                                <div class="hud-bar-fill" style="width: 95%;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="hud-stat">
+                                            <span class="stat-label">PROJECTS</span>
+                                            <span class="stat-val font-mono hud-count-up" data-target="12">0</span>
+                                        </div>
+                                        <div class="hud-stat">
+                                            <span class="stat-label">CERTIFICATIONS</span>
+                                            <span class="stat-val font-mono hud-count-up" data-target="7">0</span>
+                                        </div>
+                                        <div class="hud-stat">
+                                            <span class="stat-label">GITHUB SYNC</span>
+                                            <span class="stat-val font-mono" id="hudGithubStatus">LIVE CONNECTED</span>
                                         </div>
                                     </div>
-                                    <div class="hud-stat">
-                                        <span class="stat-label">GITHUB SYNC</span>
-                                        <span class="stat-val font-mono" id="hudGithubStatus">LIVE CONNECTED</span>
-                                    </div>
+                                    <!-- Neural Waveform -->
+                                    <canvas class="hud-waveform" id="hudWaveform" height="22"></canvas>
                                 </div>
                             </div>
                         </div>

@@ -2880,6 +2880,7 @@ button, input, textarea {
     align-items: center;
     gap: 0.5rem;
     animation: pulseFade 3s infinite ease-in-out;
+    transition: opacity 0.5s ease;
 }
 
 @keyframes pulseFade {
@@ -2929,6 +2930,202 @@ button, input, textarea {
 .hud-stat .stat-val {
     font-size: 0.75rem;
     color: var(--accent-cyan);
+}
+
+/* ---- HUD Scanline Sweep Effect ---- */
+.hud-scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.55), transparent);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+    animation: scanlineSweep 4s linear infinite;
+    z-index: 5;
+    pointer-events: none;
+}
+
+@keyframes scanlineSweep {
+    0% { top: 0; opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { top: 100%; opacity: 0.3; }
+}
+
+/* ---- HUD Top Right Group ---- */
+.hud-top-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hud-uptime {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.6px;
+}
+
+/* ---- HUD Sidebar Gauges (Left) ---- */
+.hud-sidebar-left {
+    position: absolute;
+    left: 0.65rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 4;
+}
+
+.hud-gauge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+}
+
+.gauge-label {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+}
+
+.gauge-ring-container {
+    position: relative;
+    width: 36px;
+    height: 36px;
+}
+
+.gauge-ring {
+    width: 100%;
+    height: 100%;
+}
+
+.gauge-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.06);
+    stroke-width: 3;
+}
+
+.gauge-fill {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    transition: stroke-dasharray 1.5s ease;
+}
+
+.gauge-cpu { stroke: #00f2fe; filter: drop-shadow(0 0 3px rgba(0, 242, 254, 0.5)); }
+.gauge-mem { stroke: #a78bfa; filter: drop-shadow(0 0 3px rgba(167, 139, 250, 0.5)); }
+.gauge-net { stroke: #34d399; filter: drop-shadow(0 0 3px rgba(52, 211, 153, 0.5)); }
+
+.gauge-val {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-mono);
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* ---- HUD Sidebar Right: Skill Feed ---- */
+.hud-sidebar-right {
+    position: absolute;
+    right: 0.65rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    background: rgba(6, 9, 19, 0.8);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 0.45rem 0.55rem;
+    max-width: 120px;
+}
+
+.hud-intel-title {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    letter-spacing: 0.8px;
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.hud-intel-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.intel-line {
+    font-family: var(--font-mono);
+    font-size: 0.5rem;
+    color: rgba(255, 255, 255, 0.45);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: all 0.4s ease;
+    white-space: nowrap;
+}
+
+.intel-line.active {
+    color: #00f2fe;
+    text-shadow: 0 0 6px rgba(0, 242, 254, 0.5);
+}
+
+.il-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+}
+
+.intel-line.active .il-dot {
+    background: #00f2fe;
+    box-shadow: 0 0 6px #00f2fe;
+}
+
+.il-pct {
+    margin-left: auto;
+    font-weight: 700;
+}
+
+/* ---- HUD Bottom Metric Row ---- */
+.hud-metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+/* ---- HUD Waveform Canvas ---- */
+.hud-waveform {
+    width: 100%;
+    height: 22px;
+    margin-top: 0.4rem;
+    border-radius: 3px;
+    opacity: 0.7;
+}
+
+/* ---- HUD Count-Up Animation ---- */
+.hud-count-up {
+    font-size: 1rem !important;
+    font-weight: 800 !important;
+    color: #00f2fe !important;
+    text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
 }
 
 /* --------------------------------------------------------------------------
