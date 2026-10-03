@@ -31,3 +31,9 @@ test-folder/
 scripts/testsub/
 cloudflare-worker/
 scratch/
+
+# Temporary PDF extraction folders
+Certificates/10th Marksheet, Provisional Certificate and Certificate/
+Certificates/12th Documents/
+Certificates/IOT Certificates/
+Certificates/Machine Learning Workshop/

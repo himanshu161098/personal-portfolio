@@ -1367,4 +1367,21 @@ document.addEventListener('DOMContentLoaded', () => {
     init3DBackground();
     initHk3DReviewModal();
 
+    // Academic Documents Interactive Drawer (10th / 12th)
+    window.toggleEduDocs = function(containerId) {
+        const container = document.getElementById(containerId);
+        const btn = document.querySelector(`[data-target="${containerId}"]`);
+        if (!container) return;
+
+        const isOpen = container.classList.contains('open');
+        if (isOpen) {
+            container.classList.remove('open');
+            if (btn) btn.classList.remove('open');
+        } else {
+            container.classList.add('open');
+            if (btn) btn.classList.add('open');
+        }
+    };
+
 });
+
