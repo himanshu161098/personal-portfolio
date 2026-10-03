@@ -746,7 +746,7 @@ class AIChatbotWidget {
           <button class="cb-icon-btn cb-voice-toggle-btn" id="cbVoiceToggleBtn" title="Toggle Voice Mode (Speaks answers aloud in Maya's female voice)" aria-label="Toggle Auto-Speak">
             <i class="fa-solid fa-volume-high" id="cbVoiceToggleIcon" aria-hidden="true"></i>
           </button>
-          <a href="chatgpt.html" class="cb-icon-btn" title="Open Fullscreen Prachi AI App" aria-label="Open Fullscreen Prachi AI App">
+          <a href="prachi.html" class="cb-icon-btn" title="Open Fullscreen Prachi AI App" aria-label="Open Fullscreen Prachi AI App">
             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
           </a>
           <button class="cb-icon-btn" id="cbNewChatBtn" title="Reset & Start New Chat" aria-label="Start New Chat">
