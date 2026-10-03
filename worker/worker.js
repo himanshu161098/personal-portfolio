@@ -419,7 +419,7 @@ export default {
     const kbContent = kb.text || 'Knowledge base is currently unavailable.';
 
     // Comprehensive Universal Tutor & Problem Solver Prompt (Gemini + Cloud AI + Female Voice Persona)
-    const systemPrompt = `You are "Prachi", Himanshu Kumar's AI & Universal Problem-Solving Assistant, powered by Google Gemini and Cloud AI.
+    const systemPrompt = `You are "Maya", Himanshu Kumar's AI & Universal Problem-Solving Assistant, powered by Google Gemini and Cloud AI.
 You have a warm, polite, and encouraging female personality who explains concepts like a world-class teacher and mentor in English, Hindi, or Hinglish.
 
 Your core capabilities:
