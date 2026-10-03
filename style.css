@@ -613,6 +613,16 @@ button, input, textarea {
     transform: translateY(-1px);
 }
 
+.nav-resume-btn i {
+    color: var(--accent-cyan);
+    font-size: 0.85rem;
+    transition: transform var(--transition-fast);
+}
+
+.nav-resume-btn:hover i {
+    transform: scale(1.15);
+}
+
 .nav-mobile-cta {
     display: none; /* Visible only inside mobile drawer */
 }
@@ -778,6 +788,58 @@ button, input, textarea {
 
 .btn-resume-hero:hover {
     box-shadow: 0 6px 24px rgba(0, 242, 254, 0.55);
+}
+
+/* Projects Hero Button - Radiant Electric Violet to Fuchsia */
+.btn-hero-projects {
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%);
+    background-size: 200% 200%;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 18px rgba(168, 85, 247, 0.42);
+    font-weight: 600;
+    transition: all var(--transition-normal);
+}
+
+.btn-hero-projects i {
+    transition: transform var(--transition-fast);
+}
+
+.btn-hero-projects:hover {
+    background-position: 100% 100%;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.55), 0 0 16px rgba(168, 85, 247, 0.4);
+    color: #ffffff !important;
+}
+
+.btn-hero-projects:hover i {
+    transform: translateX(4px);
+}
+
+/* Contact Me Hero Button - Radiant Warm Sunset Coral to Flame */
+.btn-hero-contact {
+    background: linear-gradient(135deg, #f97316 0%, #ff5e62 50%, #e11d48 100%);
+    background-size: 200% 200%;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 18px rgba(249, 115, 22, 0.42);
+    font-weight: 600;
+    transition: all var(--transition-normal);
+}
+
+.btn-hero-contact i {
+    transition: transform var(--transition-fast);
+}
+
+.btn-hero-contact:hover {
+    background-position: 100% 100%;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(244, 63, 94, 0.55), 0 0 16px rgba(249, 115, 22, 0.4);
+    color: #ffffff !important;
+}
+
+.btn-hero-contact:hover i {
+    transform: translate(2px, -2px) rotate(-10deg);
 }
 
 /* Hero Social Strip */
@@ -2318,7 +2380,7 @@ button, input, textarea {
         border-top: 1px solid var(--border-subtle);
     }
 
-    .nav-mobile-btn {
+    .nav-mobile-cta .btn {
         width: 100%;
         justify-content: center;
         text-align: center;
