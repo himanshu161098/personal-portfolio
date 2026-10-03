@@ -57,12 +57,12 @@ Personal Portfolio/
 ├── style.css                    # Futuristic dark-mode design system & animations
 ├── script.js                    # 3D canvas, cursor effects, navigation & UI logic
 ├── ai-engine.js                 # Universal STEM, Math, Coding & Dynamic AI Intelligence Engine
-├── prachi.html                  # Standalone Prachi AI web application with colorful logo
+├── prachi.html                  # Standalone Prachi Human-like AI Companion web application with 3D colorful logo
 ├── prachi.css                   # Prachi AI OpenAI dark aesthetic & sidebar styles
-├── prachi.js                    # Prachi AI multi-chat state, models, & voice engine
+├── prachi.js                    # Prachi AI multi-chat state, models & female voice engine
 │
-├── chatbot.css                  # Floating widget cyber glassmorphism styles
-├── chatbot.js                   # Floating AI assistant & Maya voice widget with colorful logo
+├── chatbot.css                  # Floating portfolio chatbot cyber glassmorphism styles
+├── chatbot.js                   # Dedicated Himanshu Portfolio AI Assistant widget (projects, skills & resume)
 │
 ├── worker/                      # Cloudflare Worker serverless AI proxy (Gemini + Claude)
 ├── .gitignore                   # Git ignore specifications

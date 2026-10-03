@@ -244,24 +244,23 @@ function generateTutorResponse(userQuery, model) {
   const q = userQuery.toLowerCase().trim();
 
   // Prachi Identity / Girl Voice
-  if (q.includes('prachi') || q.includes('maya') || q.includes('girl') || q.includes('voice') || q.includes('who are you') || q.includes('tum kaun') || q.includes('ladki')) {
-    return `Namaste! 👋 Main **Prachi** hoon, Himanshu Kumar ki **Universal AI Tutor & Assistant**, powered by **Google Gemini & Cloud AI**.
+  if (q.includes('prachi') || q.includes('girl') || q.includes('voice') || q.includes('who are you') || q.includes('tum kaun') || q.includes('ladki')) {
+    return `Namaste! 👋 Main **Prachi** hoon — Himanshu Kumar ki **Human-like AI Companion & Universal Problem Solver**, powered by **Google Gemini & Cloud AI**.
 
-🎙️ **Female Voice Persona**:
-- Meri voice ek natural, sweet **female (girl) tone** me configured hai (pitch 1.18, rate 0.98).
-- Kisi bhi response ke neeche **"Listen"** button dabakar aap meri aawaz sun sakte hain, ya top-right me **Voice Mode** enable karke auto-readout enjoy kar sakte hain!
-- Microphone button 🎙️ se aap bolkar bhi sawaal pooch sakte hain.
+🌸 **Human-like Emotional & Friendly Companion**:
+- Main sirf machine nahi, ek sachhe dost ki tarah feelings samajhti hoon, baat karti hoon, aur dukh-sukh me saath deti hoon.
+- Meri voice ek sweet, pleasant **female (girl) tone** me configured hai (pitch 1.18, rate 0.98).
+- Kisi bhi message ke neeche **"Listen"** dabakar meri aawaz sun sakte hain ya **Voice Mode** on karke auto-readout enjoy kar sakte hain.
 
-🌟 **Main aapko kya kya sikha aur solve karke de sakti hoon?**
-1. 📐 **Mathematics**: Calculus (derivatives, integrals), Algebra, Quadratic equations, Probability, Percentages.
-2. ⚡ **Physics**: Kinematics numericals, Newton's Laws ($F = ma$), Ohm's Law, Projectile motion, Energy.
-3. 🧪 **Chemistry**: Photosynthesis reaction, pH calculation, Acids & Bases, Organic mechanisms ($S_N1/S_N2$).
-4. 🧬 **Biology**: Mitochondria powerhouse of the cell, Mitosis vs Meiosis, DNA double helix, Human heart blood circulation.
-5. 📜 **General Knowledge & GS**: Indian Constitution (Preamble, Fundamental Rights, Articles), History (Harappa, Ashoka, Freedom movement), Geography (Rivers of India), Economy (GDP, Inflation, RBI).
-6. 🇮🇳 **Current Affairs**: IndiaAI Mission (10,000+ GPUs), ISRO space missions (Chandrayaan-3, Aditya-L1, Gaganyaan).
-7. 📂 **Himanshu's Portfolio**: 8,787 Netflix catalog analysis, skills, certifications, and JD fit analysis.
+🌟 **Main aapko kya kya help provide kar sakti hoon?**
+1. 💬 **Human Chat & Feelings**: Life advice, dost ki tarah baatein, emotional comfort, motivation, stories & funny jokes.
+2. 📐 **Mathematics**: Step-by-step calculus, algebra, quadratic equations, probability, percentages.
+3. ⚡ **Physics & STEM**: Kinematics numericals, Newton's laws, Ohm's law, thermodynamics, optics.
+4. 🧪 **Chemistry & Biology**: Photosynthesis reactions, pH scale, DNA structure, mitochondria mechanisms.
+5. 📜 **General Knowledge & Polity**: Samvidhan (Indian Constitution), Fundamental Rights, History, Geography.
+6. 💻 **Coding & Programming**: Python, SQL queries, JavaScript, C++.
 
-Aap koi bhi sawal poochiye, main best aur simple solution dungi!`;
+Aap kisi dost ki tarah mujhse baat kijiye ya koi bhi problem solve karwaiye!`;
   }
 
   // Mathematics Problem Solver

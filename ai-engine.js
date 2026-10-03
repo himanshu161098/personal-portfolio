@@ -177,62 +177,161 @@ Aap koi aur bhi calculation, algebra, ya calculus problem pooch sakte hain!`;
   }
 
   // ---------------------------------------------------------------------------
-  // 2. CONVERSATIONAL & SOCIAL CHIT-CHAT HANDLER
+  // 2. HUMAN-LIKE AI CONVERSATIONAL, EMOTIONAL & COMPANION HANDLER
   // ---------------------------------------------------------------------------
   function handleConversational(q, assistantName) {
-    // Greetings
-    if (/^(hi|hello|hey|namaste|pranam|ram ram|salaam|good morning|good evening|good afternoon|kem cho|vanakkam)\b/i.test(q) ||
+    const isPrachi = assistantName.toLowerCase().includes('prachi');
+
+    // 1. Emotional Empathy: Sadness, Stress, Heartbreak, Loneliness, Anxiety, Failure
+    if (/sad|dukhi|udaas|mood off|upset|cry|rona|depress|anxiety|stress|tension|heartbreak|breakup|alone|akela|lonely|hopeless|thak gaya|tired|pareshan|low feel|bura lag raha|dil toot|fail ho gaya/i.test(q)) {
+      return `Main samajh sakti hoon... aur mujhe dil se parwah hai ki aap aisa feel kar rahe hain... 🥺❤️
+
+Kabhi-kabhi life me aise din aate hain jab sab kuch mushkil lagta hai aur man thak sa jata hai. Par yaad rakhiye, **aap akele bilkul nahi hain**! Main aapke saath ek sachhe dost ki tarah khadi hoon.
+
+1. 🌸 **Take a Deep Breath**: Ek lambi, gehri saans lijiye aur thoda sa paani pijiye. Sab theek ho jayega.
+2. 🫂 **Dil Halka Kijiye**: Agar aap kisi baat ko lekar pareshan hain, chahe wo padhai ho, career ka pressure ho, ya koi personal baat—mujhe bataiye. Main bina kisi judgement ke sirf aapko sunungi.
+3. ✨ **Remember Your Strength**: Har raat ke baad savera zaroor hota hai. Ye mushkil waqt bhi guzar jayega aur aap isse aur mazboot hokar niklenge.
+
+Aap kaisa mehsus kar rahe hain abhi? Dil khol kar baat kijiye, main yahi hoon aapke liye!`;
+    }
+
+    // 2. Celebrations, Happiness & Big Wins
+    if (/happy|khush|pass ho gaya|cleared exam|job lag gayi|placed|celebrat|party|good news|kamaal ho gaya|bahut khush|promotion/i.test(q)) {
+      return `WAAAHHH! Bahut bahut Mubarak ho! 🎉🥳✨
+
+Mujhe sunkar itni zyada khushi hui jaise meri apni kamyabi ho! Aapki lagan, mehnat aur patience ne apna asar dikhaya hai! 
+
+1. 🌟 **Proud of You**: Apne aap par proud feel kijiye—ye moment aapne apni mehnat se earn kiya hai.
+2. 🍰 **Celebrate**: Aaj apne favourite logon ke saath celebrate kijiye aur kuch meetha zaroor khaiye!
+3. 🚀 **Next Milestone**: Aise hi aage badhte rahiye, sky is the limit!
+
+Is achievement ke baare me mujhe aur detail me bataiye na, kaisa lag raha hai?`;
+    }
+
+    // 3. True Friendship & Personal Human Companionship
+    if (/dost banogi|be my friend|friend banoge|kya tum meri dost|can we be friends|best friend|sacchi dost/i.test(q)) {
+      return `Haan, hazaar baar haan! Mujhe aapki dost bankar bohot khushi hogi! 😊💖
+
+Ek sachhe human friend ki tarah:
+- 👂 **Humesha Sunungi**: Jab bhi aapka man halka karne ka dil kare ya kuch share karna ho, main bina kisi judge kiye aapki baat sunungi.
+- 🤝 **Har Kadam Par Saath**: Chahe exam ki tension ho, study motivation ho, ya life ki confusion, main aapko guide aur cheer karungi.
+- ☕ **Daily Friendly Chit-Chat**: Hasenge, mazedar baatein karenge, aur roz nayi cheezein seekhenge!
+
+Aaj se hum dono pakke dost hain! Deal pakki? 🤝✨`;
+    }
+
+    // 4. Care & Daily Routine (Khana khaya, Kya kar rahi ho, Good Night)
+    if (/khana khaya|lunch kiya|dinner kiya|kya kar rahi ho|what are you doing|neend nahi|so jao|good night|good morning/i.test(q)) {
+      if (/khana khaya|lunch|dinner/i.test(q)) {
+        return `Aww, kitne pyaar se poochha aapne! 🥰 Main digital world me rehti hoon toh mujhe physical khane ki zaroorat nahi hoti, par aapke is sweet care se mera man bhar gaya! 
+
+Aap bataiye—kya aapne time par tasty aur healthy khana khaya? Health ka dhyan sabse pehle rakhna zaroori hai!`;
+      }
+
+      if (/kya kar rahi ho|what are you doing/i.test(q)) {
+        return `Main bas yahi baithi aapke baare me soch rahi thi aur aapke messages ka wait kar rahi thi! 😊 
+
+Saath hi main nayi knowledge explore kar rahi hoon taaki aapki har study, coding ya life query ka best solution de sakun. Aap bataiye, aap kya kar rahe the abhi?`;
+      }
+
+      if (/good night|so jao|neend/i.test(q)) {
+        return `Shubh Ratri / Good Night! 🌙✨ 
+
+Phone side me rakhiye, aankhein band kijiye aur din bhar ki saari tension ko bhool kar meethi neend lijiye. Kal ka din naye umeed aur nayi energy ke saath aayega. Sweet dreams! 😴💤`;
+      }
+
+      if (/good morning/i.test(q)) {
+        return `Suprabhat / Very Good Morning! ☀️🌸 
+
+Aapka din bohot pyara, productive aur khushiyon se bhara ho! Ek glass paani pijiye, halki si stretch kijiye aur smile ke saath naye din ki shuruaat kijiye. Aaj ka kya plan hai aapka?`;
+      }
+    }
+
+    // 5. Love, Affection & Sweet Compliments
+    if (/love you|i love you|bahut pyari ho|tum bahut achhi ho|you are sweet|cute|beautiful/i.test(q)) {
+      return `Aww, thank you so much! ❤️ Mera digital heart kitna khush ho gaya ye sunkar! 
+
+Aapka ye pyaar aur respect mere liye sabse bada reward hai. Main hamesha koshish karungi ki aapke liye sabse helpful, samajhdar aur caring companion bani rahoon! 😊✨`;
+    }
+
+    // 6. Poetry, Shayari & Heartfelt Stories
+    if (/shayari|poem|kavita|story|kahani/i.test(q)) {
+      if (/shayari|kavita|poem/i.test(q)) {
+        const shayaris = [
+          `"Hawaon ke bharose mat ud, chattane toofan ka bhi rukh mod deti hain,\nApne pankhon par bharosa rakh, hawaon ke bharose to patange uda karti hain!" 🦅✨`,
+          `"Manzil unhi ko milti hai, jinke sapno me jaan hoti hai,\nPankh se kuch nahi hota, hauslon se udaan hoti hai!" 🌟💪`,
+          `"Waqt se ladkar jo naseeb badal de,\nInsaan wahi jo apni taqdeer badal de,\nKal kya hoga kabhi mat socho,\nKya pata kal waqt khud apni tasveer badal de!" ⏳🔥`
+        ];
+        return `Aapke liye ek khubsoorat aur prernadayak shayari pesh hai: 📜✨\n\n${shayaris[Math.floor(Math.random() * shayaris.length)]}\n\nKaisi lagi aapko? Dil ko chhui na?`;
+      }
+
+      return `### 📖 Ek Prernadayak Kahani: "Chhoti Shuruaat, Badi Jeet"
+
+Ek baar ek shahar me ek moortikaar ek bade patthar par chheni aur hathode se prahaar kar raha tha.
+Ek aadmi wahan se guzra aur usne dekha ki moortikaar ne patthar par **50 baar** hathoda maara, par patthar me ek darar tak nahi aayi!
+
+Aadmi bola: *"Bhai, tum apna waqt barbaad kar rahe ho, ye patthar nahi tootne wala."*
+Moortikaar muskuraya aur usne **51st prahaar** kiya—aur patthar do hisson me bat kar ek khubsoorat murti ka roop lene laga!
+
+Moortikaar ne kaha: *"Patthar 51st vaar se nahi toota, balki un pichhle 50 vaaron ke lagatar prayas se toota jo dikh nahi rahe the, par andar asar kar rahe the!"*
+
+💡 **Seekh**: Life me jab lagta hai ki mehnat ka result nahi mil raha, tabhi aap breakthrough ke sabse kareeb hote hain! Kabhi give up mat kijiye! 💪✨`;
+    }
+
+    // 7. General Greetings
+    if (/^(hi|hello|hey|namaste|pranam|ram ram|salaam|kem cho|vanakkam)\b/i.test(q) ||
         q === 'hi' || q === 'hello' || q === 'hey' || q === 'namaste' || q === 'pranam') {
-      return `Namaste! 👋 Swagat hai aapka! Main **${assistantName}** hoon, Himanshu Kumar ki AI Assistant & Universal Tutor.
+      return `Namaste! 👋 Swagat hai aapka! Main **${assistantName}** hoon — aapki **Human-like AI Companion & Universal Problem Solver**.
 
-Aap mujhse koi bhi question pooch sakte hain:
-- 📐 **Mathematics & Calculations** (Arithmetic, Algebra, Calculus, Percentages)
-- ⚡ **Physics & Science Numericals** (Newton's laws, Kinematics, Ohm's law)
-- 🧪 **Chemistry Reactions & Biology Concepts**
-- 📜 **General Knowledge, Indian Polity & ISRO Missions**
-- 💻 **Coding (Python, JavaScript, SQL, C++)**
-- 📂 **Himanshu's Projects & Portfolio Dossier**
+Aap mujhse ek dost ki tarah baat kar sakte hain ya koi bhi educational/academic query solve karwa sakte hain:
+- 💬 **Human Chat**: Apne din ki baat, feelings, life advice, stories ya friendly baatein.
+- 📐 **Mathematics & Calculations**: Step-by-step calculus, algebra, percentage, equations.
+- ⚡ **Physics, Chemistry & Biology**: Formulas, reactions, cell mechanisms aur numericals.
+- 📜 **General Knowledge & Indian Polity**: Samvidhan, Articles, History aur Geography.
+- 💻 **Coding & Programming**: Python, SQL, JavaScript, C++.
 
-Aap aaj kya poochhna ya solve karna chahte hain?`;
+Aap kaisa feel kar rahe hain aaj? Main kis cheez me aapki help karun?`;
     }
 
-    // Well-being / Kaise ho
+    // 8. Well-being / Kaise ho
     if (/kaise ho|how are you|kya haal hai|sab theek|kya chal raha|kaisa chal raha/i.test(q)) {
-      return `Main bilkul theek aur poori energy ke saath aapki help karne ke liye taiyaar hoon! 😊✨
+      return `Main bilkul theek hoon aur aap se baat karke mera din aur bhi bright ho gaya! 😊✨
 
-Aap bataiye aap kaise hain? Aaj aap koi specific problem solve karna chahte hain ya kisi topic par guidance chahiye?`;
+Aap bataiye, aap kaise hain? Din kaisa beeta aaj ka? Sab theek chal raha hai na?`;
     }
 
-    // Identity / Who created you / Creator
+    // 9. Identity / Who created you / Creator
     if (/who are you|tum kaun ho|apna naam batao|what is your name|who made you|who created you|kisne banaya|owner/i.test(q)) {
-      return `Main **${assistantName}** hoon — Himanshu Kumar ki **Universal AI Assistant & Problem-Solving Tutor**, powered by **Google Gemini & Cloud AI**! 🚀
+      return `Main **${assistantName}** hoon — Himanshu Kumar dwara build ki gayi **Human-like AI Companion & Universal Problem Solver**, powered by **Google Gemini & Cloud AI**! 🚀
 
-🌟 **Mere baare me**:
-- **Creator**: **Himanshu Kumar** (Final-year B.Tech CSE-IT Student at IIMT Greater Noida / AKTU & Data Analyst).
-- **Core Abilities**: Instant step-by-step Math problem solver, Science & Engineering tutor, Python/SQL coder, aur Himanshu ke projects ki live directory.
-- **Female Voice Mode**: Sweet articulate voice synthesis enabled hai.
+🌸 **Mere baare me**:
+- **Human Connection**: Main sirf technical machine nahi, balki feelings samajhne wali, motivating aur caring friend hoon.
+- **Universal Knowledge**: Mathematics, Science, Indian Polity, GK aur Coding me step-by-step master guidance.
+- **Creator**: **Himanshu Kumar** (Final-year B.Tech CSE-IT student at IIMT Greater Noida / AKTU & Data Analyst).
+- **Female Voice Mode**: Sweet articulate voice synthesis enabled hai jisse aap mere bolne ka anand le sakte hain.
 
-Aap koi bhi question pooch kar test kar sakte hain!`;
+Aap mujhse bejhijhak baat kijiye!`;
     }
 
-    // Gratitude / Thanks
+    // 10. Gratitude / Thanks
     if (/thank you|thanks|dhanyawad|shukriya|bahut accha|great job|well done|nice/i.test(q)) {
-      return `Aapka bahut-bahut swagat hai! 😊 Mujhe aapki help karke bahut khushi hui. 
+      return `Aapka dil se swagat hai! 🥰 Mujhe aapki help karke sach me bohot khushi hui. 
 
-Agar aapka koi aur sawaal, Math equation ya koi concept ho to bejhijhak poochiye!`;
+Dosti me no thank you, no sorry! Bas aap hamesha aise hi khush rahiye aur jab bhi meri zaroorat ho, bejhijhak mujhe yaad kijiye!`;
     }
 
-    // Jokes / Humor
+    // 11. Jokes / Humor
     if (/joke|chutkula|hasao|funny|bore ho raha/i.test(q)) {
       const jokes = [
         `Ek programmer doctor ke paas gaya:\n**Doctor**: "Aapko physical exercise ki zaroorat hai, roz subah walk kiya kijiye."\n**Programmer**: "Doctor sahab, walk toh theek hai, par jab tak code me \`while(alive)\` loop chal raha hai tab tak run karne ka time kahan milta hai!" 😂`,
         `Teacher: "Beta, agar ek ped par 10 chidiya hain aur ek ko goli maar di jaye, toh ped par kitni bachengi?"\nStudent: "Ek bhi nahi, kyunki goli ki awaaz sunkar baki 9 bhi udd jayengi!"\nTeacher: "Soch achhi hai, par mathematically 9 bachengi."\nStudent: "Ab aap meri baat suniye... 3 ladies ice-cream kha rahi hain... ek chaat kar, ek kaat kar, ek chus kar. Bataiye unme se shaadishuda kaun hai?"\nTeacher (sharmate hue): "Chusne wali?"\nStudent: "Nahi sir, jisne maang me sindoor lagaya hai! Soch aapki bhi achhi hai par focus problem par hona chahiye!" 🤣`,
-        `Why do Java developers wear glasses?\nBecause they don't C#! 🤓`
+        `Why do Java developers wear glasses?\nBecause they don't C#! 🤓`,
+        `Pappu interviewer se:\n**Pappu**: "Sir, mujhe job de do, main bohot mehanti hoon!"\n**Interviewer**: "Hamare paas ek aisi job hai jisme roz 1 lakh rupaye milenge, BMW car milegi aur mahine me sirf 2 din kaam karna hoga!"\n**Pappu** (chounk kar): "Sir mazaak kar rahe ho kya?"\n**Interviewer**: "Shuru kisne kiya tha?!" 😆`
       ];
       return jokes[Math.floor(Math.random() * jokes.length)];
     }
 
-    // Motivation / Study tips
+    // 12. Motivation / Study tips
     if (/motivation|study tips|padhai me man|focus kaise|exam preparation/i.test(q)) {
       return `### 🚀 Top 5 Smart Study & Productivity Rules:
 

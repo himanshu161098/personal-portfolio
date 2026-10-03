@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Prachi AI — Universal STEM Tutor and Voice Assistant created by Himanshu Kumar. Powered by Google Gemini, Cloud AI and sweet Hindi/English female voice. Solve Mathematics, Physics, Chemistry, Biology, GK/GS, and explore Himanshu's portfolio.">
+        content="Prachi AI — Human-like empathetic AI companion and universal STEM tutor by Himanshu Kumar. Chats like a true human friend, understands emotions, provides life advice, and solves complex Math, Science &amp; GK problems with sweet female voice.">
     <meta name="author" content="Himanshu Kumar">
-    <title>Prachi AI | Universal STEM Tutor &amp; Voice Assistant — Himanshu Kumar</title>
+    <title>Prachi AI | Human-like AI Companion &amp; Universal Problem Solver — Himanshu Kumar</title>
 
     <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,8 +114,8 @@
                     <!-- Model Dropdown Selector -->
                     <div class="gpt-model-selector" id="gptModelSelector">
                         <button class="gpt-model-btn" id="gptModelBtn" aria-haspopup="listbox" aria-expanded="false">
-                            <span class="gpt-model-name" id="gptCurrentModelName">Prachi 4o • Pro</span>
-                            <span class="gpt-model-tag">Gemini + Cloud</span>
+                            <span class="gpt-model-name" id="gptCurrentModelName">Prachi Human AI</span>
+                            <span class="gpt-model-tag">Companion + STEM</span>
                             <i class="fa-solid fa-chevron-down gpt-dropdown-arrow"></i>
                         </button>
                         <ul class="gpt-model-menu" id="gptModelMenu" role="listbox">
@@ -123,10 +123,10 @@
                                 aria-selected="true">
                                 <div class="gpt-model-item-info">
                                     <div class="gpt-model-item-title">
-                                        <i class="fa-solid fa-brain"></i>
-                                        <span>Prachi 4o • Pro</span>
+                                        <i class="fa-solid fa-heart" style="color: #ec4899;"></i>
+                                        <span>Prachi Human AI</span>
                                     </div>
-                                    <span class="gpt-model-item-desc">Google Gemini 1.5 Flash + Prachi Female Voice Tutor (Fast &amp; Smart)</span>
+                                    <span class="gpt-model-item-desc">Empathetic human-like companion, emotions, care &amp; conversations</span>
                                 </div>
                                 <i class="fa-solid fa-check gpt-check-icon"></i>
                             </li>
@@ -198,51 +198,50 @@
                     <div class="gpt-welcome-logo">
                         <img src="assets/prachi-logo.png" alt="Prachi AI Logo" class="gpt-welcome-logo-img">
                     </div>
-                    <h1 class="gpt-welcome-title">What can I help with today?</h1>
+                    <h1 class="gpt-welcome-title">How can I help you today?</h1>
                     <p class="gpt-welcome-subtitle">
-                        I am <strong>Prachi</strong>, your Personal AI &amp; Universal Problem-Solving Tutor. Powered by
-                        <strong>Google Gemini &amp; Cloud AI</strong> with a natural female voice.
+                        I am <strong>Prachi</strong>, your <strong>Human-like AI Companion &amp; Universal Problem Solver</strong>. Chat with me like a true friend, share your feelings, or ask any Math, Science, Coding &amp; GK problem!
                     </p>
 
                     <!-- Quick Prompt Suggestions Grid -->
                     <div class="gpt-prompt-cards">
+                        <button class="gpt-prompt-card" data-prompt="Hey Prachi! Kaise ho? Din kaisa chal raha hai? Chalo thodi friendly baat karte hain.">
+                            <div class="gpt-prompt-card-icon" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;">
+                                <i class="fa-regular fa-comment-dots"></i>
+                            </div>
+                            <div class="gpt-prompt-card-text">
+                                <div class="gpt-prompt-card-title">Talk Like a Friend</div>
+                                <div class="gpt-prompt-card-desc">Warm friendly chit-chat &amp; daily life thoughts</div>
+                            </div>
+                        </button>
+
+                        <button class="gpt-prompt-card" data-prompt="Mera mood thoda off hai aur stress lag raha hai, kuch accha bolo na aur advice do">
+                            <div class="gpt-prompt-card-icon" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                            <div class="gpt-prompt-card-text">
+                                <div class="gpt-prompt-card-title">Share Feelings &amp; Support</div>
+                                <div class="gpt-prompt-card-desc">Empathetic listening, comfort &amp; life advice</div>
+                            </div>
+                        </button>
+
                         <button class="gpt-prompt-card" data-prompt="Solve derivative of x^3 + 5x^2 - 7x + 9 step-by-step">
-                            <div class="gpt-prompt-card-icon">
+                            <div class="gpt-prompt-card-icon" style="background: rgba(0, 242, 254, 0.15); color: #00f2fe;">
                                 <i class="fa-solid fa-calculator"></i>
                             </div>
                             <div class="gpt-prompt-card-text">
-                                <div class="gpt-prompt-card-title">Solve Calculus Problem</div>
-                                <div class="gpt-prompt-card-desc">Find derivative of x³ + 5x² - 7x + 9 with formulas</div>
+                                <div class="gpt-prompt-card-title">Solve Math &amp; Calculus</div>
+                                <div class="gpt-prompt-card-desc">Step-by-step derivative with clear formulas</div>
                             </div>
                         </button>
 
-                        <button class="gpt-prompt-card" data-prompt="A car starts from rest and accelerates at 2m/s^2 for 5s. Find final velocity and distance with SI units.">
-                            <div class="gpt-prompt-card-icon">
-                                <i class="fa-solid fa-bolt"></i>
+                        <button class="gpt-prompt-card" data-prompt="Mujhe ek inspiring kahani ya koi mazedaar chutkula sunao">
+                            <div class="gpt-prompt-card-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
+                                <i class="fa-solid fa-book-open"></i>
                             </div>
                             <div class="gpt-prompt-card-text">
-                                <div class="gpt-prompt-card-title">Physics Numerical</div>
-                                <div class="gpt-prompt-card-desc">Kinematics calculation with equations of motion</div>
-                            </div>
-                        </button>
-
-                        <button class="gpt-prompt-card" data-prompt="Explain Indian Constitution Preamble and Fundamental Rights in simple terms">
-                            <div class="gpt-prompt-card-icon">
-                                <i class="fa-solid fa-landmark"></i>
-                            </div>
-                            <div class="gpt-prompt-card-text">
-                                <div class="gpt-prompt-card-title">GK &amp; Indian Polity</div>
-                                <div class="gpt-prompt-card-desc">Preamble, Fundamental Rights &amp; Articles breakdown</div>
-                            </div>
-                        </button>
-
-                        <button class="gpt-prompt-card" data-prompt="Tell me about Himanshu's Netflix analysis project and his data analyst skills">
-                            <div class="gpt-prompt-card-icon">
-                                <i class="fa-solid fa-chart-line"></i>
-                            </div>
-                            <div class="gpt-prompt-card-text">
-                                <div class="gpt-prompt-card-title">Portfolio &amp; Netflix Project</div>
-                                <div class="gpt-prompt-card-desc">8,787 Netflix titles, Python, SQL, and data skills</div>
+                                <div class="gpt-prompt-card-title">Story or Humorous Joke</div>
+                                <div class="gpt-prompt-card-desc">Heartwarming story or funny laughing break</div>
                             </div>
                         </button>
                     </div>
@@ -277,6 +276,10 @@
                         <!-- Quick Subject Selector Pills -->
                         <div class="gpt-presets-bar">
                             <div class="gpt-presets-scroll">
+                                <button type="button" class="gpt-preset-item" data-preset="Hi Prachi! ">
+                                    <i class="fa-solid fa-heart" style="color: #ec4899;"></i>
+                                    <span>Human Chat</span>
+                                </button>
                                 <button type="button" class="gpt-preset-item" data-preset="Solve Math Problem: ">
                                     <i class="fa-solid fa-calculator text-cyan"></i>
                                     <span>Mathematics</span>
@@ -310,7 +313,7 @@
 
                         <!-- Auto-Expanding Textarea -->
                         <textarea id="gptTextarea" class="gpt-textarea" rows="1"
-                            placeholder="Message Prachi AI... Ask Math, Physics, Chemistry, GK, or Coding"
+                            placeholder="Message Prachi... Chat like a friend, share feelings, or ask Math &amp; Science"
                             maxlength="2000"></textarea>
 
                         <!-- Hands-Free Voice Button -->
