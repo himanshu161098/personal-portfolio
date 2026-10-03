@@ -132,7 +132,7 @@ Last updated: 2026-10-03
 ---
 
 ## 8. Recent Portfolio Updates
-- **2026-10-03**: Built and integrated a full-featured standalone ChatGPT Clone (`chatgpt.html`) with multi-chat session persistence in localStorage, model switcher (Gemini 1.5 Flash, Claude 3.7 Sonnet, STEM Solver, Portfolio Dossier), sweet female voice assistant ("Maya") with Speech-to-Text & Text-to-Speech, and 5-point universal academic problem solving.
+- **2026-10-03**: Built and integrated a full-featured standalone AI web application named **Prachi AI** (`prachi.html`) with multi-chat session persistence in localStorage, model switcher (Gemini 1.5 Flash, Claude 3.7 Sonnet, STEM Solver, Portfolio Dossier), sweet female voice assistant ("Prachi") with Speech-to-Text & Text-to-Speech, and 5-point universal academic problem solving.
 - **2026-10-03**: Integrated floating AI Portfolio Assistant with streaming Claude Sonnet model, conversation memory, and job-description match analysis.
 - **2026-09-29**: Released Netflix Content Analysis repository with exploratory data analysis across 8,787 catalog titles.
 - **2026-03-17**: Published UNO Playing Card Game browser edition with automated turn logic and responsive layout.
@@ -150,13 +150,13 @@ Last updated: 2026-10-03
   - Model Evaluation Metrics: Confusion Matrix, Precision, Recall, F1-Score, ROC-AUC, Mean Squared Error (MSE), Root Mean Squared Error (RMSE), R² Score.
 - **Data Science & Analytics Workflow**:
   - Structured Question Framing → Data Ingestion & Profiling → Data Cleaning & Transformation → Exploratory Data Analysis (EDA) & Correlation Mapping → Storytelling & Business Intelligence Dashboards.
-- **Bidirectional Female Voice Assistant ("Maya")**:
+- **Bidirectional Female Voice Assistant ("Prachi")**:
   - Features real-time voice speech-to-text recognition (English, Hindi, Hinglish) and sweet, natural female text-to-speech audio synthesis (custom-tuned feminine pitch and natural cadence).
 
 ---
 
 ## 10. Universal Academic Problem Solving & Virtual AI Tutor
-Maya acts as an advanced pedagogical tutor and universal problem solver powered by Google Gemini and Cloud AI, providing clear, simple, step-by-step solutions to satisfy any learner's questions:
+Prachi acts as an advanced pedagogical tutor and universal problem solver powered by Google Gemini and Cloud AI, providing clear, simple, step-by-step solutions to satisfy any learner's questions:
 
 ### 10.1 Structured Solution Framework (5-Point Pedagogical Standard)
 For any academic, mathematical, or scientific problem, answers follow this clear structure:

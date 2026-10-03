@@ -31,7 +31,7 @@ const SUGGESTED_QUESTIONS = [
 ];
 
 // Initial welcome greeting
-const WELCOME_GREETING = `Hello! 👋 I'm **Maya**, Himanshu's AI & Universal Problem-Solving Tutor (powered by **Google Gemini & Cloud AI**).
+const WELCOME_GREETING = `Hello! 👋 I'm **Prachi**, Himanshu's AI & Universal Problem-Solving Tutor (powered by **Google Gemini & Cloud AI**).
 
 I provide the **best, simplest step-by-step solutions** across all subjects:
 1. 📐 **Mathematics & Science**: Algebra, Calculus, Physics numericals, Chemistry reactions, Biology mechanisms.
@@ -133,9 +133,9 @@ async function getLocalKnowledge() {
 function generateLocalMockResponse(userQuery, kb) {
   const q = userQuery.toLowerCase().trim();
 
-  // 0. Maya Female Voice Identity & Assistant Intro
-  if (q.includes('maya') || q.includes('girl') || q.includes('voice') || q.includes('ladki') || q.includes('sound') || q.includes('aawaz') || q.includes('who are you') || q.includes('tum kaun') || q.includes('apna naam') || q.includes('intro')) {
-    return `Namaste! 👋 Main **Maya** hoon, Himanshu Kumar ki AI & Universal Problem-Solving Tutor, powered by **Google Gemini & Cloud AI**.
+  // 0. Prachi Female Voice Identity & Assistant Intro
+  if (q.includes('prachi') || q.includes('maya') || q.includes('girl') || q.includes('voice') || q.includes('ladki') || q.includes('sound') || q.includes('aawaz') || q.includes('who are you') || q.includes('tum kaun') || q.includes('apna naam') || q.includes('intro')) {
+    return `Namaste! 👋 Main **Prachi** hoon, Himanshu Kumar ki AI & Universal Problem-Solving Tutor, powered by **Google Gemini & Cloud AI**.
 
 🎙️ **Female Voice Assistant Active**:
 - Meri voice ek pleasant, natural **girl/female tone** me configured hai (pitch 1.18, natural cadence).
@@ -660,7 +660,7 @@ Would you like help with SQL queries, data cleaning techniques, or Machine Learn
   }
 
   // General response
-  return `Hello! I'm **Maya**, Himanshu's AI & Universal Problem-Solving Tutor.
+  return `Hello! I'm **Prachi**, Himanshu's AI & Universal Problem-Solving Tutor.
 
 Aap mujhse pooch sakte hain:
 - 📐 **Mathematics & Quantitative Aptitude** (Calculus, Algebra, Probability, Equations)
@@ -731,17 +731,17 @@ class AIChatbotWidget {
           </div>
           <div class="cb-header-info">
             <div class="cb-title">
-              Maya • Universal AI Tutor
+              Prachi • Universal AI Tutor
               <span class="cb-title-tag">Gemini + Cloud AI</span>
             </div>
-            <span class="cb-subtitle">Math, Science, GK & Portfolio • 👧 Girl Voice Live</span>
+            <span class="cb-subtitle">Math, Science, GK & Portfolio • 👧 Prachi Girl Voice Live</span>
           </div>
         </div>
         <div class="cb-header-actions">
-          <button class="cb-icon-btn cb-voice-toggle-btn" id="cbVoiceToggleBtn" title="Toggle Voice Mode (Speaks answers aloud in Maya's female voice)" aria-label="Toggle Auto-Speak">
+          <button class="cb-icon-btn cb-voice-toggle-btn" id="cbVoiceToggleBtn" title="Toggle Voice Mode (Speaks answers aloud in Prachi's female voice)" aria-label="Toggle Auto-Speak">
             <i class="fa-solid fa-volume-high" id="cbVoiceToggleIcon" aria-hidden="true"></i>
           </button>
-          <a href="chatgpt.html" class="cb-icon-btn" title="Open Fullscreen ChatGPT Clone App" aria-label="Open Fullscreen ChatGPT Clone App">
+          <a href="prachi.html" class="cb-icon-btn" title="Open Fullscreen Prachi AI App" aria-label="Open Fullscreen Prachi AI App">
             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
           </a>
           <button class="cb-icon-btn" id="cbNewChatBtn" title="Reset & Start New Chat" aria-label="Start New Chat">
@@ -762,7 +762,7 @@ class AIChatbotWidget {
       <footer class="cb-footer">
         <!-- Voice Listening Banner -->
         <div class="cb-voice-status-bar" id="cbVoiceStatusBar" aria-live="polite">
-          <span><i class="fa-solid fa-microphone-lines"></i> Maya is Listening... Speak in English, Hindi, or Hinglish</span>
+          <span><i class="fa-solid fa-microphone-lines"></i> Prachi is Listening... Speak in English, Hindi, or Hinglish</span>
           <div class="cb-audio-wave-anim">
             <span class="cb-audio-wave-bar"></span>
             <span class="cb-audio-wave-bar"></span>
@@ -778,7 +778,7 @@ class AIChatbotWidget {
             rows="1"
             placeholder="Ask any Math, Science, GK question or speak via mic..."
             maxlength="${MAX_INPUT_LENGTH}"
-            aria-label="Your question for Maya AI"
+            aria-label="Your question for Prachi AI"
           ></textarea>
           <button type="button" class="cb-mic-btn" id="cbMicBtn" title="Speak via Microphone (Hindi / English)" aria-label="Voice Input">
             <i class="fa-solid fa-microphone" id="cbMicIcon" aria-hidden="true"></i>
@@ -788,7 +788,7 @@ class AIChatbotWidget {
           </button>
         </form>
         <div class="cb-footer-meta">
-          <span>Maya: Girl Voice Assistant • STEM & GK Tutor</span>
+          <span>Prachi: Girl Voice Assistant • STEM & GK Tutor</span>
           <span class="cb-char-counter" id="cbCharCounter">0 / ${MAX_INPUT_LENGTH}</span>
         </div>
       </footer>

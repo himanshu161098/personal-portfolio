@@ -3518,8 +3518,9 @@ button, input, textarea {
 }
 
 /* ========================================================================= */
-/* ChatGPT Clone Integration Styles                                          */
+/* Prachi AI & ChatGPT Integration Styles                                    */
 /* ========================================================================= */
+.btn-prachi-hero,
 .btn-chatgpt-hero {
     background: linear-gradient(135deg, #00f2fe 0%, #10b981 100%) !important;
     color: #060911 !important;
@@ -3528,17 +3529,20 @@ button, input, textarea {
     border: none !important;
 }
 
+.btn-prachi-hero:hover,
 .btn-chatgpt-hero:hover {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 0 35px rgba(16, 185, 129, 0.6) !important;
 }
 
+.btn-prachi-cta,
 .btn-chatgpt-cta {
     background: linear-gradient(135deg, #00f2fe, #10b981) !important;
     color: #060911 !important;
     font-weight: 700 !important;
 }
 
+.prachi-nav-item,
 .chatgpt-nav-item {
     position: relative;
     display: inline-flex;
@@ -3576,12 +3580,15 @@ button, input, textarea {
     box-shadow: 0 16px 45px rgba(0, 242, 254, 0.28) !important;
 }
 
+.project-banner-prachi,
 .project-banner-chatgpt {
     background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(16, 185, 129, 0.25)), #080f1d !important;
     border-bottom: 1px solid rgba(0, 242, 254, 0.3);
 }
 
+.project-banner-prachi .project-icon-preview,
 .project-banner-chatgpt .project-icon-preview {
     color: var(--accent-cyan);
     filter: drop-shadow(0 0 20px rgba(0, 242, 254, 0.5));
 }
+

@@ -4,328 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="ChatGPT Clone & AI Universal Tutor by Himanshu Kumar - Powered by Google Gemini, Cloud AI and Maya Female Voice Assistant. Solve Math, Science, Coding, and explore Himanshu's portfolio.">
-    <meta name="author" content="Himanshu Kumar">
-    <title>ChatGPT Clone | Maya AI &amp; Universal Tutor — Himanshu Kumar</title>
-
-    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- ChatGPT Clone Stylesheet -->
-    <link rel="stylesheet" href="chatgpt.css">
+    <meta http-equiv="refresh" content="0; url=prachi.html">
+    <title>Redirecting to Prachi AI — Himanshu Kumar</title>
+    <link rel="canonical" href="prachi.html">
+    <script>
+        window.location.replace("prachi.html");
+    </script>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #f0f6fc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .redirect-box {
+            padding: 2rem;
+            border-radius: 12px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            max-width: 480px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #00f2fe;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
 </head>
 
-<body class="gpt-body">
-    <!-- App Container -->
-    <div class="gpt-app" id="gptApp">
-
-        <!-- ================================================================= -->
-        <!-- 1. LEFT SIDEBAR                                                   -->
-        <!-- ================================================================= -->
-        <aside class="gpt-sidebar" id="gptSidebar">
-            <!-- Sidebar Header / Brand -->
-            <div class="gpt-sidebar-header">
-                <a href="index.html" class="gpt-brand" title="Return to Himanshu's Portfolio">
-                    <div class="gpt-logo-badge">
-                        <i class="fa-solid fa-sparkles"></i>
-                    </div>
-                    <div class="gpt-brand-text">
-                        <span class="gpt-brand-title">ChatGPT Clone</span>
-                        <span class="gpt-brand-sub">by Himanshu Kumar</span>
-                    </div>
-                </a>
-                <button class="gpt-icon-btn gpt-sidebar-close-mobile" id="gptSidebarCloseMobile"
-                    aria-label="Close Sidebar">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <!-- New Chat Button -->
-            <div class="gpt-sidebar-action">
-                <button class="gpt-new-chat-btn" id="gptNewChatBtn">
-                    <i class="fa-solid fa-plus"></i>
-                    <span>New chat</span>
-                    <kbd class="gpt-kbd">Ctrl+K</kbd>
-                </button>
-            </div>
-
-            <!-- Search Chats -->
-            <div class="gpt-search-wrap">
-                <i class="fa-solid fa-magnifying-glass gpt-search-icon"></i>
-                <input type="text" id="gptSearchInput" class="gpt-search-input" placeholder="Search conversations...">
-            </div>
-
-            <!-- Chat History List -->
-            <div class="gpt-history-section">
-                <div class="gpt-history-heading">Recent Chats</div>
-                <div class="gpt-history-list" id="gptHistoryList">
-                    <!-- Dynamic chat conversation list items -->
-                </div>
-            </div>
-
-            <!-- Sidebar Footer / User Profile & Actions -->
-            <div class="gpt-sidebar-footer">
-                <a href="index.html" class="gpt-footer-link gpt-portfolio-link">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    <span>Back to Portfolio</span>
-                </a>
-                <div class="gpt-user-profile">
-                    <div class="gpt-user-avatar">
-                        <span>HK</span>
-                    </div>
-                    <div class="gpt-user-meta">
-                        <span class="gpt-user-name">Himanshu Kumar</span>
-                        <span class="gpt-user-plan">Pro AI • Maya &amp; Gemini</span>
-                    </div>
-                    <button class="gpt-icon-btn gpt-clear-all-btn" id="gptClearAllBtn" title="Clear all chat history">
-                        <i class="fa-regular fa-trash-can"></i>
-                    </button>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Sidebar Overlay for Mobile -->
-        <div class="gpt-sidebar-overlay" id="gptSidebarOverlay"></div>
-
-        <!-- ================================================================= -->
-        <!-- 2. MAIN CHAT AREA                                                 -->
-        <!-- ================================================================= -->
-        <main class="gpt-main">
-            <!-- Top Navigation / Model Switcher Bar -->
-            <header class="gpt-topbar">
-                <div class="gpt-topbar-left">
-                    <button class="gpt-icon-btn gpt-sidebar-toggle" id="gptSidebarToggle" aria-label="Toggle Sidebar">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                    </button>
-
-                    <!-- Model Dropdown Selector -->
-                    <div class="gpt-model-selector" id="gptModelSelector">
-                        <button class="gpt-model-btn" id="gptModelBtn" aria-haspopup="listbox" aria-expanded="false">
-                            <span class="gpt-model-name" id="gptCurrentModelName">ChatGPT 4o • Maya Pro</span>
-                            <span class="gpt-model-tag">Gemini + Cloud</span>
-                            <i class="fa-solid fa-chevron-down gpt-dropdown-arrow"></i>
-                        </button>
-                        <ul class="gpt-model-menu" id="gptModelMenu" role="listbox">
-                            <li class="gpt-model-item active" data-model="maya-gemini" role="option"
-                                aria-selected="true">
-                                <div class="gpt-model-item-info">
-                                    <div class="gpt-model-item-title">
-                                        <i class="fa-solid fa-brain"></i>
-                                        <span>ChatGPT 4o • Maya Pro</span>
-                                    </div>
-                                    <span class="gpt-model-item-desc">Google Gemini 1.5 Flash + Female Voice Tutor (Fast &amp; Smart)</span>
-                                </div>
-                                <i class="fa-solid fa-check gpt-check-icon"></i>
-                            </li>
-                            <li class="gpt-model-item" data-model="claude-sonnet" role="option">
-                                <div class="gpt-model-item-info">
-                                    <div class="gpt-model-item-title">
-                                        <i class="fa-solid fa-code"></i>
-                                        <span>Claude 3.7 Sonnet</span>
-                                    </div>
-                                    <span class="gpt-model-item-desc">Deep technical reasoning, coding &amp; logic puzzles</span>
-                                </div>
-                                <i class="fa-solid fa-check gpt-check-icon"></i>
-                            </li>
-                            <li class="gpt-model-item" data-model="stem-tutor" role="option">
-                                <div class="gpt-model-item-info">
-                                    <div class="gpt-model-item-title">
-                                        <i class="fa-solid fa-calculator"></i>
-                                        <span>STEM &amp; Academic Solver</span>
-                                    </div>
-                                    <span class="gpt-model-item-desc">5-Point step-by-step solutions for Math, Physics &amp; Chemistry</span>
-                                </div>
-                                <i class="fa-solid fa-check gpt-check-icon"></i>
-                            </li>
-                            <li class="gpt-model-item" data-model="portfolio-dossier" role="option">
-                                <div class="gpt-model-item-info">
-                                    <div class="gpt-model-item-title">
-                                        <i class="fa-solid fa-briefcase"></i>
-                                        <span>Himanshu's Portfolio Dossier</span>
-                                    </div>
-                                    <span class="gpt-model-item-desc">Verified projects, 8,787 Netflix analysis, skills &amp; resume fit</span>
-                                </div>
-                                <i class="fa-solid fa-check gpt-check-icon"></i>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="gpt-topbar-right">
-                    <!-- Female Voice Toggle -->
-                    <button class="gpt-topbar-action-btn" id="gptVoiceToggleBtn"
-                        title="Voice Mode (Reads responses aloud in Maya's sweet female voice)">
-                        <i class="fa-solid fa-volume-high" id="gptVoiceIcon"></i>
-                        <span class="gpt-btn-text">Voice Mode</span>
-                    </button>
-
-                    <!-- Export Chat -->
-                    <button class="gpt-icon-btn" id="gptExportBtn" title="Export conversation as Markdown">
-                        <i class="fa-solid fa-arrow-down-to-bracket"></i>
-                    </button>
-
-                    <!-- Fullscreen Toggle -->
-                    <button class="gpt-icon-btn" id="gptFullscreenBtn" title="Toggle Fullscreen">
-                        <i class="fa-solid fa-expand" id="gptFullscreenIcon"></i>
-                    </button>
-
-                    <!-- Back to Portfolio -->
-                    <a href="index.html" class="gpt-topbar-back-btn" title="Back to Portfolio">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <span>Portfolio</span>
-                    </a>
-                </div>
-            </header>
-
-            <!-- Messages Stream Area -->
-            <div class="gpt-chat-container" id="gptChatContainer">
-
-                <!-- Welcome Screen / Empty State -->
-                <div class="gpt-welcome-screen" id="gptWelcomeScreen">
-                    <div class="gpt-welcome-logo">
-                        <div class="gpt-logo-inner">
-                            <i class="fa-solid fa-sparkles"></i>
-                        </div>
-                    </div>
-                    <h1 class="gpt-welcome-title">What can I help with today?</h1>
-                    <p class="gpt-welcome-subtitle">
-                        I am <strong>Maya</strong>, your ChatGPT Clone &amp; Universal Problem-Solving Tutor. Powered by
-                        <strong>Google Gemini &amp; Cloud AI</strong> with a natural female voice.
-                    </p>
-
-                    <!-- Quick Prompt Suggestions Grid -->
-                    <div class="gpt-prompt-cards">
-                        <button class="gpt-prompt-card" data-prompt="Solve derivative of x^3 + 5x^2 - 7x + 9 step-by-step">
-                            <div class="gpt-prompt-card-icon">
-                                <i class="fa-solid fa-calculator"></i>
-                            </div>
-                            <div class="gpt-prompt-card-text">
-                                <div class="gpt-prompt-card-title">Solve Calculus Problem</div>
-                                <div class="gpt-prompt-card-desc">Find derivative of x³ + 5x² - 7x + 9 with formulas</div>
-                            </div>
-                        </button>
-
-                        <button class="gpt-prompt-card" data-prompt="A car starts from rest and accelerates at 2m/s^2 for 5s. Find final velocity and distance with SI units.">
-                            <div class="gpt-prompt-card-icon">
-                                <i class="fa-solid fa-bolt"></i>
-                            </div>
-                            <div class="gpt-prompt-card-text">
-                                <div class="gpt-prompt-card-title">Physics Numerical</div>
-                                <div class="gpt-prompt-card-desc">Kinematics calculation with equations of motion</div>
-                            </div>
-                        </button>
-
-                        <button class="gpt-prompt-card" data-prompt="Explain Indian Constitution Preamble and Fundamental Rights in simple terms">
-                            <div class="gpt-prompt-card-icon">
-                                <i class="fa-solid fa-landmark"></i>
-                            </div>
-                            <div class="gpt-prompt-card-text">
-                                <div class="gpt-prompt-card-title">GK &amp; Indian Polity</div>
-                                <div class="gpt-prompt-card-desc">Preamble, Fundamental Rights &amp; Articles breakdown</div>
-                            </div>
-                        </button>
-
-                        <button class="gpt-prompt-card" data-prompt="Tell me about Himanshu's Netflix analysis project and his data analyst skills">
-                            <div class="gpt-prompt-card-icon">
-                                <i class="fa-solid fa-chart-line"></i>
-                            </div>
-                            <div class="gpt-prompt-card-text">
-                                <div class="gpt-prompt-card-title">Explore Himanshu's Portfolio</div>
-                                <div class="gpt-prompt-card-desc">8,787 Netflix dataset analysis, SQL &amp; Python skills</div>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Messages Log -->
-                <div class="gpt-messages-list" id="gptMessagesList">
-                    <!-- Dynamic chat bubbles -->
-                </div>
-            </div>
-
-            <!-- Listening Waveform Status Banner -->
-            <div class="gpt-voice-indicator" id="gptVoiceIndicator">
-                <div class="gpt-voice-wave">
-                    <span></span><span></span><span></span><span></span><span></span>
-                </div>
-                <span class="gpt-voice-text">Maya is listening... Speak in English, Hindi, or Hinglish</span>
-            </div>
-
-            <!-- Bottom Capsule Input Form -->
-            <div class="gpt-input-area">
-                <form class="gpt-input-form" id="gptInputForm">
-                    <div class="gpt-input-capsule">
-                        <!-- Presets / Attachment Dropdown -->
-                        <div class="gpt-preset-dropdown" id="gptPresetDropdown">
-                            <button type="button" class="gpt-capsule-btn" id="gptPresetBtn" title="Choose Subject Prompt Presets">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                            <div class="gpt-preset-menu" id="gptPresetMenu">
-                                <div class="gpt-preset-header">Subject Modes</div>
-                                <button type="button" class="gpt-preset-item" data-preset="Math: ">
-                                    <i class="fa-solid fa-calculator text-blue"></i>
-                                    <span>Mathematics Solver</span>
-                                </button>
-                                <button type="button" class="gpt-preset-item" data-preset="Physics: ">
-                                    <i class="fa-solid fa-bolt text-amber"></i>
-                                    <span>Physics Numericals</span>
-                                </button>
-                                <button type="button" class="gpt-preset-item" data-preset="Chemistry: ">
-                                    <i class="fa-solid fa-flask-vial text-emerald"></i>
-                                    <span>Chemistry Reactions</span>
-                                </button>
-                                <button type="button" class="gpt-preset-item" data-preset="Biology: ">
-                                    <i class="fa-solid fa-dna text-purple"></i>
-                                    <span>Biology Concepts</span>
-                                </button>
-                                <button type="button" class="gpt-preset-item" data-preset="GK/GS: ">
-                                    <i class="fa-solid fa-landmark text-cyan"></i>
-                                    <span>General Knowledge / GS</span>
-                                </button>
-                                <button type="button" class="gpt-preset-item" data-preset="Himanshu Portfolio: ">
-                                    <i class="fa-solid fa-user-tie text-pink"></i>
-                                    <span>Portfolio &amp; Resume Fit</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Auto-Expanding Textarea -->
-                        <textarea id="gptTextarea" class="gpt-textarea" rows="1"
-                            placeholder="Message ChatGPT Clone (Maya AI)... Ask Math, Physics, GK, or Coding"
-                            maxlength="2000"></textarea>
-
-                        <!-- Hands-Free Voice Button -->
-                        <button type="button" class="gpt-capsule-btn gpt-mic-btn" id="gptMicBtn"
-                            title="Speak via Microphone (Hindi / English / Hinglish)" aria-label="Speech to Text">
-                            <i class="fa-solid fa-microphone" id="gptMicIcon"></i>
-                        </button>
-
-                        <!-- Send Button -->
-                        <button type="submit" class="gpt-send-btn" id="gptSendBtn" aria-label="Send Message" disabled>
-                            <i class="fa-solid fa-arrow-up"></i>
-                        </button>
-                    </div>
-                </form>
-
-                <div class="gpt-disclaimer">
-                    <span>ChatGPT Clone can make mistakes. Verify important academic calculations and portfolio facts.</span>
-                </div>
-            </div>
-        </main>
+<body>
+    <div class="redirect-box">
+        <h2>Redirecting to Prachi AI...</h2>
+        <p>Himanshu's Universal AI Assistant &amp; STEM Tutor</p>
+        <p><a href="prachi.html">Click here if you are not redirected automatically</a></p>
     </div>
-
-    <!-- ChatGPT Clone Logic -->
-    <script src="chatgpt.js" defer></script>
 </body>
 
 </html>

@@ -56,13 +56,14 @@ Personal Portfolio/
 ├── index.html                   # Main portfolio layout & markup
 ├── style.css                    # Futuristic dark-mode design system & animations
 ├── script.js                    # 3D canvas, cursor effects, navigation & UI logic
-│
-├── chatgpt.html                 # Standalone ChatGPT Clone web application
-├── chatgpt.css                  # ChatGPT OpenAI dark aesthetic & sidebar styles
-├── chatgpt.js                   # ChatGPT multi-chat state, models, & voice engine
+├── prachi.html                  # Standalone Prachi AI web application
+├── chatgpt.html                 # Legacy redirect bridge to prachi.html
+├── chatgpt.css                  # Modern dark glassmorphic UI & sidebar styles
+├── prachi.js                    # Prachi AI multi-chat state, models, & voice engine
+├── chatgpt.js                   # Backward-compatible script bridge
 │
 ├── chatbot.css                  # Floating widget cyber glassmorphism styles
-├── chatbot.js                   # Floating AI assistant & Maya voice widget
+├── chatbot.js                   # Floating AI assistant & Prachi girl voice widget
 │
 ├── worker/                      # Cloudflare Worker serverless AI proxy (Gemini + Claude)
 ├── .gitignore                   # Git ignore specifications
@@ -95,25 +96,25 @@ Personal Portfolio/
 
 ---
 
-## 🤖 Maya: AI + Universal Academic Tutor & Female Voice Assistant
+## 🤖 Prachi: AI + Universal Academic Tutor & Female Voice Assistant
 
-The portfolio features **Maya**, an advanced dark glassmorphic AI Assistant & Universal Tutor powered by **Google Gemini & Cloud AI** (with Anthropic Claude failover) via a dedicated Cloudflare Worker serverless proxy:
+The portfolio features **Prachi**, an advanced dark glassmorphic AI Assistant & Universal Tutor powered by **Google Gemini & Cloud AI** (with Anthropic Claude failover) via a dedicated Cloudflare Worker serverless proxy:
 
 ```
-[Portfolio Visitor] ◄──(Voice / STT / Female TTS)──► [chatbot.js Widget] ◄──► [Cloudflare Worker Proxy]
-                                                                                      │
-                                                                       ┌──────────────┴──────────────┐
-                                                                       ▼                             ▼
-                                                              [Google Gemini AI]            [Anthropic Claude]
-                                                                       │
-                             ┌─────────────────────── Fetch & 5-min Cache ───────────┴──────────────────────┐
-                             ▼                                                                               ▼
-                   [data/knowledge.md]                                                             [data/social_feed.json]
-   (Portfolio + STEM + GK/GS Academic Knowledge)                                                  (Auto-synced GitHub data)
+[Portfolio Visitor] ◄──(Voice / STT / Female TTS)──► [chatbot.js Widget / prachi.html] ◄──► [Cloudflare Worker Proxy]
+                                                                                                  │
+                                                                                   ┌──────────────┴──────────────┐
+                                                                                   ▼                             ▼
+                                                                          [Google Gemini AI]            [Anthropic Claude]
+                                                                                   │
+                                                         ┌─────────────────────── Fetch & 5-min Cache ───────────┴──────────────────────┐
+                                                         ▼                                                                               ▼
+                                               [data/knowledge.md]                                                             [data/social_feed.json]
+                               (Portfolio + STEM + GK/GS Academic Knowledge)                                                  (Auto-synced GitHub data)
 ```
 
 ### 🌟 Key Superpowers:
-- 👧 **Female Voice Assistant ("Maya")**: Features sweet, articulate female voice synthesis (pitch 1.18, rate 0.98, tuned for Hindi & English) plus real-time hands-free microphone speech-to-text.
+- 👧 **Female Voice Assistant ("Prachi")**: Features sweet, articulate female voice synthesis (pitch 1.18, rate 0.98, tuned for Hindi & English) plus real-time hands-free microphone speech-to-text.
 - 📐 **Universal Subject Problem Solver**:
   - **Mathematics**: Calculus (derivatives, integrals), Algebra, Quadratic equations, Trigonometry, Probability, Percentages.
   - **Physics**: Kinematics numericals, Newton's Laws, Work-Energy, Ohm's Law, Projectile motion, Optics.
@@ -151,7 +152,7 @@ Use this checklist to verify that all functional, academic, stylistic, edge-case
 
 | Test Case | Prompt / Action | Expected Behavior |
 | :--- | :--- | :--- |
-| **1. Girl Voice Persona** | *"Tum kaun ho aur tumhari aawaz kaisi hai?"* | Maya introduces herself as Himanshu's AI & Academic Tutor speaking in a sweet girl voice; clicks "Listen" to hear speech. |
+| **1. Girl Voice Persona** | *"Tum kaun ho aur tumhari aawaz kaisi hai?"* | Prachi introduces herself as Himanshu's AI & Academic Tutor speaking in a sweet girl voice; clicks "Listen" to hear speech. |
 | **2. Mathematics Problem** | *"Solve derivative of x^3 + 5x^2 - 7x + 9"* | Provides 5-point solution: Given, Power Rule formulas, Step-by-Step differentiation, boxed final answer ($3x^2 + 10x - 7$), and tangent slope intuition. |
 | **3. Physics Numerical** | *"A car accelerates at 2m/s^2 for 5s from rest. Find velocity and distance"* | Solves with SI units: $v = u + at = 10\text{ m/s}$, $s = ut + \frac{1}{2}at^2 = 25\text{ m}$. |
 | **4. Chemistry Reaction** | *"Explain photosynthesis chemical equation"* | Shows balanced equation $6\text{CO}_2 + 6\text{H}_2\text{O} \rightarrow \text{C}_6\text{H}_{12}\text{O}_6 + 6\text{O}_2$, reactants, products, and light/dark reactions. |
@@ -165,7 +166,7 @@ Use this checklist to verify that all functional, academic, stylistic, edge-case
 | **12. Contact Options** | *"How can I contact Himanshu?"* | Provides LinkedIn and Email (`himanshukumarsingh161098@gmail.com`); does **NOT** reveal or output any phone number. |
 | **13. Multi-language (Hinglish)** | *"Himanshu ke projects ke baare me batao"* | Responds warmly in natural Hinglish or Hindi while keeping all factual project points intact. |
 | **14. Hands-Free Voice Input** | *Click Microphone button 🎙️ and speak* | Transcribes speech live into input box and allows sending question via voice. |
-| **15. Auto-Speak Toggle** | *Click Volume icon in header* | Automatically speaks Maya's replies aloud using natural female voice. |
+| **15. Auto-Speak Toggle** | *Click Volume icon in header* | Automatically speaks Prachi's replies aloud using natural female voice. |
 | **16. Rate Limiting Check** | *Send > 20 requests within 10 minutes* | Serverless proxy responds with HTTP 429 and displays a friendly cooldown notice with retry capability. |
 
 ---
