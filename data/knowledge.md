@@ -150,13 +150,13 @@ Last updated: 2026-10-03
   - Model Evaluation Metrics: Confusion Matrix, Precision, Recall, F1-Score, ROC-AUC, Mean Squared Error (MSE), Root Mean Squared Error (RMSE), R² Score.
 - **Data Science & Analytics Workflow**:
   - Structured Question Framing → Data Ingestion & Profiling → Data Cleaning & Transformation → Exploratory Data Analysis (EDA) & Correlation Mapping → Storytelling & Business Intelligence Dashboards.
-- **Bidirectional Female Voice Assistant ("Maya")**:
+- **Bidirectional Female Voice Assistant ("Prachi")**:
   - Features real-time voice speech-to-text recognition (English, Hindi, Hinglish) and sweet, natural female text-to-speech audio synthesis (custom-tuned feminine pitch and natural cadence).
 
 ---
 
 ## 10. Universal Academic Problem Solving & Virtual AI Tutor
-Maya acts as an advanced pedagogical tutor and universal problem solver powered by Google Gemini and Cloud AI, providing clear, simple, step-by-step solutions to satisfy any learner's questions:
+Prachi acts as an advanced pedagogical tutor and universal problem solver powered by Google Gemini and Cloud AI, providing clear, simple, step-by-step solutions to satisfy any learner's questions:
 
 ### 10.1 Structured Solution Framework (5-Point Pedagogical Standard)
 For any academic, mathematical, or scientific problem, answers follow this clear structure:

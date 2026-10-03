@@ -272,60 +272,62 @@
 
                 <!-- Input Box Container -->
                 <form class="gpt-input-box" id="gptInputForm">
-                    <div class="gpt-input-main">
-                        <!-- Quick Subject Selector Pills -->
-                        <div class="gpt-presets-bar">
-                            <div class="gpt-presets-scroll">
-                                <button type="button" class="gpt-preset-item" data-preset="Hi Prachi! ">
-                                    <i class="fa-solid fa-heart" style="color: #ec4899;"></i>
-                                    <span>Human Chat</span>
-                                </button>
-                                <button type="button" class="gpt-preset-item" data-preset="Solve Math Problem: ">
-                                    <i class="fa-solid fa-calculator text-cyan"></i>
-                                    <span>Mathematics</span>
-                                </button>
-                                <button type="button" class="gpt-preset-item" data-preset="Solve Physics Numerical: ">
-                                    <i class="fa-solid fa-bolt text-amber"></i>
-                                    <span>Physics</span>
-                                </button>
-                                <button type="button" class="gpt-preset-item" data-preset="Explain Chemistry: ">
-                                    <i class="fa-solid fa-flask-vial text-emerald"></i>
-                                    <span>Chemistry</span>
-                                </button>
-                                <button type="button" class="gpt-preset-item" data-preset="Explain Biology: ">
-                                    <i class="fa-solid fa-dna text-purple"></i>
-                                    <span>Biology</span>
-                                </button>
-                                <button type="button" class="gpt-preset-item" data-preset="General Knowledge / GS: ">
-                                    <i class="fa-solid fa-landmark text-blue"></i>
-                                    <span>GK / GS &amp; Polity</span>
-                                </button>
-                                <button type="button" class="gpt-preset-item" data-preset="Current Affairs: ">
-                                    <i class="fa-solid fa-newspaper text-rose"></i>
-                                    <span>Current Affairs</span>
-                                </button>
-                                <button type="button" class="gpt-preset-item" data-preset="Himanshu Portfolio: ">
-                                    <i class="fa-solid fa-user-tie text-pink"></i>
-                                    <span>Portfolio &amp; Resume Fit</span>
-                                </button>
-                            </div>
+                    <!-- Quick Subject Selector Pills -->
+                    <div class="gpt-presets-bar">
+                        <div class="gpt-presets-scroll">
+                            <button type="button" class="gpt-preset-item" data-preset="Hi Prachi! ">
+                                <i class="fa-solid fa-heart" style="color: #ec4899;"></i>
+                                <span>Human Chat</span>
+                            </button>
+                            <button type="button" class="gpt-preset-item" data-preset="Solve Math Problem: ">
+                                <i class="fa-solid fa-calculator text-cyan"></i>
+                                <span>Mathematics</span>
+                            </button>
+                            <button type="button" class="gpt-preset-item" data-preset="Solve Physics Numerical: ">
+                                <i class="fa-solid fa-bolt text-amber"></i>
+                                <span>Physics</span>
+                            </button>
+                            <button type="button" class="gpt-preset-item" data-preset="Explain Chemistry: ">
+                                <i class="fa-solid fa-flask-vial text-emerald"></i>
+                                <span>Chemistry</span>
+                            </button>
+                            <button type="button" class="gpt-preset-item" data-preset="Explain Biology: ">
+                                <i class="fa-solid fa-dna text-purple"></i>
+                                <span>Biology</span>
+                            </button>
+                            <button type="button" class="gpt-preset-item" data-preset="General Knowledge / GS: ">
+                                <i class="fa-solid fa-landmark text-blue"></i>
+                                <span>GK / GS &amp; Polity</span>
+                            </button>
+                            <button type="button" class="gpt-preset-item" data-preset="Current Affairs: ">
+                                <i class="fa-solid fa-newspaper text-rose"></i>
+                                <span>Current Affairs</span>
+                            </button>
+                            <button type="button" class="gpt-preset-item" data-preset="Himanshu Portfolio: ">
+                                <i class="fa-solid fa-user-tie text-pink"></i>
+                                <span>Portfolio &amp; Resume Fit</span>
+                            </button>
                         </div>
+                    </div>
 
+                    <div class="gpt-input-main">
                         <!-- Auto-Expanding Textarea -->
                         <textarea id="gptTextarea" class="gpt-textarea" rows="1"
                             placeholder="Message Prachi... Chat like a friend, share feelings, or ask Math &amp; Science"
                             maxlength="2000"></textarea>
 
-                        <!-- Hands-Free Voice Button -->
-                        <button type="button" class="gpt-capsule-btn gpt-mic-btn" id="gptMicBtn"
-                            title="Speak via Microphone (Hindi / English / Hinglish)" aria-label="Speech to Text">
-                            <i class="fa-solid fa-microphone" id="gptMicIcon"></i>
-                        </button>
+                        <div class="gpt-input-actions">
+                            <!-- Hands-Free Voice Button -->
+                            <button type="button" class="gpt-capsule-btn gpt-mic-btn" id="gptMicBtn"
+                                title="Speak via Microphone (Hindi / English / Hinglish)" aria-label="Speech to Text">
+                                <i class="fa-solid fa-microphone" id="gptMicIcon"></i>
+                            </button>
 
-                        <!-- Send Button -->
-                        <button type="submit" class="gpt-send-btn" id="gptSendBtn" aria-label="Send Message" disabled>
-                            <i class="fa-solid fa-arrow-up"></i>
-                        </button>
+                            <!-- Send Button -->
+                            <button type="submit" class="gpt-send-btn" id="gptSendBtn" aria-label="Send Message" disabled>
+                                <i class="fa-solid fa-arrow-up"></i>
+                            </button>
+                        </div>
                     </div>
                 </form>
 

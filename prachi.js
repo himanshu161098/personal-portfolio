@@ -89,8 +89,11 @@ function renderSafeMarkdown(markdown) {
   html = html.replace(/\$([^\$\n]+)\$/g, '<span class="gpt-math-inline">$1</span>');
 
   // 7. Markdown links
-  html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+)\)/g, (match, text, url) => {
-    return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="gpt-link">${text} <i class="fa-solid fa-arrow-up-right-from-square gpt-link-icon"></i></a>`;
+  html = html.replace(/\[([^\]]+)\]\(((?:https?:\/\/|mailto:|[a-zA-Z0-9_\-\.\/]+\.html(?:#[^\s)]*)?|#[a-zA-Z0-9_\-]+)[^\s)]*)\)/g, (match, text, url) => {
+    const isExternal = url.startsWith('http://') || url.startsWith('https://');
+    const targetAttr = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+    const icon = isExternal ? ' <i class="fa-solid fa-arrow-up-right-from-square gpt-link-icon"></i>' : '';
+    return `<a href="${url}"${targetAttr} class="gpt-link">${text}${icon}</a>`;
   });
 
   // 8. Lists & Paragraphs
@@ -656,15 +659,14 @@ class PrachiAIApp {
 
   updateModelUI() {
     const titles = {
-      'prachi-gemini': 'Prachi 4o • Pro',
-      'maya-gemini': 'Prachi 4o • Pro',
+      'prachi-gemini': 'Prachi Human AI',
       'claude-sonnet': 'Claude 3.7 Sonnet',
       'stem-tutor': 'STEM & Academic Solver',
       'portfolio-dossier': "Himanshu's Portfolio Dossier"
     };
 
     if (this.dom.currentModelName) {
-      this.dom.currentModelName.textContent = titles[currentModel] || 'Prachi 4o • Pro';
+      this.dom.currentModelName.textContent = titles[currentModel] || 'Prachi Human AI';
     }
 
     if (this.dom.modelItems) {
@@ -920,36 +922,61 @@ class PrachiAIApp {
     // First attempt Cloudflare Worker proxy if configured
     let successWithWorker = false;
 
-    if (WORKER_URL && !WORKER_URL.includes('your-subdomain')) {
+    if (WORKER_URL && !WORKER_URL.includes('your-subdomain') && !WORKER_URL.includes('example.com')) {
       try {
         abortController = new AbortController();
+        const payload = {
+          assistant: 'prachi',
+          model: currentModel,
+          messages: conv.messages.slice(-8)
+        };
         const response = await fetch(WORKER_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            message: userQuery,
-            model: currentModel,
-            history: conv.messages.slice(-8)
-          }),
+          body: JSON.stringify(payload),
           signal: abortController.signal
         });
 
         if (response.ok && response.body) {
           const reader = response.body.getReader();
           const decoder = new TextDecoder('utf-8');
-          let done = false;
+          let buffer = '';
 
-          while (!done) {
-            const { value, done: readerDone } = await reader.read();
-            done = readerDone;
-            if (value) {
-              const chunk = decoder.decode(value, { stream: true });
-              fullReply += chunk;
-              bubble.innerHTML = renderSafeMarkdown(fullReply) + '<span class="gpt-typing-cursor"></span>';
-              this.scrollToBottom();
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            buffer += decoder.decode(value, { stream: true });
+            const lines = buffer.split('\n');
+            buffer = lines.pop() || '';
+
+            for (const line of lines) {
+              const trimmed = line.trim();
+              if (!trimmed.startsWith('data: ')) continue;
+              const dataStr = trimmed.slice(6);
+              if (dataStr === '[DONE]') break;
+
+              try {
+                const data = JSON.parse(dataStr);
+                if (data.text) {
+                  fullReply += data.text;
+                  bubble.innerHTML = renderSafeMarkdown(fullReply) + '<span class="gpt-typing-cursor"></span>';
+                  this.scrollToBottom();
+                } else if (data.error) {
+                  throw new Error(data.error);
+                }
+              } catch (e) {
+                if (!dataStr.startsWith('{')) {
+                  fullReply += dataStr;
+                  bubble.innerHTML = renderSafeMarkdown(fullReply) + '<span class="gpt-typing-cursor"></span>';
+                  this.scrollToBottom();
+                }
+              }
             }
           }
-          successWithWorker = true;
+          if (fullReply.trim().length > 0) {
+            successWithWorker = true;
+          }
         }
       } catch (err) {
         console.warn('[Prachi AI Worker stream notice]', err);

@@ -83,9 +83,11 @@ function renderSafeMarkdown(markdown) {
   // Italic *text*
   html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
 
-  // Markdown links [text](url) - Safe schemes only
-  html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+)\)/g, (match, text, url) => {
-    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+  // Markdown links [text](url) - Safe schemes only (external + relative/internal)
+  html = html.replace(/\[([^\]]+)\]\(((?:https?:\/\/|mailto:|[a-zA-Z0-9_\-\.\/]+\.html(?:#[^\s)]*)?|#[a-zA-Z0-9_\-]+)[^\s)]*)\)/g, (match, text, url) => {
+    const isExternal = url.startsWith('http://') || url.startsWith('https://');
+    const targetAttr = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return `<a href="${url}"${targetAttr}>${text}</a>`;
   });
 
   // Unordered list items: lines starting with "- " or "* "
@@ -1084,6 +1086,7 @@ class AIChatbotWidget {
 
     try {
       const payload = {
+        assistant: 'quantix',
         messages: chatHistory.slice(-MAX_HISTORY_MESSAGES)
       };
 
