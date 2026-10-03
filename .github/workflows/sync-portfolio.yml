@@ -31,5 +31,5 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Sync Bot"
-          git add data/social_feed.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(auto-sync): update social and GitHub activity [skip ci]" && git push)
+          git add data/social_feed.json data/knowledge.md
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(auto-sync): update social, GitHub activity and knowledge [skip ci]" && git push)

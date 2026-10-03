@@ -1,0 +1,14 @@
+{
+  "name": "portfolio-chatbot-proxy",
+  "version": "1.0.0",
+  "description": "Serverless Cloudflare Worker proxy for Himanshu Kumar's AI Portfolio Assistant",
+  "type": "module",
+  "main": "worker.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^3.80.0"
+  }
+}

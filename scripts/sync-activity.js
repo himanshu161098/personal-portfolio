@@ -136,6 +136,28 @@ async function runSync() {
 
     fs.writeFileSync(FEED_PATH, JSON.stringify(currentFeed, null, 2), 'utf-8');
     console.log('[Auto-Sync] Successfully updated data/social_feed.json!');
+
+    // Keep Recent GitHub Activity section in data/knowledge.md fresh
+    const KNOWLEDGE_PATH = path.join(__dirname, '..', 'data', 'knowledge.md');
+    if (fs.existsSync(KNOWLEDGE_PATH) && currentFeed.github && currentFeed.github.featured_repos) {
+      try {
+        let kbContent = fs.readFileSync(KNOWLEDGE_PATH, 'utf-8');
+        const startTag = '<!-- GITHUB_ACTIVITY_START -->';
+        const endTag = '<!-- GITHUB_ACTIVITY_END -->';
+        if (kbContent.includes(startTag) && kbContent.includes(endTag)) {
+          const activityLines = currentFeed.github.featured_repos.map(r => {
+            const updatedDate = r.updated_at ? r.updated_at.split('T')[0] : 'Recently';
+            return `- **${r.name}**: ${r.description} (Updated: ${updatedDate})`;
+          }).join('\n');
+          const replacement = `${startTag}\n${activityLines}\n${endTag}`;
+          const updatedKb = kbContent.replace(new RegExp(`${startTag}[\\s\\S]*?${endTag}`), replacement);
+          fs.writeFileSync(KNOWLEDGE_PATH, updatedKb, 'utf-8');
+          console.log('[Auto-Sync] Successfully updated Recent GitHub Activity in data/knowledge.md!');
+        }
+      } catch (e) {
+        console.warn('[Auto-Sync Warning] Could not update knowledge.md activity:', e.message);
+      }
+    }
   } catch (err) {
     console.error('[Auto-Sync Error]', err.message);
   }

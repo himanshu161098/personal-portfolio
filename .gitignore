@@ -26,3 +26,7 @@ desktop.ini
 *.njsproj
 *.sln
 *.sw?
+
+test-folder/
+scripts/testsub/
+cloudflare-worker/
