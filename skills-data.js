@@ -2094,6 +2094,7 @@
                 const isTarget = pane.getAttribute('data-tab-content') === tabName;
                 pane.classList.toggle('active', isTarget);
             });
+            if (modal) modal.scrollTop = 0;
         }
 
         function openSkillModal(skillKey) {
@@ -2224,6 +2225,7 @@
             modal.classList.add('open');
             modal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
+            modal.scrollTop = 0;
         }
 
         function closeSkillModal() {
