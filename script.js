@@ -1403,11 +1403,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const scene = new THREE.Scene();
-            // Ultra-deep dark theme cosmic abyss fog
-            scene.fog = new THREE.FogExp2(0x030611, 0.0012);
+            // Balanced fog: deep dark void that keeps 3D objects crisp and vivid
+            scene.fog = new THREE.FogExp2(0x030611, 0.0007);
 
-            const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 2000);
-            camera.position.z = 420;
+            const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 2400);
+            camera.position.z = 440;
 
             const renderer = new THREE.WebGLRenderer({
                 canvas: bgCanvas,
@@ -1417,94 +1417,174 @@ document.addEventListener('DOMContentLoaded', () => {
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
-            // 1. Multi-Spectral 3D Cosmic Nebula & Starfield (800 depth particles)
-            const particleCount = 800;
-            const geometry = new THREE.BufferGeometry();
-            const positions = new Float32Array(particleCount * 3);
-            const colors = new Float32Array(particleCount * 3);
+            // ================================================================
+            // 1. DYNAMIC MULTI-SPECTRAL 3D STARFIELD MATRIX (1,000 Depth Stars)
+            // ================================================================
+            const particleCount = 1000;
+            const starGeom = new THREE.BufferGeometry();
+            const starPos = new Float32Array(particleCount * 3);
+            const starColors = new Float32Array(particleCount * 3);
 
             const palette = [
-                new THREE.Color(0xffffff), // Pristine diamond starlight
-                new THREE.Color(0x38bdf8), // Celestial Sky Cyan
-                new THREE.Color(0x00f0ff), // Electric Neon Cyan
-                new THREE.Color(0x818cf8), // Cosmic Indigo
-                new THREE.Color(0xc084fc), // Soft Starlight Violet
-                new THREE.Color(0xfde047)  // Warm Gold Starlight
+                new THREE.Color(0xffffff), // Radiant White
+                new THREE.Color(0x00f0ff), // Neon Electric Cyan
+                new THREE.Color(0x38bdf8), // Sky Blue
+                new THREE.Color(0xa855f7), // Laser Violet
+                new THREE.Color(0xec4899), // Hot Fuchsia
+                new THREE.Color(0xfde047), // Solar Gold
+                new THREE.Color(0x10b981)  // Emerald
             ];
 
             for (let i = 0; i < particleCount; i++) {
-                positions[i * 3] = (Math.random() - 0.5) * 1600;
-                positions[i * 3 + 1] = (Math.random() - 0.5) * 1400;
-                positions[i * 3 + 2] = (Math.random() - 0.5) * 1400;
+                starPos[i * 3]     = (Math.random() - 0.5) * 1800;
+                starPos[i * 3 + 1] = (Math.random() - 0.5) * 1500;
+                starPos[i * 3 + 2] = (Math.random() - 0.5) * 1500;
 
                 const c = palette[Math.floor(Math.random() * palette.length)];
-                colors[i * 3] = c.r;
-                colors[i * 3 + 1] = c.g;
-                colors[i * 3 + 2] = c.b;
+                starColors[i * 3]     = c.r;
+                starColors[i * 3 + 1] = c.g;
+                starColors[i * 3 + 2] = c.b;
             }
 
-            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            starGeom.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+            starGeom.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
 
-            const material = new THREE.PointsMaterial({
-                size: 2.8,
+            const starMat = new THREE.PointsMaterial({
+                size: 3.6,
                 vertexColors: true,
                 transparent: true,
-                opacity: 0.85,
+                opacity: 0.9,
                 blending: THREE.AdditiveBlending
             });
 
-            const pointCloud = new THREE.Points(geometry, material);
-            scene.add(pointCloud);
+            const starField = new THREE.Points(starGeom, starMat);
+            scene.add(starField);
 
-            // 2. Floating 3D Wireframe Cyber Polyhedra (Realistic Deep Cosmic Crystals)
+            // ================================================================
+            // 2. DYNAMIC 3D NEURAL PLEXUS CONSTELLATION NETWORK
+            // ================================================================
+            const nodeCount = 55;
+            const nodes = [];
+            for (let i = 0; i < nodeCount; i++) {
+                nodes.push({
+                    x: (Math.random() - 0.5) * 1200,
+                    y: (Math.random() - 0.5) * 900,
+                    z: (Math.random() - 0.5) * 700 - 100,
+                    vx: (Math.random() - 0.5) * 0.6,
+                    vy: (Math.random() - 0.5) * 0.6,
+                    vz: (Math.random() - 0.5) * 0.4
+                });
+            }
+
+            // Connecting lines geometry
+            const maxConnections = 200;
+            const linePositions = new Float32Array(maxConnections * 6);
+            const lineColors = new Float32Array(maxConnections * 6);
+            const lineGeom = new THREE.BufferGeometry();
+            lineGeom.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+            lineGeom.setAttribute('color', new THREE.BufferAttribute(lineColors, 3));
+
+            const lineMat = new THREE.LineBasicMaterial({
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.65,
+                blending: THREE.AdditiveBlending
+            });
+            const lineMesh = new THREE.LineSegments(lineGeom, lineMat);
+            scene.add(lineMesh);
+
+            // ================================================================
+            // 3. VIVID 3D FLOATING CYBER POLYHEDRAL CRYSTALS WITH ORBITAL RINGS
+            // ================================================================
             const polyGroup = new THREE.Group();
             scene.add(polyGroup);
 
-            const polyConfigs = [
-                { geom: new THREE.IcosahedronGeometry(38, 0), pos: [-380, 160, -350], col: 0x00f0ff, rotSpd: [0.004, 0.006] },
-                { geom: new THREE.OctahedronGeometry(32, 0),   pos: [420, 180, -420],  col: 0xa855f7, rotSpd: [-0.005, 0.004] },
-                { geom: new THREE.TetrahedronGeometry(26, 0),  pos: [-310, -180, -280],col: 0x38bdf8, rotSpd: [0.006, -0.005] },
-                { geom: new THREE.IcosahedronGeometry(45, 1), pos: [360, -220, -500], col: 0x6366f1, rotSpd: [-0.003, 0.005] },
-                { geom: new THREE.OctahedronGeometry(28, 0),   pos: [120, 240, -480],  col: 0x10b981, rotSpd: [0.005, 0.003] },
-                { geom: new THREE.IcosahedronGeometry(34, 0), pos: [-160, -240, -380],col: 0xec4899, rotSpd: [0.004, -0.004] }
+            const crystalConfigs = [
+                { geom: new THREE.IcosahedronGeometry(52, 0), pos: [-460, 160, -320], col: 0x00f0ff, ringR: 70, rotSpd: [0.008, 0.012] },
+                { geom: new THREE.OctahedronGeometry(45, 0),   pos: [490, 190, -380],  col: 0xec4899, ringR: 62, rotSpd: [-0.009, 0.008] },
+                { geom: new THREE.DodecahedronGeometry(38, 0), pos: [-410, -210, -280],col: 0x38bdf8, ringR: 54, rotSpd: [0.011, -0.009] },
+                { geom: new THREE.IcosahedronGeometry(48, 1), pos: [430, -230, -450], col: 0x10b981, ringR: 66, rotSpd: [-0.007, 0.010] },
+                { geom: new THREE.OctahedronGeometry(36, 0),   pos: [100, 290, -420],  col: 0xa855f7, ringR: 50, rotSpd: [0.009, 0.006] },
+                { geom: new THREE.IcosahedronGeometry(42, 0), pos: [-140, -270, -360],col: 0xfbbf24, ringR: 58, rotSpd: [0.008, -0.007] }
             ];
 
-            const polyMeshes = [];
-            polyConfigs.forEach(p => {
-                const mat = new THREE.MeshBasicMaterial({
-                    color: p.col,
+            const crystalMeshes = [];
+            crystalConfigs.forEach((c) => {
+                const crystalItem = new THREE.Group();
+                crystalItem.position.set(c.pos[0], c.pos[1], c.pos[2]);
+
+                // Wireframe Core Crystal
+                const cMat = new THREE.MeshBasicMaterial({
+                    color: c.col,
                     wireframe: true,
                     transparent: true,
-                    opacity: 0.22,
+                    opacity: 0.55,
                     blending: THREE.AdditiveBlending
                 });
-                const mesh = new THREE.Mesh(p.geom, mat);
-                mesh.position.set(p.pos[0], p.pos[1], p.pos[2]);
-                polyGroup.add(mesh);
-                polyMeshes.push({ mesh, rotSpd: p.rotSpd, initY: p.pos[1] });
+                const cMesh = new THREE.Mesh(c.geom, cMat);
+                crystalItem.add(cMesh);
+
+                // Rotating Glowing Orbital Ring around crystal
+                const rGeom = new THREE.TorusGeometry(c.ringR, 1.2, 12, 48);
+                const rMat = new THREE.MeshBasicMaterial({
+                    color: c.col,
+                    transparent: true,
+                    opacity: 0.6,
+                    blending: THREE.AdditiveBlending
+                });
+                const rMesh = new THREE.Mesh(rGeom, rMat);
+                rMesh.rotation.x = Math.PI * 0.35;
+                crystalItem.add(rMesh);
+
+                polyGroup.add(crystalItem);
+                crystalMeshes.push({
+                    group: crystalItem,
+                    mesh: cMesh,
+                    ring: rMesh,
+                    rotSpd: c.rotSpd,
+                    initY: c.pos[1]
+                });
             });
 
-            // 3. Deep 3D Perspective Cyber Floor Grid
-            const gridHelper = new THREE.GridHelper(2400, 48, 0x00f0ff, 0x091b36);
-            gridHelper.position.y = -260;
-            gridHelper.material.opacity = 0.28;
+            // Giant Cosmic Holographic Rings in Deep Space Void
+            const giantRing1 = new THREE.Mesh(
+                new THREE.TorusGeometry(260, 2.5, 16, 80),
+                new THREE.MeshBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.25, blending: THREE.AdditiveBlending })
+            );
+            giantRing1.position.set(0, 0, -650);
+            giantRing1.rotation.x = Math.PI * 0.38;
+            scene.add(giantRing1);
+
+            const giantRing2 = new THREE.Mesh(
+                new THREE.TorusGeometry(320, 2.0, 16, 80),
+                new THREE.MeshBasicMaterial({ color: 0xa855f7, transparent: true, opacity: 0.20, blending: THREE.AdditiveBlending })
+            );
+            giantRing2.position.set(0, 0, -850);
+            giantRing2.rotation.y = Math.PI * 0.42;
+            scene.add(giantRing2);
+
+            // ================================================================
+            // 4. INFINITE MOVING 3D CYBER GRID FLOOR (Cruise Animation)
+            // ================================================================
+            const gridHelper = new THREE.GridHelper(2600, 52, 0x00f0ff, 0x0e284c);
+            gridHelper.position.y = -240;
+            gridHelper.material.opacity = 0.52;
             gridHelper.material.transparent = true;
             scene.add(gridHelper);
 
             // Parallax mouse & scroll variables
             let targetX = 0;
             let targetY = 0;
-            let targetZ = 420;
+            let targetZ = 440;
 
             window.addEventListener('mousemove', (e) => {
-                targetX = ((e.clientX / window.innerWidth) - 0.5) * 110;
-                targetY = -((e.clientY / window.innerHeight) - 0.5) * 90;
+                targetX = ((e.clientX / window.innerWidth) - 0.5) * 140;
+                targetY = -((e.clientY / window.innerHeight) - 0.5) * 110;
             }, { passive: true });
 
             window.addEventListener('scroll', () => {
                 const scrollProgress = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight || 1);
-                targetZ = 420 - scrollProgress * 360;
+                targetZ = 440 - scrollProgress * 380;
             }, { passive: true });
 
             window.addEventListener('resize', () => {
@@ -1515,27 +1595,91 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let bgClock = new THREE.Clock();
 
+            // Main 3D Background Animation Loop
             function animateBg() {
                 requestAnimationFrame(animateBg);
                 const bgTime = bgClock.getElapsedTime();
 
-                // Slow rotational sweep of cosmic starfield
-                pointCloud.rotation.y += 0.0004;
-                pointCloud.rotation.x = Math.sin(bgTime * 0.15) * 0.04;
-                gridHelper.rotation.y += 0.0003;
+                // 1. Starfield Slow Ambient Orbit & Twinkle
+                starField.rotation.y += 0.0005;
+                starField.rotation.x = Math.sin(bgTime * 0.12) * 0.03;
 
-                // Animate floating polyhedral cosmic crystals
-                polyMeshes.forEach((item, idx) => {
+                // 2. Infinite Forward Cyber Cruise on Grid Floor
+                gridHelper.position.z = (bgTime * 55) % (2600 / 52);
+
+                // 3. Animate 3D Floating Crystals & Rings
+                crystalMeshes.forEach((item, idx) => {
                     item.mesh.rotation.x += item.rotSpd[0];
                     item.mesh.rotation.y += item.rotSpd[1];
-                    item.mesh.position.y = item.initY + Math.sin(bgTime * 0.8 + idx) * 14;
+                    item.ring.rotation.z += item.rotSpd[1] * 1.5;
+                    item.group.position.y = item.initY + Math.sin(bgTime * 1.1 + idx * 1.2) * 22;
                 });
 
-                // Smooth 3D camera parallax with slight dynamic roll
-                camera.position.x += (targetX - camera.position.x) * 0.04;
-                camera.position.y += (targetY - camera.position.y) * 0.04;
-                camera.position.z += (targetZ - camera.position.z) * 0.04;
-                camera.rotation.z += (-targetX * 0.00018 - camera.rotation.z) * 0.04;
+                // Giant Cosmic Rings Rotation
+                giantRing1.rotation.z += 0.002;
+                giantRing2.rotation.z -= 0.0015;
+
+                // 4. Update 3D Neural Constellation Network
+                let connIdx = 0;
+                const posArr = lineMesh.geometry.attributes.position.array;
+                const colArr = lineMesh.geometry.attributes.color.array;
+
+                for (let i = 0; i < nodeCount; i++) {
+                    const n = nodes[i];
+                    n.x += n.vx;
+                    n.y += n.vy;
+                    n.z += n.vz;
+
+                    // Bounds bounce
+                    if (n.x < -600 || n.x > 600) n.vx *= -1;
+                    if (n.y < -450 || n.y > 450) n.vy *= -1;
+                    if (n.z < -650 || n.z > 200) n.vz *= -1;
+
+                    // Connect nearby nodes
+                    for (let j = i + 1; j < nodeCount; j++) {
+                        if (connIdx >= maxConnections) break;
+                        const n2 = nodes[j];
+                        const dx = n.x - n2.x;
+                        const dy = n.y - n2.y;
+                        const dz = n.z - n2.z;
+                        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+                        if (dist < 185) {
+                            const pOffset = connIdx * 6;
+                            posArr[pOffset]     = n.x;
+                            posArr[pOffset + 1] = n.y;
+                            posArr[pOffset + 2] = n.z;
+                            posArr[pOffset + 3] = n2.x;
+                            posArr[pOffset + 4] = n2.y;
+                            posArr[pOffset + 5] = n2.z;
+
+                            const alpha = 1.0 - (dist / 185);
+                            colArr[pOffset]     = 0.0;
+                            colArr[pOffset + 1] = 0.94 * alpha;
+                            colArr[pOffset + 2] = 1.0 * alpha;
+                            colArr[pOffset + 3] = 0.65 * alpha;
+                            colArr[pOffset + 4] = 0.33 * alpha;
+                            colArr[pOffset + 5] = 0.97 * alpha;
+
+                            connIdx++;
+                        }
+                    }
+                }
+
+                // Clear unused line vertices
+                for (let k = connIdx * 6; k < maxConnections * 6; k++) {
+                    posArr[k] = 0;
+                    colArr[k] = 0;
+                }
+                lineMesh.geometry.attributes.position.needsUpdate = true;
+                lineMesh.geometry.attributes.color.needsUpdate = true;
+
+                // 5. Dynamic 3D Camera Parallax & Subtle Spatial Roll
+                camera.position.x += (targetX - camera.position.x) * 0.05;
+                camera.position.y += (targetY - camera.position.y) * 0.05;
+                camera.position.z += (targetZ - camera.position.z) * 0.05;
+                camera.rotation.z += (-targetX * 0.00025 - camera.rotation.z) * 0.05;
+                camera.rotation.x += (-targetY * 0.00015 - camera.rotation.x) * 0.05;
 
                 renderer.render(scene, camera);
             }

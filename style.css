@@ -683,11 +683,7 @@ button, input, textarea {
     justify-content: center;
     position: relative;
     box-sizing: border-box;
-    background: 
-        radial-gradient(ellipse 75% 55% at 18% 38%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 65% 50% at 82% 48%, rgba(139, 92, 246, 0.09) 0%, transparent 65%),
-        radial-gradient(ellipse 55% 40% at 50% 15%, rgba(56, 189, 248, 0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 90% 70% at 50% 95%, rgba(16, 25, 45, 0.95) 0%, #030611 100%);
+    background: transparent;
 }
 
 .hero-container {
@@ -2906,7 +2902,7 @@ button, input, textarea {
     height: 100vh;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.85;
+    opacity: 1;
 }
 
 /* 3D Cyber Cursor Follower */
