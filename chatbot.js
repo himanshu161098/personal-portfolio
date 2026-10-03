@@ -375,12 +375,12 @@ class AIChatbotWidget {
     triggerWrap.id = 'cbTriggerWrap';
     triggerWrap.innerHTML = `
       <div class="cb-teaser-tooltip" id="cbTeaserTooltip" role="tooltip" aria-hidden="true">
-        <img src="assets/profile-passport.jpg" alt="Himanshu Portfolio AI" class="cb-teaser-logo">
+        <img src="assets/prachi-logo.png" alt="AI Assistant" class="cb-teaser-logo">
         <span>👋 Ask me anything about <strong>Himanshu's Portfolio &amp; Projects</strong>!</span>
         <button class="cb-teaser-close" id="cbTeaserClose" aria-label="Dismiss notification">&times;</button>
       </div>
       <button class="cb-floating-btn" id="cbFloatingBtn" aria-label="Open Himanshu Portfolio AI Assistant" aria-haspopup="dialog" aria-expanded="false">
-        <img src="assets/profile-passport.jpg" alt="Himanshu Kumar" class="cb-floating-logo-img" id="cbFloatingImg">
+        <img src="assets/prachi-logo.png" alt="Prachi AI Logo" class="cb-floating-logo-img" id="cbFloatingImg">
         <i class="fa-solid fa-chevron-down cb-floating-close-icon" id="cbFloatingCloseIcon" style="display:none;font-size:1.3rem;"></i>
         <span class="cb-online-badge" aria-hidden="true"></span>
       </button>
@@ -398,7 +398,7 @@ class AIChatbotWidget {
       <header class="cb-header">
         <div class="cb-header-identity">
           <div class="cb-avatar" aria-hidden="true">
-            <img src="assets/profile-passport.jpg" alt="Himanshu Kumar" class="cb-header-avatar-img">
+            <img src="assets/prachi-logo.png" alt="AI Assistant Logo" class="cb-header-avatar-img">
             <span class="cb-avatar-dot"></span>
           </div>
           <div class="cb-header-info">
