@@ -120,15 +120,7 @@
                 </span>
             </a>
 
-            <!-- Mobile Hamburger Toggle Button -->
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false"
-                aria-controls="navMenu">
-                <span class="hamburger-bar"></span>
-                <span class="hamburger-bar"></span>
-                <span class="hamburger-bar"></span>
-            </button>
-
-            <!-- Navigation Links -->
+            <!-- Navigation Links (Center) -->
             <div class="nav-menu" id="navMenu">
                 <ul class="nav-list">
                     <li class="nav-item">
@@ -172,31 +164,38 @@
                             <span class="nav-index">08.</span> Contact
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="prachi.html" class="nav-link chatgpt-nav-item" title="Open Prachi AI">
-                            <span class="nav-index">09.</span> 
-                            <img src="assets/prachi-logo.png" alt="Prachi AI" class="nav-prachi-logo">
-                            Prachi AI
-                            <span class="nav-badge-pill">Live</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" class="nav-link nav-resume-link" title="View or Download Resume">
-                            <span class="nav-index">10.</span> Resume
-                            <i class="fa-solid fa-file-arrow-down nav-resume-icon" aria-hidden="true"></i>
-                        </a>
-                    </li>
                 </ul>
 
-                <!-- Action CTA -->
-                <div class="nav-cta-wrapper">
-                    <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" download="Himanshu_Kumar_Resume.pdf" class="btn btn-outline btn-sm nav-resume-btn" title="Download Resume PDF">
-                        <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Resume
+                <!-- Mobile Drawer Action CTAs -->
+                <div class="nav-mobile-cta">
+                    <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" download="Himanshu_Kumar_Resume.pdf" class="btn btn-outline btn-sm nav-mobile-resume-btn" title="Download Official Resume PDF">
+                        <i class="fa-solid fa-file-arrow-down"></i> Download Resume
                     </a>
-                    <a href="prachi.html" class="btn btn-primary btn-sm btn-chatgpt-cta">
-                        <img src="assets/prachi-logo.png" alt="Prachi Logo" class="btn-prachi-logo"> Prachi AI
+                    <a href="prachi.html" class="btn btn-primary btn-sm nav-mobile-prachi-btn" title="Launch Prachi AI Companion">
+                        <img src="assets/prachi-logo.png" alt="Prachi Logo" class="btn-prachi-logo"> Prachi AI <span class="nav-badge-pill">Live</span>
                     </a>
                 </div>
+            </div>
+
+            <!-- Right Actions: Resume Download & Prachi AI CTA + Mobile Toggle -->
+            <div class="nav-actions">
+                <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" download="Himanshu_Kumar_Resume.pdf" class="btn btn-outline btn-sm nav-resume-btn" title="Download Official Resume PDF">
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    <span>Resume</span>
+                </a>
+                <a href="prachi.html" class="btn btn-primary btn-sm btn-prachi-nav" title="Launch Prachi AI Companion">
+                    <img src="assets/prachi-logo.png" alt="Prachi AI Logo" class="btn-prachi-logo">
+                    <span>Prachi AI</span>
+                    <span class="nav-badge-pill">Live</span>
+                </a>
+
+                <!-- Mobile Hamburger Toggle Button -->
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false"
+                    aria-controls="navMenu">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
             </div>
         </nav>
     </header>

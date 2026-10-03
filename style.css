@@ -322,13 +322,15 @@ button, input, textarea {
 }
 
 .nav-container {
-    max-width: var(--container-max-width);
+    width: 100%;
+    max-width: 1650px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 clamp(1.25rem, 3.5vw, 3rem);
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1.5rem;
 }
 
 /* Brand Logo */
@@ -473,33 +475,37 @@ button, input, textarea {
     font-size: 0.95rem;
 }
 
-/* Navigation List */
+/* Navigation Menu & List (Center) */
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-grow: 1;
 }
 
 .nav-list {
     display: flex;
     align-items: center;
-    gap: 1.75rem;
+    gap: clamp(0.55rem, 1.3vw, 1.5rem);
 }
 
 .nav-link {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     font-weight: 500;
     color: var(--text-secondary);
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    padding: 0.5rem 0.25rem;
+    padding: 0.5rem 0.2rem;
     position: relative;
+    white-space: nowrap;
+    transition: color var(--transition-fast);
 }
 
 .nav-index {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: var(--accent-cyan);
 }
 
@@ -525,8 +531,90 @@ button, input, textarea {
     width: 100%;
 }
 
-.nav-cta-wrapper {
-    display: none; /* Visible in mobile drawer */
+/* Right Actions Container: Resume, Prachi AI & Mobile Toggle */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.btn-prachi-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.44rem 1rem;
+    font-size: 0.84rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, #00f2fe 0%, #6366f1 45%, #ec4899 100%);
+    background-size: 200% 200%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff !important;
+    box-shadow: 0 0 16px rgba(0, 242, 254, 0.4), 0 0 8px rgba(236, 72, 153, 0.35);
+    transition: all var(--transition-fast);
+    animation: prachiNavGlow 4s ease infinite alternate;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+@keyframes prachiNavGlow {
+    0% {
+        background-position: 0% 50%;
+        box-shadow: 0 0 14px rgba(0, 242, 254, 0.35);
+    }
+    100% {
+        background-position: 100% 50%;
+        box-shadow: 0 0 22px rgba(236, 72, 153, 0.55);
+    }
+}
+
+.btn-prachi-nav:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 24px rgba(0, 242, 254, 0.65), 0 0 16px rgba(236, 72, 153, 0.65);
+    color: #ffffff !important;
+}
+
+.btn-prachi-nav .nav-badge-pill {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #ffffff;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.1rem 0.42rem;
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+}
+
+.nav-resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    padding: 0.44rem 0.95rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    background: rgba(16, 25, 45, 0.65);
+    color: var(--text-primary);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.nav-resume-btn:hover {
+    border-color: var(--accent-cyan);
+    background: rgba(0, 242, 254, 0.12);
+    box-shadow: 0 0 16px rgba(0, 242, 254, 0.35);
+    color: var(--accent-cyan);
+    transform: translateY(-1px);
+}
+
+.nav-mobile-cta {
+    display: none; /* Visible only inside mobile drawer */
 }
 
 /* Mobile Hamburger Toggle */
@@ -2161,10 +2249,14 @@ button, input, textarea {
     }
 }
 
-/* Tablets (<= 768px) */
-@media (max-width: 768px) {
+/* Tablets & Mobile Navigation (<= 992px) */
+@media (max-width: 992px) {
     :root {
         --nav-height: 68px;
+    }
+
+    .nav-container {
+        padding: 0 1.25rem;
     }
 
     .section {
@@ -2174,6 +2266,7 @@ button, input, textarea {
     /* Mobile Navigation Drawer */
     .nav-toggle {
         display: flex;
+        flex-shrink: 0;
     }
 
     .nav-menu {
@@ -2189,11 +2282,14 @@ button, input, textarea {
         border-left: 1px solid var(--border-medium);
         flex-direction: column;
         align-items: flex-start;
+        justify-content: flex-start;
         padding: 2.5rem 1.75rem;
         gap: 2rem;
         transition: right var(--transition-normal);
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
         overflow-y: auto;
+        flex-grow: 0;
+        z-index: 1000;
     }
 
     .nav-menu.open {
@@ -2204,7 +2300,7 @@ button, input, textarea {
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
-        gap: 1.5rem;
+        gap: 1.25rem;
     }
 
     .nav-link {
@@ -2212,16 +2308,25 @@ button, input, textarea {
         width: 100%;
     }
 
-    .nav-cta-wrapper {
-        display: block;
+    .nav-mobile-cta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
         width: 100%;
-        margin-top: 1rem;
+        margin-top: 0.5rem;
         padding-top: 1.5rem;
         border-top: 1px solid var(--border-subtle);
     }
 
-    .nav-cta-wrapper .btn {
+    .nav-mobile-btn {
         width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Topbar on mobile: Hide resume button in topbar (available in drawer), keep Prachi AI & toggle */
+    .nav-actions .nav-resume-btn {
+        display: none;
     }
 
     /* Hero Responsive */
@@ -2261,6 +2366,49 @@ button, input, textarea {
 
 /* Mobile Devices (<= 480px) */
 @media (max-width: 480px) {
+    .nav-container {
+        padding: 0 0.85rem !important;
+        gap: 0.5rem;
+    }
+
+    .nav-brand {
+        gap: 0.45rem;
+    }
+
+    .brand-logo-badge {
+        width: 35px;
+        height: 35px;
+    }
+
+    .brand-text-hk {
+        font-size: 1.25rem;
+    }
+
+    .nav-actions {
+        gap: 0.45rem;
+        flex-shrink: 0;
+    }
+
+    .btn-prachi-nav {
+        padding: 0.32rem 0.62rem !important;
+        font-size: 0.74rem !important;
+        gap: 0.35rem !important;
+    }
+
+    .btn-prachi-nav .nav-badge-pill {
+        display: none !important;
+    }
+
+    .btn-prachi-nav .btn-prachi-logo {
+        width: 17px !important;
+        height: 17px !important;
+    }
+
+    .nav-toggle {
+        width: 28px;
+        height: 20px;
+    }
+
     .container {
         padding: 0 1.25rem;
     }
