@@ -121,14 +121,21 @@ body.gpt-body::after {
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(16, 185, 129, 0.25));
-  border: 1px solid rgba(0, 242, 254, 0.4);
+  background: #070c18;
+  border: 1.5px solid rgba(0, 242, 254, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--gpt-accent-cyan);
-  font-size: 1rem;
-  box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.35);
+  padding: 2px;
+}
+
+.gpt-brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 7px;
 }
 
 .gpt-brand-text {
@@ -670,27 +677,26 @@ body.gpt-body::after {
 }
 
 .gpt-welcome-logo {
-  width: 68px;
-  height: 68px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, rgba(0, 242, 254, 0.25), rgba(16, 185, 129, 0.3));
-  border: 1px solid rgba(0, 242, 254, 0.5);
+  width: 86px;
+  height: 86px;
+  border-radius: 22px;
+  background: #060913;
+  border: 2px solid rgba(0, 242, 254, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  box-shadow: 0 0 35px rgba(0, 242, 254, 0.25);
+  box-shadow: 0 0 35px rgba(0, 242, 254, 0.35), 0 0 25px rgba(255, 0, 127, 0.25);
   animation: logoPulse 4s infinite alternate;
+  overflow: hidden;
+  padding: 3px;
 }
 
-@keyframes logoPulse {
-  0% { transform: scale(1); box-shadow: 0 0 25px rgba(0, 242, 254, 0.2); }
-  100% { transform: scale(1.05); box-shadow: 0 0 45px rgba(16, 185, 129, 0.35); }
-}
-
-.gpt-logo-inner {
-  font-size: 2rem;
-  color: var(--gpt-accent-cyan);
+.gpt-welcome-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
 }
 
 .gpt-welcome-title {
@@ -811,9 +817,18 @@ body.gpt-body::after {
 }
 
 .gpt-msg-row.assistant .gpt-msg-avatar {
-  background: linear-gradient(135deg, rgba(0, 242, 254, 0.25), rgba(16, 185, 129, 0.3));
-  border: 1px solid rgba(0, 242, 254, 0.4);
-  color: var(--gpt-accent-cyan);
+  background: #080d1a;
+  border: 1.5px solid rgba(0, 242, 254, 0.45);
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.25);
+  padding: 2px;
+  overflow: hidden;
+}
+
+.gpt-msg-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .gpt-msg-row.user .gpt-msg-avatar {

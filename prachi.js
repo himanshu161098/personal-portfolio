@@ -822,7 +822,7 @@ class PrachiAIApp {
     } else {
       row.innerHTML = `
         <div class="gpt-msg-avatar" title="Prachi • AI Assistant">
-          <i class="fa-solid fa-sparkles"></i>
+          <img src="assets/prachi-logo.png" alt="Prachi AI" class="gpt-msg-avatar-img">
         </div>
         <div class="gpt-msg-content-wrap">
           <div class="gpt-msg-bubble gpt-assistant-bubble">

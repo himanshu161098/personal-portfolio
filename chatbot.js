@@ -704,12 +704,12 @@ class AIChatbotWidget {
     triggerWrap.id = 'cbTriggerWrap';
     triggerWrap.innerHTML = `
       <div class="cb-teaser-tooltip" id="cbTeaserTooltip" role="tooltip" aria-hidden="true">
-        <i class="fa-solid fa-sparkles cb-teaser-spark" aria-hidden="true"></i>
-        <span>Ask Himanshu's AI or speak via Voice! 🎙️</span>
+        <img src="assets/prachi-logo.png" alt="Prachi AI" class="cb-teaser-logo">
+        <span>👋 Chat with <strong>Prachi</strong> (Voice &amp; STEM AI)!</span>
         <button class="cb-teaser-close" id="cbTeaserClose" aria-label="Dismiss notification">&times;</button>
       </div>
-      <button class="cb-floating-btn" id="cbFloatingBtn" aria-label="Open AI Portfolio Assistant" aria-haspopup="dialog" aria-expanded="false">
-        <i class="fa-solid fa-robot" id="cbBtnIcon" aria-hidden="true"></i>
+      <button class="cb-floating-btn" id="cbFloatingBtn" aria-label="Open Prachi AI Assistant" aria-haspopup="dialog" aria-expanded="false">
+        <img src="assets/prachi-logo.png" alt="Prachi AI Logo" class="cb-floating-logo-img" id="cbBtnIcon">
         <span class="cb-online-badge" aria-hidden="true"></span>
       </button>
     `;
@@ -726,7 +726,7 @@ class AIChatbotWidget {
       <header class="cb-header">
         <div class="cb-header-identity">
           <div class="cb-avatar" aria-hidden="true">
-            <i class="fa-solid fa-brain"></i>
+            <img src="assets/prachi-logo.png" alt="Prachi AI Logo" class="cb-header-avatar-img">
             <span class="cb-avatar-dot"></span>
           </div>
           <div class="cb-header-info">
