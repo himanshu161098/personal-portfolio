@@ -478,6 +478,23 @@ class PrachiAIApp {
     this.bindEvents();
     this.renderSidebarHistory();
     this.renderCurrentConversation();
+    this.checkUrlPrompt();
+  }
+
+  checkUrlPrompt() {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const prompt = urlParams.get('prompt');
+      if (prompt && this.dom.textarea) {
+        this.dom.textarea.value = prompt;
+        this.handleTextareaInput();
+        setTimeout(() => {
+          this.handleUserSubmit();
+        }, 500);
+      }
+    } catch (e) {
+      console.warn('[Prachi AI] Error reading url prompt', e);
+    }
   }
 
   cacheDom() {
