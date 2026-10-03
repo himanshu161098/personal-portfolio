@@ -432,20 +432,20 @@ document.addEventListener('DOMContentLoaded', () => {
             scene.add(coreGroup);
 
             // ====================================================================
-            // A. BACKGROUND ROTATING LASER BEAM SYSTEM (High-Visibility & Colorful)
+            // A. BACKGROUND ROTATING LASER BEAM SYSTEM (Softened Light Colors & Ambient Glow)
             // ====================================================================
             const laserSystemGroup = new THREE.Group();
             laserSystemGroup.position.z = -1.2;
             scene.add(laserSystemGroup);
 
-            // 1. Array of Collimated High-Intensity Rotating Laser Beams
+            // 1. Array of Soft Luminous Light-Colored Rotating Laser Beams
             const laserColors = [
-                0x00f2fe, // Neon Cyan
-                0xff007f, // Electric Magenta
-                0x10b981, // Emerald Green
-                0xa855f7, // Laser Purple
-                0xfbbf24, // Radiant Amber Gold
-                0x38bdf8  // Sky Blue
+                0x7dd3fc, // Soft Light Sky Cyan
+                0xf472b6, // Soft Light Rose Pink
+                0x6ee7b7, // Soft Light Mint Emerald
+                0xc084fc, // Soft Light Lavender Purple
+                0xfde047, // Soft Light Solar Gold
+                0x93c5fd  // Soft Light Azure
             ];
 
             const laserBeams = [];
@@ -457,45 +457,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 const beamGroup = new THREE.Group();
                 beamGroup.rotation.z = angle;
 
-                // Core Laser (intense sharp center line/cylinder)
-                const coreGeom = new THREE.CylinderGeometry(0.035, 0.035, beamLength, 8, 1, true);
+                // Core Laser (soft light beam, gentle translucent luminescence)
+                const coreGeom = new THREE.CylinderGeometry(0.024, 0.024, beamLength, 8, 1, true);
                 const coreMat = new THREE.MeshBasicMaterial({
                     color: laserColors[i],
                     transparent: true,
-                    opacity: 0.95,
+                    opacity: 0.32,
                     blending: THREE.AdditiveBlending,
                     side: THREE.DoubleSide
                 });
                 const coreMesh = new THREE.Mesh(coreGeom, coreMat);
                 beamGroup.add(coreMesh);
 
-                // Laser Outer Glow Sheath (soft volumetric halo)
-                const haloGeom = new THREE.CylinderGeometry(0.18, 0.25, beamLength, 12, 1, true);
+                // Laser Outer Glow Sheath (soft gentle ambient haze)
+                const haloGeom = new THREE.CylinderGeometry(0.12, 0.18, beamLength, 12, 1, true);
                 const haloMat = new THREE.MeshBasicMaterial({
                     color: laserColors[i],
                     transparent: true,
-                    opacity: 0.42,
+                    opacity: 0.10,
                     blending: THREE.AdditiveBlending,
                     side: THREE.DoubleSide
                 });
                 const haloMesh = new THREE.Mesh(haloGeom, haloMat);
                 beamGroup.add(haloMesh);
 
-                // Laser Spark Nodes along the beam
-                const sparkCount = 8;
+                // Laser Spark Nodes along the beam (subtle stardust sparks)
+                const sparkCount = 6;
                 const sparkGeom = new THREE.BufferGeometry();
                 const sparkPos = new Float32Array(sparkCount * 3);
                 for (let s = 0; s < sparkCount; s++) {
-                    sparkPos[s * 3] = (Math.random() - 0.5) * 0.1;
+                    sparkPos[s * 3] = (Math.random() - 0.5) * 0.08;
                     sparkPos[s * 3 + 1] = (Math.random() - 0.5) * beamLength;
-                    sparkPos[s * 3 + 2] = (Math.random() - 0.5) * 0.1;
+                    sparkPos[s * 3 + 2] = (Math.random() - 0.5) * 0.08;
                 }
                 sparkGeom.setAttribute('position', new THREE.BufferAttribute(sparkPos, 3));
                 const sparkMat = new THREE.PointsMaterial({
                     color: laserColors[i],
-                    size: 0.12,
+                    size: 0.07,
                     transparent: true,
-                    opacity: 0.9,
+                    opacity: 0.35,
                     blending: THREE.AdditiveBlending
                 });
                 const sparks = new THREE.Points(sparkGeom, sparkMat);
@@ -505,12 +505,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 laserBeams.push({ group: beamGroup, coreMat, haloMat, sparks });
             }
 
-            // 2. Rotating Sweeping Holographic Radar Laser Fan
+            // 2. Rotating Sweeping Holographic Radar Laser Fan (Gentle Soft Aura)
             const radarGeom = new THREE.RingGeometry(0.8, 5.2, 32, 1, 0, Math.PI / 2.2);
             const radarMat = new THREE.MeshBasicMaterial({
-                color: 0x00f2fe,
+                color: 0x7dd3fc,
                 transparent: true,
-                opacity: 0.2,
+                opacity: 0.08,
                 blending: THREE.AdditiveBlending,
                 side: THREE.DoubleSide
             });
@@ -518,17 +518,245 @@ document.addEventListener('DOMContentLoaded', () => {
             laserRadarFan.position.z = -0.5;
             laserSystemGroup.add(laserRadarFan);
 
-            // 3. Central Laser Core Emitter Ring
-            const emitterGeom = new THREE.TorusGeometry(0.65, 0.04, 16, 32);
+            // 3. Central Laser Core Emitter Ring (Soft Light Cyan)
+            const emitterGeom = new THREE.TorusGeometry(0.65, 0.035, 16, 32);
             const emitterMat = new THREE.MeshBasicMaterial({
-                color: 0x00f2fe,
+                color: 0x7dd3fc,
                 transparent: true,
-                opacity: 0.85,
+                opacity: 0.35,
                 blending: THREE.AdditiveBlending
             });
             const emitterRing = new THREE.Mesh(emitterGeom, emitterMat);
             emitterRing.position.z = -0.3;
             laserSystemGroup.add(emitterRing);
+
+
+            // ====================================================================
+            // A2. 3D SOLAR SYSTEM CELESTIAL ENGINE (Souryamandal: Free 3D Cosmic Planetary Movement)
+            // Planets freely orbiting and rotating in 3D without rigid axes or tracks
+            // ====================================================================
+            const solarSystemGroup = new THREE.Group();
+            solarSystemGroup.position.z = -1.8;
+            scene.add(solarSystemGroup);
+
+            // Procedural Canvas Texture Generator for Solar System Planets
+            function createPlanetTexture(type) {
+                const pCanvas = document.createElement('canvas');
+                pCanvas.width = 128;
+                pCanvas.height = 64;
+                const pCtx = pCanvas.getContext('2d');
+                if (!pCtx) return null;
+
+                if (type === 'mercury') {
+                    // Mercury: Cratered rocky slate surface
+                    pCtx.fillStyle = '#9ca3af';
+                    pCtx.fillRect(0, 0, 128, 64);
+                    for (let i = 0; i < 35; i++) {
+                        pCtx.fillStyle = i % 2 === 0 ? 'rgba(75, 85, 99, 0.45)' : 'rgba(229, 231, 235, 0.4)';
+                        pCtx.beginPath();
+                        pCtx.arc(Math.random() * 128, Math.random() * 64, Math.random() * 3.5 + 1, 0, Math.PI * 2);
+                        pCtx.fill();
+                    }
+                } else if (type === 'venus') {
+                    // Venus: Golden-cream pearlescent atmospheric swirls
+                    const grad = pCtx.createLinearGradient(0, 0, 128, 64);
+                    grad.addColorStop(0, '#fef08a');
+                    grad.addColorStop(0.5, '#fde047');
+                    grad.addColorStop(1, '#f59e0b');
+                    pCtx.fillStyle = grad;
+                    pCtx.fillRect(0, 0, 128, 64);
+                    pCtx.fillStyle = 'rgba(255, 255, 255, 0.28)';
+                    for (let i = 0; i < 6; i++) {
+                        pCtx.fillRect(0, i * 11, 128, 5);
+                    }
+                } else if (type === 'earth') {
+                    // Earth: Azure oceans, emerald landmasses & white cloud swirls
+                    pCtx.fillStyle = '#1d4ed8';
+                    pCtx.fillRect(0, 0, 128, 64);
+                    pCtx.fillStyle = '#10b981';
+                    pCtx.beginPath();
+                    pCtx.ellipse(35, 25, 20, 14, 0.2, 0, Math.PI * 2);
+                    pCtx.fill();
+                    pCtx.beginPath();
+                    pCtx.ellipse(85, 38, 22, 16, -0.3, 0, Math.PI * 2);
+                    pCtx.fill();
+                    pCtx.beginPath();
+                    pCtx.ellipse(45, 48, 12, 10, 0.1, 0, Math.PI * 2);
+                    pCtx.fill();
+                    pCtx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+                    for (let i = 0; i < 5; i++) {
+                        pCtx.beginPath();
+                        pCtx.ellipse(i * 26 + 10, 15 + (i % 3) * 12, 16, 4, 0.1, 0, Math.PI * 2);
+                        pCtx.fill();
+                    }
+                } else if (type === 'mars') {
+                    // Mars: Rust terracotta with polar ice caps
+                    const grad = pCtx.createLinearGradient(0, 0, 0, 64);
+                    grad.addColorStop(0, '#ffffff'); // Polar ice
+                    grad.addColorStop(0.12, '#ea580c');
+                    grad.addColorStop(0.5, '#dc2626');
+                    grad.addColorStop(0.88, '#c2410c');
+                    grad.addColorStop(1, '#ffffff'); // Polar ice
+                    pCtx.fillStyle = grad;
+                    pCtx.fillRect(0, 0, 128, 64);
+                    pCtx.fillStyle = 'rgba(127, 29, 29, 0.35)';
+                    for (let i = 0; i < 12; i++) {
+                        pCtx.fillRect(Math.random() * 120, Math.random() * 48 + 8, Math.random() * 18 + 4, Math.random() * 6 + 2);
+                    }
+                } else if (type === 'jupiter') {
+                    // Jupiter: Banded gas giant with Great Red Spot
+                    const bands = ['#d97706', '#fef3c7', '#b45309', '#fde68a', '#92400e', '#fed7aa', '#c2410c', '#fef9c3'];
+                    bands.forEach((color, idx) => {
+                        pCtx.fillStyle = color;
+                        pCtx.fillRect(0, idx * 8, 128, 8);
+                    });
+                    pCtx.fillStyle = '#dc2626';
+                    pCtx.beginPath();
+                    pCtx.ellipse(75, 42, 12, 6, 0, 0, Math.PI * 2);
+                    pCtx.fill();
+                } else if (type === 'saturn') {
+                    // Saturn: Warm golden caramel stripes
+                    const bands = ['#fef08a', '#fde68a', '#f59e0b', '#fef3c7', '#d97706', '#fef08a'];
+                    bands.forEach((color, idx) => {
+                        pCtx.fillStyle = color;
+                        pCtx.fillRect(0, idx * 11, 128, 11);
+                    });
+                } else if (type === 'saturn-ring') {
+                    // Saturn Rings: Concentric golden radial bands
+                    pCanvas.width = 128;
+                    pCanvas.height = 128;
+                    const radGrad = pCtx.createRadialGradient(64, 64, 25, 64, 64, 64);
+                    radGrad.addColorStop(0, 'rgba(254, 240, 138, 0)');
+                    radGrad.addColorStop(0.35, 'rgba(254, 240, 138, 0.7)');
+                    radGrad.addColorStop(0.55, 'rgba(217, 119, 6, 0.85)');
+                    radGrad.addColorStop(0.7, 'rgba(254, 240, 138, 0.55)');
+                    radGrad.addColorStop(0.85, 'rgba(180, 83, 9, 0.35)');
+                    radGrad.addColorStop(1, 'rgba(254, 240, 138, 0)');
+                    pCtx.fillStyle = radGrad;
+                    pCtx.fillRect(0, 0, 128, 128);
+                } else if (type === 'uranus') {
+                    // Uranus: Pale cyan ice giant
+                    const grad = pCtx.createLinearGradient(0, 0, 0, 64);
+                    grad.addColorStop(0, '#a5f3fc');
+                    grad.addColorStop(0.5, '#67e8f9');
+                    grad.addColorStop(1, '#06b6d4');
+                    pCtx.fillStyle = grad;
+                    pCtx.fillRect(0, 0, 128, 64);
+                } else if (type === 'neptune') {
+                    // Neptune: Deep electric cobalt blue
+                    const grad = pCtx.createLinearGradient(0, 0, 0, 64);
+                    grad.addColorStop(0, '#38bdf8');
+                    grad.addColorStop(0.5, '#2563eb');
+                    grad.addColorStop(1, '#1e40af');
+                    pCtx.fillStyle = grad;
+                    pCtx.fillRect(0, 0, 128, 64);
+                    pCtx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+                    pCtx.fillRect(10, 24, 60, 2);
+                    pCtx.fillRect(40, 36, 75, 2);
+                } else if (type === 'pluto') {
+                    // Pluto: Icy silver-amethyst orb
+                    pCtx.fillStyle = '#c4b5fd';
+                    pCtx.fillRect(0, 0, 128, 64);
+                    pCtx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+                    pCtx.beginPath();
+                    pCtx.arc(64, 32, 16, 0, Math.PI * 2);
+                    pCtx.fill();
+                }
+
+                return new THREE.CanvasTexture(pCanvas);
+            }
+
+            // Celestial Planets Data Configuration (Solar System / Souryamandal)
+            const planetConfigs = [
+                { name: 'Mercury', type: 'mercury', radius: 0.085, orbitRadius: 2.3, speed: 0.58, baseAngle: 0.3, tilt: 0.22, wobbleFreq: 1.4, verticalAmp: 0.35, glowColor: 0x9ca3af, rotSpeed: 0.015 },
+                { name: 'Venus',   type: 'venus',   radius: 0.14,  orbitRadius: 2.85, speed: 0.44, baseAngle: 1.7, tilt: -0.32, wobbleFreq: 1.2, verticalAmp: 0.45, glowColor: 0xfde047, rotSpeed: -0.008 },
+                { name: 'Earth',   type: 'earth',   radius: 0.16,  orbitRadius: 3.45, speed: 0.35, baseAngle: 3.2, tilt: 0.38, wobbleFreq: 1.0, verticalAmp: 0.50, glowColor: 0x38bdf8, hasMoon: true, rotSpeed: 0.02 },
+                { name: 'Mars',    type: 'mars',    radius: 0.11,  orbitRadius: 4.05, speed: 0.28, baseAngle: 4.6, tilt: -0.25, wobbleFreq: 1.1, verticalAmp: 0.42, glowColor: 0xef4444, rotSpeed: 0.018 },
+                { name: 'Jupiter', type: 'jupiter', radius: 0.32,  orbitRadius: 4.75, speed: 0.20, baseAngle: 0.8, tilt: 0.18, wobbleFreq: 0.8, verticalAmp: 0.36, glowColor: 0xf59e0b, rotSpeed: 0.028 },
+                { name: 'Saturn',  type: 'saturn',  radius: 0.25,  orbitRadius: 5.45, speed: 0.15, baseAngle: 2.5, tilt: -0.42, wobbleFreq: 0.7, verticalAmp: 0.45, glowColor: 0xfde68a, hasRing: true, rotSpeed: 0.022 },
+                { name: 'Uranus',  type: 'uranus',  radius: 0.19,  orbitRadius: 6.10, speed: 0.11, baseAngle: 4.0, tilt: 0.52, wobbleFreq: 0.6, verticalAmp: 0.48, glowColor: 0x22d3ee, hasFaintRing: true, rotSpeed: 0.014 },
+                { name: 'Neptune', type: 'neptune', radius: 0.18,  orbitRadius: 6.70, speed: 0.08, baseAngle: 5.4, tilt: -0.28, wobbleFreq: 0.5, verticalAmp: 0.40, glowColor: 0x3b82f6, rotSpeed: 0.016 },
+                { name: 'Pluto',   type: 'pluto',   radius: 0.065, orbitRadius: 7.25, speed: 0.06, baseAngle: 1.1, tilt: 0.65, wobbleFreq: 1.3, verticalAmp: 0.65, glowColor: 0xc4b5fd, rotSpeed: 0.01 }
+            ];
+
+            const solarPlanets = [];
+
+            planetConfigs.forEach((cfg) => {
+                const planetGroup = new THREE.Group();
+
+                // Planet Sphere with procedural surface texture
+                const sphereGeom = new THREE.SphereGeometry(cfg.radius, 24, 24);
+                const sphereMat = new THREE.MeshBasicMaterial({
+                    map: createPlanetTexture(cfg.type),
+                    transparent: true,
+                    opacity: 0.94
+                });
+                const planetMesh = new THREE.Mesh(sphereGeom, sphereMat);
+                planetGroup.add(planetMesh);
+
+                // Planet Atmospheric Soft Glow Halo
+                const haloGeom = new THREE.SphereGeometry(cfg.radius * 1.25, 16, 16);
+                const haloMat = new THREE.MeshBasicMaterial({
+                    color: cfg.glowColor,
+                    transparent: true,
+                    opacity: 0.20,
+                    blending: THREE.AdditiveBlending,
+                    side: THREE.BackSide
+                });
+                const haloMesh = new THREE.Mesh(haloGeom, haloMat);
+                planetMesh.add(haloMesh);
+
+                // Earth's Moon (Freely orbiting Earth)
+                let moonMesh = null;
+                if (cfg.hasMoon) {
+                    const moonGeom = new THREE.SphereGeometry(0.042, 12, 12);
+                    const moonMat = new THREE.MeshBasicMaterial({
+                        color: 0xe2e8f0,
+                        transparent: true,
+                        opacity: 0.9
+                    });
+                    moonMesh = new THREE.Mesh(moonGeom, moonMat);
+                    planetGroup.add(moonMesh);
+                }
+
+                // Saturn's Rings (3D Tilted Concentric Rings)
+                if (cfg.hasRing) {
+                    const ringGeom = new THREE.RingGeometry(cfg.radius * 1.35, cfg.radius * 2.45, 32);
+                    const ringMat = new THREE.MeshBasicMaterial({
+                        map: createPlanetTexture('saturn-ring'),
+                        transparent: true,
+                        opacity: 0.82,
+                        side: THREE.DoubleSide
+                    });
+                    const ringMesh = new THREE.Mesh(ringGeom, ringMat);
+                    ringMesh.rotation.x = Math.PI * 0.42;
+                    ringMesh.rotation.y = Math.PI * 0.08;
+                    planetMesh.add(ringMesh);
+                }
+
+                // Uranus Faint Vertical Ring
+                if (cfg.hasFaintRing) {
+                    const uRingGeom = new THREE.RingGeometry(cfg.radius * 1.28, cfg.radius * 1.65, 32);
+                    const uRingMat = new THREE.MeshBasicMaterial({
+                        color: 0x67e8f9,
+                        transparent: true,
+                        opacity: 0.32,
+                        side: THREE.DoubleSide
+                    });
+                    const uRingMesh = new THREE.Mesh(uRingGeom, uRingMat);
+                    uRingMesh.rotation.y = Math.PI * 0.48;
+                    planetMesh.add(uRingMesh);
+                }
+
+                solarSystemGroup.add(planetGroup);
+
+                solarPlanets.push({
+                    group: planetGroup,
+                    mesh: planetMesh,
+                    moonMesh: moonMesh,
+                    cfg: cfg
+                });
+            });
 
 
             // ====================================================================
@@ -676,23 +904,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 satelliteGroup.add(nodeMesh);
 
-                // Intense Glowing Colored Laser Energy Beam from core to satellite
+                // Soft Luminous Colored Laser Energy Beam from core to satellite
                 const beamGeom = new THREE.BufferGeometry();
                 const beamMat = new THREE.LineBasicMaterial({
                     color: node.color,
                     transparent: true,
-                    opacity: 0.75,
+                    opacity: 0.35,
                     blending: THREE.AdditiveBlending
                 });
                 const beamLine = new THREE.Line(beamGeom, beamMat);
                 coreGroup.add(beamLine);
 
                 // Laser Photon Pulse Bead traveling along beam
-                const photonGeom = new THREE.SphereGeometry(0.065, 8, 8);
+                const photonGeom = new THREE.SphereGeometry(0.052, 8, 8);
                 const photonMat = new THREE.MeshBasicMaterial({
                     color: node.color,
                     transparent: true,
-                    opacity: 0.95,
+                    opacity: 0.65,
                     blending: THREE.AdditiveBlending
                 });
                 const photon = new THREE.Mesh(photonGeom, photonMat);
@@ -957,27 +1185,71 @@ document.addEventListener('DOMContentLoaded', () => {
                 const delta = clock.getDelta();
                 const time = clock.getElapsedTime();
 
-                // 1. ROTATING BACKGROUND LASER BEAM SWEEP (Key Feature!)
+                // 1. ROTATING BACKGROUND LASER BEAM SWEEP (Softened Light Colors & Ambient Glow)
                 // Multi-axis rotation produces dynamic sweeping laser rays across the entire background
-                laserSystemGroup.rotation.z += 0.015;
-                laserSystemGroup.rotation.x = Math.sin(time * 0.4) * 0.25;
-                laserSystemGroup.rotation.y = Math.cos(time * 0.35) * 0.2;
+                laserSystemGroup.rotation.z += 0.012;
+                laserSystemGroup.rotation.x = Math.sin(time * 0.35) * 0.22;
+                laserSystemGroup.rotation.y = Math.cos(time * 0.3) * 0.18;
 
-                // Pulsate background laser beams & animate spark particles
+                // Pulsate background laser beams with gentle, soft light intensity (not harsh or glaring)
                 laserBeams.forEach((lb, idx) => {
-                    const pulse = 0.8 + Math.sin(time * 3.5 + idx * 1.1) * 0.2;
+                    const pulse = 0.28 + Math.sin(time * 2.2 + idx * 1.1) * 0.08;
                     lb.coreMat.opacity = pulse;
-                    lb.haloMat.opacity = pulse * 0.42;
-                    lb.sparks.rotation.y += 0.02;
+                    lb.haloMat.opacity = pulse * 0.35;
+                    lb.sparks.rotation.y += 0.015;
                 });
 
-                // Radar fan continuous laser sweep
-                laserRadarFan.rotation.z -= 0.022;
+                // Radar fan continuous laser sweep (soft gentle glow)
+                laserRadarFan.rotation.z -= 0.018;
 
-                // Emitter ring pulse
-                emitterRing.scale.setScalar(1 + Math.sin(time * 4) * 0.12);
+                // Emitter ring soft pulse
+                emitterRing.scale.setScalar(1 + Math.sin(time * 3) * 0.08);
 
-                // 2. Rotational physics with damping for Core Group
+                // 2. 3D SOLAR SYSTEM CELESTIAL MECHANICS (Souryamandal: Free 3D Movement Without Rigid Axes/Tracks)
+                // Parallax following and gentle cosmic drift in background
+                solarSystemGroup.position.x = coreGroup.position.x * 0.38;
+                solarSystemGroup.position.y = coreGroup.position.y * 0.38;
+                solarSystemGroup.rotation.y += 0.0012;
+                solarSystemGroup.rotation.x = Math.sin(time * 0.18) * 0.05;
+
+                // All solar planets orbiting and moving completely freely in 3D space
+                solarPlanets.forEach((p, idx) => {
+                    const cfg = p.cfg;
+                    const angle = cfg.baseAngle + time * cfg.speed;
+
+                    // 3D dynamic free-flight non-planar orbital mechanics
+                    const orbRadius = cfg.orbitRadius;
+                    const rawX = Math.cos(angle) * orbRadius;
+                    const rawZ = Math.sin(angle) * (orbRadius * 0.88);
+
+                    // 3D inclined orbital tilt without any rigid mechanical axis
+                    const cosTilt = Math.cos(cfg.tilt);
+                    const sinTilt = Math.sin(cfg.tilt);
+                    const x = rawX * cosTilt - rawZ * sinTilt;
+                    const z = rawX * sinTilt + rawZ * cosTilt;
+
+                    // Weightless free-floating zero-gravity vertical & depth bobbing
+                    const floatY = Math.sin(angle * cfg.wobbleFreq + idx) * cfg.verticalAmp + Math.cos(time * 0.45 + idx * 0.8) * 0.16;
+                    const floatZ = z + Math.sin(time * 0.35 + idx) * 0.20;
+
+                    p.group.position.set(x, floatY, floatZ);
+
+                    // Planet independent 3D self-rotation
+                    p.mesh.rotation.y += cfg.rotSpeed;
+                    p.mesh.rotation.x = Math.sin(time * 0.25 + idx) * 0.08;
+
+                    // Earth's moon free orbit around Earth
+                    if (p.moonMesh) {
+                        const moonAngle = time * 2.2;
+                        p.moonMesh.position.set(
+                            Math.cos(moonAngle) * 0.36,
+                            Math.sin(moonAngle * 1.4) * 0.12,
+                            Math.sin(moonAngle) * 0.36
+                        );
+                    }
+                });
+
+                // 3. Rotational physics with damping for Core Group
                 coreGroup.rotation.y += rotVelocity.y + 0.005;
                 coreGroup.rotation.x += rotVelocity.x;
                 rotVelocity.x *= 0.94;
@@ -989,7 +1261,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 laserSystemGroup.position.x = coreGroup.position.x * 0.5;
                 laserSystemGroup.position.y = coreGroup.position.y * 0.5;
 
-                // 3. Multi-axis Independent Gyroscope Rotations
+                // 4. Multi-axis Independent Gyroscope Rotations
                 ring1.rotation.z += 0.012;
                 ring2.rotation.z -= 0.015;
                 ring3.rotation.z += 0.009;
@@ -1001,7 +1273,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 innerOctaMesh.rotation.y += 0.022;
                 innerOctaMesh.rotation.z -= 0.018;
 
-                // 4. Pulsing Quantum Core Scale
+                // 5. Pulsing Quantum Core Scale
                 const pulse = 1 + Math.sin(time * 3.0) * 0.12;
                 sphereMesh.scale.set(pulse, pulse, pulse);
                 innerOctaMesh.scale.set(pulse, pulse, pulse);
@@ -1010,7 +1282,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const atmoPulse = 0.04 + Math.sin(time * 1.5) * 0.02;
                 atmoMat.opacity = atmoPulse;
 
-                // 5. Orbiting Satellites, Vibrant Laser Beams & Photons
+                // 6. Orbiting Satellites, Soft Laser Beams & Photons
                 const orbitRadius = 3.5;
                 satelliteRefs.forEach((sat, i) => {
                     const angle = sat.data.angle + time * 0.32;
@@ -1026,7 +1298,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     sat.glowRing.material.opacity = glowPulse;
                     sat.glowRing.rotation.z += 0.03;
 
-                    // Update vibrant laser energy beam connecting core to satellite
+                    // Update soft laser energy beam connecting core to satellite
                     const beamPositions = new Float32Array([
                         0, 0, 0,
                         sat.mesh.position.x, sat.mesh.position.y, sat.mesh.position.z
@@ -1034,7 +1306,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     beamRefs[i].geometry.dispose();
                     beamRefs[i].geometry = new THREE.BufferGeometry();
                     beamRefs[i].geometry.setAttribute('position', new THREE.BufferAttribute(beamPositions, 3));
-                    beamRefs[i].material.opacity = 0.65 + Math.sin(time * 4 + i) * 0.25;
+                    beamRefs[i].material.opacity = 0.30 + Math.sin(time * 3 + i) * 0.12;
 
                     // Traveling photon pulse bead along the beam
                     const travelProg = (Math.sin(time * 2.5 + i * 1.5) + 1) * 0.5; // 0 to 1
