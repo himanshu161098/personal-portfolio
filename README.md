@@ -62,7 +62,7 @@ Personal Portfolio/
 ├── prachi.js                    # Prachi AI multi-chat state, models & female voice engine
 │
 ├── chatbot.css                  # Floating portfolio chatbot cyber glassmorphism styles
-├── chatbot.js                   # Dedicated Himanshu Portfolio AI Assistant widget (projects, skills & resume)
+├── chatbot.js                   # Dedicated Quantix AI Assistant widget (projects, skills & resume)
 │
 ├── worker/                      # Cloudflare Worker serverless AI proxy (Gemini + Claude)
 ├── .gitignore                   # Git ignore specifications

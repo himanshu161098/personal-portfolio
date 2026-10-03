@@ -31,7 +31,7 @@ const SUGGESTED_QUESTIONS = [
 ];
 
 // Initial welcome greeting
-const WELCOME_GREETING = `Hello! 👋 I am **Himanshu's Portfolio AI Assistant**.
+const WELCOME_GREETING = `Hello! 👋 I am **Quantix AI**, Himanshu's Portfolio & Data Intelligence Assistant.
 
 I am your dedicated interactive guide to **Himanshu Kumar's** professional profile, technical capabilities, and engineering projects:
 - 📊 **Netflix Content Analysis**: Deep EDA on 8,787 clean movie and TV show titles, international catalog expansion & trends.
@@ -41,7 +41,7 @@ I am your dedicated interactive guide to **Himanshu Kumar's** professional profi
 - 💼 **Recruiter Fit**: Honest JD fit for Data Analyst / BI Internships, resume download, and contact details.
 
 What would you like to explore about Himanshu's work?
-*(Looking for human-like conversation, emotional chat, or universal Math/Science solving? Connect with [Prachi AI](prachi.html)!)*`;
+*(Looking for an empathetic human AI friend or universal Math/Science solving? Connect with [Prachi AI](prachi.html)!)*`;
 
 // -----------------------------------------------------------------------------
 // 2. STATE MANAGEMENT
@@ -138,8 +138,8 @@ function generateLocalMockResponse(userQuery, kb) {
   const q = (userQuery || '').toLowerCase().trim();
 
   // 1. Identity / Introduction / Who are you
-  if (/who are you|tum kaun ho|apna naam|identity|intro|kya ho|what is your name|who made you|creator|maya/i.test(q)) {
-    return `Namaste! 👋 Main **Himanshu's Portfolio AI Assistant** hoon — jo specially design kiya gaya hai Himanshu Kumar ke portfolio, projects, technical skills aur career credentials ko showcase karne ke liye.
+  if (/who are you|tum kaun ho|apna naam|identity|intro|kya ho|what is your name|who made you|creator|quantix/i.test(q)) {
+    return `Namaste! 👋 Main **Quantix AI** hoon — Himanshu Kumar ka dedicated Portfolio & Data Intelligence Assistant.
 
 🌟 **Main aapko Himanshu ke baare me kya bata sakta hoon?**
 1. 📊 **Netflix Analysis Project**: 8,787 titles ka deep exploratory data analysis (EDA).
@@ -304,7 +304,7 @@ Himanshu has earned **5 industry-recognized credentials** demonstrating verified
 
   // 13. General Greetings
   if (/^(hi|hello|hey|namaste|pranam|greetings)\b/i.test(q) || q === 'hi' || q === 'hello') {
-    return `Namaste! 👋 Swagat hai aapka! Main **Himanshu's Portfolio AI Assistant** hoon.
+    return `Namaste! 👋 Swagat hai aapka! Main **Quantix AI** hoon — Himanshu's Portfolio & Data Intelligence Assistant.
 
 Main Himanshu Kumar ke projects, skills, education aur career portfolio ke baare me sab kuch explain kar sakta hoon:
 - 📊 **Netflix Content Analysis Project (8,787 titles)**
@@ -323,17 +323,17 @@ Aap Himanshu ke baare me kya jaan-na chahenge?
   if (typeof window !== 'undefined' && window.UniversalAIEngine && typeof window.UniversalAIEngine.evaluateMath === 'function') {
     const mathCalc = window.UniversalAIEngine.evaluateMath(userQuery);
     if (mathCalc) {
-      return `${mathCalc}\n\n💡 *Note: Main Himanshu ka dedicated Portfolio AI Assistant hoon. Deep human-like conversations, feelings, aur universal Math/Science step-by-step solving ke liye aap hamari companion AI [Prachi AI](prachi.html) visit kar sakte hain!*`;
+      return `${mathCalc}\n\n💡 *Note: Main Himanshu ka dedicated Quantix AI assistant hoon. Deep human-like conversations, feelings, aur universal Math/Science step-by-step solving ke liye aap hamari companion AI [Prachi AI](prachi.html) visit kar sakte hain!*`;
     }
   }
 
   // Fallback: If UniversalAIEngine is loaded, get an answer, but wrap it as Portfolio Assistant
   if (typeof window !== 'undefined' && window.UniversalAIEngine && typeof window.UniversalAIEngine.generateResponse === 'function') {
-    const uniAns = window.UniversalAIEngine.generateResponse(userQuery, { assistantName: 'Himanshu Portfolio AI' });
-    return `${uniAns}\n\n💡 *Note: Main Himanshu Kumar ka dedicated Portfolio AI Assistant hoon. Deep human-like friendly chat, emotional support, and complete universal problem-solving ke liye aap [Prachi AI](prachi.html) try kar sakte hain!*`;
+    const uniAns = window.UniversalAIEngine.generateResponse(userQuery, { assistantName: 'Quantix AI' });
+    return `${uniAns}\n\n💡 *Note: Main Himanshu Kumar ka dedicated Quantix AI Portfolio Assistant hoon. Deep human-like friendly chat, emotional support, and complete universal problem-solving ke liye aap [Prachi AI](prachi.html) try kar sakte hain!*`;
   }
 
-  return `Main **Himanshu's Portfolio AI Assistant** hoon! 
+  return `Main **Quantix AI** hoon — Himanshu Kumar ka Portfolio & Data Intelligence Assistant! 
 
 Aap Himanshu ke baare me ye sawaal pooch sakte hain:
 - 📊 *"Tell me about the Netflix analysis project"*
@@ -375,12 +375,12 @@ class AIChatbotWidget {
     triggerWrap.id = 'cbTriggerWrap';
     triggerWrap.innerHTML = `
       <div class="cb-teaser-tooltip" id="cbTeaserTooltip" role="tooltip" aria-hidden="true">
-        <img src="assets/prachi-logo.png" alt="AI Assistant" class="cb-teaser-logo">
-        <span>👋 Ask me anything about <strong>Himanshu's Portfolio &amp; Projects</strong>!</span>
+        <img src="assets/prachi-logo.png" alt="Quantix AI" class="cb-teaser-logo">
+        <span>👋 Chat with <strong>Quantix AI</strong> (Portfolio Intelligence)!</span>
         <button class="cb-teaser-close" id="cbTeaserClose" aria-label="Dismiss notification">&times;</button>
       </div>
-      <button class="cb-floating-btn" id="cbFloatingBtn" aria-label="Open Himanshu Portfolio AI Assistant" aria-haspopup="dialog" aria-expanded="false">
-        <img src="assets/prachi-logo.png" alt="Prachi AI Logo" class="cb-floating-logo-img" id="cbFloatingImg">
+      <button class="cb-floating-btn" id="cbFloatingBtn" aria-label="Open Quantix AI Assistant" aria-haspopup="dialog" aria-expanded="false">
+        <img src="assets/prachi-logo.png" alt="Quantix AI Logo" class="cb-floating-logo-img" id="cbFloatingImg">
         <i class="fa-solid fa-chevron-down cb-floating-close-icon" id="cbFloatingCloseIcon" style="display:none;font-size:1.3rem;"></i>
         <span class="cb-online-badge" aria-hidden="true"></span>
       </button>
@@ -391,20 +391,20 @@ class AIChatbotWidget {
     windowOverlay.className = 'cb-window-overlay';
     windowOverlay.id = 'cbWindowOverlay';
     windowOverlay.setAttribute('role', 'dialog');
-    windowOverlay.setAttribute('aria-label', 'Himanshu Kumar Portfolio AI Assistant');
+    windowOverlay.setAttribute('aria-label', 'Quantix AI — Himanshu Portfolio Intelligence');
     windowOverlay.setAttribute('aria-hidden', 'true');
     windowOverlay.innerHTML = `
       <!-- Header -->
       <header class="cb-header">
         <div class="cb-header-identity">
           <div class="cb-avatar" aria-hidden="true">
-            <img src="assets/prachi-logo.png" alt="AI Assistant Logo" class="cb-header-avatar-img">
+            <img src="assets/prachi-logo.png" alt="Quantix AI Logo" class="cb-header-avatar-img">
             <span class="cb-avatar-dot"></span>
           </div>
           <div class="cb-header-info">
             <div class="cb-title">
-              Himanshu Portfolio AI
-              <span class="cb-title-tag">Portfolio Assistant</span>
+              Quantix AI
+              <span class="cb-title-tag">Portfolio Intelligence</span>
             </div>
             <span class="cb-subtitle">Projects • Skills • 8,787 Netflix Analysis • Resume Fit</span>
           </div>
@@ -434,7 +434,7 @@ class AIChatbotWidget {
       <footer class="cb-footer">
         <!-- Voice Listening Banner -->
         <div class="cb-voice-status-bar" id="cbVoiceStatusBar" aria-live="polite">
-          <span><i class="fa-solid fa-microphone-lines"></i> Portfolio AI is Listening... Speak in English or Hindi</span>
+          <span><i class="fa-solid fa-microphone-lines"></i> Quantix AI is Listening... Speak in English or Hindi</span>
           <div class="cb-audio-wave-anim">
             <span class="cb-audio-wave-bar"></span>
             <span class="cb-audio-wave-bar"></span>
@@ -448,9 +448,9 @@ class AIChatbotWidget {
             id="cbInputTextarea"
             class="cb-textarea"
             rows="1"
-            placeholder="Ask about Himanshu's Netflix project, skills, experience, or resume..."
+            placeholder="Ask Quantix AI about Netflix project, skills, experience, or resume..."
             maxlength="${MAX_INPUT_LENGTH}"
-            aria-label="Your question for Himanshu's Portfolio AI"
+            aria-label="Your question for Quantix AI"
           ></textarea>
           <button type="button" class="cb-mic-btn" id="cbMicBtn" title="Speak via Microphone (Hindi / English)" aria-label="Voice Input">
             <i class="fa-solid fa-microphone" id="cbMicIcon" aria-hidden="true"></i>
@@ -460,7 +460,7 @@ class AIChatbotWidget {
           </button>
         </form>
         <div class="cb-footer-meta">
-          <span>Himanshu Kumar • Portfolio AI Assistant</span>
+          <span>Quantix AI • Portfolio Intelligence</span>
           <span class="cb-char-counter" id="cbCharCounter">0 / ${MAX_INPUT_LENGTH}</span>
         </div>
       </footer>
