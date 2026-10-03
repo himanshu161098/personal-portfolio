@@ -2170,15 +2170,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 tag: 'VIEW // AVATAR'
             },
             {
-                selector: '#tab3dCore',
-                category: 'VIEW MODE',
-                title: '3D Quantum Core (Three.js)',
-                desc: 'Launch real-time interactive Three.js 3D geometric core. Drag and rotate in 3D space with dynamic particles.',
-                icon: 'fa-solid fa-cube',
-                action: 'Click to switch to 3D canvas',
-                tag: 'VIEW // 3D_CORE'
-            },
-            {
                 selector: '.avatar-img-container',
                 category: 'BIOMETRIC IDENTITY',
                 title: 'Himanshu Kumar Portrait',
@@ -2224,15 +2215,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 tag: 'TRACK // DATA_ENG'
             },
             {
-                selector: '.hero-3d-container',
-                category: '3D WEBGL ENGINE',
-                title: 'Quantum Core 3D Viewport',
-                desc: 'Custom WebGL Three.js render canvas. Click & drag anywhere inside this viewport to freely rotate the 3D model.',
-                icon: 'fa-solid fa-cubes',
-                action: 'Click & drag to rotate',
-                tag: 'THREE.JS // WEBGL'
-            },
-            {
                 selector: '.scroll-indicator',
                 category: 'EXPLORER',
                 title: 'Scroll Navigator',
@@ -2274,6 +2256,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Show HUD
         function showHud(data, target, e) {
+            if (!target || target.closest('#hero3dContainer') || target.closest('.hero-3d-container') || target.closest('#tab3dCore') || target.closest('#hero3dCanvas')) {
+                return;
+            }
+
             if (hideTimeout) {
                 clearTimeout(hideTimeout);
                 hideTimeout = null;
@@ -2343,10 +2329,21 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // Ensure 3D Quantum Core and its tab never trigger or keep open the hover overview
+        const hero3d = document.getElementById('hero3dContainer');
+        if (hero3d) {
+            hero3d.addEventListener('mouseenter', hideHud);
+            hero3d.addEventListener('mousemove', hideHud);
+        }
+        const tab3d = document.getElementById('tab3dCore');
+        if (tab3d) {
+            tab3d.addEventListener('mouseenter', hideHud);
+        }
+
         // Also dynamically detect any element across the document with data-hud-title
         document.body.addEventListener('mouseover', (e) => {
             const target = e.target.closest('[data-hud-title]');
-            if (target && !target.hasAttribute('data-hud-bound')) {
+            if (target && !target.closest('#hero3dContainer') && !target.closest('.hero-3d-container') && !target.closest('#tab3dCore') && !target.hasAttribute('data-hud-bound')) {
                 target.setAttribute('data-hud-bound', 'true');
                 const customData = {
                     category: target.getAttribute('data-hud-category') || 'COMPONENT INTEL',
