@@ -1,36 +1,42 @@
 /**
  * ==============================================================================
- * Himanshu Kumar - AI Portfolio Assistant Chatbot Widget
- * Stack: Vanilla ES6+ JavaScript, Serverless Streaming (SSE), Session Persistence
+ * Himanshu Kumar - AI Portfolio & Virtual Intelligence Assistant
+ * Features:
+ * - Dual Intelligence: Himanshu's Portfolio Dossier + AI/ML Expert & Global Knowledge
+ * - Bidirectional Voice Assistant: Speech-to-Text (STT) + Human Text-to-Speech (TTS)
+ * - Serverless Claude Sonnet Streaming via Cloudflare Worker
+ * - Session Persistence, Safe Markdown, Copy & Thumbs Feedback
+ * - Multi-language: English, Hindi, and Hinglish
  * ==============================================================================
  */
 
 // -----------------------------------------------------------------------------
 // 1. CONFIGURATION
 // -----------------------------------------------------------------------------
-// Replace with your deployed Cloudflare Worker endpoint (e.g. https://portfolio-chatbot-proxy.your-subdomain.workers.dev/api/chat)
 const WORKER_URL = "https://portfolio-chatbot-proxy.your-subdomain.workers.dev/api/chat";
 
-const SESSION_STORAGE_KEY = 'hk_portfolio_chat_session_v1';
+const SESSION_STORAGE_KEY = 'hk_portfolio_chat_session_v2';
+const VOICE_MODE_STORAGE_KEY = 'hk_portfolio_voice_mode_v2';
 const MAX_INPUT_LENGTH = 500;
 const MAX_HISTORY_MESSAGES = 10;
 
-// Suggested initial chips for quick visitor exploration
+// Suggested initial chips for exploration
 const SUGGESTED_QUESTIONS = [
   { icon: 'fa-solid fa-bolt', text: 'Give me a 30-second pitch about Himanshu' },
-  { icon: 'fa-solid fa-code', text: 'What are his strongest skills?' },
+  { icon: 'fa-solid fa-brain', text: 'Explain Machine Learning workflow in Python' },
   { icon: 'fa-solid fa-chart-line', text: 'Tell me about the Netflix analysis project' },
   { icon: 'fa-solid fa-user-check', text: 'Is he a good fit for a Data Analyst internship?' },
-  { icon: 'fa-solid fa-briefcase', text: 'Analyze fit for a Job Description (Paste JD)' },
-  { icon: 'fa-solid fa-envelope', text: 'How can I contact him?' }
+  { icon: 'fa-solid fa-globe', text: 'What are the latest national & global AI trends?' },
+  { icon: 'fa-solid fa-envelope', text: 'How can I contact Himanshu?' }
 ];
 
 // Initial welcome greeting
-const WELCOME_GREETING = `Hello! 👋 I'm **Himanshu's AI Portfolio Assistant**.
+const WELCOME_GREETING = `Hello! 👋 I'm **Himanshu's AI + Virtual Intelligence Assistant**.
 
-I can answer questions about his **skills, data analysis projects, certifications, education**, or evaluate how well he matches your **job description**.
-
-Feel free to ask a question in **English, Hindi, or Hinglish**, or pick a prompt below!`;
+I operate with **dual capabilities**:
+1. 📂 **Himanshu's Portfolio Dossier**: Ask about his **skills, Netflix analysis project, certifications, education**, or paste a **job description** for an honest fit analysis.
+2. 🤖 **AI & ML Expert / Global Knowledge**: Ask me to solve **Machine Learning tasks, Python/SQL coding, EDA techniques**, or discuss **national and international tech trends**.
+3. 🎙️ **Voice Assistant**: Click the **Microphone** to speak in **English, Hindi, or Hinglish**, or toggle **Voice Mode** in the header to hear me speak!`;
 
 // -----------------------------------------------------------------------------
 // 2. STATE MANAGEMENT
@@ -72,7 +78,7 @@ function renderSafeMarkdown(markdown) {
   // Italic *text*
   html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
 
-  // Markdown links [text](url) - Only allow safe http(s) & mailto
+  // Markdown links [text](url) - Safe schemes only
   html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+)\)/g, (match, text, url) => {
     return `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`;
   });
@@ -108,9 +114,8 @@ function renderSafeMarkdown(markdown) {
 }
 
 // -----------------------------------------------------------------------------
-// 4. LOCAL INTELLIGENT FALLBACK ENGINE
+// 4. LOCAL INTELLIGENT MOCK & VIRTUAL AI FALLBACK ENGINE
 // -----------------------------------------------------------------------------
-// Used when WORKER_URL is placeholder or offline so portfolio visitors can test immediately
 async function getLocalKnowledge() {
   if (localKnowledgeCache) return localKnowledgeCache;
   try {
@@ -119,7 +124,7 @@ async function getLocalKnowledge() {
       localKnowledgeCache = await res.text();
     }
   } catch (e) {
-    console.warn('[Chatbot] Local knowledge.md fetch fallback:', e);
+    console.warn('[Chatbot] Local knowledge fetch fallback:', e);
   }
   return localKnowledgeCache || '';
 }
@@ -127,6 +132,45 @@ async function getLocalKnowledge() {
 function generateLocalMockResponse(userQuery, kb) {
   const q = userQuery.toLowerCase();
 
+  // 1. AI & Machine Learning Questions
+  if (q.includes('machine learning') || q.includes('ml ') || q.includes('ai ') || q.includes('pipeline') || q.includes('algorithm')) {
+    if (q.includes('hindi') || q.includes('kya hai') || q.includes('batao') || q.includes('kaise')) {
+      return `**Machine Learning (ML)** Artificial Intelligence ka wo field hai jisme computer bina explicit programming ke data se patterns seekhta hai.
+
+**Main Workflow**:
+1. **Data Collection & Cleaning**: Handling missing values, removing duplicates, and outlier treatment with Pandas.
+2. **Exploratory Data Analysis (EDA)**: Understanding distributions and correlations with Matplotlib / Seaborn.
+3. **Feature Engineering**: Encoding categorical values (One-Hot) aur scaling (StandardScaler).
+4. **Model Training & Evaluation**: Training algorithms (e.g. Linear Regression, Random Forest) aur accuracy, F1-score evaluate karna.
+
+Himanshu ne apne **Netflix project** aur certifications me yahi EDA & ML fundamentals apply kiye hain! Kya aap koi specific algorithm samajhna chahenge?`;
+    }
+
+    return `Here is the standard **Machine Learning & Data Science Pipeline**:
+
+1. **Problem Definition**: Framing the business question (classification, regression, or clustering).
+2. **Data Wrangling & Cleaning**: Handling nulls, imputation, and data type alignment via Pandas & NumPy.
+3. **Exploratory Data Analysis (EDA)**: Visualizing distributions, detecting outliers (IQR), and correlation matrices.
+4. **Feature Engineering**: Encoding categoricals (One-Hot / Label Encoding) and feature scaling.
+5. **Model Building & Validation**: Fitting algorithms (Scikit-Learn) and evaluating metrics (RMSE, Precision, Recall, F1-Score, Confusion Matrix).
+
+Himanshu specializes in the foundational stages of this pipeline—specifically **Data Cleaning, EDA, and Statistical Analysis**. Would you like a Python code example for any step?`;
+  }
+
+  // 2. National & International Trends / General Knowledge
+  if (q.includes('national') || q.includes('international') || q.includes('trend') || q.includes('news') || q.includes('global') || q.includes('world')) {
+    return `Here are key **National & Global AI Developments**:
+
+- **National (IndiaAI Mission)**: The Indian government approved the ₹10,372 crore IndiaAI Mission to democratize compute access (10,000+ GPUs), foster indigenous AI foundation models, and empower student researchers.
+- **Global AI Trends**:
+  - **Agentic Workflows**: Shifting from simple prompts to autonomous agent swarms capable of reasoning and planning.
+  - **Multimodal AI**: Seamless blending of text, code, audio, and computer vision.
+  - **Small Language Models (SLMs)**: High-efficiency edge models designed for localized, low-latency computing.
+
+Himanshu tracks these advancements to apply modern AI/ML tooling to practical real-world data problems!`;
+  }
+
+  // 3. 30-Second Pitch
   if (q.includes('pitch') || q.includes('30-second') || q.includes('intro') || q.includes('who is')) {
     return `Himanshu Kumar is a final-year **B.Tech (CSE-IT)** student at IIMT College of Engineering (AKTU) targeting **Data Analyst internships** and entry-level roles.
 
@@ -135,6 +179,7 @@ He has proven hands-on experience in **Python, SQL, Exploratory Data Analysis (E
 Would you like to know more about his **Netflix analysis project** or his **technical skills**?`;
   }
 
+  // 4. Skills
   if (q.includes('skill') || q.includes('technolog') || q.includes('stack') || q.includes('tools')) {
     return `Here is a summary of Himanshu's verified technical skills:
 
@@ -146,6 +191,7 @@ Would you like to know more about his **Netflix analysis project** or his **tech
 Would you like to see how he applies these tools in his **Netflix project**?`;
   }
 
+  // 5. Netflix Analysis Project
   if (q.includes('netflix') || q.includes('sales') || q.includes('content analysis')) {
     return `Himanshu executed the **Netflix Content Analysis Project** during his internship at **Auspify Technologies**:
 
@@ -158,6 +204,7 @@ Would you like to see how he applies these tools in his **Netflix project**?`;
 Shall I share his **GitHub profile** or evaluate his fit for an opening you have?`;
   }
 
+  // 6. Internship / Job Fit
   if (q.includes('fit') || q.includes('internship') || q.includes('hire') || q.includes('role') || q.includes('job') || q.includes('jd')) {
     return `Himanshu is a strong match for **Data Analyst Internships** and **Junior BI / Data Analytics** roles:
 
@@ -173,6 +220,7 @@ Shall I share his **GitHub profile** or evaluate his fit for an opening you have
 Feel free to paste your specific **Job Description** here for a point-by-point comparison!`;
   }
 
+  // 7. Contact
   if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('linkedin')) {
     return `You can connect with Himanshu directly through:
 
@@ -184,6 +232,7 @@ Feel free to paste your specific **Job Description** here for a point-by-point c
 *(Note: Phone numbers are not shared publicly for privacy).* Would you like to review his resume or project portfolio?`;
   }
 
+  // 8. Education
   if (q.includes('education') || q.includes('college') || q.includes('degree') || q.includes('aktu')) {
     return `Himanshu's academic background:
 
@@ -194,41 +243,57 @@ Feel free to paste your specific **Job Description** here for a point-by-point c
 Would you like to explore his technical certifications?`;
   }
 
-  if (q.includes('uno') || q.includes('game')) {
-    return `Himanshu built an interactive **1v1 UNO Playing Card Game** browser web app:
+  // 9. Python / Coding assistance
+  if (q.includes('python') || q.includes('pandas') || q.includes('sql') || q.includes('code') || q.includes('query')) {
+    return `Here is a quick Python EDA snippet using **Pandas** for analyzing datasets:
 
-- **Stack**: HTML5, CSS3, JavaScript (ES6+), Bootstrap/Tailwind CSS.
-- **Features**: Complete turn-based game loop against an AI bot, card draw/discard rules, wild cards, and mobile-friendly responsive layout.
-- **Repository**: [github.com/himanshu161098/UNO-playing-Card-](https://github.com/himanshu161098/UNO-playing-Card-).
+\`\`\`python
+import pandas as pd
+import numpy as np
 
-Would you like to know about his other projects?`;
+# Load dataset and inspect health
+df = pd.read_csv('dataset.csv')
+print("Shape:", df.shape)
+print("Missing values:\n", df.isnull().sum())
+
+# Clean missing values & outliers
+df['clean_duration'] = df['duration'].fillna(df['duration'].median())
+print("Summary Statistics:\n", df.describe())
+\`\`\`
+
+Would you like help with SQL queries, data cleaning techniques, or Machine Learning evaluation?`;
   }
 
   // General response
-  return `Himanshu is a final-year B.Tech CSE-IT student specializing in **Data Analysis, Python, SQL, and EDA**. 
+  return `I am Himanshu's **AI + Virtual Assistant**. 
 
 You can ask me about:
-- His **Netflix catalog data analysis project**
-- His **technical skills & certifications**
-- An **honest fit evaluation against your job description**
-- How to **contact Himanshu on LinkedIn or Email**
+- **Himanshu's Projects & Skills** (Netflix Analysis, Portfolio, UNO game, Python, SQL)
+- **Job Description Evaluation** (Paste any JD for an honest match breakdown)
+- **AI & Machine Learning Tasks** (Algorithms, pipelines, EDA, Python/SQL coding)
+- **National & Global Tech News** (IndiaAI Mission, LLMs, AI developments)
 
-What would you like to explore next?`;
+What would you like to explore or talk about?`;
 }
 
 // -----------------------------------------------------------------------------
-// 5. CHATBOT WIDGET DOM INJECTION & UI
+// 5. CHATBOT WIDGET DOM & VOICE ASSISTANT ENGINE
 // -----------------------------------------------------------------------------
 class AIChatbotWidget {
   constructor() {
     this.isOpen = false;
-    this.hasUnreadPrompt = false;
+    this.isListening = false;
+    this.isVoiceModeEnabled = false;
+    this.speechRecognitionAvailable = false;
+    this.recognition = null;
+    this.currentSpeakingBtn = null;
     this.dom = {};
     this.init();
   }
 
   init() {
     this.createWidgetDOM();
+    this.initVoiceAssistant();
     this.loadSessionHistory();
     this.bindEvents();
     this.setupTeaserTimer();
@@ -242,7 +307,7 @@ class AIChatbotWidget {
     triggerWrap.innerHTML = `
       <div class="cb-teaser-tooltip" id="cbTeaserTooltip" role="tooltip" aria-hidden="true">
         <i class="fa-solid fa-sparkles cb-teaser-spark" aria-hidden="true"></i>
-        <span>Ask Himanshu's AI about projects & skills!</span>
+        <span>Ask Himanshu's AI or speak via Voice! 🎙️</span>
         <button class="cb-teaser-close" id="cbTeaserClose" aria-label="Dismiss notification">&times;</button>
       </div>
       <button class="cb-floating-btn" id="cbFloatingBtn" aria-label="Open AI Portfolio Assistant" aria-haspopup="dialog" aria-expanded="false">
@@ -256,7 +321,7 @@ class AIChatbotWidget {
     windowOverlay.className = 'cb-window-overlay';
     windowOverlay.id = 'cbWindowOverlay';
     windowOverlay.setAttribute('role', 'dialog');
-    windowOverlay.setAttribute('aria-label', 'Himanshu Kumar AI Portfolio Assistant');
+    windowOverlay.setAttribute('aria-label', 'Himanshu Kumar AI + Virtual Assistant');
     windowOverlay.setAttribute('aria-hidden', 'true');
     windowOverlay.innerHTML = `
       <!-- Header -->
@@ -269,12 +334,15 @@ class AIChatbotWidget {
           <div class="cb-header-info">
             <div class="cb-title">
               Himanshu's AI
-              <span class="cb-title-tag">Claude Sonnet</span>
+              <span class="cb-title-tag">Virtual AI</span>
             </div>
-            <span class="cb-subtitle">Portfolio Assistant • Live</span>
+            <span class="cb-subtitle">AI/ML & Portfolio Assistant • Voice Live</span>
           </div>
         </div>
         <div class="cb-header-actions">
+          <button class="cb-icon-btn cb-voice-toggle-btn" id="cbVoiceToggleBtn" title="Toggle Voice Mode (Speaks answers aloud)" aria-label="Toggle Auto-Speak">
+            <i class="fa-solid fa-volume-high" id="cbVoiceToggleIcon" aria-hidden="true"></i>
+          </button>
           <button class="cb-icon-btn" id="cbNewChatBtn" title="Reset & Start New Chat" aria-label="Start New Chat">
             <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
           </button>
@@ -291,21 +359,35 @@ class AIChatbotWidget {
 
       <!-- Footer & Input -->
       <footer class="cb-footer">
+        <!-- Voice Listening Banner -->
+        <div class="cb-voice-status-bar" id="cbVoiceStatusBar" aria-live="polite">
+          <span><i class="fa-solid fa-microphone-lines"></i> Listening... Speak in English, Hindi, or Hinglish</span>
+          <div class="cb-audio-wave-anim">
+            <span class="cb-audio-wave-bar"></span>
+            <span class="cb-audio-wave-bar"></span>
+            <span class="cb-audio-wave-bar"></span>
+            <span class="cb-audio-wave-bar"></span>
+          </div>
+        </div>
+
         <form class="cb-input-form" id="cbInputForm" autocomplete="off">
           <textarea
             id="cbInputTextarea"
             class="cb-textarea"
             rows="1"
-            placeholder="Ask anything or paste a job description..."
+            placeholder="Ask AI/ML, talk via mic, or ask about Himanshu..."
             maxlength="${MAX_INPUT_LENGTH}"
             aria-label="Your question for Himanshu's AI"
           ></textarea>
+          <button type="button" class="cb-mic-btn" id="cbMicBtn" title="Speak via Microphone (Hindi / English)" aria-label="Voice Input">
+            <i class="fa-solid fa-microphone" id="cbMicIcon" aria-hidden="true"></i>
+          </button>
           <button type="submit" class="cb-send-btn" id="cbSendBtn" aria-label="Send message" disabled>
             <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
           </button>
         </form>
         <div class="cb-footer-meta">
-          <span>Trained on portfolio & live GitHub telemetry</span>
+          <span>AI/ML Specialist & Portfolio Telemetry</span>
           <span class="cb-char-counter" id="cbCharCounter">0 / ${MAX_INPUT_LENGTH}</span>
         </div>
       </footer>
@@ -324,12 +406,216 @@ class AIChatbotWidget {
       windowOverlay,
       closeBtn: document.getElementById('cbCloseBtn'),
       newChatBtn: document.getElementById('cbNewChatBtn'),
+      voiceToggleBtn: document.getElementById('cbVoiceToggleBtn'),
+      voiceToggleIcon: document.getElementById('cbVoiceToggleIcon'),
       messagesContainer: document.getElementById('cbMessagesContainer'),
+      voiceStatusBar: document.getElementById('cbVoiceStatusBar'),
       inputForm: document.getElementById('cbInputForm'),
       textarea: document.getElementById('cbInputTextarea'),
+      micBtn: document.getElementById('cbMicBtn'),
       sendBtn: document.getElementById('cbSendBtn'),
       charCounter: document.getElementById('cbCharCounter')
     };
+  }
+
+  // ---------------------------------------------------------------------------
+  // Voice Assistant Initialization (Speech-to-Text & Text-to-Speech)
+  // ---------------------------------------------------------------------------
+  initVoiceAssistant() {
+    // 1. Text-to-Speech Voice Mode state
+    try {
+      const savedMode = sessionStorage.getItem(VOICE_MODE_STORAGE_KEY);
+      this.isVoiceModeEnabled = savedMode === 'true';
+    } catch (e) {
+      this.isVoiceModeEnabled = false;
+    }
+    this.updateVoiceToggleUI();
+
+    // 2. Speech-to-Text (SpeechRecognition)
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      this.speechRecognitionAvailable = true;
+      this.recognition = new SpeechRecognition();
+      this.recognition.continuous = false;
+      this.recognition.interimResults = true;
+      this.recognition.lang = 'en-IN'; // Indian English / Hindi phonetic
+
+      this.recognition.onstart = () => {
+        this.isListening = true;
+        this.dom.micBtn.classList.add('listening');
+        this.dom.voiceStatusBar.classList.add('active');
+      };
+
+      this.recognition.onresult = (event) => {
+        let transcript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          transcript += event.results[i][0].transcript;
+        }
+        if (transcript) {
+          this.dom.textarea.value = transcript;
+          this.handleTextareaInput();
+        }
+      };
+
+      this.recognition.onerror = (event) => {
+        console.warn('[Speech Recognition Notice]', event.error);
+        this.stopListening();
+      };
+
+      this.recognition.onend = () => {
+        this.stopListening();
+      };
+    } else {
+      this.speechRecognitionAvailable = false;
+    }
+
+    // Pre-load available synthesis voices
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = () => {
+        window.speechSynthesis.getVoices();
+      };
+    }
+  }
+
+  toggleListening() {
+    if (!this.speechRecognitionAvailable) {
+      alert('Voice input is supported in Google Chrome, Microsoft Edge, Safari, and Android browsers.');
+      return;
+    }
+
+    if (this.isListening) {
+      this.stopListening();
+    } else {
+      try {
+        // Stop any current voice readout before user speaks
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        this.recognition.start();
+      } catch (err) {
+        console.warn('[Voice start error]', err);
+        this.stopListening();
+      }
+    }
+  }
+
+  stopListening() {
+    this.isListening = false;
+    if (this.dom.micBtn) this.dom.micBtn.classList.remove('listening');
+    if (this.dom.voiceStatusBar) this.dom.voiceStatusBar.classList.remove('active');
+    if (this.recognition) {
+      try { this.recognition.stop(); } catch (e) {}
+    }
+  }
+
+  toggleVoiceMode() {
+    this.isVoiceModeEnabled = !this.isVoiceModeEnabled;
+    try {
+      sessionStorage.setItem(VOICE_MODE_STORAGE_KEY, String(this.isVoiceModeEnabled));
+    } catch (e) {}
+    this.updateVoiceToggleUI();
+
+    if (!this.isVoiceModeEnabled && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      if (this.currentSpeakingBtn) {
+        this.currentSpeakingBtn.classList.remove('speaking');
+        this.currentSpeakingBtn.querySelector('span').textContent = 'Listen';
+        this.currentSpeakingBtn = null;
+      }
+    }
+  }
+
+  updateVoiceToggleUI() {
+    if (this.isVoiceModeEnabled) {
+      this.dom.voiceToggleBtn.classList.add('voice-active');
+      this.dom.voiceToggleIcon.className = 'fa-solid fa-volume-high';
+      this.dom.voiceToggleBtn.title = 'Voice Mode: ON (Assistant reads replies aloud. Click to Mute)';
+    } else {
+      this.dom.voiceToggleBtn.classList.remove('voice-active');
+      this.dom.voiceToggleIcon.className = 'fa-solid fa-volume-xmark';
+      this.dom.voiceToggleBtn.title = 'Voice Mode: OFF (Click to enable Voice Readout)';
+    }
+  }
+
+  cleanTextForSpeech(markdown) {
+    if (!markdown) return '';
+    return markdown
+      .replace(/```[\s\S]*?```/g, 'Code example provided.')
+      .replace(/`([^`]+)`/g, '$1')
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
+      .replace(/__([^_]+)__/g, '$1')
+      .replace(/\*([^*]+)\*/g, '$1')
+      .replace(/_([^_]+)_/g, '$1')
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      .replace(/https?:\/\/\S+/g, '')
+      .replace(/[-*#]/g, '')
+      .replace(/\n+/g, ' ')
+      .trim();
+  }
+
+  speakText(text, btnElement = null) {
+    if (!('speechSynthesis' in window)) return;
+
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      if (this.currentSpeakingBtn) {
+        this.currentSpeakingBtn.classList.remove('speaking');
+        const span = this.currentSpeakingBtn.querySelector('span');
+        if (span) span.textContent = 'Listen';
+        this.currentSpeakingBtn = null;
+      }
+      if (btnElement && btnElement === this.lastClickedSpeakBtn) {
+        this.lastClickedSpeakBtn = null;
+        return;
+      }
+    }
+
+    const clean = this.cleanTextForSpeech(text);
+    if (!clean) return;
+
+    const utterance = new SpeechSynthesisUtterance(clean);
+    utterance.rate = 1.02;
+    utterance.pitch = 1.0;
+
+    // Detect language: check for Hindi Devanagari or common Hindi phonetic words
+    const isHindi = /[\u0900-\u097F]/.test(text) || /\b(hai|hote|karein|batao|kya|aur|ka|ki|ke|se|unhone|usne)\b/i.test(text);
+    const voices = window.speechSynthesis.getVoices();
+
+    if (isHindi) {
+      const hindiVoice = voices.find(v => v.lang.includes('hi') || v.name.includes('Hindi') || v.name.includes('Swara') || v.name.includes('Madhur'));
+      if (hindiVoice) utterance.voice = hindiVoice;
+      utterance.lang = 'hi-IN';
+    } else {
+      const englishVoice = voices.find(v => (v.lang === 'en-IN' || v.lang === 'en-US' || v.lang === 'en-GB') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Microsoft') || v.name.includes('Samantha')));
+      if (englishVoice) utterance.voice = englishVoice;
+      utterance.lang = 'en-IN';
+    }
+
+    if (btnElement) {
+      this.currentSpeakingBtn = btnElement;
+      this.lastClickedSpeakBtn = btnElement;
+      btnElement.classList.add('speaking');
+      const span = btnElement.querySelector('span');
+      if (span) span.textContent = 'Speaking...';
+    }
+
+    utterance.onend = () => {
+      if (this.currentSpeakingBtn) {
+        this.currentSpeakingBtn.classList.remove('speaking');
+        const span = this.currentSpeakingBtn.querySelector('span');
+        if (span) span.textContent = 'Listen';
+        this.currentSpeakingBtn = null;
+      }
+    };
+
+    utterance.onerror = () => {
+      if (this.currentSpeakingBtn) {
+        this.currentSpeakingBtn.classList.remove('speaking');
+        const span = this.currentSpeakingBtn.querySelector('span');
+        if (span) span.textContent = 'Listen';
+        this.currentSpeakingBtn = null;
+      }
+    };
+
+    window.speechSynthesis.speak(utterance);
   }
 
   setupTeaserTimer() {
@@ -356,7 +642,6 @@ class AIChatbotWidget {
       console.warn('[Chatbot] Failed to load session:', e);
     }
 
-    // Default welcome state
     this.renderWelcomeState();
   }
 
@@ -386,7 +671,7 @@ class AIChatbotWidget {
     suggestionsWrap.className = 'cb-suggestions-section';
     suggestionsWrap.id = 'cbSuggestionsWrap';
     suggestionsWrap.innerHTML = `
-      <span class="cb-suggestions-label">Suggested Questions:</span>
+      <span class="cb-suggestions-label">Explore Capabilities:</span>
       <div class="cb-chips-grid">
         ${SUGGESTED_QUESTIONS.map(q => `
           <button class="cb-chip-btn" data-query="${escapeHtml(q.text)}">
@@ -427,7 +712,13 @@ class AIChatbotWidget {
     // Reset Chat
     this.dom.newChatBtn.addEventListener('click', () => this.resetChat());
 
-    // Suggested chip clicks
+    // Toggle Voice Mode (auto read aloud)
+    this.dom.voiceToggleBtn.addEventListener('click', () => this.toggleVoiceMode());
+
+    // Microphone speech recognition button
+    this.dom.micBtn.addEventListener('click', () => this.toggleListening());
+
+    // Suggested chip clicks & Toolbar actions
     this.dom.messagesContainer.addEventListener('click', (e) => {
       const chip = e.target.closest('.cb-chip-btn');
       if (chip && !isStreaming) {
@@ -449,6 +740,13 @@ class AIChatbotWidget {
             copyBtn.classList.remove('active');
           }, 2000);
         });
+      }
+
+      // Speak / Listen button on message bubble
+      const speakBtn = e.target.closest('.cb-speak-btn');
+      if (speakBtn) {
+        const textToSpeak = speakBtn.getAttribute('data-text') || '';
+        this.speakText(textToSpeak, speakBtn);
       }
 
       // Feedback buttons (console logged only)
@@ -520,6 +818,7 @@ class AIChatbotWidget {
 
   handleFormSubmit() {
     if (isStreaming) return;
+    this.stopListening();
     const query = this.dom.textarea.value.trim();
     if (!query) return;
 
@@ -551,6 +850,8 @@ class AIChatbotWidget {
 
   closeWindow() {
     this.isOpen = false;
+    this.stopListening();
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     this.dom.windowOverlay.classList.remove('open');
     this.dom.windowOverlay.setAttribute('aria-hidden', 'true');
     this.dom.floatingBtn.setAttribute('aria-expanded', 'false');
@@ -563,6 +864,8 @@ class AIChatbotWidget {
       abortController.abort();
       isStreaming = false;
     }
+    this.stopListening();
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     chatHistory = [];
     sessionStorage.removeItem(SESSION_STORAGE_KEY);
     this.renderWelcomeState();
@@ -586,6 +889,10 @@ class AIChatbotWidget {
       const actions = document.createElement('div');
       actions.className = 'cb-message-actions';
       actions.innerHTML = `
+        <button class="cb-action-btn cb-speak-btn" data-text="${escapeHtml(content)}" title="Listen (Text-to-Speech)">
+          <i class="fa-solid fa-volume-low"></i>
+          <span>Listen</span>
+        </button>
         <button class="cb-action-btn cb-copy-btn" data-text="${escapeHtml(content)}" title="Copy message">
           <i class="fa-regular fa-copy"></i>
           <span>Copy</span>
@@ -610,7 +917,7 @@ class AIChatbotWidget {
     typingRow.className = 'cb-message-row assistant';
     typingRow.id = 'cbTypingIndicator';
     typingRow.innerHTML = `
-      <div class="cb-typing-indicator" aria-label="Himanshu's AI is typing">
+      <div class="cb-typing-indicator" aria-label="Himanshu's AI is processing">
         <span class="cb-typing-dot"></span>
         <span class="cb-typing-dot"></span>
         <span class="cb-typing-dot"></span>
@@ -662,11 +969,9 @@ class AIChatbotWidget {
 
     abortController = new AbortController();
 
-    // Check if worker endpoint is configured or if we should use local smart mock mode
     const isWorkerConfigured = WORKER_URL && !WORKER_URL.includes('your-subdomain') && !WORKER_URL.includes('example.com');
 
     if (!isWorkerConfigured) {
-      // Local intelligent streaming engine based on actual knowledge.md
       await this.streamLocalMockResponse(userQuery);
       return;
     }
@@ -693,7 +998,6 @@ class AIChatbotWidget {
 
       this.removeTypingIndicator();
 
-      // Read SSE stream
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let fullAssistantText = '';
@@ -725,27 +1029,28 @@ class AIChatbotWidget {
             } else if (data.error) {
               throw new Error(data.error);
             }
-          } catch (e) {
-            // Ignore parse errors on individual SSE chunks
-          }
+          } catch (e) {}
         }
       }
 
-      // Add actions to final bubble
       chatHistory.push({ role: 'assistant', content: fullAssistantText });
       this.saveSessionHistory();
 
-      // Update copy button data
+      // Update action button texts
       const copyBtn = row.querySelector('.cb-copy-btn');
-      if (copyBtn) {
-        copyBtn.setAttribute('data-text', fullAssistantText);
+      if (copyBtn) copyBtn.setAttribute('data-text', fullAssistantText);
+      const speakBtn = row.querySelector('.cb-speak-btn');
+      if (speakBtn) speakBtn.setAttribute('data-text', fullAssistantText);
+
+      // Auto-speak if Voice Mode is active
+      if (this.isVoiceModeEnabled) {
+        this.speakText(fullAssistantText, speakBtn);
       }
 
     } catch (err) {
       if (err.name === 'AbortError') return;
 
-      console.warn('[Chatbot Worker Error - Falling back to local knowledge]', err);
-      // Fallback to local intelligence if proxy has an issue
+      console.warn('[Chatbot Worker Error - Falling back to local intelligence]', err);
       this.removeTypingIndicator();
       await this.streamLocalMockResponse(userQuery, true);
     } finally {
@@ -759,14 +1064,13 @@ class AIChatbotWidget {
     let reply = generateLocalMockResponse(userQuery, kb);
 
     if (fallbackNotice) {
-      reply = `*(Local Offline Knowledge Mode)*\n\n${reply}`;
+      reply = `*(Local Virtual AI Mode)*\n\n${reply}`;
     }
 
     this.removeTypingIndicator();
     const turnId = `turn-${Date.now()}`;
     const { row, bubble } = this.appendMessageBubble('assistant', '', true, turnId);
 
-    // Stream word-by-word with realistic token rhythm
     const words = reply.split(' ');
     let currentText = '';
 
@@ -775,15 +1079,20 @@ class AIChatbotWidget {
       currentText += (i === 0 ? '' : ' ') + words[i];
       bubble.innerHTML = renderSafeMarkdown(currentText);
       this.scrollToBottom();
-      await new Promise(r => setTimeout(r, 22));
+      await new Promise(r => setTimeout(r, 20));
     }
 
     chatHistory.push({ role: 'assistant', content: currentText });
     this.saveSessionHistory();
 
     const copyBtn = row.querySelector('.cb-copy-btn');
-    if (copyBtn) {
-      copyBtn.setAttribute('data-text', currentText);
+    if (copyBtn) copyBtn.setAttribute('data-text', currentText);
+    const speakBtn = row.querySelector('.cb-speak-btn');
+    if (speakBtn) speakBtn.setAttribute('data-text', currentText);
+
+    // Auto-speak if Voice Mode is active
+    if (this.isVoiceModeEnabled) {
+      this.speakText(currentText, speakBtn);
     }
 
     isStreaming = false;
@@ -792,7 +1101,7 @@ class AIChatbotWidget {
 }
 
 // -----------------------------------------------------------------------------
-// 6. LAZY INITIALIZATION (Non-blocking performance)
+// 6. LAZY INITIALIZATION
 // -----------------------------------------------------------------------------
 function initializeChatbot() {
   if (window.__hkChatbotInitialized) return;

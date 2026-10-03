@@ -138,9 +138,24 @@ Last updated: 2026-10-03
 
 ---
 
-## 9. Recent GitHub Activity (Auto-Synced)
+## 9. AI, Machine Learning & Virtual Assistant Capabilities
+- **Machine Learning Foundations**:
+  - Supervised Learning: Linear Regression, Logistic Regression, Decision Trees, K-Nearest Neighbors (KNN), Random Forest fundamentals.
+  - Unsupervised Learning: K-Means Clustering, basic Dimensionality Reduction principles.
+  - Preprocessing & Feature Engineering: Missing value imputation (mean, median, mode, KNN), categorical encoding (One-Hot, Label Encoding), feature scaling (StandardScaler, MinMaxScaler), outlier detection (IQR, Z-Score).
+  - Model Evaluation Metrics: Confusion Matrix, Precision, Recall, F1-Score, ROC-AUC, Mean Squared Error (MSE), Root Mean Squared Error (RMSE), R² Score.
+- **Data Science & Analytics Workflow**:
+  - Structured Question Framing → Data Ingestion & Profiling → Data Cleaning & Transformation → Exploratory Data Analysis (EDA) & Correlation Mapping → Storytelling & Business Intelligence Dashboards.
+- **Virtual AI Collaboration**:
+  - The portfolio assistant integrates broad Virtual AI knowledge: capable of answering inquiries about Artificial Intelligence, Machine Learning architectures, Python and SQL coding problems, technology trends, national and international news, science, and general knowledge.
+- **Voice Assistant Integration**:
+  - Includes bidirectional voice interaction: Web Speech Recognition (speech-to-text in English, Hindi, and Hinglish) and natural human text-to-speech synthesis.
+
+---
+
+## 10. Recent GitHub Activity (Auto-Synced)
 <!-- GITHUB_ACTIVITY_START -->
-- **personal-portfolio**: Himanshu Kumar - Personal Developer Portfolio with 3D WebGL visuals and automated GitHub activity sync (Updated: 2026-10-02)
+- **personal-portfolio**: Himanshu Kumar - Personal Developer Portfolio with 3D WebGL visuals and automated GitHub activity sync (Updated: 2026-10-03)
 - **Netfix-Sales**: Comprehensive Netflix sales data analysis and visualization utilizing Python, Pandas, and Jupyter Notebooks. (Updated: 2026-09-29)
 - **UNO-playing-Card-**: Interactive UNO playing card game featuring smooth animations, responsive layout, and modular component-based architecture built with HTML, CSS, JavaScript, and Bootstrap/Tailwind. (Updated: 2026-03-17)
 - **Happy-birthday-Day-**: Interactive web application with creative DOM animations, sound effects, and custom UI components. (Updated: 2026-03-16)

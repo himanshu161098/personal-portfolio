@@ -86,18 +86,24 @@ Personal Portfolio/
 
 ---
 
-## 🤖 AI Portfolio Assistant Architecture
+## 🤖 AI + Virtual Assistant & Voice Engine Architecture
 
-The portfolio features a high-performance, dark glassmorphic AI Chatbot powered by Anthropic Claude via a dedicated Cloudflare Worker serverless proxy:
+The portfolio features an advanced dark glassmorphic AI Assistant powered by Anthropic Claude via a dedicated Cloudflare Worker serverless proxy:
 
 ```
-[Portfolio Visitor] ◄──(SSE Streaming)──► [chatbot.js Widget] ◄──► [Cloudflare Worker Proxy]
-                                                                        │
-               ┌─────────────────────── Fetch & 5-min Cache ────────────┴──────────────────────┐
-               ▼                                                                                ▼
-     [data/knowledge.md]                                                              [data/social_feed.json]
-(Single Source of Truth)                                                             (Auto-synced GitHub data)
+[Portfolio Visitor] ◄──(Voice / STT / TTS)──► [chatbot.js Widget] ◄──► [Cloudflare Worker Proxy]
+                                                                              │
+                     ┌─────────────────────── Fetch & 5-min Cache ────────────┴──────────────────────┐
+                     ▼                                                                                ▼
+           [data/knowledge.md]                                                              [data/social_feed.json]
+   (Portfolio + AI/ML Knowledge Base)                                                      (Auto-synced GitHub data)
 ```
+
+### 🌟 Key Superpowers:
+- 📂 **Himanshu's Portfolio Dossier**: Answers on skills, projects, certifications, education, and honest job-description match analysis.
+- 🤖 **AI & ML Specialist / Virtual AI**: Assists with Machine Learning algorithms, Python/SQL coding, data science workflows, and national/international technology trends.
+- 🎙️ **Bidirectional Voice Assistant**: Speak questions hands-free in English, Hindi, or Hinglish via Web Speech Recognition, and hear human-like spoken responses with Web Speech Synthesis.
+- 💬 **Multi-Language Fluency**: Seamlessly interacts in English, Hindi, or conversational Hinglish.
 
 ---
 
