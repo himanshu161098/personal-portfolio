@@ -5755,3 +5755,65 @@ button, input, textarea {
         height: 22px;
     }
 }
+
+/* ==========================================================================
+   CERTIFICATION LINKS & VIEW BUTTON STYLES
+   ========================================================================== */
+.cert-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cert-link:hover {
+    color: var(--primary);
+}
+
+.cert-link-icon {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.cert-link:hover .cert-link-icon {
+    opacity: 1;
+    transform: translate(2px, -2px);
+}
+
+.cert-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.cert-view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.85rem;
+    background: rgba(0, 240, 255, 0.08);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-radius: var(--radius-sm, 6px);
+    color: var(--primary, #00f0ff);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.cert-view-btn:hover {
+    background: var(--primary, #00f0ff);
+    color: #0b0f19;
+    border-color: var(--primary, #00f0ff);
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.35);
+    transform: translateY(-2px);
+}
+
