@@ -1403,10 +1403,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const scene = new THREE.Scene();
-            scene.fog = new THREE.FogExp2(0x060913, 0.0016);
+            // Ultra-deep dark theme cosmic abyss fog
+            scene.fog = new THREE.FogExp2(0x030611, 0.0012);
 
-            const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1500);
-            camera.position.z = 400;
+            const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 2000);
+            camera.position.z = 420;
 
             const renderer = new THREE.WebGLRenderer({
                 canvas: bgCanvas,
@@ -1416,61 +1417,94 @@ document.addEventListener('DOMContentLoaded', () => {
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
-            // 1. Floating 3D Starfield / Cyber Constellation Points
-            const particleCount = 450;
+            // 1. Multi-Spectral 3D Cosmic Nebula & Starfield (800 depth particles)
+            const particleCount = 800;
             const geometry = new THREE.BufferGeometry();
             const positions = new Float32Array(particleCount * 3);
             const colors = new Float32Array(particleCount * 3);
 
-            const color1 = new THREE.Color(0x00f2fe);
-            const color2 = new THREE.Color(0x38bdf8);
-            const color3 = new THREE.Color(0x6366f1);
+            const palette = [
+                new THREE.Color(0xffffff), // Pristine diamond starlight
+                new THREE.Color(0x38bdf8), // Celestial Sky Cyan
+                new THREE.Color(0x00f0ff), // Electric Neon Cyan
+                new THREE.Color(0x818cf8), // Cosmic Indigo
+                new THREE.Color(0xc084fc), // Soft Starlight Violet
+                new THREE.Color(0xfde047)  // Warm Gold Starlight
+            ];
 
             for (let i = 0; i < particleCount; i++) {
-                positions[i * 3] = (Math.random() - 0.5) * 1200;
-                positions[i * 3 + 1] = (Math.random() - 0.5) * 1200;
-                positions[i * 3 + 2] = (Math.random() - 0.5) * 1000;
+                positions[i * 3] = (Math.random() - 0.5) * 1600;
+                positions[i * 3 + 1] = (Math.random() - 0.5) * 1400;
+                positions[i * 3 + 2] = (Math.random() - 0.5) * 1400;
 
-                const mixedColor = i % 3 === 0 ? color1 : (i % 3 === 1 ? color2 : color3);
-                colors[i * 3] = mixedColor.r;
-                colors[i * 3 + 1] = mixedColor.g;
-                colors[i * 3 + 2] = mixedColor.b;
+                const c = palette[Math.floor(Math.random() * palette.length)];
+                colors[i * 3] = c.r;
+                colors[i * 3 + 1] = c.g;
+                colors[i * 3 + 2] = c.b;
             }
 
             geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
             geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
             const material = new THREE.PointsMaterial({
-                size: 3.2,
+                size: 2.8,
                 vertexColors: true,
                 transparent: true,
-                opacity: 0.75,
+                opacity: 0.85,
                 blending: THREE.AdditiveBlending
             });
 
             const pointCloud = new THREE.Points(geometry, material);
             scene.add(pointCloud);
 
-            // 2. Dynamic 3D Horizon Grid
-            const gridHelper = new THREE.GridHelper(1600, 32, 0x00f2fe, 0x111c38);
-            gridHelper.position.y = -220;
-            gridHelper.material.opacity = 0.35;
+            // 2. Floating 3D Wireframe Cyber Polyhedra (Realistic Deep Cosmic Crystals)
+            const polyGroup = new THREE.Group();
+            scene.add(polyGroup);
+
+            const polyConfigs = [
+                { geom: new THREE.IcosahedronGeometry(38, 0), pos: [-380, 160, -350], col: 0x00f0ff, rotSpd: [0.004, 0.006] },
+                { geom: new THREE.OctahedronGeometry(32, 0),   pos: [420, 180, -420],  col: 0xa855f7, rotSpd: [-0.005, 0.004] },
+                { geom: new THREE.TetrahedronGeometry(26, 0),  pos: [-310, -180, -280],col: 0x38bdf8, rotSpd: [0.006, -0.005] },
+                { geom: new THREE.IcosahedronGeometry(45, 1), pos: [360, -220, -500], col: 0x6366f1, rotSpd: [-0.003, 0.005] },
+                { geom: new THREE.OctahedronGeometry(28, 0),   pos: [120, 240, -480],  col: 0x10b981, rotSpd: [0.005, 0.003] },
+                { geom: new THREE.IcosahedronGeometry(34, 0), pos: [-160, -240, -380],col: 0xec4899, rotSpd: [0.004, -0.004] }
+            ];
+
+            const polyMeshes = [];
+            polyConfigs.forEach(p => {
+                const mat = new THREE.MeshBasicMaterial({
+                    color: p.col,
+                    wireframe: true,
+                    transparent: true,
+                    opacity: 0.22,
+                    blending: THREE.AdditiveBlending
+                });
+                const mesh = new THREE.Mesh(p.geom, mat);
+                mesh.position.set(p.pos[0], p.pos[1], p.pos[2]);
+                polyGroup.add(mesh);
+                polyMeshes.push({ mesh, rotSpd: p.rotSpd, initY: p.pos[1] });
+            });
+
+            // 3. Deep 3D Perspective Cyber Floor Grid
+            const gridHelper = new THREE.GridHelper(2400, 48, 0x00f0ff, 0x091b36);
+            gridHelper.position.y = -260;
+            gridHelper.material.opacity = 0.28;
             gridHelper.material.transparent = true;
             scene.add(gridHelper);
 
             // Parallax mouse & scroll variables
             let targetX = 0;
             let targetY = 0;
-            let targetZ = 400;
+            let targetZ = 420;
 
             window.addEventListener('mousemove', (e) => {
-                targetX = ((e.clientX / window.innerWidth) - 0.5) * 90;
+                targetX = ((e.clientX / window.innerWidth) - 0.5) * 110;
                 targetY = -((e.clientY / window.innerHeight) - 0.5) * 90;
             }, { passive: true });
 
             window.addEventListener('scroll', () => {
                 const scrollProgress = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight || 1);
-                targetZ = 400 - scrollProgress * 320;
+                targetZ = 420 - scrollProgress * 360;
             }, { passive: true });
 
             window.addEventListener('resize', () => {
@@ -1479,16 +1513,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderer.setSize(window.innerWidth, window.innerHeight);
             });
 
+            let bgClock = new THREE.Clock();
+
             function animateBg() {
                 requestAnimationFrame(animateBg);
+                const bgTime = bgClock.getElapsedTime();
 
-                pointCloud.rotation.y += 0.0006;
-                pointCloud.rotation.x += 0.0003;
-                gridHelper.rotation.y += 0.0004;
+                // Slow rotational sweep of cosmic starfield
+                pointCloud.rotation.y += 0.0004;
+                pointCloud.rotation.x = Math.sin(bgTime * 0.15) * 0.04;
+                gridHelper.rotation.y += 0.0003;
 
-                camera.position.x += (targetX - camera.position.x) * 0.05;
-                camera.position.y += (targetY - camera.position.y) * 0.05;
-                camera.position.z += (targetZ - camera.position.z) * 0.05;
+                // Animate floating polyhedral cosmic crystals
+                polyMeshes.forEach((item, idx) => {
+                    item.mesh.rotation.x += item.rotSpd[0];
+                    item.mesh.rotation.y += item.rotSpd[1];
+                    item.mesh.position.y = item.initY + Math.sin(bgTime * 0.8 + idx) * 14;
+                });
+
+                // Smooth 3D camera parallax with slight dynamic roll
+                camera.position.x += (targetX - camera.position.x) * 0.04;
+                camera.position.y += (targetY - camera.position.y) * 0.04;
+                camera.position.z += (targetZ - camera.position.z) * 0.04;
+                camera.rotation.z += (-targetX * 0.00018 - camera.rotation.z) * 0.04;
 
                 renderer.render(scene, camera);
             }

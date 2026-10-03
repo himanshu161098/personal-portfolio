@@ -683,6 +683,11 @@ button, input, textarea {
     justify-content: center;
     position: relative;
     box-sizing: border-box;
+    background: 
+        radial-gradient(ellipse 75% 55% at 18% 38%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 65% 50% at 82% 48%, rgba(139, 92, 246, 0.09) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 40% at 50% 15%, rgba(56, 189, 248, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 90% 70% at 50% 95%, rgba(16, 25, 45, 0.95) 0%, #030611 100%);
 }
 
 .hero-container {
@@ -707,15 +712,23 @@ button, input, textarea {
     flex-wrap: wrap;
 }
 
-/* Status Pill */
+/* Realistic 3D Glass Status Pill */
 .badge-status {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    background: rgba(16, 185, 129, 0.1);
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.16) 0%, rgba(6, 78, 59, 0.3) 100%);
+    border: 1px solid rgba(52, 211, 153, 0.45);
     padding: 0.4rem 0.95rem;
     border-radius: var(--radius-full);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    transition: all var(--transition-fast);
+}
+
+.badge-status:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(52, 211, 153, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .status-pulse {
@@ -735,74 +748,233 @@ button, input, textarea {
 
 .badge-text {
     font-size: 0.82rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #34d399;
     letter-spacing: 0.3px;
+    text-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
 }
 
+/* Hologram Cyber HUD Intel Pill */
 .badge-hud-intel {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(0, 240, 255, 0.08);
-    border: 1px solid rgba(0, 240, 255, 0.25);
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.12) 0%, rgba(99, 102, 241, 0.2) 100%);
+    border: 1px solid rgba(0, 240, 255, 0.45);
     padding: 0.4rem 0.95rem;
     border-radius: var(--radius-full);
     font-family: var(--font-mono);
     font-size: 0.78rem;
     color: var(--accent-cyan);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all var(--transition-fast);
 }
 
+.badge-hud-intel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 28px rgba(0, 240, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* Terminal Intro Code Line */
 .hero-greeting {
     font-family: var(--font-mono);
     font-size: 1.05rem;
     color: var(--accent-cyan);
     margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: rgba(6, 12, 26, 0.65);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-sm);
+    width: fit-content;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 240, 255, 0.05);
 }
 
 .terminal-prompt {
-    color: var(--accent-indigo);
-    font-weight: 700;
-    margin-right: 0.4rem;
+    color: #10b981;
+    font-weight: 800;
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
 }
 
+.term-keyword {
+    color: #c084fc;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(192, 132, 252, 0.5);
+}
+
+.term-string {
+    color: #fde047;
+    font-weight: 600;
+    text-shadow: 0 0 12px rgba(253, 224, 71, 0.4);
+}
+
+/* Realistic 3D Name Heading */
 .hero-name {
-    font-size: clamp(2.6rem, 4.8vw, 3.8rem);
+    font-size: clamp(2.7rem, 4.8vw, 3.9rem);
     font-weight: 800;
     letter-spacing: -1.5px;
     margin-bottom: 0.85rem;
     line-height: 1.15;
 }
 
+.name-first {
+    color: #ffffff;
+    text-shadow: 0 0 35px rgba(0, 240, 255, 0.35), 0 3px 12px rgba(0, 0, 0, 0.9);
+    letter-spacing: -1.2px;
+}
+
+.name-last.gradient-text {
+    background: linear-gradient(135deg, #00f0ff 0%, #38bdf8 25%, #a855f7 65%, #ec4899 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 28px rgba(168, 85, 247, 0.55));
+    display: inline-block;
+}
+
+/* Role Subheading with Micro Badges */
 .hero-role {
-    font-size: clamp(1.05rem, 1.6vw, 1.32rem);
+    font-size: clamp(1rem, 1.4vw, 1.22rem);
     color: var(--text-secondary);
     font-weight: 500;
     margin-bottom: 1.25rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.6rem;
 }
 
-.accent-icon {
+.role-icon-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: rgba(0, 240, 255, 0.12);
+    border: 1px solid rgba(0, 240, 255, 0.4);
     color: var(--accent-cyan);
+    box-shadow: 0 0 16px rgba(0, 240, 255, 0.28);
+    font-size: 0.92rem;
 }
 
-.divider {
-    color: var(--accent-indigo);
-    opacity: 0.6;
+.role-degree {
+    color: #f1f5f9;
+    font-weight: 600;
+    font-size: 1.02rem;
 }
 
+.role-divider {
+    color: #ec4899;
+    opacity: 0.85;
+    font-size: 0.78rem;
+    text-shadow: 0 0 10px #ec4899;
+}
+
+.role-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+    padding: 0.22rem 0.65rem;
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 700;
+    backdrop-filter: blur(10px);
+    transition: all var(--transition-fast);
+}
+
+.role-pill:hover {
+    transform: translateY(-2px);
+}
+
+.role-data {
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(52, 211, 153, 0.45);
+    color: #34d399;
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.22);
+}
+
+.role-ai {
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(217, 70, 239, 0.45);
+    color: #f472b6;
+    box-shadow: 0 0 14px rgba(236, 72, 153, 0.24);
+}
+
+.role-web {
+    background: rgba(56, 189, 248, 0.14);
+    border: 1px solid rgba(56, 189, 248, 0.45);
+    color: #38bdf8;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.22);
+}
+
+/* Realistic 3D Frosted Glass Description Card */
 .hero-description {
-    font-size: 1.08rem;
-    color: var(--text-muted);
-    max-width: 560px;
-    line-height: 1.7;
+    font-size: 1.05rem;
+    color: #cbd5e1;
+    max-width: 580px;
+    line-height: 1.75;
     margin-bottom: 1.85rem;
+    background: rgba(11, 18, 34, 0.6);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-left: 3px solid var(--accent-cyan);
+    padding: 0.9rem 1.25rem;
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 240, 255, 0.03);
 }
 
-/* CTA Buttons */
+/* Colorful Keyword Highlights */
+.hl-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    padding: 0.08rem 0.45rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95em;
+    vertical-align: baseline;
+    transition: all var(--transition-fast);
+}
+
+.hl-tag:hover {
+    transform: translateY(-1px);
+}
+
+.hl-py {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+.hl-data {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.hl-ai {
+    background: rgba(192, 132, 252, 0.16);
+    color: #c084fc;
+    border: 1px solid rgba(192, 132, 252, 0.35);
+}
+
+.hl-web {
+    background: rgba(0, 240, 255, 0.14);
+    color: #00f0ff;
+    border: 1px solid rgba(0, 240, 255, 0.35);
+}
+
+.hl-eng {
+    background: rgba(251, 191, 36, 0.14);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.35);
+}
+
+/* CTA Buttons with 3D Tactile Depth & Glowing Bevels */
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
@@ -814,14 +986,21 @@ button, input, textarea {
     padding: 0.75rem 1.45rem;
     font-size: 0.92rem;
     font-weight: 600;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
 }
 
 .btn-resume-hero {
-    box-shadow: 0 4px 18px rgba(0, 242, 254, 0.35);
+    background: linear-gradient(135deg, #00f0ff 0%, #0284c7 60%, #1e40af 100%);
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 4px 20px rgba(0, 240, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .btn-resume-hero:hover {
-    box-shadow: 0 6px 24px rgba(0, 242, 254, 0.55);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(0, 240, 255, 0.65), 0 0 20px rgba(2, 132, 199, 0.5);
+    color: #ffffff !important;
 }
 
 /* Projects Hero Button - Radiant Electric Violet to Fuchsia */
@@ -829,8 +1008,8 @@ button, input, textarea {
     background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%);
     background-size: 200% 200%;
     color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 4px 18px rgba(168, 85, 247, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(168, 85, 247, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
     font-weight: 600;
     transition: all var(--transition-normal);
 }
@@ -841,8 +1020,8 @@ button, input, textarea {
 
 .btn-hero-projects:hover {
     background-position: 100% 100%;
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.55), 0 0 16px rgba(168, 85, 247, 0.4);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(236, 72, 153, 0.6), 0 0 20px rgba(168, 85, 247, 0.45);
     color: #ffffff !important;
 }
 
@@ -855,8 +1034,8 @@ button, input, textarea {
     background: linear-gradient(135deg, #f97316 0%, #ff5e62 50%, #e11d48 100%);
     background-size: 200% 200%;
     color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 4px 18px rgba(249, 115, 22, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(249, 115, 22, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
     font-weight: 600;
     transition: all var(--transition-normal);
 }
@@ -867,8 +1046,8 @@ button, input, textarea {
 
 .btn-hero-contact:hover {
     background-position: 100% 100%;
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(244, 63, 94, 0.55), 0 0 16px rgba(249, 115, 22, 0.4);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(244, 63, 94, 0.6), 0 0 20px rgba(249, 115, 22, 0.45);
     color: #ffffff !important;
 }
 
@@ -876,7 +1055,7 @@ button, input, textarea {
     transform: translate(2px, -2px) rotate(-10deg);
 }
 
-/* Hero Social Strip */
+/* Hero Social Strip with 3D Brand Tiles */
 .hero-social-strip {
     display: flex;
     align-items: center;
@@ -891,6 +1070,7 @@ button, input, textarea {
     color: var(--text-dark);
     text-transform: uppercase;
     letter-spacing: 0.6px;
+    font-weight: 600;
 }
 
 .hero-social-icons {
@@ -900,19 +1080,67 @@ button, input, textarea {
 }
 
 .hero-social-icons .social-link {
-    width: 36px;
-    height: 36px;
-    font-size: 0.95rem;
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(11, 18, 34, 0.8);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    backdrop-filter: blur(10px);
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Quick Tech Stack Pills */
+.hero-social-icons .social-github:hover {
+    color: #ffffff;
+    border-color: #00f0ff;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+    transform: translateY(-3px) scale(1.08);
+}
+
+.hero-social-icons .social-linkedin:hover {
+    background: #0a66c2;
+    color: #ffffff;
+    border-color: #38bdf8;
+    box-shadow: 0 0 22px rgba(10, 102, 194, 0.7);
+    transform: translateY(-3px) scale(1.08);
+}
+
+.hero-social-icons .social-instagram:hover {
+    background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+    color: #ffffff;
+    border-color: #f472b6;
+    box-shadow: 0 0 22px rgba(220, 39, 67, 0.65);
+    transform: translateY(-3px) scale(1.08);
+}
+
+.hero-social-icons .social-email:hover {
+    background: #059669;
+    color: #ffffff;
+    border-color: #34d399;
+    box-shadow: 0 0 22px rgba(16, 185, 129, 0.65);
+    transform: translateY(-3px) scale(1.08);
+}
+
+.hero-social-icons .social-phone:hover {
+    background: #4f46e5;
+    color: #ffffff;
+    border-color: #818cf8;
+    box-shadow: 0 0 22px rgba(99, 102, 241, 0.65);
+    transform: translateY(-3px) scale(1.08);
+}
+
+/* Quick Tech Stack Chips (Realistic Hardware Badges) */
 .hero-tech-stack {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 0.75rem;
     padding-top: 1.35rem;
-    border-top: 1px solid var(--border-subtle);
+    border-top: 1px solid rgba(56, 189, 248, 0.22);
     width: 100%;
 }
 
@@ -921,7 +1149,8 @@ button, input, textarea {
     font-size: 0.82rem;
     color: var(--text-dark);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
+    font-weight: 700;
 }
 
 .tech-pills {
@@ -936,15 +1165,71 @@ button, input, textarea {
     gap: 0.45rem;
     font-family: var(--font-mono);
     font-size: 0.8rem;
-    padding: 0.35rem 0.75rem;
+    font-weight: 600;
+    padding: 0.35rem 0.8rem;
     border-radius: var(--radius-sm);
-    background: rgba(16, 25, 45, 0.6);
+    background: rgba(16, 25, 45, 0.75);
     border: 1px solid var(--border-subtle);
     color: var(--text-secondary);
+    backdrop-filter: blur(10px);
+    transition: all var(--transition-fast);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.tech-pill i {
-    color: var(--accent-cyan);
+.tech-pill:hover {
+    transform: translateY(-2px);
+}
+
+.pill-python {
+    border-color: rgba(56, 189, 248, 0.45);
+    background: rgba(14, 28, 54, 0.85);
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.16);
+}
+.pill-python i { color: #38bdf8; }
+
+.pill-ml {
+    border-color: rgba(192, 132, 252, 0.45);
+    background: rgba(30, 16, 54, 0.85);
+    box-shadow: 0 0 14px rgba(168, 85, 247, 0.18);
+}
+.pill-ml i { color: #e879f9; }
+
+.pill-powerbi {
+    border-color: rgba(245, 158, 11, 0.45);
+    background: rgba(45, 30, 10, 0.85);
+    box-shadow: 0 0 14px rgba(245, 158, 11, 0.16);
+}
+.pill-powerbi i { color: #fbbf24; }
+
+.pill-js {
+    border-color: rgba(234, 179, 8, 0.45);
+    background: rgba(35, 30, 8, 0.85);
+    box-shadow: 0 0 14px rgba(234, 179, 8, 0.16);
+}
+.pill-js i { color: #facc15; }
+
+.pill-sql {
+    border-color: rgba(6, 182, 212, 0.45);
+    background: rgba(10, 32, 45, 0.85);
+    box-shadow: 0 0 14px rgba(6, 182, 212, 0.16);
+}
+.pill-sql i { color: #22d3ee; }
+
+.pill-github {
+    border-color: rgba(52, 211, 153, 0.45);
+    background: rgba(10, 38, 28, 0.85);
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.18);
+}
+.pill-github i { color: #34d399; }
+
+.live-dot-green {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 10px #10b981;
+    animation: pulseBeacon 1.8s infinite ease-in-out;
 }
 
 /* Hero Visual / Avatar Card */
