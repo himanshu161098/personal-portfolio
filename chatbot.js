@@ -376,7 +376,7 @@ class AIChatbotWidget {
     triggerWrap.innerHTML = `
       <div class="cb-teaser-tooltip" id="cbTeaserTooltip" role="tooltip" aria-hidden="true">
         <img src="assets/quantix-logo.png" alt="Quantix AI" class="cb-teaser-logo">
-        <span>👋 Chat with <strong>Quantix AI</strong> (Portfolio Intelligence)!</span>
+        <span>👋 Chat with <strong>Quantix AI</strong> • Meet the Mind Behind the Code.</span>
         <button class="cb-teaser-close" id="cbTeaserClose" aria-label="Dismiss notification">&times;</button>
       </div>
       <button class="cb-floating-btn" id="cbFloatingBtn" aria-label="Open Quantix AI Assistant" aria-haspopup="dialog" aria-expanded="false">
@@ -391,7 +391,7 @@ class AIChatbotWidget {
     windowOverlay.className = 'cb-window-overlay';
     windowOverlay.id = 'cbWindowOverlay';
     windowOverlay.setAttribute('role', 'dialog');
-    windowOverlay.setAttribute('aria-label', 'Quantix AI — Himanshu Portfolio Intelligence');
+    windowOverlay.setAttribute('aria-label', 'Quantix AI — Meet the Mind Behind the Code.');
     windowOverlay.setAttribute('aria-hidden', 'true');
     windowOverlay.innerHTML = `
       <!-- Header -->
@@ -404,7 +404,7 @@ class AIChatbotWidget {
           <div class="cb-header-info">
             <div class="cb-title">
               Quantix AI
-              <span class="cb-title-tag">Portfolio Intelligence</span>
+              <span class="cb-title-tag">Meet the Mind Behind the Code.</span>
             </div>
             <span class="cb-subtitle">Projects • Skills • 8,787 Netflix Analysis • Resume Fit</span>
           </div>
@@ -460,7 +460,7 @@ class AIChatbotWidget {
           </button>
         </form>
         <div class="cb-footer-meta">
-          <span>Quantix AI • Portfolio Intelligence</span>
+          <span>Quantix AI • Meet the Mind Behind the Code.</span>
           <span class="cb-char-counter" id="cbCharCounter">0 / ${MAX_INPUT_LENGTH}</span>
         </div>
       </footer>
