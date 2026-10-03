@@ -688,9 +688,12 @@ button, input, textarea {
 
 .hero-container {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 3.5rem;
+    grid-template-columns: 1.28fr 0.72fr;
+    gap: 2.2rem;
     align-items: center;
+    max-width: 1420px;
+    width: 100%;
+    padding: 0 1.8rem;
 }
 
 /* Hero Content */
@@ -911,7 +914,7 @@ button, input, textarea {
 .hero-description {
     font-size: 1.05rem;
     color: #cbd5e1;
-    max-width: 580px;
+    max-width: 680px;
     line-height: 1.75;
     margin-bottom: 1.85rem;
     background: rgba(11, 18, 34, 0.6);
@@ -973,29 +976,81 @@ button, input, textarea {
 /* CTA Buttons with 3D Tactile Depth & Glowing Bevels */
 .hero-actions {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1.1rem;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.8rem;
     margin-bottom: 1.75rem;
+    width: 100%;
 }
 
 .hero-actions .btn {
-    padding: 0.75rem 1.45rem;
-    font-size: 0.92rem;
+    padding: 0.68rem 1.12rem;
+    font-size: 0.88rem;
     font-weight: 600;
     border-radius: var(--radius-md);
     transition: all var(--transition-normal);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Prachi AI Hero Button - 1st Highlighted Button */
+.btn-chatgpt-hero {
+    background: linear-gradient(135deg, #00f2fe 0%, #6366f1 45%, #ec4899 100%);
+    background-size: 200% 200%;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 18px rgba(0, 242, 254, 0.45), 0 0 14px rgba(236, 72, 153, 0.35);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    animation: prachiHeroGlow 3.5s ease infinite alternate;
+}
+
+@keyframes prachiHeroGlow {
+    0% {
+        background-position: 0% 50%;
+        box-shadow: 0 4px 16px rgba(0, 242, 254, 0.4), 0 0 10px rgba(236, 72, 153, 0.3);
+    }
+    100% {
+        background-position: 100% 50%;
+        box-shadow: 0 6px 24px rgba(0, 242, 254, 0.7), 0 0 18px rgba(236, 72, 153, 0.55);
+    }
+}
+
+.btn-chatgpt-hero:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 30px rgba(0, 242, 254, 0.8), 0 0 22px rgba(236, 72, 153, 0.7);
+    color: #ffffff !important;
+}
+
+.hero-prachi-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(0, 242, 254, 0.75);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.6), 0 0 6px rgba(236, 72, 153, 0.4);
+    vertical-align: middle;
+    flex-shrink: 0;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn-chatgpt-hero:hover .hero-prachi-logo {
+    transform: scale(1.15) rotate(6deg);
+    box-shadow: 0 0 18px rgba(0, 242, 254, 0.95), 0 0 12px rgba(236, 72, 153, 0.8);
 }
 
 .btn-resume-hero {
     background: linear-gradient(135deg, #00f0ff 0%, #0284c7 60%, #1e40af 100%);
     color: #ffffff !important;
     border: 1px solid rgba(255, 255, 255, 0.35);
-    box-shadow: 0 4px 20px rgba(0, 240, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 242, 254, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .btn-resume-hero:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 30px rgba(0, 240, 255, 0.65), 0 0 20px rgba(2, 132, 199, 0.5);
+    box-shadow: 0 8px 30px rgba(0, 242, 254, 0.65), 0 0 20px rgba(2, 132, 199, 0.5);
     color: #ffffff !important;
 }
 
@@ -1234,6 +1289,8 @@ button, input, textarea {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: -3.5rem;
+    transition: transform var(--transition-normal);
 }
 
 .avatar-card-wrapper {
@@ -5350,12 +5407,12 @@ button, input, textarea {
 }
 
 .hero-prachi-logo {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     object-fit: cover;
-    border: 1.5px solid rgba(6, 9, 17, 0.8);
-    box-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+    border: 2px solid rgba(0, 242, 254, 0.75);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
 }
 
 .project-prachi-logo-img {
@@ -6902,5 +6959,15 @@ button, input, textarea {
         display: none !important;
     }
 }
+
+@media (max-width: 1024px) {
+    .hero-actions {
+        flex-wrap: wrap !important;
+    }
+    .hero-visual {
+        margin-top: 0 !important;
+    }
+}
+
 
 
