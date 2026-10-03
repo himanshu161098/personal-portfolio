@@ -1403,8 +1403,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const scene = new THREE.Scene();
-            // Balanced fog: deep dark void that keeps 3D objects crisp and vivid
-            scene.fog = new THREE.FogExp2(0x030611, 0.0007);
+            // Soft deep atmospheric fog that keeps light colors delicate and ethereal
+            scene.fog = new THREE.FogExp2(0x050a16, 0.0006);
 
             const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 2400);
             camera.position.z = 440;
@@ -1418,29 +1418,29 @@ document.addEventListener('DOMContentLoaded', () => {
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
             // ================================================================
-            // 1. DYNAMIC MULTI-SPECTRAL 3D STARFIELD MATRIX (1,000 Depth Stars)
+            // 1. SOFT LIGHT MULTI-SPECTRAL AMBIENT STARDUST (750 Light Particles)
             // ================================================================
-            const particleCount = 1000;
+            const particleCount = 750;
             const starGeom = new THREE.BufferGeometry();
             const starPos = new Float32Array(particleCount * 3);
             const starColors = new Float32Array(particleCount * 3);
 
-            const palette = [
-                new THREE.Color(0xffffff), // Radiant White
-                new THREE.Color(0x00f0ff), // Neon Electric Cyan
-                new THREE.Color(0x38bdf8), // Sky Blue
-                new THREE.Color(0xa855f7), // Laser Violet
-                new THREE.Color(0xec4899), // Hot Fuchsia
-                new THREE.Color(0xfde047), // Solar Gold
-                new THREE.Color(0x10b981)  // Emerald
+            // Very light, delicate pastel colors (Soft Ice Cyan, Lavender, Mint, Pale Gold, White)
+            const lightPalette = [
+                new THREE.Color(0xffffff), // Pure Crisp Starlight
+                new THREE.Color(0xbae6fd), // Soft Ice Sky
+                new THREE.Color(0xa5f3fc), // Light Ethereal Cyan
+                new THREE.Color(0xe9d5ff), // Light Pastel Lavender
+                new THREE.Color(0xa7f3d0), // Soft Mint
+                new THREE.Color(0xfef08a)  // Pale Solar Amber
             ];
 
             for (let i = 0; i < particleCount; i++) {
                 starPos[i * 3]     = (Math.random() - 0.5) * 1800;
-                starPos[i * 3 + 1] = (Math.random() - 0.5) * 1500;
-                starPos[i * 3 + 2] = (Math.random() - 0.5) * 1500;
+                starPos[i * 3 + 1] = (Math.random() - 0.5) * 1400;
+                starPos[i * 3 + 2] = (Math.random() - 0.5) * 1400;
 
-                const c = palette[Math.floor(Math.random() * palette.length)];
+                const c = lightPalette[Math.floor(Math.random() * lightPalette.length)];
                 starColors[i * 3]     = c.r;
                 starColors[i * 3 + 1] = c.g;
                 starColors[i * 3 + 2] = c.b;
@@ -1450,10 +1450,10 @@ document.addEventListener('DOMContentLoaded', () => {
             starGeom.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
 
             const starMat = new THREE.PointsMaterial({
-                size: 3.6,
+                size: 2.6,
                 vertexColors: true,
                 transparent: true,
-                opacity: 0.9,
+                opacity: 0.55,
                 blending: THREE.AdditiveBlending
             });
 
@@ -1461,114 +1461,193 @@ document.addEventListener('DOMContentLoaded', () => {
             scene.add(starField);
 
             // ================================================================
-            // 2. DYNAMIC 3D NEURAL PLEXUS CONSTELLATION NETWORK
+            // 2. TECH ROLE: AI & MACHINE LEARNING (3D DEEP NEURAL NETWORK & SYNAPSES)
             // ================================================================
-            const nodeCount = 55;
-            const nodes = [];
-            for (let i = 0; i < nodeCount; i++) {
-                nodes.push({
-                    x: (Math.random() - 0.5) * 1200,
-                    y: (Math.random() - 0.5) * 900,
-                    z: (Math.random() - 0.5) * 700 - 100,
-                    vx: (Math.random() - 0.5) * 0.6,
-                    vy: (Math.random() - 0.5) * 0.6,
-                    vz: (Math.random() - 0.5) * 0.4
+            const neuralNetGroup = new THREE.Group();
+            scene.add(neuralNetGroup);
+
+            // 4-Layer Architecture: Input (4) -> Hidden1 (6) -> Hidden2 (6) -> Output (4)
+            const layerDefinitions = [
+                { count: 4, x: -360, color: 0xa5f3fc, spanY: 220 }, // Input Layer (Light Cyan)
+                { count: 6, x: -120, color: 0xd8b4fe, spanY: 280 }, // Hidden Layer 1 (Light Lavender)
+                { count: 6, x:  120, color: 0xbae6fd, spanY: 280 }, // Hidden Layer 2 (Light Sky)
+                { count: 4, x:  360, color: 0xa7f3d0, spanY: 220 }  // Output Layer (Light Mint)
+            ];
+
+            const neuralLayers = [];
+            const allNeurons = [];
+            const synapticPaths = []; // Connection pairs for signal pulses
+
+            // Build Neuron Nodes
+            layerDefinitions.forEach((def, lIdx) => {
+                const layerNodes = [];
+                const stepY = def.spanY / (def.count - 1 || 1);
+
+                for (let i = 0; i < def.count; i++) {
+                    const y = (i * stepY) - (def.spanY / 2);
+                    const z = (Math.random() - 0.5) * 80 - 60;
+
+                    // Core Neuron Sphere
+                    const nGeom = new THREE.SphereGeometry(3.6, 16, 16);
+                    const nMat = new THREE.MeshBasicMaterial({
+                        color: def.color,
+                        transparent: true,
+                        opacity: 0.75,
+                        blending: THREE.AdditiveBlending
+                    });
+                    const nMesh = new THREE.Mesh(nGeom, nMat);
+                    nMesh.position.set(def.x, y, z);
+                    neuralNetGroup.add(nMesh);
+
+                    // Delicate Halo Aura
+                    const haloGeom = new THREE.SphereGeometry(6.5, 12, 12);
+                    const haloMat = new THREE.MeshBasicMaterial({
+                        color: def.color,
+                        transparent: true,
+                        opacity: 0.22,
+                        blending: THREE.AdditiveBlending,
+                        side: THREE.BackSide
+                    });
+                    const haloMesh = new THREE.Mesh(haloGeom, haloMat);
+                    nMesh.add(haloMesh);
+
+                    const nodeObj = {
+                        mesh: nMesh,
+                        halo: haloMesh,
+                        basePos: new THREE.Vector3(def.x, y, z),
+                        color: def.color,
+                        layerIdx: lIdx
+                    };
+
+                    layerNodes.push(nodeObj);
+                    allNeurons.push(nodeObj);
+                }
+                neuralLayers.push(layerNodes);
+            });
+
+            // Build Synaptic Inter-Layer Connections (Dense Weights)
+            const synapseSegments = [];
+            for (let l = 0; l < neuralLayers.length - 1; l++) {
+                const currentLayer = neuralLayers[l];
+                const nextLayer = neuralLayers[l + 1];
+
+                currentLayer.forEach(n1 => {
+                    nextLayer.forEach(n2 => {
+                        synapseSegments.push(n1.mesh.position.x, n1.mesh.position.y, n1.mesh.position.z);
+                        synapseSegments.push(n2.mesh.position.x, n2.mesh.position.y, n2.mesh.position.z);
+                        synapticPaths.push({ from: n1, to: n2 });
+                    });
                 });
             }
 
-            // Connecting lines geometry
-            const maxConnections = 200;
-            const linePositions = new Float32Array(maxConnections * 6);
-            const lineColors = new Float32Array(maxConnections * 6);
-            const lineGeom = new THREE.BufferGeometry();
-            lineGeom.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
-            lineGeom.setAttribute('color', new THREE.BufferAttribute(lineColors, 3));
-
-            const lineMat = new THREE.LineBasicMaterial({
-                vertexColors: true,
+            const synapseGeom = new THREE.BufferGeometry();
+            synapseGeom.setAttribute('position', new THREE.Float32BufferAttribute(synapseSegments, 3));
+            const synapseMat = new THREE.LineBasicMaterial({
+                color: 0x7dd3fc, // Soft Light Sky
                 transparent: true,
-                opacity: 0.65,
+                opacity: 0.16, // Very light, delicate
                 blending: THREE.AdditiveBlending
             });
-            const lineMesh = new THREE.LineSegments(lineGeom, lineMat);
-            scene.add(lineMesh);
+            const synapseLines = new THREE.LineSegments(synapseGeom, synapseMat);
+            neuralNetGroup.add(synapseLines);
 
-            // ================================================================
-            // 3. VIVID 3D FLOATING CYBER POLYHEDRAL CRYSTALS WITH ORBITAL RINGS
-            // ================================================================
-            const polyGroup = new THREE.Group();
-            scene.add(polyGroup);
+            // Dynamic Action Potential Pulses (Luminous signal beads moving between layers)
+            const pulseCount = 18;
+            const signalPulses = [];
+            const pulseGeom = new THREE.SphereGeometry(2.0, 10, 10);
 
-            const crystalConfigs = [
-                { geom: new THREE.IcosahedronGeometry(52, 0), pos: [-460, 160, -320], col: 0x00f0ff, ringR: 70, rotSpd: [0.008, 0.012] },
-                { geom: new THREE.OctahedronGeometry(45, 0),   pos: [490, 190, -380],  col: 0xec4899, ringR: 62, rotSpd: [-0.009, 0.008] },
-                { geom: new THREE.DodecahedronGeometry(38, 0), pos: [-410, -210, -280],col: 0x38bdf8, ringR: 54, rotSpd: [0.011, -0.009] },
-                { geom: new THREE.IcosahedronGeometry(48, 1), pos: [430, -230, -450], col: 0x10b981, ringR: 66, rotSpd: [-0.007, 0.010] },
-                { geom: new THREE.OctahedronGeometry(36, 0),   pos: [100, 290, -420],  col: 0xa855f7, ringR: 50, rotSpd: [0.009, 0.006] },
-                { geom: new THREE.IcosahedronGeometry(42, 0), pos: [-140, -270, -360],col: 0xfbbf24, ringR: 58, rotSpd: [0.008, -0.007] }
-            ];
-
-            const crystalMeshes = [];
-            crystalConfigs.forEach((c) => {
-                const crystalItem = new THREE.Group();
-                crystalItem.position.set(c.pos[0], c.pos[1], c.pos[2]);
-
-                // Wireframe Core Crystal
-                const cMat = new THREE.MeshBasicMaterial({
-                    color: c.col,
-                    wireframe: true,
+            for (let p = 0; p < pulseCount; p++) {
+                const pMat = new THREE.MeshBasicMaterial({
+                    color: 0xfef08a, // Soft Light Gold
                     transparent: true,
-                    opacity: 0.55,
+                    opacity: 0.85,
                     blending: THREE.AdditiveBlending
                 });
-                const cMesh = new THREE.Mesh(c.geom, cMat);
-                crystalItem.add(cMesh);
+                const pMesh = new THREE.Mesh(pulseGeom, pMat);
+                neuralNetGroup.add(pMesh);
 
-                // Rotating Glowing Orbital Ring around crystal
-                const rGeom = new THREE.TorusGeometry(c.ringR, 1.2, 12, 48);
-                const rMat = new THREE.MeshBasicMaterial({
-                    color: c.col,
-                    transparent: true,
-                    opacity: 0.6,
-                    blending: THREE.AdditiveBlending
+                const randomPath = synapticPaths[Math.floor(Math.random() * synapticPaths.length)];
+                signalPulses.push({
+                    mesh: pMesh,
+                    path: randomPath,
+                    progress: Math.random(),
+                    speed: 0.008 + Math.random() * 0.012
                 });
-                const rMesh = new THREE.Mesh(rGeom, rMat);
-                rMesh.rotation.x = Math.PI * 0.35;
-                crystalItem.add(rMesh);
+            }
 
-                polyGroup.add(crystalItem);
-                crystalMeshes.push({
-                    group: crystalItem,
-                    mesh: cMesh,
-                    ring: rMesh,
-                    rotSpd: c.rotSpd,
-                    initY: c.pos[1]
-                });
+            // ================================================================
+            // 3. TECH ROLE: DATA ANALYTICS (3D MATHEMATICAL LOSS SURFACE & SCATTER WAVE)
+            // ================================================================
+            const gridDimX = 26;
+            const gridDimZ = 26;
+            const totalDataPoints = gridDimX * gridDimZ;
+            const dataPointGeom = new THREE.BufferGeometry();
+            const dataPointPos = new Float32Array(totalDataPoints * 3);
+            const dataPointColors = new Float32Array(totalDataPoints * 3);
+
+            const gridSpanX = 1100;
+            const gridSpanZ = 850;
+
+            for (let ix = 0; ix < gridDimX; ix++) {
+                for (let iz = 0; iz < gridDimZ; iz++) {
+                    const idx = ix * gridDimZ + iz;
+                    const u = ix / (gridDimX - 1);
+                    const v = iz / (gridDimZ - 1);
+
+                    const x = (u - 0.5) * gridSpanX;
+                    const z = (v - 0.5) * gridSpanZ - 120;
+                    const y = -140;
+
+                    dataPointPos[idx * 3]     = x;
+                    dataPointPos[idx * 3 + 1] = y;
+                    dataPointPos[idx * 3 + 2] = z;
+
+                    // Light-colored gradient along the data matrix
+                    dataPointColors[idx * 3]     = 0.65 + u * 0.25; // Light R
+                    dataPointColors[idx * 3 + 1] = 0.85 + (1 - v) * 0.12; // Light G
+                    dataPointColors[idx * 3 + 2] = 0.95 + v * 0.05; // Light B
+                }
+            }
+
+            dataPointGeom.setAttribute('position', new THREE.BufferAttribute(dataPointPos, 3));
+            dataPointGeom.setAttribute('color', new THREE.BufferAttribute(dataPointColors, 3));
+
+            const dataPointMat = new THREE.PointsMaterial({
+                size: 3.0,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.38, // Light & delicate
+                blending: THREE.AdditiveBlending
             });
 
-            // Giant Cosmic Holographic Rings in Deep Space Void
-            const giantRing1 = new THREE.Mesh(
-                new THREE.TorusGeometry(260, 2.5, 16, 80),
-                new THREE.MeshBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.25, blending: THREE.AdditiveBlending })
-            );
-            giantRing1.position.set(0, 0, -650);
-            giantRing1.rotation.x = Math.PI * 0.38;
-            scene.add(giantRing1);
-
-            const giantRing2 = new THREE.Mesh(
-                new THREE.TorusGeometry(320, 2.0, 16, 80),
-                new THREE.MeshBasicMaterial({ color: 0xa855f7, transparent: true, opacity: 0.20, blending: THREE.AdditiveBlending })
-            );
-            giantRing2.position.set(0, 0, -850);
-            giantRing2.rotation.y = Math.PI * 0.42;
-            scene.add(giantRing2);
+            const dataLossSurface = new THREE.Points(dataPointGeom, dataPointMat);
+            scene.add(dataLossSurface);
 
             // ================================================================
-            // 4. INFINITE MOVING 3D CYBER GRID FLOOR (Cruise Animation)
+            // 4. DATA ANALYTICS: 3D HOLOGRAPHIC METRIC RADAR RINGS
             // ================================================================
-            const gridHelper = new THREE.GridHelper(2600, 52, 0x00f0ff, 0x0e284c);
-            gridHelper.position.y = -240;
-            gridHelper.material.opacity = 0.52;
+            const metricRing1 = new THREE.Mesh(
+                new THREE.TorusGeometry(220, 1.4, 16, 80),
+                new THREE.MeshBasicMaterial({ color: 0xa5f3fc, transparent: true, opacity: 0.16, blending: THREE.AdditiveBlending })
+            );
+            metricRing1.position.set(0, 0, -560);
+            metricRing1.rotation.x = Math.PI * 0.38;
+            scene.add(metricRing1);
+
+            const metricRing2 = new THREE.Mesh(
+                new THREE.TorusGeometry(290, 1.2, 16, 80),
+                new THREE.MeshBasicMaterial({ color: 0xd8b4fe, transparent: true, opacity: 0.12, blending: THREE.AdditiveBlending })
+            );
+            metricRing2.position.set(0, 0, -780);
+            metricRing2.rotation.y = Math.PI * 0.44;
+            scene.add(metricRing2);
+
+            // ================================================================
+            // 5. LIGHT PERSPECTIVE CYBER GRID FLOOR (Cruise Animation)
+            // ================================================================
+            const gridHelper = new THREE.GridHelper(2600, 52, 0x38bdf8, 0x0f223d);
+            gridHelper.position.y = -225;
+            gridHelper.material.opacity = 0.16; // Delicate, light
             gridHelper.material.transparent = true;
             scene.add(gridHelper);
 
@@ -1578,13 +1657,13 @@ document.addEventListener('DOMContentLoaded', () => {
             let targetZ = 440;
 
             window.addEventListener('mousemove', (e) => {
-                targetX = ((e.clientX / window.innerWidth) - 0.5) * 140;
-                targetY = -((e.clientY / window.innerHeight) - 0.5) * 110;
+                targetX = ((e.clientX / window.innerWidth) - 0.5) * 110;
+                targetY = -((e.clientY / window.innerHeight) - 0.5) * 80;
             }, { passive: true });
 
             window.addEventListener('scroll', () => {
                 const scrollProgress = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight || 1);
-                targetZ = 440 - scrollProgress * 380;
+                targetZ = 440 - scrollProgress * 320;
             }, { passive: true });
 
             window.addEventListener('resize', () => {
@@ -1600,86 +1679,58 @@ document.addEventListener('DOMContentLoaded', () => {
                 requestAnimationFrame(animateBg);
                 const bgTime = bgClock.getElapsedTime();
 
-                // 1. Starfield Slow Ambient Orbit & Twinkle
-                starField.rotation.y += 0.0005;
-                starField.rotation.x = Math.sin(bgTime * 0.12) * 0.03;
+                // 1. Starfield Ambient Slow Twinkle
+                starField.rotation.y += 0.0004;
 
-                // 2. Infinite Forward Cyber Cruise on Grid Floor
-                gridHelper.position.z = (bgTime * 55) % (2600 / 52);
+                // 2. Infinite Forward Gentle Cruise on Grid Floor
+                gridHelper.position.z = (bgTime * 45) % (2600 / 52);
 
-                // 3. Animate 3D Floating Crystals & Rings
-                crystalMeshes.forEach((item, idx) => {
-                    item.mesh.rotation.x += item.rotSpd[0];
-                    item.mesh.rotation.y += item.rotSpd[1];
-                    item.ring.rotation.z += item.rotSpd[1] * 1.5;
-                    item.group.position.y = item.initY + Math.sin(bgTime * 1.1 + idx * 1.2) * 22;
+                // 3. AI / Deep Neural Network Wave & Dynamic Synaptic Signals
+                neuralNetGroup.rotation.y = Math.sin(bgTime * 0.25) * 0.12;
+                neuralNetGroup.rotation.x = Math.cos(bgTime * 0.2) * 0.08;
+
+                // Neuron Gentle Breathing / Synapse Activation
+                allNeurons.forEach((n, idx) => {
+                    const wave = Math.sin(bgTime * 2.0 + idx * 0.6) * 0.12;
+                    n.mesh.scale.set(1 + wave, 1 + wave, 1 + wave);
+                    n.halo.material.opacity = 0.18 + Math.sin(bgTime * 2.5 + idx * 0.8) * 0.08;
                 });
 
-                // Giant Cosmic Rings Rotation
-                giantRing1.rotation.z += 0.002;
-                giantRing2.rotation.z -= 0.0015;
+                // Update Synaptic Signal Action Potential Pulses
+                signalPulses.forEach(sp => {
+                    sp.progress += sp.speed;
+                    if (sp.progress >= 1.0) {
+                        sp.progress = 0;
+                        sp.path = synapticPaths[Math.floor(Math.random() * synapticPaths.length)];
+                    }
+                    const pA = sp.path.from.mesh.position;
+                    const pB = sp.path.to.mesh.position;
+                    sp.mesh.position.lerpVectors(pA, pB, sp.progress);
+                });
 
-                // 4. Update 3D Neural Constellation Network
-                let connIdx = 0;
-                const posArr = lineMesh.geometry.attributes.position.array;
-                const colArr = lineMesh.geometry.attributes.color.array;
-
-                for (let i = 0; i < nodeCount; i++) {
-                    const n = nodes[i];
-                    n.x += n.vx;
-                    n.y += n.vy;
-                    n.z += n.vz;
-
-                    // Bounds bounce
-                    if (n.x < -600 || n.x > 600) n.vx *= -1;
-                    if (n.y < -450 || n.y > 450) n.vy *= -1;
-                    if (n.z < -650 || n.z > 200) n.vz *= -1;
-
-                    // Connect nearby nodes
-                    for (let j = i + 1; j < nodeCount; j++) {
-                        if (connIdx >= maxConnections) break;
-                        const n2 = nodes[j];
-                        const dx = n.x - n2.x;
-                        const dy = n.y - n2.y;
-                        const dz = n.z - n2.z;
-                        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-
-                        if (dist < 185) {
-                            const pOffset = connIdx * 6;
-                            posArr[pOffset]     = n.x;
-                            posArr[pOffset + 1] = n.y;
-                            posArr[pOffset + 2] = n.z;
-                            posArr[pOffset + 3] = n2.x;
-                            posArr[pOffset + 4] = n2.y;
-                            posArr[pOffset + 5] = n2.z;
-
-                            const alpha = 1.0 - (dist / 185);
-                            colArr[pOffset]     = 0.0;
-                            colArr[pOffset + 1] = 0.94 * alpha;
-                            colArr[pOffset + 2] = 1.0 * alpha;
-                            colArr[pOffset + 3] = 0.65 * alpha;
-                            colArr[pOffset + 4] = 0.33 * alpha;
-                            colArr[pOffset + 5] = 0.97 * alpha;
-
-                            connIdx++;
-                        }
+                // 4. Data Analytics Mathematical Loss Surface Undulation (Sine & Cosine loss curves)
+                const posArr = dataLossSurface.geometry.attributes.position.array;
+                for (let ix = 0; ix < gridDimX; ix++) {
+                    for (let iz = 0; iz < gridDimZ; iz++) {
+                        const idx = (ix * gridDimZ + iz) * 3;
+                        const u = ix * 0.22;
+                        const v = iz * 0.22;
+                        const waveY = -140 + Math.sin(u + bgTime * 1.2) * Math.cos(v + bgTime * 0.9) * 22 + Math.sin(u * 0.5 + bgTime * 0.6) * 10;
+                        posArr[idx + 1] = waveY;
                     }
                 }
+                dataLossSurface.geometry.attributes.position.needsUpdate = true;
 
-                // Clear unused line vertices
-                for (let k = connIdx * 6; k < maxConnections * 6; k++) {
-                    posArr[k] = 0;
-                    colArr[k] = 0;
-                }
-                lineMesh.geometry.attributes.position.needsUpdate = true;
-                lineMesh.geometry.attributes.color.needsUpdate = true;
+                // 5. Rotate Holographic Metric Radar Rings
+                metricRing1.rotation.z += 0.0018;
+                metricRing2.rotation.z -= 0.0014;
 
-                // 5. Dynamic 3D Camera Parallax & Subtle Spatial Roll
+                // 6. Dynamic 3D Camera Parallax & Subtle Spatial Roll
                 camera.position.x += (targetX - camera.position.x) * 0.05;
                 camera.position.y += (targetY - camera.position.y) * 0.05;
                 camera.position.z += (targetZ - camera.position.z) * 0.05;
-                camera.rotation.z += (-targetX * 0.00025 - camera.rotation.z) * 0.05;
-                camera.rotation.x += (-targetY * 0.00015 - camera.rotation.x) * 0.05;
+                camera.rotation.z += (-targetX * 0.00018 - camera.rotation.z) * 0.05;
+                camera.rotation.x += (-targetY * 0.00012 - camera.rotation.x) * 0.05;
 
                 renderer.render(scene, camera);
             }
