@@ -56,14 +56,12 @@ Personal Portfolio/
 ├── index.html                   # Main portfolio layout & markup
 ├── style.css                    # Futuristic dark-mode design system & animations
 ├── script.js                    # 3D canvas, cursor effects, navigation & UI logic
-├── prachi.html                  # Standalone Prachi AI web application
-├── chatgpt.html                 # Legacy redirect bridge to prachi.html
-├── chatgpt.css                  # Modern dark glassmorphic UI & sidebar styles
-├── prachi.js                    # Prachi AI multi-chat state, models, & voice engine
-├── chatgpt.js                   # Backward-compatible script bridge
+├── chatgpt.html                 # Standalone ChatGPT Clone web application
+├── chatgpt.css                  # ChatGPT OpenAI dark aesthetic & sidebar styles
+├── chatgpt.js                   # ChatGPT multi-chat state, models, & voice engine
 │
 ├── chatbot.css                  # Floating widget cyber glassmorphism styles
-├── chatbot.js                   # Floating AI assistant & Prachi girl voice widget
+├── chatbot.js                   # Floating AI assistant & Maya voice widget with colorful logo
 │
 ├── worker/                      # Cloudflare Worker serverless AI proxy (Gemini + Claude)
 ├── .gitignore                   # Git ignore specifications
