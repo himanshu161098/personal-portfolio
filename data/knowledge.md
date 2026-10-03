@@ -138,7 +138,10 @@ Last updated: 2026-10-03
 
 ---
 
-## 9. AI, Machine Learning & Virtual Assistant Capabilities
+## 9. Google Gemini, Cloud AI & Machine Learning Specialization
+- **Google Gemini & Cloud AI Collaboration**:
+  - The portfolio assistant is integrated with Google Gemini AI and Cloud AI architectures. It delivers multimodal reasoning, ultra-fast streaming responses, and broad global intelligence across science, technology, mathematics, coding in all languages, and world developments.
+  - Covers Google Cloud Platform (GCP) data concepts: BigQuery enterprise data warehousing, BigQuery ML, Vertex AI model lifecycle, and serverless compute pipelines.
 - **Machine Learning Foundations**:
   - Supervised Learning: Linear Regression, Logistic Regression, Decision Trees, K-Nearest Neighbors (KNN), Random Forest fundamentals.
   - Unsupervised Learning: K-Means Clustering, basic Dimensionality Reduction principles.
@@ -146,10 +149,8 @@ Last updated: 2026-10-03
   - Model Evaluation Metrics: Confusion Matrix, Precision, Recall, F1-Score, ROC-AUC, Mean Squared Error (MSE), Root Mean Squared Error (RMSE), R² Score.
 - **Data Science & Analytics Workflow**:
   - Structured Question Framing → Data Ingestion & Profiling → Data Cleaning & Transformation → Exploratory Data Analysis (EDA) & Correlation Mapping → Storytelling & Business Intelligence Dashboards.
-- **Virtual AI Collaboration**:
-  - The portfolio assistant integrates broad Virtual AI knowledge: capable of answering inquiries about Artificial Intelligence, Machine Learning architectures, Python and SQL coding problems, technology trends, national and international news, science, and general knowledge.
-- **Voice Assistant Integration**:
-  - Includes bidirectional voice interaction: Web Speech Recognition (speech-to-text in English, Hindi, and Hinglish) and natural human text-to-speech synthesis.
+- **Bidirectional Voice Assistant**:
+  - Features real-time voice speech-to-text recognition (English, Hindi, Hinglish) and natural human text-to-speech audio synthesis.
 
 ---
 

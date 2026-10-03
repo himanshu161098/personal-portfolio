@@ -23,19 +23,19 @@ const MAX_HISTORY_MESSAGES = 10;
 // Suggested initial chips for exploration
 const SUGGESTED_QUESTIONS = [
   { icon: 'fa-solid fa-bolt', text: 'Give me a 30-second pitch about Himanshu' },
+  { icon: 'fa-solid fa-wand-magic-sparkles', text: 'What is Google Gemini & Cloud AI?' },
   { icon: 'fa-solid fa-brain', text: 'Explain Machine Learning workflow in Python' },
   { icon: 'fa-solid fa-chart-line', text: 'Tell me about the Netflix analysis project' },
-  { icon: 'fa-solid fa-user-check', text: 'Is he a good fit for a Data Analyst internship?' },
-  { icon: 'fa-solid fa-globe', text: 'What are the latest national & global AI trends?' },
+  { icon: 'fa-solid fa-cloud', text: 'What are Cloud AI & BigQuery advantages?' },
   { icon: 'fa-solid fa-envelope', text: 'How can I contact Himanshu?' }
 ];
 
 // Initial welcome greeting
-const WELCOME_GREETING = `Hello! 👋 I'm **Himanshu's AI + Virtual Intelligence Assistant**.
+const WELCOME_GREETING = `Hello! 👋 I'm **Himanshu's AI Assistant**, powered by **Google Gemini & Cloud AI**.
 
 I operate with **dual capabilities**:
 1. 📂 **Himanshu's Portfolio Dossier**: Ask about his **skills, Netflix analysis project, certifications, education**, or paste a **job description** for an honest fit analysis.
-2. 🤖 **AI & ML Expert / Global Knowledge**: Ask me to solve **Machine Learning tasks, Python/SQL coding, EDA techniques**, or discuss **national and international tech trends**.
+2. 🌐 **Gemini & Cloud AI World Intelligence**: Ask me anything! **Machine Learning, Cloud AI (GCP/BigQuery), Python/SQL coding, science, math, or national & international news**.
 3. 🎙️ **Voice Assistant**: Click the **Microphone** to speak in **English, Hindi, or Hinglish**, or toggle **Voice Mode** in the header to hear me speak!`;
 
 // -----------------------------------------------------------------------------
@@ -131,6 +131,19 @@ async function getLocalKnowledge() {
 
 function generateLocalMockResponse(userQuery, kb) {
   const q = userQuery.toLowerCase();
+
+  // 0. Google Gemini & Cloud AI
+  if (q.includes('gemini') || q.includes('cloud ai') || q.includes('bigquery') || q.includes('gcp') || q.includes('vertex')) {
+    return `**Google Gemini & Cloud AI Collaboration**:
+
+- **Google Gemini**: Google's most capable multimodal AI model architecture (Gemini 1.5 Flash & Pro, Gemini 2.0). It features a native 1M+ token context window, state-of-the-art multimodal reasoning across text, code, audio, and video, and low-latency response generation.
+- **Google Cloud AI Ecosystem**:
+  - **BigQuery & BigQuery ML**: Serverless, highly scalable enterprise data warehouse allowing direct SQL queries over terabytes of data and in-database ML modeling.
+  - **Vertex AI**: Unified platform for training, tuning, and deploying generative AI and custom machine learning models at enterprise scale.
+  - **Cloud AI Integration**: Powers this portfolio's real-time knowledge ingestion, voice processing, and natural conversational reasoning.
+
+Himanshu leverages these data analytics and cloud principles in his projects! Would you like to see how he uses SQL and Python for data analysis?`;
+  }
 
   // 1. AI & Machine Learning Questions
   if (q.includes('machine learning') || q.includes('ml ') || q.includes('ai ') || q.includes('pipeline') || q.includes('algorithm')) {
@@ -334,9 +347,9 @@ class AIChatbotWidget {
           <div class="cb-header-info">
             <div class="cb-title">
               Himanshu's AI
-              <span class="cb-title-tag">Virtual AI</span>
+              <span class="cb-title-tag">Gemini + Cloud AI</span>
             </div>
-            <span class="cb-subtitle">AI/ML & Portfolio Assistant • Voice Live</span>
+            <span class="cb-subtitle">Gemini & Portfolio Intelligence • Voice Live</span>
           </div>
         </div>
         <div class="cb-header-actions">
