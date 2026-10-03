@@ -431,74 +431,219 @@ document.addEventListener('DOMContentLoaded', () => {
             const coreGroup = new THREE.Group();
             scene.add(coreGroup);
 
-            // 1. Outer Geodesic Icosahedron Wireframe
-            const icosaGeometry = new THREE.IcosahedronGeometry(2.3, 1);
-            const icosaMaterial = new THREE.MeshBasicMaterial({
+            // ====================================================================
+            // A. BACKGROUND ROTATING LASER BEAM SYSTEM (High-Visibility & Colorful)
+            // ====================================================================
+            const laserSystemGroup = new THREE.Group();
+            laserSystemGroup.position.z = -1.2;
+            scene.add(laserSystemGroup);
+
+            // 1. Array of Collimated High-Intensity Rotating Laser Beams
+            const laserColors = [
+                0x00f2fe, // Neon Cyan
+                0xff007f, // Electric Magenta
+                0x10b981, // Emerald Green
+                0xa855f7, // Laser Purple
+                0xfbbf24, // Radiant Amber Gold
+                0x38bdf8  // Sky Blue
+            ];
+
+            const laserBeams = [];
+            const laserBeamCount = 6;
+            const beamLength = 22;
+
+            for (let i = 0; i < laserBeamCount; i++) {
+                const angle = (i / laserBeamCount) * Math.PI;
+                const beamGroup = new THREE.Group();
+                beamGroup.rotation.z = angle;
+
+                // Core Laser (intense sharp center line/cylinder)
+                const coreGeom = new THREE.CylinderGeometry(0.035, 0.035, beamLength, 8, 1, true);
+                const coreMat = new THREE.MeshBasicMaterial({
+                    color: laserColors[i],
+                    transparent: true,
+                    opacity: 0.95,
+                    blending: THREE.AdditiveBlending,
+                    side: THREE.DoubleSide
+                });
+                const coreMesh = new THREE.Mesh(coreGeom, coreMat);
+                beamGroup.add(coreMesh);
+
+                // Laser Outer Glow Sheath (soft volumetric halo)
+                const haloGeom = new THREE.CylinderGeometry(0.18, 0.25, beamLength, 12, 1, true);
+                const haloMat = new THREE.MeshBasicMaterial({
+                    color: laserColors[i],
+                    transparent: true,
+                    opacity: 0.42,
+                    blending: THREE.AdditiveBlending,
+                    side: THREE.DoubleSide
+                });
+                const haloMesh = new THREE.Mesh(haloGeom, haloMat);
+                beamGroup.add(haloMesh);
+
+                // Laser Spark Nodes along the beam
+                const sparkCount = 8;
+                const sparkGeom = new THREE.BufferGeometry();
+                const sparkPos = new Float32Array(sparkCount * 3);
+                for (let s = 0; s < sparkCount; s++) {
+                    sparkPos[s * 3] = (Math.random() - 0.5) * 0.1;
+                    sparkPos[s * 3 + 1] = (Math.random() - 0.5) * beamLength;
+                    sparkPos[s * 3 + 2] = (Math.random() - 0.5) * 0.1;
+                }
+                sparkGeom.setAttribute('position', new THREE.BufferAttribute(sparkPos, 3));
+                const sparkMat = new THREE.PointsMaterial({
+                    color: laserColors[i],
+                    size: 0.12,
+                    transparent: true,
+                    opacity: 0.9,
+                    blending: THREE.AdditiveBlending
+                });
+                const sparks = new THREE.Points(sparkGeom, sparkMat);
+                beamGroup.add(sparks);
+
+                laserSystemGroup.add(beamGroup);
+                laserBeams.push({ group: beamGroup, coreMat, haloMat, sparks });
+            }
+
+            // 2. Rotating Sweeping Holographic Radar Laser Fan
+            const radarGeom = new THREE.RingGeometry(0.8, 5.2, 32, 1, 0, Math.PI / 2.2);
+            const radarMat = new THREE.MeshBasicMaterial({
                 color: 0x00f2fe,
-                wireframe: true,
                 transparent: true,
-                opacity: 0.45
+                opacity: 0.2,
+                blending: THREE.AdditiveBlending,
+                side: THREE.DoubleSide
             });
-            const icosaMesh = new THREE.Mesh(icosaGeometry, icosaMaterial);
-            coreGroup.add(icosaMesh);
+            const laserRadarFan = new THREE.Mesh(radarGeom, radarMat);
+            laserRadarFan.position.z = -0.5;
+            laserSystemGroup.add(laserRadarFan);
 
-            // 2. Inner Rotating Octahedron
-            const octaGeometry = new THREE.OctahedronGeometry(1.4, 0);
-            const octaMaterial = new THREE.MeshBasicMaterial({
-                color: 0x38bdf8,
-                wireframe: true,
+            // 3. Central Laser Core Emitter Ring
+            const emitterGeom = new THREE.TorusGeometry(0.65, 0.04, 16, 32);
+            const emitterMat = new THREE.MeshBasicMaterial({
+                color: 0x00f2fe,
                 transparent: true,
-                opacity: 0.75
+                opacity: 0.85,
+                blending: THREE.AdditiveBlending
             });
-            const octaMesh = new THREE.Mesh(octaGeometry, octaMaterial);
-            coreGroup.add(octaMesh);
+            const emitterRing = new THREE.Mesh(emitterGeom, emitterMat);
+            emitterRing.position.z = -0.3;
+            laserSystemGroup.add(emitterRing);
 
-            // 3. Center Glowing Quantum Sphere
-            const sphereGeometry = new THREE.SphereGeometry(0.55, 24, 24);
+
+            // ====================================================================
+            // B. 3D QUANTUM CORE: COLORFUL MULTI-LAYERED CRYSTAL
+            // ====================================================================
+            // 1. Center Inner Ruby/Magenta Crystal
+            const innerOctaGeom = new THREE.OctahedronGeometry(0.85, 0);
+            const innerOctaMat = new THREE.MeshBasicMaterial({
+                color: 0xff007f, // Hot Neon Pink/Magenta
+                wireframe: false,
+                transparent: true,
+                opacity: 0.85,
+                blending: THREE.AdditiveBlending
+            });
+            const innerOctaMesh = new THREE.Mesh(innerOctaGeom, innerOctaMat);
+            coreGroup.add(innerOctaMesh);
+
+            // 2. Center Glowing Quantum Sphere (Cyan Core)
+            const sphereGeometry = new THREE.SphereGeometry(0.5, 24, 24);
             const sphereMaterial = new THREE.MeshBasicMaterial({
                 color: 0x00f2fe,
                 wireframe: false,
                 transparent: true,
-                opacity: 0.85
+                opacity: 0.9,
+                blending: THREE.AdditiveBlending
             });
             const sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
             coreGroup.add(sphereMesh);
 
-            // 3b. Quantum Sphere Inner Wireframe Glow
-            const sphereWire = new THREE.Mesh(
-                new THREE.SphereGeometry(0.58, 16, 16),
-                new THREE.MeshBasicMaterial({ color: 0x00f2fe, wireframe: true, transparent: true, opacity: 0.25 })
-            );
-            coreGroup.add(sphereWire);
+            // 3. Middle Faceted Electric Sky Wireframe Octahedron
+            const midOctaGeom = new THREE.OctahedronGeometry(1.4, 0);
+            const midOctaMat = new THREE.MeshBasicMaterial({
+                color: 0x38bdf8,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.85
+            });
+            const octaMesh = new THREE.Mesh(midOctaGeom, midOctaMat);
+            coreGroup.add(octaMesh);
 
-            // 4. Concentric Counter-Rotating Gyroscope Rings
-            const ring1Geom = new THREE.TorusGeometry(3.0, 0.025, 16, 100);
-            const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x00f2fe, transparent: true, opacity: 0.6 });
+            // 4. Outer Geodesic Icosahedron Cage (Violet & Cyan)
+            const icosaGeometry = new THREE.IcosahedronGeometry(2.3, 1);
+            const icosaMaterial = new THREE.MeshBasicMaterial({
+                color: 0xa855f7, // Electric Violet
+                wireframe: true,
+                transparent: true,
+                opacity: 0.55
+            });
+            const icosaMesh = new THREE.Mesh(icosaGeometry, icosaMaterial);
+            coreGroup.add(icosaMesh);
+
+
+            // ====================================================================
+            // C. 4 VIBRANT MULTI-COLORED CONCENTRIC GYROSCOPE RINGS
+            // ====================================================================
+            // Ring 1: Neon Cyan
+            const ring1Geom = new THREE.TorusGeometry(3.05, 0.035, 16, 100);
+            const ring1Mat = new THREE.MeshBasicMaterial({
+                color: 0x00f2fe,
+                transparent: true,
+                opacity: 0.85,
+                blending: THREE.AdditiveBlending
+            });
             const ring1 = new THREE.Mesh(ring1Geom, ring1Mat);
             ring1.rotation.x = Math.PI / 3;
             coreGroup.add(ring1);
 
-            const ring2Geom = new THREE.TorusGeometry(3.35, 0.025, 16, 100);
-            const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.6 });
+            // Ring 2: Electric Magenta / Pink
+            const ring2Geom = new THREE.TorusGeometry(3.4, 0.035, 16, 100);
+            const ring2Mat = new THREE.MeshBasicMaterial({
+                color: 0xff007f,
+                transparent: true,
+                opacity: 0.85,
+                blending: THREE.AdditiveBlending
+            });
             const ring2 = new THREE.Mesh(ring2Geom, ring2Mat);
             ring2.rotation.y = Math.PI / 4;
             coreGroup.add(ring2);
 
-            // 4b. Third Gyroscope Ring (added depth)
-            const ring3Geom = new THREE.TorusGeometry(2.7, 0.02, 16, 80);
-            const ring3Mat = new THREE.MeshBasicMaterial({ color: 0xa78bfa, transparent: true, opacity: 0.45 });
+            // Ring 3: Royal Purple
+            const ring3Geom = new THREE.TorusGeometry(2.7, 0.03, 16, 80);
+            const ring3Mat = new THREE.MeshBasicMaterial({
+                color: 0x8b5cf6,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending
+            });
             const ring3 = new THREE.Mesh(ring3Geom, ring3Mat);
             ring3.rotation.x = Math.PI / 2;
             ring3.rotation.z = Math.PI / 6;
             coreGroup.add(ring3);
 
-            // 5. SKILL SATELLITE NODES — Labeled positions on orbit
+            // Ring 4: Solar Amber Gold
+            const ring4Geom = new THREE.TorusGeometry(2.35, 0.026, 16, 70);
+            const ring4Mat = new THREE.MeshBasicMaterial({
+                color: 0xfbbf24,
+                transparent: true,
+                opacity: 0.75,
+                blending: THREE.AdditiveBlending
+            });
+            const ring4 = new THREE.Mesh(ring4Geom, ring4Mat);
+            ring4.rotation.y = Math.PI / 3;
+            ring4.rotation.x = Math.PI / 6;
+            coreGroup.add(ring4);
+
+
+            // ====================================================================
+            // D. 6 SKILL SATELLITES & VIBRANT LASER ENERGY BEAMS
+            // ====================================================================
             const skillNodes = [
                 { name: 'Python',    color: 0x00f2fe, angle: 0 },
-                { name: 'ML / AI',   color: 0xa78bfa, angle: Math.PI / 3 },
-                { name: 'Data Sci',  color: 0x34d399, angle: (2 * Math.PI) / 3 },
+                { name: 'ML / AI',   color: 0xd946ef, angle: Math.PI / 3 },
+                { name: 'Data Sci',  color: 0x10b981, angle: (2 * Math.PI) / 3 },
                 { name: 'SQL',       color: 0xfbbf24, angle: Math.PI },
-                { name: 'IoT',       color: 0xf472b6, angle: (4 * Math.PI) / 3 },
+                { name: 'IoT',       color: 0xf43f5e, angle: (4 * Math.PI) / 3 },
                 { name: 'Web Dev',   color: 0x38bdf8, angle: (5 * Math.PI) / 3 }
             ];
 
@@ -507,90 +652,150 @@ document.addEventListener('DOMContentLoaded', () => {
             const beamRefs = [];
 
             skillNodes.forEach((node) => {
-                // Satellite node sphere
-                const nodeGeom = new THREE.SphereGeometry(0.18, 12, 12);
-                const nodeMat = new THREE.MeshBasicMaterial({ color: node.color, transparent: true, opacity: 0.95 });
+                // Satellite Node Sphere
+                const nodeGeom = new THREE.SphereGeometry(0.17, 16, 16);
+                const nodeMat = new THREE.MeshBasicMaterial({
+                    color: node.color,
+                    transparent: true,
+                    opacity: 0.95,
+                    blending: THREE.AdditiveBlending
+                });
                 const nodeMesh = new THREE.Mesh(nodeGeom, nodeMat);
 
-                // Outer glow ring for each satellite
+                // Halo ring for each satellite
                 const glowRing = new THREE.Mesh(
-                    new THREE.TorusGeometry(0.28, 0.015, 8, 32),
-                    new THREE.MeshBasicMaterial({ color: node.color, transparent: true, opacity: 0.4 })
+                    new THREE.TorusGeometry(0.28, 0.02, 8, 32),
+                    new THREE.MeshBasicMaterial({
+                        color: node.color,
+                        transparent: true,
+                        opacity: 0.65,
+                        blending: THREE.AdditiveBlending
+                    })
                 );
                 nodeMesh.add(glowRing);
 
                 satelliteGroup.add(nodeMesh);
-                satelliteRefs.push({ mesh: nodeMesh, data: node, glowRing: glowRing });
 
-                // Energy beam from core to satellite
+                // Intense Glowing Colored Laser Energy Beam from core to satellite
                 const beamGeom = new THREE.BufferGeometry();
-                const beamMat = new THREE.LineBasicMaterial({ color: node.color, transparent: true, opacity: 0.2 });
+                const beamMat = new THREE.LineBasicMaterial({
+                    color: node.color,
+                    transparent: true,
+                    opacity: 0.75,
+                    blending: THREE.AdditiveBlending
+                });
                 const beamLine = new THREE.Line(beamGeom, beamMat);
                 coreGroup.add(beamLine);
+
+                // Laser Photon Pulse Bead traveling along beam
+                const photonGeom = new THREE.SphereGeometry(0.065, 8, 8);
+                const photonMat = new THREE.MeshBasicMaterial({
+                    color: node.color,
+                    transparent: true,
+                    opacity: 0.95,
+                    blending: THREE.AdditiveBlending
+                });
+                const photon = new THREE.Mesh(photonGeom, photonMat);
+                coreGroup.add(photon);
+
+                satelliteRefs.push({
+                    mesh: nodeMesh,
+                    data: node,
+                    glowRing: glowRing,
+                    photon: photon
+                });
                 beamRefs.push(beamLine);
             });
             coreGroup.add(satelliteGroup);
 
-            // 6. Data Stream Helix Particles
-            const helixCount = 120;
+
+            // ====================================================================
+            // E. DUAL HELIX QUANTUM DATA STREAMS (CYAN & MAGENTA)
+            // ====================================================================
+            const helixCount = 140;
             const helixGeom = new THREE.BufferGeometry();
             const helixPositions = new Float32Array(helixCount * 3);
             const helixColors = new Float32Array(helixCount * 3);
 
             for (let i = 0; i < helixCount; i++) {
-                const t = (i / helixCount) * Math.PI * 6;
-                const r = 1.6 + Math.sin(t * 0.5) * 0.5;
-                helixPositions[i * 3] = r * Math.cos(t);
-                helixPositions[i * 3 + 1] = (i / helixCount - 0.5) * 5;
-                helixPositions[i * 3 + 2] = r * Math.sin(t);
+                const t = (i / helixCount) * Math.PI * 8;
+                const r = 1.7 + Math.sin(t * 0.5) * 0.4;
+                const strand = i % 2 === 0 ? 1 : -1;
+                helixPositions[i * 3] = r * Math.cos(t) * strand;
+                helixPositions[i * 3 + 1] = (i / helixCount - 0.5) * 5.5;
+                helixPositions[i * 3 + 2] = r * Math.sin(t) * strand;
 
-                // Color gradient cyan -> indigo
-                const blend = i / helixCount;
-                helixColors[i * 3] = 0.0 + blend * 0.39;
-                helixColors[i * 3 + 1] = 0.95 - blend * 0.55;
-                helixColors[i * 3 + 2] = 1.0 - blend * 0.06;
+                // Alternate between Cyan (0, 242, 254) and Hot Pink (255, 0, 127)
+                if (i % 2 === 0) {
+                    helixColors[i * 3] = 0.0;
+                    helixColors[i * 3 + 1] = 0.95;
+                    helixColors[i * 3 + 2] = 1.0;
+                } else {
+                    helixColors[i * 3] = 1.0;
+                    helixColors[i * 3 + 1] = 0.0;
+                    helixColors[i * 3 + 2] = 0.5;
+                }
             }
             helixGeom.setAttribute('position', new THREE.BufferAttribute(helixPositions, 3));
             helixGeom.setAttribute('color', new THREE.BufferAttribute(helixColors, 3));
 
             const helixMat = new THREE.PointsMaterial({
-                size: 0.04,
+                size: 0.055,
                 transparent: true,
-                opacity: 0.65,
-                vertexColors: true
+                opacity: 0.85,
+                vertexColors: true,
+                blending: THREE.AdditiveBlending
             });
             const helixParticles = new THREE.Points(helixGeom, helixMat);
             coreGroup.add(helixParticles);
 
-            // 7. Orbiting Ambient Particles (original but refined)
-            const particleCount = 100;
+
+            // ====================================================================
+            // F. MULTI-COLORED AMBIENT CYBER DUST
+            // ====================================================================
+            const particleCount = 120;
             const particleGeom = new THREE.BufferGeometry();
             const particlePositions = new Float32Array(particleCount * 3);
+            const particleColors = new Float32Array(particleCount * 3);
+            const colorChoices = [
+                [0.0, 0.95, 1.0],   // Cyan
+                [1.0, 0.16, 0.5],   // Pink
+                [0.65, 0.33, 0.97], // Purple
+                [0.06, 0.72, 0.5],  // Emerald
+                [0.98, 0.75, 0.14]  // Gold
+            ];
 
             for (let i = 0; i < particleCount; i++) {
                 const u = Math.random();
                 const v = Math.random();
                 const theta = u * 2.0 * Math.PI;
                 const phi = Math.acos(2.0 * v - 1.0);
-                const r = 2.8 + Math.random() * 1.5;
+                const r = 2.6 + Math.random() * 2.0;
                 const sinPhi = Math.sin(phi);
 
                 particlePositions[i * 3] = r * sinPhi * Math.cos(theta);
                 particlePositions[i * 3 + 1] = r * sinPhi * Math.sin(theta);
                 particlePositions[i * 3 + 2] = r * Math.cos(phi);
+
+                const c = colorChoices[i % colorChoices.length];
+                particleColors[i * 3] = c[0];
+                particleColors[i * 3 + 1] = c[1];
+                particleColors[i * 3 + 2] = c[2];
             }
             particleGeom.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+            particleGeom.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
 
             const particleMat = new THREE.PointsMaterial({
-                color: 0x00f2fe,
-                size: 0.055,
+                size: 0.06,
                 transparent: true,
-                opacity: 0.7
+                opacity: 0.8,
+                vertexColors: true,
+                blending: THREE.AdditiveBlending
             });
             const particles = new THREE.Points(particleGeom, particleMat);
             coreGroup.add(particles);
 
-            // 8. Atmosphere Glow Sphere
+            // Atmospheric Outer Field
             const atmoGeom = new THREE.SphereGeometry(3.8, 32, 32);
             const atmoMat = new THREE.MeshBasicMaterial({
                 color: 0x00f2fe,
@@ -752,7 +957,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 const delta = clock.getDelta();
                 const time = clock.getElapsedTime();
 
-                // Rotational physics with damping
+                // 1. ROTATING BACKGROUND LASER BEAM SWEEP (Key Feature!)
+                // Multi-axis rotation produces dynamic sweeping laser rays across the entire background
+                laserSystemGroup.rotation.z += 0.015;
+                laserSystemGroup.rotation.x = Math.sin(time * 0.4) * 0.25;
+                laserSystemGroup.rotation.y = Math.cos(time * 0.35) * 0.2;
+
+                // Pulsate background laser beams & animate spark particles
+                laserBeams.forEach((lb, idx) => {
+                    const pulse = 0.8 + Math.sin(time * 3.5 + idx * 1.1) * 0.2;
+                    lb.coreMat.opacity = pulse;
+                    lb.haloMat.opacity = pulse * 0.42;
+                    lb.sparks.rotation.y += 0.02;
+                });
+
+                // Radar fan continuous laser sweep
+                laserRadarFan.rotation.z -= 0.022;
+
+                // Emitter ring pulse
+                emitterRing.scale.setScalar(1 + Math.sin(time * 4) * 0.12);
+
+                // 2. Rotational physics with damping for Core Group
                 coreGroup.rotation.y += rotVelocity.y + 0.005;
                 coreGroup.rotation.x += rotVelocity.x;
                 rotVelocity.x *= 0.94;
@@ -761,39 +986,47 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Subtle Parallax orientation
                 coreGroup.position.x += (hoverTilt.x - coreGroup.position.x) * 0.08;
                 coreGroup.position.y += (-hoverTilt.y - coreGroup.position.y) * 0.08;
+                laserSystemGroup.position.x = coreGroup.position.x * 0.5;
+                laserSystemGroup.position.y = coreGroup.position.y * 0.5;
 
-                // Independent sub-object rotations
-                ring1.rotation.z += 0.01;
-                ring2.rotation.z -= 0.013;
-                ring3.rotation.z += 0.008;
-                octaMesh.rotation.y -= 0.01;
-                octaMesh.rotation.x += 0.006;
+                // 3. Multi-axis Independent Gyroscope Rotations
+                ring1.rotation.z += 0.012;
+                ring2.rotation.z -= 0.015;
+                ring3.rotation.z += 0.009;
+                ring4.rotation.y += 0.011;
 
-                // Pulsing Quantum Core Scale
-                const pulse = 1 + Math.sin(time * 3.0) * 0.1;
+                octaMesh.rotation.y -= 0.012;
+                octaMesh.rotation.x += 0.008;
+
+                innerOctaMesh.rotation.y += 0.022;
+                innerOctaMesh.rotation.z -= 0.018;
+
+                // 4. Pulsing Quantum Core Scale
+                const pulse = 1 + Math.sin(time * 3.0) * 0.12;
                 sphereMesh.scale.set(pulse, pulse, pulse);
-                sphereWire.scale.set(pulse, pulse, pulse);
+                innerOctaMesh.scale.set(pulse, pulse, pulse);
 
                 // Atmosphere breathing
-                const atmoPulse = 0.03 + Math.sin(time * 1.5) * 0.015;
+                const atmoPulse = 0.04 + Math.sin(time * 1.5) * 0.02;
                 atmoMat.opacity = atmoPulse;
 
-                // Satellite Nodes orbit and energy beams
-                const orbitRadius = 3.6;
+                // 5. Orbiting Satellites, Vibrant Laser Beams & Photons
+                const orbitRadius = 3.5;
                 satelliteRefs.forEach((sat, i) => {
-                    const angle = sat.data.angle + time * 0.3;
-                    const yOff = Math.sin(time * 0.8 + i) * 0.6;
+                    const angle = sat.data.angle + time * 0.32;
+                    const yOff = Math.sin(time * 0.85 + i) * 0.55;
                     sat.mesh.position.set(
                         orbitRadius * Math.cos(angle),
                         yOff,
                         orbitRadius * Math.sin(angle)
                     );
-                    // Pulsing glow
-                    const glowPulse = 0.3 + Math.sin(time * 2.5 + i * 1.2) * 0.15;
-                    sat.glowRing.material.opacity = glowPulse;
-                    sat.glowRing.rotation.z += 0.02;
 
-                    // Update energy beam
+                    // Pulsing satellite halo ring
+                    const glowPulse = 0.5 + Math.sin(time * 3 + i * 1.2) * 0.25;
+                    sat.glowRing.material.opacity = glowPulse;
+                    sat.glowRing.rotation.z += 0.03;
+
+                    // Update vibrant laser energy beam connecting core to satellite
                     const beamPositions = new Float32Array([
                         0, 0, 0,
                         sat.mesh.position.x, sat.mesh.position.y, sat.mesh.position.z
@@ -801,17 +1034,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     beamRefs[i].geometry.dispose();
                     beamRefs[i].geometry = new THREE.BufferGeometry();
                     beamRefs[i].geometry.setAttribute('position', new THREE.BufferAttribute(beamPositions, 3));
-                    // Beam pulse opacity
-                    beamRefs[i].material.opacity = 0.12 + Math.sin(time * 4 + i) * 0.08;
+                    beamRefs[i].material.opacity = 0.65 + Math.sin(time * 4 + i) * 0.25;
+
+                    // Traveling photon pulse bead along the beam
+                    const travelProg = (Math.sin(time * 2.5 + i * 1.5) + 1) * 0.5; // 0 to 1
+                    sat.photon.position.set(
+                        sat.mesh.position.x * travelProg,
+                        sat.mesh.position.y * travelProg,
+                        sat.mesh.position.z * travelProg
+                    );
                 });
 
-                // Data Stream Helix rotation
-                helixParticles.rotation.y += 0.008;
+                // 6. Data Stream Helix rotation
+                helixParticles.rotation.y += 0.01;
                 helixParticles.rotation.x = Math.sin(time * 0.3) * 0.15;
 
-                // Particles Orbit
-                particles.rotation.y -= 0.004;
-                particles.rotation.x = Math.sin(time * 0.2) * 0.05;
+                // 7. Ambient Cyber Dust Orbit
+                particles.rotation.y -= 0.005;
+                particles.rotation.x = Math.sin(time * 0.2) * 0.06;
 
                 renderer.render(scene, camera);
 

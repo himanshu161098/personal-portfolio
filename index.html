@@ -340,34 +340,35 @@
 
                                 <!-- Left Sidebar: Telemetry Gauges -->
                                 <div class="hud-sidebar-left">
-                                    <div class="hud-gauge">
-                                        <span class="gauge-label">CPU</span>
+                                    <div class="hud-sidebar-title"><i class="fa-solid fa-chart-simple"></i> METRICS</div>
+                                    <div class="hud-gauge" title="CPU Core Load">
+                                        <span class="gauge-label gauge-lbl-cpu">CPU</span>
                                         <div class="gauge-ring-container">
                                             <svg viewBox="0 0 36 36" class="gauge-ring">
                                                 <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                                 <path class="gauge-fill gauge-cpu" stroke-dasharray="72, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                             </svg>
-                                            <span class="gauge-val" id="gaugeCpuVal">72%</span>
+                                            <span class="gauge-val gauge-val-cpu" id="gaugeCpuVal">72%</span>
                                         </div>
                                     </div>
-                                    <div class="hud-gauge">
-                                        <span class="gauge-label">MEM</span>
+                                    <div class="hud-gauge" title="Memory Allocation">
+                                        <span class="gauge-label gauge-lbl-mem">MEM</span>
                                         <div class="gauge-ring-container">
                                             <svg viewBox="0 0 36 36" class="gauge-ring">
                                                 <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                                 <path class="gauge-fill gauge-mem" stroke-dasharray="58, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                             </svg>
-                                            <span class="gauge-val" id="gaugeMemVal">58%</span>
+                                            <span class="gauge-val gauge-val-mem" id="gaugeMemVal">58%</span>
                                         </div>
                                     </div>
-                                    <div class="hud-gauge">
-                                        <span class="gauge-label">NET</span>
+                                    <div class="hud-gauge" title="Network Throughput">
+                                        <span class="gauge-label gauge-lbl-net">NET</span>
                                         <div class="gauge-ring-container">
                                             <svg viewBox="0 0 36 36" class="gauge-ring">
                                                 <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                                 <path class="gauge-fill gauge-net" stroke-dasharray="89, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                             </svg>
-                                            <span class="gauge-val" id="gaugeNetVal">89%</span>
+                                            <span class="gauge-val gauge-val-net" id="gaugeNetVal">89%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -394,27 +395,30 @@
                                 <!-- Bottom Panel: System Metrics Dashboard -->
                                 <div class="hud-bottom">
                                     <div class="hud-metric-row">
-                                        <div class="hud-stat">
-                                            <span class="stat-label">DATA &amp; AI READINESS</span>
+                                        <div class="hud-stat stat-readiness">
+                                            <div class="stat-hdr">
+                                                <span class="stat-label"><i class="fa-solid fa-brain text-cyan"></i> AI READINESS</span>
+                                                <span class="stat-pct font-mono">95%</span>
+                                            </div>
                                             <div class="hud-bar">
                                                 <div class="hud-bar-fill" style="width: 95%;"></div>
                                             </div>
                                         </div>
-                                        <div class="hud-stat">
-                                            <span class="stat-label">PROJECTS</span>
-                                            <span class="stat-val font-mono hud-count-up" data-target="12">0</span>
+                                        <div class="hud-stat stat-mini">
+                                            <span class="stat-label"><i class="fa-solid fa-code-branch text-purple"></i> PROJECTS</span>
+                                            <span class="stat-val font-mono hud-count-up" data-target="12">12</span>
                                         </div>
-                                        <div class="hud-stat">
-                                            <span class="stat-label">CERTIFICATIONS</span>
-                                            <span class="stat-val font-mono hud-count-up" data-target="7">0</span>
+                                        <div class="hud-stat stat-mini">
+                                            <span class="stat-label"><i class="fa-solid fa-certificate text-emerald"></i> CERTS</span>
+                                            <span class="stat-val font-mono hud-count-up" data-target="7">7</span>
                                         </div>
-                                        <div class="hud-stat">
-                                            <span class="stat-label">GITHUB SYNC</span>
-                                            <span class="stat-val font-mono" id="hudGithubStatus">LIVE CONNECTED</span>
+                                        <div class="hud-stat stat-mini">
+                                            <span class="stat-label"><i class="fa-brands fa-github text-cyan"></i> GITHUB</span>
+                                            <span class="stat-val-sync font-mono" id="hudGithubStatus"><span class="sync-live-dot"></span> SYNCED</span>
                                         </div>
                                     </div>
                                     <!-- Neural Waveform -->
-                                    <canvas class="hud-waveform" id="hudWaveform" height="22"></canvas>
+                                    <canvas class="hud-waveform" id="hudWaveform" height="20"></canvas>
                                 </div>
                             </div>
                         </div>
