@@ -22,21 +22,22 @@ const MAX_HISTORY_MESSAGES = 10;
 
 // Suggested initial chips for exploration
 const SUGGESTED_QUESTIONS = [
-  { icon: 'fa-solid fa-bolt', text: 'Give me a 30-second pitch about Himanshu' },
-  { icon: 'fa-solid fa-wand-magic-sparkles', text: 'What is Google Gemini & Cloud AI?' },
-  { icon: 'fa-solid fa-brain', text: 'Explain Machine Learning workflow in Python' },
+  { icon: 'fa-solid fa-calculator', text: 'Solve a Math / Physics numerical step-by-step 📐' },
+  { icon: 'fa-solid fa-flask-vial', text: 'Explain Chemistry / Biology concepts simply 🧬' },
+  { icon: 'fa-solid fa-landmark', text: 'Explain Indian Polity, GK/GS & Current Affairs 🌍' },
+  { icon: 'fa-solid fa-bolt', text: 'Give me a 30-second pitch about Himanshu 🚀' },
   { icon: 'fa-solid fa-chart-line', text: 'Tell me about the Netflix analysis project' },
-  { icon: 'fa-solid fa-cloud', text: 'What are Cloud AI & BigQuery advantages?' },
   { icon: 'fa-solid fa-envelope', text: 'How can I contact Himanshu?' }
 ];
 
 // Initial welcome greeting
-const WELCOME_GREETING = `Hello! 👋 I'm **Himanshu's AI Assistant**, powered by **Google Gemini & Cloud AI**.
+const WELCOME_GREETING = `Hello! 👋 I'm **Maya**, Himanshu's AI & Universal Problem-Solving Tutor (powered by **Google Gemini & Cloud AI**).
 
-I operate with **dual capabilities**:
-1. 📂 **Himanshu's Portfolio Dossier**: Ask about his **skills, Netflix analysis project, certifications, education**, or paste a **job description** for an honest fit analysis.
-2. 🌐 **Gemini & Cloud AI World Intelligence**: Ask me anything! **Machine Learning, Cloud AI (GCP/BigQuery), Python/SQL coding, science, math, or national & international news**.
-3. 🎙️ **Voice Assistant**: Click the **Microphone** to speak in **English, Hindi, or Hinglish**, or toggle **Voice Mode** in the header to hear me speak!`;
+I provide the **best, simplest step-by-step solutions** across all subjects:
+1. 📐 **Mathematics & Science**: Algebra, Calculus, Physics numericals, Chemistry reactions, Biology mechanisms.
+2. 🌍 **GK/GS & Current Affairs**: Indian Constitution & Polity, History, Geography, Economy, and national/global news.
+3. 📂 **Himanshu's Portfolio & Career Fit**: Facts on his skills, Netflix catalog analysis (8,787 titles), certifications, and honest JD fit.
+4. 🎙️ **Female Voice Assistant**: Click the **Microphone** to speak in English, Hindi, or Hinglish, or toggle the speaker icon to hear my voice!`;
 
 // -----------------------------------------------------------------------------
 // 2. STATE MANAGEMENT
@@ -130,9 +131,390 @@ async function getLocalKnowledge() {
 }
 
 function generateLocalMockResponse(userQuery, kb) {
-  const q = userQuery.toLowerCase();
+  const q = userQuery.toLowerCase().trim();
 
-  // 0. Google Gemini & Cloud AI
+  // 0. Maya Female Voice Identity & Assistant Intro
+  if (q.includes('maya') || q.includes('girl') || q.includes('voice') || q.includes('ladki') || q.includes('sound') || q.includes('aawaz') || q.includes('who are you') || q.includes('tum kaun') || q.includes('apna naam') || q.includes('intro')) {
+    return `Namaste! 👋 Main **Maya** hoon, Himanshu Kumar ki AI & Universal Problem-Solving Tutor, powered by **Google Gemini & Cloud AI**.
+
+🎙️ **Female Voice Assistant Active**:
+- Meri voice ek pleasant, natural **girl/female tone** me configured hai (pitch 1.18, natural cadence).
+- Har message ke neeche **"Listen"** button par click karke aap meri aawaz sun sakte hain ya top bar me **Speaker toggle icon** on karke automatic voice readout enjoy kar sakte hain.
+- Microphone button 🎙️ dabakar aap mujhse English, Hindi ya Hinglish me bol kar bhi sawaal pooch sakte hain.
+
+🌟 **Aap mujhse kya pooch sakte hain?**
+1. 📐 **Mathematics & Quantitative Aptitude**: Calculus (derivatives, integrals), Algebra, Quadratic equations, Probability, Percentages.
+2. ⚡ **Physics**: Kinematics equations, Newton's Laws, Work-Energy, Ohm's Law, Projectile motion, Optics numericals.
+3. 🧪 **Chemistry**: Photosynthesis reaction, Mole concept, pH calculation, Acids & Bases, Organic mechanisms ($S_N1/S_N2$), Periodic trends.
+4. 🧬 **Biology**: Cell organelles (Mitochondria ATP powerhouse), Mitosis vs Meiosis, DNA double helix, Human heart blood circulation.
+5. 📜 **General Knowledge & GS**: Indian Constitution (Preamble, Fundamental Rights, Articles), History (Harappa, Ashoka, Freedom movement), Geography (Rivers of India), Economy (GDP, Inflation, RBI).
+6. 🇮🇳 **Current Affairs**: IndiaAI Mission (10,000+ GPUs), ISRO space missions (Chandrayaan-3, Aditya-L1, Gaganyaan).
+7. 📂 **Himanshu's Portfolio**: Netflix analysis (8,787 titles), skills, education, certifications, and JD fit.
+
+Aap koi bhi question poochiye, main best aur simple step-by-step solution dungi!`;
+  }
+
+  // 1. Mathematics Problem Solver (Best, Simplest Step-by-Step Solutions)
+  if (q.includes('math') || q.includes('calculus') || q.includes('derivative') || q.includes('differentiate') || q.includes('integral') || q.includes('algebra') || q.includes('quadratic') || q.includes('trigonometry') || q.includes('probability') || q.includes('percentage') || q.includes('matrix') || q.includes('solve ') || q.includes('equation') || q.includes('ganit')) {
+    // Specific: Derivative / Calculus
+    if (q.includes('derivative') || q.includes('differentiate') || q.includes('calculus') || q.includes('d/dx')) {
+      return `### 📐 Calculus Problem: Finding the Derivative $\\frac{d}{dx}[x^3 + 5x^2 - 7x + 9]$
+
+Here is the **clearest step-by-step solution**:
+
+1. 📌 **Given Function**:
+   $$f(x) = x^3 + 5x^2 - 7x + 9$$
+
+2. 📐 **Governing Formulas / Rules**:
+   - **Power Rule**: $\\frac{d}{dx}[x^n] = n \\cdot x^{n-1}$
+   - **Constant Multiple Rule**: $\\frac{d}{dx}[c \\cdot f(x)] = c \\cdot f'(x)$
+   - **Constant Rule**: $\\frac{d}{dx}[C] = 0$
+   - **Sum/Difference Rule**: Differentiate each term individually.
+
+3. 🔢 **Step-by-Step Differentiation**:
+   - Term 1: $\\frac{d}{dx}[x^3] = 3x^{3-1} = 3x^2$
+   - Term 2: $\\frac{d}{dx}[5x^2] = 5 \\cdot (2x^{2-1}) = 10x$
+   - Term 3: $\\frac{d}{dx}[-7x] = -7 \\cdot (1x^0) = -7$
+   - Term 4: $\\frac{d}{dx}[9] = 0$ (derivative of a constant is always zero)
+
+4. ✅ **Final Answer**:
+   $$f'(x) = 3x^2 + 10x - 7$$
+
+5. 💡 **Pro-Tip & Intuitive Meaning**:
+   The derivative $f'(x)$ represents the **instantaneous rate of change** (slope of the tangent line) at any point $x$. If you want to find the slope at $x = 2$, simply plug in $x = 2$: $f'(2) = 3(4) + 10(2) - 7 = 12 + 20 - 7 = 25$!`;
+    }
+
+    // Specific: Quadratic Equation / Algebra
+    if (q.includes('quadratic') || q.includes('x^2') || q.includes('root') || q.includes('algebra')) {
+      return `### 📐 Algebra Problem: Solving Quadratic Equation $2x^2 - 7x + 3 = 0$
+
+Here is the **best and simplest solution** using the Quadratic Formula:
+
+1. 📌 **Given Equation**:
+   $$2x^2 - 7x + 3 = 0$$
+   Comparing with standard form $ax^2 + bx + c = 0$:
+   - $a = 2$, $b = -7$, $c = 3$
+
+2. 📐 **Formula Used (Shreedharacharya Formula)**:
+   $$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$
+   - **Discriminant ($D$)**: $D = b^2 - 4ac$
+
+3. 🔢 **Step-by-Step Calculation**:
+   - **Step 1 (Find Discriminant $D$)**:
+     $$D = (-7)^2 - 4(2)(3) = 49 - 24 = 25$$
+     *(Since $D > 0$, the equation has two distinct real roots)*.
+   - **Step 2 (Calculate Square Root)**:
+     $$\\sqrt{D} = \\sqrt{25} = 5$$
+   - **Step 3 (Find the Roots)**:
+     $$x = \\frac{-(-7) \\pm 5}{2(2)} = \\frac{7 \\pm 5}{4}$$
+     - Root 1: $x_1 = \\frac{7 + 5}{4} = \\frac{12}{4} = 3$
+     - Root 2: $x_2 = \\frac{7 - 5}{4} = \\frac{2}{4} = 0.5$ (or $\\frac{1}{2}$)
+
+4. ✅ **Final Answer**:
+   The roots of the equation are **$x = 3$** and **$x = 0.5$ (or $\\frac{1}{2}$)**.
+
+5. 💡 **Pro-Tip / Sanity Check**:
+   - Sum of roots: $3 + 0.5 = 3.5 = -\\frac{b}{a} = \\frac{7}{2} = 3.5$ (Verified! ✅)
+   - Product of roots: $3 \\times 0.5 = 1.5 = \\frac{c}{a} = \\frac{3}{2} = 1.5$ (Verified! ✅)`;
+    }
+
+    // Specific: Probability
+    if (q.includes('probabilit')) {
+      return `### 📐 Probability Problem: Tossing Two Fair Coins Simultaneously
+
+Here is the **clearest step-by-step solution** to find the probability of getting **at least one Head**:
+
+1. 📌 **Given Problem**:
+   Two unbiased coins are tossed together. Find $P(\\text{At least one Head})$.
+
+2. 📐 **Probability Formula**:
+   $$P(E) = \\frac{\\text{Number of Favourable Outcomes } n(E)}{\\text{Total Number of Possible Outcomes } n(S)}$$
+
+3. 🔢 **Step-by-Step Calculation**:
+   - **Sample Space ($S$)**:
+     $$S = \\{(H, H), (H, T), (T, H), (T, T)\\}$$
+     Total outcomes: $n(S) = 4$
+   - **Favourable Event ($E$)** - at least one Head means 1 Head or 2 Heads:
+     $$E = \\{(H, H), (H, T), (T, H)\\}$$
+     Favourable outcomes: $n(E) = 3$
+   - **Probability**:
+     $$P(E) = \\frac{3}{4} = 0.75 = 75\\%$$
+
+4. ✅ **Final Answer**:
+   $$P(\\text{At least one Head}) = \\frac{3}{4} \\text{ or } 75\\%$$
+
+5. 💡 **Shortcut (Complement Rule)**:
+   $P(\\text{At least 1 Head}) = 1 - P(\\text{No Heads}) = 1 - P(T, T) = 1 - \\frac{1}{4} = \\frac{3}{4}$. Fast and reliable for exams!`;
+    }
+
+    // General Math Problem Solver Framework
+    return `### 📐 Universal Mathematics Problem Solver
+
+Aap koi bhi Math problem (Calculus, Linear Algebra, Probability, Trigonometry, ya Arithmetic) type kar sakte hain! Main hamesha ye **5-Point Standard** follow karti hoon:
+
+1. 📌 **Given Information**: Problem ke variables aur targets ko identify karna.
+2. 📐 **Formulas & Rules**: Relevant theorem ya identity state karna.
+3. 🔢 **Step-by-Step Calculation**: Har step ko simple Hinglish/English me derive karna.
+4. ✅ **Final Answer**: Highlighted final result with verification.
+5. 💡 **Pro-Tip & Shortcut**: Exam tricks ya visual intuition.
+
+Aap apna specific math question likhiye (jaise "solve 3x + 4 = 19" ya "derivative of sin(x)*cos(x)"), aur main turant step-by-step solution dungi!`;
+  }
+
+  // 2. Physics Numericals & Problem Solving
+  if (q.includes('physic') || q.includes('newton') || q.includes('kinematic') || q.includes('velocity') || q.includes('acceleration') || q.includes('projectile') || q.includes('friction') || q.includes('thermodynamic') || q.includes('ohm') || q.includes('electricity') || q.includes('optics') || q.includes('light') || q.includes('gravity') || q.includes('numerical') || q.includes('bhautik')) {
+    // Specific: Kinematics / Motion
+    if (q.includes('motion') || q.includes('velocity') || q.includes('acceleration') || q.includes('kinematic') || q.includes('car')) {
+      return `### ⚡ Physics Numerical: Kinematics & Equation of Motion
+
+**Problem**: A car starts from rest and accelerates uniformly at $2 \\text{ m/s}^2$ for $5 \\text{ seconds}$. Find its final velocity and the total distance travelled.
+
+1. 📌 **Given Data (with SI Units)**:
+   - Initial velocity ($u$) = $0 \\text{ m/s}$ (starts from rest)
+   - Acceleration ($a$) = $2 \\text{ m/s}^2$
+   - Time taken ($t$) = $5 \\text{ s}$
+   - Target: Final velocity ($v$) and Distance ($s$)
+
+2. 📐 **Governing Equations of Motion**:
+   - 1st Equation: $v = u + at$
+   - 2nd Equation: $s = ut + \\frac{1}{2}at^2$
+
+3. 🔢 **Step-by-Step Calculation**:
+   - **Part A (Final Velocity)**:
+     $$v = 0 + (2 \\times 5) = 10 \\text{ m/s}$$
+   - **Part B (Distance Travelled)**:
+     $$s = (0 \\times 5) + \\frac{1}{2} \\times 2 \\times (5)^2$$
+     $$s = 0 + 1 \\times 25 = 25 \\text{ meters}$$
+
+4. ✅ **Final Answer**:
+   - Final Velocity = **$10 \\text{ m/s}$** (or $36 \\text{ km/h}$)
+   - Distance Travelled = **$25 \\text{ meters}$**
+
+5. 💡 **Physical Intuition**:
+   Average velocity during uniform acceleration is $\\frac{u + v}{2} = \\frac{0 + 10}{2} = 5 \\text{ m/s}$. Distance is simply Average Velocity $\\times$ Time = $5 \\times 5 = 25 \\text{ m}$!`;
+    }
+
+    // Specific: Ohm's Law / Electricity
+    if (q.includes('ohm') || q.includes('resistor') || q.includes('current') || q.includes('voltage') || q.includes('circuit')) {
+      return `### ⚡ Physics Problem: Ohm's Law & Circuit Analysis
+
+**Problem**: A $12\\text{V}$ battery is connected across two resistors of $4\\,\\Omega$ and $6\\,\\Omega$ connected in series. Find the total resistance and circuit current.
+
+1. 📌 **Given Data**:
+   - Voltage ($V$) = $12 \\text{ Volts}$
+   - Resistors: $R_1 = 4\\,\\Omega$, $R_2 = 6\\,\\Omega$ (Series combination)
+
+2. 📐 **Governing Formulas**:
+   - Equivalent Resistance in Series: $R_{\\text{eq}} = R_1 + R_2$
+   - Ohm's Law: $V = I \\cdot R \\implies I = \\frac{V}{R_{\\text{eq}}}$
+
+3. 🔢 **Step-by-Step Calculation**:
+   - **Step 1 (Total Resistance)**:
+     $$R_{\\text{eq}} = 4 + 6 = 10\\,\\Omega$$
+   - **Step 2 (Current through Circuit)**:
+     $$I = \\frac{12 \\text{ V}}{10\\,\\Omega} = 1.2 \\text{ Amperes}$$
+   - **Step 3 (Voltage drop across each)**:
+     $$V_1 = I \\cdot R_1 = 1.2 \\times 4 = 4.8 \\text{ V}$$
+     $$V_2 = I \\cdot R_2 = 1.2 \\times 6 = 7.2 \\text{ V}$$
+     *(Note: $4.8 + 7.2 = 12\\text{V}$, confirming conservation of energy)*.
+
+4. ✅ **Final Answer**:
+   - Equivalent Resistance = **$10\\,\\Omega$**
+   - Circuit Current = **$1.2\\text{ A}$**
+
+5. 💡 **Pro-Tip**: In a series circuit, **current ($I$) remains the same** through all elements, while voltage divides proportionately to the resistances!`;
+    }
+
+    // General Physics
+    return `### ⚡ Physics Problem Solving Hub
+
+Aap Physics ka koi bhi numerical ya theoretical question pooch sakte hain:
+- **Mechanics**: Newton's Laws ($F = ma$), Friction, Projectile motion, Circular motion.
+- **Work, Energy & Power**: $W = F \\cdot d \\cos(\\theta)$, Kinetic energy $\\frac{1}{2}mv^2$, Potential energy $mgh$.
+- **Thermodynamics & Heat**: Heat engines, Carnot cycle, 1st & 2nd Laws of Thermodynamics.
+- **Electromagnetism**: Coulomb's Law, Gauss's Law, Ampere's Law, Faraday's Induction.
+- **Optics & Modern Physics**: Snell's Law, Lens formula, Photoelectric effect ($E = h\\nu$).
+
+Aap apna numerical likhiye, aur main SI units ke sath step-by-step derive karke samjhaungi!`;
+  }
+
+  // 3. Chemistry Problem Solving & Reactions
+  if (q.includes('chemist') || q.includes('reaction') || q.includes('photosynthesis') || q.includes('acid') || q.includes('base') || q.includes('ph ') || q.includes('mole') || q.includes('periodic') || q.includes('organic') || q.includes('inorganic') || q.includes('rasayan')) {
+    if (q.includes('photosynthesis')) {
+      return `### 🧪 Chemistry in Biology: Photosynthesis Chemical Equation
+
+**Photosynthesis** wo biochemical process hai jisme green plants sunlight, water aur carbon dioxide ka use karke glucose aur oxygen banate hain.
+
+1. 📌 **Balanced Chemical Equation**:
+   $$6\\text{CO}_2 + 6\\text{H}_2\\text{O} \\xrightarrow[\\text{Chlorophyll}]{\\text{Sunlight}} \\text{C}_6\\text{H}_{12}\\text{O}_6 + 6\\text{O}_2$$
+
+2. 📐 **Reactants & Products**:
+   - **Reactants (Inlet)**: 6 molecules of Carbon Dioxide (from air) + 6 molecules of Water (from roots).
+   - **Catalyst / Energy**: Photons absorbed by Chlorophyll pigment in chloroplasts.
+   - **Products (Outlet)**: 1 molecule of Glucose (chemical energy storage) + 6 molecules of Oxygen gas (released into atmosphere).
+
+3. 🔢 **Two Main Stages**:
+   - **Light Reaction (Thylakoid)**: Photolysis of water releases $O_2$, generating ATP and NADPH.
+   - **Dark Reaction / Calvin Cycle (Stroma)**: $CO_2$ is fixed into Glucose without direct requirement of light.
+
+4. 💡 **Pro-Tip / Key Exam Fact**: Photosynthesis is an **endothermic oxidation-reduction reaction**: Water is oxidized to $O_2$, while Carbon Dioxide is reduced to Glucose!`;
+    }
+
+    if (q.includes('ph ') || q.includes('acid') || q.includes('base')) {
+      return `### 🧪 Chemistry Problem: pH Calculation of an Acidic Solution
+
+**Problem**: Calculate the pH of a $0.001\\text{ M}$ solution of Hydrochloric Acid ($HCl$).
+
+1. 📌 **Given Data**:
+   - Concentration of strong acid $HCl = 10^{-3}\\text{ M}$
+   - Since $HCl$ is a strong monoprotic acid, it dissociates completely:
+     $$HCl \\rightarrow H^+ + Cl^-$$
+   - Therefore, $[H^+] = 10^{-3}\\text{ M}$ (or $0.001\\text{ mol/L}$)
+
+2. 📐 **Formula**:
+   $$\\text{pH} = -\\log_{10}[H^+]$$
+
+3. 🔢 **Step-by-Step Calculation**:
+   $$\\text{pH} = -\\log_{10}(10^{-3})$$
+   Using logarithm power rule $\\log(a^b) = b \\log(a)$:
+   $$\\text{pH} = -(-3) \\log_{10}(10) = 3 \\times 1 = 3$$
+
+4. ✅ **Final Answer**:
+   $$\\text{pH} = 3 \\text{ (Strongly Acidic)}$$
+
+5. 💡 **Quick Reference Scale**:
+   - $\\text{pH} < 7$: Acidic (Lower = Stronger acid)
+   - $\\text{pH} = 7$: Neutral (Pure water at $25^\\circ\\text{C}$)
+   - $\\text{pH} > 7$: Basic / Alkaline (Higher = Stronger base)`;
+    }
+
+    return `### 🧪 Chemistry Problem Solving Hub
+
+Main Chemistry ke sabhi branches ke best aur simple solutions deti hoon:
+- **Physical Chemistry**: Mole concept ($n = \\frac{m}{M}$), Gas laws ($PV = nRT$), Chemical Equilibrium ($K_c, K_p$), Electrochemistry (Nernst equation).
+- **Organic Chemistry**: IUPAC nomenclature, $S_N1$ vs $S_N2$ reaction mechanisms, Markovnikov addition, named reactions (Aldol condensation, Cannizzaro, Grignard reagents).
+- **Inorganic Chemistry**: Periodic table trends (Electronegativity, Ionization energy, Atomic radii), Chemical bonding (VSEPR theory, Hybridization).
+
+Aap koi bhi chemical equation ya numerical poochiye!`;
+  }
+
+  // 4. Biology Concepts & Physiology
+  if (q.includes('biolog') || q.includes('cell') || q.includes('mitochondria') || q.includes('mitosis') || q.includes('meiosis') || q.includes('dna') || q.includes('genetic') || q.includes('heart') || q.includes('circulat') || q.includes('neuron') || q.includes('respirat') || q.includes('jiv vigyan')) {
+    if (q.includes('mitochondria') || q.includes('powerhouse')) {
+      return `### 🧬 Biology Concept: Mitochondria — The Powerhouse of the Cell
+
+1. 📌 **Definition**:
+   Mitochondria are double-membraned cellular organelles found in eukaryotic cells responsible for producing adenosine triphosphate (**ATP**), the primary chemical energy currency of the body.
+
+2. 🔬 **Key Structural Features**:
+   - **Outer Membrane**: Smooth and permeable to small molecules.
+   - **Inner Membrane**: Folded into finger-like projections called **Cristae** to dramatically increase surface area for enzyme activity.
+   - **Matrix**: The fluid interior containing enzymes for the Krebs (Citric Acid) Cycle, 70S ribosomes, and circular mitochondrial DNA (mtDNA).
+
+3. ⚙️ **Working Mechanism (Cellular Respiration)**:
+   - Glucose breakdown products (pyruvate) enter mitochondria.
+   - Aerobic respiration produces up to **36 to 38 ATP molecules** per glucose molecule:
+     $$\\text{C}_6\\text{H}_{12}\\text{O}_6 + 6\\text{O}_2 \\rightarrow 6\\text{CO}_2 + 6\\text{H}_2\\text{O} + 36\\text{ ATP}$$
+
+4. 💡 **Fascinating Fact**: Mitochondria have their own independent DNA and replicate independently via binary fission, supporting the **Endosymbiotic Theory** that they evolved from ancient aerobic bacteria!`;
+    }
+
+    if (q.includes('mitosis') || q.includes('meiosis')) {
+      return `### 🧬 Biology Comparison: Mitosis vs Meiosis
+
+| Feature | Mitosis (Equational Division) | Meiosis (Reductional Division) |
+| :--- | :--- | :--- |
+| **Location** | Somatic (body) cells | Germ cells (testes/ovaries) |
+| **Purpose** | Growth, tissue repair, asexual reproduction | Gamete formation (sperm & egg) |
+| **Divisions** | 1 nuclear division (PMAT) | 2 sequential divisions (Meiosis I & II) |
+| **Daughter Cells**| 2 identical diploid ($2n$) cells | 4 genetically diverse haploid ($n$) cells |
+| **Crossing Over** | Does not occur | Occurs in Pachytene of Prophase I |
+| **Chromosome No.**| Remains constant ($46 \\rightarrow 46$) | Halved ($46 \\rightarrow 23$) |
+
+💡 **Mnemonic to remember stages**: **I-PMAT** (Interphase, Prophase, Metaphase, Anaphase, Telophase).`;
+    }
+
+    return `### 🧬 Biology Concept & Mechanism Hub
+
+Aap Biology ka koi bhi concept detail me pooch sakte hain:
+- **Cell Biology**: Organelle functions, Active vs passive transport, Cell cycle regulation.
+- **Genetics & Molecular Biology**: Mendel's laws, DNA replication, Transcription (DNA $\\rightarrow$ mRNA), Translation (protein synthesis).
+- **Human Physiology**: Double circulation in human heart, Nephron filtration in kidneys, Synaptic nerve impulse transmission.
+- **Ecology**: Energy flow 10% law, Biogeochemical cycles, Food webs.
+
+Aap koi bhi biology term ya process likhiye, main crystal clear explanations dungi!`;
+  }
+
+  // 5. General Knowledge (GK) & General Studies (GS)
+  if (q.includes('gk') || q.includes('gkgs') || q.includes('gs ') || q.includes('general knowledge') || q.includes('general studies') || q.includes('constitution') || q.includes('preamble') || q.includes('fundamental right') || q.includes('article') || q.includes('history') || q.includes('geography') || q.includes('economy') || q.includes('gdp') || q.includes('inflation') || q.includes('river') || q.includes('harappa') || q.includes('samvidhan') || q.includes('itihas') || q.includes('bhugol')) {
+    if (q.includes('constitution') || q.includes('samvidhan') || q.includes('fundamental right') || q.includes('article')) {
+      return `### 📜 GK / GS: Indian Constitution & Fundamental Rights
+
+The **Constitution of India** is the supreme legal framework of the country, drafted by the Constituent Assembly headed by **Dr. B.R. Ambedkar** (Chairman of the Drafting Committee). It was adopted on **26 November 1949** and came into force on **26 January 1950**.
+
+#### 🏛️ Key Constitutional Pillars:
+- **Preamble**: Declares India a *Sovereign, Socialist, Secular, Democratic Republic* ensuring Justice, Liberty, Equality, and Fraternity.
+- **Fundamental Rights (Part III, Articles 12-35)**:
+  1. **Right to Equality (Articles 14-18)**: Equality before law (Art 14), abolition of untouchability (Art 17).
+  2. **Right to Freedom (Articles 19-22)**: Six democratic freedoms (Art 19), **Right to Life and Personal Liberty (Article 21)**, Right to Education (Article 21A).
+  3. **Right against Exploitation (Articles 23-24)**: Prohibition of human trafficking & child labor.
+  4. **Right to Freedom of Religion (Articles 25-28)**: Freedom of conscience and faith practice.
+  5. **Cultural and Educational Rights (Articles 29-30)**: Protection of minorities.
+  6. **Right to Constitutional Remedies (Article 32)**: Writs (Habeas Corpus, Mandamus, Prohibition, Quo-Warranto, Certiorari). Dr. Ambedkar termed Article 32 the **"Heart and Soul of the Constitution"**.
+
+💡 **Pro-Tip**: 42nd Constitutional Amendment Act (1976) is known as the **"Mini Constitution"** because it added the words *Socialist, Secular, and Integrity* to the Preamble and introduced Fundamental Duties (Part IVA, Article 51A)!`;
+    }
+
+    if (q.includes('history') || q.includes('itihas') || q.includes('harappa') || q.includes('ashoka')) {
+      return `### 📜 GK / GS: Overview of Indian History
+
+1. 🏺 **Ancient India**:
+   - **Indus Valley Civilization (2500–1750 BCE)**: Famous for urban town planning, grid systems, baked brick architecture, the Great Bath at Mohenjo-daro, and dockyards at Lothal.
+   - **Mauryan Empire (322–185 BCE)**: Founded by Chandragupta Maurya with Chanakya (Kautilya, author of *Arthashastra*). Emperor Ashoka embraced Buddhism after the Kalinga War (261 BCE) and propagated Dhamma through rock edicts.
+   - **Gupta Golden Age (320–550 CE)**: Remarkable advancements in mathematics (Aryabhata invented 0 and decimal system), astronomy, and classical Sanskrit literature (Kalidasa).
+
+2. 🏰 **Medieval India**:
+   - **Delhi Sultanate (1206–1526 CE)**: Slave, Khalji, Tughlaq, Sayyid, and Lodi dynasties.
+   - **Mughal Empire (1526–1857 CE)**: Founded by Babur after 1st Battle of Panipat. Akbar established religious tolerance (*Sulh-i-Kul*) and the Mansabdari system.
+   - **Maratha Empire**: Founded by Chhatrapati Shivaji Maharaj with guerrilla warfare tactics (*Ganimi Kava*).
+
+3. 🇮🇳 **Modern India & Freedom Struggle**:
+   - **1857 Revolt**: First War of Independence; ended British East India Company rule and instituted the British Crown Raj.
+   - **National Movement**: Indian National Congress formed in 1885. Mahatma Gandhi launched Non-Cooperation (1920), Salt Satyagraha / Civil Disobedience (1930), and Quit India Movement (1942), leading to independence on **15 August 1947**.`;
+    }
+
+    return `### 📜 GK & General Studies (GS) Knowledge Hub
+
+Aap General Knowledge aur General Studies ke kisi bhi topic par guidance le sakte hain:
+- **Indian Polity**: Preamble, Articles, Parliament, President, Supreme Court, Panchayati Raj.
+- **Geography**: Indian Himalayas, Peninsular Plateau, River Systems (Ganga, Indus, Brahmaputra, Godavari), Monsoons.
+- **Indian Economy**: GDP calculations, Inflation (CPI vs WPI), RBI Monetary Policy (Repo Rate), Fiscal deficit.
+- **General Science**: Daily life physics, chemistry, and environmental science.
+
+Aap apna GK/GS topic poochiye, main factual, accurate aur exam-ready points provide karungi!`;
+  }
+
+  // 6. Current Affairs & National Initiatives
+  if (q.includes('current affair') || q.includes('isro') || q.includes('chandrayaan') || q.includes('aditya') || q.includes('gaganyaan') || q.includes('indiaai') || q.includes('summit') || q.includes('brics') || q.includes('g20') || q.includes('samachar')) {
+    return `### 🌍 Current Affairs & National Strategic Initiatives
+
+1. 🚀 **ISRO Space Exploration Milestones**:
+   - **Chandrayaan-3**: Historic mission making India the **1st nation in human history to soft-land near the Moon's South Pole** on 23 August 2023 (now celebrated as National Space Day).
+   - **Aditya-L1**: India's first dedicated solar space observatory stationed at the Sun-Earth Lagrangian Point 1 (L1), continuously studying the solar corona and coronal mass ejections.
+   - **Gaganyaan Program**: India's flagship human spaceflight mission aiming to send Indian astronauts (Vyomnauts) to a $400\\text{ km}$ Low Earth Orbit.
+
+2. 🤖 **IndiaAI Mission (₹10,372 Crore Allocation)**:
+   - Approved by the Union Cabinet to establish sovereign compute capacity of **10,000+ GPUs**.
+   - Fosters indigenous multimodal foundational models, democratizes AI access for student researchers, and strengthens AI datasets via the IndiaAI Datasets Platform.
+
+3. 🌐 **Global Geopolitics & Summits**:
+   - Expansion of **BRICS** to include new member countries.
+   - Accelerated transition towards Green Hydrogen, solar energy grids, and domestic semiconductor manufacturing fabrication units (India Semiconductor Mission).
+
+Aap kisi bhi current affairs topic ka deep-dive analysis pooch sakte hain!`;
+  }
+
+  // 7. Google Gemini & Cloud AI
   if (q.includes('gemini') || q.includes('cloud ai') || q.includes('bigquery') || q.includes('gcp') || q.includes('vertex')) {
     return `**Google Gemini & Cloud AI Collaboration**:
 
@@ -145,7 +527,7 @@ function generateLocalMockResponse(userQuery, kb) {
 Himanshu leverages these data analytics and cloud principles in his projects! Would you like to see how he uses SQL and Python for data analysis?`;
   }
 
-  // 1. AI & Machine Learning Questions
+  // 8. AI & Machine Learning Questions
   if (q.includes('machine learning') || q.includes('ml ') || q.includes('ai ') || q.includes('pipeline') || q.includes('algorithm')) {
     if (q.includes('hindi') || q.includes('kya hai') || q.includes('batao') || q.includes('kaise')) {
       return `**Machine Learning (ML)** Artificial Intelligence ka wo field hai jisme computer bina explicit programming ke data se patterns seekhta hai.
@@ -170,7 +552,7 @@ Himanshu ne apne **Netflix project** aur certifications me yahi EDA & ML fundame
 Himanshu specializes in the foundational stages of this pipeline—specifically **Data Cleaning, EDA, and Statistical Analysis**. Would you like a Python code example for any step?`;
   }
 
-  // 2. National & International Trends / General Knowledge
+  // 9. National & International Trends
   if (q.includes('national') || q.includes('international') || q.includes('trend') || q.includes('news') || q.includes('global') || q.includes('world')) {
     return `Here are key **National & Global AI Developments**:
 
@@ -183,8 +565,8 @@ Himanshu specializes in the foundational stages of this pipeline—specifically 
 Himanshu tracks these advancements to apply modern AI/ML tooling to practical real-world data problems!`;
   }
 
-  // 3. 30-Second Pitch
-  if (q.includes('pitch') || q.includes('30-second') || q.includes('intro') || q.includes('who is')) {
+  // 10. 30-Second Pitch
+  if (q.includes('pitch') || q.includes('30-second') || q.includes('who is') || (q.includes('himanshu') && (q.includes('about') || q.includes('kya')))) {
     return `Himanshu Kumar is a final-year **B.Tech (CSE-IT)** student at IIMT College of Engineering (AKTU) targeting **Data Analyst internships** and entry-level roles.
 
 He has proven hands-on experience in **Python, SQL, Exploratory Data Analysis (EDA), and Data Cleaning**, having analyzed **8,787 Netflix catalog titles**. Additionally, he has built interactive software with Three.js and holds 5 industry certifications in Data Analytics, Python, and AI/ML.
@@ -192,7 +574,7 @@ He has proven hands-on experience in **Python, SQL, Exploratory Data Analysis (E
 Would you like to know more about his **Netflix analysis project** or his **technical skills**?`;
   }
 
-  // 4. Skills
+  // 11. Skills
   if (q.includes('skill') || q.includes('technolog') || q.includes('stack') || q.includes('tools')) {
     return `Here is a summary of Himanshu's verified technical skills:
 
@@ -204,7 +586,7 @@ Would you like to know more about his **Netflix analysis project** or his **tech
 Would you like to see how he applies these tools in his **Netflix project**?`;
   }
 
-  // 5. Netflix Analysis Project
+  // 12. Netflix Analysis Project
   if (q.includes('netflix') || q.includes('sales') || q.includes('content analysis')) {
     return `Himanshu executed the **Netflix Content Analysis Project** during his internship at **Auspify Technologies**:
 
@@ -217,7 +599,7 @@ Would you like to see how he applies these tools in his **Netflix project**?`;
 Shall I share his **GitHub profile** or evaluate his fit for an opening you have?`;
   }
 
-  // 6. Internship / Job Fit
+  // 13. Internship / Job Fit
   if (q.includes('fit') || q.includes('internship') || q.includes('hire') || q.includes('role') || q.includes('job') || q.includes('jd')) {
     return `Himanshu is a strong match for **Data Analyst Internships** and **Junior BI / Data Analytics** roles:
 
@@ -233,7 +615,7 @@ Shall I share his **GitHub profile** or evaluate his fit for an opening you have
 Feel free to paste your specific **Job Description** here for a point-by-point comparison!`;
   }
 
-  // 7. Contact
+  // 14. Contact
   if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('linkedin')) {
     return `You can connect with Himanshu directly through:
 
@@ -245,7 +627,7 @@ Feel free to paste your specific **Job Description** here for a point-by-point c
 *(Note: Phone numbers are not shared publicly for privacy).* Would you like to review his resume or project portfolio?`;
   }
 
-  // 8. Education
+  // 15. Education
   if (q.includes('education') || q.includes('college') || q.includes('degree') || q.includes('aktu')) {
     return `Himanshu's academic background:
 
@@ -256,7 +638,7 @@ Feel free to paste your specific **Job Description** here for a point-by-point c
 Would you like to explore his technical certifications?`;
   }
 
-  // 9. Python / Coding assistance
+  // 16. Python / Coding assistance
   if (q.includes('python') || q.includes('pandas') || q.includes('sql') || q.includes('code') || q.includes('query')) {
     return `Here is a quick Python EDA snippet using **Pandas** for analyzing datasets:
 
@@ -278,15 +660,18 @@ Would you like help with SQL queries, data cleaning techniques, or Machine Learn
   }
 
   // General response
-  return `I am Himanshu's **AI + Virtual Assistant**. 
+  return `Hello! I'm **Maya**, Himanshu's AI & Universal Problem-Solving Tutor.
 
-You can ask me about:
-- **Himanshu's Projects & Skills** (Netflix Analysis, Portfolio, UNO game, Python, SQL)
-- **Job Description Evaluation** (Paste any JD for an honest match breakdown)
-- **AI & Machine Learning Tasks** (Algorithms, pipelines, EDA, Python/SQL coding)
-- **National & Global Tech News** (IndiaAI Mission, LLMs, AI developments)
+Aap mujhse pooch sakte hain:
+- 📐 **Mathematics & Quantitative Aptitude** (Calculus, Algebra, Probability, Equations)
+- ⚡ **Physics** (Mechanics, Ohm's Law, Motion equations, Energy, Optics)
+- 🧪 **Chemistry** (Chemical equations, pH calculations, Photosynthesis, Organic reactions)
+- 🧬 **Biology** (Cell structures, Mitochondria, Mitosis vs Meiosis, Human heart)
+- 📜 **General Knowledge & GS** (Indian Constitution, Fundamental Rights, History, Geography, Economy)
+- 🇮🇳 **Current Affairs & Tech** (IndiaAI Mission, ISRO missions, Global AI summits)
+- 📂 **Himanshu's Portfolio & Projects** (Netflix Analysis, Skills, Contact, JD match)
 
-What would you like to explore or talk about?`;
+Aap type karke ya microphone 🎙️ dabakar bol kar sawaal pooch sakte hain!`;
 }
 
 // -----------------------------------------------------------------------------
@@ -346,14 +731,14 @@ class AIChatbotWidget {
           </div>
           <div class="cb-header-info">
             <div class="cb-title">
-              Himanshu's AI
+              Maya • Universal AI Tutor
               <span class="cb-title-tag">Gemini + Cloud AI</span>
             </div>
-            <span class="cb-subtitle">Gemini & Portfolio Intelligence • Voice Live</span>
+            <span class="cb-subtitle">Math, Science, GK & Portfolio • 👧 Girl Voice Live</span>
           </div>
         </div>
         <div class="cb-header-actions">
-          <button class="cb-icon-btn cb-voice-toggle-btn" id="cbVoiceToggleBtn" title="Toggle Voice Mode (Speaks answers aloud)" aria-label="Toggle Auto-Speak">
+          <button class="cb-icon-btn cb-voice-toggle-btn" id="cbVoiceToggleBtn" title="Toggle Voice Mode (Speaks answers aloud in Maya's female voice)" aria-label="Toggle Auto-Speak">
             <i class="fa-solid fa-volume-high" id="cbVoiceToggleIcon" aria-hidden="true"></i>
           </button>
           <button class="cb-icon-btn" id="cbNewChatBtn" title="Reset & Start New Chat" aria-label="Start New Chat">
@@ -374,7 +759,7 @@ class AIChatbotWidget {
       <footer class="cb-footer">
         <!-- Voice Listening Banner -->
         <div class="cb-voice-status-bar" id="cbVoiceStatusBar" aria-live="polite">
-          <span><i class="fa-solid fa-microphone-lines"></i> Listening... Speak in English, Hindi, or Hinglish</span>
+          <span><i class="fa-solid fa-microphone-lines"></i> Maya is Listening... Speak in English, Hindi, or Hinglish</span>
           <div class="cb-audio-wave-anim">
             <span class="cb-audio-wave-bar"></span>
             <span class="cb-audio-wave-bar"></span>
@@ -388,9 +773,9 @@ class AIChatbotWidget {
             id="cbInputTextarea"
             class="cb-textarea"
             rows="1"
-            placeholder="Ask AI/ML, talk via mic, or ask about Himanshu..."
+            placeholder="Ask any Math, Science, GK question or speak via mic..."
             maxlength="${MAX_INPUT_LENGTH}"
-            aria-label="Your question for Himanshu's AI"
+            aria-label="Your question for Maya AI"
           ></textarea>
           <button type="button" class="cb-mic-btn" id="cbMicBtn" title="Speak via Microphone (Hindi / English)" aria-label="Voice Input">
             <i class="fa-solid fa-microphone" id="cbMicIcon" aria-hidden="true"></i>
@@ -400,7 +785,7 @@ class AIChatbotWidget {
           </button>
         </form>
         <div class="cb-footer-meta">
-          <span>AI/ML Specialist & Portfolio Telemetry</span>
+          <span>Maya: Girl Voice Assistant • STEM & GK Tutor</span>
           <span class="cb-char-counter" id="cbCharCounter">0 / ${MAX_INPUT_LENGTH}</span>
         </div>
       </footer>
@@ -585,20 +970,50 @@ class AIChatbotWidget {
     if (!clean) return;
 
     const utterance = new SpeechSynthesisUtterance(clean);
-    utterance.rate = 1.02;
-    utterance.pitch = 1.0;
+    // Female voice acoustic settings: pleasant, warm feminine pitch & clear rate
+    utterance.pitch = 1.18;
+    utterance.rate = 0.98;
 
     // Detect language: check for Hindi Devanagari or common Hindi phonetic words
-    const isHindi = /[\u0900-\u097F]/.test(text) || /\b(hai|hote|karein|batao|kya|aur|ka|ki|ke|se|unhone|usne)\b/i.test(text);
+    const isHindi = /[\u0900-\u097F]/.test(text) || /\b(hai|hote|karein|batao|kya|aur|ka|ki|ke|se|unhone|usne|samvidhan|ganit|rasayan)\b/i.test(text);
     const voices = window.speechSynthesis.getVoices();
 
+    // Select natural female voice
+    const femaleNameRegex = /swara|heera|kalpana|lekha|neerja|priya|anjali|veena|zira|jenny|aria|samantha|victoria|karen|moira|tessa|fiona|eva|kendra|susan|cathy|allison|ava|stephanie|sarah|female|woman|girl/i;
+
     if (isHindi) {
-      const hindiVoice = voices.find(v => v.lang.includes('hi') || v.name.includes('Hindi') || v.name.includes('Swara') || v.name.includes('Madhur'));
-      if (hindiVoice) utterance.voice = hindiVoice;
+      const hiFemale = voices.find(v => 
+        v.lang.toLowerCase().includes('hi') && femaleNameRegex.test(v.name)
+      );
+      const anyHindi = hiFemale || voices.find(v => v.lang.toLowerCase().includes('hi') || /hindi/i.test(v.name));
+      const fallbackEnInFemale = voices.find(v => v.lang.toLowerCase().includes('en-in') && femaleNameRegex.test(v.name));
+      
+      if (hiFemale) {
+        utterance.voice = hiFemale;
+      } else if (anyHindi) {
+        utterance.voice = anyHindi;
+      } else if (fallbackEnInFemale) {
+        utterance.voice = fallbackEnInFemale;
+      }
       utterance.lang = 'hi-IN';
     } else {
-      const englishVoice = voices.find(v => (v.lang === 'en-IN' || v.lang === 'en-US' || v.lang === 'en-GB') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Microsoft') || v.name.includes('Samantha')));
-      if (englishVoice) utterance.voice = englishVoice;
+      // Prioritize natural Indian English female voices or Global English female voices
+      const enInFemale = voices.find(v => 
+        v.lang.toLowerCase().includes('en-in') && femaleNameRegex.test(v.name)
+      );
+      const globalFemale = voices.find(v => 
+        v.lang.toLowerCase().startsWith('en') && femaleNameRegex.test(v.name)
+      );
+      const anyFemale = enInFemale || globalFemale || voices.find(v => femaleNameRegex.test(v.name));
+      
+      if (anyFemale) {
+        utterance.voice = anyFemale;
+      } else {
+        const defaultVoice = voices.find(v => v.lang.toLowerCase().includes('en-in')) || 
+                             voices.find(v => v.lang.toLowerCase().includes('en-us')) || 
+                             voices[0];
+        if (defaultVoice) utterance.voice = defaultVoice;
+      }
       utterance.lang = 'en-IN';
     }
 

@@ -149,12 +149,59 @@ Last updated: 2026-10-03
   - Model Evaluation Metrics: Confusion Matrix, Precision, Recall, F1-Score, ROC-AUC, Mean Squared Error (MSE), Root Mean Squared Error (RMSE), R² Score.
 - **Data Science & Analytics Workflow**:
   - Structured Question Framing → Data Ingestion & Profiling → Data Cleaning & Transformation → Exploratory Data Analysis (EDA) & Correlation Mapping → Storytelling & Business Intelligence Dashboards.
-- **Bidirectional Voice Assistant**:
-  - Features real-time voice speech-to-text recognition (English, Hindi, Hinglish) and natural human text-to-speech audio synthesis.
+- **Bidirectional Female Voice Assistant ("Maya")**:
+  - Features real-time voice speech-to-text recognition (English, Hindi, Hinglish) and sweet, natural female text-to-speech audio synthesis (custom-tuned feminine pitch and natural cadence).
 
 ---
 
-## 10. Recent GitHub Activity (Auto-Synced)
+## 10. Universal Academic Problem Solving & Virtual AI Tutor
+Maya acts as an advanced pedagogical tutor and universal problem solver powered by Google Gemini and Cloud AI, providing clear, simple, step-by-step solutions to satisfy any learner's questions:
+
+### 10.1 Structured Solution Framework (5-Point Pedagogical Standard)
+For any academic, mathematical, or scientific problem, answers follow this clear structure:
+1. 📌 **Given & Target**: Explicitly state the provided variables, given data (with SI units), and the exact target question.
+2. 📐 **Governing Formulas & Laws**: Mention the fundamental formula, mathematical theorem, or scientific law applied.
+3. 🔢 **Step-by-Step Calculation**: Clear, beginner-friendly derivation with intermediate calculations clearly explained.
+4. ✅ **Final Answer**: Prominently highlighted boxed result with proper units and dimensional check.
+5. 💡 **Pro-Tip / Shortcut / Intuition**: An easy memory mnemonic, exam shortcut, or physical intuition explaining why the answer makes sense.
+
+### 10.2 Subject Domains & Problem Types
+- **Mathematics**:
+  - *Calculus*: Limits, derivatives, chain rule, product rule, definite & indefinite integrals, integration by parts, ordinary differential equations.
+  - *Algebra & Polynomials*: Linear equations, quadratic equations ($ax^2 + bx + c = 0$, discriminant $D = b^2 - 4ac$), factorisation, arithmetic and geometric progressions (AP/GP).
+  - *Trigonometry & Geometry*: Trigonometric identities, heights and distances, coordinate geometry, straight lines, circles, conic sections.
+  - *Probability & Statistics*: Sample spaces, permutations & combinations, conditional probability, Bayes theorem, mean, median, mode, variance, standard deviation.
+  - *Quantitative Aptitude*: Percentages, profit & loss, ratio & proportion, time & work, speed, distance & time, simple & compound interest.
+- **Physics**:
+  - *Mechanics & Kinematics*: Equations of motion ($v = u + at$, $s = ut + \frac{1}{2}at^2$, $v^2 = u^2 + 2as$), projectile motion, Newton's laws of motion ($F = ma$), friction, circular motion.
+  - *Energy & Gravitation*: Work-energy theorem, conservation of momentum, universal law of gravitation, escape velocity.
+  - *Thermodynamics & Waves*: Laws of thermodynamics, heat engines, Carnot cycle, simple harmonic motion (SHM), sound waves, Doppler effect.
+  - *Optics*: Snell's law of refraction, lens formula ($\frac{1}{f} = \frac{1}{v} - \frac{1}{u}$), mirror formula, interference, diffraction.
+  - *Electricity & Magnetism*: Coulomb's law, Ohm's law ($V = IR$), series & parallel resistors, Kirchhoff's laws, Biot-Savart law, Faraday's law of electromagnetic induction.
+  - *Modern Physics*: Photoelectric effect ($E = h\nu$), Einstein's mass-energy equivalence ($E = mc^2$), de Broglie wavelength, Bohr atomic model, radioactive decay.
+- **Chemistry**:
+  - *Physical Chemistry*: Mole concept, Avogadro's number, stoichiometry, gas laws ($PV = nRT$), chemical equilibrium, Le Chatelier's principle, pH calculations ($pH = -\log[H^+]$), electrochemistry (Nernst equation), chemical kinetics (order of reaction).
+  - *Organic Chemistry*: IUPAC nomenclature, reaction mechanisms ($S_N1$, $S_N2$, $E1$, $E2$), Markovnikov & anti-Markovnikov addition, named reactions (Aldol, Cannizzaro, Grignard reagents, Friedel-Crafts), functional groups, polymers, biomolecules.
+  - *Inorganic Chemistry*: Periodic table trends (atomic radius, ionization energy, electron affinity, electronegativity), chemical bonding (ionic, covalent, coordinate, VSEPR theory, hybridization), acids and bases, coordination complexes.
+- **Biology**:
+  - *Cell Biology*: Plant vs animal cell differences, organelle functions (Mitochondria ATP synthesis, Ribosomes, Endoplasmic Reticulum, Golgi apparatus, Nucleus), Mitosis vs Meiosis stages.
+  - *Genetics & Molecular Biology*: Mendel's laws of inheritance, DNA double helix structure (Watson-Crick base pairing A-T, G-C), transcription & translation process.
+  - *Human Anatomy & Physiology*: Circulatory system (heart chambers, systemic vs pulmonary circulation), respiratory system, digestive enzymes, nervous system (neuron anatomy, action potential), endocrine glands and hormones.
+  - *Plant Physiology & Ecology*: Photosynthesis (light-dependent reactions and Calvin cycle), transpiration, food chains, trophic levels, ecosystem energy flow.
+- **General Knowledge (GK) & General Studies (GS)**:
+  - *Indian Polity & Constitution*: Preamble, Fundamental Rights (Articles 14-32), Directive Principles of State Policy (DPSP), Fundamental Duties (Article 51A), President, Prime Minister, Parliament, Supreme Court, key constitutional amendments (42nd, 44th, 73rd, 86th, 101st GST).
+  - *History*: Ancient India (Indus Valley Civilization, Vedic Period, Buddhism & Jainism, Maurya & Gupta empires), Medieval India (Delhi Sultanate, Mughal Empire, Bhakti & Sufi movements), Modern India (British East India Company, 1857 Revolt, Indian National Congress, Gandhian mass movements, Independence & Partition).
+  - *Geography*: Physical geography of India (Himalayas, Northern Plains, Peninsular Plateau, Western & Eastern Ghats), Indian River Systems (Ganga, Indus, Brahmaputra, Godavari, Krishna, Narmada), Monsoons, Climate zones, Soil types, World geography fundamentals.
+  - *Economy*: Indian economy basics, GDP, GNP, Inflation indices (CPI, WPI), Fiscal policy vs Monetary policy, RBI tools (Repo Rate, Reverse Repo Rate, CRR, SLR), Union Budget concepts, GST structure.
+  - *Everyday Science*: Practical science phenomena (why sky appears blue due to Rayleigh scattering, working of microwaves, rainbow formation, why water boils at lower temperatures at high altitudes).
+- **Current Affairs & National Missions**:
+  - *National Initiatives*: IndiaAI Mission (₹10,372 crore investment, 10,000+ GPUs compute access, indigenous AI development), Digital India, National Semiconductor Mission.
+  - *Space Exploration (ISRO)*: Chandrayaan-3 lunar south pole landing, Aditya-L1 solar observation mission, Gaganyaan human spaceflight program, NISAR.
+  - *Global Affairs & Summits*: G20, BRICS, United Nations climate conferences (COP), global technological breakthroughs (agentic AI, quantum computing).
+
+---
+
+## 11. Recent GitHub Activity (Auto-Synced)
 <!-- GITHUB_ACTIVITY_START -->
 - **personal-portfolio**: Himanshu Kumar - Personal Developer Portfolio with 3D WebGL visuals and automated GitHub activity sync (Updated: 2026-10-03)
 - **Netfix-Sales**: Comprehensive Netflix sales data analysis and visualization utilizing Python, Pandas, and Jupyter Notebooks. (Updated: 2026-09-29)
