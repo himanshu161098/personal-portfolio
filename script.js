@@ -1280,86 +1280,68 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================================================
-    // 20. INTERACTIVE 3D HOLOGRAPHIC DEVELOPER REVIEW CARD (HK LOGO SPOTLIGHT)
+    // 20. 3D ROYAL SANDESH PATRA (शाही संदेश पत्र) MODAL - HK LOGO SPOTLIGHT
     // ========================================================================
     function initHk3DReviewModal() {
         const modal = document.getElementById('hkReviewModal');
-        const card = document.getElementById('hk3dCard');
+        const scrollCard = document.getElementById('sandeshScrollCard') || document.getElementById('hk3dCard');
         const scene = document.getElementById('hk3dScene');
-        const glare = document.getElementById('hkCardGlare');
         const navBrandLogo = document.getElementById('navBrandLogo');
         const closeBtn = document.getElementById('closeHkReviewModalBtn');
+        const closeFooterBtn = document.getElementById('closeHkReviewModalFooterBtn');
         const closeBackBtn = document.getElementById('closeHkReviewModalBackBtn');
-        const flipToBackBtn = document.getElementById('hkFlipToBackBtn');
-        const flipToFrontBtn = document.getElementById('hkFlipToFrontBtn');
-        const contactFromModalBtn = document.getElementById('hkContactFromModalBtn');
+        const sandeshContactBtn = document.getElementById('sandeshContactBtn') || document.getElementById('hkContactFromModalBtn');
 
-        if (!modal || !card) return;
+        if (!modal || !scrollCard) return;
 
-        function openHkModal() {
+        function openSandeshModal() {
             modal.classList.add('open');
             modal.setAttribute('aria-hidden', 'false');
-            card.classList.remove('flipped');
-            card.style.transform = 'perspective(1400px) rotateX(0deg) rotateY(0deg) scale(1)';
+            scrollCard.style.transform = 'perspective(1600px) rotateX(0deg) rotateY(0deg) scale(1)';
             document.body.style.overflow = 'hidden';
         }
 
-        function closeHkModal() {
+        function closeSandeshModal() {
             modal.classList.remove('open');
             modal.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
             setTimeout(() => {
-                card.classList.remove('flipped');
-                card.style.transform = '';
-            }, 350);
+                scrollCard.style.transform = '';
+            }, 300);
         }
 
         // Attach click listener to brand logo in header
         if (navBrandLogo) {
             navBrandLogo.addEventListener('click', (e) => {
                 e.preventDefault();
-                openHkModal();
+                openSandeshModal();
             });
         }
 
         // Close button handlers
-        if (closeBtn) closeBtn.addEventListener('click', closeHkModal);
-        if (closeBackBtn) closeBackBtn.addEventListener('click', closeHkModal);
+        if (closeBtn) closeBtn.addEventListener('click', closeSandeshModal);
+        if (closeFooterBtn) closeFooterBtn.addEventListener('click', closeSandeshModal);
+        if (closeBackBtn) closeBackBtn.addEventListener('click', closeSandeshModal);
 
-        if (contactFromModalBtn) {
-            contactFromModalBtn.addEventListener('click', () => {
-                closeHkModal();
+        if (sandeshContactBtn) {
+            sandeshContactBtn.addEventListener('click', () => {
+                closeSandeshModal();
             });
         }
 
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                closeHkModal();
+                closeSandeshModal();
             }
         });
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modal.classList.contains('open')) {
-                closeHkModal();
+                closeSandeshModal();
             }
         });
 
-        // 3D Flip Card Actions
-        if (flipToBackBtn) {
-            flipToBackBtn.addEventListener('click', () => {
-                card.classList.add('flipped');
-                card.style.transform = 'rotateY(180deg)';
-            });
-        }
-
-        if (flipToFrontBtn) {
-            flipToFrontBtn.addEventListener('click', () => {
-                card.classList.remove('flipped');
-                card.style.transform = 'rotateY(0deg)';
-            });
-        }
-
-        // 3D Dynamic Real-time Mouse Parallax Tilt & Glare
+        // 3D Dynamic Real-time Mouse Parallax Tilt for Sandesh Patra Scroll
         if (scene) {
             scene.addEventListener('mousemove', (e) => {
                 const rect = scene.getBoundingClientRect();
@@ -1368,26 +1350,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
 
-                const rotateY = ((x - centerX) / centerX) * 12; // -12deg to +12deg
-                const rotateX = -((y - centerY) / centerY) * 12; // -12deg to +12deg
+                const rotateY = ((x - centerX) / centerX) * 8; // -8deg to +8deg
+                const rotateX = -((y - centerY) / centerY) * 7; // -7deg to +7deg
 
-                const isFlipped = card.classList.contains('flipped');
-                const baseRotateY = isFlipped ? 180 : 0;
-                const currentRotateY = isFlipped ? (baseRotateY - rotateY) : rotateY;
-
-                card.style.transform = `perspective(1400px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${currentRotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
-
-                if (glare) {
-                    const xPct = ((x / rect.width) * 100).toFixed(1);
-                    const yPct = ((y / rect.height) * 100).toFixed(1);
-                    glare.style.setProperty('--mouse-x', `${xPct}%`);
-                    glare.style.setProperty('--mouse-y', `${yPct}%`);
-                }
+                scrollCard.style.transform = `perspective(1600px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.01, 1.01, 1.01)`;
             });
 
             scene.addEventListener('mouseleave', () => {
-                const isFlipped = card.classList.contains('flipped');
-                card.style.transform = isFlipped ? 'rotateY(180deg)' : 'rotateX(0deg) rotateY(0deg) scale(1)';
+                scrollCard.style.transform = 'perspective(1600px) rotateX(0deg) rotateY(0deg) scale(1)';
             });
         }
     }

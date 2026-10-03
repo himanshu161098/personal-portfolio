@@ -456,46 +456,6 @@ button, input, textarea {
     filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.6));
 }
 
-/* Brand 3D Review Trigger Badge */
-.brand-review-tag {
-    font-family: var(--font-mono);
-    font-size: 0.64rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    padding: 0.22rem 0.6rem;
-    border-radius: var(--radius-full);
-    color: var(--accent-cyan);
-    background: rgba(0, 242, 254, 0.1);
-    border: 1px solid rgba(0, 242, 254, 0.35);
-    box-shadow: 0 0 10px rgba(0, 242, 254, 0.25);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    margin-left: 0.5rem;
-    vertical-align: middle;
-    transition: all var(--transition-fast);
-}
-
-.brand-review-tag i {
-    font-size: 0.65rem;
-    color: #f59e0b;
-    animation: spinSparkle 3s ease-in-out infinite;
-}
-
-@keyframes spinSparkle {
-    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-    50% { transform: scale(1.25) rotate(180deg); opacity: 1; filter: drop-shadow(0 0 4px #f59e0b); }
-}
-
-.nav-brand:hover .brand-review-tag {
-    background: linear-gradient(135deg, rgba(0, 242, 254, 0.25), rgba(236, 72, 153, 0.25));
-    border-color: var(--accent-cyan);
-    color: #ffffff;
-    box-shadow: 0 0 14px rgba(0, 242, 254, 0.45);
-    transform: translateY(-1px) scale(1.04);
-}
-
 @keyframes hkGradientFlow {
     0% {
         background-position: 0% 50%;
@@ -4813,33 +4773,39 @@ button, input, textarea {
 }
 
 /* ==========================================================================
-   18. INTERACTIVE 3D HOLOGRAPHIC DEVELOPER REVIEW CARD (HK LOGO SPOTLIGHT)
+   18. 3D ROYAL SANDESH PATRA (शाही संदेश पत्र) - HK LOGO SPOTLIGHT
    ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Marcellus&family=Rozha+One&family=Yatra+One&display=swap');
+
+/* Sandesh Patra Modal Overlay */
+.sandesh-modal-overlay,
 .hk-3d-review-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(3, 6, 16, 0.9);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: radial-gradient(circle at 50% 50%, rgba(20, 11, 4, 0.92) 0%, rgba(8, 4, 1, 0.97) 100%);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     z-index: 99999;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1rem;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     overflow-y: auto;
+    overscroll-behavior: contain;
 }
 
+.sandesh-modal-overlay.open,
 .hk-3d-review-overlay.open {
     opacity: 1;
     pointer-events: auto;
 }
 
-/* 3D Scene Perspective Container */
-.hk-3d-scene {
-    perspective: 1400px;
+/* 3D Scene Container */
+.sandesh-3d-scene {
+    perspective: 1600px;
     width: 100%;
     max-width: 660px;
     display: flex;
@@ -4847,639 +4813,945 @@ button, input, textarea {
     align-items: center;
     margin: auto;
     opacity: 0;
-    transform: perspective(1400px) rotateX(25deg) rotateY(-18deg) scale(0.8) translateY(40px);
-    transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: perspective(1600px) rotateX(16deg) scale(0.92) translateY(30px);
+    transition: opacity 0.5s cubic-bezier(0.34, 1.4, 0.64, 1), transform 0.5s cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
-.hk-3d-review-overlay.open .hk-3d-scene {
+.sandesh-modal-overlay.open .sandesh-3d-scene,
+.hk-3d-review-overlay.open .sandesh-3d-scene {
     opacity: 1;
-    transform: perspective(1400px) rotateX(0deg) rotateY(0deg) scale(1) translateY(0);
+    transform: perspective(1600px) rotateX(0deg) rotateY(0deg) scale(1) translateY(0);
 }
 
-/* 3D Flippable Card */
-.hk-3d-card {
+/* Sandesh Scroll Card Wrapper */
+.sandesh-scroll-card {
     position: relative;
     width: 100%;
-    min-height: 640px;
-    transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-    will-change: transform;
-}
-
-.hk-3d-card.flipped {
-    transform: rotateY(180deg);
-}
-
-/* Card Faces */
-.hk-card-face {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    min-height: 640px;
-    border-radius: 28px;
-    overflow: hidden;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
     display: flex;
     flex-direction: column;
-    background: #070c1a;
-    border: 1px solid rgba(56, 189, 248, 0.35);
-    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 242, 254, 0.25);
-    box-sizing: border-box;
+    align-items: center;
+    transform-style: preserve-3d;
+    filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(180, 83, 9, 0.22));
+    transition: transform 0.15s ease-out;
+    will-change: transform;
+    animation: sandeshUnroll 0.65s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
 
-.hk-card-back {
-    transform: rotateY(180deg);
+@keyframes sandeshUnroll {
+    0% {
+        transform: scaleY(0.65) translateY(-20px);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scaleY(1) translateY(0);
+        opacity: 1;
+    }
 }
 
-/* Unique Holographic Aurora & Cyber Background Canvas */
-.hk-card-bg-canvas {
+/* ==========================================================================
+   SCROLL RODS (शीर्ष एवं अधो स्वर्णिम काष्ठ दण्ड)
+   ========================================================================== */
+.sandesh-scroll-rod {
+    position: relative;
+    width: calc(100% + 46px);
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+    user-select: none;
+    pointer-events: none;
+}
+
+.rod-top {
+    margin-bottom: -5px;
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.85));
+}
+
+.rod-bottom {
+    margin-top: -5px;
+    filter: drop-shadow(0 -4px 10px rgba(0, 0, 0, 0.75)) drop-shadow(0 10px 16px rgba(0, 0, 0, 0.9));
+}
+
+/* Cylindrical Rod Shaft */
+.rod-shaft {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    background: linear-gradient(180deg, #2b1104 0%, #632a08 14%, #a14c0a 32%, #d97706 48%, #fef3c7 54%, #d97706 60%, #853707 82%, #1b0902 100%);
+    box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.35), inset 0 -2px 3px rgba(0, 0, 0, 0.85);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.shaft-grain {
     position: absolute;
     inset: 0;
-    overflow: hidden;
+    opacity: 0.3;
+    background: repeating-linear-gradient(90deg, transparent 0px, transparent 18px, rgba(40, 16, 2, 0.5) 19px, transparent 20px);
+}
+
+.shaft-rings {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     pointer-events: none;
+}
+
+.rod-shaft .ring {
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, #fef08a 0%, #ca8a04 40%, #fef3c7 52%, #854d0e 80%, #451a03 100%);
+    box-shadow: 0 0 6px rgba(254, 240, 138, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    border-radius: 1px;
+}
+
+/* Ornate Finial Knobs (कलाश/गुंबद) */
+.rod-finial {
+    display: flex;
+    align-items: center;
+    height: 38px;
+    width: 32px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.finial-left {
+    justify-content: flex-end;
+}
+
+.finial-right {
+    justify-content: flex-start;
+}
+
+.finial-dome {
+    width: 18px;
+    height: 28px;
+    border-radius: 50% 30% 30% 50% / 50%;
+    background: radial-gradient(circle at 40% 35%, #fffbeb 0%, #fde047 25%, #d97706 60%, #78350f 90%, #290d01 100%);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.85), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.finial-right .finial-dome {
+    border-radius: 30% 50% 50% 30% / 50%;
+}
+
+.finial-collar {
+    width: 7px;
+    height: 22px;
+    background: linear-gradient(180deg, #fef08a, #b45309, #451a03);
+    border-radius: 2px;
+    box-shadow: 0 0 4px rgba(245, 158, 11, 0.5);
+}
+
+.finial-ridge {
+    width: 5px;
+    height: 28px;
+    background: linear-gradient(180deg, #fffbeb 0%, #eab308 45%, #78350f 100%);
+    border-radius: 2px;
+    box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+/* ==========================================================================
+   UNROLLED PARCHMENT SHEET (प्राचीन भोजपत्र फलक)
+   ========================================================================== */
+.sandesh-parchment-sheet {
+    position: relative;
+    width: 100%;
+    max-height: 82vh;
+    overflow-y: auto;
+    background: radial-gradient(ellipse 95% 75% at 50% 30%, #fffdf5 0%, #fef8e6 30%, #faedd0 60%, #f5dfb3 82%, #e5be82 95%, #b48141 100%);
+    border-radius: 6px;
+    box-shadow:
+        inset 0 0 45px rgba(138, 77, 20, 0.45),
+        inset 0 0 95px rgba(78, 38, 5, 0.35),
+        0 15px 40px rgba(0, 0, 0, 0.8);
+    scrollbar-width: thin;
+    scrollbar-color: #b45309 rgba(250, 237, 208, 0.6);
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+.sandesh-parchment-sheet::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sandesh-parchment-sheet::-webkit-scrollbar-thumb {
+    background: #b45309;
+    border-radius: 4px;
+}
+
+/* Parchment Texture Overlays */
+.parchment-texture-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
     z-index: 1;
 }
 
-.hk-bg-aurora {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(55px);
-    opacity: 0.65;
-    mix-blend-mode: screen;
-}
-
-.hk-aurora-1 {
-    width: 380px;
-    height: 380px;
-    top: -100px;
-    left: -80px;
-    background: radial-gradient(circle, #00f2fe 0%, #38bdf8 50%, transparent 70%);
-    animation: auroraFloat1 9s ease-in-out infinite alternate;
-}
-
-.hk-aurora-2 {
-    width: 360px;
-    height: 360px;
-    bottom: -80px;
-    right: -80px;
-    background: radial-gradient(circle, #ec4899 0%, #a855f7 50%, transparent 70%);
-    animation: auroraFloat2 11s ease-in-out infinite alternate;
-}
-
-.hk-aurora-3 {
-    width: 300px;
-    height: 300px;
-    top: 40%;
-    left: 30%;
-    background: radial-gradient(circle, #6366f1 0%, #4338ca 60%, transparent 75%);
-    animation: auroraFloat3 13s ease-in-out infinite alternate;
-}
-
-.hk-aurora-back-1 {
-    width: 400px;
-    height: 400px;
-    top: -80px;
-    right: -100px;
-    background: radial-gradient(circle, #10b981 0%, #00f2fe 50%, transparent 70%);
-    animation: auroraFloat1 8s ease-in-out infinite alternate;
-}
-
-.hk-aurora-back-2 {
-    width: 380px;
-    height: 380px;
-    bottom: -90px;
-    left: -90px;
-    background: radial-gradient(circle, #8b5cf6 0%, #ec4899 50%, transparent 70%);
-    animation: auroraFloat2 10s ease-in-out infinite alternate;
-}
-
-@keyframes auroraFloat1 {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(40px, 30px) scale(1.15); }
-}
-
-@keyframes auroraFloat2 {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(-35px, -30px) scale(1.18); }
-}
-
-@keyframes auroraFloat3 {
-    0% { transform: translate(0, 0) scale(0.9); }
-    100% { transform: translate(25px, -20px) scale(1.2); }
-}
-
-.hk-bg-cyber-mesh {
+.parchment-aged-vignette {
     position: absolute;
     inset: 0;
-    background-image: 
-        radial-gradient(rgba(56, 189, 248, 0.22) 1.2px, transparent 1.2px),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
-    background-size: 22px 22px, 100% 100%;
-    opacity: 0.45;
+    background:
+        radial-gradient(ellipse at 0% 50%, rgba(100, 48, 7, 0.35) 0%, transparent 45%),
+        radial-gradient(ellipse at 100% 50%, rgba(100, 48, 7, 0.35) 0%, transparent 45%),
+        linear-gradient(180deg, rgba(80, 36, 4, 0.3) 0%, transparent 6%, transparent 94%, rgba(80, 36, 4, 0.35) 100%);
 }
 
-.hk-bg-noise {
+.parchment-paper-fiber {
     position: absolute;
     inset: 0;
-    background: linear-gradient(125deg, transparent 20%, rgba(255, 255, 255, 0.06) 40%, rgba(0, 242, 254, 0.16) 50%, rgba(236, 72, 153, 0.12) 60%, transparent 80%);
+    opacity: 0.12;
+    background-image: radial-gradient(circle at 50% 50%, rgba(50, 20, 2, 0.8) 1px, transparent 1px);
+    background-size: 16px 16px;
+}
+
+.parchment-crease {
+    position: absolute;
+    left: 4%;
+    right: 4%;
+    height: 1px;
+    opacity: 0.25;
+}
+
+.crease-top {
+    top: 14%;
+    background: linear-gradient(90deg, transparent 0%, rgba(120, 53, 15, 0.8) 50%, transparent 100%);
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.crease-bottom {
+    bottom: 12%;
+    background: linear-gradient(90deg, transparent 0%, rgba(120, 53, 15, 0.8) 50%, transparent 100%);
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+/* Watermark in background */
+.parchment-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 290px;
+    height: 290px;
+    opacity: 0.04;
+    color: #451a03;
     pointer-events: none;
 }
 
-/* Interactive Dynamic Glare */
-.hk-card-glare {
+.watermark-logo-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Antique Double Royal Border with Corner Filigrees */
+.parchment-royal-border {
     position: absolute;
-    inset: 0;
-    background: radial-gradient(circle 350px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.2), rgba(0, 242, 254, 0.12) 30%, transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    mix-blend-mode: overlay;
+    inset: 14px;
+    border: 2px solid #854d0e;
+    outline: 1px dashed rgba(180, 83, 9, 0.7);
+    outline-offset: -7px;
     pointer-events: none;
-}
-
-.hk-card-face:hover .hk-card-glare {
-    opacity: 1;
-}
-
-/* Spinning Holographic Border Glow */
-.hk-card-border-glow {
-    position: absolute;
-    inset: -2px;
-    border-radius: 30px;
-    background: conic-gradient(from 0deg, #00f2fe, #6366f1, #ec4899, #f59e0b, #00f2fe);
-    opacity: 0.4;
-    z-index: 0;
-    filter: blur(6px);
-    animation: spinBorder 12s linear infinite;
-}
-
-/* Inner Card Content */
-.hk-card-content {
-    position: relative;
     z-index: 2;
-    padding: 2.25rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    flex-grow: 1;
-    box-sizing: border-box;
+    border-radius: 3px;
 }
 
-/* Card Topbar */
-.hk-card-topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.filigree-motif {
+    position: absolute;
+    font-size: 1.15rem;
+    color: #92400e;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+    line-height: 1;
 }
 
-.hk-verified-badge {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: var(--accent-cyan);
-    background: rgba(0, 242, 254, 0.12);
-    border: 1px solid rgba(0, 242, 254, 0.35);
-    padding: 0.35rem 0.85rem;
-    border-radius: var(--radius-full);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+.f-top-left {
+    top: -9px;
+    left: -7px;
 }
 
-.hk-pulse-indicator {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #10b981;
-    box-shadow: 0 0 8px #10b981;
-    animation: pulseGreen 1.8s infinite alternate;
+.f-top-right {
+    top: -9px;
+    right: -7px;
 }
 
-@keyframes pulseGreen {
-    0% { transform: scale(0.9); opacity: 0.7; }
-    100% { transform: scale(1.3); opacity: 1; }
+.f-bottom-left {
+    bottom: -9px;
+    left: -7px;
 }
 
-.hk-card-close-btn {
+.f-bottom-right {
+    bottom: -9px;
+    right: -7px;
+}
+
+/* Close Button on Top Right */
+.sandesh-close-btn {
+    position: absolute;
+    top: 22px;
+    right: 22px;
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: var(--text-muted);
-    font-size: 1.4rem;
+    background: radial-gradient(circle at 35% 35%, #fff1f2, #e11d48, #881337);
+    border: 2px solid #fde047;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(136, 19, 55, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+    transition: transform var(--transition-fast), filter var(--transition-fast);
+    z-index: 25;
+}
+
+.sandesh-close-btn:hover {
+    transform: scale(1.12) rotate(90deg);
+    filter: brightness(1.15) drop-shadow(0 0 10px rgba(225, 29, 72, 0.8));
+}
+
+/* Inner Scroll Content Container */
+.sandesh-scroll-content {
+    position: relative;
+    z-index: 3;
+    padding: 2.2rem 2.2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+    color: #291203;
+}
+
+/* ==========================================================================
+   ROYAL WAX SEAL (शाही लाख की मोहर) WITH HK BRAND LOGO & SILK RIBBONS
+   ========================================================================== */
+.sandesh-wax-seal-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 10px 18px rgba(76, 5, 25, 0.55));
+}
+
+.sandesh-wax-seal {
+    position: relative;
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #f43f5e 0%, #e11d48 24%, #be123c 55%, #881337 80%, #4c0519 100%);
+    box-shadow:
+        inset 0 3px 6px rgba(255, 255, 255, 0.5),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.8),
+        0 8px 20px rgba(76, 5, 25, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    line-height: 1;
-    transition: all var(--transition-fast);
+    transition: transform 0.3s ease;
+    z-index: 10;
 }
 
-.hk-card-close-btn:hover {
-    background: rgba(239, 68, 68, 0.25);
-    border-color: #ef4444;
-    color: #ffffff;
-    transform: rotate(90deg) scale(1.05);
+.sandesh-wax-seal:hover {
+    transform: scale(1.06) rotate(3deg);
 }
 
-/* Profile Header Row */
-.hk-card-profile-header {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-}
-
-.hk-avatar-3d-wrapper {
-    position: relative;
-    width: 68px;
-    height: 68px;
-    flex-shrink: 0;
-}
-
-.hk-avatar-core {
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    background: linear-gradient(135deg, rgba(0, 242, 254, 0.25) 0%, rgba(99, 102, 241, 0.35) 50%, rgba(236, 72, 153, 0.3) 100%);
-    border: 1.5px solid rgba(0, 242, 254, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 242, 254, 0.3);
-}
-
-.hk-avatar-monogram {
-    font-family: var(--font-main);
-    font-size: 1.85rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-    background: linear-gradient(135deg, #00f2fe 0%, #ffffff 50%, #ec4899 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.6));
-}
-
-.hk-avatar-orbit-ring {
+/* Irregular Wax Rim Crimp */
+.wax-seal-outer-crimp {
     position: absolute;
+    inset: -4px;
     border-radius: 50%;
-    border: 1px dashed rgba(0, 242, 254, 0.4);
+    border: 3px dashed rgba(244, 63, 94, 0.6);
+    box-shadow: inset 0 0 10px rgba(76, 5, 25, 0.8);
+    opacity: 0.75;
     pointer-events: none;
 }
 
-.hk-orbit-1 {
-    inset: -6px;
-    animation: spinBorder 10s linear infinite;
+/* Sunken Wax Well */
+.wax-seal-inner-well {
+    position: absolute;
+    inset: 7px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(254, 205, 211, 0.4);
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.7), 0 1px 2px rgba(255, 255, 255, 0.4);
+    pointer-events: none;
 }
 
-.hk-orbit-2 {
-    inset: -12px;
-    border-color: rgba(236, 72, 153, 0.25);
-    animation: spinBorder 16s linear infinite reverse;
+/* Center Core with Brand Logo */
+.wax-seal-logo-core {
+    position: relative;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
 }
 
-.hk-profile-meta {
+.sandesh-seal-logo {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(45, 7, 10, 0.95));
+}
+
+/* Hanging Silk Ribbons (रेशमी लाल फीता) */
+.wax-silk-ribbon {
+    position: absolute;
+    top: 52px;
+    width: 22px;
+    height: 56px;
+    background: linear-gradient(135deg, #be123c 0%, #e11d48 30%, #f43f5e 50%, #9f1239 80%, #4c0519 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+    box-shadow: 0 6px 14px rgba(76, 5, 25, 0.65);
+    z-index: 4;
+}
+
+.ribbon-left {
+    left: 18px;
+    transform: rotate(14deg);
+    transform-origin: top center;
+}
+
+.ribbon-right {
+    right: 18px;
+    transform: rotate(-14deg);
+    transform-origin: top center;
+}
+
+/* ==========================================================================
+   SANDESH PATRA TYPOGRAPHY & HEADERS
+   ========================================================================== */
+.sandesh-header {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
-}
-
-.hk-name-row {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.hk-profile-name {
-    font-size: 1.55rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    margin: 0;
-    line-height: 1.25;
-}
-
-.hk-pro-chip {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #00f2fe, #6366f1);
-    color: #ffffff;
-    padding: 0.2rem 0.65rem;
-    border-radius: var(--radius-full);
-    box-shadow: 0 0 10px rgba(0, 242, 254, 0.35);
-}
-
-.hk-profile-role {
-    font-size: 0.94rem;
-    font-weight: 600;
-    color: var(--accent-cyan);
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-}
-
-.hk-profile-sub {
-    font-size: 0.84rem;
-    color: var(--text-muted);
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-}
-
-/* 5-Star Rating Strip */
-.hk-review-rating-strip {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    flex-wrap: wrap;
-    padding: 0.65rem 1.15rem;
-    background: rgba(14, 22, 42, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-full);
-}
-
-.hk-stars-wrap {
-    color: #f59e0b;
-    display: inline-flex;
-    gap: 0.25rem;
-    font-size: 0.95rem;
-    filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6));
-}
-
-.hk-rating-text {
-    font-family: var(--font-mono);
-    font-size: 0.84rem;
-    font-weight: 700;
-    color: #ffffff;
-}
-
-.hk-rating-tag {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #10b981;
-    background: rgba(16, 185, 129, 0.12);
-    border: 1px solid rgba(16, 185, 129, 0.3);
-    padding: 0.2rem 0.65rem;
-    border-radius: var(--radius-full);
-    margin-left: auto;
-}
-
-/* Short Review Callout Box */
-.hk-review-quote-box {
-    position: relative;
-    background: rgba(10, 16, 32, 0.75);
-    border: 1px solid rgba(56, 189, 248, 0.28);
-    border-radius: 20px;
-    padding: 1.5rem 1.75rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 242, 254, 0.05);
-}
-
-.hk-quote-icon {
-    font-size: 1.6rem;
-    color: rgba(0, 242, 254, 0.35);
-    margin-bottom: 0.65rem;
-    display: block;
-}
-
-.hk-review-quote-text {
-    font-size: 0.96rem;
-    line-height: 1.7;
-    color: var(--text-primary);
-    font-style: italic;
-    margin: 0 0 1rem 0;
-}
-
-.hk-quote-author {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 0.75rem;
-}
-
-.hk-author-title {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--text-muted);
-}
-
-.hk-verified-stamp {
-    font-family: var(--font-mono);
-    font-size: 0.76rem;
-    font-weight: 700;
-    color: #10b981;
-    display: inline-flex;
     align-items: center;
     gap: 0.35rem;
+    margin-top: 0.75rem;
 }
 
-/* Metric Tiles */
-.hk-metrics-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.85rem;
+.sandesh-vedic-invocation {
+    font-family: 'Rozha One', 'Cinzel', serif;
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: #92400e;
+    letter-spacing: 2.5px;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
 }
 
-.hk-metric-box {
-    background: rgba(12, 19, 36, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 0.9rem 0.65rem;
+.sandesh-scroll-title {
+    font-family: 'Rozha One', 'Yatra One', 'Cinzel', serif;
+    font-size: 2.35rem;
+    font-weight: 800;
+    margin: 0;
+    color: #5c2004;
+    letter-spacing: 2px;
+    line-height: 1.15;
+    text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.9),
+        0 2px 4px rgba(120, 53, 15, 0.3);
+}
+
+.sandesh-latin-subtitle {
+    font-family: 'Cinzel', 'Marcellus', serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #78350f;
+    letter-spacing: 3.5px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* Traditional Knot Divider */
+.sandesh-knot-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 80%;
+    max-width: 320px;
+    margin-top: 0.35rem;
+}
+
+.knot-bar {
+    flex: 1;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, #b45309, transparent);
+}
+
+.knot-center {
+    font-size: 1rem;
+    color: #92400e;
+    letter-spacing: 4px;
+}
+
+/* ==========================================================================
+   HONOREE PRESENTATION BOX (श्री हिमांशु कुमार)
+   ========================================================================== */
+.sandesh-honoree-card {
+    background: rgba(255, 252, 240, 0.65);
+    border: 1px solid rgba(180, 83, 9, 0.45);
+    border-radius: 12px;
+    padding: 1.1rem 1.4rem;
+    width: 100%;
+    box-shadow:
+        inset 0 1px 4px rgba(255, 255, 255, 0.9),
+        0 3px 10px rgba(120, 53, 15, 0.12);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 0.25rem;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-    transition: all var(--transition-fast);
 }
 
-.hk-metric-box:hover {
-    border-color: rgba(0, 242, 254, 0.4);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4), 0 0 12px rgba(0, 242, 254, 0.15);
-}
-
-.hk-m-val {
-    font-family: var(--font-main);
-    font-size: 1.35rem;
-    font-weight: 800;
-    line-height: 1;
-}
-
-.hk-m-lbl {
-    font-family: var(--font-mono);
+.honoree-proclamation-tag {
+    font-family: 'Cinzel', serif;
     font-size: 0.72rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
+    font-weight: 800;
+    color: #b45309;
+    letter-spacing: 2.5px;
 }
 
-/* Skill Chip Row */
-.hk-skills-tag-row {
+.honoree-name {
+    font-family: 'Rozha One', 'Yatra One', serif;
+    font-size: 1.95rem;
+    font-weight: 800;
+    color: #451a03;
+    margin: 0;
+    line-height: 1.15;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.honoree-english-name {
+    font-family: 'Cinzel', 'Marcellus', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #78350f;
+    letter-spacing: 2px;
+    margin: 0 0 0.35rem 0;
+}
+
+.honoree-designation {
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #291102;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.honoree-designation i {
+    color: #b45309;
+    margin-right: 4px;
+}
+
+.honoree-credentials {
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #78350f;
+    margin-top: 0.2rem;
+}
+
+.honoree-credentials i {
+    color: #b45309;
+    margin-right: 4px;
+}
+
+/* ==========================================================================
+   5-STAR ROYAL DISTINCTION STRIP
+   ========================================================================== */
+.sandesh-rating-strip {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.65rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem 1rem;
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.12), rgba(180, 83, 9, 0.18));
+    border: 1px solid rgba(180, 83, 9, 0.35);
+    border-radius: var(--radius-full);
+    padding: 0.55rem 1.25rem;
+    width: 100%;
 }
 
-.hk-skill-chip {
-    font-size: 0.84rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    background: rgba(14, 22, 42, 0.85);
-    border: 1px solid rgba(56, 189, 248, 0.22);
-    padding: 0.45rem 0.95rem;
+.sandesh-stars-row {
+    display: flex;
+    gap: 3px;
+    color: #d97706;
+    font-size: 0.92rem;
+    filter: drop-shadow(0 1px 2px rgba(180, 83, 9, 0.5));
+}
+
+.sandesh-rating-grade {
+    font-family: 'Cinzel', var(--font-main);
+    font-size: 0.86rem;
+    font-weight: 800;
+    color: #451a03;
+}
+
+.sandesh-grade-badge {
+    background: #78350f;
+    color: #fef3c7;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
     border-radius: var(--radius-full);
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    transition: all var(--transition-fast);
+    gap: 4px;
+    box-shadow: 0 2px 6px rgba(120, 53, 15, 0.4);
 }
 
-.hk-skill-chip:hover {
-    border-color: var(--accent-cyan);
-    color: #ffffff;
-    transform: translateY(-1px);
-    background: rgba(22, 35, 66, 0.95);
+/* ==========================================================================
+   PROCLAMATION / DECREE (REVIEW QUOTE BODY)
+   ========================================================================== */
+.sandesh-proclamation-box {
+    position: relative;
+    background: rgba(255, 253, 245, 0.75);
+    border: 1px double #b45309;
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    width: 100%;
+    box-shadow:
+        inset 0 0 16px rgba(180, 83, 9, 0.12),
+        0 4px 12px rgba(69, 26, 3, 0.12);
+    text-align: justify;
+    text-align-last: center;
+    box-sizing: border-box;
 }
 
-/* Card Action Buttons */
-.hk-card-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: auto;
-    padding-top: 0.5rem;
+.proclamation-hindi-block {
+    position: relative;
 }
 
-.hk-flip-card-btn {
-    border-radius: var(--radius-full);
-    padding: 0.65rem 1.35rem;
-    font-weight: 600;
-    font-size: 0.88rem;
-    gap: 0.55rem;
+.proclamation-quote-mark {
+    font-size: 2.2rem;
+    color: #b45309;
+    line-height: 0.8;
+    display: block;
+    margin-bottom: 0.35rem;
+    opacity: 0.7;
 }
 
-/* Back Face Specific Styles */
-.hk-back-hero {
+.proclamation-hindi-text {
+    font-family: 'Rozha One', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #2b1103;
+    margin: 0;
+    font-weight: 500;
+}
+
+.sandesh-text-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #b45309, transparent);
+    margin: 1rem 0;
+    opacity: 0.45;
+}
+
+.proclamation-english-block {
+    position: relative;
+}
+
+.proclamation-english-text {
+    font-family: 'Marcellus', Georgia, serif;
+    font-size: 0.94rem;
+    line-height: 1.65;
+    color: #451a03;
+    font-style: italic;
+    margin: 0;
+}
+
+/* ==========================================================================
+   4 ROYAL PILLARS / METRICS (कीर्ति स्तम्भ)
+   ========================================================================== */
+.sandesh-metrics-pillars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.65rem;
+    width: 100%;
+}
+
+.sandesh-pillar-card {
+    background: rgba(255, 252, 238, 0.75);
+    border: 1px solid rgba(180, 83, 9, 0.38);
+    border-radius: 10px;
+    padding: 0.75rem 0.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
+    align-items: center;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 2px 6px rgba(120, 53, 15, 0.1);
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
 
-.hk-back-title {
+.sandesh-pillar-card:hover {
+    transform: translateY(-2px);
+    border-color: #b45309;
+    background: #fffdf5;
+}
+
+.pillar-stat {
+    font-family: 'Rozha One', 'Cinzel', serif;
     font-size: 1.35rem;
     font-weight: 800;
-    color: var(--text-primary);
-    margin: 0;
+    color: #853707;
+    line-height: 1;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
-.hk-back-desc {
-    font-size: 0.92rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin: 0;
+.pillar-label {
+    font-family: 'Rozha One', serif;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #3b1402;
+    margin-top: 0.25rem;
+    white-space: nowrap;
 }
 
-.hk-pillars-grid {
+.pillar-latin {
+    font-family: 'Cinzel', var(--font-main);
+    font-size: 0.64rem;
+    font-weight: 600;
+    color: #854d0e;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   DOMAINS OF MASTERY / PARCHMENT CHIPS
+   ========================================================================== */
+.sandesh-skills-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.sandesh-skill-chip {
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #451a03;
+    background: rgba(255, 250, 235, 0.85);
+    border: 1px solid rgba(180, 83, 9, 0.4);
+    border-radius: var(--radius-full);
+    padding: 0.35rem 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 1px 4px rgba(120, 53, 15, 0.15);
+    transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.sandesh-skill-chip:hover {
+    transform: scale(1.05);
+    background: #fff;
+    border-color: #b45309;
+}
+
+.sandesh-skill-chip i {
+    color: #b45309;
+}
+
+/* ==========================================================================
+   SIGNATURE & SEAL OF AUTHENTICITY
+   ========================================================================== */
+.sandesh-authenticity-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-top: 1px dashed rgba(180, 83, 9, 0.45);
+    padding-top: 1rem;
+    margin-top: 0.25rem;
+}
+
+.sandesh-seal-col {
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
-}
-
-.hk-pillar-item {
-    background: rgba(12, 19, 36, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 18px;
-    padding: 1rem 1.25rem;
-    display: flex;
     align-items: flex-start;
-    gap: 1rem;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-    transition: all var(--transition-fast);
+    text-align: left;
 }
 
-.hk-pillar-item:hover {
-    border-color: rgba(56, 189, 248, 0.35);
-    background: rgba(18, 28, 52, 0.85);
-    transform: translateX(4px);
+.seal-inscription {
+    font-family: 'Rozha One', 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #853707;
 }
 
-.hk-pillar-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+.seal-latin-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #92400e;
+    letter-spacing: 1.5px;
+}
+
+.sandesh-signature-col {
     display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.signature-cursive {
+    font-family: 'Brush Script MT', 'Great Vibes', 'Playfair Display', cursive;
+    font-size: 1.55rem;
+    color: #451a03;
+    transform: rotate(-3deg);
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+.signature-caption {
+    font-family: var(--font-main);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #78350f;
+}
+
+/* ==========================================================================
+   SCROLL ACTIONS / BUTTONS
+   ========================================================================== */
+.sandesh-actions-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.sandesh-btn {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    flex-shrink: 0;
-}
-
-.hk-pillar-text h5 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0 0 0.25rem 0;
-}
-
-.hk-pillar-text p {
-    font-size: 0.86rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    margin: 0;
-}
-
-.hk-back-cta-group {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 0.75rem;
-}
-
-.hk-back-cta-btn {
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
     border-radius: var(--radius-full);
+    font-family: var(--font-main);
     font-size: 0.86rem;
-    font-weight: 600;
-    padding: 0.6rem 1rem;
-    text-align: center;
-    justify-content: center;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Responsive Rules for 3D Card */
+.sandesh-btn-resume {
+    background: linear-gradient(135deg, #78350f 0%, #451a03 100%);
+    color: #fef3c7;
+    border: 1px solid #d97706;
+}
+
+.sandesh-btn-resume:hover {
+    background: linear-gradient(135deg, #92400e 0%, #5c2004 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(69, 26, 3, 0.4);
+    color: #fff;
+}
+
+.sandesh-btn-prachi {
+    background: linear-gradient(135deg, #881337 0%, #4c0519 100%);
+    color: #fff1f2;
+    border: 1px solid #fb7185;
+}
+
+.sandesh-btn-prachi:hover {
+    background: linear-gradient(135deg, #9f1239 0%, #700b2b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(136, 19, 55, 0.45);
+    color: #fff;
+}
+
+.sandesh-btn-prachi-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sandesh-btn-contact {
+    background: rgba(255, 252, 240, 0.85);
+    color: #451a03;
+    border: 1px solid #b45309;
+}
+
+.sandesh-btn-contact:hover {
+    background: #fff;
+    border-color: #78350f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(120, 53, 15, 0.25);
+    color: #000;
+}
+
+.sandesh-btn-close {
+    background: rgba(120, 53, 15, 0.1);
+    color: #78350f;
+    border: 1px solid rgba(180, 83, 9, 0.35);
+}
+
+.sandesh-btn-close:hover {
+    background: rgba(120, 53, 15, 0.2);
+    color: #451a03;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN FOR SANDESH PATRA
+   ========================================================================== */
 @media (max-width: 680px) {
-    .hk-card-content {
-        padding: 1.5rem 1.25rem;
-        gap: 0.95rem;
+    .sandesh-scroll-content {
+        padding: 1.6rem 1.25rem 2rem;
+        gap: 1rem;
     }
-    .hk-card-face {
-        min-height: auto;
-        border-radius: 20px;
+
+    .sandesh-scroll-title {
+        font-size: 1.85rem;
     }
-    .hk-3d-card {
-        min-height: 600px;
+
+    .honoree-name {
+        font-size: 1.6rem;
     }
-    .hk-metrics-row {
+
+    .sandesh-metrics-pillars {
         grid-template-columns: repeat(2, 1fr);
     }
-    .hk-profile-name {
-        font-size: 1.35rem;
+
+    .sandesh-actions-group {
+        grid-template-columns: 1fr;
     }
-    .hk-review-quote-text {
-        font-size: 0.88rem;
+
+    .sandesh-authenticity-block {
+        flex-direction: column;
+        gap: 0.65rem;
+        align-items: center;
+        text-align: center;
     }
-    .brand-review-tag {
-        display: none;
+
+    .sandesh-seal-col,
+    .sandesh-signature-col {
+        align-items: center;
+        text-align: center;
+    }
+
+    .sandesh-scroll-rod {
+        width: calc(100% + 24px);
+        height: 22px;
+    }
+
+    .rod-finial {
+        width: 24px;
+        height: 30px;
+    }
+
+    .finial-dome {
+        width: 14px;
+        height: 22px;
     }
 }
-
-

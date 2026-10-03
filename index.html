@@ -73,8 +73,8 @@
     <header class="header" id="header">
         <nav class="nav-container" aria-label="Main Navigation">
             <!-- Logo / Brand Name -->
-            <!-- Logo / Brand Name (Click opens 3D Developer Review Card) -->
-            <a href="#home" class="nav-brand" id="navBrandLogo" aria-label="Himanshu Kumar - Click for 3D Developer Review" title="Click to open Himanshu's 3D Review Card">
+            <!-- Logo / Brand Name (Click opens Sandesh Patra Review) -->
+            <a href="#home" class="nav-brand" id="navBrandLogo" aria-label="Himanshu Kumar Homepage" title="Himanshu Kumar">
                 <span class="brand-logo-badge" aria-hidden="true">
                     <svg class="brand-logo-svg" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
@@ -118,9 +118,6 @@
                 <span class="brand-name-group">
                     <span class="brand-text-hk">HK</span>
                     <span class="brand-dot" aria-hidden="true"></span>
-                </span>
-                <span class="brand-review-tag" aria-hidden="true">
-                    <i class="fa-solid fa-sparkles"></i> 3D Review
                 </span>
             </a>
 
@@ -2005,208 +2002,259 @@
     </div>
 
     <!-- ========================================================================= -->
-    <!-- INTERACTIVE 3D HOLOGRAPHIC DEVELOPER REVIEW CARD (HK LOGO CLICK)          -->
+    <!-- 3D ROYAL SANDESH PATRA (शाही संदेश पत्र) MODAL - HK LOGO SPOTLIGHT        -->
     <!-- ========================================================================= -->
-    <div class="custom-modal-overlay hk-3d-review-overlay" id="hkReviewModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="hkCardProfileName">
+    <div class="custom-modal-overlay sandesh-modal-overlay" id="hkReviewModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sandeshPatraTitle">
         <!-- 3D Perspective Scene Container -->
-        <div class="hk-3d-scene" id="hk3dScene">
-            <!-- 3D Flippable Card -->
-            <div class="hk-3d-card" id="hk3dCard">
+        <div class="sandesh-3d-scene" id="hk3dScene">
 
-                <!-- FRONT FACE: Executive Review, Rating & Core Metrics -->
-                <div class="hk-card-face hk-card-front">
-                    <!-- Dynamic Holographic Ambient Orbs & Cyber Circuit Background -->
-                    <div class="hk-card-bg-canvas" aria-hidden="true">
-                        <div class="hk-bg-aurora hk-aurora-1"></div>
-                        <div class="hk-bg-aurora hk-aurora-2"></div>
-                        <div class="hk-bg-aurora hk-aurora-3"></div>
-                        <div class="hk-bg-cyber-mesh"></div>
-                        <div class="hk-bg-noise"></div>
-                        <div class="hk-card-glare" id="hkCardGlare"></div>
+            <!-- Realistic Royal Scroll (प्राचीन राजकीय संदेश पत्र) -->
+            <div class="sandesh-scroll-card" id="sandeshScrollCard">
+
+                <!-- TOP SCROLL ROD (शीर्ष स्वर्णिम काष्ठ दण्ड) -->
+                <div class="sandesh-scroll-rod rod-top" aria-hidden="true">
+                    <div class="rod-finial finial-left">
+                        <div class="finial-dome"></div>
+                        <div class="finial-collar"></div>
+                        <div class="finial-ridge"></div>
                     </div>
-
-                    <!-- Holographic Spinning Border Glow -->
-                    <div class="hk-card-border-glow"></div>
-
-                    <!-- Inner Card Content Wrapper -->
-                    <div class="hk-card-content">
-                        <!-- Top Bar / Header -->
-                        <div class="hk-card-topbar">
-                            <div class="hk-verified-badge">
-                                <span class="hk-pulse-indicator"></span>
-                                <i class="fa-solid fa-shield-halved"></i>
-                                <span>VERIFIED DEVELOPER SPOTLIGHT</span>
-                            </div>
-                            <button class="hk-card-close-btn" id="closeHkReviewModalBtn" aria-label="Close 3D Card">&times;</button>
+                    <div class="rod-shaft">
+                        <div class="shaft-grain"></div>
+                        <div class="shaft-rings">
+                            <span class="ring ring-1"></span>
+                            <span class="ring ring-2"></span>
+                            <span class="ring ring-3"></span>
+                            <span class="ring ring-4"></span>
                         </div>
-
-                        <!-- Developer Profile Bio Header -->
-                        <div class="hk-card-profile-header">
-                            <div class="hk-avatar-3d-wrapper">
-                                <div class="hk-avatar-core">
-                                    <span class="hk-avatar-monogram">HK</span>
-                                </div>
-                                <div class="hk-avatar-orbit-ring hk-orbit-1"></div>
-                                <div class="hk-avatar-orbit-ring hk-orbit-2"></div>
-                            </div>
-                            <div class="hk-profile-meta">
-                                <div class="hk-name-row">
-                                    <h3 class="hk-profile-name" id="hkCardProfileName">Himanshu Kumar</h3>
-                                    <span class="hk-pro-chip">DEV // 2026</span>
-                                </div>
-                                <p class="hk-profile-role">
-                                    <i class="fa-solid fa-terminal"></i> Full Stack Developer &amp; Data Analytics Engineer
-                                </p>
-                                <p class="hk-profile-sub">
-                                    <i class="fa-solid fa-graduation-cap"></i> B.Tech (CSE-IT) [Final Year] &bull; AKTU
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- 5-Star Rating & Review Seal -->
-                        <div class="hk-review-rating-strip">
-                            <div class="hk-stars-wrap">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <span class="hk-rating-text">5.0 / 5.0 High Performance Score</span>
-                            <span class="hk-rating-tag"><i class="fa-solid fa-bolt"></i> Top-Tier Capability</span>
-                        </div>
-
-                        <!-- Short Review Quote Box -->
-                        <div class="hk-review-quote-box">
-                            <i class="fa-solid fa-quote-left hk-quote-icon" aria-hidden="true"></i>
-                            <p class="hk-review-quote-text">
-                                &ldquo;Himanshu is an exceptional engineer with a rare blend of clean full-stack web architecture and high-precision data analytics. From crafting futuristic, responsive interfaces to automating scalable Python &amp; SQL data pipelines, he consistently delivers production-ready systems with problem-solving agility and complete dedication.&rdquo;
-                            </p>
-                            <div class="hk-quote-author">
-                                <span class="hk-author-title">// Developer Executive Review &amp; Performance Verdict</span>
-                                <span class="hk-verified-stamp"><i class="fa-solid fa-circle-check"></i> Verified</span>
-                            </div>
-                        </div>
-
-                        <!-- Core Impact Metrics Grid -->
-                        <div class="hk-metrics-row">
-                            <div class="hk-metric-box">
-                                <span class="hk-m-val text-cyan">3+</span>
-                                <span class="hk-m-lbl">Key Projects</span>
-                            </div>
-                            <div class="hk-metric-box">
-                                <span class="hk-m-val text-purple">5+</span>
-                                <span class="hk-m-lbl">Certifications</span>
-                            </div>
-                            <div class="hk-metric-box">
-                                <span class="hk-m-val text-green">90%+</span>
-                                <span class="hk-m-lbl">Tech Mastery</span>
-                            </div>
-                            <div class="hk-metric-box">
-                                <span class="hk-m-val text-pink">100%</span>
-                                <span class="hk-m-lbl">Delivery Rate</span>
-                            </div>
-                        </div>
-
-                        <!-- Key Skill Button Badges -->
-                        <div class="hk-skills-tag-row">
-                            <span class="hk-skill-chip"><i class="fa-brands fa-python" style="color: #38bdf8;"></i> Python</span>
-                            <span class="hk-skill-chip"><i class="fa-solid fa-code" style="color: #a855f7;"></i> C++</span>
-                            <span class="hk-skill-chip"><i class="fa-brands fa-js" style="color: #facc15;"></i> JavaScript</span>
-                            <span class="hk-skill-chip"><i class="fa-solid fa-database" style="color: #10b981;"></i> SQL</span>
-                            <span class="hk-skill-chip"><i class="fa-solid fa-chart-pie" style="color: #f97316;"></i> Power BI</span>
-                            <span class="hk-skill-chip"><i class="fa-solid fa-wand-magic-sparkles" style="color: #ec4899;"></i> UI/UX</span>
-                        </div>
-
-                        <!-- Card Action Buttons & Flip Trigger -->
-                        <div class="hk-card-actions">
-                            <button class="btn btn-outline btn-sm hk-flip-card-btn" id="hkFlipToBackBtn">
-                                <i class="fa-solid fa-arrows-rotate"></i> <span>3D Flip: Pillars &amp; Direct Access</span>
-                            </button>
-                            <a href="prachi.html" class="btn btn-primary btn-sm btn-prachi-nav" title="Ask Prachi AI About Himanshu">
-                                <img src="assets/prachi-logo.png" alt="Prachi Logo" class="btn-prachi-logo">
-                                <span>Ask Prachi AI</span>
-                            </a>
-                        </div>
+                    </div>
+                    <div class="rod-finial finial-right">
+                        <div class="finial-ridge"></div>
+                        <div class="finial-collar"></div>
+                        <div class="finial-dome"></div>
                     </div>
                 </div>
 
-                <!-- BACK FACE: Engineering Philosophy, Direct Connect, & Vision -->
-                <div class="hk-card-face hk-card-back">
-                    <div class="hk-card-bg-canvas" aria-hidden="true">
-                        <div class="hk-bg-aurora hk-aurora-back-1"></div>
-                        <div class="hk-bg-aurora hk-aurora-back-2"></div>
-                        <div class="hk-bg-cyber-mesh"></div>
-                        <div class="hk-bg-noise"></div>
+                <!-- UNROLLED ANTIQUE PARCHMENT BODY (प्राचीन भोजपत्र फलक) -->
+                <div class="sandesh-parchment-sheet">
+                    <!-- Parchment Noise, Vignette & Texture Overlays -->
+                    <div class="parchment-texture-layer" aria-hidden="true">
+                        <div class="parchment-aged-vignette"></div>
+                        <div class="parchment-paper-fiber"></div>
+                        <div class="parchment-crease crease-top"></div>
+                        <div class="parchment-crease crease-bottom"></div>
+                        <!-- Watermark of brand emblem -->
+                        <div class="parchment-watermark">
+                            <svg class="brand-logo-svg watermark-logo-svg" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 11V31" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                <path d="M12 21H20.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M20.5 11V31" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                <path d="M20.5 21L29.5 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                <path d="M20.5 21L30 31" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
                     </div>
 
-                    <div class="hk-card-border-glow"></div>
+                    <!-- Antique Double Border with Royal Corner Filigrees -->
+                    <div class="parchment-royal-border" aria-hidden="true">
+                        <span class="filigree-motif f-top-left">⚜</span>
+                        <span class="filigree-motif f-top-right">⚜</span>
+                        <span class="filigree-motif f-bottom-left">⚜</span>
+                        <span class="filigree-motif f-bottom-right">⚜</span>
+                    </div>
 
-                    <div class="hk-card-content">
-                        <!-- Top Bar -->
-                        <div class="hk-card-topbar">
-                            <div class="hk-verified-badge">
-                                <i class="fa-solid fa-compass-drafting"></i>
-                                <span>CORE ENGINEERING PILLARS</span>
-                            </div>
-                            <button class="hk-card-close-btn" id="closeHkReviewModalBackBtn" aria-label="Close 3D Card">&times;</button>
-                        </div>
+                    <!-- Parchment Close Seal Button -->
+                    <button class="sandesh-close-btn" id="closeHkReviewModalBtn" aria-label="Close Royal Scroll" title="संदेश पत्र बंद करें">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
 
-                        <div class="hk-back-hero">
-                            <h4 class="hk-back-title">Developer Vision &amp; Quality Standard</h4>
-                            <p class="hk-back-desc">Architecting robust digital solutions that bridge modern human-centric interfaces with scalable data intelligence.</p>
-                        </div>
+                    <!-- Scroll Content -->
+                    <div class="sandesh-scroll-content">
 
-                        <!-- 3 Pillars Cards -->
-                        <div class="hk-pillars-grid">
-                            <div class="hk-pillar-item">
-                                <div class="hk-pillar-icon" style="color: #00f2fe; background: rgba(0, 242, 254, 0.12);"><i class="fa-solid fa-cubes"></i></div>
-                                <div class="hk-pillar-text">
-                                    <h5>Clean Architecture</h5>
-                                    <p>Modular OOP design, minimal technical debt, and optimized algorithm complexity.</p>
+                        <!-- ROYAL 3D LACQUER WAX SEAL (शाही लाख की मोहर) WITH SILK RIBBONS & HK LOGO -->
+                        <div class="sandesh-wax-seal-wrapper">
+                            <div class="sandesh-wax-seal" title="शाही राजमुद्रा (Embossed Royal Seal)">
+                                <div class="wax-seal-outer-crimp"></div>
+                                <div class="wax-seal-inner-well"></div>
+                                <div class="wax-seal-logo-core">
+                                    <!-- HK BRAND LOGO EMBOSSED IN GOLD LEAF -->
+                                    <svg class="brand-logo-svg sandesh-seal-logo" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="HK Logo Seal">
+                                        <defs>
+                                            <linearGradient id="seal-gold-foil" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+                                                <stop offset="0%" stop-color="#fffbeb" />
+                                                <stop offset="25%" stop-color="#fef08a" />
+                                                <stop offset="55%" stop-color="#f59e0b" />
+                                                <stop offset="85%" stop-color="#d97706" />
+                                                <stop offset="100%" stop-color="#78350f" />
+                                            </linearGradient>
+                                            <linearGradient id="seal-gold-sub" x1="20" y1="21" x2="31" y2="10" gradientUnits="userSpaceOnUse">
+                                                <stop offset="0%" stop-color="#fef08a" />
+                                                <stop offset="60%" stop-color="#fbbf24" />
+                                                <stop offset="100%" stop-color="#92400e" />
+                                            </linearGradient>
+                                            <filter id="seal-3d-shadow" x="-25%" y="-25%" width="150%" height="150%">
+                                                <feDropShadow dx="0.6" dy="1.2" stdDeviation="0.5" flood-color="#3b0704" flood-opacity="0.9" />
+                                                <feDropShadow dx="-0.6" dy="-0.6" stdDeviation="0.4" flood-color="#fef3c7" flood-opacity="0.8" />
+                                            </filter>
+                                        </defs>
+                                        <path d="M5 14H37M5 28H37M14 5V37M28 5V37" stroke="rgba(254, 240, 138, 0.2)" stroke-width="0.9" />
+                                        <path d="M12 11V31" stroke="url(#seal-gold-foil)" stroke-width="3.2" stroke-linecap="round" filter="url(#seal-3d-shadow)" />
+                                        <path d="M12 21H20.5" stroke="url(#seal-gold-foil)" stroke-width="2.8" stroke-linecap="round" filter="url(#seal-3d-shadow)" />
+                                        <path d="M20.5 11V31" stroke="url(#seal-gold-foil)" stroke-width="3.2" stroke-linecap="round" filter="url(#seal-3d-shadow)" />
+                                        <path d="M20.5 21L29.5 11" stroke="url(#seal-gold-sub)" stroke-width="3.2" stroke-linecap="round" filter="url(#seal-3d-shadow)" />
+                                        <path d="M20.5 21L30 31" stroke="url(#seal-gold-sub)" stroke-width="3.2" stroke-linecap="round" filter="url(#seal-3d-shadow)" />
+                                        <circle cx="20.5" cy="21" r="2.2" fill="#fffbeb" />
+                                        <circle cx="31.5" cy="9" r="1.6" fill="#fef08a" />
+                                    </svg>
                                 </div>
                             </div>
-                            <div class="hk-pillar-item">
-                                <div class="hk-pillar-icon" style="color: #10b981; background: rgba(16, 185, 129, 0.12);"><i class="fa-solid fa-chart-line"></i></div>
-                                <div class="hk-pillar-text">
-                                    <h5>Data-Driven Precision</h5>
-                                    <p>Automated pipelines, high-fidelity business dashboards, and predictive insights.</p>
-                                </div>
-                            </div>
-                            <div class="hk-pillar-item">
-                                <div class="hk-pillar-icon" style="color: #ec4899; background: rgba(236, 72, 153, 0.12);"><i class="fa-solid fa-palette"></i></div>
-                                <div class="hk-pillar-text">
-                                    <h5>Futuristic Aesthetics</h5>
-                                    <p>Immersive 3D depth, responsive glassmorphism, and pixel-perfect ergonomics.</p>
-                                </div>
+                            <!-- Crimson Silk Ribbon Tails -->
+                            <div class="wax-silk-ribbon ribbon-left" aria-hidden="true"></div>
+                            <div class="wax-silk-ribbon ribbon-right" aria-hidden="true"></div>
+                        </div>
+
+                        <!-- ROYAL HEADER / MANTRA -->
+                        <div class="sandesh-header">
+                            <span class="sandesh-vedic-invocation">॥ श्रीः ॥ राजकीय सम्मान पत्र ॥</span>
+                            <h2 class="sandesh-scroll-title" id="sandeshPatraTitle">शाही संदेश पत्र</h2>
+                            <p class="sandesh-latin-subtitle">ROYAL CHARTER OF PROFESSIONAL EXCELLENCE</p>
+                            <div class="sandesh-knot-divider">
+                                <span class="knot-bar"></span>
+                                <span class="knot-center">𑁍 ࿗ 𑁍</span>
+                                <span class="knot-bar"></span>
                             </div>
                         </div>
 
-                        <!-- Direct Access Buttons -->
-                        <div class="hk-back-cta-group">
-                            <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" class="btn btn-outline btn-sm hk-back-cta-btn">
-                                <i class="fa-solid fa-eye text-cyan"></i> View Resume
-                            </a>
-                            <a href="https://www.linkedin.com/in/himanshu-kumar-1618hks" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm hk-back-cta-btn">
-                                <i class="fa-brands fa-linkedin text-blue"></i> LinkedIn
-                            </a>
-                            <a href="https://www.instagram.com/himanshu_singh1610/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm hk-back-cta-btn">
-                                <i class="fa-brands fa-instagram text-pink"></i> Instagram
-                            </a>
-                            <a href="https://github.com/himanshu161098" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm hk-back-cta-btn">
-                                <i class="fa-brands fa-github text-purple"></i> GitHub
-                            </a>
+                        <!-- RECIPIENT HONORS: HIMANSHU KUMAR -->
+                        <div class="sandesh-honoree-card">
+                            <span class="honoree-proclamation-tag">समर्पित / PRESENTED UNTO</span>
+                            <h3 class="honoree-name">श्री हिमांशु कुमार</h3>
+                            <p class="honoree-english-name">Himanshu Kumar</p>
+                            <p class="honoree-designation">
+                                <i class="fa-solid fa-feather-pointed"></i> सॉफ्टवेयर शिल्पी एवं डेटा विश्लेषक &bull; Full Stack Engineer &amp; Data Analytics Architect
+                            </p>
+                            <span class="honoree-credentials">
+                                <i class="fa-solid fa-landmark"></i> B.Tech (CSE-IT) [Final Year] &bull; डॉ. ए.पी.जे. अब्दुल कलाम प्राविधिक विश्वविद्यालय (AKTU)
+                            </span>
                         </div>
 
-                        <!-- Flip Back Button -->
-                        <div class="hk-card-actions">
-                            <button class="btn btn-secondary btn-sm hk-flip-card-btn" id="hkFlipToFrontBtn">
-                                <i class="fa-solid fa-arrow-left"></i> <span>Back to Review Card</span>
+                        <!-- 5-STAR ROYAL DISTINCTION -->
+                        <div class="sandesh-rating-strip">
+                            <div class="sandesh-stars-row">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="sandesh-rating-grade">५.० / ५.० सर्वोत्कृष्ट योग्यता (Top-Tier Royal Standard)</span>
+                            <span class="sandesh-grade-badge"><i class="fa-solid fa-crown"></i> राजकीय मान्यता प्राप्त</span>
+                        </div>
+
+                        <!-- PROCLAMATION / DECREE (REVIEW CONTENT) -->
+                        <div class="sandesh-proclamation-box">
+                            <div class="proclamation-hindi-block">
+                                <span class="proclamation-quote-mark">❝</span>
+                                <p class="proclamation-hindi-text">
+                                    प्रमाणित किया जाता है कि हिमांशु कुमार आधुनिक डिजिटल शिल्प व डेटा विज्ञान के एक निष्ठावान, नवोन्मेषी व अद्वितीय शिल्पी हैं। जटिल तकनीकी चुनौतियों को अत्यंत सुरुचिपूर्ण, तीव्र और सशक्त प्रणालियों में रूपांतरित करने में इनकी दक्षता सर्वोत्कृष्ट है। पूर्ण निष्ठा, शुचिता एवं अटूट समर्पण के साथ निर्मित इनकी कृतियाँ उच्च तकनीकी मानदंडों का जीवंत प्रमाण हैं।
+                                </p>
+                            </div>
+                            <div class="sandesh-text-divider"></div>
+                            <div class="proclamation-english-block">
+                                <p class="proclamation-english-text">
+                                    &ldquo;Himanshu stands as an exceptional modern craftsman in software engineering and data intelligence. Demonstrating extraordinary mastery across scalable full-stack architectures, automated pipelines, and human-centric interfaces, his work embodies unwavering dedication, analytical precision, and engineering purity.&rdquo;
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 4 ROYAL PILLARS / METRICS (कीर्ति स्तम्भ) -->
+                        <div class="sandesh-metrics-pillars">
+                            <div class="sandesh-pillar-card">
+                                <span class="pillar-stat">३+</span>
+                                <span class="pillar-label">प्रमुख कृतियाँ</span>
+                                <span class="pillar-latin">Key Projects</span>
+                            </div>
+                            <div class="sandesh-pillar-card">
+                                <span class="pillar-stat">५+</span>
+                                <span class="pillar-label">राजकीय प्रमाण</span>
+                                <span class="pillar-latin">Certifications</span>
+                            </div>
+                            <div class="sandesh-pillar-card">
+                                <span class="pillar-stat">९०%+</span>
+                                <span class="pillar-label">तकनीकी दक्षता</span>
+                                <span class="pillar-latin">Mastery Index</span>
+                            </div>
+                            <div class="sandesh-pillar-card">
+                                <span class="pillar-stat">१००%</span>
+                                <span class="pillar-label">कर्तव्य निष्ठा</span>
+                                <span class="pillar-latin">Commitment</span>
+                            </div>
+                        </div>
+
+                        <!-- DOMAINS OF MASTERY / PARCHMENT CHIPS -->
+                        <div class="sandesh-skills-wrapper">
+                            <span class="sandesh-skill-chip"><i class="fa-brands fa-python"></i> Python</span>
+                            <span class="sandesh-skill-chip"><i class="fa-solid fa-code"></i> C++</span>
+                            <span class="sandesh-skill-chip"><i class="fa-brands fa-js"></i> JavaScript</span>
+                            <span class="sandesh-skill-chip"><i class="fa-solid fa-database"></i> SQL</span>
+                            <span class="sandesh-skill-chip"><i class="fa-solid fa-chart-pie"></i> Power BI</span>
+                            <span class="sandesh-skill-chip"><i class="fa-solid fa-palette"></i> UI/UX Design</span>
+                        </div>
+
+                        <!-- SIGNATURE & SEAL OF AUTHENTICITY -->
+                        <div class="sandesh-authenticity-block">
+                            <div class="sandesh-seal-col">
+                                <span class="seal-inscription">⚜ मुद्रित एवं सत्यापित ⚜</span>
+                                <span class="seal-latin-sub">AUTHENTICATED DIGITAL DECREE</span>
+                            </div>
+                            <div class="sandesh-signature-col">
+                                <div class="signature-cursive">Himanshu Kumar</div>
+                                <span class="signature-caption">हस्ताक्षरित / Authorized Signature &bull; २०२६</span>
+                            </div>
+                        </div>
+
+                        <!-- SCROLL ACTIONS -->
+                        <div class="sandesh-actions-group">
+                            <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer" class="sandesh-btn sandesh-btn-resume" title="प्रमाण पत्र / View Resume">
+                                <i class="fa-solid fa-scroll"></i>
+                                <span>प्रमाण पत्र (View Resume)</span>
+                            </a>
+                            <a href="prachi.html" class="sandesh-btn sandesh-btn-prachi" title="प्राची एआई से विमर्श करें">
+                                <img src="assets/prachi-logo.png" alt="Prachi Logo" class="sandesh-btn-prachi-icon">
+                                <span>प्राची एआई से विमर्श</span>
+                            </a>
+                            <a href="#contact" class="sandesh-btn sandesh-btn-contact" id="sandeshContactBtn">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span>संपर्क स्थापित करें</span>
+                            </a>
+                            <button class="sandesh-btn sandesh-btn-close" id="closeHkReviewModalFooterBtn">
+                                <i class="fa-solid fa-xmark"></i>
+                                <span>संदेश पत्र बंद करें</span>
                             </button>
-                            <a href="#contact" class="btn btn-outline btn-sm" id="hkContactFromModalBtn">
-                                <i class="fa-solid fa-paper-plane text-cyan"></i> Get In Touch
-                            </a>
                         </div>
+
+                    </div>
+                </div>
+
+                <!-- BOTTOM SCROLL ROD (अधो स्वर्णिम काष्ठ दण्ड) -->
+                <div class="sandesh-scroll-rod rod-bottom" aria-hidden="true">
+                    <div class="rod-finial finial-left">
+                        <div class="finial-dome"></div>
+                        <div class="finial-collar"></div>
+                        <div class="finial-ridge"></div>
+                    </div>
+                    <div class="rod-shaft">
+                        <div class="shaft-grain"></div>
+                        <div class="shaft-rings">
+                            <span class="ring ring-1"></span>
+                            <span class="ring ring-2"></span>
+                            <span class="ring ring-3"></span>
+                            <span class="ring ring-4"></span>
+                        </div>
+                    </div>
+                    <div class="rod-finial finial-right">
+                        <div class="finial-ridge"></div>
+                        <div class="finial-collar"></div>
+                        <div class="finial-dome"></div>
                     </div>
                 </div>
 
