@@ -56,9 +56,9 @@ Personal Portfolio/
 ├── index.html                   # Main portfolio layout & markup
 ├── style.css                    # Futuristic dark-mode design system & animations
 ├── script.js                    # 3D canvas, cursor effects, navigation & UI logic
-├── chatgpt.html                 # Standalone ChatGPT Clone web application
-├── chatgpt.css                  # ChatGPT OpenAI dark aesthetic & sidebar styles
-├── chatgpt.js                   # ChatGPT multi-chat state, models, & voice engine
+├── chatgpt.html                 # Standalone Prachi AI web application with colorful logo
+├── chatgpt.css                  # Prachi AI OpenAI dark aesthetic & sidebar styles
+├── chatgpt.js                   # Prachi AI multi-chat state, models, & voice engine
 │
 ├── chatbot.css                  # Floating widget cyber glassmorphism styles
 ├── chatbot.js                   # Floating AI assistant & Maya voice widget with colorful logo

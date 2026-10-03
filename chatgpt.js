@@ -1,10 +1,11 @@
 /**
  * ==============================================================================
- * ChatGPT Clone Logic (chatgpt.js)
+ * Prachi AI Logic (chatgpt.js)
+ * Personal AI & Universal Problem-Solving Tutor by Himanshu Kumar
  * Features:
  * - Multi-conversation storage & history management (localStorage)
- * - Model Switcher (Maya Gemini 4o, Claude Sonnet, STEM Solver, Portfolio Dossier)
- * - Sweet Female Voice ("Maya") Speech-to-Text & Text-to-Speech
+ * - Model Switcher (Prachi 4o • Pro, Claude Sonnet, STEM Solver, Portfolio Dossier)
+ * - Sweet Female Voice ("Prachi") Speech-to-Text & Text-to-Speech
  * - Full Markdown, Code blocks with copy button, and Table rendering
  * - Export chat as Markdown, Fullscreen toggle, and Subject Presets
  * ==============================================================================
@@ -24,7 +25,7 @@ const WORKER_URL = "https://portfolio-chatbot-proxy.your-subdomain.workers.dev/a
 // -----------------------------------------------------------------------------
 let conversations = [];
 let activeConversationId = null;
-let currentModel = 'maya-gemini';
+let currentModel = 'prachi-gemini';
 let isVoiceModeEnabled = false;
 let isStreaming = false;
 let abortController = null;
@@ -216,9 +217,9 @@ function speakMayaVoice(text, btnElement = null) {
 function generateTutorResponse(userQuery, model) {
   const q = userQuery.toLowerCase().trim();
 
-  // Maya Identity / Girl Voice
-  if (q.includes('maya') || q.includes('girl') || q.includes('voice') || q.includes('who are you') || q.includes('tum kaun') || q.includes('ladki')) {
-    return `Namaste! 👋 Main **Maya** hoon, Himanshu Kumar ke ChatGPT Clone ki **Universal AI Tutor & Assistant**, powered by **Google Gemini & Cloud AI**.
+  // Prachi Identity / Girl Voice
+  if (q.includes('prachi') || q.includes('maya') || q.includes('girl') || q.includes('voice') || q.includes('who are you') || q.includes('tum kaun') || q.includes('ladki')) {
+    return `Namaste! 👋 Main **Prachi** hoon, Himanshu Kumar ki **Universal AI Tutor & Assistant**, powered by **Google Gemini & Cloud AI**.
 
 🎙️ **Female Voice Persona**:
 - Meri voice ek natural, sweet **female (girl) tone** me configured hai (pitch 1.18, rate 0.98).
@@ -419,8 +420,8 @@ The **Constitution of India** was drafted under **Dr. B.R. Ambedkar** (Drafting 
 - **Connect**: [LinkedIn Profile](https://www.linkedin.com/in/himanshu-kumar-1618hks/) • [GitHub Repositories](https://github.com/himanshu161098) • Email: \`himanshukumarsingh161098@gmail.com\`.`;
   }
 
-  // Default ChatGPT Response
-  return `I am **Maya**, your ChatGPT Clone powered by **Google Gemini & Cloud AI**.
+  // Default Response
+  return `I am **Prachi**, your AI Assistant & Universal Tutor powered by **Google Gemini & Cloud AI**.
 
 You can ask me to:
 - 📐 **Solve Math Problems** (Calculus, Linear Algebra, Probability, Equations)
@@ -514,9 +515,10 @@ class ChatGPTCloneApp {
 
     // 3. Saved Model
     try {
-      currentModel = localStorage.getItem(STORAGE_KEY_MODEL) || 'maya-gemini';
+      currentModel = localStorage.getItem(STORAGE_KEY_MODEL) || 'prachi-gemini';
+      if (currentModel === 'maya-gemini') currentModel = 'prachi-gemini';
     } catch (e) {
-      currentModel = 'maya-gemini';
+      currentModel = 'prachi-gemini';
     }
     this.updateModelUI();
 
@@ -623,7 +625,7 @@ class ChatGPTCloneApp {
     if (isVoiceModeEnabled) {
       this.dom.voiceToggleBtn.classList.add('active');
       this.dom.voiceIcon.className = 'fa-solid fa-volume-high';
-      this.dom.voiceToggleBtn.title = 'Voice Mode: ON (Maya reads replies aloud in her female voice)';
+      this.dom.voiceToggleBtn.title = 'Voice Mode: ON (Prachi reads replies aloud in her female voice)';
     } else {
       this.dom.voiceToggleBtn.classList.remove('active');
       this.dom.voiceIcon.className = 'fa-solid fa-volume-xmark';
@@ -755,8 +757,8 @@ class ChatGPTCloneApp {
       `;
     } else {
       row.innerHTML = `
-        <div class="gpt-msg-avatar" title="Maya • ChatGPT Clone">
-          <i class="fa-solid fa-sparkles"></i>
+        <div class="gpt-msg-avatar" title="Prachi • AI Assistant">
+          <img src="assets/prachi-logo.png" alt="Prachi AI" class="gpt-msg-avatar-img">
         </div>
         <div class="gpt-msg-content-wrap">
           <div class="gpt-msg-bubble gpt-assistant-bubble">
@@ -768,7 +770,7 @@ class ChatGPTCloneApp {
               <i class="fa-regular fa-copy"></i>
               <span>Copy</span>
             </button>
-            <button class="gpt-action-pill speak-btn" title="Listen in Maya's sweet female voice">
+            <button class="gpt-action-pill speak-btn" title="Listen in Prachi's sweet female voice">
               <i class="fa-solid fa-volume-high"></i>
               <span>Listen</span>
             </button>
@@ -906,7 +908,7 @@ class ChatGPTCloneApp {
       this.saveState();
       this.scrollToBottom();
 
-      // If voice mode is on, auto-read Maya's reply aloud
+      // If voice mode is on, auto-read Prachi's reply aloud
       if (isVoiceModeEnabled) {
         const speakBtn = assistantRow.querySelector('.speak-btn');
         speakMayaVoice(fullReply, speakBtn);
@@ -923,7 +925,7 @@ class ChatGPTCloneApp {
 
     let markdown = `# ${conv.title}\n\n*Created on: ${new Date(conv.createdAt).toLocaleString()}*\n\n---\n\n`;
     conv.messages.forEach(msg => {
-      const sender = msg.role === 'user' ? '### 👤 User' : '### 🤖 Maya (ChatGPT Clone)';
+      const sender = msg.role === 'user' ? '### 👤 User' : '### 🤖 Prachi (AI Assistant)';
       markdown += `${sender}\n\n${msg.content}\n\n---\n\n`;
     });
 

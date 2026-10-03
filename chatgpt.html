@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="ChatGPT Clone & AI Universal Tutor by Himanshu Kumar - Powered by Google Gemini, Cloud AI and Maya Female Voice Assistant. Solve Math, Science, Coding, and explore Himanshu's portfolio.">
+        content="Prachi AI — Universal STEM Tutor and Voice Assistant created by Himanshu Kumar. Powered by Google Gemini, Cloud AI and sweet Hindi/English female voice. Solve Mathematics, Physics, Chemistry, Biology, GK/GS, and explore Himanshu's portfolio.">
     <meta name="author" content="Himanshu Kumar">
-    <title>ChatGPT Clone | Maya AI &amp; Universal Tutor — Himanshu Kumar</title>
+    <title>Prachi AI | Universal STEM Tutor &amp; Voice Assistant — Himanshu Kumar</title>
+
+    <!-- Prachi AI Favicon -->
+    <link rel="icon" type="image/png" href="assets/prachi-logo.png">
 
     <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,10 +40,10 @@
             <div class="gpt-sidebar-header">
                 <a href="index.html" class="gpt-brand" title="Return to Himanshu's Portfolio">
                     <div class="gpt-logo-badge">
-                        <i class="fa-solid fa-sparkles"></i>
+                        <img src="assets/prachi-logo.png" alt="Prachi AI Logo" class="gpt-brand-logo-img">
                     </div>
                     <div class="gpt-brand-text">
-                        <span class="gpt-brand-title">ChatGPT Clone</span>
+                        <span class="gpt-brand-title">Prachi AI</span>
                         <span class="gpt-brand-sub">by Himanshu Kumar</span>
                     </div>
                 </a>
@@ -85,7 +88,7 @@
                     </div>
                     <div class="gpt-user-meta">
                         <span class="gpt-user-name">Himanshu Kumar</span>
-                        <span class="gpt-user-plan">Pro AI • Maya &amp; Gemini</span>
+                        <span class="gpt-user-plan">Pro AI • Prachi &amp; Gemini</span>
                     </div>
                     <button class="gpt-icon-btn gpt-clear-all-btn" id="gptClearAllBtn" title="Clear all chat history">
                         <i class="fa-regular fa-trash-can"></i>
@@ -111,19 +114,19 @@
                     <!-- Model Dropdown Selector -->
                     <div class="gpt-model-selector" id="gptModelSelector">
                         <button class="gpt-model-btn" id="gptModelBtn" aria-haspopup="listbox" aria-expanded="false">
-                            <span class="gpt-model-name" id="gptCurrentModelName">ChatGPT 4o • Maya Pro</span>
+                            <span class="gpt-model-name" id="gptCurrentModelName">Prachi 4o • Pro</span>
                             <span class="gpt-model-tag">Gemini + Cloud</span>
                             <i class="fa-solid fa-chevron-down gpt-dropdown-arrow"></i>
                         </button>
                         <ul class="gpt-model-menu" id="gptModelMenu" role="listbox">
-                            <li class="gpt-model-item active" data-model="maya-gemini" role="option"
+                            <li class="gpt-model-item active" data-model="prachi-gemini" role="option"
                                 aria-selected="true">
                                 <div class="gpt-model-item-info">
                                     <div class="gpt-model-item-title">
                                         <i class="fa-solid fa-brain"></i>
-                                        <span>ChatGPT 4o • Maya Pro</span>
+                                        <span>Prachi 4o • Pro</span>
                                     </div>
-                                    <span class="gpt-model-item-desc">Google Gemini 1.5 Flash + Female Voice Tutor (Fast &amp; Smart)</span>
+                                    <span class="gpt-model-item-desc">Google Gemini 1.5 Flash + Prachi Female Voice Tutor (Fast &amp; Smart)</span>
                                 </div>
                                 <i class="fa-solid fa-check gpt-check-icon"></i>
                             </li>
@@ -164,7 +167,7 @@
                 <div class="gpt-topbar-right">
                     <!-- Female Voice Toggle -->
                     <button class="gpt-topbar-action-btn" id="gptVoiceToggleBtn"
-                        title="Voice Mode (Reads responses aloud in Maya's sweet female voice)">
+                        title="Voice Mode (Reads responses aloud in Prachi's sweet female voice)">
                         <i class="fa-solid fa-volume-high" id="gptVoiceIcon"></i>
                         <span class="gpt-btn-text">Voice Mode</span>
                     </button>
@@ -193,13 +196,11 @@
                 <!-- Welcome Screen / Empty State -->
                 <div class="gpt-welcome-screen" id="gptWelcomeScreen">
                     <div class="gpt-welcome-logo">
-                        <div class="gpt-logo-inner">
-                            <i class="fa-solid fa-sparkles"></i>
-                        </div>
+                        <img src="assets/prachi-logo.png" alt="Prachi AI Logo" class="gpt-welcome-logo-img">
                     </div>
                     <h1 class="gpt-welcome-title">What can I help with today?</h1>
                     <p class="gpt-welcome-subtitle">
-                        I am <strong>Maya</strong>, your ChatGPT Clone &amp; Universal Problem-Solving Tutor. Powered by
+                        I am <strong>Prachi</strong>, your AI &amp; Universal Problem-Solving Tutor. Powered by
                         <strong>Google Gemini &amp; Cloud AI</strong> with a natural female voice.
                     </p>
 
@@ -258,7 +259,7 @@
                 <div class="gpt-voice-wave">
                     <span></span><span></span><span></span><span></span><span></span>
                 </div>
-                <span class="gpt-voice-text">Maya is listening... Speak in English, Hindi, or Hinglish</span>
+                <span class="gpt-voice-text">Prachi is listening... Speak in English, Hindi, or Hinglish</span>
             </div>
 
             <!-- Bottom Capsule Input Form -->
@@ -301,7 +302,7 @@
 
                         <!-- Auto-Expanding Textarea -->
                         <textarea id="gptTextarea" class="gpt-textarea" rows="1"
-                            placeholder="Message ChatGPT Clone (Maya AI)... Ask Math, Physics, GK, or Coding"
+                            placeholder="Message Prachi AI... Ask Math, Physics, Chemistry, GK, or Coding"
                             maxlength="2000"></textarea>
 
                         <!-- Hands-Free Voice Button -->
@@ -318,7 +319,7 @@
                 </form>
 
                 <div class="gpt-disclaimer">
-                    <span>ChatGPT Clone can make mistakes. Verify important academic calculations and portfolio facts.</span>
+                    <span>Prachi AI can make mistakes. Verify important academic calculations and portfolio facts.</span>
                 </div>
             </div>
         </main>
