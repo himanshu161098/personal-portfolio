@@ -56,6 +56,7 @@ Personal Portfolio/
 ├── index.html                   # Main portfolio layout & markup
 ├── style.css                    # Futuristic dark-mode design system & animations
 ├── script.js                    # 3D canvas, cursor effects, navigation & UI logic
+├── ai-engine.js                 # Universal STEM, Math, Coding & Dynamic AI Intelligence Engine
 ├── chatgpt.html                 # Standalone Prachi AI web application with colorful logo
 ├── chatgpt.css                  # Prachi AI OpenAI dark aesthetic & sidebar styles
 ├── chatgpt.js                   # Prachi AI multi-chat state, models, & voice engine

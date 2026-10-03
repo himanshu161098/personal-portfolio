@@ -215,6 +215,11 @@ function speakMayaVoice(text, btnElement = null) {
 // 5. LOCAL ADVANCED TUTOR INTELLIGENCE (Academic + Portfolio)
 // -----------------------------------------------------------------------------
 function generateTutorResponse(userQuery, model) {
+  // 1. Try Universal Dynamic Intelligence Engine (Math, Code, GK, Science, Social)
+  if (typeof window !== 'undefined' && window.UniversalAIEngine && typeof window.UniversalAIEngine.generateResponse === 'function') {
+    return window.UniversalAIEngine.generateResponse(userQuery, { assistantName: 'Prachi' });
+  }
+
   const q = userQuery.toLowerCase().trim();
 
   // Prachi Identity / Girl Voice

@@ -131,6 +131,11 @@ async function getLocalKnowledge() {
 }
 
 function generateLocalMockResponse(userQuery, kb) {
+  // 1. Try Universal Dynamic Intelligence Engine (Math, Code, GK, Science, Social)
+  if (typeof window !== 'undefined' && window.UniversalAIEngine && typeof window.UniversalAIEngine.generateResponse === 'function') {
+    return window.UniversalAIEngine.generateResponse(userQuery, { assistantName: 'Maya' });
+  }
+
   const q = userQuery.toLowerCase().trim();
 
   // 0. Maya Female Voice Identity & Assistant Intro
