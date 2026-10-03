@@ -110,6 +110,8 @@ Last updated: 2026-10-03
 - **Portfolio Website**: [https://himanshu161098.github.io/personal-portfolio/](https://himanshu161098.github.io/personal-portfolio/)
 - **LinkedIn Profile**: [https://www.linkedin.com/in/himanshu-kumar-1618hks/](https://www.linkedin.com/in/himanshu-kumar-1618hks/)
 - **GitHub Profile**: [https://github.com/himanshu161098](https://github.com/himanshu161098)
+- **Instagram Profile**: [https://www.instagram.com/himanshu_singh1610/](https://www.instagram.com/himanshu_singh1610/)
+- **Resume (PDF)**: [assets/Himanshu_Kumar_Resume.pdf](assets/Himanshu_Kumar_Resume.pdf)
 - **Email**: `himanshukumarsingh161098@gmail.com`
 - **Phone Number**: *Restricted / Not shared publicly for privacy and security.*
 - **Location**: Greater Noida / Delhi NCR, India (Open to remote internships and on-site opportunities across India).

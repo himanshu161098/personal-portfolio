@@ -240,12 +240,14 @@ Would you like to know how he applied these in his **projects** or his **educati
   }
 
   // 8. Contact Details & Socials
-  if (/contact|email|reach|linkedin|github|phone|whatsapp|location|address|kahan rehta/i.test(q)) {
+  if (/contact|email|reach|linkedin|github|instagram|insta|phone|whatsapp|location|address|kahan rehta/i.test(q)) {
     return `### 📬 Contact & Connect with Himanshu Kumar
 
 - 💼 **LinkedIn**: [linkedin.com/in/himanshu-kumar-1618hks/](https://www.linkedin.com/in/himanshu-kumar-1618hks/)
 - 💻 **GitHub**: [github.com/himanshu161098](https://github.com/himanshu161098)
+- 📸 **Instagram**: [instagram.com/himanshu_singh1610](https://www.instagram.com/himanshu_singh1610/)
 - 🌐 **Live Portfolio**: [himanshu161098.github.io/personal-portfolio/](https://himanshu161098.github.io/personal-portfolio/)
+- 📄 **Resume (PDF)**: [Download Himanshu_Kumar_Resume.pdf](assets/Himanshu_Kumar_Resume.pdf)
 - 📧 **Email**: \`himanshukumarsingh161098@gmail.com\`
 - 📍 **Location**: Greater Noida / Delhi NCR, India (Open to on-site, hybrid, and remote roles across India).`;
   }

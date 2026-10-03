@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himanshu Kumar - Resume</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 6mm 9mm;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            background-color: #ffffff;
+            font-size: 8.6pt;
+            line-height: 1.26;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        a {
+            color: #0284c7;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .resume-container {
+            max-width: 100%;
+            margin: 0 auto;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #0284c7;
+            padding-bottom: 4px;
+            margin-bottom: 5px;
+        }
+
+        .candidate-name {
+            font-size: 19pt;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #0f172a;
+            text-transform: uppercase;
+            margin-bottom: 1px;
+        }
+
+        .candidate-title {
+            font-size: 10pt;
+            font-weight: 600;
+            color: #0284c7;
+            margin-bottom: 3px;
+        }
+
+        .contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            font-size: 8.3pt;
+            color: #475569;
+        }
+
+        .contact-item {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .contact-bar span.sep {
+            color: #cbd5e1;
+        }
+
+        /* SECTIONS */
+        .section {
+            margin-bottom: 4px;
+        }
+
+        .section-heading {
+            font-size: 9.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #0f172a;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 1px;
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-heading::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 10px;
+            background: #0284c7;
+            margin-right: 5px;
+            border-radius: 1px;
+        }
+
+        /* SUMMARY */
+        .summary-text {
+            font-size: 8.6pt;
+            color: #334155;
+            text-align: justify;
+            line-height: 1.28;
+        }
+
+        /* SKILLS GRID */
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 8.5pt;
+        }
+
+        .skills-table td {
+            padding: 1px 0;
+            vertical-align: top;
+        }
+
+        .skills-label {
+            font-weight: 600;
+            color: #0f172a;
+            width: 150px;
+            white-space: nowrap;
+        }
+
+        .skills-val {
+            color: #334155;
+        }
+
+        /* EXPERIENCE & PROJECTS */
+        .item-block {
+            margin-bottom: 3.5px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1px;
+        }
+
+        .item-title {
+            font-size: 9pt;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .item-sub {
+            font-weight: 600;
+            color: #0284c7;
+        }
+
+        .item-date {
+            font-size: 8.2pt;
+            font-weight: 600;
+            color: #64748b;
+            font-style: italic;
+            white-space: nowrap;
+        }
+
+        .item-bullets {
+            list-style-type: disc;
+            padding-left: 13px;
+            color: #334155;
+            font-size: 8.5pt;
+            margin-top: 1px;
+        }
+
+        .item-bullets li {
+            margin-bottom: 1px;
+            line-height: 1.26;
+        }
+
+        .item-bullets strong {
+            color: #0f172a;
+        }
+
+        /* EDUCATION TABLE */
+        .edu-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 8.5pt;
+            margin-top: 1px;
+        }
+
+        .edu-table th {
+            text-align: left;
+            background: #f1f5f9;
+            color: #0f172a;
+            font-weight: 600;
+            padding: 2px 5px;
+            border: 1px solid #e2e8f0;
+            font-size: 8.2pt;
+        }
+
+        .edu-table td {
+            padding: 2px 5px;
+            border: 1px solid #e2e8f0;
+            color: #334155;
+        }
+
+        /* CERTIFICATIONS GRID */
+        .cert-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px 12px;
+            font-size: 8.5pt;
+            padding-left: 10px;
+        }
+
+        .cert-item {
+            color: #334155;
+            position: relative;
+            line-height: 1.26;
+        }
+
+        .cert-item::before {
+            content: "•";
+            position: absolute;
+            left: -10px;
+            color: #0284c7;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1 class="candidate-name">Himanshu Kumar</h1>
+            <p class="candidate-title">Data Analyst &middot; Full-Stack Web Developer &middot; Python &amp; BI Enthusiast</p>
+            <div class="contact-bar">
+                <span class="contact-item">📞 +91 9341112974</span>
+                <span class="sep">|</span>
+                <span class="contact-item">✉️ <a href="mailto:himanshukumarsingh1610@gmail.com">himanshukumarsingh1610@gmail.com</a></span>
+                <span class="sep">|</span>
+                <span class="contact-item">📍 Greater Noida / Delhi NCR, India</span>
+                <br>
+                <span class="contact-item">🌐 <a href="https://himanshu161098.github.io/personal-portfolio/" target="_blank">Portfolio</a></span>
+                <span class="sep">|</span>
+                <span class="contact-item">🔗 <a href="https://www.linkedin.com/in/himanshu-kumar-1618hks/" target="_blank">LinkedIn: /in/himanshu-kumar-1618hks</a></span>
+                <span class="sep">|</span>
+                <span class="contact-item">💻 <a href="https://github.com/himanshu161098" target="_blank">GitHub: @himanshu161098</a></span>
+                <span class="sep">|</span>
+                <span class="contact-item">📸 <a href="https://www.instagram.com/himanshu_singh1610/" target="_blank">Instagram: @himanshu_singh1610</a></span>
+            </div>
+        </header>
+
+        <!-- PROFESSIONAL SUMMARY -->
+        <section class="section">
+            <h2 class="section-heading">Professional Summary</h2>
+            <p class="summary-text">
+                Results-driven final-year <strong>B.Tech (Computer Science &amp; Engineering - IT)</strong> student at IIMT College of Engineering (AKTU) with solid technical foundations in <strong>Python, SQL, Exploratory Data Analysis (EDA), Data Cleaning</strong>, and <strong>Business Intelligence (Power BI, Excel)</strong>. Successfully delivered an exploratory catalog intelligence analysis on an <strong>8,787-record Netflix dataset</strong> and built responsive web applications with JavaScript and Three.js. Holds <strong>5 industry-recognized certifications</strong> in Data Analytics and AI/ML. Seeking an internship or entry-level Data Analyst / Software Developer role to translate raw data into actionable business impact.
+            </p>
+        </section>
+
+        <!-- TECHNICAL SKILLS -->
+        <section class="section">
+            <h2 class="section-heading">Technical Skills</h2>
+            <table class="skills-table">
+                <tr>
+                    <td class="skills-label">Languages &amp; Core:</td>
+                    <td class="skills-val">Python, SQL, JavaScript (ES6+), C++, Java, HTML5, CSS3</td>
+                </tr>
+                <tr>
+                    <td class="skills-label">Data Analytics &amp; BI:</td>
+                    <td class="skills-val">Pandas, NumPy, Exploratory Data Analysis (EDA), Data Cleaning, Outlier Detection, Matplotlib, Seaborn, Microsoft Power BI (Dashboards, KPI Cards), MS Excel (Pivot Tables, VLOOKUP/XLOOKUP, Advanced Formulas)</td>
+                </tr>
+                <tr>
+                    <td class="skills-label">Databases &amp; Web Tech:</td>
+                    <td class="skills-val">MySQL (Relational Schemas, Complex Queries, Joins), MongoDB, Three.js (WebGL), Tailwind CSS, Bootstrap 5, REST API Integration</td>
+                </tr>
+                <tr>
+                    <td class="skills-label">Developer Tools:</td>
+                    <td class="skills-val">Git, GitHub, GitHub Actions (CI/CD Automated Sync), Visual Studio Code, Jupyter Notebook, Google Colab</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="section">
+            <h2 class="section-heading">Key Technical Projects</h2>
+
+            <!-- Project 1 -->
+            <div class="item-block">
+                <div class="item-header">
+                    <div>
+                        <span class="item-title">Netflix Content Catalog Analysis</span>
+                        <span class="item-sub">| Internship Project &middot; Auspify Technologies</span>
+                    </div>
+                    <span class="item-date">Python, Pandas, NumPy, Matplotlib &middot; 2026</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Conducted comprehensive exploratory data analysis (EDA) across <strong>8,787 Netflix movie and TV show titles</strong> to discover catalog composition patterns and distribution trends.</li>
+                    <li>Cleaned and parsed multi-value fields including genres, cast directories, missing release metadata, and inconsistent duration formats using vectorized Pandas routines.</li>
+                    <li>Quantified Netflix's strategic pivot toward international original content across Asia and Europe; extracted top-tier rating concentrations (TV-MA, TV-14) shaping audience segmentation.</li>
+                    <li><strong>GitHub Repository:</strong> <a href="https://github.com/himanshu161098/Netfix-Sales" target="_blank">github.com/himanshu161098/Netfix-Sales</a></li>
+                </ul>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="item-block">
+                <div class="item-header">
+                    <div>
+                        <span class="item-title">Interactive 3D Developer Portfolio &amp; Prachi AI Assistant</span>
+                    </div>
+                    <span class="item-date">Three.js, ES6+ JavaScript, CSS3, GitHub REST API &middot; 2026</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Designed an ultra-responsive personal developer portfolio featuring custom 3D WebGL particle matrices and interactive cyber-hud telemetry powered by Three.js.</li>
+                    <li>Automated portfolio telemetry via <strong>GitHub Actions CI/CD cron pipeline</strong> that synchronizes repository stats and activities dynamically every 6 hours.</li>
+                    <li>Integrated <strong>Prachi AI</strong> — a client-side multimodal AI assistant supporting multi-session persistence, speech synthesis/recognition (STT/TTS), and custom STEM solvers.</li>
+                    <li><strong>Live Demo &amp; Repo:</strong> <a href="https://himanshu161098.github.io/personal-portfolio/" target="_blank">himanshu161098.github.io/personal-portfolio</a> | <a href="https://github.com/himanshu161098/personal-portfolio" target="_blank">github.com/himanshu161098/personal-portfolio</a></li>
+                </ul>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="item-block">
+                <div class="item-header">
+                    <div>
+                        <span class="item-title">Interactive UNO Playing Card Game</span>
+                    </div>
+                    <span class="item-date">JavaScript (ES6+), HTML5, CSS3, Tailwind CSS &middot; 2026</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Built a browser-based 1v1 UNO game featuring an autonomous AI opponent, modular object-oriented card logic, and real-time state tracking.</li>
+                    <li>Implemented full game rules including action cards (Skip, Reverse, Draw Two, Wild, Wild Draw Four) with fluid CSS animation transitions and responsive layouts.</li>
+                    <li><strong>GitHub Repository:</strong> <a href="https://github.com/himanshu161098/UNO-playing-Card-" target="_blank">github.com/himanshu161098/UNO-playing-Card-</a></li>
+                </ul>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="item-block">
+                <div class="item-header">
+                    <div>
+                        <span class="item-title">Smart House Security System Using AI</span>
+                    </div>
+                    <span class="item-date">JavaScript, Machine Learning, Cloud REST APIs &middot; 2026</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Architected an intelligent IoT monitoring system utilizing anomaly detection models to flag unauthorized perimeter breaches from simulated sensor streams.</li>
+                    <li>Integrated cloud webhook alerting and real-time event telemetry to transmit instant push notifications upon threat classification.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="section">
+            <h2 class="section-heading">Education</h2>
+            <table class="edu-table">
+                <thead>
+                    <tr>
+                        <th>Degree / Qualification</th>
+                        <th>Institution / Board</th>
+                        <th>Year</th>
+                        <th>Score / Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>B.Tech &ndash; Computer Science &amp; Engineering (IT)</strong></td>
+                        <td>IIMT College of Engineering, Greater Noida (AKTU)</td>
+                        <td>2022 &ndash; 2026</td>
+                        <td><strong>Final Year (Ongoing)</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Senior Secondary (Class XII) &ndash; Science</strong></td>
+                        <td>Bihar School Examination Board (BSEB)</td>
+                        <td>2023</td>
+                        <td>67.8%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Secondary (Class X)</strong></td>
+                        <td>Bihar School Examination Board (BSEB)</td>
+                        <td>2021</td>
+                        <td>68.2%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- CERTIFICATIONS -->
+        <section class="section">
+            <h2 class="section-heading">Certifications (5 Industry Recognized)</h2>
+            <div class="cert-list">
+                <div class="cert-item"><strong>Data Analysis with Python</strong> &ndash; NumPy, Pandas &amp; Visualization</div>
+                <div class="cert-item"><strong>Foundations: Data, Data, Everywhere</strong> &ndash; Data Ecosystem &amp; Ethics</div>
+                <div class="cert-item"><strong>Introduction to Data Analytics</strong> &ndash; Analytical Thinking &amp; Frameworks</div>
+                <div class="cert-item"><strong>Fundamentals of Machine Learning &amp; AI</strong> &ndash; Supervised &amp; Unsupervised Models</div>
+                <div class="cert-item"><strong>Foundations of Cybersecurity</strong> &ndash; Security Principles &amp; Network Defense</div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

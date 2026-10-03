@@ -681,7 +681,38 @@ button, input, textarea {
     display: flex;
     flex-wrap: wrap;
     gap: 1.25rem;
-    margin-bottom: 2.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-resume-hero {
+    box-shadow: 0 4px 18px rgba(0, 242, 254, 0.35);
+}
+
+.btn-resume-hero:hover {
+    box-shadow: 0 6px 24px rgba(0, 242, 254, 0.55);
+}
+
+/* Hero Social Strip */
+.hero-social-strip {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.hero-social-label {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.hero-social-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
 }
 
 /* Quick Tech Stack Pills */
@@ -1202,6 +1233,62 @@ button, input, textarea {
     color: var(--text-muted);
 }
 
+.dossier-cta-wrapper {
+    padding: 0.85rem 1.5rem 1.25rem;
+    background: rgba(6, 9, 19, 0.6);
+    border-top: 1px dashed var(--border-subtle);
+}
+
+.dossier-resume-btn {
+    border-color: rgba(0, 242, 254, 0.4);
+    color: var(--accent-cyan);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    padding: 0.55rem 1rem;
+    transition: all var(--transition-fast);
+}
+
+.dossier-resume-btn:hover {
+    border-color: var(--accent-cyan);
+    background: rgba(0, 242, 254, 0.12);
+    box-shadow: 0 4px 16px rgba(0, 242, 254, 0.3);
+    color: #ffffff;
+}
+
+.text-pink {
+    color: #f472b6 !important;
+    transition: color var(--transition-fast);
+}
+
+.text-pink:hover {
+    color: #fb7185 !important;
+    text-decoration: underline;
+}
+
+.nav-resume-btn {
+    border-color: rgba(0, 242, 254, 0.45);
+    color: var(--accent-cyan);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.nav-resume-btn:hover {
+    border-color: var(--accent-cyan);
+    background: rgba(0, 242, 254, 0.12);
+    box-shadow: 0 0 16px rgba(0, 242, 254, 0.3);
+    color: #ffffff;
+}
+
+.nav-resume-icon {
+    font-size: 0.75rem;
+    margin-left: 0.3rem;
+    opacity: 0.85;
+}
+
 
 /* --------------------------------------------------------------------------
    6. SKILLS SECTION
@@ -1710,6 +1797,28 @@ button, input, textarea {
     background: rgba(255, 255, 255, 0.08);
 }
 
+.instagram-box {
+    color: #e1306c !important;
+    background: rgba(225, 48, 108, 0.12) !important;
+    border-color: rgba(225, 48, 108, 0.25) !important;
+}
+
+.resume-box {
+    color: var(--accent-cyan) !important;
+    background: rgba(0, 242, 254, 0.12) !important;
+    border-color: rgba(0, 242, 254, 0.3) !important;
+}
+
+.contact-info-card.resume-card {
+    border-color: rgba(0, 242, 254, 0.35);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(0, 242, 254, 0.06));
+}
+
+.contact-info-card.resume-card:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 4px 20px rgba(0, 242, 254, 0.25);
+}
+
 .contact-detail {
     display: flex;
     flex-direction: column;
@@ -1952,6 +2061,23 @@ button, input, textarea {
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0, 242, 254, 0.25);
     background: var(--bg-card-hover);
+}
+
+.social-link.instagram-link:hover,
+.social-link[aria-label*="Instagram"]:hover {
+    color: #fd1d1d !important;
+    border-color: #e1306c !important;
+    background: rgba(225, 48, 108, 0.15) !important;
+    box-shadow: 0 4px 14px rgba(225, 48, 108, 0.4) !important;
+}
+
+.footer-resume-link {
+    color: var(--accent-cyan) !important;
+    font-weight: 500;
+}
+
+.footer-resume-link:hover {
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
 }
 
 .footer-bottom {
