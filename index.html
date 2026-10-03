@@ -209,10 +209,17 @@
             <div class="container hero-container">
                 <!-- Hero Content (Text & CTAs) -->
                 <div class="hero-content">
-                    <!-- Status / Availability Badge -->
-                    <div class="badge-status">
-                        <span class="status-pulse"></span>
-                        <span class="badge-text">Available for Opportunities &amp; Projects</span>
+                    <!-- Status / Availability Badges Row -->
+                    <div class="hero-status-row">
+                        <div class="badge-status">
+                            <span class="status-pulse"></span>
+                            <span class="badge-text">Available for Opportunities &amp; Projects</span>
+                        </div>
+                        <div class="badge-hud-intel" id="hudIntelBadge" title="Interactive Overview Active: Move cursor over front page components to view quick intel">
+                            <i class="fa-solid fa-crosshairs text-cyan"></i>
+                            <span class="hud-intel-pulse"></span>
+                            <span>Hover Intel: Active</span>
+                        </div>
                     </div>
 
                     <!-- Intro Tag -->
@@ -2648,6 +2655,33 @@
             </div>
         </div>
     </footer>
+
+    <!-- ========================================================================= -->
+    <!-- FRONT PAGE CYBER HUD INTEL INSPECTOR (Dynamic Hover Overview)             -->
+    <!-- ========================================================================= -->
+    <div class="cyber-hud-inspector" id="cyberHudInspector" aria-live="polite" aria-hidden="true">
+        <div class="hud-insp-scanner"></div>
+        <div class="hud-insp-header">
+            <span class="hud-insp-badge">
+                <i class="fa-solid fa-crosshairs"></i>
+                <span id="hudInspCategory">SYSTEM INTEL</span>
+            </span>
+            <span class="hud-insp-status"><span class="hud-insp-live-dot"></span>ACTIVE SCAN</span>
+        </div>
+        <div class="hud-insp-body">
+            <div class="hud-insp-icon-wrap" id="hudInspIconWrap">
+                <i class="fa-solid fa-circle-info" id="hudInspIcon"></i>
+            </div>
+            <div class="hud-insp-content">
+                <h4 class="hud-insp-title" id="hudInspTitle">Component Title</h4>
+                <p class="hud-insp-desc" id="hudInspDesc">Short overview details about this element.</p>
+            </div>
+        </div>
+        <div class="hud-insp-footer">
+            <span class="hud-insp-action" id="hudInspAction"><i class="fa-regular fa-hand-pointer"></i> Click to interact</span>
+            <span class="hud-insp-tag" id="hudInspTag">HK_OS // v2.6</span>
+        </div>
+    </div>
 
     <!-- Three.js 3D WebGL Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

@@ -1366,6 +1366,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHero3DCore();
     init3DBackground();
     initHk3DReviewModal();
+    initCyberHudInspector();
 
     // Academic Documents Interactive Drawer (10th / 12th)
     window.toggleEduDocs = function(containerId) {
@@ -1383,5 +1384,519 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // =========================================================================
+    // FRONT PAGE CYBER HUD INTEL INSPECTOR (Dynamic Hover Overview System)
+    // =========================================================================
+    function initCyberHudInspector() {
+        const hud = document.getElementById('cyberHudInspector');
+        if (!hud) return;
+
+        // Elements of the HUD
+        const categoryEl = document.getElementById('hudInspCategory');
+        const iconEl = document.getElementById('hudInspIcon');
+        const titleEl = document.getElementById('hudInspTitle');
+        const descEl = document.getElementById('hudInspDesc');
+        const actionEl = document.getElementById('hudInspAction');
+        const tagEl = document.getElementById('hudInspTag');
+
+        // Detailed Intel Catalog for Front Page components
+        const INTEL_CATALOG = [
+            {
+                selector: '.nav-brand',
+                category: 'BRAND IDENTITY',
+                title: 'HK Hologram & 3D Sandesh Patra',
+                desc: 'Imperial insignia of Himanshu Kumar. Click to unfurl the 3D ancient scroll summarizing engineering milestones & philosophy.',
+                icon: 'fa-solid fa-crown',
+                action: 'Click to open 3D scroll',
+                tag: 'BRAND // CORE'
+            },
+            {
+                selector: '.nav-link[href="#home"]',
+                category: 'NAVIGATION DECK',
+                title: 'Mission Control (Home)',
+                desc: 'Top flight deck displaying real-time availability, interactive 3D quantum core, bio summary, and technical highlights.',
+                icon: 'fa-solid fa-house',
+                action: 'Click to jump to Home',
+                tag: 'NAV // 01'
+            },
+            {
+                selector: '.nav-link[href="#about"]',
+                category: 'NAVIGATION DECK',
+                title: 'About & Professional Summary',
+                desc: 'Engineering background, B.Tech CSE (IT) education at IIMT AKTU, problem-solving mindset, and core pillars.',
+                icon: 'fa-solid fa-user-gear',
+                action: 'Click to view About',
+                tag: 'NAV // 02'
+            },
+            {
+                selector: '.nav-link[href="#skills"]',
+                category: 'NAVIGATION DECK',
+                title: 'Technical Arsenal & Skills',
+                desc: 'Interactive skills matrix covering Python, Machine Learning, Power BI, JavaScript, and database systems.',
+                icon: 'fa-solid fa-layer-group',
+                action: 'Click to view Skills',
+                tag: 'NAV // 03'
+            },
+            {
+                selector: '.nav-link[href="#projects"]',
+                category: 'NAVIGATION DECK',
+                title: 'Engineering Projects',
+                desc: 'Real-world software architectures including Real-Time Facial Emotion Detection, IPL Analytics, and responsive web apps.',
+                icon: 'fa-solid fa-folder-tree',
+                action: 'Click to view Projects',
+                tag: 'NAV // 04'
+            },
+            {
+                selector: '.nav-link[href="#certifications"]',
+                category: 'NAVIGATION DECK',
+                title: 'Accreditations & Workshops',
+                desc: '7+ verified industry certifications from Google, IBM, Simplilearn, Technoledge IoT, and hands-on AKTU ML workshop.',
+                icon: 'fa-solid fa-certificate',
+                action: 'Click to view Certifications',
+                tag: 'NAV // 05'
+            },
+            {
+                selector: '.nav-link[href="#education"]',
+                category: 'NAVIGATION DECK',
+                title: 'Academic Qualifications',
+                desc: 'B.Tech CSE (IT) at IIMT, Class 12 & Class 10 first division marks statements, provisional certificates, and CLC dossier.',
+                icon: 'fa-solid fa-graduation-cap',
+                action: 'Click to view Education',
+                tag: 'NAV // 06'
+            },
+            {
+                selector: '.nav-link[href="#live-feed"]',
+                category: 'NAVIGATION DECK',
+                title: 'Live Activity Radar',
+                desc: 'Real-time telemetry synced with GitHub commit streams, code repositories, stars, and developer milestones.',
+                icon: 'fa-solid fa-tower-broadcast',
+                action: 'Click to view Live Radar',
+                tag: 'LIVE // SYNC'
+            },
+            {
+                selector: '.nav-link[href="#contact"]',
+                category: 'NAVIGATION DECK',
+                title: 'Secure Contact Dispatcher',
+                desc: 'Direct communication portal with live email dispatch, phone/WhatsApp hotline, and professional inquiry form.',
+                icon: 'fa-solid fa-paper-plane',
+                action: 'Click to jump to Contact',
+                tag: 'DISPATCH // 08'
+            },
+            {
+                selector: '.nav-resume-btn',
+                category: 'OFFICIAL DOSSIER',
+                title: 'Curriculum Vitae (PDF)',
+                desc: 'ATS-optimized formal resume documenting academic background, verified credentials, and software projects.',
+                icon: 'fa-solid fa-file-pdf',
+                action: 'Click to view Resume PDF',
+                tag: 'DOC // ATS_COMPLIANT'
+            },
+            {
+                selector: '.btn-prachi-nav, .nav-mobile-prachi-btn',
+                category: 'AI COMPANION',
+                title: 'Prachi AI Companion',
+                desc: 'Dedicated conversational AI companion custom-built by Himanshu. Interactive voice-enabled technical dialogue.',
+                icon: 'fa-solid fa-robot',
+                action: 'Click to launch Prachi AI',
+                tag: 'PRACHI // LIVE'
+            },
+            {
+                selector: '.badge-status',
+                category: 'SYSTEM TELEMETRY',
+                title: 'Professional Availability',
+                desc: 'Currently available for Software Engineering, Data Analytics, and AI/ML full-time roles, internships, and freelance projects.',
+                icon: 'fa-solid fa-circle-dot',
+                action: 'Click to send hiring inquiry',
+                tag: 'STATUS // READY'
+            },
+            {
+                selector: '#hudIntelBadge',
+                category: 'HUD RADAR',
+                title: 'Hover Overview Inspector',
+                desc: 'Move your cursor over any front page element to instantly inspect component telemetry and detailed overviews.',
+                icon: 'fa-solid fa-crosshairs',
+                action: 'Hover any component',
+                tag: 'HUD // ACTIVE'
+            },
+            {
+                selector: '.hero-greeting',
+                category: 'COMMAND SHELL',
+                title: 'UNIX Greeting Terminal',
+                desc: 'Command prompt syntax welcoming visitors, recruiters, and engineering teams to the interactive portfolio terminal.',
+                icon: 'fa-solid fa-terminal',
+                action: 'Standard shell prompt',
+                tag: 'STDOUT // HELLO_WORLD'
+            },
+            {
+                selector: '.hero-name',
+                category: 'IDENTITY NODE',
+                title: 'Himanshu Kumar',
+                desc: 'Final-year B.Tech CSE (IT) student at IIMT AKTU. Passionate problem solver, algorithmic coder, and AI enthusiast.',
+                icon: 'fa-solid fa-user-astronaut',
+                action: 'Portfolio Creator & Engineer',
+                tag: 'ENGINEER // CSE_IT'
+            },
+            {
+                selector: '.hero-role',
+                category: 'SPECIALIZATIONS',
+                title: 'Full-Stack & AI/ML Engineer',
+                desc: 'Synergizing data science analytics, predictive computer vision models, and responsive modern web architecture.',
+                icon: 'fa-solid fa-code',
+                action: 'Core expertise matrix',
+                tag: 'ROLES // DEV'
+            },
+            {
+                selector: '.hero-description',
+                category: 'EXECUTIVE BRIEF',
+                title: 'Engineering Philosophy',
+                desc: 'Committed to scalable software craftsmanship, clean code architecture, robust database design, and high-impact machine learning solutions.',
+                icon: 'fa-solid fa-compass',
+                action: 'Read complete story in About',
+                tag: 'BRIEF // PROFILE'
+            },
+            {
+                selector: '#heroResumeBtn',
+                category: 'PRIMARY CTA',
+                title: 'Download Resume PDF',
+                desc: 'Instantly download the latest ATS-compliant resume with verified GPA, project repos, and official certification IDs.',
+                icon: 'fa-solid fa-download',
+                action: 'Click to download PDF',
+                tag: 'FILE // RESUME'
+            },
+            {
+                selector: '#heroChatGptBtn',
+                category: 'AI SYSTEM',
+                title: 'Prachi AI Intelligent Companion',
+                desc: 'Launch Prachi AI companion with simulated voice, intelligent chat responses, and personalized portfolio guidance.',
+                icon: 'fa-solid fa-sparkles',
+                action: 'Click to open Prachi AI',
+                tag: 'AI // COMPANION'
+            },
+            {
+                selector: '#heroViewProjectsBtn',
+                category: 'SHOWCASE',
+                title: 'Explore Software Projects',
+                desc: 'Inspect production projects with live demos, GitHub code repositories, tech stack breakdown, and system architecture.',
+                icon: 'fa-solid fa-laptop-code',
+                action: 'Click to jump to Projects',
+                tag: 'REPOS // 3+ APPS'
+            },
+            {
+                selector: '#heroContactBtn',
+                category: 'COMMUNICATION',
+                title: 'Dispatch Instant Message',
+                desc: 'Direct bridge to Himanshu\'s inbox. Send project propositions, technical queries, or interview invitations.',
+                icon: 'fa-solid fa-envelope-open-text',
+                action: 'Click to jump to Contact form',
+                tag: 'COMM // INBOX'
+            },
+            {
+                selector: '.hero-social-icons a[href*="github.com"]',
+                category: 'CODE RADAR',
+                title: 'GitHub Profile (@himanshu161098)',
+                desc: 'Explore open-source repositories, daily commits, algorithms, and continuous integration pipelines.',
+                icon: 'fa-brands fa-github',
+                action: 'Click to open GitHub in new tab',
+                tag: 'GIT // COMMITS'
+            },
+            {
+                selector: '.hero-social-icons a[href*="linkedin.com"]',
+                category: 'PROFESSIONAL NETWORK',
+                title: 'LinkedIn Network Profile',
+                desc: 'Connect professionally, view verified endorsements, academic achievements, and industry milestones.',
+                icon: 'fa-brands fa-linkedin-in',
+                action: 'Click to open LinkedIn',
+                tag: 'NETWORK // CAREER'
+            },
+            {
+                selector: '.hero-social-icons a[href*="instagram.com"]',
+                category: 'SOCIAL DISCOVERY',
+                title: 'Instagram (@himanshu_singh1610)',
+                desc: 'Behind-the-scenes engineering life, college moments, photography, and creative interests.',
+                icon: 'fa-brands fa-instagram',
+                action: 'Click to open Instagram',
+                tag: 'SOCIAL // CONNECT'
+            },
+            {
+                selector: '.hero-social-icons a[href^="mailto:"]',
+                category: 'DIRECT DISPATCH',
+                title: 'Direct Email Dispatcher',
+                desc: 'Send an inquiry directly to himanshukumarsingh1610@gmail.com for priority responses.',
+                icon: 'fa-solid fa-at',
+                action: 'Click to send email',
+                tag: 'MAIL // DIRECT'
+            },
+            {
+                selector: '.hero-social-icons a[href^="tel:"]',
+                category: 'VOICE & WHATSAPP',
+                title: 'Direct Telephony Line',
+                desc: 'Immediate phone or WhatsApp channel (+91 9341112974) for urgent technical or interview discussions.',
+                icon: 'fa-solid fa-phone-volume',
+                action: 'Click to dial or message',
+                tag: 'PHONE // +91'
+            },
+            {
+                selector: '.tech-pill:nth-child(1)',
+                category: 'CORE LANGUAGE',
+                title: 'Python 3.x Development',
+                desc: 'Primary programming language for data engineering, NumPy array processing, Pandas tabular analysis, and ML algorithms.',
+                icon: 'fa-brands fa-python',
+                action: 'Core engineering arsenal',
+                tag: 'LANG // PYTHON'
+            },
+            {
+                selector: '.tech-pill:nth-child(2)',
+                category: 'INTELLIGENCE',
+                title: 'Machine Learning & AI',
+                desc: 'Supervised/unsupervised algorithms, Scikit-Learn pipelines, computer vision with OpenCV, and predictive modeling.',
+                icon: 'fa-solid fa-brain',
+                action: 'AI/ML specialization',
+                tag: 'MODEL // AI'
+            },
+            {
+                selector: '.tech-pill:nth-child(3)',
+                category: 'DATA VISUALIZATION',
+                title: 'Power BI & Data Analytics',
+                desc: 'Executive KPI dashboards, DAX queries, trend forecasting, business intelligence, and exploratory data analysis.',
+                icon: 'fa-solid fa-chart-pie',
+                action: 'Business analytics stack',
+                tag: 'DATA // POWER_BI'
+            },
+            {
+                selector: '.tech-pill:nth-child(4)',
+                category: 'FRONTEND LOGIC',
+                title: 'Modern JavaScript (ES6+)',
+                desc: 'Interactive DOM manipulation, asynchronous Fetch APIs, event-driven architectures, and smooth 3D WebGL interfaces.',
+                icon: 'fa-brands fa-js',
+                action: 'Full-stack web stack',
+                tag: 'LANG // JS_ES6'
+            },
+            {
+                selector: '.tech-pill:nth-child(5)',
+                category: 'PERSISTENCE',
+                title: 'SQL & Relational Databases',
+                desc: 'Structured query language, complex multi-table joins, aggregations, relational database schema normalization, and MySQL.',
+                icon: 'fa-solid fa-database',
+                action: 'Database engineering',
+                tag: 'DBMS // SQL'
+            },
+            {
+                selector: '.tech-pill:nth-child(6)',
+                category: 'COLLABORATION',
+                title: 'GitHub Version Control',
+                desc: 'Git repository management, branch merging, semantic commit workflows, and live CI/CD deployments.',
+                icon: 'fa-brands fa-github',
+                action: 'Version control stack',
+                tag: 'VCS // GIT'
+            },
+            {
+                selector: '#tabAvatar',
+                category: 'VIEW MODE',
+                title: 'Developer Profile Hologram',
+                desc: 'Toggle between the developer visual profile card and the interactive 3D WebGL quantum core.',
+                icon: 'fa-solid fa-user-tie',
+                action: 'Click to switch view',
+                tag: 'VIEW // AVATAR'
+            },
+            {
+                selector: '#tab3dCore',
+                category: 'VIEW MODE',
+                title: '3D Quantum Core (Three.js)',
+                desc: 'Launch real-time interactive Three.js 3D geometric core. Drag and rotate in 3D space with dynamic particles.',
+                icon: 'fa-solid fa-cube',
+                action: 'Click to switch to 3D canvas',
+                tag: 'VIEW // 3D_CORE'
+            },
+            {
+                selector: '.avatar-img-container',
+                category: 'BIOMETRIC IDENTITY',
+                title: 'Himanshu Kumar Portrait',
+                desc: 'Verified portrait of Himanshu Kumar with cybernetic holographic ring and real-time status glow.',
+                icon: 'fa-solid fa-id-badge',
+                action: 'Verified identity card',
+                tag: 'IDENTITY // VERIFIED'
+            },
+            {
+                selector: '.avatar-badge',
+                category: 'TRUST CREDENTIAL',
+                title: 'Verified Developer Badge',
+                desc: 'Verified status authenticating technical accreditations, identity validation, and code commits.',
+                icon: 'fa-solid fa-circle-check',
+                action: 'Authenticity confirmed',
+                tag: 'AUTH // PASS'
+            },
+            {
+                selector: '.mini-terminal',
+                category: 'ENVIRONMENT MONITOR',
+                title: 'Virtual Terminal Session',
+                desc: 'Live session echoing current institution (IIMT AKTU), graduation year (Final Year CSE-IT), 7+ certs, and auto-sync status.',
+                icon: 'fa-solid fa-terminal',
+                action: 'Live environment telemetry',
+                tag: 'BASH // TELEMETRY'
+            },
+            {
+                selector: '.badge-top-right',
+                category: 'FOCUS BADGE',
+                title: 'AI / ML Developer Track',
+                desc: 'Specialized focus on artificial intelligence, algorithmic models, data preprocessing, and model deployment.',
+                icon: 'fa-solid fa-microchip',
+                action: 'Technical domain focus',
+                tag: 'TRACK // AI_ML'
+            },
+            {
+                selector: '.badge-bottom-left',
+                category: 'FOCUS BADGE',
+                title: 'Data Analytics Track',
+                desc: 'End-to-end data pipeline mastery: ETL workflows, statistical testing, interactive dashboards, and decision science.',
+                icon: 'fa-solid fa-chart-line',
+                action: 'Technical domain focus',
+                tag: 'TRACK // DATA_ENG'
+            },
+            {
+                selector: '.hero-3d-container',
+                category: '3D WEBGL ENGINE',
+                title: 'Quantum Core 3D Viewport',
+                desc: 'Custom WebGL Three.js render canvas. Click & drag anywhere inside this viewport to freely rotate the 3D model.',
+                icon: 'fa-solid fa-cubes',
+                action: 'Click & drag to rotate',
+                tag: 'THREE.JS // WEBGL'
+            },
+            {
+                selector: '.scroll-indicator',
+                category: 'EXPLORER',
+                title: 'Scroll Navigator',
+                desc: 'Smoothly glide down through the portfolio to discover the professional summary, skills matrix, projects, and credentials.',
+                icon: 'fa-solid fa-chevron-down',
+                action: 'Click to scroll down',
+                tag: 'NAV // EXPLORE'
+            }
+        ];
+
+        let activeTarget = null;
+        let isVisible = false;
+        let hideTimeout = null;
+
+        // Position helper
+        function positionHud(e) {
+            const w = hud.offsetWidth || 320;
+            const h = hud.offsetHeight || 160;
+            const margin = 16;
+
+            let x = e.clientX + margin;
+            let y = e.clientY + margin;
+
+            // Flip horizontally if overflow
+            if (x + w > window.innerWidth - 12) {
+                x = e.clientX - w - margin;
+            }
+            if (x < 12) x = 12;
+
+            // Flip vertically if overflow
+            if (y + h > window.innerHeight - 12) {
+                y = e.clientY - h - margin;
+            }
+            if (y < 12) y = 12;
+
+            hud.style.left = `${x}px`;
+            hud.style.top = `${y}px`;
+        }
+
+        // Show HUD
+        function showHud(data, target, e) {
+            if (hideTimeout) {
+                clearTimeout(hideTimeout);
+                hideTimeout = null;
+            }
+
+            categoryEl.textContent = data.category || 'SYSTEM INTEL';
+            titleEl.textContent = data.title || 'Component Overview';
+            descEl.textContent = data.desc || '';
+            actionEl.innerHTML = `<i class="fa-regular fa-hand-pointer"></i> ${data.action || 'Click to interact'}`;
+            tagEl.textContent = data.tag || 'HK_OS // v2.6';
+
+            // Set icon
+            iconEl.className = data.icon || 'fa-solid fa-circle-info';
+
+            // Active outline on target
+            if (activeTarget && activeTarget !== target) {
+                activeTarget.removeAttribute('data-hud-active');
+            }
+            activeTarget = target;
+            target.setAttribute('data-hud-active', 'true');
+
+            positionHud(e);
+
+            if (!isVisible) {
+                hud.classList.add('active');
+                hud.setAttribute('aria-hidden', 'false');
+                isVisible = true;
+            }
+        }
+
+        // Hide HUD
+        function hideHud() {
+            hideTimeout = setTimeout(() => {
+                hud.classList.remove('active');
+                hud.setAttribute('aria-hidden', 'true');
+                if (activeTarget) {
+                    activeTarget.removeAttribute('data-hud-active');
+                    activeTarget = null;
+                }
+                isVisible = false;
+            }, 80);
+        }
+
+        // Bind events to registered components
+        INTEL_CATALOG.forEach(item => {
+            const elements = document.querySelectorAll(item.selector);
+            elements.forEach(el => {
+                el.addEventListener('mouseenter', (e) => {
+                    const customData = {
+                        category: el.getAttribute('data-hud-category') || item.category,
+                        title: el.getAttribute('data-hud-title') || item.title,
+                        desc: el.getAttribute('data-hud-desc') || item.desc,
+                        icon: el.getAttribute('data-hud-icon') || item.icon,
+                        action: el.getAttribute('data-hud-action') || item.action,
+                        tag: el.getAttribute('data-hud-tag') || item.tag
+                    };
+                    showHud(customData, el, e);
+                });
+
+                el.addEventListener('mousemove', (e) => {
+                    if (isVisible) positionHud(e);
+                });
+
+                el.addEventListener('mouseleave', () => {
+                    hideHud();
+                });
+            });
+        });
+
+        // Also dynamically detect any element across the document with data-hud-title
+        document.body.addEventListener('mouseover', (e) => {
+            const target = e.target.closest('[data-hud-title]');
+            if (target && !target.hasAttribute('data-hud-bound')) {
+                target.setAttribute('data-hud-bound', 'true');
+                const customData = {
+                    category: target.getAttribute('data-hud-category') || 'COMPONENT INTEL',
+                    title: target.getAttribute('data-hud-title'),
+                    desc: target.getAttribute('data-hud-desc') || '',
+                    icon: target.getAttribute('data-hud-icon') || 'fa-solid fa-circle-info',
+                    action: target.getAttribute('data-hud-action') || 'Click to interact',
+                    tag: target.getAttribute('data-hud-tag') || 'HK_OS'
+                };
+                showHud(customData, target, e);
+
+                target.addEventListener('mousemove', (evt) => {
+                    if (isVisible) positionHud(evt);
+                });
+                target.addEventListener('mouseleave', () => {
+                    hideHud();
+                });
+            }
+        });
+    }
+
 });
+
 
