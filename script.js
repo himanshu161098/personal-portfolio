@@ -427,6 +427,16 @@ document.addEventListener('DOMContentLoaded', () => {
             renderer.setSize(width, height);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
+            function resizeHero3D() {
+                const w = container.clientWidth || 380;
+                const h = container.clientHeight || 380;
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+                renderer.setSize(w, h);
+            }
+            window.resizeHero3D = resizeHero3D;
+            window.addEventListener('resize', resizeHero3D);
+
             // Core Group
             const coreGroup = new THREE.Group();
             scene.add(coreGroup);

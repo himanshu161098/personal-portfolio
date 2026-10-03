@@ -688,10 +688,10 @@ button, input, textarea {
 
 .hero-container {
     display: grid;
-    grid-template-columns: 1.28fr 0.72fr;
-    gap: 2.2rem;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 2.5rem;
     align-items: center;
-    max-width: 1420px;
+    max-width: 1450px;
     width: 100%;
     padding: 0 1.8rem;
 }
@@ -1303,7 +1303,7 @@ button, input, textarea {
 .avatar-card-wrapper {
     position: relative;
     width: 100%;
-    max-width: 440px;
+    max-width: 510px;
 }
 
 /* Hologram Aura Ring */
@@ -1325,7 +1325,7 @@ button, input, textarea {
     background: var(--bg-card);
     border: 1px solid var(--border-medium);
     border-radius: var(--radius-lg);
-    padding: 1.75rem;
+    padding: 1.6rem 1.85rem;
     backdrop-filter: blur(12px);
     box-shadow: var(--shadow-lg);
     z-index: 1;
@@ -1422,10 +1422,11 @@ button, input, textarea {
 }
 
 .terminal-body {
-    padding: 0.85rem;
+    padding: 0.85rem 1.15rem;
     font-family: var(--font-mono);
-    font-size: 0.78rem;
-    line-height: 1.6;
+    font-size: 0.82rem;
+    line-height: 1.68;
+    white-space: nowrap;
 }
 
 .term-line {
