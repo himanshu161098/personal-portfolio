@@ -73,7 +73,8 @@
     <header class="header" id="header">
         <nav class="nav-container" aria-label="Main Navigation">
             <!-- Logo / Brand Name -->
-            <a href="#home" class="nav-brand" aria-label="Himanshu Kumar Homepage">
+            <!-- Logo / Brand Name (Click opens 3D Developer Review Card) -->
+            <a href="#home" class="nav-brand" id="navBrandLogo" aria-label="Himanshu Kumar - Click for 3D Developer Review" title="Click to open Himanshu's 3D Review Card">
                 <span class="brand-logo-badge" aria-hidden="true">
                     <svg class="brand-logo-svg" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
@@ -117,6 +118,9 @@
                 <span class="brand-name-group">
                     <span class="brand-text-hk">HK</span>
                     <span class="brand-dot" aria-hidden="true"></span>
+                </span>
+                <span class="brand-review-tag" aria-hidden="true">
+                    <i class="fa-solid fa-sparkles"></i> 3D Review
                 </span>
             </a>
 
@@ -1996,6 +2000,216 @@
                     </a>
                 </div>
                 <button class="btn btn-secondary btn-sm" id="closeSkillModalFooterBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- INTERACTIVE 3D HOLOGRAPHIC DEVELOPER REVIEW CARD (HK LOGO CLICK)          -->
+    <!-- ========================================================================= -->
+    <div class="custom-modal-overlay hk-3d-review-overlay" id="hkReviewModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="hkCardProfileName">
+        <!-- 3D Perspective Scene Container -->
+        <div class="hk-3d-scene" id="hk3dScene">
+            <!-- 3D Flippable Card -->
+            <div class="hk-3d-card" id="hk3dCard">
+
+                <!-- FRONT FACE: Executive Review, Rating & Core Metrics -->
+                <div class="hk-card-face hk-card-front">
+                    <!-- Dynamic Holographic Ambient Orbs & Cyber Circuit Background -->
+                    <div class="hk-card-bg-canvas" aria-hidden="true">
+                        <div class="hk-bg-aurora hk-aurora-1"></div>
+                        <div class="hk-bg-aurora hk-aurora-2"></div>
+                        <div class="hk-bg-aurora hk-aurora-3"></div>
+                        <div class="hk-bg-cyber-mesh"></div>
+                        <div class="hk-bg-noise"></div>
+                        <div class="hk-card-glare" id="hkCardGlare"></div>
+                    </div>
+
+                    <!-- Holographic Spinning Border Glow -->
+                    <div class="hk-card-border-glow"></div>
+
+                    <!-- Inner Card Content Wrapper -->
+                    <div class="hk-card-content">
+                        <!-- Top Bar / Header -->
+                        <div class="hk-card-topbar">
+                            <div class="hk-verified-badge">
+                                <span class="hk-pulse-indicator"></span>
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <span>VERIFIED DEVELOPER SPOTLIGHT</span>
+                            </div>
+                            <button class="hk-card-close-btn" id="closeHkReviewModalBtn" aria-label="Close 3D Card">&times;</button>
+                        </div>
+
+                        <!-- Developer Profile Bio Header -->
+                        <div class="hk-card-profile-header">
+                            <div class="hk-avatar-3d-wrapper">
+                                <div class="hk-avatar-core">
+                                    <span class="hk-avatar-monogram">HK</span>
+                                </div>
+                                <div class="hk-avatar-orbit-ring hk-orbit-1"></div>
+                                <div class="hk-avatar-orbit-ring hk-orbit-2"></div>
+                            </div>
+                            <div class="hk-profile-meta">
+                                <div class="hk-name-row">
+                                    <h3 class="hk-profile-name" id="hkCardProfileName">Himanshu Kumar</h3>
+                                    <span class="hk-pro-chip">DEV // 2026</span>
+                                </div>
+                                <p class="hk-profile-role">
+                                    <i class="fa-solid fa-terminal"></i> Full Stack Developer &amp; Data Analytics Engineer
+                                </p>
+                                <p class="hk-profile-sub">
+                                    <i class="fa-solid fa-graduation-cap"></i> B.Tech (CSE-IT) [Final Year] &bull; AKTU
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 5-Star Rating & Review Seal -->
+                        <div class="hk-review-rating-strip">
+                            <div class="hk-stars-wrap">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="hk-rating-text">5.0 / 5.0 High Performance Score</span>
+                            <span class="hk-rating-tag"><i class="fa-solid fa-bolt"></i> Top-Tier Capability</span>
+                        </div>
+
+                        <!-- Short Review Quote Box -->
+                        <div class="hk-review-quote-box">
+                            <i class="fa-solid fa-quote-left hk-quote-icon" aria-hidden="true"></i>
+                            <p class="hk-review-quote-text">
+                                &ldquo;Himanshu is an exceptional engineer with a rare blend of clean full-stack web architecture and high-precision data analytics. From crafting futuristic, responsive interfaces to automating scalable Python &amp; SQL data pipelines, he consistently delivers production-ready systems with problem-solving agility and complete dedication.&rdquo;
+                            </p>
+                            <div class="hk-quote-author">
+                                <span class="hk-author-title">// Developer Executive Review &amp; Performance Verdict</span>
+                                <span class="hk-verified-stamp"><i class="fa-solid fa-circle-check"></i> Verified</span>
+                            </div>
+                        </div>
+
+                        <!-- Core Impact Metrics Grid -->
+                        <div class="hk-metrics-row">
+                            <div class="hk-metric-box">
+                                <span class="hk-m-val text-cyan">3+</span>
+                                <span class="hk-m-lbl">Key Projects</span>
+                            </div>
+                            <div class="hk-metric-box">
+                                <span class="hk-m-val text-purple">5+</span>
+                                <span class="hk-m-lbl">Certifications</span>
+                            </div>
+                            <div class="hk-metric-box">
+                                <span class="hk-m-val text-green">90%+</span>
+                                <span class="hk-m-lbl">Tech Mastery</span>
+                            </div>
+                            <div class="hk-metric-box">
+                                <span class="hk-m-val text-pink">100%</span>
+                                <span class="hk-m-lbl">Delivery Rate</span>
+                            </div>
+                        </div>
+
+                        <!-- Key Skill Button Badges -->
+                        <div class="hk-skills-tag-row">
+                            <span class="hk-skill-chip"><i class="fa-brands fa-python" style="color: #38bdf8;"></i> Python</span>
+                            <span class="hk-skill-chip"><i class="fa-solid fa-code" style="color: #a855f7;"></i> C++</span>
+                            <span class="hk-skill-chip"><i class="fa-brands fa-js" style="color: #facc15;"></i> JavaScript</span>
+                            <span class="hk-skill-chip"><i class="fa-solid fa-database" style="color: #10b981;"></i> SQL</span>
+                            <span class="hk-skill-chip"><i class="fa-solid fa-chart-pie" style="color: #f97316;"></i> Power BI</span>
+                            <span class="hk-skill-chip"><i class="fa-solid fa-wand-magic-sparkles" style="color: #ec4899;"></i> UI/UX</span>
+                        </div>
+
+                        <!-- Card Action Buttons & Flip Trigger -->
+                        <div class="hk-card-actions">
+                            <button class="btn btn-outline btn-sm hk-flip-card-btn" id="hkFlipToBackBtn">
+                                <i class="fa-solid fa-arrows-rotate"></i> <span>3D Flip: Pillars &amp; Direct Access</span>
+                            </button>
+                            <a href="prachi.html" class="btn btn-primary btn-sm btn-prachi-nav" title="Ask Prachi AI About Himanshu">
+                                <img src="assets/prachi-logo.png" alt="Prachi Logo" class="btn-prachi-logo">
+                                <span>Ask Prachi AI</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BACK FACE: Engineering Philosophy, Direct Connect, & Vision -->
+                <div class="hk-card-face hk-card-back">
+                    <div class="hk-card-bg-canvas" aria-hidden="true">
+                        <div class="hk-bg-aurora hk-aurora-back-1"></div>
+                        <div class="hk-bg-aurora hk-aurora-back-2"></div>
+                        <div class="hk-bg-cyber-mesh"></div>
+                        <div class="hk-bg-noise"></div>
+                    </div>
+
+                    <div class="hk-card-border-glow"></div>
+
+                    <div class="hk-card-content">
+                        <!-- Top Bar -->
+                        <div class="hk-card-topbar">
+                            <div class="hk-verified-badge">
+                                <i class="fa-solid fa-compass-drafting"></i>
+                                <span>CORE ENGINEERING PILLARS</span>
+                            </div>
+                            <button class="hk-card-close-btn" id="closeHkReviewModalBackBtn" aria-label="Close 3D Card">&times;</button>
+                        </div>
+
+                        <div class="hk-back-hero">
+                            <h4 class="hk-back-title">Developer Vision &amp; Quality Standard</h4>
+                            <p class="hk-back-desc">Architecting robust digital solutions that bridge modern human-centric interfaces with scalable data intelligence.</p>
+                        </div>
+
+                        <!-- 3 Pillars Cards -->
+                        <div class="hk-pillars-grid">
+                            <div class="hk-pillar-item">
+                                <div class="hk-pillar-icon" style="color: #00f2fe; background: rgba(0, 242, 254, 0.12);"><i class="fa-solid fa-cubes"></i></div>
+                                <div class="hk-pillar-text">
+                                    <h5>Clean Architecture</h5>
+                                    <p>Modular OOP design, minimal technical debt, and optimized algorithm complexity.</p>
+                                </div>
+                            </div>
+                            <div class="hk-pillar-item">
+                                <div class="hk-pillar-icon" style="color: #10b981; background: rgba(16, 185, 129, 0.12);"><i class="fa-solid fa-chart-line"></i></div>
+                                <div class="hk-pillar-text">
+                                    <h5>Data-Driven Precision</h5>
+                                    <p>Automated pipelines, high-fidelity business dashboards, and predictive insights.</p>
+                                </div>
+                            </div>
+                            <div class="hk-pillar-item">
+                                <div class="hk-pillar-icon" style="color: #ec4899; background: rgba(236, 72, 153, 0.12);"><i class="fa-solid fa-palette"></i></div>
+                                <div class="hk-pillar-text">
+                                    <h5>Futuristic Aesthetics</h5>
+                                    <p>Immersive 3D depth, responsive glassmorphism, and pixel-perfect ergonomics.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Direct Access Buttons -->
+                        <div class="hk-back-cta-group">
+                            <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" class="btn btn-outline btn-sm hk-back-cta-btn">
+                                <i class="fa-solid fa-eye text-cyan"></i> View Resume
+                            </a>
+                            <a href="https://www.linkedin.com/in/himanshu-kumar-1618hks" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm hk-back-cta-btn">
+                                <i class="fa-brands fa-linkedin text-blue"></i> LinkedIn
+                            </a>
+                            <a href="https://www.instagram.com/himanshu_singh1610/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm hk-back-cta-btn">
+                                <i class="fa-brands fa-instagram text-pink"></i> Instagram
+                            </a>
+                            <a href="https://github.com/himanshu161098" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm hk-back-cta-btn">
+                                <i class="fa-brands fa-github text-purple"></i> GitHub
+                            </a>
+                        </div>
+
+                        <!-- Flip Back Button -->
+                        <div class="hk-card-actions">
+                            <button class="btn btn-secondary btn-sm hk-flip-card-btn" id="hkFlipToFrontBtn">
+                                <i class="fa-solid fa-arrow-left"></i> <span>Back to Review Card</span>
+                            </button>
+                            <a href="#contact" class="btn btn-outline btn-sm" id="hkContactFromModalBtn">
+                                <i class="fa-solid fa-paper-plane text-cyan"></i> Get In Touch
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

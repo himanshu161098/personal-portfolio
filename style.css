@@ -456,6 +456,46 @@ button, input, textarea {
     filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.6));
 }
 
+/* Brand 3D Review Trigger Badge */
+.brand-review-tag {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 0.22rem 0.6rem;
+    border-radius: var(--radius-full);
+    color: var(--accent-cyan);
+    background: rgba(0, 242, 254, 0.1);
+    border: 1px solid rgba(0, 242, 254, 0.35);
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.25);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    transition: all var(--transition-fast);
+}
+
+.brand-review-tag i {
+    font-size: 0.65rem;
+    color: #f59e0b;
+    animation: spinSparkle 3s ease-in-out infinite;
+}
+
+@keyframes spinSparkle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+    50% { transform: scale(1.25) rotate(180deg); opacity: 1; filter: drop-shadow(0 0 4px #f59e0b); }
+}
+
+.nav-brand:hover .brand-review-tag {
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.25), rgba(236, 72, 153, 0.25));
+    border-color: var(--accent-cyan);
+    color: #ffffff;
+    box-shadow: 0 0 14px rgba(0, 242, 254, 0.45);
+    transform: translateY(-1px) scale(1.04);
+}
+
 @keyframes hkGradientFlow {
     0% {
         background-position: 0% 50%;
@@ -4770,6 +4810,676 @@ button, input, textarea {
 .highlight-project-card:hover .project-prachi-logo-img {
     transform: scale(1.1) rotate(2deg);
     box-shadow: 0 0 50px rgba(0, 242, 254, 0.65), 0 0 30px rgba(255, 0, 127, 0.5);
+}
+
+/* ==========================================================================
+   18. INTERACTIVE 3D HOLOGRAPHIC DEVELOPER REVIEW CARD (HK LOGO SPOTLIGHT)
+   ========================================================================== */
+.hk-3d-review-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(3, 6, 16, 0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
+}
+
+.hk-3d-review-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 3D Scene Perspective Container */
+.hk-3d-scene {
+    perspective: 1400px;
+    width: 100%;
+    max-width: 660px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    opacity: 0;
+    transform: perspective(1400px) rotateX(25deg) rotateY(-18deg) scale(0.8) translateY(40px);
+    transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hk-3d-review-overlay.open .hk-3d-scene {
+    opacity: 1;
+    transform: perspective(1400px) rotateX(0deg) rotateY(0deg) scale(1) translateY(0);
+}
+
+/* 3D Flippable Card */
+.hk-3d-card {
+    position: relative;
+    width: 100%;
+    min-height: 640px;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform;
+}
+
+.hk-3d-card.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Card Faces */
+.hk-card-face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    min-height: 640px;
+    border-radius: 28px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #070c1a;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 242, 254, 0.25);
+    box-sizing: border-box;
+}
+
+.hk-card-back {
+    transform: rotateY(180deg);
+}
+
+/* Unique Holographic Aurora & Cyber Background Canvas */
+.hk-card-bg-canvas {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hk-bg-aurora {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(55px);
+    opacity: 0.65;
+    mix-blend-mode: screen;
+}
+
+.hk-aurora-1 {
+    width: 380px;
+    height: 380px;
+    top: -100px;
+    left: -80px;
+    background: radial-gradient(circle, #00f2fe 0%, #38bdf8 50%, transparent 70%);
+    animation: auroraFloat1 9s ease-in-out infinite alternate;
+}
+
+.hk-aurora-2 {
+    width: 360px;
+    height: 360px;
+    bottom: -80px;
+    right: -80px;
+    background: radial-gradient(circle, #ec4899 0%, #a855f7 50%, transparent 70%);
+    animation: auroraFloat2 11s ease-in-out infinite alternate;
+}
+
+.hk-aurora-3 {
+    width: 300px;
+    height: 300px;
+    top: 40%;
+    left: 30%;
+    background: radial-gradient(circle, #6366f1 0%, #4338ca 60%, transparent 75%);
+    animation: auroraFloat3 13s ease-in-out infinite alternate;
+}
+
+.hk-aurora-back-1 {
+    width: 400px;
+    height: 400px;
+    top: -80px;
+    right: -100px;
+    background: radial-gradient(circle, #10b981 0%, #00f2fe 50%, transparent 70%);
+    animation: auroraFloat1 8s ease-in-out infinite alternate;
+}
+
+.hk-aurora-back-2 {
+    width: 380px;
+    height: 380px;
+    bottom: -90px;
+    left: -90px;
+    background: radial-gradient(circle, #8b5cf6 0%, #ec4899 50%, transparent 70%);
+    animation: auroraFloat2 10s ease-in-out infinite alternate;
+}
+
+@keyframes auroraFloat1 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(40px, 30px) scale(1.15); }
+}
+
+@keyframes auroraFloat2 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-35px, -30px) scale(1.18); }
+}
+
+@keyframes auroraFloat3 {
+    0% { transform: translate(0, 0) scale(0.9); }
+    100% { transform: translate(25px, -20px) scale(1.2); }
+}
+
+.hk-bg-cyber-mesh {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(rgba(56, 189, 248, 0.22) 1.2px, transparent 1.2px),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+    background-size: 22px 22px, 100% 100%;
+    opacity: 0.45;
+}
+
+.hk-bg-noise {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(125deg, transparent 20%, rgba(255, 255, 255, 0.06) 40%, rgba(0, 242, 254, 0.16) 50%, rgba(236, 72, 153, 0.12) 60%, transparent 80%);
+    pointer-events: none;
+}
+
+/* Interactive Dynamic Glare */
+.hk-card-glare {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle 350px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.2), rgba(0, 242, 254, 0.12) 30%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
+
+.hk-card-face:hover .hk-card-glare {
+    opacity: 1;
+}
+
+/* Spinning Holographic Border Glow */
+.hk-card-border-glow {
+    position: absolute;
+    inset: -2px;
+    border-radius: 30px;
+    background: conic-gradient(from 0deg, #00f2fe, #6366f1, #ec4899, #f59e0b, #00f2fe);
+    opacity: 0.4;
+    z-index: 0;
+    filter: blur(6px);
+    animation: spinBorder 12s linear infinite;
+}
+
+/* Inner Card Content */
+.hk-card-content {
+    position: relative;
+    z-index: 2;
+    padding: 2.25rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    flex-grow: 1;
+    box-sizing: border-box;
+}
+
+/* Card Topbar */
+.hk-card-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hk-verified-badge {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--accent-cyan);
+    background: rgba(0, 242, 254, 0.12);
+    border: 1px solid rgba(0, 242, 254, 0.35);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-full);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+}
+
+.hk-pulse-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+    animation: pulseGreen 1.8s infinite alternate;
+}
+
+@keyframes pulseGreen {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    100% { transform: scale(1.3); opacity: 1; }
+}
+
+.hk-card-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-muted);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    line-height: 1;
+    transition: all var(--transition-fast);
+}
+
+.hk-card-close-btn:hover {
+    background: rgba(239, 68, 68, 0.25);
+    border-color: #ef4444;
+    color: #ffffff;
+    transform: rotate(90deg) scale(1.05);
+}
+
+/* Profile Header Row */
+.hk-card-profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.hk-avatar-3d-wrapper {
+    position: relative;
+    width: 68px;
+    height: 68px;
+    flex-shrink: 0;
+}
+
+.hk-avatar-core {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.25) 0%, rgba(99, 102, 241, 0.35) 50%, rgba(236, 72, 153, 0.3) 100%);
+    border: 1.5px solid rgba(0, 242, 254, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 242, 254, 0.3);
+}
+
+.hk-avatar-monogram {
+    font-family: var(--font-main);
+    font-size: 1.85rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #00f2fe 0%, #ffffff 50%, #ec4899 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.6));
+}
+
+.hk-avatar-orbit-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed rgba(0, 242, 254, 0.4);
+    pointer-events: none;
+}
+
+.hk-orbit-1 {
+    inset: -6px;
+    animation: spinBorder 10s linear infinite;
+}
+
+.hk-orbit-2 {
+    inset: -12px;
+    border-color: rgba(236, 72, 153, 0.25);
+    animation: spinBorder 16s linear infinite reverse;
+}
+
+.hk-profile-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.hk-name-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.hk-profile-name {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.25;
+}
+
+.hk-pro-chip {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #00f2fe, #6366f1);
+    color: #ffffff;
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.35);
+}
+
+.hk-profile-role {
+    font-size: 0.94rem;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.hk-profile-sub {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+/* 5-Star Rating Strip */
+.hk-review-rating-strip {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    padding: 0.65rem 1.15rem;
+    background: rgba(14, 22, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-full);
+}
+
+.hk-stars-wrap {
+    color: #f59e0b;
+    display: inline-flex;
+    gap: 0.25rem;
+    font-size: 0.95rem;
+    filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6));
+}
+
+.hk-rating-text {
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.hk-rating-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-full);
+    margin-left: auto;
+}
+
+/* Short Review Callout Box */
+.hk-review-quote-box {
+    position: relative;
+    background: rgba(10, 16, 32, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    border-radius: 20px;
+    padding: 1.5rem 1.75rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 242, 254, 0.05);
+}
+
+.hk-quote-icon {
+    font-size: 1.6rem;
+    color: rgba(0, 242, 254, 0.35);
+    margin-bottom: 0.65rem;
+    display: block;
+}
+
+.hk-review-quote-text {
+    font-size: 0.96rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    font-style: italic;
+    margin: 0 0 1rem 0;
+}
+
+.hk-quote-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 0.75rem;
+}
+
+.hk-author-title {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.hk-verified-stamp {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #10b981;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* Metric Tiles */
+.hk-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.85rem;
+}
+
+.hk-metric-box {
+    background: rgba(12, 19, 36, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 0.9rem 0.65rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    transition: all var(--transition-fast);
+}
+
+.hk-metric-box:hover {
+    border-color: rgba(0, 242, 254, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4), 0 0 12px rgba(0, 242, 254, 0.15);
+}
+
+.hk-m-val {
+    font-family: var(--font-main);
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.hk-m-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+/* Skill Chip Row */
+.hk-skills-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.hk-skill-chip {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: rgba(14, 22, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    padding: 0.45rem 0.95rem;
+    border-radius: var(--radius-full);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all var(--transition-fast);
+}
+
+.hk-skill-chip:hover {
+    border-color: var(--accent-cyan);
+    color: #ffffff;
+    transform: translateY(-1px);
+    background: rgba(22, 35, 66, 0.95);
+}
+
+/* Card Action Buttons */
+.hk-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 0.5rem;
+}
+
+.hk-flip-card-btn {
+    border-radius: var(--radius-full);
+    padding: 0.65rem 1.35rem;
+    font-weight: 600;
+    font-size: 0.88rem;
+    gap: 0.55rem;
+}
+
+/* Back Face Specific Styles */
+.hk-back-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.hk-back-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.hk-back-desc {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.hk-pillars-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.hk-pillar-item {
+    background: rgba(12, 19, 36, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    transition: all var(--transition-fast);
+}
+
+.hk-pillar-item:hover {
+    border-color: rgba(56, 189, 248, 0.35);
+    background: rgba(18, 28, 52, 0.85);
+    transform: translateX(4px);
+}
+
+.hk-pillar-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.hk-pillar-text h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem 0;
+}
+
+.hk-pillar-text p {
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.hk-back-cta-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.75rem;
+}
+
+.hk-back-cta-btn {
+    border-radius: var(--radius-full);
+    font-size: 0.86rem;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    text-align: center;
+    justify-content: center;
+}
+
+/* Responsive Rules for 3D Card */
+@media (max-width: 680px) {
+    .hk-card-content {
+        padding: 1.5rem 1.25rem;
+        gap: 0.95rem;
+    }
+    .hk-card-face {
+        min-height: auto;
+        border-radius: 20px;
+    }
+    .hk-3d-card {
+        min-height: 600px;
+    }
+    .hk-metrics-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .hk-profile-name {
+        font-size: 1.35rem;
+    }
+    .hk-review-quote-text {
+        font-size: 0.88rem;
+    }
+    .brand-review-tag {
+        display: none;
+    }
 }
 
 
