@@ -5875,19 +5875,289 @@ textarea {
     filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(180, 83, 9, 0.22));
     transition: transform 0.15s ease-out;
     will-change: transform;
-    animation: sandeshUnroll 0.65s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
 
-@keyframes sandeshUnroll {
-    0% {
-        transform: scaleY(0.65) translateY(-20px);
-        opacity: 0.4;
-    }
+/* ==========================================================================
+   ROYAL SCROLL FOLD & UNFOLD ANIMATION + LIVE CALLIGRAPHY SEQUENTIAL REVEAL
+   ========================================================================== */
 
+/* 1. Fold-to-Unfold Animation */
+.sandesh-scroll-card.is-unfolding {
+    animation: royalScrollPop 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes royalScrollPop {
+    0% {
+        transform: perspective(1600px) scale(0.88) translateY(-25px);
+        opacity: 0.2;
+    }
     100% {
-        transform: scaleY(1) translateY(0);
+        transform: perspective(1600px) scale(1) translateY(0);
         opacity: 1;
     }
+}
+
+.sandesh-scroll-card.is-unfolding .sandesh-parchment-sheet {
+    animation: royalParchmentUnfold 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+    transform-origin: top center;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes royalParchmentUnfold {
+    0% {
+        clip-path: inset(0 0 98% 0 round 4px);
+        opacity: 0.3;
+        filter: brightness(0.7) contrast(1.25);
+    }
+    35% {
+        clip-path: inset(0 0 65% 0 round 4px);
+        opacity: 0.9;
+        filter: brightness(0.92);
+    }
+    70% {
+        clip-path: inset(0 0 12% 0 round 4px);
+        opacity: 1;
+        filter: brightness(1.02);
+    }
+    100% {
+        clip-path: inset(0 0 0% 0 round 4px);
+        opacity: 1;
+        filter: brightness(1);
+    }
+}
+
+.sandesh-scroll-card.is-unfolding .rod-bottom {
+    animation: royalRodRollDown 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes royalRodRollDown {
+    0% {
+        transform: translateY(-80px) rotate(-180deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.sandesh-scroll-card.is-unfolding .rod-top {
+    animation: royalRodRollTop 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes royalRodRollTop {
+    0% {
+        transform: translateY(20px) rotate(180deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Light Sheen Beam sweeping down upon unfold */
+.sandesh-unfold-sheen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    background: linear-gradient(180deg, transparent 0%, rgba(254, 240, 138, 0.6) 45%, rgba(217, 119, 6, 0.3) 75%, transparent 100%);
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0;
+}
+
+.sandesh-scroll-card.is-unfolding .sandesh-unfold-sheen {
+    animation: sheenSweepDown 0.95s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes sheenSweepDown {
+    0% {
+        top: 0%;
+        opacity: 0.95;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+/* 2. Sequential Calligraphy Writing & Reveal (बारी-बारी से ऊपर से नीचे तक) */
+.sandesh-scroll-card.is-writing .sandesh-anim-item {
+    opacity: 0;
+    transform: translateY(-16px);
+    filter: blur(4px);
+    pointer-events: none;
+    transition: opacity 0.55s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.55s cubic-bezier(0.25, 1, 0.5, 1),
+                filter 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.sandesh-scroll-card.is-writing .sandesh-anim-item.written,
+.sandesh-scroll-card:not(.is-writing) .sandesh-anim-item {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+    pointer-events: auto;
+}
+
+/* Golden ink stroke shimmer when item appears */
+.sandesh-scroll-card.is-writing .sandesh-anim-item.written {
+    animation: royalInkWriteIn 0.55s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+
+@keyframes royalInkWriteIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-16px) scale(0.97);
+        filter: blur(5px);
+        text-shadow: 0 0 16px rgba(245, 158, 11, 0.8);
+    }
+    60% {
+        opacity: 0.95;
+        text-shadow: 0 0 10px rgba(251, 191, 36, 0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Center Wax Seal Stamp Impact */
+.sandesh-scroll-card.is-writing .sandesh-wax-seal-wrapper.written .sandesh-wax-seal {
+    animation: sealStampThump 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes sealStampThump {
+    0% {
+        transform: scale(1.6) translateY(-15px);
+        box-shadow: 0 0 0 rgba(76, 5, 25, 0);
+    }
+    65% {
+        transform: scale(0.92) translateY(2px);
+        box-shadow: 0 15px 30px rgba(76, 5, 25, 0.85);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+.sandesh-scroll-card.is-writing .sandesh-wax-seal-wrapper.written .wax-silk-ribbon {
+    animation: ribbonUnfurl 0.6s ease-out 0.15s both;
+    transform-origin: top center;
+}
+
+@keyframes ribbonUnfurl {
+    0% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+/* 5 Stars Sparkle Pop */
+.sandesh-stars-row i {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.sandesh-scroll-card.is-writing .sandesh-stars-row i:not(.star-lit) {
+    opacity: 0.2;
+    transform: scale(0.5);
+    color: #92400e;
+}
+
+.sandesh-stars-row i.star-lit {
+    opacity: 1;
+    transform: scale(1.15);
+    color: #d97706;
+    animation: starSparklePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes starSparklePop {
+    0% {
+        transform: scale(0.3) rotate(-60deg);
+        color: #fff;
+        text-shadow: 0 0 16px #fde047;
+    }
+    60% {
+        transform: scale(1.4) rotate(15deg);
+        color: #fef08a;
+        text-shadow: 0 0 20px #f59e0b;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        color: #d97706;
+    }
+}
+
+/* Signature Ink Writing Effect */
+.signature-cursive.writing {
+    animation: signaturePenDraw 1.1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes signaturePenDraw {
+    0% {
+        clip-path: inset(0 100% 0 0);
+        opacity: 0.3;
+    }
+    100% {
+        clip-path: inset(0 0% 0 0);
+        opacity: 1;
+    }
+}
+
+/* Live Writing Status Indicator Badge */
+.sandesh-writing-indicator {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    z-index: 25;
+    background: rgba(43, 17, 4, 0.85);
+    border: 1px solid rgba(254, 240, 138, 0.5);
+    border-radius: 20px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #fef08a;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    cursor: pointer;
+    user-select: none;
+    pointer-events: none;
+}
+
+.sandesh-writing-indicator small {
+    color: #fde047;
+    font-size: 0.68rem;
+    opacity: 0.85;
+}
+
+.sandesh-scroll-card.is-writing .sandesh-writing-indicator {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.sandesh-writing-indicator i {
+    animation: quillWiggle 1s ease-in-out infinite alternate;
+    color: #f59e0b;
+}
+
+@keyframes quillWiggle {
+    0% { transform: rotate(-8deg); }
+    100% { transform: rotate(14deg); }
 }
 
 /* ==========================================================================

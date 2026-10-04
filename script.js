@@ -2286,23 +2286,212 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeFooterBtn = document.getElementById('closeHkReviewModalFooterBtn');
         const closeBackBtn = document.getElementById('closeHkReviewModalBackBtn');
         const sandeshContactBtn = document.getElementById('sandeshContactBtn') || document.getElementById('hkContactFromModalBtn');
+        const writingIndicator = document.getElementById('sandeshWritingIndicator');
 
         if (!modal || !scrollCard) return;
+
+        let sandeshAnimationTimeouts = [];
+        let sandeshTypewriterInterval = null;
+        let isSandeshWritingActive = false;
+
+        const hindiFullText = "प्रमाणित किया जाता है कि हिमांशु कुमार आधुनिक डिजिटल शिल्प व डेटा विज्ञान के एक निष्ठावान, नवोन्मेषी व अद्वितीय शिल्पी हैं। जटिल तकनीकी चुनौतियों को अत्यंत सुरुचिपूर्ण, तीव्र और सशक्त प्रणालियों में रूपांतरित करने में इनकी दक्षता सर्वोत्कृष्ट है। पूर्ण निष्ठा, शुचिता एवं अटूट समर्पण के साथ निर्मित इनकी कृतियाँ उच्च तकनीकी मानदंडों का जीवंत प्रमाण हैं।";
+        const englishFullText = "“Himanshu stands as an exceptional modern craftsman in software engineering and data intelligence. Demonstrating extraordinary mastery across scalable full-stack architectures, automated pipelines, and human-centric interfaces, his work embodies unwavering dedication, analytical precision, and engineering purity.”";
+
+        const hindiTextEl = document.getElementById('sandeshHindiText');
+        const englishTextEl = document.getElementById('sandeshEnglishText');
+        const animItems = scrollCard.querySelectorAll('.sandesh-anim-item');
+        const stars = scrollCard.querySelectorAll('.sandesh-stars-row i');
+        const cursiveSig = scrollCard.querySelector('.signature-cursive');
+
+        function clearAllSandeshTimers() {
+            sandeshAnimationTimeouts.forEach(t => clearTimeout(t));
+            sandeshAnimationTimeouts = [];
+            if (sandeshTypewriterInterval) {
+                clearInterval(sandeshTypewriterInterval);
+                sandeshTypewriterInterval = null;
+            }
+            isSandeshWritingActive = false;
+        }
+
+        function instantRevealAllSandesh() {
+            clearAllSandeshTimers();
+            scrollCard.classList.remove('is-writing');
+            animItems.forEach(item => {
+                item.classList.add('written');
+                item.style.opacity = '';
+                item.style.transform = '';
+                item.style.filter = '';
+            });
+            if (hindiTextEl) hindiTextEl.textContent = hindiFullText;
+            if (englishTextEl) englishTextEl.textContent = englishFullText;
+            if (cursiveSig) cursiveSig.classList.add('writing-done');
+            stars.forEach(s => s.classList.add('star-lit'));
+        }
+
+        function runSandeshUnfoldAndWrite() {
+            clearAllSandeshTimers();
+            isSandeshWritingActive = true;
+
+            // 1. Prepare elements in unwritten state
+            scrollCard.classList.remove('is-unfolding');
+            void scrollCard.offsetWidth; // Trigger reflow to restart fold animation
+            scrollCard.classList.add('is-unfolding');
+            scrollCard.classList.add('is-writing');
+
+            animItems.forEach(item => {
+                item.classList.remove('written');
+            });
+            stars.forEach(s => s.classList.remove('star-lit'));
+            if (cursiveSig) {
+                cursiveSig.classList.remove('writing-done');
+                cursiveSig.classList.remove('writing');
+            }
+
+            // Reset text for live calligraphic typewriter effect
+            if (hindiTextEl) hindiTextEl.textContent = '';
+            if (englishTextEl) englishTextEl.textContent = '';
+
+            // 2. Sequential writing schedule (बारी-बारी से ऊपर से नीचे तक)
+            // T + 0.55s: ॐ (Om Symbol)
+            sandeshAnimationTimeouts.push(setTimeout(() => {
+                const omItem = scrollCard.querySelector('.sandesh-top-om');
+                if (omItem) omItem.classList.add('written');
+            }, 550));
+
+            // T + 0.85s: Shree Ganesh Medallion & Mantra
+            sandeshAnimationTimeouts.push(setTimeout(() => {
+                const ganeshItem = scrollCard.querySelector('.ganesh-flank');
+                if (ganeshItem) ganeshItem.classList.add('written');
+            }, 850));
+
+            // T + 1.10s: Center HK Royal Wax Seal Stamp
+            sandeshAnimationTimeouts.push(setTimeout(() => {
+                const sealItem = scrollCard.querySelector('.sandesh-wax-seal-wrapper');
+                if (sealItem) sealItem.classList.add('written');
+            }, 1100));
+
+            // T + 1.35s: Swastik Medallion & Mantra
+            sandeshAnimationTimeouts.push(setTimeout(() => {
+                const swastikItem = scrollCard.querySelector('.swastik-flank');
+                if (swastikItem) swastikItem.classList.add('written');
+            }, 1350));
+
+            // T + 1.60s: Royal Header / Title ("शाही संदेश पत्र")
+            sandeshAnimationTimeouts.push(setTimeout(() => {
+                const headerItem = scrollCard.querySelector('.sandesh-header');
+                if (headerItem) headerItem.classList.add('written');
+            }, 1600));
+
+            // T + 1.90s: Honoree Card ("हिमांशु कुमार")
+            sandeshAnimationTimeouts.push(setTimeout(() => {
+                const honoreeItem = scrollCard.querySelector('.sandesh-honoree-card');
+                if (honoreeItem) honoreeItem.classList.add('written');
+            }, 1900));
+
+            // T + 2.20s: 5-Star Distinction Strip & Star Sparkle
+            sandeshAnimationTimeouts.push(setTimeout(() => {
+                const ratingItem = scrollCard.querySelector('.sandesh-rating-strip');
+                if (ratingItem) ratingItem.classList.add('written');
+                stars.forEach((star, idx) => {
+                    sandeshAnimationTimeouts.push(setTimeout(() => {
+                        star.classList.add('star-lit');
+                    }, 80 * idx));
+                });
+            }, 2200));
+
+            // T + 2.50s: Proclamation Box & Calligraphic Hindi Typewriter
+            sandeshAnimationTimeouts.push(setTimeout(() => {
+                const procBox = scrollCard.querySelector('.sandesh-proclamation-box');
+                if (procBox) procBox.classList.add('written');
+
+                let charIdx = 0;
+                const totalChars = hindiFullText.length;
+                sandeshTypewriterInterval = setInterval(() => {
+                    if (charIdx < totalChars) {
+                        charIdx += 2;
+                        if (charIdx > totalChars) charIdx = totalChars;
+                        if (hindiTextEl) hindiTextEl.textContent = hindiFullText.slice(0, charIdx);
+                    } else {
+                        clearInterval(sandeshTypewriterInterval);
+                        sandeshTypewriterInterval = null;
+                        if (englishTextEl) {
+                            englishTextEl.style.opacity = '0';
+                            englishTextEl.textContent = englishFullText;
+                            englishTextEl.style.transition = 'opacity 0.6s ease';
+                            setTimeout(() => {
+                                englishTextEl.style.opacity = '1';
+                            }, 50);
+                        }
+                    }
+                }, 16);
+            }, 2500));
+
+            // T + 3.40s: 4 Royal Pillars (कीर्ति स्तम्भ)
+            sandeshAnimationTimeouts.push(setTimeout(() => {
+                const pillarsItem = scrollCard.querySelector('.sandesh-metrics-pillars');
+                if (pillarsItem) pillarsItem.classList.add('written');
+            }, 3400));
+
+            // T + 3.70s: Domains of Mastery Chips
+            sandeshAnimationTimeouts.push(setTimeout(() => {
+                const skillsItem = scrollCard.querySelector('.sandesh-skills-wrapper');
+                if (skillsItem) skillsItem.classList.add('written');
+            }, 3700));
+
+            // T + 3.95s: Authenticity Seal & Cursive Signature Drawing
+            sandeshAnimationTimeouts.push(setTimeout(() => {
+                const authItem = scrollCard.querySelector('.sandesh-authenticity-block');
+                if (authItem) authItem.classList.add('written');
+                if (cursiveSig) {
+                    cursiveSig.classList.add('writing');
+                    setTimeout(() => {
+                        cursiveSig.classList.add('writing-done');
+                    }, 1000);
+                }
+            }, 3950));
+
+            // T + 4.25s: Action Buttons (Resume, Prachi AI, Contact)
+            sandeshAnimationTimeouts.push(setTimeout(() => {
+                const actionsItem = scrollCard.querySelector('.sandesh-actions-group');
+                if (actionsItem) actionsItem.classList.add('written');
+                isSandeshWritingActive = false;
+                scrollCard.classList.remove('is-writing');
+            }, 4250));
+        }
 
         function openSandeshModal() {
             modal.classList.add('open');
             modal.setAttribute('aria-hidden', 'false');
-            scrollCard.style.transform = 'perspective(1600px) rotateX(0deg) rotateY(0deg) scale(1)';
+            scrollCard.style.transform = ''; // Clear inline styles so unroll animation executes
             document.body.style.overflow = 'hidden';
+            runSandeshUnfoldAndWrite();
         }
 
         function closeSandeshModal() {
+            clearAllSandeshTimers();
             modal.classList.remove('open');
             modal.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
+            scrollCard.classList.remove('is-unfolding');
+            scrollCard.classList.remove('is-writing');
             setTimeout(() => {
                 scrollCard.style.transform = '';
             }, 300);
+        }
+
+        // Click anywhere to fast-forward animation
+        scrollCard.addEventListener('click', (e) => {
+            if (e.target.closest('.sandesh-close-btn') || e.target.closest('.sandesh-btn')) return;
+            if (isSandeshWritingActive) {
+                instantRevealAllSandesh();
+            }
+        });
+
+        if (writingIndicator) {
+            writingIndicator.addEventListener('click', (e) => {
+                e.stopPropagation();
+                instantRevealAllSandesh();
+            });
         }
 
         // Attach click listener to brand logo in header
@@ -2339,6 +2528,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 3D Dynamic Real-time Mouse Parallax Tilt for Sandesh Patra Scroll
         if (scene) {
             scene.addEventListener('mousemove', (e) => {
+                if (isSandeshWritingActive) return; // keep steady during unfolding and writing
                 const rect = scene.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
@@ -2352,7 +2542,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             scene.addEventListener('mouseleave', () => {
-                scrollCard.style.transform = 'perspective(1600px) rotateX(0deg) rotateY(0deg) scale(1)';
+                if (!isSandeshWritingActive) {
+                    scrollCard.style.transform = 'perspective(1600px) rotateX(0deg) rotateY(0deg) scale(1)';
+                }
             });
         }
     }

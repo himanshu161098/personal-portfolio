@@ -2413,20 +2413,28 @@
                         <i class="fa-solid fa-xmark"></i>
                     </button>
 
+                    <!-- Unfold Sheen Beam Overlay -->
+                    <div class="sandesh-unfold-sheen" aria-hidden="true"></div>
+
+                    <!-- Live Writing Status Badge (Click to Skip) -->
+                    <div class="sandesh-writing-indicator" id="sandeshWritingIndicator" aria-hidden="true">
+                        <i class="fa-solid fa-feather-pointed"></i> <span>शाही आलेखन जारी है...</span> <small>(तुरंत देखने हेतु क्लिक करें)</small>
+                    </div>
+
                     <!-- Scroll Content -->
                     <div class="sandesh-scroll-content">
 
                         <!-- SACRED VEDIC CREST: ॐ (TOP), श्री गणेश (LEFT), शाही राजमुद्रा (CENTER), स्वास्तिक (RIGHT) -->
                         <div class="sandesh-crest-trio-container">
                             <!-- Topmost: Sacred Om Symbol (ॐ) -->
-                            <div class="sandesh-top-om" title="ॐ (परम पावन ओंकार / The Sacred Om)">
+                            <div class="sandesh-top-om sandesh-anim-item" title="ॐ (परम पावन ओंकार / The Sacred Om)">
                                 <span class="om-sacred-symbol">ॐ</span>
                             </div>
 
                             <!-- Auspicious Trio Row: Shree Ganesh | HK Royal Seal | Swastik -->
                             <div class="sandesh-auspicious-trio">
                                 <!-- Left: Shree Ganesh Divine Photo & Mantra -->
-                                <div class="sandesh-auspicious-flank ganesh-flank" title="भगवान श्री गणेश">
+                                <div class="sandesh-auspicious-flank ganesh-flank sandesh-anim-item" title="भगवान श्री गणेश">
                                     <div class="divine-medallion ganesh-medallion">
                                         <img src="assets/shree-ganesh.jpg" alt="भगवान श्री गणेश" class="ganesh-divine-photo">
                                         <div class="medallion-gold-rim"></div>
@@ -2435,7 +2443,7 @@
                                 </div>
 
                                 <!-- Center: Royal 3D Lacquer Wax Seal with HK Logo & Ribbons -->
-                                <div class="sandesh-wax-seal-wrapper">
+                                <div class="sandesh-wax-seal-wrapper sandesh-anim-item">
                                     <div class="sandesh-wax-seal" title="शाही राजमुद्रा (Embossed Royal Seal)">
                                         <div class="wax-seal-outer-crimp"></div>
                                         <div class="wax-seal-inner-well"></div>
@@ -2473,7 +2481,7 @@
                                 </div>
 
                                 <!-- Right: Sacred Swastik Symbol & Mantra -->
-                                <div class="sandesh-auspicious-flank swastik-flank" title="शुभ स्वास्तिक">
+                                <div class="sandesh-auspicious-flank swastik-flank sandesh-anim-item" title="शुभ स्वास्तिक">
                                     <div class="divine-medallion swastik-medallion">
                                         <div class="swastik-disc-inner">
                                             <span class="swastik-sacred-symbol">卐</span>
@@ -2486,7 +2494,7 @@
                         </div>
 
                         <!-- ROYAL HEADER / MANTRA -->
-                        <div class="sandesh-header">
+                        <div class="sandesh-header sandesh-anim-item">
                             <span class="sandesh-vedic-invocation">॥ श्रीः ॥ राजकीय सम्मान पत्र ॥</span>
                             <h2 class="sandesh-scroll-title" id="sandeshPatraTitle">शाही संदेश पत्र</h2>
                             <p class="sandesh-latin-subtitle">ROYAL CHARTER OF PROFESSIONAL EXCELLENCE</p>
@@ -2498,7 +2506,7 @@
                         </div>
 
                         <!-- RECIPIENT HONORS: HIMANSHU KUMAR -->
-                        <div class="sandesh-honoree-card">
+                        <div class="sandesh-honoree-card sandesh-anim-item">
                             <span class="honoree-proclamation-tag">समर्पित / PRESENTED UNTO</span>
                             <h3 class="honoree-name">हिमांशु कुमार</h3>
                             <p class="honoree-english-name">Himanshu Kumar</p>
@@ -2511,7 +2519,7 @@
                         </div>
 
                         <!-- 5-STAR ROYAL DISTINCTION -->
-                        <div class="sandesh-rating-strip">
+                        <div class="sandesh-rating-strip sandesh-anim-item">
                             <div class="sandesh-stars-row">
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
@@ -2524,23 +2532,23 @@
                         </div>
 
                         <!-- PROCLAMATION / DECREE (REVIEW CONTENT) -->
-                        <div class="sandesh-proclamation-box">
+                        <div class="sandesh-proclamation-box sandesh-anim-item">
                             <div class="proclamation-hindi-block">
                                 <span class="proclamation-quote-mark">❝</span>
-                                <p class="proclamation-hindi-text">
+                                <p class="proclamation-hindi-text" id="sandeshHindiText">
                                     प्रमाणित किया जाता है कि हिमांशु कुमार आधुनिक डिजिटल शिल्प व डेटा विज्ञान के एक निष्ठावान, नवोन्मेषी व अद्वितीय शिल्पी हैं। जटिल तकनीकी चुनौतियों को अत्यंत सुरुचिपूर्ण, तीव्र और सशक्त प्रणालियों में रूपांतरित करने में इनकी दक्षता सर्वोत्कृष्ट है। पूर्ण निष्ठा, शुचिता एवं अटूट समर्पण के साथ निर्मित इनकी कृतियाँ उच्च तकनीकी मानदंडों का जीवंत प्रमाण हैं।
                                 </p>
                             </div>
                             <div class="sandesh-text-divider"></div>
                             <div class="proclamation-english-block">
-                                <p class="proclamation-english-text">
+                                <p class="proclamation-english-text" id="sandeshEnglishText">
                                     &ldquo;Himanshu stands as an exceptional modern craftsman in software engineering and data intelligence. Demonstrating extraordinary mastery across scalable full-stack architectures, automated pipelines, and human-centric interfaces, his work embodies unwavering dedication, analytical precision, and engineering purity.&rdquo;
                                 </p>
                             </div>
                         </div>
 
                         <!-- 4 ROYAL PILLARS / METRICS (कीर्ति स्तम्भ) -->
-                        <div class="sandesh-metrics-pillars">
+                        <div class="sandesh-metrics-pillars sandesh-anim-item">
                             <div class="sandesh-pillar-card">
                                 <span class="pillar-stat">३+</span>
                                 <span class="pillar-label">प्रमुख कृतियाँ</span>
@@ -2564,7 +2572,7 @@
                         </div>
 
                         <!-- DOMAINS OF MASTERY / PARCHMENT CHIPS -->
-                        <div class="sandesh-skills-wrapper">
+                        <div class="sandesh-skills-wrapper sandesh-anim-item">
                             <span class="sandesh-skill-chip"><i class="fa-brands fa-python"></i> Python</span>
                             <span class="sandesh-skill-chip"><i class="fa-solid fa-code"></i> C++</span>
                             <span class="sandesh-skill-chip"><i class="fa-brands fa-js"></i> JavaScript</span>
@@ -2574,7 +2582,7 @@
                         </div>
 
                         <!-- SIGNATURE & SEAL OF AUTHENTICITY -->
-                        <div class="sandesh-authenticity-block">
+                        <div class="sandesh-authenticity-block sandesh-anim-item">
                             <div class="sandesh-seal-col">
                                 <span class="seal-inscription">⚜ मुद्रित एवं सत्यापित ⚜</span>
                                 <span class="seal-latin-sub">AUTHENTICATED DIGITAL DECREE</span>
@@ -2586,7 +2594,7 @@
                         </div>
 
                         <!-- SCROLL ACTIONS -->
-                        <div class="sandesh-actions-group">
+                        <div class="sandesh-actions-group sandesh-anim-item">
                             <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer" class="sandesh-btn sandesh-btn-resume" title="प्रमाण पत्र / View Resume">
                                 <i class="fa-solid fa-scroll"></i>
                                 <span>प्रमाण पत्र (View Resume)</span>
