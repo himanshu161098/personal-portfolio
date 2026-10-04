@@ -5901,7 +5901,6 @@ textarea {
     animation: royalParchmentUnfold 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
     transform-origin: top center;
     position: relative;
-    overflow: hidden;
 }
 
 @keyframes royalParchmentUnfold {
@@ -6160,6 +6159,73 @@ textarea {
     100% { transform: rotate(14deg); }
 }
 
+/* Floating Dynamic Calligraphy Feather Quill (जीवंत स्वर्णिम लेखनी) */
+.sandesh-active-quill {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%, -100%) rotate(-32deg);
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0;
+    transition: top 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                left 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.3s ease;
+    filter: drop-shadow(0 6px 14px rgba(40, 16, 2, 0.75)) drop-shadow(0 0 12px rgba(245, 158, 11, 0.8));
+}
+
+.sandesh-scroll-card.is-writing .sandesh-active-quill {
+    opacity: 1;
+}
+
+.sandesh-active-quill i {
+    font-size: 2.3rem;
+    color: #fde047;
+    background: linear-gradient(135deg, #fffbeb 0%, #fde047 30%, #f59e0b 60%, #b45309 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    animation: quillWritingDance 0.38s ease-in-out infinite alternate;
+    transform-origin: bottom left;
+}
+
+@keyframes quillWritingDance {
+    0% {
+        transform: rotate(0deg) translate(0, 0);
+    }
+    50% {
+        transform: rotate(5deg) translate(2px, -3px);
+    }
+    100% {
+        transform: rotate(-4deg) translate(-1px, 1px);
+    }
+}
+
+.quill-nib-glow {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fffbeb 0%, #f59e0b 60%, transparent 100%);
+    box-shadow: 0 0 14px 4px rgba(245, 158, 11, 0.9), 0 0 24px 8px rgba(220, 38, 38, 0.6);
+    animation: nibInkPulse 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes nibInkPulse {
+    0% {
+        transform: scale(0.85);
+        opacity: 0.75;
+    }
+    100% {
+        transform: scale(1.35);
+        opacity: 1;
+    }
+}
+
+
 /* ==========================================================================
    SCROLL RODS (शीर्ष एवं अधो स्वर्णिम काष्ठ दण्ड)
    ========================================================================== */
@@ -6272,8 +6338,11 @@ textarea {
 .sandesh-parchment-sheet {
     position: relative;
     width: 100%;
-    max-height: 82vh;
-    overflow-y: auto;
+    max-height: 80vh;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    overscroll-behavior-y: contain;
     background: radial-gradient(ellipse 95% 75% at 50% 30%, #fffdf5 0%, #fef8e6 30%, #faedd0 60%, #f5dfb3 82%, #e5be82 95%, #b48141 100%);
     border-radius: 6px;
     box-shadow:
@@ -6474,6 +6543,7 @@ textarea {
     line-height: 1;
     background: linear-gradient(180deg, #7f1d1d 0%, #991b1b 30%, #c2410c 65%, #7c2d12 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 4px rgba(69, 26, 3, 0.65)) drop-shadow(0 0 10px rgba(220, 38, 38, 0.45));
     animation: omPulseAura 3s ease-in-out infinite alternate;
@@ -7048,6 +7118,268 @@ textarea {
 }
 
 /* ==========================================================================
+   SANDESH PATRA: 2ND PAGE RE-INTEGRATED (DEVELOPER VISION & CORE PILLARS)
+   ========================================================================== */
+.sandesh-page2-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.15rem;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+/* Section Divider Banner */
+.sandesh-section-divider-banner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.2rem;
+}
+
+.section-banner-badge {
+    background: linear-gradient(135deg, #78350f 0%, #451a03 100%);
+    color: #fef3c7;
+    border: 1px solid #d97706;
+    border-radius: var(--radius-full);
+    padding: 0.35rem 1.1rem;
+    font-family: var(--font-main);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    box-shadow: 0 4px 10px rgba(69, 26, 3, 0.35);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    white-space: nowrap;
+}
+
+.section-banner-badge i {
+    color: #fbbf24;
+}
+
+/* Hero Vision */
+.sandesh-page2-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.page2-hero-title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #451a03;
+    margin: 0;
+    letter-spacing: 0.2px;
+}
+
+.page2-hero-subtitle {
+    font-family: 'Rozha One', 'Cinzel', serif;
+    font-size: 0.95rem;
+    color: #92400e;
+    margin: 0;
+    font-weight: 700;
+}
+
+.page2-hero-desc {
+    font-family: var(--font-main);
+    font-style: italic;
+    font-size: 0.94rem;
+    line-height: 1.6;
+    color: #5c2805;
+    background: rgba(254, 243, 199, 0.55);
+    border: 1px dashed rgba(180, 83, 9, 0.35);
+    border-radius: 10px;
+    padding: 0.65rem 1rem;
+    margin: 0.35rem 0 0;
+}
+
+/* Detailed Pillars Grid (Clean Architecture, Data-Driven, Futuristic Aesthetics) */
+.sandesh-detailed-pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    width: 100%;
+}
+
+.sandesh-d-pillar-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.95rem 1.15rem;
+    background: rgba(255, 253, 245, 0.85);
+    border: 1px solid rgba(180, 83, 9, 0.28);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(69, 26, 3, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+    text-align: left;
+}
+
+.sandesh-d-pillar-card:hover {
+    transform: translateX(4px);
+    border-color: #b45309;
+    box-shadow: 0 6px 16px rgba(120, 53, 15, 0.18);
+    background: #fffdf7;
+}
+
+.sandesh-scroll-card.is-writing .sandesh-page2-block.written .sandesh-d-pillar-card:nth-child(1) {
+    animation: royalInkWriteIn 0.5s ease 0.15s both;
+}
+
+.sandesh-scroll-card.is-writing .sandesh-page2-block.written .sandesh-d-pillar-card:nth-child(2) {
+    animation: royalInkWriteIn 0.5s ease 0.35s both;
+}
+
+.sandesh-scroll-card.is-writing .sandesh-page2-block.written .sandesh-d-pillar-card:nth-child(3) {
+    animation: royalInkWriteIn 0.5s ease 0.55s both;
+}
+
+.d-pillar-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.d-pillar-icon-box.icon-cyan {
+    background: linear-gradient(135deg, #0369a1, #0c4a6e);
+    color: #bae6fd;
+    border: 1px solid #38bdf8;
+}
+
+.d-pillar-icon-box.icon-emerald {
+    background: linear-gradient(135deg, #047857, #064e3b);
+    color: #a7f3d0;
+    border: 1px solid #34d399;
+}
+
+.d-pillar-icon-box.icon-rose {
+    background: linear-gradient(135deg, #be123c, #881337);
+    color: #fecdd3;
+    border: 1px solid #fb7185;
+}
+
+.d-pillar-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.d-pillar-name {
+    font-family: var(--font-heading);
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #3b1704;
+    margin: 0;
+}
+
+.d-pillar-hindi {
+    font-family: 'Rozha One', 'Cinzel', serif;
+    font-size: 0.82rem;
+    color: #92400e;
+    font-weight: 600;
+    margin-left: 0.35rem;
+}
+
+.d-pillar-desc {
+    font-family: var(--font-main);
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: #632e08;
+    margin: 0;
+}
+
+/* Direct Access Panel (LinkedIn, GitHub, Instagram, Email) */
+.sandesh-direct-access-panel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.9rem 1rem;
+    background: rgba(254, 243, 199, 0.45);
+    border: 1px solid rgba(217, 119, 6, 0.3);
+    border-radius: 12px;
+}
+
+.direct-access-title {
+    font-family: var(--font-main);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #78350f;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.direct-access-links-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    width: 100%;
+}
+
+.direct-link-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.42rem 0.85rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-main);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.direct-link-pill.link-linkedin {
+    background: #0a66c2;
+    color: #fff;
+    border: 1px solid #60a5fa;
+}
+
+.direct-link-pill.link-github {
+    background: #24292f;
+    color: #fff;
+    border: 1px solid #6b7280;
+}
+
+.direct-link-pill.link-instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #fff;
+    border: 1px solid #f472b6;
+}
+
+.direct-link-pill.link-email {
+    background: #b45309;
+    color: #fff;
+    border: 1px solid #fde047;
+}
+
+.direct-link-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    filter: brightness(1.12);
+}
+
+/* ==========================================================================
    SIGNATURE & SEAL OF AUTHENTICITY
    ========================================================================== */
 .sandesh-authenticity-block {
@@ -7287,6 +7619,26 @@ textarea {
     .finial-dome {
         width: 14px;
         height: 22px;
+    }
+
+    .page2-hero-title {
+        font-size: 1.15rem;
+    }
+
+    .sandesh-d-pillar-card {
+        padding: 0.75rem 0.9rem;
+        gap: 0.75rem;
+    }
+
+    .d-pillar-icon-box {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .direct-link-pill {
+        font-size: 0.72rem;
+        padding: 0.35rem 0.65rem;
     }
 }
 

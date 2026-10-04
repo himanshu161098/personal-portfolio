@@ -2421,25 +2421,31 @@
                         <i class="fa-solid fa-feather-pointed"></i> <span>शाही आलेखन जारी है...</span> <small>(तुरंत देखने हेतु क्लिक करें)</small>
                     </div>
 
+                    <!-- Dynamic Floating Calligraphy Feather Quill -->
+                    <div class="sandesh-active-quill" id="sandeshActiveQuill" aria-hidden="true">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                        <span class="quill-nib-glow"></span>
+                    </div>
+
                     <!-- Scroll Content -->
                     <div class="sandesh-scroll-content">
 
                         <!-- SACRED VEDIC CREST: ॐ (TOP), श्री गणेश (LEFT), शाही राजमुद्रा (CENTER), स्वास्तिक (RIGHT) -->
                         <div class="sandesh-crest-trio-container">
                             <!-- Topmost: Sacred Om Symbol (ॐ) -->
-                            <div class="sandesh-top-om sandesh-anim-item" title="ॐ (परम पावन ओंकार / The Sacred Om)">
+                            <div class="sandesh-top-om sandesh-anim-item" id="sandeshTopOm" title="ॐ (परम पावन ओंकार / The Sacred Om)">
                                 <span class="om-sacred-symbol">ॐ</span>
                             </div>
 
                             <!-- Auspicious Trio Row: Shree Ganesh | HK Royal Seal | Swastik -->
                             <div class="sandesh-auspicious-trio">
                                 <!-- Left: Shree Ganesh Divine Photo & Mantra -->
-                                <div class="sandesh-auspicious-flank ganesh-flank sandesh-anim-item" title="भगवान श्री गणेश">
+                                <div class="sandesh-auspicious-flank ganesh-flank sandesh-anim-item" id="sandeshGaneshFlank" title="भगवान श्री गणेश">
                                     <div class="divine-medallion ganesh-medallion">
                                         <img src="assets/shree-ganesh.jpg" alt="भगवान श्री गणेश" class="ganesh-divine-photo">
                                         <div class="medallion-gold-rim"></div>
                                     </div>
-                                    <span class="auspicious-mantra-label">॥ श्री गणेशाय नमः ॥</span>
+                                    <span class="auspicious-mantra-label" id="sandeshGaneshMantra">॥ श्री गणेशाय नमः ॥</span>
                                 </div>
 
                                 <!-- Center: Royal 3D Lacquer Wax Seal with HK Logo & Ribbons -->
@@ -2481,14 +2487,14 @@
                                 </div>
 
                                 <!-- Right: Sacred Swastik Symbol & Mantra -->
-                                <div class="sandesh-auspicious-flank swastik-flank sandesh-anim-item" title="शुभ स्वास्तिक">
+                                <div class="sandesh-auspicious-flank swastik-flank sandesh-anim-item" id="sandeshSwastikFlank" title="शुभ स्वास्तिक">
                                     <div class="divine-medallion swastik-medallion">
                                         <div class="swastik-disc-inner">
                                             <span class="swastik-sacred-symbol">卐</span>
                                         </div>
                                         <div class="medallion-gold-rim"></div>
                                     </div>
-                                    <span class="auspicious-mantra-label">॥ शुभ लाभ ॥</span>
+                                    <span class="auspicious-mantra-label" id="sandeshSwastikMantra">॥ शुभ लाभ ॥</span>
                                 </div>
                             </div>
                         </div>
@@ -2508,7 +2514,7 @@
                         <!-- RECIPIENT HONORS: HIMANSHU KUMAR -->
                         <div class="sandesh-honoree-card sandesh-anim-item">
                             <span class="honoree-proclamation-tag">समर्पित / PRESENTED UNTO</span>
-                            <h3 class="honoree-name">हिमांशु कुमार</h3>
+                            <h3 class="honoree-name" id="sandeshHonoreeName">हिमांशु कुमार</h3>
                             <p class="honoree-english-name">Himanshu Kumar</p>
                             <p class="honoree-designation">
                                 <i class="fa-solid fa-feather-pointed"></i> सॉफ्टवेयर शिल्पी एवं डेटा विश्लेषक &bull; Full Stack Engineer &amp; Data Analytics Architect
@@ -2579,6 +2585,80 @@
                             <span class="sandesh-skill-chip"><i class="fa-solid fa-database"></i> SQL</span>
                             <span class="sandesh-skill-chip"><i class="fa-solid fa-chart-pie"></i> Power BI</span>
                             <span class="sandesh-skill-chip"><i class="fa-solid fa-palette"></i> UI/UX Design</span>
+                        </div>
+
+                        <!-- ========================================================================= -->
+                        <!-- 2ND PAGE RE-INTEGRATED: CORE ENGINEERING PILLARS & DEVELOPER VISION       -->
+                        <!-- ========================================================================= -->
+                        <div class="sandesh-page2-block sandesh-anim-item" id="sandeshPage2Details">
+                            <!-- Section Title Banner -->
+                            <div class="sandesh-section-divider-banner">
+                                <span class="knot-bar"></span>
+                                <span class="section-banner-badge">
+                                    <i class="fa-solid fa-compass-drafting"></i> प्रमुख अभियांत्रिकी स्तम्भ &bull; CORE PILLARS
+                                </span>
+                                <span class="knot-bar"></span>
+                            </div>
+
+                            <div class="sandesh-page2-hero">
+                                <h3 class="page2-hero-title">Developer Vision &amp; Quality Standard</h3>
+                                <p class="page2-hero-subtitle">शिल्पी का दृष्टिकोण एवं गुणवत्ता मानक</p>
+                                <p class="page2-hero-desc" id="sandeshVisionText">
+                                    &ldquo;Architecting robust digital solutions that bridge modern human-centric interfaces with scalable data intelligence.&rdquo;
+                                </p>
+                            </div>
+
+                            <!-- 3 Deep Engineering Pillars Cards from 2nd Page -->
+                            <div class="sandesh-detailed-pillars-grid">
+                                <div class="sandesh-d-pillar-card">
+                                    <div class="d-pillar-icon-box icon-cyan">
+                                        <i class="fa-solid fa-cubes"></i>
+                                    </div>
+                                    <div class="d-pillar-info">
+                                        <h4 class="d-pillar-name">Clean Architecture <span class="d-pillar-hindi">(शुद्ध वास्तुशिल्प)</span></h4>
+                                        <p class="d-pillar-desc">Modular OOP design, minimal technical debt, and optimized algorithm complexity.</p>
+                                    </div>
+                                </div>
+
+                                <div class="sandesh-d-pillar-card">
+                                    <div class="d-pillar-icon-box icon-emerald">
+                                        <i class="fa-solid fa-chart-line"></i>
+                                    </div>
+                                    <div class="d-pillar-info">
+                                        <h4 class="d-pillar-name">Data-Driven Precision <span class="d-pillar-hindi">(डेटा-संचालित सटीकता)</span></h4>
+                                        <p class="d-pillar-desc">Automated pipelines, high-fidelity business dashboards, and predictive insights.</p>
+                                    </div>
+                                </div>
+
+                                <div class="sandesh-d-pillar-card">
+                                    <div class="d-pillar-icon-box icon-rose">
+                                        <i class="fa-solid fa-palette"></i>
+                                    </div>
+                                    <div class="d-pillar-info">
+                                        <h4 class="d-pillar-name">Futuristic Aesthetics <span class="d-pillar-hindi">(आधुनिक सौंदर्यशास्त्र)</span></h4>
+                                        <p class="d-pillar-desc">Immersive 3D depth, responsive glassmorphism, and pixel-perfect ergonomics.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2nd Page Direct Access Channels -->
+                            <div class="sandesh-direct-access-panel">
+                                <span class="direct-access-title"><i class="fa-solid fa-network-wired"></i> प्रत्यक्ष संपर्क एवं व्यावसायिक प्रोफाइल (Direct Connect &amp; Profiles):</span>
+                                <div class="direct-access-links-row">
+                                    <a href="https://www.linkedin.com/in/himanshu-kumar-1618hks" target="_blank" rel="noopener noreferrer" class="direct-link-pill link-linkedin" title="LinkedIn Profile">
+                                        <i class="fa-brands fa-linkedin"></i> <span>LinkedIn</span>
+                                    </a>
+                                    <a href="https://github.com/himanshu161098" target="_blank" rel="noopener noreferrer" class="direct-link-pill link-github" title="GitHub Codebase">
+                                        <i class="fa-brands fa-github"></i> <span>GitHub</span>
+                                    </a>
+                                    <a href="https://www.instagram.com/himanshu_singh1610/" target="_blank" rel="noopener noreferrer" class="direct-link-pill link-instagram" title="Instagram Profile">
+                                        <i class="fa-brands fa-instagram"></i> <span>Instagram</span>
+                                    </a>
+                                    <a href="mailto:himanshukumarsingh1610@gmail.com" class="direct-link-pill link-email" title="Send Official Email">
+                                        <i class="fa-solid fa-envelope"></i> <span>Email Directly</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- SIGNATURE & SEAL OF AUTHENTICITY -->
