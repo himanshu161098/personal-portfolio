@@ -48,7 +48,10 @@
     --shadow-cyan-glow: 0 0 25px rgba(0, 242, 254, 0.28);
 
     /* Typography */
-    --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-main: 'Times New Roman', Times, 'Tinos', serif;
+    --font-heading: 'Times New Roman', Times, 'Tinos', serif;
+    --font-sans: 'Times New Roman', Times, 'Tinos', serif;
+    --font-cursive: 'Dancing Script', 'Great Vibes', 'Brush Script MT', 'Segoe Script', cursive;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
     /* Layout & Sizing */
@@ -148,9 +151,42 @@ h3,
 h4,
 h5,
 h6 {
+    font-family: var(--font-heading);
     color: var(--text-primary);
     font-weight: 700;
     line-height: 1.25;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: var(--font-main);
+}
+
+/* Ensure Icons & Logos remain unaffected */
+.fa,
+.fas,
+.far,
+.fal,
+.fad,
+.fab,
+.fa-solid,
+.fa-regular,
+.fa-brands,
+[class*="fa-"] {
+    font-family: var(--fa-style-family, "Font Awesome 6 Free") !important;
+}
+
+.fa-brands {
+    font-family: "Font Awesome 6 Brands" !important;
+}
+
+.brand-logo-svg,
+.brand-logo-badge,
+.hero-prachi-logo,
+.nav-prachi-logo {
+    flex-shrink: 0;
 }
 
 a {
@@ -422,10 +458,10 @@ textarea {
 }
 
 .brand-text-hk {
-    font-family: var(--font-main);
-    font-size: 1.45rem;
-    font-weight: 800;
-    letter-spacing: 1px;
+    font-family: var(--font-cursive);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     background: linear-gradient(135deg, #00f2fe 0%, #38bdf8 30%, #818cf8 60%, #c084fc 85%, #f472b6 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -841,17 +877,18 @@ textarea {
 
 /* Realistic 3D Name Heading */
 .hero-name {
-    font-size: clamp(2.7rem, 4.6vw, 3.85rem);
-    font-weight: 800;
-    letter-spacing: -1.2px;
+    font-family: var(--font-cursive);
+    font-size: clamp(3.2rem, 5.2vw, 4.4rem);
+    font-weight: 700;
+    letter-spacing: 0.5px;
     margin-bottom: 0.75rem;
-    line-height: 1.14;
+    line-height: 1.18;
 }
 
 .name-first {
     color: #ffffff;
     text-shadow: 0 0 35px rgba(0, 240, 255, 0.35), 0 3px 12px rgba(0, 0, 0, 0.9);
-    letter-spacing: -1.2px;
+    letter-spacing: 0.5px;
 }
 
 .name-last.gradient-text {
@@ -1798,7 +1835,8 @@ textarea {
 }
 
 .dossier-val.name-lg {
-    font-size: 1.18rem;
+    font-family: var(--font-cursive);
+    font-size: 1.45rem;
     font-weight: 700;
 }
 
@@ -2710,7 +2748,8 @@ textarea {
 }
 
 .footer-name {
-    font-size: 1.15rem;
+    font-family: var(--font-cursive);
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--text-primary);
     margin: 0.75rem 0 0.35rem 0;
