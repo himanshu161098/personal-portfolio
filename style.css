@@ -6177,53 +6177,59 @@ textarea {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    margin-top: 0.2rem;
+    width: calc(100% + 2.6rem);
+    margin-left: -1.3rem;
+    margin-right: -1.3rem;
+    margin-top: 0.15rem;
     margin-bottom: 0.6rem;
     gap: 0.35rem;
 }
 
-/* 1. TOP SACRED OM SYMBOL (ॐ) */
+/* 1. TOP SACRED OM SYMBOL (ॐ) - DEEP RICH SAFFRON/VERMILION, PERFECTLY CENTERED */
 .sandesh-top-om {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     position: relative;
     z-index: 15;
-    margin-bottom: -6px;
+    margin-bottom: -4px;
+    text-align: center;
 }
 
 .om-sacred-symbol {
     font-family: 'Rozha One', 'Yatra One', 'Cinzel', serif;
-    font-size: 2.35rem;
-    font-weight: 800;
+    font-size: 2.75rem;
+    font-weight: 900;
     line-height: 1;
-    background: linear-gradient(180deg, #fffbeb 0%, #fef08a 30%, #f59e0b 65%, #b45309 100%);
+    background: linear-gradient(180deg, #7f1d1d 0%, #991b1b 30%, #c2410c 65%, #7c2d12 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 4px rgba(120, 53, 15, 0.75)) drop-shadow(0 0 14px rgba(245, 158, 11, 0.65));
+    filter: drop-shadow(0 2px 4px rgba(69, 26, 3, 0.65)) drop-shadow(0 0 10px rgba(220, 38, 38, 0.45));
     animation: omPulseAura 3s ease-in-out infinite alternate;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     user-select: none;
+    margin: 0 auto;
 }
 
 @keyframes omPulseAura {
     0% {
         transform: scale(1);
-        filter: drop-shadow(0 2px 4px rgba(120, 53, 15, 0.75)) drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
+        filter: drop-shadow(0 2px 4px rgba(69, 26, 3, 0.65)) drop-shadow(0 0 8px rgba(185, 28, 28, 0.4));
     }
     100% {
-        transform: scale(1.08);
-        filter: drop-shadow(0 3px 6px rgba(120, 53, 15, 0.85)) drop-shadow(0 0 18px rgba(251, 191, 36, 0.9));
+        transform: scale(1.06);
+        filter: drop-shadow(0 3px 6px rgba(69, 26, 3, 0.8)) drop-shadow(0 0 15px rgba(234, 88, 12, 0.65));
     }
 }
 
 /* 2. AUSPICIOUS TRIO ROW (गणेश - राजमुद्रा - स्वास्तिक) */
 .sandesh-auspicious-trio {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: center;
-    gap: 1.85rem;
     width: 100%;
     position: relative;
     z-index: 10;
@@ -6234,8 +6240,9 @@ textarea {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    justify-self: center;
     gap: 0.4rem;
-    flex: 0 0 auto;
+    text-align: center;
     transition: transform 0.3s ease;
 }
 
@@ -6924,8 +6931,20 @@ textarea {
         gap: 1rem;
     }
 
+    .sandesh-crest-trio-container {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
     .sandesh-auspicious-trio {
-        gap: 1rem;
+        justify-content: space-evenly;
+        gap: 0.4rem;
+    }
+
+    .sandesh-auspicious-flank {
+        width: 95px;
+        flex: 0 0 95px;
     }
 
     .divine-medallion {
