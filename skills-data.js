@@ -2124,7 +2124,7 @@
             // Configure Prachi AI Deep-Link
             if (prachiAskBtn) {
                 const promptText = encodeURIComponent(`Hi Prachi, explain the core concepts, real-world industry use cases, and best learning path for ${skill.name}.`);
-                prachiAskBtn.href = `prachi.html?prompt=${promptText}`;
+                prachiAskBtn.href = `Prachi AI/frontend/dist/index.html?prompt=${promptText}`;
                 prachiAskBtn.title = `Ask Prachi AI about ${skill.name}`;
             }
 
