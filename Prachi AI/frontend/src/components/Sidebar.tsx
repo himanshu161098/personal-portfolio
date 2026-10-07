@@ -11,6 +11,7 @@ import {
   FileCode,
   Shield,
   ChevronLeft,
+  ChevronRight,
   X,
   Database
 } from 'lucide-react';

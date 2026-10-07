@@ -7431,6 +7431,11 @@
     ["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]
   ]);
 
+  // node_modules/lucide-react/dist/esm/icons/chevron-right.js
+  var ChevronRight = createLucideIcon("ChevronRight", [
+    ["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]
+  ]);
+
   // node_modules/lucide-react/dist/esm/icons/circle-check.js
   var CircleCheck = createLucideIcon("CircleCheck", [
     ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
@@ -13232,6 +13237,7 @@ lucide-react/dist/esm/icons/brain.js:
 lucide-react/dist/esm/icons/calendar.js:
 lucide-react/dist/esm/icons/check.js:
 lucide-react/dist/esm/icons/chevron-left.js:
+lucide-react/dist/esm/icons/chevron-right.js:
 lucide-react/dist/esm/icons/circle-check.js:
 lucide-react/dist/esm/icons/circle-help.js:
 lucide-react/dist/esm/icons/clock.js:
