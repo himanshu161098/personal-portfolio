@@ -2279,6 +2279,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================================================
     function initHk3DReviewModal() {
         const modal = document.getElementById('hkReviewModal');
+        const scene = document.getElementById('hk3dScene') || (modal ? modal.querySelector('.sandesh-3d-scene') : null);
         const scrollCard = document.getElementById('sandeshScrollCard') || document.getElementById('hk3dCard');
         const parchmentSheet = scrollCard ? scrollCard.querySelector('.sandesh-parchment-sheet') : null;
         const activeQuill = document.getElementById('sandeshActiveQuill');
