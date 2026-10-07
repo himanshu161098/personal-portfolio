@@ -21,6 +21,7 @@ const MainLayout: React.FC = () => {
   const { user, loading } = useAuth();
   const [currentView, setCurrentView] = useState<NavView>('chat');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [currentModel, setCurrentModel] = useState('gemini');
   const [isVoiceOpen, setIsVoiceOpen] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
@@ -78,6 +79,8 @@ const MainLayout: React.FC = () => {
         onSelectView={setCurrentView}
         collapsed={sidebarCollapsed}
         onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+        mobileOpen={mobileSidebarOpen}
+        onCloseMobile={() => setMobileSidebarOpen(false)}
       />
 
       {/* Main Workspace Column */}
@@ -90,6 +93,7 @@ const MainLayout: React.FC = () => {
           onOpenTour={() => setIsTourOpen(true)}
           theme={theme}
           onToggleTheme={toggleTheme}
+          onToggleMobileSidebar={() => setMobileSidebarOpen(prev => !prev)}
         />
 
         <main className="view-scroll-area">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Mic, Sun, Moon, LogIn, LogOut, ShieldAlert, Cpu, HelpCircle, ArrowLeft } from 'lucide-react';
+import { Sparkles, Mic, Sun, Moon, LogIn, LogOut, ShieldAlert, Cpu, HelpCircle, ArrowLeft, Menu } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 interface NavbarProps {
@@ -10,6 +10,7 @@ interface NavbarProps {
   onOpenTour: () => void;
   theme: string;
   onToggleTheme: () => void;
+  onToggleMobileSidebar?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -20,40 +21,52 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenTour,
   theme,
   onToggleTheme,
+  onToggleMobileSidebar,
 }) => {
   const { user, logout } = useAuth();
 
   return (
     <header className="top-navbar">
-      <div className="brand-badge">
-        <div className="brand-logo-icon" style={{ padding: '2px', background: 'transparent', boxShadow: 'none' }}>
-          <img
-            src="./assets/prachi-logo.png"
-            alt="Prachi AI"
-            style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 2px 8px rgba(99,102,241,0.5))' }}
-            onError={(e) => {
-              const el = e.target as HTMLImageElement;
-              if (!el.src.includes('prachi-logo.svg')) {
-                el.src = './assets/prachi-logo.svg';
-              }
-            }}
-          />
-        </div>
-        <div>
-          <span className="brand-name">Prachi AI</span>
-          <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginLeft: '8px' }}>v1.0-factory</span>
-        </div>
-        <div className="status-pill" style={{ marginLeft: '12px' }}>
-          <span className="status-dot"></span>
-          <span>Core Operational</span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        {onToggleMobileSidebar && (
+          <button
+            className="btn btn-secondary btn-sm mobile-menu-toggle-btn"
+            onClick={onToggleMobileSidebar}
+            title="Toggle Navigation Menu"
+          >
+            <Menu size={18} />
+          </button>
+        )}
+        <div className="brand-badge">
+          <div className="brand-logo-icon" style={{ padding: '2px', background: 'transparent', boxShadow: 'none' }}>
+            <img
+              src="./assets/prachi-logo.png"
+              alt="Prachi AI"
+              style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 2px 8px rgba(99,102,241,0.5))' }}
+              onError={(e) => {
+                const el = e.target as HTMLImageElement;
+                if (!el.src.includes('prachi-logo.svg')) {
+                  el.src = './assets/prachi-logo.svg';
+                }
+              }}
+            />
+          </div>
+          <div>
+            <span className="brand-name">Prachi AI</span>
+            <span className="brand-version" style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginLeft: '8px' }}>v1.0-factory</span>
+          </div>
+          <div className="status-pill nav-status-pill" style={{ marginLeft: '12px' }}>
+            <span className="status-dot"></span>
+            <span>Core Operational</span>
+          </div>
         </div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+      <div className="navbar-actions" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         {/* Back to Portfolio Link */}
         <a
           href="../../../index.html"
-          className="btn btn-secondary btn-sm"
+          className="btn btn-secondary btn-sm nav-portfolio-link"
           title="Return to Personal Portfolio"
           style={{ display: 'flex', alignItems: 'center', gap: '6px', textDecoration: 'none', color: 'inherit' }}
         >

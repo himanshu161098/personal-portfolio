@@ -11,7 +11,7 @@ import {
   FileCode,
   Shield,
   ChevronLeft,
-  ChevronRight,
+  X,
   Database
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -33,6 +33,8 @@ interface SidebarProps {
   onSelectView: (view: NavView) => void;
   collapsed: boolean;
   onToggleCollapse: () => void;
+  mobileOpen?: boolean;
+  onCloseMobile?: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -40,6 +42,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onSelectView,
   collapsed,
   onToggleCollapse,
+  mobileOpen,
+  onCloseMobile,
 }) => {
   const { user } = useAuth();
 
@@ -57,36 +61,55 @@ export const Sidebar: React.FC<SidebarProps> = ({
   ];
 
   return (
-    <aside className="app-sidebar" style={{ width: collapsed ? '72px' : '260px' }}>
-      <div className="sidebar-header">
-        {!collapsed && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Database size={16} style={{ color: 'var(--accent-indigo)' }} />
-            <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-secondary)' }}>MODULES</span>
-          </div>
-        )}
-        <button
-          onClick={onToggleCollapse}
-          className="btn btn-secondary btn-sm"
-          style={{ padding: '6px', margin: collapsed ? '0 auto' : '0' }}
-          title={collapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
-        >
-          {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
-        </button>
-      </div>
-
-      <nav className="sidebar-nav">
-        {navItems.map((item) => {
-          if (item.adminOnly && user?.role !== 'admin') return null;
-
-          const isActive = currentView === item.id;
-          return (
+    <>
+      {mobileOpen && (
+        <div className="sidebar-mobile-backdrop" onClick={onCloseMobile} />
+      )}
+      <aside className={`app-sidebar ${mobileOpen ? 'mobile-open' : ''}`} style={{ width: collapsed ? '72px' : '260px' }}>
+        <div className="sidebar-header">
+          {!collapsed && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Database size={16} style={{ color: 'var(--accent-indigo)' }} />
+              <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-secondary)' }}>MODULES</span>
+            </div>
+          )}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            {onCloseMobile && (
+              <button
+                onClick={onCloseMobile}
+                className="btn btn-secondary btn-sm mobile-close-btn"
+                style={{ padding: '6px' }}
+                title="Close Navigation Drawer"
+              >
+                <X size={16} />
+              </button>
+            )}
             <button
-              key={item.id}
-              className={`nav-item ${isActive ? 'active' : ''}`}
-              onClick={() => onSelectView(item.id)}
-              title={collapsed ? item.label : undefined}
+              onClick={onToggleCollapse}
+              className="btn btn-secondary btn-sm desktop-collapse-btn"
+              style={{ padding: '6px', margin: collapsed ? '0 auto' : '0' }}
+              title={collapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
             >
+              {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+            </button>
+          </div>
+        </div>
+
+        <nav className="sidebar-nav">
+          {navItems.map((item) => {
+            if (item.adminOnly && user?.role !== 'admin') return null;
+
+            const isActive = currentView === item.id;
+            return (
+              <button
+                key={item.id}
+                className={`nav-item ${isActive ? 'active' : ''}`}
+                onClick={() => {
+                  onSelectView(item.id);
+                  if (onCloseMobile) onCloseMobile();
+                }}
+                title={collapsed ? item.label : undefined}
+              >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {item.icon}
               </div>
@@ -115,6 +138,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
         </div>
       )}
-    </aside>
+      </aside>
+    </>
   );
 };

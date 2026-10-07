@@ -845,3 +845,109 @@ textarea.input-control {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .view-scroll-area { padding: 16px; }
 }
+
+/* Mobile Responsiveness (<= 768px) */
+.mobile-menu-toggle-btn {
+  display: none;
+}
+
+.sidebar-mobile-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 998;
+  animation: fadeIn 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-toggle-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .desktop-collapse-btn {
+    display: none !important;
+  }
+
+  .app-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 280px !important;
+    max-width: 85vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: none;
+    border-right: 1px solid var(--border-subtle);
+  }
+
+  .app-sidebar.mobile-open {
+    transform: translateX(0);
+    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.85);
+  }
+
+  /* Compact Navbar for mobile screens */
+  .top-navbar {
+    padding: 0 12px;
+  }
+
+  .brand-version,
+  .nav-status-pill {
+    display: none !important;
+  }
+
+  .navbar-actions {
+    gap: 6px !important;
+  }
+
+  /* Reposition Floating Voice Orb to prevent overlapping the chat send button */
+  .floating-voice-orb {
+    bottom: 84px !important;
+    right: 16px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  /* Chat Container & Scroll Area on mobile */
+  .chat-container {
+    height: calc(100vh - var(--navbar-height) - 16px);
+    height: calc(100dvh - var(--navbar-height) - 16px);
+    border-radius: 12px;
+  }
+
+  .view-scroll-area {
+    padding: 10px;
+  }
+
+  .chat-messages {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .message-bubble {
+    max-width: 92%;
+    padding: 10px 14px;
+    font-size: 0.88rem;
+  }
+
+  .chat-input-wrapper {
+    padding: 8px 10px 12px;
+  }
+
+  .chat-input-bar {
+    max-width: 100%;
+    padding: 4px 6px 4px 14px;
+  }
+
+  .modal-dialog {
+    padding: 20px 16px;
+    max-width: 95vw;
+  }
+}

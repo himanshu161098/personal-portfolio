@@ -7431,11 +7431,6 @@
     ["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]
   ]);
 
-  // node_modules/lucide-react/dist/esm/icons/chevron-right.js
-  var ChevronRight = createLucideIcon("ChevronRight", [
-    ["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]
-  ]);
-
   // node_modules/lucide-react/dist/esm/icons/circle-check.js
   var CircleCheck = createLucideIcon("CircleCheck", [
     ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
@@ -7607,6 +7602,13 @@
     ["path", { d: "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4", key: "1uf3rs" }],
     ["polyline", { points: "16 17 21 12 16 7", key: "1gabdz" }],
     ["line", { x1: "21", x2: "9", y1: "12", y2: "12", key: "1uyos4" }]
+  ]);
+
+  // node_modules/lucide-react/dist/esm/icons/menu.js
+  var Menu = createLucideIcon("Menu", [
+    ["line", { x1: "4", x2: "20", y1: "12", y2: "12", key: "1e0a9i" }],
+    ["line", { x1: "4", x2: "20", y1: "6", y2: "6", key: "1owob3" }],
+    ["line", { x1: "4", x2: "20", y1: "18", y2: "18", key: "yk5zj1" }]
   ]);
 
   // node_modules/lucide-react/dist/esm/icons/message-circle.js
@@ -8371,40 +8373,52 @@
     onOpenAuth,
     onOpenTour,
     theme,
-    onToggleTheme
+    onToggleTheme,
+    onToggleMobileSidebar
   }) => {
     const { user, logout } = useAuth();
     return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("header", { className: "top-navbar", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "brand-badge", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "brand-logo-icon", style: { padding: "2px", background: "transparent", boxShadow: "none" }, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
-          "img",
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
+        onToggleMobileSidebar && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+          "button",
           {
-            src: "./assets/prachi-logo.png",
-            alt: "Prachi AI",
-            style: { width: "100%", height: "100%", objectFit: "contain", filter: "drop-shadow(0 2px 8px rgba(99,102,241,0.5))" },
-            onError: (e) => {
-              const el = e.target;
-              if (!el.src.includes("prachi-logo.svg")) {
-                el.src = "./assets/prachi-logo.svg";
+            className: "btn btn-secondary btn-sm mobile-menu-toggle-btn",
+            onClick: onToggleMobileSidebar,
+            title: "Toggle Navigation Menu",
+            children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Menu, { size: 18 })
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "brand-badge", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "brand-logo-icon", style: { padding: "2px", background: "transparent", boxShadow: "none" }, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+            "img",
+            {
+              src: "./assets/prachi-logo.png",
+              alt: "Prachi AI",
+              style: { width: "100%", height: "100%", objectFit: "contain", filter: "drop-shadow(0 2px 8px rgba(99,102,241,0.5))" },
+              onError: (e) => {
+                const el = e.target;
+                if (!el.src.includes("prachi-logo.svg")) {
+                  el.src = "./assets/prachi-logo.svg";
+                }
               }
             }
-          }
-        ) }),
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "brand-name", children: "Prachi AI" }),
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { style: { fontSize: "0.72rem", color: "var(--text-muted)", marginLeft: "8px" }, children: "v1.0-factory" })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "status-pill", style: { marginLeft: "12px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "status-dot" }),
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "Core Operational" })
+          ) }),
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "brand-name", children: "Prachi AI" }),
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "brand-version", style: { fontSize: "0.72rem", color: "var(--text-muted)", marginLeft: "8px" }, children: "v1.0-factory" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "status-pill nav-status-pill", style: { marginLeft: "12px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "status-dot" }),
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "Core Operational" })
+          ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "14px" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "navbar-actions", style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
         /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
           "a",
           {
             href: "../../../index.html",
-            className: "btn btn-secondary btn-sm",
+            className: "btn btn-secondary btn-sm nav-portfolio-link",
             title: "Return to Personal Portfolio",
             style: { display: "flex", alignItems: "center", gap: "6px", textDecoration: "none", color: "inherit" },
             children: [
@@ -8502,7 +8516,9 @@
     currentView,
     onSelectView,
     collapsed,
-    onToggleCollapse
+    onToggleCollapse,
+    mobileOpen,
+    onCloseMobile
   }) => {
     const { user } = useAuth();
     const navItems = [
@@ -8517,51 +8533,69 @@
       { id: "artifacts", label: "Workspace Artifacts", icon: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(FileCode, { size: 18 }) },
       { id: "admin", label: "Admin & Observability", icon: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Shield, { size: 18 }), adminOnly: true }
     ];
-    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("aside", { className: "app-sidebar", style: { width: collapsed ? "72px" : "260px" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "sidebar-header", children: [
-        !collapsed && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Database, { size: 16, style: { color: "var(--accent-indigo)" } }),
-          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { style: { fontSize: "0.82rem", fontWeight: 600, color: "var(--text-secondary)" }, children: "MODULES" })
+    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(import_jsx_runtime3.Fragment, { children: [
+      mobileOpen && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "sidebar-mobile-backdrop", onClick: onCloseMobile }),
+      /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("aside", { className: `app-sidebar ${mobileOpen ? "mobile-open" : ""}`, style: { width: collapsed ? "72px" : "260px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "sidebar-header", children: [
+          !collapsed && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Database, { size: 16, style: { color: "var(--accent-indigo)" } }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { style: { fontSize: "0.82rem", fontWeight: 600, color: "var(--text-secondary)" }, children: "MODULES" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
+            onCloseMobile && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+              "button",
+              {
+                onClick: onCloseMobile,
+                className: "btn btn-secondary btn-sm mobile-close-btn",
+                style: { padding: "6px" },
+                title: "Close Navigation Drawer",
+                children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(X, { size: 16 })
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+              "button",
+              {
+                onClick: onToggleCollapse,
+                className: "btn btn-secondary btn-sm desktop-collapse-btn",
+                style: { padding: "6px", margin: collapsed ? "0 auto" : "0" },
+                title: collapsed ? "Expand Sidebar" : "Collapse Sidebar",
+                children: collapsed ? /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ChevronRight, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ChevronLeft, { size: 16 })
+              }
+            )
+          ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
-          "button",
-          {
-            onClick: onToggleCollapse,
-            className: "btn btn-secondary btn-sm",
-            style: { padding: "6px", margin: collapsed ? "0 auto" : "0" },
-            title: collapsed ? "Expand Sidebar" : "Collapse Sidebar",
-            children: collapsed ? /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ChevronRight, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ChevronLeft, { size: 16 })
-          }
-        )
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("nav", { className: "sidebar-nav", children: navItems.map((item) => {
-        if (item.adminOnly && user?.role !== "admin") return null;
-        const isActive = currentView === item.id;
-        return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
-          "button",
-          {
-            className: `nav-item ${isActive ? "active" : ""}`,
-            onClick: () => onSelectView(item.id),
-            title: collapsed ? item.label : void 0,
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { style: { display: "flex", alignItems: "center", justifyContent: "center" }, children: item.icon }),
-              !collapsed && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(import_jsx_runtime3.Fragment, { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { style: { flex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }, children: item.label }),
-                item.badge && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "nav-badge", children: item.badge })
-              ] })
-            ]
-          },
-          item.id
-        );
-      }) }),
-      !collapsed && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { style: { padding: "16px 20px", borderTop: "1px solid var(--border-subtle)", fontSize: "0.75rem", color: "var(--text-muted)" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", marginBottom: "4px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { children: "Security" }),
-          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { style: { color: "var(--accent-emerald)" }, children: "Enforced" })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { style: { display: "flex", justifyContent: "space-between" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { children: "Tenant Isolation" }),
-          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { style: { color: "var(--accent-indigo)" }, children: "Active" })
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("nav", { className: "sidebar-nav", children: navItems.map((item) => {
+          if (item.adminOnly && user?.role !== "admin") return null;
+          const isActive = currentView === item.id;
+          return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+            "button",
+            {
+              className: `nav-item ${isActive ? "active" : ""}`,
+              onClick: () => {
+                onSelectView(item.id);
+                if (onCloseMobile) onCloseMobile();
+              },
+              title: collapsed ? item.label : void 0,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { style: { display: "flex", alignItems: "center", justifyContent: "center" }, children: item.icon }),
+                !collapsed && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(import_jsx_runtime3.Fragment, { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { style: { flex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }, children: item.label }),
+                  item.badge && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "nav-badge", children: item.badge })
+                ] })
+              ]
+            },
+            item.id
+          );
+        }) }),
+        !collapsed && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { style: { padding: "16px 20px", borderTop: "1px solid var(--border-subtle)", fontSize: "0.75rem", color: "var(--text-muted)" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", marginBottom: "4px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { children: "Security" }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { style: { color: "var(--accent-emerald)" }, children: "Enforced" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { style: { display: "flex", justifyContent: "space-between" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { children: "Tenant Isolation" }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { style: { color: "var(--accent-indigo)" }, children: "Active" })
+          ] })
         ] })
       ] })
     ] });
@@ -12997,6 +13031,7 @@
     const { user, loading } = useAuth();
     const [currentView, setCurrentView] = (0, import_react18.useState)("chat");
     const [sidebarCollapsed, setSidebarCollapsed] = (0, import_react18.useState)(false);
+    const [mobileSidebarOpen, setMobileSidebarOpen] = (0, import_react18.useState)(false);
     const [currentModel, setCurrentModel] = (0, import_react18.useState)("gemini");
     const [isVoiceOpen, setIsVoiceOpen] = (0, import_react18.useState)(false);
     const [isAuthOpen, setIsAuthOpen] = (0, import_react18.useState)(false);
@@ -13048,7 +13083,9 @@
           currentView,
           onSelectView: setCurrentView,
           collapsed: sidebarCollapsed,
-          onToggleCollapse: () => setSidebarCollapsed(!sidebarCollapsed)
+          onToggleCollapse: () => setSidebarCollapsed(!sidebarCollapsed),
+          mobileOpen: mobileSidebarOpen,
+          onCloseMobile: () => setMobileSidebarOpen(false)
         }
       ),
       /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "main-content", children: [
@@ -13061,7 +13098,8 @@
             onOpenAuth: () => setIsAuthOpen(true),
             onOpenTour: () => setIsTourOpen(true),
             theme,
-            onToggleTheme: toggleTheme
+            onToggleTheme: toggleTheme,
+            onToggleMobileSidebar: () => setMobileSidebarOpen((prev) => !prev)
           }
         ),
         /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("main", { className: "view-scroll-area", children: renderActiveView() })
@@ -13194,7 +13232,6 @@ lucide-react/dist/esm/icons/brain.js:
 lucide-react/dist/esm/icons/calendar.js:
 lucide-react/dist/esm/icons/check.js:
 lucide-react/dist/esm/icons/chevron-left.js:
-lucide-react/dist/esm/icons/chevron-right.js:
 lucide-react/dist/esm/icons/circle-check.js:
 lucide-react/dist/esm/icons/circle-help.js:
 lucide-react/dist/esm/icons/clock.js:
@@ -13216,6 +13253,7 @@ lucide-react/dist/esm/icons/loader-circle.js:
 lucide-react/dist/esm/icons/lock.js:
 lucide-react/dist/esm/icons/log-in.js:
 lucide-react/dist/esm/icons/log-out.js:
+lucide-react/dist/esm/icons/menu.js:
 lucide-react/dist/esm/icons/message-circle.js:
 lucide-react/dist/esm/icons/message-square.js:
 lucide-react/dist/esm/icons/mic-off.js:
