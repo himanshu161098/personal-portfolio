@@ -1,5 +1,5 @@
 {
-  "last_synced": "2026-10-07T12:43:53.519Z",
+  "last_synced": "2026-10-07T22:46:56.518Z",
   "github": {
     "username": "himanshu161098",
     "profile_url": "https://github.com/himanshu161098",
@@ -14,10 +14,10 @@
         "name": "personal-portfolio",
         "description": "Himanshu Kumar - Personal Developer Portfolio with 3D WebGL visuals and automated GitHub activity sync",
         "html_url": "https://github.com/himanshu161098/personal-portfolio",
-        "language": "JavaScript",
+        "language": "TypeScript",
         "stargazers_count": 0,
         "forks_count": 0,
-        "updated_at": "2026-10-07T04:32:03Z"
+        "updated_at": "2026-10-07T19:19:22Z"
       },
       {
         "name": "Netfix-Sales",
@@ -51,6 +51,11 @@
       {
         "type": "PushEvent",
         "repo": "himanshu161098/personal-portfolio",
+        "created_at": "2026-10-07T16:00:15Z"
+      },
+      {
+        "type": "PushEvent",
+        "repo": "himanshu161098/personal-portfolio",
         "created_at": "2026-10-03T22:27:39Z"
       },
       {
@@ -72,11 +77,6 @@
         "type": "PushEvent",
         "repo": "himanshu161098/personal-portfolio",
         "created_at": "2026-10-03T21:34:39Z"
-      },
-      {
-        "type": "PushEvent",
-        "repo": "himanshu161098/personal-portfolio",
-        "created_at": "2026-10-03T13:47:57Z"
       }
     ]
   },
