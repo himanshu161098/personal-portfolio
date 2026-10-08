@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/prachi",
+      "destination": "/Prachi AI/frontend/dist/index.html"
+    },
+    {
+      "source": "/prachi-ai",
+      "destination": "/Prachi AI/frontend/dist/index.html"
+    }
+  ]
+}
