@@ -15,15 +15,17 @@ import {
 
 function getApiBase(): string {
   if (typeof window !== 'undefined') {
-    if (window.location.port === '3001') {
-      return '/api';
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    if (isLocal) {
+      if (window.location.port === '3001' || window.location.port === '3000') {
+        return '/api';
+      }
+      return 'http://localhost:3001/api';
     }
-    if (window.location.port === '3000') {
-      return '/api';
-    }
-    return 'http://localhost:3001/api';
+    // Live Cloud Backend on Render
+    return 'https://prachi-ai-backend.onrender.com/api';
   }
-  return '/api';
+  return 'https://prachi-ai-backend.onrender.com/api';
 }
 
 class ApiClient {
