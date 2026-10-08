@@ -1,0 +1,9 @@
+{
+  "name": "himanshu-personal-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Himanshu Kumar - Personal 3D Portfolio & AI Platform",
+  "scripts": {
+    "build": "echo 'Static portfolio ready'"
+  }
+}
