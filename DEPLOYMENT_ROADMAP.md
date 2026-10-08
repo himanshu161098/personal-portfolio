@@ -170,10 +170,10 @@ flowchart TD
    - **Name:** `prachi-ai-backend`
    - **Region:** Singapore / Frankfurt (Low latency to India)
    - **Branch:** `main`
-   - **Root Directory:** `Personal Portfolio/Prachi AI/backend`
+   - **Root Directory:** `Prachi AI/backend`
    - **Runtime:** `Node`
-   - **Build Command:** `npm install`
-   - **Start Command:** `node dist/server.js` (ya `npx tsx src/server.ts`)
+   - **Build Command:** `npm install && npm run build`
+   - **Start Command:** `npm start` (ya `node dist/server.js`)
 3. **Environment Variables:**
    - `NODE_ENV=production`
    - `PORT=3001`
