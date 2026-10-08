@@ -1,12 +1,12 @@
 {
-  "last_synced": "2026-10-08T12:53:03.569Z",
+  "last_synced": "2026-10-08T22:57:56.549Z",
   "github": {
     "username": "himanshu161098",
     "profile_url": "https://github.com/himanshu161098",
     "avatar_url": "https://avatars.githubusercontent.com/u/262533773?v=4",
     "name": "Himanshu Kumar",
     "bio": "Final-year B.Tech (CSE-IT) student | Python, ML & Full-Stack Web Dev",
-    "public_repos": 4,
+    "public_repos": 5,
     "followers": 0,
     "following": 0,
     "featured_repos": [
@@ -17,7 +17,16 @@
         "language": "TypeScript",
         "stargazers_count": 0,
         "forks_count": 0,
-        "updated_at": "2026-10-08T12:51:52Z"
+        "updated_at": "2026-10-08T13:18:56Z"
+      },
+      {
+        "name": "Prachi-AI",
+        "description": "Repository created on GitHub",
+        "html_url": "https://github.com/himanshu161098/Prachi-AI",
+        "language": "HTML/CSS/JS",
+        "stargazers_count": 0,
+        "forks_count": 0,
+        "updated_at": "2026-10-08T12:55:37Z"
       },
       {
         "name": "Netfix-Sales",
@@ -51,6 +60,21 @@
       {
         "type": "PushEvent",
         "repo": "himanshu161098/personal-portfolio",
+        "created_at": "2026-10-08T13:18:52Z"
+      },
+      {
+        "type": "PushEvent",
+        "repo": "himanshu161098/personal-portfolio",
+        "created_at": "2026-10-08T13:08:40Z"
+      },
+      {
+        "type": "PushEvent",
+        "repo": "himanshu161098/personal-portfolio",
+        "created_at": "2026-10-08T13:01:53Z"
+      },
+      {
+        "type": "PushEvent",
+        "repo": "himanshu161098/personal-portfolio",
         "created_at": "2026-10-08T12:49:48Z"
       },
       {
@@ -62,21 +86,6 @@
         "type": "PushEvent",
         "repo": "himanshu161098/personal-portfolio",
         "created_at": "2026-10-07T15:34:53Z"
-      },
-      {
-        "type": "PushEvent",
-        "repo": "himanshu161098/personal-portfolio",
-        "created_at": "2026-10-07T16:00:15Z"
-      },
-      {
-        "type": "PushEvent",
-        "repo": "himanshu161098/personal-portfolio",
-        "created_at": "2026-10-03T22:27:39Z"
-      },
-      {
-        "type": "PushEvent",
-        "repo": "himanshu161098/personal-portfolio",
-        "created_at": "2026-10-03T23:27:13Z"
       }
     ]
   },
