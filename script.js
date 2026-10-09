@@ -107,16 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollTicking = false;
     }
 
-    let isScrollingTimer = null;
     window.addEventListener('scroll', () => {
-        if (!document.body.classList.contains('is-scrolling')) {
-            document.body.classList.add('is-scrolling');
-        }
-        clearTimeout(isScrollingTimer);
-        isScrollingTimer = setTimeout(() => {
-            document.body.classList.remove('is-scrolling');
-        }, 120);
-
         if (!scrollTicking) {
             window.requestAnimationFrame(handleScrollUpdates);
             scrollTicking = true;
@@ -438,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 antialias: true
             });
             renderer.setSize(width, height);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+            renderer.setPixelRatio(window.innerWidth < 768 ? 1 : Math.min(window.devicePixelRatio, 1.25));
 
             function resizeHero3D() {
                 const w = container.clientWidth || 380;
@@ -1064,6 +1055,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let hasInteracted = false;
 
             container.addEventListener('pointerdown', (e) => {
+                if (e.pointerType === 'touch') return;
                 isDragging = true;
                 prevPointer = { x: e.clientX, y: e.clientY };
                 if (!hasInteracted && hudCenterHint) {

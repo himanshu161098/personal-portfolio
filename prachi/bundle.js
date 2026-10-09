@@ -8450,7 +8450,7 @@
                 outline: "none"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("option", { value: "gemini", style: { background: "#0f172a" }, children: "Google Gemini AI (Smart Best Friend \u2728)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("option", { value: "gemini", style: { background: "#0f172a" }, children: "Prachi AI (Human Companion & STEM \u2728)" }),
                 /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("option", { value: "local_heuristic", style: { background: "#0f172a" }, children: "Prachi Local Heuristic (Offline)" }),
                 /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("option", { value: "claude", style: { background: "#0f172a" }, children: "Anthropic Claude 3.5 Sonnet" }),
                 /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("option", { value: "openai", style: { background: "#0f172a" }, children: "OpenAI GPT-4o" })
@@ -10105,16 +10105,18 @@
                 display: "flex",
                 alignItems: "center",
                 gap: "6px",
-                padding: "4px 12px",
-                background: "rgba(99, 102, 241, 0.1)",
-                border: "1px solid rgba(99, 102, 241, 0.25)",
+                padding: "5px 14px",
+                background: "linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(99, 102, 241, 0.15))",
+                border: "1px solid rgba(0, 242, 254, 0.35)",
                 borderRadius: "20px",
-                fontSize: "0.78rem",
-                color: "var(--accent-indigo)"
+                fontSize: "0.8rem",
+                fontWeight: 600,
+                color: "var(--accent-cyan)",
+                boxShadow: "0 0 12px rgba(0, 242, 254, 0.15)"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Sparkles, { size: 13 }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: currentModel.toUpperCase() })
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Sparkles, { size: 14, style: { color: "var(--accent-cyan)" } }),
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "Prachi AI" })
               ]
             }
           ) })

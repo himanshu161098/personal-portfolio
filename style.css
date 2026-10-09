@@ -78,13 +78,15 @@
 }
 
 html {
+    scroll-behavior: smooth;
     font-size: 16px;
     color-scheme: dark;
 }
 
-body.is-scrolling,
-body.is-scrolling * {
-    pointer-events: none !important;
+#hero3dContainer,
+#hero3dCanvas,
+.hero-3d-container {
+    touch-action: pan-y !important;
 }
 
 body {

@@ -89,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               outline: 'none'
             }}
           >
-            <option value="gemini" style={{ background: '#0f172a' }}>Google Gemini AI (Smart Best Friend ✨)</option>
+            <option value="gemini" style={{ background: '#0f172a' }}>Prachi AI (Human Companion & STEM ✨)</option>
             <option value="local_heuristic" style={{ background: '#0f172a' }}>Prachi Local Heuristic (Offline)</option>
             <option value="claude" style={{ background: '#0f172a' }}>Anthropic Claude 3.5 Sonnet</option>
             <option value="openai" style={{ background: '#0f172a' }}>OpenAI GPT-4o</option>

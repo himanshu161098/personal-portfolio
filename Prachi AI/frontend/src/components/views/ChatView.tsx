@@ -583,16 +583,18 @@ export const ChatView: React.FC<ChatViewProps> = ({ currentModel, onNavigateToVi
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
-                padding: '4px 12px',
-                background: 'rgba(99, 102, 241, 0.1)',
-                border: '1px solid rgba(99, 102, 241, 0.25)',
+                padding: '5px 14px',
+                background: 'linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(99, 102, 241, 0.15))',
+                border: '1px solid rgba(0, 242, 254, 0.35)',
                 borderRadius: '20px',
-                fontSize: '0.78rem',
-                color: 'var(--accent-indigo)'
+                fontSize: '0.8rem',
+                fontWeight: 600,
+                color: 'var(--accent-cyan)',
+                boxShadow: '0 0 12px rgba(0, 242, 254, 0.15)'
               }}
             >
-              <Sparkles size={13} />
-              <span>{currentModel.toUpperCase()}</span>
+              <Sparkles size={14} style={{ color: 'var(--accent-cyan)' }} />
+              <span>Prachi AI</span>
             </div>
           </div>
         </div>
