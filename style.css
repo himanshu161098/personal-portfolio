@@ -8229,3 +8229,255 @@ textarea {
         margin-top: 0 !important;
     }
 }
+
+/* ==========================================================================
+   MOBILE POINT OF VIEW & DESKTOP-PROPORTIONAL COMPACT LAYOUT (<= 768px)
+   "thoda desktop jesa dikhe" - dense, crisp, proportional, lag-free scrolling
+   ========================================================================== */
+@media (max-width: 768px) {
+    html {
+        font-size: 14.5px;
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Disable heavy continuous CSS 3D cubes on mobile to free GPU and guarantee 60fps */
+    .floating-3d-space,
+    .geom-3d,
+    .cube-3d-1,
+    .cube-3d-2 {
+        display: none !important;
+    }
+
+    /* Hardware acceleration & lightweight backdrop blur for mobile GPUs */
+    .glass-card,
+    .project-card,
+    .skill-card,
+    .pillar-card,
+    .education-card,
+    .contact-info-card,
+    .dossier-card,
+    .cert-card,
+    .modal-dialog {
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        transform: translateZ(0);
+    }
+
+    /* Compact Section Padding - eliminates bloated vertical gaps */
+    .section {
+        padding: 2.75rem 0 !important;
+    }
+
+    .section-header {
+        margin-bottom: 1.75rem !important;
+    }
+
+    .section-title {
+        font-size: clamp(1.4rem, 5.5vw, 1.85rem) !important;
+        letter-spacing: -0.01em !important;
+    }
+
+    .section-subtitle {
+        font-size: 0.85rem !important;
+        margin-top: 0.35rem !important;
+        max-width: 100% !important;
+    }
+
+    /* Containers */
+    .container {
+        padding: 0 1rem !important;
+    }
+
+    /* Hero Section: Proportional & Compact */
+    .hero-section {
+        min-height: auto !important;
+        padding-top: calc(var(--nav-height) + 1.25rem) !important;
+        padding-bottom: 2rem !important;
+    }
+
+    .hero-container {
+        gap: 1.75rem !important;
+        padding: 0 1rem !important;
+    }
+
+    .hero-content {
+        gap: 0.25rem !important;
+    }
+
+    .hero-greeting {
+        font-size: 0.95rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .hero-name {
+        font-size: clamp(1.85rem, 7vw, 2.35rem) !important;
+        line-height: 1.15 !important;
+        margin-bottom: 0.35rem !important;
+    }
+
+    .hero-role {
+        font-size: 0.92rem !important;
+        margin-bottom: 0.65rem !important;
+    }
+
+    .hero-description {
+        font-size: 0.86rem !important;
+        line-height: 1.55 !important;
+        margin-bottom: 1.15rem !important;
+    }
+
+    /* Proportional 2x2 Action Button Grid instead of giant vertical blocks */
+    .hero-actions {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.6rem !important;
+        width: 100% !important;
+        max-width: 440px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .hero-actions .btn {
+        width: 100% !important;
+        padding: 0.55rem 0.65rem !important;
+        font-size: 0.8rem !important;
+        justify-content: center !important;
+        text-align: center !important;
+        border-radius: 8px !important;
+        white-space: nowrap !important;
+    }
+
+    .hero-actions .btn i,
+    .hero-actions .btn img {
+        font-size: 0.85rem !important;
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    /* 3D Visual in Hero - Compact size so it feels like a desktop side-widget */
+    .hero-visual {
+        width: 100% !important;
+        max-width: 340px !important;
+        margin: 0 auto !important;
+    }
+
+    #hero3dContainer,
+    .tab3d-visual-container {
+        height: 280px !important;
+        max-height: 280px !important;
+    }
+
+    /* Cards & Grids: Sleek, compact and desktop-proportional */
+    .projects-grid,
+    .skills-grid,
+    .pillars-grid,
+    .dossier-grid {
+        gap: 1.15rem !important;
+    }
+
+    .project-card,
+    .skill-card,
+    .pillar-card,
+    .dossier-card {
+        padding: 1.15rem !important;
+        border-radius: 12px !important;
+    }
+
+    .project-title,
+    .skill-title {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+
+    .project-description,
+    .skill-description {
+        font-size: 0.84rem !important;
+        line-height: 1.5 !important;
+    }
+
+    .tags,
+    .project-tags {
+        gap: 0.35rem !important;
+        margin: 0.65rem 0 !important;
+    }
+
+    .tag,
+    .project-tag {
+        font-size: 0.7rem !important;
+        padding: 0.2rem 0.5rem !important;
+    }
+
+    .project-actions {
+        gap: 0.5rem !important;
+        margin-top: 0.85rem !important;
+    }
+
+    .project-actions .btn {
+        padding: 0.45rem 0.75rem !important;
+        font-size: 0.78rem !important;
+    }
+
+    /* Education & Experience Timeline Compactness */
+    .education-card {
+        padding: 1.25rem !important;
+        gap: 1rem !important;
+    }
+
+    .timeline-item {
+        padding-left: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* Contact Form Compact */
+    .contact-form {
+        padding: 1.25rem 1rem !important;
+        gap: 0.9rem !important;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.65rem 0.85rem !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 13.5px;
+    }
+
+    .section {
+        padding: 2.25rem 0 !important;
+    }
+
+    .container {
+        padding: 0 0.85rem !important;
+    }
+
+    .hero-actions {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.45rem !important;
+    }
+
+    .hero-actions .btn {
+        padding: 0.5rem 0.45rem !important;
+        font-size: 0.75rem !important;
+        letter-spacing: -0.01em !important;
+    }
+
+    #hero3dContainer,
+    .tab3d-visual-container {
+        height: 250px !important;
+    }
+
+    .project-card,
+    .skill-card,
+    .dossier-card {
+        padding: 1rem !important;
+    }
+}

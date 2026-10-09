@@ -417,7 +417,7 @@ class AIChatbotWidget {
           <button class="cb-icon-btn cb-voice-toggle-btn" id="cbVoiceToggleBtn" title="Toggle Voice Readout" aria-label="Toggle Auto-Speak">
             <i class="fa-solid fa-volume-high" id="cbVoiceToggleIcon" aria-hidden="true"></i>
           </button>
-          <a href="prachi/" class="cb-icon-btn" title="Open Prachi AI (Intelligent Multimodal Assistant)" aria-label="Open Prachi AI">
+          <a href="prachi/index.html" class="cb-icon-btn" title="Open Prachi AI (Intelligent Multimodal Assistant)" aria-label="Open Prachi AI">
             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
           </a>
           <button class="cb-icon-btn" id="cbNewChatBtn" title="Reset &amp; Start New Chat" aria-label="Start New Chat">

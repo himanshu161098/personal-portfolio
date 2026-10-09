@@ -70,28 +70,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ========================================================================
-    // 2. STICKY HEADER ELEVATION ON SCROLL
+    // 2. STICKY HEADER & ACTIVE NAVIGATION LINK ON SCROLL (rAF Throttled)
     // ========================================================================
     const header = document.getElementById('header');
-
-    window.addEventListener('scroll', () => {
-        if (!header) return;
-        if (window.scrollY > 40) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    }, { passive: true });
-
-
-    // ========================================================================
-    // 3. ACTIVE NAVIGATION LINK ON SCROLL (SCROLLSPY)
-    // ========================================================================
     const sections = document.querySelectorAll('section[id]');
+    let scrollTicking = false;
 
-    function updateActiveNavLink() {
-        const scrollY = window.pageYOffset;
+    function handleScrollUpdates() {
+        const scrollY = window.pageYOffset || window.scrollY;
 
+        // Sticky Header Elevation
+        if (header) {
+            if (scrollY > 40) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+
+        // Active Nav Link Scrollspy
         sections.forEach(section => {
             const sectionHeight = section.offsetHeight;
             const sectionTop = section.offsetTop - 120;
@@ -106,10 +103,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+
+        scrollTicking = false;
     }
 
-    window.addEventListener('scroll', updateActiveNavLink, { passive: true });
-    updateActiveNavLink();
+    window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+            window.requestAnimationFrame(handleScrollUpdates);
+            scrollTicking = true;
+        }
+    }, { passive: true });
+    handleScrollUpdates();
 
 
     // ========================================================================
@@ -425,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 antialias: true
             });
             renderer.setSize(width, height);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
             function resizeHero3D() {
                 const w = container.clientWidth || 380;
@@ -1148,9 +1152,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 50);
             });
 
-            // Neural Waveform Canvas
+            // Neural Waveform Canvas & Visibility Controls
+            let isHeroVisible = true;
+            let heroAnimId = null;
+            let waveAnimId = null;
+
             function drawWaveform() {
                 if (!hudWaveform) return;
+                if (!isHeroVisible) {
+                    waveAnimId = null;
+                    return;
+                }
                 const ctx = hudWaveform.getContext('2d');
                 if (!ctx) return;
                 hudWaveform.width = hudWaveform.clientWidth || 300;
@@ -1178,9 +1190,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 ctx.stroke();
 
-                requestAnimationFrame(drawWaveform);
+                waveAnimId = requestAnimationFrame(drawWaveform);
             }
-            drawWaveform();
 
             // FPS Counter Tracker
             let frameCount = 0;
@@ -1190,7 +1201,11 @@ document.addEventListener('DOMContentLoaded', () => {
             let clock = new THREE.Clock();
 
             function animateHero() {
-                requestAnimationFrame(animateHero);
+                if (!isHeroVisible) {
+                    heroAnimId = null;
+                    return;
+                }
+                heroAnimId = requestAnimationFrame(animateHero);
 
                 const delta = clock.getDelta();
                 const time = clock.getElapsedTime();
@@ -1347,7 +1362,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     lastFpsCheck = now;
                 }
             }
-            animateHero();
+
+            // IntersectionObserver to pause Hero 3D rendering when scrolled out of view (Silky 60fps scrolling)
+            if ('IntersectionObserver' in window) {
+                const heroObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        isHeroVisible = entry.isIntersecting;
+                        if (isHeroVisible) {
+                            if (!heroAnimId) {
+                                clock.start();
+                                heroAnimId = requestAnimationFrame(animateHero);
+                            }
+                            if (!waveAnimId && hudWaveform) {
+                                waveAnimId = requestAnimationFrame(drawWaveform);
+                            }
+                        } else {
+                            if (heroAnimId) {
+                                cancelAnimationFrame(heroAnimId);
+                                heroAnimId = null;
+                            }
+                            if (waveAnimId) {
+                                cancelAnimationFrame(waveAnimId);
+                                waveAnimId = null;
+                            }
+                        }
+                    });
+                }, { threshold: 0.02 });
+                heroObserver.observe(container);
+            } else {
+                heroAnimId = requestAnimationFrame(animateHero);
+                waveAnimId = requestAnimationFrame(drawWaveform);
+            }
 
         } catch (err) {
             console.warn('Three.js WebGL initialization failed, switching to 2D fallback:', err);
@@ -1425,7 +1470,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 antialias: true
             });
             renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+            renderer.setPixelRatio(window.innerWidth < 768 ? 1 : Math.min(window.devicePixelRatio, 1.5));
 
             // ================================================================
             // 1. SOFT LIGHT MULTI-SPECTRAL AMBIENT STARDUST (750 Light Particles)
@@ -1665,6 +1710,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let targetX = 0;
             let targetY = 0;
             let targetZ = 440;
+            let currentScrollY = 0;
 
             window.addEventListener('mousemove', (e) => {
                 targetX = ((e.clientX / window.innerWidth) - 0.5) * 110;
@@ -1672,22 +1718,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }, { passive: true });
 
             window.addEventListener('scroll', () => {
-                const scrollProgress = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight || 1);
-                targetZ = 440 - scrollProgress * 320;
+                currentScrollY = window.pageYOffset || window.scrollY;
             }, { passive: true });
 
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(window.innerWidth < 768 ? 1 : Math.min(window.devicePixelRatio, 1.5));
             });
 
             let bgClock = new THREE.Clock();
+            let bgFrameCount = 0;
 
             // Main 3D Background Animation Loop
             function animateBg() {
                 requestAnimationFrame(animateBg);
                 const bgTime = bgClock.getElapsedTime();
+                bgFrameCount++;
+
+                // Smooth scroll progress
+                const scrollProgress = currentScrollY / (document.documentElement.scrollHeight - window.innerHeight || 1);
+                targetZ = 440 - scrollProgress * 320;
 
                 // 1. Starfield Ambient Slow Twinkle
                 starField.rotation.y += 0.0004;
@@ -1718,18 +1770,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     sp.mesh.position.lerpVectors(pA, pB, sp.progress);
                 });
 
-                // 4. Data Analytics Mathematical Loss Surface Undulation (Sine & Cosine loss curves)
-                const posArr = dataLossSurface.geometry.attributes.position.array;
-                for (let ix = 0; ix < gridDimX; ix++) {
-                    for (let iz = 0; iz < gridDimZ; iz++) {
-                        const idx = (ix * gridDimZ + iz) * 3;
-                        const u = ix * 0.22;
-                        const v = iz * 0.22;
-                        const waveY = -140 + Math.sin(u + bgTime * 1.2) * Math.cos(v + bgTime * 0.9) * 22 + Math.sin(u * 0.5 + bgTime * 0.6) * 10;
-                        posArr[idx + 1] = waveY;
+                // 4. Data Analytics Mathematical Loss Surface Undulation (Optimized every 2nd frame)
+                if (bgFrameCount % 2 === 0) {
+                    const posArr = dataLossSurface.geometry.attributes.position.array;
+                    for (let ix = 0; ix < gridDimX; ix++) {
+                        for (let iz = 0; iz < gridDimZ; iz++) {
+                            const idx = (ix * gridDimZ + iz) * 3;
+                            const u = ix * 0.22;
+                            const v = iz * 0.22;
+                            const waveY = -140 + Math.sin(u + bgTime * 1.2) * Math.cos(v + bgTime * 0.9) * 22 + Math.sin(u * 0.5 + bgTime * 0.6) * 10;
+                            posArr[idx + 1] = waveY;
+                        }
                     }
+                    dataLossSurface.geometry.attributes.position.needsUpdate = true;
                 }
-                dataLossSurface.geometry.attributes.position.needsUpdate = true;
 
                 // 5. Rotate Holographic Metric Radar Rings
                 metricRing1.rotation.z += 0.0018;

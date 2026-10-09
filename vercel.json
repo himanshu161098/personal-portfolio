@@ -1,7 +1,6 @@
 {
   "version": 2,
-  "cleanUrls": false,
-  "trailingSlash": true,
+  "cleanUrls": true,
   "framework": null,
   "buildCommand": null,
   "installCommand": null,
@@ -16,8 +15,12 @@
       "destination": "/prachi/index.html"
     },
     {
-      "source": "/Prachi AI/:match*",
-      "destination": "/prachi/:match*"
+      "source": "/Prachi%20AI/frontend/dist/:path*",
+      "destination": "/prachi/:path*"
+    },
+    {
+      "source": "/Prachi AI/frontend/dist/:path*",
+      "destination": "/prachi/:path*"
     }
   ]
 }
