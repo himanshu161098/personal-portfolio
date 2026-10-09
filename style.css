@@ -78,14 +78,27 @@
 }
 
 html {
-    scroll-behavior: smooth;
     font-size: 16px;
     color-scheme: dark;
+    max-width: 100%;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Smooth scroll strictly on precision hover pointers (mouse/trackpad) - mobile touchscreens use native 120Hz/60Hz zero-lag momentum */
+@media (hover: hover) and (pointer: fine) {
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
 #hero3dContainer,
 #hero3dCanvas,
-.hero-3d-container {
+.hero-3d-container,
+.avatar-card-wrapper,
+.avatar-card,
+.hero-visual,
+.hero-section {
     touch-action: pan-y !important;
 }
 
@@ -94,9 +107,12 @@ body {
     background-color: var(--bg-primary);
     color: var(--text-secondary);
     line-height: 1.65;
+    max-width: 100%;
     overflow-x: hidden;
     position: relative;
     min-height: 100vh;
+    touch-action: manipulation;
+    -webkit-overflow-scrolling: touch;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -3144,8 +3160,8 @@ textarea {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 0;
     opacity: 1;
@@ -8241,16 +8257,20 @@ textarea {
    "thoda desktop jesa dikhe" - dense, crisp, proportional, lag-free scrolling
    ========================================================================== */
 @media (max-width: 768px) {
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
     html {
         font-size: 14.5px;
         -webkit-text-size-adjust: 100%;
     }
 
-    body {
-        overflow-x: hidden;
-    }
-
-    /* Disable heavy continuous CSS 3D cubes on mobile to free GPU and guarantee 60fps */
+    /* Disable heavy continuous Three.js background canvas and CSS 3D cubes on mobile to free GPU and guarantee 60/120fps touch scroll */
+    .bg-3d-canvas,
     .floating-3d-space,
     .geom-3d,
     .cube-3d-1,

@@ -75,6 +75,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.getElementById('header');
     const sections = document.querySelectorAll('section[id]');
     let scrollTicking = false;
+    let cachedSections = [];
+
+    function cacheSectionPositions() {
+        cachedSections = Array.from(sections).map(section => ({
+            id: section.getAttribute('id'),
+            top: section.offsetTop - 120,
+            height: section.offsetHeight,
+            link: document.querySelector(`.nav-link[href*="${section.getAttribute('id')}"]`)
+        }));
+    }
+    cacheSectionPositions();
+    window.addEventListener('resize', cacheSectionPositions, { passive: true });
+    window.addEventListener('orientationchange', cacheSectionPositions, { passive: true });
 
     function handleScrollUpdates() {
         const scrollY = window.pageYOffset || window.scrollY;
@@ -88,21 +101,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Active Nav Link Scrollspy
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 120;
-            const sectionId = section.getAttribute('id');
-            const correspondingLink = document.querySelector(`.nav-link[href*="${sectionId}"]`);
-
-            if (correspondingLink) {
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    correspondingLink.classList.add('active');
+        // Active Nav Link Scrollspy (Zero layout reflow during scroll)
+        for (let i = 0; i < cachedSections.length; i++) {
+            const item = cachedSections[i];
+            if (item.link) {
+                if (scrollY >= item.top && scrollY < item.top + item.height) {
+                    item.link.classList.add('active');
                 } else {
-                    correspondingLink.classList.remove('active');
+                    item.link.classList.remove('active');
                 }
             }
-        });
+        }
 
         scrollTicking = false;
     }
@@ -322,8 +331,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const tiltCards = document.querySelectorAll(tiltCardSelectors.join(', '));
+    const isTouchDevice = window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
-    tiltCards.forEach(card => {
+    if (!isTouchDevice) {
+        tiltCards.forEach(card => {
         let glare = card.querySelector('.card-3d-glare');
         if (!glare) {
             glare = document.createElement('div');
@@ -364,6 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
             glare.style.opacity = '0';
         });
     });
+    }
 
 
     // ========================================================================
@@ -1451,6 +1463,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function init3DBackground() {
         const bgCanvas = document.getElementById('bg3dCanvas');
         if (!bgCanvas) return;
+
+        // Bypass background 3D WebGL completely on mobile screens (<= 768px) to eliminate GPU load and ensure 60/120fps touch scrolling
+        if (window.innerWidth <= 768) {
+            bgCanvas.style.display = 'none';
+            return;
+        }
 
         if (typeof THREE === 'undefined') {
             initBg2DFallback(bgCanvas);
@@ -2746,6 +2764,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function initCyberHudInspector() {
         const hud = document.getElementById('cyberHudInspector');
         if (!hud) return;
+
+        // Skip on mobile screens or touch-only devices since HUD is hidden and not needed
+        if (window.innerWidth <= 768 || (window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches)) {
+            return;
+        }
 
         // Elements of the HUD
         const categoryEl = document.getElementById('hudInspCategory');
