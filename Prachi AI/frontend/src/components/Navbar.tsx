@@ -65,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="navbar-actions" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         {/* Back to Portfolio Link */}
         <a
-          href="../../../index.html"
+          href="/"
           className="btn btn-secondary btn-sm nav-portfolio-link"
           title="Return to Personal Portfolio"
           style={{ display: 'flex', alignItems: 'center', gap: '6px', textDecoration: 'none', color: 'inherit' }}
