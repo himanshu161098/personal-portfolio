@@ -107,7 +107,16 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollTicking = false;
     }
 
+    let isScrollingTimer = null;
     window.addEventListener('scroll', () => {
+        if (!document.body.classList.contains('is-scrolling')) {
+            document.body.classList.add('is-scrolling');
+        }
+        clearTimeout(isScrollingTimer);
+        isScrollingTimer = setTimeout(() => {
+            document.body.classList.remove('is-scrolling');
+        }, 120);
+
         if (!scrollTicking) {
             window.requestAnimationFrame(handleScrollUpdates);
             scrollTicking = true;
@@ -1470,7 +1479,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 antialias: true
             });
             renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(window.innerWidth < 768 ? 1 : Math.min(window.devicePixelRatio, 1.5));
+            renderer.setPixelRatio(1);
 
             // ================================================================
             // 1. SOFT LIGHT MULTI-SPECTRAL AMBIENT STARDUST (750 Light Particles)
@@ -1717,15 +1726,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 targetY = -((e.clientY / window.innerHeight) - 0.5) * 80;
             }, { passive: true });
 
+            let isUserScrolling = false;
+            let userScrollTimer = null;
+
             window.addEventListener('scroll', () => {
+                isUserScrolling = true;
                 currentScrollY = window.pageYOffset || window.scrollY;
+                clearTimeout(userScrollTimer);
+                userScrollTimer = setTimeout(() => {
+                    isUserScrolling = false;
+                }, 120);
             }, { passive: true });
 
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
-                renderer.setPixelRatio(window.innerWidth < 768 ? 1 : Math.min(window.devicePixelRatio, 1.5));
+                renderer.setPixelRatio(1);
             });
 
             let bgClock = new THREE.Clock();
@@ -1734,12 +1751,20 @@ document.addEventListener('DOMContentLoaded', () => {
             // Main 3D Background Animation Loop
             function animateBg() {
                 requestAnimationFrame(animateBg);
-                const bgTime = bgClock.getElapsedTime();
-                bgFrameCount++;
 
-                // Smooth scroll progress
+                // Update camera depth based on scroll progress
                 const scrollProgress = currentScrollY / (document.documentElement.scrollHeight - window.innerHeight || 1);
                 targetZ = 440 - scrollProgress * 320;
+                camera.position.z += (targetZ - camera.position.z) * 0.08;
+
+                // When user is actively scrolling, skip CPU-heavy geometry and pulse loops to ensure butter-smooth 60fps scrolling
+                if (isUserScrolling) {
+                    renderer.render(scene, camera);
+                    return;
+                }
+
+                const bgTime = bgClock.getElapsedTime();
+                bgFrameCount++;
 
                 // 1. Starfield Ambient Slow Twinkle
                 starField.rotation.y += 0.0004;

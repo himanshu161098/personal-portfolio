@@ -41,7 +41,7 @@ I am your dedicated interactive guide to **Himanshu Kumar's** professional profi
 - 💼 **Recruiter Fit**: Honest JD fit for Data Analyst / BI Internships, resume download, and contact details.
 
 What would you like to explore about Himanshu's work?
-*(Looking for an empathetic human AI friend or universal Math/Science solving? Connect with [Prachi AI](prachi.html)!)*`;
+*(Looking for an empathetic human AI friend or universal Math/Science solving? Connect with [Prachi AI](prachi/index.html)!)*`;
 
 // -----------------------------------------------------------------------------
 // 2. STATE MANAGEMENT
@@ -152,7 +152,7 @@ function generateLocalMockResponse(userQuery, kb) {
 
 Aap Himanshu ke kisi bhi project ya skill ke baare me pooch sakte hain!
 
-💡 *Note: Agar aapko human-like conversation, emotional chat, ya deep Math/Science step-by-step numerical solving chahiye, toh aap hamari companion AI **[Prachi AI](prachi.html)** se baat kar sakte hain!*`;
+💡 *Note: Agar aapko human-like conversation, emotional chat, ya deep Math/Science step-by-step numerical solving chahiye, toh aap hamari companion AI **[Prachi AI](prachi/index.html)** se baat kar sakte hain!*`;
   }
 
   // 2. Questions about Prachi AI
@@ -165,7 +165,7 @@ Aap Himanshu ke kisi bhi project ya skill ke baare me pooch sakte hain!
 - 🎙️ **Sweet Female Voice**: Natural Hindi aur English female voice synthesis.
 
 Aap Prachi AI se yahan baat kar sakte hain:
-👉 **[Open Prachi AI Companion](prachi.html)**`;
+👉 **[Open Prachi AI Companion](prachi/index.html)**`;
   }
 
   // 3. 30-Second Recruiter Pitch / About Himanshu
@@ -319,7 +319,7 @@ Main Himanshu Kumar ke projects, skills, education aur career portfolio ke baare
 
 Aap Himanshu ke baare me kya jaan-na chahenge?
 
-*(Human-like companion chat ya universal Math/Science questions ke liye hamari companion AI [Prachi AI](prachi.html) check kijiye!)*`;
+*(Human-like companion chat ya universal Math/Science questions ke liye hamari companion AI [Prachi AI](prachi/index.html) check kijiye!)*`;
   }
 
   // 14. Fallback for non-portfolio questions (e.g. math or general queries)
@@ -327,14 +327,14 @@ Aap Himanshu ke baare me kya jaan-na chahenge?
   if (typeof window !== 'undefined' && window.UniversalAIEngine && typeof window.UniversalAIEngine.evaluateMath === 'function') {
     const mathCalc = window.UniversalAIEngine.evaluateMath(userQuery);
     if (mathCalc) {
-      return `${mathCalc}\n\n💡 *Note: Main Himanshu ka dedicated Quantix AI assistant hoon. Deep human-like conversations, feelings, aur universal Math/Science step-by-step solving ke liye aap hamari companion AI [Prachi AI](prachi.html) visit kar sakte hain!*`;
+      return `${mathCalc}\n\n💡 *Note: Main Himanshu ka dedicated Quantix AI assistant hoon. Deep human-like conversations, feelings, aur universal Math/Science step-by-step solving ke liye aap hamari companion AI [Prachi AI](prachi/index.html) visit kar sakte hain!*`;
     }
   }
 
   // Fallback: If UniversalAIEngine is loaded, get an answer, but wrap it as Portfolio Assistant
   if (typeof window !== 'undefined' && window.UniversalAIEngine && typeof window.UniversalAIEngine.generateResponse === 'function') {
     const uniAns = window.UniversalAIEngine.generateResponse(userQuery, { assistantName: 'Quantix AI' });
-    return `${uniAns}\n\n💡 *Note: Main Himanshu Kumar ka dedicated Quantix AI Portfolio Assistant hoon. Deep human-like friendly chat, emotional support, and complete universal problem-solving ke liye aap [Prachi AI](prachi.html) try kar sakte hain!*`;
+    return `${uniAns}\n\n💡 *Note: Main Himanshu Kumar ka dedicated Quantix AI Portfolio Assistant hoon. Deep human-like friendly chat, emotional support, and complete universal problem-solving ke liye aap [Prachi AI](prachi/index.html) try kar sakte hain!*`;
   }
 
   return `Main **Quantix AI** hoon — Himanshu Kumar ka Portfolio & Data Intelligence Assistant! 
@@ -346,7 +346,7 @@ Aap Himanshu ke baare me ye sawaal pooch sakte hain:
 - 💼 *"Why should we hire Himanshu for a Data Analyst role?"*
 - 📬 *"How can I contact Himanshu?"*
 
-💡 *Agar aapko human-like conversation, emotional chat, ya deep Math/Science step-by-step solving chahiye, toh aap hamari companion AI **[Prachi AI](prachi.html)** se baat kar sakte hain!*`;
+💡 *Agar aapko human-like conversation, emotional chat, ya deep Math/Science step-by-step solving chahiye, toh aap hamari companion AI **[Prachi AI](prachi/index.html)** se baat kar sakte hain!*`;
 }
 
 // -----------------------------------------------------------------------------
