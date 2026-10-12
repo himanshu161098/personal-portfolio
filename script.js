@@ -480,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (sheen) {
                 const sheenX = ((x / rect.width) * 100).toFixed(1);
                 const sheenY = ((y / rect.height) * 100).toFixed(1);
-                sheen.style.background = `radial-gradient(circle at ${sheenX}% ${sheenY}%, rgba(255, 255, 255, 0.22) 0%, rgba(0, 242, 254, 0.14) 35%, transparent 70%)`;
+                sheen.style.background = `radial-gradient(circle at ${sheenX}% ${sheenY}%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.08) 32%, transparent 68%)`;
             }
         });
 

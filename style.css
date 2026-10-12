@@ -2061,65 +2061,290 @@ textarea {
     transition: transform var(--transition-normal);
 }
 
-/* Ambient Holographic Glow Aura */
+/* Ambient Holographic Glow Aura Removed per user request */
 .id-card-ambient-glow {
-    position: absolute;
-    inset: -8px;
-    border-radius: 24px;
-    background: radial-gradient(circle at 50% 25%, rgba(0, 242, 254, 0.22) 0%, rgba(99, 102, 241, 0.14) 45%, rgba(217, 70, 239, 0.06) 75%, transparent 90%);
-    filter: blur(16px);
-    opacity: 0.85;
-    pointer-events: none;
-    z-index: 0;
-    animation: idGlowPulse 4s ease-in-out infinite alternate;
+    display: none !important;
 }
 
-@keyframes idGlowPulse {
-    0% {
-        opacity: 0.65;
-        transform: scale(0.97);
-        filter: blur(14px);
-    }
-    100% {
-        opacity: 0.95;
-        transform: scale(1.02);
-        filter: blur(20px);
-    }
-}
-
-/* Main Cyber ID Card Surface (Compact Width & Elongated Upper Portrait Layout) */
+/* Main Cyber ID Card Surface (Liquid Bubble Glass Transformation) */
 .cyber-id-card {
     position: relative;
     width: 100%;
     box-sizing: border-box;
+    /* Translucent liquid water-clear glassmorphism with high refractive depth */
     background:
-        radial-gradient(rgba(0, 242, 254, 0.07) 1px, transparent 1px),
-        linear-gradient(150deg, rgba(14, 22, 42, 0.96) 0%, rgba(7, 12, 26, 0.98) 55%, rgba(15, 23, 42, 0.97) 100%);
-    background-size: 14px 14px, 100% 100%;
-    border: 1px solid rgba(0, 242, 254, 0.4);
-    border-radius: 18px;
+        radial-gradient(ellipse at 30% 12%, rgba(255, 255, 255, 0.18) 0%, transparent 55%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.02) 42%, rgba(255, 255, 255, 0.07) 100%),
+        linear-gradient(165deg, rgba(10, 16, 32, 0.72) 0%, rgba(6, 11, 24, 0.82) 50%, rgba(10, 15, 30, 0.78) 100%);
+    border: 1.2px solid rgba(255, 255, 255, 0.28);
+    border-radius: 20px;
     padding: 0.65rem 0.82rem 0.65rem 0.82rem;
-    min-height: 425px; /* ELONGATING CARD VERTICALLY FOR TALL PORTRAIT BADGE */
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    min-height: 425px; /* Vertical portrait badge */
+    backdrop-filter: blur(28px) saturate(200%) contrast(108%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(108%);
     box-shadow:
-        0 16px 40px rgba(0, 0, 0, 0.65),
-        0 0 25px rgba(0, 242, 254, 0.15),
-        inset 0 1px 1px rgba(255, 255, 255, 0.18),
-        inset 0 0 16px rgba(0, 242, 254, 0.04);
+        0 25px 50px -10px rgba(0, 0, 0, 0.75),
+        0 10px 22px -6px rgba(0, 0, 0, 0.45),
+        inset 0 1.5px 1.5px rgba(255, 255, 255, 0.55),
+        inset 0 -1.5px 2px rgba(255, 255, 255, 0.12),
+        inset 0 0 24px rgba(255, 255, 255, 0.03);
     z-index: 1;
     overflow: hidden;
     transform-style: preserve-3d;
-    transform-origin: 50% 0%; /* PIVOT DIRECTLY AT TOP CHAIN JOINT SO THEY NEVER DETACH */
+    transform-origin: 50% 0%; /* Joint pivot directly at top chain joint */
     transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
 }
 
 .cyber-id-card:hover {
-    border-color: rgba(0, 242, 254, 0.65);
+    border-color: rgba(255, 255, 255, 0.48);
     box-shadow:
-        0 20px 48px rgba(0, 0, 0, 0.7),
-        0 0 35px rgba(0, 242, 254, 0.25),
-        inset 0 1px 2px rgba(255, 255, 255, 0.25);
+        0 30px 60px -10px rgba(0, 0, 0, 0.85),
+        0 14px 26px -6px rgba(0, 0, 0, 0.55),
+        inset 0 2px 2px rgba(255, 255, 255, 0.75),
+        inset 0 -2px 3px rgba(255, 255, 255, 0.18);
+}
+
+/* 3D Liquid Bubble Glass Container & Internal Optics */
+.liquid-bubbles-container {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Hyper-realistic 3D Spherical Liquid Bubbles */
+.liquid-bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 26%,
+        rgba(255, 255, 255, 0.96) 0%,
+        rgba(255, 255, 255, 0.5) 16%,
+        rgba(56, 189, 248, 0.22) 42%,
+        rgba(168, 85, 247, 0.14) 70%,
+        rgba(255, 255, 255, 0.35) 94%,
+        rgba(255, 255, 255, 0.75) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow:
+        inset 0 -3px 6px rgba(14, 165, 233, 0.2),
+        inset 0 2px 5px rgba(255, 255, 255, 0.75),
+        0 4px 12px rgba(0, 0, 0, 0.25),
+        0 1px 3px rgba(255, 255, 255, 0.3);
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+    will-change: transform, border-radius;
+}
+
+/* Specular White Glint Reflection Dot on Top-Left of Bubble */
+.liquid-bubble::after {
+    content: '';
+    position: absolute;
+    top: 16%;
+    left: 20%;
+    width: 28%;
+    height: 28%;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff 65%, rgba(255, 255, 255, 0) 100%);
+    filter: blur(0.2px);
+}
+
+/* Secondary Crescent Bounce Light Highlight */
+.liquid-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: 12%;
+    right: 18%;
+    width: 32%;
+    height: 18%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.5) 0%, transparent 80%);
+    transform: rotate(-25deg);
+}
+
+.liquid-bubble.bubble-1 {
+    width: 38px;
+    height: 38px;
+    top: 14%;
+    left: 7%;
+    opacity: 0.85;
+    animation: liquidBubbleFloat1 7s ease-in-out infinite alternate;
+}
+
+.liquid-bubble.bubble-2 {
+    width: 22px;
+    height: 22px;
+    top: 48%;
+    right: 9%;
+    opacity: 0.8;
+    animation: liquidBubbleFloat2 6.2s ease-in-out infinite alternate;
+}
+
+.liquid-bubble.bubble-3 {
+    width: 48px;
+    height: 48px;
+    bottom: 15%;
+    left: 10%;
+    opacity: 0.78;
+    animation: liquidBubbleFloat3 8.6s ease-in-out infinite alternate;
+}
+
+.liquid-bubble.bubble-4 {
+    width: 15px;
+    height: 15px;
+    top: 29%;
+    right: 18%;
+    opacity: 0.9;
+    animation: liquidBubbleFloat4 5.4s ease-in-out infinite alternate;
+}
+
+.liquid-bubble.bubble-5 {
+    width: 28px;
+    height: 28px;
+    bottom: 28%;
+    right: 12%;
+    opacity: 0.82;
+    animation: liquidBubbleFloat5 7.8s ease-in-out infinite alternate;
+}
+
+.liquid-bubble.bubble-6 {
+    width: 12px;
+    height: 12px;
+    top: 72%;
+    left: 36%;
+    opacity: 0.75;
+    animation: liquidBubbleFloat6 5.1s ease-in-out infinite alternate;
+}
+
+.liquid-bubble.bubble-7 {
+    width: 32px;
+    height: 32px;
+    top: 38%;
+    left: 46%;
+    opacity: 0.7;
+    animation: liquidBubbleFloat7 8.1s ease-in-out infinite alternate;
+}
+
+/* Organic Floating & Fluid Wobble Keyframes */
+@keyframes liquidBubbleFloat1 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    }
+    50% {
+        transform: translate(6px, -14px) scale(1.05);
+        border-radius: 46% 54% 52% 48% / 53% 47% 53% 47%;
+    }
+    100% {
+        transform: translate(-4px, -24px) scale(0.98);
+        border-radius: 52% 48% 46% 54% / 48% 52% 49% 51%;
+    }
+}
+
+@keyframes liquidBubbleFloat2 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        border-radius: 50%;
+    }
+    50% {
+        transform: translate(-8px, -18px) scale(1.08);
+        border-radius: 53% 47% 51% 49% / 48% 52% 48% 52%;
+    }
+    100% {
+        transform: translate(4px, -30px) scale(0.96);
+        border-radius: 47% 53% 49% 51% / 52% 48% 53% 47%;
+    }
+}
+
+@keyframes liquidBubbleFloat3 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        border-radius: 50%;
+    }
+    50% {
+        transform: translate(10px, -20px) scale(1.04);
+        border-radius: 52% 48% 55% 45% / 46% 54% 48% 52%;
+    }
+    100% {
+        transform: translate(3px, -36px) scale(0.97);
+        border-radius: 47% 53% 48% 52% / 54% 46% 53% 47%;
+    }
+}
+
+@keyframes liquidBubbleFloat4 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-5px, -12px) scale(1.1);
+    }
+    100% {
+        transform: translate(4px, -22px) scale(0.95);
+    }
+}
+
+@keyframes liquidBubbleFloat5 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        border-radius: 50%;
+    }
+    50% {
+        transform: translate(-9px, -16px) scale(1.06);
+        border-radius: 49% 51% 54% 46% / 52% 48% 52% 48%;
+    }
+    100% {
+        transform: translate(5px, -32px) scale(0.98);
+        border-radius: 53% 47% 48% 52% / 47% 53% 49% 51%;
+    }
+}
+
+@keyframes liquidBubbleFloat6 {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(6px, -10px) scale(1.12);
+    }
+    100% {
+        transform: translate(-5px, -20px) scale(0.92);
+    }
+}
+
+@keyframes liquidBubbleFloat7 {
+    0% {
+        transform: translate(0, 0) scale(1);
+        border-radius: 50%;
+    }
+    50% {
+        transform: translate(-7px, -15px) scale(1.05);
+        border-radius: 54% 46% 51% 49% / 48% 52% 51% 49%;
+    }
+    100% {
+        transform: translate(6px, -28px) scale(0.96);
+        border-radius: 48% 52% 47% 53% / 52% 48% 48% 52%;
+    }
+}
+
+/* Silky Liquid Glass Caustic Light Wave */
+.liquid-glass-caustic {
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(ellipse 65% 35% at 50% 50%, rgba(255, 255, 255, 0.09) 0%, rgba(56, 189, 248, 0.04) 45%, transparent 75%);
+    transform: rotate(-25deg);
+    animation: causticWaveFlow 11s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes causticWaveFlow {
+    0% {
+        transform: rotate(-25deg) translate(-8%, -8%) scale(0.95);
+        opacity: 0.55;
+    }
+    100% {
+        transform: rotate(-20deg) translate(8%, 8%) scale(1.05);
+        opacity: 0.85;
+    }
 }
 
 /* Top Lanyard Mount Slot & Card Hole with Reinforced Grommet (Interlocks with Hook Loop) */
@@ -2184,13 +2409,15 @@ textarea {
 
 /* ID Card Header: Institution & Accreditation (Elongated Upper Section) */
 .id-card-header {
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.4rem;
     padding-top: 0.2rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .id-header-emblem {
@@ -2267,17 +2494,22 @@ textarea {
     white-space: nowrap;
 }
 
-/* Security Ribbon / Category Title Bar */
+/* Security Ribbon / Category Title Bar (Frosted Glass Ribbon) */
 .id-security-ribbon {
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.35rem;
-    background: linear-gradient(90deg, rgba(0, 242, 254, 0.16) 0%, rgba(99, 102, 241, 0.16) 55%, rgba(217, 70, 239, 0.12) 100%);
-    border-left: 2px solid #00f2fe;
-    border-radius: 3px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, rgba(56, 189, 248, 0.1) 55%, rgba(192, 132, 252, 0.08) 100%);
+    border-left: 2px solid rgba(255, 255, 255, 0.75);
+    border-radius: 4px;
     padding: 0.22rem 0.45rem;
     margin: 0.38rem 0 0.52rem 0;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
 
 .id-ribbon-title {
@@ -2308,6 +2540,8 @@ textarea {
 
 /* Main Grid Layout (Extra Compact & Taller Portrait Height) */
 .id-card-grid {
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: 74px 1fr;
     gap: 0.55rem;
@@ -2327,13 +2561,13 @@ textarea {
     position: relative;
     width: 74px;
     height: 94px; /* TALLER PORTRAIT ORIENTATION */
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
-    background: #060a14;
-    border: 1.5px solid rgba(0, 242, 254, 0.5);
+    background: rgba(6, 10, 20, 0.85);
+    border: 1.5px solid rgba(255, 255, 255, 0.38);
     box-shadow:
-        0 4px 14px rgba(0, 0, 0, 0.6),
-        0 0 12px rgba(0, 242, 254, 0.2);
+        0 6px 16px rgba(0, 0, 0, 0.6),
+        inset 0 1px 2px rgba(255, 255, 255, 0.4);
 }
 
 .id-bracket {
@@ -2494,18 +2728,21 @@ textarea {
 }
 
 .id-bio-pill {
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 999px;
     font-family: var(--font-mono);
     font-size: 0.44rem;
     font-weight: 700;
     color: #cbd5e1;
-    padding: 0.08rem 0.3rem;
+    padding: 0.08rem 0.32rem;
     display: flex;
     align-items: center;
     gap: 0.18rem;
     white-space: nowrap;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3);
 }
 
 .id-bio-pill i {
@@ -2642,9 +2879,11 @@ textarea {
 
 /* ID Card Footer: High-Tech Barcode & Hologram Security Seal (Extra Compact) */
 .id-card-footer {
+    position: relative;
+    z-index: 2;
     margin-top: 0.45rem;
     padding-top: 0.38rem;
-    border-top: 1px solid rgba(0, 242, 254, 0.18);
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -2772,6 +3011,8 @@ textarea {
     inset: 0;
     pointer-events: none;
     z-index: 4;
+    border-radius: 20px;
+    background: linear-gradient(115deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 28%, transparent 55%);
     transition: background 0.15s ease-out;
 }
 
