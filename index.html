@@ -308,15 +308,17 @@
                     <!-- View Mode Switcher -->
                     <div class="visual-mode-toggle" id="visualModeToggle" role="tablist"
                         aria-label="Hero Visual View Selector">
-                        <button class="mode-tab active" id="tabAvatar" data-mode="avatar" role="tab"
-                            aria-selected="true" title="Switch to Developer Profile View">
-                            <i class="fa-solid fa-user-tie"></i>
-                            <span>Developer Profile</span>
-                        </button>
-                        <button class="mode-tab" id="tabIdCard" data-mode="idcard" role="tab"
-                            aria-selected="false" title="Switch to Hanging Student ID Card View">
+                        <!-- 1. Student ID Card Tab (First & Active by default) -->
+                        <button class="mode-tab active" id="tabIdCard" data-mode="idcard" role="tab"
+                            aria-selected="true" title="Hanging Student ID Card View">
                             <i class="fa-solid fa-id-card-clip"></i>
                             <span>Student ID Card</span>
+                        </button>
+                        <!-- 2. Developer Profile Tab (Second) -->
+                        <button class="mode-tab" id="tabAvatar" data-mode="avatar" role="tab"
+                            aria-selected="false" title="Switch to Developer Profile View">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span>Developer Profile</span>
                         </button>
                     </div>
 
@@ -324,85 +326,8 @@
                         <!-- Holographic Ring & Glow -->
                         <div class="avatar-glow-ring" aria-hidden="true"></div>
 
-                        <!-- 1. Classic Developer Profile Card (Active Default) -->
-                        <div class="avatar-card" id="heroAvatarCard">
-                            <!-- Cyber Tech HUD Header -->
-                            <div class="dev-card-hud" aria-hidden="true">
-                                <span class="hud-mono"><i class="fa-solid fa-code-commit"></i> DEV_ENGINE // v3.2</span>
-                                <span class="hud-status"><span class="hud-pulse"></span>ACTIVE</span>
-                            </div>
-
-                            <!-- Cyber Corner Brackets -->
-                            <div class="dev-card-corner dev-corner-tl" aria-hidden="true"></div>
-                            <div class="dev-card-corner dev-corner-tr" aria-hidden="true"></div>
-                            <div class="dev-card-corner dev-corner-bl" aria-hidden="true"></div>
-                            <div class="dev-card-corner dev-corner-br" aria-hidden="true"></div>
-
-                            <!-- Ambient Cyber Glow Orb -->
-                            <div class="dev-card-ambient-orb" aria-hidden="true"></div>
-
-                            <!-- Visual Avatar / Profile Placeholder -->
-                            <div class="avatar-img-container">
-                                <img src="assets/profile.jpg" alt="Himanshu Kumar" class="avatar-photo"
-                                    id="profileAvatarImg"
-                                    onerror="this.style.display='none'; document.getElementById('fallbackAvatarSvg').style.display='block';">
-
-                                <!-- Cyber-themed Tech Avatar SVG Fallback -->
-                                <svg class="avatar-svg" id="fallbackAvatarSvg" style="display: none;"
-                                    viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
-                                    aria-label="Himanshu Kumar avatar illustration">
-                                    <defs>
-                                        <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" stop-color="#00f2fe" />
-                                            <stop offset="50%" stop-color="#38bdf8" />
-                                            <stop offset="100%" stop-color="#6366f1" />
-                                        </linearGradient>
-                                        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" stop-color="#0f172a" />
-                                            <stop offset="100%" stop-color="#1e293b" />
-                                        </linearGradient>
-                                    </defs>
-                                    <circle cx="120" cy="120" r="105" stroke="url(#avatarGrad)" stroke-width="2"
-                                        stroke-dasharray="6 6" opacity="0.6" />
-                                    <circle cx="120" cy="120" r="95" fill="url(#shieldGrad)" />
-                                    <path
-                                        d="M120 45 C100 45 85 62 85 84 C85 96 91 106 100 113 C76 122 58 147 55 178 C54 185 60 190 68 190 L172 190 C180 190 186 185 185 178 C182 147 164 122 140 113 C149 106 155 96 155 84 C155 62 140 45 120 45 Z"
-                                        fill="#0f172a" stroke="url(#avatarGrad)" stroke-width="2.5" />
-                                    <path
-                                        d="M102 80 C102 72 108 65 120 65 C132 65 138 72 138 80 C138 95 128 102 120 102 C112 102 102 95 102 80 Z"
-                                        fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
-                                    <rect x="105" y="77" width="30" height="9" rx="4.5" fill="#00f2fe" opacity="0.9" />
-                                </svg>
-                                <div class="avatar-badge">
-                                    <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-                                    <span>Verified_Dev</span>
-                                </div>
-                            </div>
-
-                            <!-- Live Mini Terminal Status Card -->
-                            <div class="mini-terminal">
-                                <div class="terminal-header">
-                                    <span class="term-dot dot-red"></span>
-                                    <span class="term-dot dot-yellow"></span>
-                                    <span class="term-dot dot-green"></span>
-                                    <span class="term-title">himanshu@portfolio:~</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <p class="term-line"><span class="term-cyan">institution:</span> "IIMT College of
-                                        Engineering, AKTU"</p>
-                                    <p class="term-line"><span class="term-cyan">degree:</span> "B.Tech CSE-IT (Final
-                                        Year)"</p>
-                                    <p class="term-line"><span class="term-cyan">certifications:</span> <span
-                                            class="term-green">7+ Completed</span></p>
-                                    <p class="term-line"><span class="term-cyan">sync_status:</span> <span
-                                            class="term-ready" id="termSyncStatus">AUTO_SYNC_ACTIVE</span><span
-                                            class="cursor-blink">_</span></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 2. Hanging Cyber ID Card (Replacing 3D Quantum Core, with Lanyard Holder & Swaying Movement) -->
-                        <div class="id-hanging-container" id="heroIdCardContainer" style="display: none;">
+                        <!-- 1. Hanging Cyber ID Card (Default Active View - Hanging with Realistic Interlocking Chain & Swaying Movement) -->
+                        <div class="id-hanging-container active" id="heroIdCardContainer">
                             <div class="id-swaying-hanger">
                                 <!-- Lanyard Strap extending from top -->
                                 <div class="id-lanyard-strap" aria-hidden="true">
@@ -410,29 +335,53 @@
                                     <span class="id-strap-text">HK • AKTU • IIMT</span>
                                 </div>
 
-                                <!-- Metallic ID Holder Clip & Clasp -->
+                                <!-- Metallic ID Holder Hardware (Crimp Buckle & Swivel Joint) -->
                                 <div class="id-holder-hardware" aria-hidden="true">
-                                    <div class="id-metal-buckle"></div>
-                                    <div class="id-metal-clasp"></div>
-                                    <div class="id-metal-ring"></div>
+                                    <div class="id-metal-buckle">
+                                        <span class="buckle-rivet rivet-l"></span>
+                                        <span class="buckle-rivet rivet-r"></span>
+                                    </div>
+                                    <div class="id-metal-swivel"></div>
                                 </div>
 
-                                <!-- 3D Futuristic Cyber ID Card Wrapper -->
+                                <!-- Real 3D Interlocking Metallic Chain Connecting Holder Directly to ID Card -->
+                                <div class="id-connector-chain" id="idConnectorChain" aria-hidden="true">
+                                    <div class="chain-link link-1"></div>
+                                    <div class="chain-link link-2"></div>
+                                    <div class="chain-link link-3"></div>
+                                    <div class="chain-link link-4"></div>
+                                    <div class="chain-link link-5"></div>
+                                    <!-- Heavy-duty Swivel Carabiner Hook that loops directly into ID card top slot -->
+                                    <div class="chain-carabiner-hook" id="chainCarabinerHook">
+                                        <div class="hook-swivel"></div>
+                                        <div class="hook-body">
+                                            <div class="hook-claw"></div>
+                                            <div class="hook-gate"></div>
+                                        </div>
+                                        <div class="hook-loop-joint"></div>
+                                    </div>
+                                </div>
+
+                                <!-- 3D Futuristic Cyber ID Card Wrapper (Compact Width & Elongated Upper Design) -->
                                 <div class="cyber-id-card-wrapper" id="heroIdCardInnerWrapper">
                                     <!-- Holographic Ambient Glow Aura -->
                                     <div class="id-card-ambient-glow" aria-hidden="true"></div>
 
-                                    <!-- 3D Futuristic Cyber ID Card -->
+                                    <!-- 3D Futuristic Cyber ID Card (Elongated Upper Portrait Layout) -->
                                     <div class="cyber-id-card" id="cyberIdCard" role="region"
                                         aria-label="Himanshu Kumar Engineering Identity Card">
-                                        <!-- Top Lanyard Mount Slot & Card Hole -->
+                                        <!-- Top Lanyard Mount Slot & Card Hole with Reinforced Grommet (Directly Attached to Hook Loop) -->
                                         <div class="id-lanyard-slot-wrap" aria-hidden="true">
-                                            <div class="id-lanyard-band"></div>
-                                            <div class="id-lanyard-clip"></div>
-                                            <div class="id-lanyard-hole"></div>
+                                            <div class="id-mount-bracket">
+                                                <div class="id-mount-band"></div>
+                                                <div class="id-mount-clip"></div>
+                                                <div class="id-grommet-hole">
+                                                    <div class="chain-hook-through"></div>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <!-- ID Card Header: Institution & Accreditation -->
+                                        <!-- ID Card Header: Institution & Accreditation (Elongated Upper Section) -->
                                         <div class="id-card-header">
                                             <div class="id-header-emblem">
                                                 <svg class="id-crest-svg" viewBox="0 0 34 34" fill="none"
@@ -474,7 +423,7 @@
                                         <div class="id-card-grid">
                                             <!-- Left Column: Holographic Photo & Security Hardware -->
                                             <div class="id-left-col">
-                                                <!-- Photo Frame with Tech Brackets & Scanline -->
+                                                <!-- Photo Frame with Tech Brackets & Scanline (Taller Portrait Height) -->
                                                 <div class="id-photo-frame">
                                                     <span class="id-bracket b-tl"></span>
                                                     <span class="id-bracket b-tr"></span>
@@ -591,6 +540,83 @@
                                         <!-- Dynamic Glossy Light Reflection Sheen -->
                                         <div class="id-glossy-sheen" aria-hidden="true"></div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Classic Developer Profile Card (Switchable Second View) -->
+                        <div class="avatar-card hidden" id="heroAvatarCard" style="display: none;">
+                            <!-- Cyber Tech HUD Header -->
+                            <div class="dev-card-hud" aria-hidden="true">
+                                <span class="hud-mono"><i class="fa-solid fa-code-commit"></i> DEV_ENGINE // v3.2</span>
+                                <span class="hud-status"><span class="hud-pulse"></span>ACTIVE</span>
+                            </div>
+
+                            <!-- Cyber Corner Brackets -->
+                            <div class="dev-card-corner dev-corner-tl" aria-hidden="true"></div>
+                            <div class="dev-card-corner dev-corner-tr" aria-hidden="true"></div>
+                            <div class="dev-card-corner dev-corner-bl" aria-hidden="true"></div>
+                            <div class="dev-card-corner dev-corner-br" aria-hidden="true"></div>
+
+                            <!-- Ambient Cyber Glow Orb -->
+                            <div class="dev-card-ambient-orb" aria-hidden="true"></div>
+
+                            <!-- Visual Avatar / Profile Placeholder -->
+                            <div class="avatar-img-container">
+                                <img src="assets/profile.jpg" alt="Himanshu Kumar" class="avatar-photo"
+                                    id="profileAvatarImg"
+                                    onerror="this.style.display='none'; document.getElementById('fallbackAvatarSvg').style.display='block';">
+
+                                <!-- Cyber-themed Tech Avatar SVG Fallback -->
+                                <svg class="avatar-svg" id="fallbackAvatarSvg" style="display: none;"
+                                    viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
+                                    aria-label="Himanshu Kumar avatar illustration">
+                                    <defs>
+                                        <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#00f2fe" />
+                                            <stop offset="50%" stop-color="#38bdf8" />
+                                            <stop offset="100%" stop-color="#6366f1" />
+                                        </linearGradient>
+                                        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#0f172a" />
+                                            <stop offset="100%" stop-color="#1e293b" />
+                                        </linearGradient>
+                                    </defs>
+                                    <circle cx="120" cy="120" r="105" stroke="url(#avatarGrad)" stroke-width="2"
+                                        stroke-dasharray="6 6" opacity="0.6" />
+                                    <circle cx="120" cy="120" r="95" fill="url(#shieldGrad)" />
+                                    <path
+                                        d="M120 45 C100 45 85 62 85 84 C85 96 91 106 100 113 C76 122 58 147 55 178 C54 185 60 190 68 190 L172 190 C180 190 186 185 185 178 C182 147 164 122 140 113 C149 106 155 96 155 84 C155 62 140 45 120 45 Z"
+                                        fill="#0f172a" stroke="url(#avatarGrad)" stroke-width="2.5" />
+                                    <path
+                                        d="M102 80 C102 72 108 65 120 65 C132 65 138 72 138 80 C138 95 128 102 120 102 C112 102 102 95 102 80 Z"
+                                        fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+                                    <rect x="105" y="77" width="30" height="9" rx="4.5" fill="#00f2fe" opacity="0.9" />
+                                </svg>
+                                <div class="avatar-badge">
+                                    <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                                    <span>Verified_Dev</span>
+                                </div>
+                            </div>
+
+                            <!-- Live Mini Terminal Status Card -->
+                            <div class="mini-terminal">
+                                <div class="terminal-header">
+                                    <span class="term-dot dot-red"></span>
+                                    <span class="term-dot dot-yellow"></span>
+                                    <span class="term-dot dot-green"></span>
+                                    <span class="term-title">himanshu@portfolio:~</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <p class="term-line"><span class="term-cyan">institution:</span> "IIMT College of
+                                        Engineering, AKTU"</p>
+                                    <p class="term-line"><span class="term-cyan">degree:</span> "B.Tech CSE-IT (Final
+                                        Year)"</p>
+                                    <p class="term-line"><span class="term-cyan">certifications:</span> <span
+                                            class="term-green">7+ Completed</span></p>
+                                    <p class="term-line"><span class="term-cyan">sync_status:</span> <span
+                                            class="term-ready" id="termSyncStatus">AUTO_SYNC_ACTIVE</span><span
+                                            class="cursor-blink">_</span></p>
                                 </div>
                             </div>
                         </div>

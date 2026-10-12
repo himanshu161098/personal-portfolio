@@ -428,11 +428,16 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             switchHeroMode('idcard');
         });
+
+        // Initialize Student ID Card view first by default
+        switchHeroMode('idcard');
     }
 
-    // Interactive 3D Tilt & Lanyard Physics for Cyber ID Card
+    // Interactive 3D Tilt & Chain Physics for Cyber ID Card
     if (cyberIdCard && heroCardWrapper) {
         const sheen = cyberIdCard.querySelector('.id-glossy-sheen');
+        const chainCarabinerHook = document.getElementById('chainCarabinerHook');
+        const chainLink4 = document.querySelector('.chain-link.link-4');
         let cardHovered = false;
 
         heroCardWrapper.addEventListener('mouseenter', () => {
@@ -442,6 +447,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     swayingHanger.style.animationPlayState = 'paused';
                 }
                 cyberIdCard.style.transition = 'transform 0.1s ease-out, box-shadow 0.2s ease';
+                if (chainCarabinerHook) {
+                    chainCarabinerHook.style.transition = 'transform 0.1s ease-out';
+                }
             }
         });
 
@@ -453,10 +461,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            const rotateX = -((y - centerY) / centerY) * 11;
-            const rotateY = ((x - centerX) / centerX) * 11;
+            const rotateX = -((y - centerY) / centerY) * 8.5;
+            const rotateY = ((x - centerX) / centerX) * 8.5;
 
-            cyberIdCard.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+            // Pivot directly from the top hook attachment joint so they remain permanently attached
+            cyberIdCard.style.transformOrigin = '50% 0%';
+            cyberIdCard.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+
+            if (chainCarabinerHook) {
+                chainCarabinerHook.style.transformOrigin = '50% 0%';
+                chainCarabinerHook.style.transform = `perspective(600px) rotateY(${(rotateY * 0.75).toFixed(2)}deg) rotateZ(${(rotateY * 0.15).toFixed(2)}deg)`;
+            }
+
+            if (chainLink4) {
+                chainLink4.style.transform = `rotateY(${(rotateY * 0.4).toFixed(2)}deg)`;
+            }
 
             if (sheen) {
                 const sheenX = ((x / rect.width) * 100).toFixed(1);
@@ -471,7 +490,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 swayingHanger.style.animationPlayState = 'running';
             }
             cyberIdCard.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease';
-            cyberIdCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            cyberIdCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+
+            if (chainCarabinerHook) {
+                chainCarabinerHook.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                chainCarabinerHook.style.transform = 'perspective(600px) rotateY(0deg) rotateZ(0deg)';
+            }
+
+            if (chainLink4) {
+                chainLink4.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                chainLink4.style.transform = '';
+            }
+
             if (sheen) {
                 sheen.style.background = '';
             }
