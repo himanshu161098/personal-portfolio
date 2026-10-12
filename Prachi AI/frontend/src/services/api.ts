@@ -48,13 +48,25 @@ class ApiClient {
     }
 
     let res: Response;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
     try {
       res = await fetch(`${getApiBase()}${endpoint}`, {
         ...options,
         headers,
+        signal: options.signal || controller.signal,
       });
     } catch (netErr: any) {
-      throw new Error(`Unable to reach Prachi AI backend at ${getApiBase()}. Make sure backend server is running on port 3001.`);
+      clearTimeout(timeoutId);
+      const isTimeout = netErr.name === 'AbortError';
+      throw new Error(
+        isTimeout
+          ? `Backend request timed out after 15s. Switching to offline mode.`
+          : `Unable to reach Prachi AI backend. Please check network connection.`
+      );
+    } finally {
+      clearTimeout(timeoutId);
     }
 
     const text = await res.text();

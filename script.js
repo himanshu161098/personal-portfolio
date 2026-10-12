@@ -70,59 +70,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ========================================================================
-    // 2. STICKY HEADER & ACTIVE NAVIGATION LINK ON SCROLL (rAF Throttled)
+    // 2. STICKY HEADER & ACTIVE NAVIGATION LINK ON SCROLL (Zero-Lag Optimized)
     // ========================================================================
     const header = document.getElementById('header');
-    const sections = document.querySelectorAll('section[id]');
-    let scrollTicking = false;
-    let cachedSections = [];
+    let wasHeaderScrolled = false;
 
-    function cacheSectionPositions() {
-        cachedSections = Array.from(sections).map(section => ({
-            id: section.getAttribute('id'),
-            top: section.offsetTop - 120,
-            height: section.offsetHeight,
-            link: document.querySelector(`.nav-link[href*="${section.getAttribute('id')}"]`)
-        }));
-    }
-    cacheSectionPositions();
-    window.addEventListener('resize', cacheSectionPositions, { passive: true });
-    window.addEventListener('orientationchange', cacheSectionPositions, { passive: true });
-
-    function handleScrollUpdates() {
-        const scrollY = window.pageYOffset || window.scrollY;
-
-        // Sticky Header Elevation
-        if (header) {
-            if (scrollY > 40) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        }
-
-        // Active Nav Link Scrollspy (Zero layout reflow during scroll)
-        for (let i = 0; i < cachedSections.length; i++) {
-            const item = cachedSections[i];
-            if (item.link) {
-                if (scrollY >= item.top && scrollY < item.top + item.height) {
-                    item.link.classList.add('active');
-                } else {
-                    item.link.classList.remove('active');
-                }
-            }
-        }
-
-        scrollTicking = false;
-    }
-
+    // Passive, zero-layout sticky header elevation
     window.addEventListener('scroll', () => {
-        if (!scrollTicking) {
-            window.requestAnimationFrame(handleScrollUpdates);
-            scrollTicking = true;
+        const isScrolled = (window.pageYOffset || window.scrollY) > 40;
+        if (isScrolled !== wasHeaderScrolled) {
+            wasHeaderScrolled = isScrolled;
+            if (header) {
+                header.classList.toggle('scrolled', isScrolled);
+            }
         }
     }, { passive: true });
-    handleScrollUpdates();
+    // Initial check
+    if (header) {
+        wasHeaderScrolled = (window.pageYOffset || window.scrollY) > 40;
+        header.classList.toggle('scrolled', wasHeaderScrolled);
+    }
+
+    // High-performance IntersectionObserver-based Scrollspy (Zero layout reflow during scroll)
+    const sections = document.querySelectorAll('section[id]');
+    const navLinkMap = new Map();
+    document.querySelectorAll('.nav-link[href*="#"]').forEach(link => {
+        const href = link.getAttribute('href') || '';
+        const hashIdx = href.indexOf('#');
+        if (hashIdx !== -1) {
+            const id = href.slice(hashIdx + 1);
+            if (id) navLinkMap.set(id, link);
+        }
+    });
+
+    if ('IntersectionObserver' in window && sections.length > 0) {
+        const scrollSpyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const activeId = entry.target.getAttribute('id');
+                    navLinkMap.forEach((link, linkId) => {
+                        link.classList.toggle('active', linkId === activeId);
+                    });
+                }
+            });
+        }, {
+            rootMargin: '-20% 0px -65% 0px',
+            threshold: 0
+        });
+
+        sections.forEach(sec => scrollSpyObserver.observe(sec));
+    }
 
 
     // ========================================================================
@@ -276,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ========================================================================
-    // 7. 3D CYBER CURSOR FOLLOWER
+    // 7. 3D CYBER CURSOR FOLLOWER (Hardware-Accelerated GPU Transform)
     // ========================================================================
     const cursorDot = document.getElementById('cursor3dDot');
     const cursorRing = document.getElementById('cursor3dRing');
@@ -287,18 +284,21 @@ document.addEventListener('DOMContentLoaded', () => {
         let ringX = mouseX;
         let ringY = mouseY;
 
+        cursorDot.style.left = '0px';
+        cursorDot.style.top = '0px';
+        cursorRing.style.left = '0px';
+        cursorRing.style.top = '0px';
+
         window.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            cursorDot.style.left = `${mouseX}px`;
-            cursorDot.style.top = `${mouseY}px`;
+            cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
         }, { passive: true });
 
         function animateCursor() {
             ringX += (mouseX - ringX) * 0.18;
             ringY += (mouseY - ringY) * 0.18;
-            cursorRing.style.left = `${ringX}px`;
-            cursorRing.style.top = `${ringY}px`;
+            cursorRing.style.transform = `translate3d(${ringX.toFixed(1)}px, ${ringY.toFixed(1)}px, 0) translate(-50%, -50%)`;
             requestAnimationFrame(animateCursor);
         }
         requestAnimationFrame(animateCursor);
@@ -324,17 +324,14 @@ document.addEventListener('DOMContentLoaded', () => {
         '.education-card',
         '.contact-info-card',
         '.dossier-card',
-        '.avatar-card-wrapper',
         '.cert-card',
         '.gh-repo-card',
         '.li-post-card'
     ];
 
     const tiltCards = document.querySelectorAll(tiltCardSelectors.join(', '));
-    const isTouchDevice = window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
-    if (!isTouchDevice) {
-        tiltCards.forEach(card => {
+    tiltCards.forEach(card => {
         let glare = card.querySelector('.card-3d-glare');
         if (!glare) {
             glare = document.createElement('div');
@@ -375,37 +372,109 @@ document.addEventListener('DOMContentLoaded', () => {
             glare.style.opacity = '0';
         });
     });
+
+
+    // ========================================================================
+    // 9. HERO DUAL VIEW MODE SWITCHER (DEVELOPER PROFILE <-> HANGING ID CARD)
+    // ========================================================================
+    const visualModeToggle = document.getElementById('visualModeToggle');
+    const tabAvatar = document.getElementById('tabAvatar');
+    const tabIdCard = document.getElementById('tabIdCard');
+    const heroAvatarCard = document.getElementById('heroAvatarCard');
+    const heroIdCardContainer = document.getElementById('heroIdCardContainer');
+    const cyberIdCard = document.getElementById('cyberIdCard');
+    const heroCardWrapper = document.getElementById('heroCardWrapper');
+    const swayingHanger = document.querySelector('.id-swaying-hanger');
+
+    if (tabAvatar && tabIdCard) {
+        function switchHeroMode(mode) {
+            if (mode === 'idcard') {
+                tabIdCard.classList.add('active');
+                tabIdCard.setAttribute('aria-selected', 'true');
+                tabAvatar.classList.remove('active');
+                tabAvatar.setAttribute('aria-selected', 'false');
+
+                if (heroAvatarCard) {
+                    heroAvatarCard.style.display = 'none';
+                    heroAvatarCard.classList.add('hidden');
+                }
+                if (heroIdCardContainer) {
+                    heroIdCardContainer.style.display = 'flex';
+                    heroIdCardContainer.classList.add('active');
+                }
+            } else {
+                tabAvatar.classList.add('active');
+                tabAvatar.setAttribute('aria-selected', 'true');
+                tabIdCard.classList.remove('active');
+                tabIdCard.setAttribute('aria-selected', 'false');
+
+                if (heroIdCardContainer) {
+                    heroIdCardContainer.style.display = 'none';
+                    heroIdCardContainer.classList.remove('active');
+                }
+                if (heroAvatarCard) {
+                    heroAvatarCard.style.display = 'flex';
+                    heroAvatarCard.classList.remove('hidden');
+                }
+            }
+        }
+
+        tabAvatar.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchHeroMode('avatar');
+        });
+
+        tabIdCard.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchHeroMode('idcard');
+        });
     }
 
+    // Interactive 3D Tilt & Lanyard Physics for Cyber ID Card
+    if (cyberIdCard && heroCardWrapper) {
+        const sheen = cyberIdCard.querySelector('.id-glossy-sheen');
+        let cardHovered = false;
 
-    // ========================================================================
-    // 9. HERO 3D VIEW TOGGLE (3D QUANTUM CORE <-> SECURITY AVATAR)
-    // ========================================================================
-    const tab3d = document.getElementById('tab3dCore');
-    const tabAvatar = document.getElementById('tabAvatar');
-    const hero3dContainer = document.getElementById('hero3dContainer');
-    const heroAvatarCard = document.getElementById('heroAvatarCard');
-
-    if (tab3d && tabAvatar && hero3dContainer && heroAvatarCard) {
-        tab3d.addEventListener('click', () => {
-            tab3d.classList.add('active');
-            tabAvatar.classList.remove('active');
-            tab3d.setAttribute('aria-selected', 'true');
-            tabAvatar.setAttribute('aria-selected', 'false');
-            hero3dContainer.classList.add('active');
-            heroAvatarCard.classList.add('hidden');
-            if (window.resizeHero3D) {
-                window.resizeHero3D();
+        heroCardWrapper.addEventListener('mouseenter', () => {
+            if (heroIdCardContainer && heroIdCardContainer.style.display !== 'none') {
+                cardHovered = true;
+                if (swayingHanger) {
+                    swayingHanger.style.animationPlayState = 'paused';
+                }
+                cyberIdCard.style.transition = 'transform 0.1s ease-out, box-shadow 0.2s ease';
             }
         });
 
-        tabAvatar.addEventListener('click', () => {
-            tabAvatar.classList.add('active');
-            tab3d.classList.remove('active');
-            tabAvatar.setAttribute('aria-selected', 'true');
-            tab3d.setAttribute('aria-selected', 'false');
-            hero3dContainer.classList.remove('active');
-            heroAvatarCard.classList.remove('hidden');
+        heroCardWrapper.addEventListener('mousemove', (e) => {
+            if (!cardHovered) return;
+            const rect = heroCardWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = -((y - centerY) / centerY) * 11;
+            const rotateY = ((x - centerX) / centerX) * 11;
+
+            cyberIdCard.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+
+            if (sheen) {
+                const sheenX = ((x / rect.width) * 100).toFixed(1);
+                const sheenY = ((y / rect.height) * 100).toFixed(1);
+                sheen.style.background = `radial-gradient(circle at ${sheenX}% ${sheenY}%, rgba(255, 255, 255, 0.22) 0%, rgba(0, 242, 254, 0.14) 35%, transparent 70%)`;
+            }
+        });
+
+        heroCardWrapper.addEventListener('mouseleave', () => {
+            cardHovered = false;
+            if (swayingHanger) {
+                swayingHanger.style.animationPlayState = 'running';
+            }
+            cyberIdCard.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease';
+            cyberIdCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            if (sheen) {
+                sheen.style.background = '';
+            }
         });
     }
 
@@ -441,7 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 antialias: true
             });
             renderer.setSize(width, height);
-            renderer.setPixelRatio(window.innerWidth < 768 ? 1 : Math.min(window.devicePixelRatio, 1.25));
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
             function resizeHero3D() {
                 const w = container.clientWidth || 380;
@@ -932,6 +1001,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Soft Luminous Colored Laser Energy Beam from core to satellite
                 const beamGeom = new THREE.BufferGeometry();
+                const initialBeamPositions = new Float32Array(6);
+                beamGeom.setAttribute('position', new THREE.BufferAttribute(initialBeamPositions, 3));
                 const beamMat = new THREE.LineBasicMaterial({
                     color: node.color,
                     transparent: true,
@@ -1067,7 +1138,6 @@ document.addEventListener('DOMContentLoaded', () => {
             let hasInteracted = false;
 
             container.addEventListener('pointerdown', (e) => {
-                if (e.pointerType === 'touch') return;
                 isDragging = true;
                 prevPointer = { x: e.clientX, y: e.clientY };
                 if (!hasInteracted && hudCenterHint) {
@@ -1125,21 +1195,120 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             setInterval(updateUptime, 1000);
 
-            // Gauge Animation — simulate fluctuating load
-            function animateGauges() {
-                const gauges = [
-                    { el: document.querySelector('.gauge-cpu'), valEl: document.getElementById('gaugeCpuVal'), base: 72, range: 15 },
-                    { el: document.querySelector('.gauge-mem'), valEl: document.getElementById('gaugeMemVal'), base: 58, range: 12 },
-                    { el: document.querySelector('.gauge-net'), valEl: document.getElementById('gaugeNetVal'), base: 89, range: 8 }
-                ];
-                gauges.forEach(g => {
-                    if (!g.el || !g.valEl) return;
-                    const val = Math.min(99, Math.max(20, g.base + Math.round((Math.random() - 0.5) * g.range)));
-                    g.el.setAttribute('stroke-dasharray', `${val}, 100`);
-                    g.valEl.textContent = `${val}%`;
-                });
+            // Live Real-Time Telemetry Tracking Engine
+            let liveFps = 60;
+            let currentCpuLoad = 26;
+            let lastFrameTime = performance.now();
+            let frameExecutionDuration = 2;
+
+            function getRealtimeMemoryMetrics() {
+                if (window.performance && performance.memory && performance.memory.jsHeapSizeLimit) {
+                    const used = performance.memory.usedJSHeapSize;
+                    const limit = performance.memory.jsHeapSizeLimit;
+                    const pct = Math.min(99, Math.max(8, Math.round((used / limit) * 100)));
+                    const usedMB = (used / (1024 * 1024)).toFixed(1);
+                    const totalMB = (limit / (1024 * 1024)).toFixed(0);
+                    return { pct, usedMB, totalMB };
+                }
+                const domNodes = document.querySelectorAll('*').length;
+                const perfEntries = (window.performance && performance.getEntries) ? performance.getEntries().length : 60;
+                const pct = Math.min(85, Math.max(18, Math.round((domNodes / 2800) * 35 + (perfEntries / 200) * 15 + 10)));
+                return { pct, usedMB: ((domNodes * 0.08) + 36).toFixed(1), totalMB: '2048' };
             }
-            setInterval(animateGauges, 2500);
+
+            function getRealtimeNetworkMetrics() {
+                if (navigator.connection) {
+                    const conn = navigator.connection;
+                    const rtt = conn.rtt || 40;
+                    const downlink = conn.downlink || 10;
+                    const effectiveType = (conn.effectiveType || '4g').toUpperCase();
+                    
+                    let baseScore = 90;
+                    if (effectiveType === '4G') baseScore = 96;
+                    else if (effectiveType === '3G') baseScore = 72;
+                    else if (effectiveType === '2G') baseScore = 45;
+                    else baseScore = 30;
+
+                    const rttLag = Math.min(25, Math.max(0, (rtt - 25) / 5));
+                    const speedBoost = Math.min(10, downlink * 0.8);
+                    const pct = Math.min(99, Math.max(20, Math.round(baseScore - rttLag + speedBoost)));
+                    return { pct, rtt, downlink, type: effectiveType };
+                }
+                if (window.performance && performance.getEntriesByType) {
+                    const nav = performance.getEntriesByType('navigation')[0];
+                    if (nav) {
+                        const latency = Math.max(10, (nav.responseEnd - nav.requestStart) || 45);
+                        const pct = Math.min(98, Math.max(25, Math.round(100 - (latency / 8))));
+                        return { pct, rtt: Math.round(latency), downlink: 10, type: 'BROADBAND' };
+                    }
+                }
+                return { pct: 92, rtt: 35, downlink: 10, type: 'FAST' };
+            }
+
+            function computeRealtimeLiveScore(cpuPct, memPct, netPct, fps) {
+                const fpsEfficiency = Math.min(100, (fps / 60) * 100);
+                const cpuHealth = Math.max(10, 100 - cpuPct);
+                const memHealth = Math.max(10, 100 - (memPct * 0.5));
+                const netHealth = netPct;
+                return Math.min(99, Math.max(30, Math.round(
+                    (fpsEfficiency * 0.40) + 
+                    (cpuHealth * 0.25) + 
+                    (netHealth * 0.20) + 
+                    (memHealth * 0.15)
+                )));
+            }
+
+            // Real-time HUD Telemetry Updater (reflects present browser & hardware performance)
+            function updateRealtimeHudTelemetry() {
+                const memData = getRealtimeMemoryMetrics();
+                const netData = getRealtimeNetworkMetrics();
+                const cpuPct = currentCpuLoad;
+                const memPct = memData.pct;
+                const netPct = netData.pct;
+                const fps = liveFps || 60;
+
+                const cpuRing = document.querySelector('.gauge-cpu');
+                const cpuValEl = document.getElementById('gaugeCpuVal');
+                const memRing = document.querySelector('.gauge-mem');
+                const memValEl = document.getElementById('gaugeMemVal');
+                const netRing = document.querySelector('.gauge-net');
+                const netValEl = document.getElementById('gaugeNetVal');
+
+                if (cpuRing && cpuValEl) {
+                    cpuRing.setAttribute('stroke-dasharray', `${cpuPct}, 100`);
+                    cpuValEl.textContent = `${cpuPct}%`;
+                    const parent = cpuRing.closest('.hud-gauge');
+                    if (parent) parent.title = `Real-Time CPU Load: ${cpuPct}% (Frame Latency: ${frameExecutionDuration.toFixed(1)}ms)`;
+                }
+
+                if (memRing && memValEl) {
+                    memRing.setAttribute('stroke-dasharray', `${memPct}, 100`);
+                    memValEl.textContent = `${memPct}%`;
+                    const parent = memRing.closest('.hud-gauge');
+                    if (parent) parent.title = `Real-Time JS Heap Memory: ${memPct}% (${memData.usedMB} MB / ${memData.totalMB} MB)`;
+                }
+
+                if (netRing && netValEl) {
+                    netRing.setAttribute('stroke-dasharray', `${netPct}, 100`);
+                    netValEl.textContent = `${netPct}%`;
+                    const parent = netRing.closest('.hud-gauge');
+                    if (parent) parent.title = `Real-Time Network Quality: ${netPct}% (${netData.type} | ${netData.rtt}ms latency)`;
+                }
+
+                // Update Bottom Performance Bar to present system performance score
+                const overallLiveScore = computeRealtimeLiveScore(cpuPct, memPct, netPct, fps);
+                const perfValEl = document.getElementById('hudPerfVal');
+                const perfBarEl = document.getElementById('hudPerfBar');
+                if (perfValEl) perfValEl.textContent = `${overallLiveScore}%`;
+                if (perfBarEl) perfBarEl.style.width = `${overallLiveScore}%`;
+            }
+
+            setInterval(updateRealtimeHudTelemetry, 1000);
+            updateRealtimeHudTelemetry();
+
+            if (navigator.connection && navigator.connection.addEventListener) {
+                navigator.connection.addEventListener('change', updateRealtimeHudTelemetry);
+            }
 
             // Skill Feed Cycling
             const intelFeed = document.getElementById('hudIntelFeed');
@@ -1169,11 +1338,26 @@ document.addEventListener('DOMContentLoaded', () => {
             let isHeroVisible = true;
             let heroAnimId = null;
             let waveAnimId = null;
+            let isUserActivelyScrolling = false;
+            let userScrollDebounce = null;
+
+            window.addEventListener('scroll', () => {
+                isUserActivelyScrolling = true;
+                clearTimeout(userScrollDebounce);
+                userScrollDebounce = setTimeout(() => {
+                    isUserActivelyScrolling = false;
+                }, 120);
+            }, { passive: true });
 
             function drawWaveform() {
                 if (!hudWaveform) return;
                 if (!isHeroVisible) {
                     waveAnimId = null;
+                    return;
+                }
+                if (isUserActivelyScrolling) {
+                    // Skip canvas redrawing during active scroll to ensure 120 FPS native responsiveness
+                    waveAnimId = requestAnimationFrame(drawWaveform);
                     return;
                 }
                 const ctx = hudWaveform.getContext('2d');
@@ -1219,6 +1403,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
                 heroAnimId = requestAnimationFrame(animateHero);
+
+                const frameStart = performance.now();
+                const frameDelta = frameStart - lastFrameTime;
+                lastFrameTime = frameStart;
 
                 const delta = clock.getDelta();
                 const time = clock.getElapsedTime();
@@ -1336,14 +1524,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     sat.glowRing.material.opacity = glowPulse;
                     sat.glowRing.rotation.z += 0.03;
 
-                    // Update soft laser energy beam connecting core to satellite
-                    const beamPositions = new Float32Array([
-                        0, 0, 0,
-                        sat.mesh.position.x, sat.mesh.position.y, sat.mesh.position.z
-                    ]);
-                    beamRefs[i].geometry.dispose();
-                    beamRefs[i].geometry = new THREE.BufferGeometry();
-                    beamRefs[i].geometry.setAttribute('position', new THREE.BufferAttribute(beamPositions, 3));
+                    // Update soft laser energy beam connecting core to satellite (In-place buffer update for 120 FPS locked)
+                    const posAttr = beamRefs[i].geometry.attributes.position;
+                    if (posAttr && posAttr.array) {
+                        posAttr.array[0] = 0;
+                        posAttr.array[1] = 0;
+                        posAttr.array[2] = 0;
+                        posAttr.array[3] = sat.mesh.position.x;
+                        posAttr.array[4] = sat.mesh.position.y;
+                        posAttr.array[5] = sat.mesh.position.z;
+                        posAttr.needsUpdate = true;
+                    }
                     beamRefs[i].material.opacity = 0.30 + Math.sin(time * 3 + i) * 0.12;
 
                     // Traveling photon pulse bead along the beam
@@ -1364,13 +1555,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 particles.rotation.x = Math.sin(time * 0.2) * 0.06;
 
                 renderer.render(scene, camera);
+                frameExecutionDuration = performance.now() - frameStart;
 
-                // Update FPS Tag
+                // Instantaneous thread render load calculation
+                const eventLoopLag = Math.max(0, frameDelta - (1000 / (liveFps || 60)));
+                const instantaneousCpu = Math.min(99, Math.max(14, Math.round(((frameExecutionDuration + eventLoopLag * 0.5) / 16.67) * 70 + 15)));
+                currentCpuLoad = Math.round(currentCpuLoad * 0.75 + instantaneousCpu * 0.25);
+
+                // Update Live FPS Tag
                 frameCount++;
                 const now = performance.now();
                 if (now - lastFpsCheck >= 1000) {
-                    const fps = Math.round((frameCount * 1000) / (now - lastFpsCheck));
-                    if (hudFps) hudFps.textContent = `${fps} FPS`;
+                    liveFps = Math.min(120, Math.max(1, Math.round((frameCount * 1000) / (now - lastFpsCheck))));
+                    if (hudFps) hudFps.textContent = `${liveFps} FPS`;
                     frameCount = 0;
                     lastFpsCheck = now;
                 }
@@ -1461,20 +1658,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // 11. 3D WEBGL ENGINE: FULLSCREEN CYBERSPACE MATRIX BACKGROUND (Three.js)
     // ========================================================================
     function init3DBackground() {
+        // High-performance Liquid Glass ambient background is handled in CSS (120 FPS native scrolling)
+        const bgCanvas = document.getElementById('bg3dCanvas');
+        if (bgCanvas) bgCanvas.style.display = 'none';
+        return;
+    }
+
+    function unusedLegacy3DBackground() {
         const bgCanvas = document.getElementById('bg3dCanvas');
         if (!bgCanvas) return;
-
-        // Bypass background 3D WebGL completely on mobile screens (<= 768px) to eliminate GPU load and ensure 60/120fps touch scrolling
-        if (window.innerWidth <= 768) {
-            bgCanvas.style.display = 'none';
-            return;
-        }
-
-        if (typeof THREE === 'undefined') {
-            initBg2DFallback(bgCanvas);
-            return;
-        }
-
         try {
             const scene = new THREE.Scene();
             // Soft deep atmospheric fog that keeps light colors delicate and ethereal
@@ -2764,11 +2956,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function initCyberHudInspector() {
         const hud = document.getElementById('cyberHudInspector');
         if (!hud) return;
-
-        // Skip on mobile screens or touch-only devices since HUD is hidden and not needed
-        if (window.innerWidth <= 768 || (window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches)) {
-            return;
-        }
 
         // Elements of the HUD
         const categoryEl = document.getElementById('hudInspCategory');

@@ -53,9 +53,14 @@ export const ChatView: React.FC<ChatViewProps> = ({ currentModel, onNavigateToVi
   const [enableMemory, setEnableMemory] = useState(true);
   const [enableRAG, setEnableRAG] = useState(true);
   const [isRecording, setIsRecording] = useState(false);
+  const [selectedLang, setSelectedLang] = useState<string>('hi-IN');
   const [speakingMsgId, setSpeakingMsgId] = useState<string | null>(null);
-  const [selectedLang, setSelectedLang] = useState<'hi-IN' | 'en-US' | 'ur-PK' | 'bho-IN'>('hi-IN');
-  const [showHistory, setShowHistory] = useState(true);
+  const [showHistory, setShowHistory] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth > 768;
+    }
+    return true;
+  });
   const [selectedFile, setSelectedFile] = useState<{
     name: string;
     type: string;
@@ -583,18 +588,16 @@ export const ChatView: React.FC<ChatViewProps> = ({ currentModel, onNavigateToVi
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
-                padding: '5px 14px',
-                background: 'linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(99, 102, 241, 0.15))',
-                border: '1px solid rgba(0, 242, 254, 0.35)',
+                padding: '4px 10px',
+                background: 'rgba(16, 185, 129, 0.1)',
+                border: '1px solid rgba(16, 185, 129, 0.25)',
                 borderRadius: '20px',
-                fontSize: '0.8rem',
-                fontWeight: 600,
-                color: 'var(--accent-cyan)',
-                boxShadow: '0 0 12px rgba(0, 242, 254, 0.15)'
+                fontSize: '0.76rem',
+                color: '#10b981'
               }}
             >
-              <Sparkles size={14} style={{ color: 'var(--accent-cyan)' }} />
-              <span>Prachi AI</span>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }}></span>
+              <span>Prachi Online</span>
             </div>
           </div>
         </div>

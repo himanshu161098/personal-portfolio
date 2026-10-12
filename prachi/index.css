@@ -836,6 +836,78 @@ textarea.input-control {
 .waveform-bar:nth-child(4) { animation-delay: 0.45s; }
 .waveform-bar:nth-child(5) { animation-delay: 0.6s; }
 
+/* Prachi AI Glowing Tag Badge (Right Upper Corner) */
+.prachi-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.16) 50%, rgba(6, 182, 212, 0.14) 100%);
+  border: 1.5px solid rgba(99, 102, 241, 0.45);
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.prachi-tag-badge:hover {
+  border-color: rgba(99, 102, 241, 0.75);
+  box-shadow: 0 0 24px rgba(99, 102, 241, 0.45);
+  transform: translateY(-1px);
+}
+
+.prachi-tag-icon-wrap {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.6);
+}
+
+.prachi-tag-sparkle {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.prachi-tag-brand {
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, #ffffff 40%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+}
+
+.prachi-tag-pill {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(16, 185, 129, 0.25));
+  color: #38bdf8;
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.prachi-tag-select {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  max-width: 175px;
+}
+
 /* Grid Utilities */
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -843,10 +915,10 @@ textarea.input-control {
 
 @media (max-width: 900px) {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .view-scroll-area { padding: 16px; }
+  .view-scroll-area { padding: 14px; }
 }
 
-/* Mobile Responsiveness (<= 768px) */
+/* Auto-Adjusting Universal Mobile & Tablet Responsiveness */
 .mobile-menu-toggle-btn {
   display: none;
 }
@@ -854,14 +926,32 @@ textarea.input-control {
 .sidebar-mobile-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.68);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   z-index: 998;
   animation: fadeIn 0.2s ease;
 }
 
 @media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .main-content {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
   .mobile-menu-toggle-btn {
     display: inline-flex !important;
     align-items: center;
@@ -890,64 +980,153 @@ textarea.input-control {
 
   .app-sidebar.mobile-open {
     transform: translateX(0);
-    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.85);
+    box-shadow: 12px 0 45px rgba(0, 0, 0, 0.85);
   }
 
-  /* Compact Navbar for mobile screens */
+  /* Compact Adaptive Top Navbar */
   .top-navbar {
-    padding: 0 12px;
+    height: auto;
+    min-height: 56px;
+    padding: 6px 12px;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .brand-badge {
+    gap: 8px;
+  }
+
+  .brand-name {
+    font-size: 1rem;
   }
 
   .brand-version,
-  .nav-status-pill {
+  .nav-status-pill,
+  .nav-tour-btn,
+  .nav-btn-text {
     display: none !important;
   }
 
   .navbar-actions {
     gap: 6px !important;
+    flex-shrink: 0;
   }
 
-  /* Reposition Floating Voice Orb to prevent overlapping the chat send button */
+  .prachi-tag-badge {
+    padding: 3px 8px;
+    gap: 5px;
+  }
+
+  .prachi-tag-select {
+    display: none; /* Keep sleek Prachi AI badge prominent on small screens */
+  }
+
+  /* Floating Voice Orb */
   .floating-voice-orb {
     bottom: 84px !important;
-    right: 16px !important;
-    width: 48px !important;
-    height: 48px !important;
+    right: 14px !important;
+    width: 46px !important;
+    height: 46px !important;
   }
 
-  /* Chat Container & Scroll Area on mobile */
+  /* Auto Adaptive View Area */
+  .view-scroll-area {
+    padding: 8px;
+    flex: 1;
+    min-width: 0;
+    overflow-y: auto;
+  }
+
+  /* Chat Container & Screen Adaptation */
   .chat-container {
     height: calc(100vh - var(--navbar-height) - 16px);
     height: calc(100dvh - var(--navbar-height) - 16px);
     border-radius: 12px;
+    position: relative;
+    overflow: hidden;
   }
 
-  .view-scroll-area {
-    padding: 10px;
+  /* Overlay Conversation History Sidebar on Mobile */
+  .chat-history-sidebar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 45;
+    width: 82% !important;
+    max-width: 290px;
+    background: var(--bg-surface);
+    box-shadow: 12px 0 35px rgba(0, 0, 0, 0.7);
+    transform: translateX(-100%);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .chat-history-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .chat-history-sidebar.collapsed {
+    transform: translateX(-100%);
+    width: 82% !important;
+  }
+
+  .chat-header {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 10px;
   }
 
   .chat-messages {
-    padding: 12px;
-    gap: 12px;
+    padding: 10px;
+    gap: 10px;
   }
 
   .message-bubble {
-    max-width: 92%;
-    padding: 10px 14px;
-    font-size: 0.88rem;
+    max-width: 95%;
+    padding: 10px 12px;
+    font-size: 0.87rem;
   }
 
   .chat-input-wrapper {
-    padding: 8px 10px 12px;
+    padding: 6px 8px 10px;
+    width: 100%;
   }
 
   .chat-input-bar {
     max-width: 100%;
-    padding: 4px 6px 4px 14px;
+    width: 100%;
+    padding: 4px 6px 4px 12px;
+    gap: 6px;
+  }
+
+  .chat-send-btn, .chat-voice-btn {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
   }
 
   .modal-dialog {
-    padding: 20px 16px;
+    padding: 20px 14px;
     max-width: 95vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-navbar {
+    padding: 4px 8px;
+  }
+
+  .brand-logo-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .prachi-tag-pill {
+    display: none;
+  }
+
+  .chat-attachment-preview-dock {
+    max-width: 100%;
+    font-size: 0.75rem;
   }
 }

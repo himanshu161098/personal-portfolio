@@ -2,9 +2,6 @@
   "version": 2,
   "cleanUrls": false,
   "trailingSlash": false,
-  "framework": null,
-  "buildCommand": null,
-  "installCommand": null,
   "outputDirectory": ".",
   "rewrites": [
     {
@@ -12,8 +9,32 @@
       "destination": "/prachi/index.html"
     },
     {
+      "source": "/prachi/",
+      "destination": "/prachi/index.html"
+    },
+    {
       "source": "/prachi-ai",
       "destination": "/prachi/index.html"
+    },
+    {
+      "source": "/prachi-ai/",
+      "destination": "/prachi/index.html"
+    },
+    {
+      "source": "/bundle.js",
+      "destination": "/prachi/bundle.js"
+    },
+    {
+      "source": "/bundle.css",
+      "destination": "/prachi/bundle.css"
+    },
+    {
+      "source": "/bundle.js.map",
+      "destination": "/prachi/bundle.js.map"
+    },
+    {
+      "source": "/bundle.css.map",
+      "destination": "/prachi/bundle.css.map"
     },
     {
       "source": "/Prachi%20AI/frontend/dist/:path*",

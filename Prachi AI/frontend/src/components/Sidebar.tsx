@@ -13,7 +13,8 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
-  Database
+  Database,
+  ArrowLeft
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -139,6 +140,46 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
         </div>
       )}
+      {/* Return to Portfolio Link */}
+      <div style={{ marginTop: 'auto', padding: '10px 12px', borderTop: '1px solid var(--border-subtle)' }}>
+        <a
+          href="../index.html"
+          onClick={(e) => {
+            e.preventDefault();
+            if (window.history.length > 1 && document.referrer && (document.referrer.includes('index.html') || document.referrer.includes('portfolio') || document.referrer.includes('Level%201') || document.referrer.includes('Level 1'))) {
+              window.history.back();
+            } else {
+              try {
+                window.location.href = new URL('../index.html', window.location.href).href;
+              } catch {
+                window.location.href = '../index.html';
+              }
+            }
+          }}
+          className="nav-item"
+          title="Return to Personal Portfolio"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            color: 'var(--accent-indigo, #818cf8)',
+            textDecoration: 'none',
+            fontWeight: 600,
+            fontSize: '0.82rem',
+            padding: '8px 12px',
+            borderRadius: '8px',
+            background: 'rgba(99, 102, 241, 0.08)',
+            border: '1px solid rgba(99, 102, 241, 0.25)',
+            transition: 'all 0.2s ease',
+            cursor: 'pointer'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <ArrowLeft size={16} />
+          </div>
+          {!collapsed && <span>← Return to Portfolio</span>}
+        </a>
+      </div>
       </aside>
     </>
   );

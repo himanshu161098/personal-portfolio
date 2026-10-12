@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Marcellus&family=Rozha+One&family=Yatra+One&display=swap');
+
 /* ==========================================================================
    PERSONAL PORTFOLIO STYLESHEET
    Client: Himanshu Kumar Singh (B.Tech Student | Cybersecurity & Technology)
@@ -9,13 +11,23 @@
    1. CSS RESET & GLOBAL VARIABLES
    -------------------------------------------------------------------------- */
 :root {
-    /* Color Palette - Dark Navy & Cyber Cyan / Blue Accent */
+    /* Color Palette - Dark Obsidian Navy & Cyber Cyan / Blue Accent */
     --bg-primary: #060913;
     --bg-secondary: #0b1222;
     --bg-tertiary: #10192d;
-    --bg-card: rgba(16, 25, 45, 0.75);
-    --bg-card-hover: rgba(22, 35, 64, 0.9);
-    --bg-glass: rgba(11, 18, 34, 0.85);
+    --bg-card: rgba(13, 22, 42, 0.65);
+    --bg-card-hover: rgba(18, 30, 58, 0.82);
+    --bg-glass: rgba(9, 15, 30, 0.78);
+
+    /* Liquid Glass Aesthetic Tokens */
+    --liquid-glass-bg: linear-gradient(135deg, rgba(16, 25, 48, 0.68) 0%, rgba(10, 16, 32, 0.52) 100%);
+    --liquid-glass-bg-hover: linear-gradient(135deg, rgba(22, 35, 66, 0.82) 0%, rgba(14, 23, 44, 0.68) 100%);
+    --liquid-glass-border: rgba(255, 255, 255, 0.08);
+    --liquid-glass-border-specular: rgba(255, 255, 255, 0.22);
+    --liquid-glass-border-hover: rgba(0, 242, 254, 0.45);
+    --liquid-glass-shadow: 0 10px 32px 0 rgba(0, 0, 0, 0.48), inset 0 1px 1px 0 rgba(255, 255, 255, 0.14), inset 0 0 18px 0 rgba(0, 242, 254, 0.03);
+    --liquid-glass-shadow-hover: 0 20px 48px -8px rgba(0, 0, 0, 0.68), 0 0 25px rgba(0, 242, 254, 0.22), inset 0 1px 2px 0 rgba(255, 255, 255, 0.28);
+    --liquid-glass-blur: blur(14px);
 
     /* Accents */
     --accent-cyan: #00f2fe;
@@ -32,19 +44,19 @@
     --text-dark: #64748b;
 
     /* Borders & Outlines */
-    --border-subtle: rgba(56, 189, 248, 0.16);
-    --border-medium: rgba(56, 189, 248, 0.3);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-medium: rgba(56, 189, 248, 0.32);
     --border-bright: #00f2fe;
 
     /* Gradients */
     --gradient-accent: linear-gradient(135deg, #00f2fe 0%, #38bdf8 50%, #6366f1 100%);
     --gradient-glow: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, rgba(6, 9, 19, 0) 70%);
-    --gradient-card-top: linear-gradient(180deg, rgba(56, 189, 248, 0.08) 0%, rgba(16, 25, 45, 0) 100%);
+    --gradient-card-top: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(16, 25, 45, 0) 100%);
 
     /* Shadows */
-    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
-    --shadow-md: 0 10px 25px -5px rgba(2, 6, 23, 0.6);
-    --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
+    --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.38);
+    --shadow-md: 0 10px 28px -5px rgba(2, 6, 23, 0.6);
+    --shadow-lg: 0 22px 45px -10px rgba(0, 0, 0, 0.72);
     --shadow-cyan-glow: 0 0 25px rgba(0, 242, 254, 0.28);
 
     /* Typography */
@@ -80,26 +92,7 @@
 html {
     font-size: 16px;
     color-scheme: dark;
-    max-width: 100%;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Smooth scroll strictly on precision hover pointers (mouse/trackpad) - mobile touchscreens use native 120Hz/60Hz zero-lag momentum */
-@media (hover: hover) and (pointer: fine) {
-    html {
-        scroll-behavior: smooth;
-    }
-}
-
-#hero3dContainer,
-#hero3dCanvas,
-.hero-3d-container,
-.avatar-card-wrapper,
-.avatar-card,
-.hero-visual,
-.hero-section {
-    touch-action: pan-y !important;
+    /* Native 120 FPS hardware scroll (programmatic navigation handled via JS scrollTo) */
 }
 
 body {
@@ -107,53 +100,82 @@ body {
     background-color: var(--bg-primary);
     color: var(--text-secondary);
     line-height: 1.65;
-    max-width: 100%;
     overflow-x: hidden;
     position: relative;
     min-height: 100vh;
-    touch-action: manipulation;
-    -webkit-overflow-scrolling: touch;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Subtle Cyber Grid Background */
-.cyber-grid-overlay {
+/* ==========================================================================
+   HIGH-PERFORMANCE LIQUID GLASS AMBIENT BACKGROUND (Lag-Free, 120 FPS Native)
+   ========================================================================== */
+.liquid-glass-background {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        linear-gradient(to right, rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
+    width: 100vw;
+    height: 100vh;
     pointer-events: none;
     z-index: 0;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 15%, #0a1124 0%, #060913 60%, #03050a 100%);
 }
 
-/* Ambient Glowing Orbs */
-.ambient-glow {
-    position: fixed;
+.glass-ambient-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.glass-orb-1 {
+    top: -120px;
+    right: -80px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.14) 0%, rgba(56, 189, 248, 0.04) 50%, transparent 70%);
+    animation: liquidFloat1 20s ease-in-out infinite alternate;
+}
+
+.glass-orb-2 {
+    bottom: -140px;
+    left: -100px;
+    width: 750px;
+    height: 750px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.03) 50%, transparent 70%);
+    animation: liquidFloat2 24s ease-in-out infinite alternate;
+}
+
+.glass-orb-3 {
+    top: 45%;
+    left: 32%;
     width: 550px;
     height: 550px;
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.35;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, rgba(20, 184, 166, 0.03) 50%, transparent 65%);
+    animation: liquidFloat1 28s ease-in-out infinite alternate-reverse;
 }
 
-.ambient-glow-1 {
-    top: -100px;
-    left: -100px;
-    background: radial-gradient(circle, #00f2fe, #38bdf8 40%, transparent 70%);
+@keyframes liquidFloat1 {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(-35px, 25px, 0) scale(1.08); }
 }
 
-.ambient-glow-2 {
-    bottom: 10%;
-    right: -100px;
-    background: radial-gradient(circle, #6366f1, #38bdf8 40%, transparent 70%);
+@keyframes liquidFloat2 {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(30px, -20px, 0) scale(1.06); }
+}
+
+.liquid-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 40%, transparent 95%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 40%, transparent 95%);
 }
 
 /* Container Utility */
@@ -1397,7 +1419,7 @@ textarea {
     animation: pulseBeacon 1.8s infinite ease-in-out;
 }
 
-/* Hero Visual / Avatar Card */
+/* Hero Visual & Dual View Mode Switcher */
 .hero-visual {
     display: flex;
     flex-direction: column;
@@ -1410,11 +1432,55 @@ textarea {
     transition: transform var(--transition-normal);
 }
 
+.visual-mode-toggle {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(11, 18, 34, 0.92) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: var(--radius-full);
+    padding: 0.32rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    z-index: 5;
+    position: relative;
+}
+
+.mode-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1.05rem;
+    border-radius: var(--radius-full);
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.mode-tab:hover {
+    color: var(--text-primary);
+}
+
+.mode-tab.active {
+    background: var(--gradient-accent);
+    color: #060913;
+    font-weight: 700;
+    box-shadow: 0 0 16px rgba(0, 242, 254, 0.4);
+}
+
+/* 1. DEVELOPER PROFILE AVATAR CARD */
 .avatar-card-wrapper {
     position: relative;
-    width: 445px;
+    width: 100%;
     max-width: 445px;
-    height: 425px;
+    min-height: 440px;
+    perspective: 1200px;
+    box-sizing: border-box;
 }
 
 /* Hologram Aura Ring */
@@ -1431,38 +1497,189 @@ textarea {
     z-index: 0;
 }
 
+/* 1. DEVELOPER PROFILE AVATAR CARD - CREATIVE CYBER-MATRIX GLASS */
 .avatar-card {
     position: relative;
     width: 100%;
-    height: 425px;
+    min-height: 440px;
     box-sizing: border-box;
-    background: var(--bg-card);
-    border: 1px solid var(--border-medium);
+    /* Rich multi-layer cosmic cyber background with dynamic lighting */
+    background: 
+        radial-gradient(ellipse 90% 60% at 50% -10%, rgba(0, 242, 254, 0.22) 0%, transparent 65%),
+        radial-gradient(circle at 92% 85%, rgba(139, 92, 246, 0.24) 0%, transparent 52%),
+        radial-gradient(circle at 8% 75%, rgba(236, 72, 153, 0.16) 0%, transparent 48%),
+        radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.08) 0%, transparent 70%),
+        linear-gradient(145deg, rgba(8, 14, 34, 0.97) 0%, rgba(12, 20, 44, 0.95) 50%, rgba(5, 9, 22, 0.98) 100%);
+    border: 1px solid rgba(0, 242, 254, 0.42);
     border-radius: var(--radius-lg);
-    padding: 1.35rem 1.45rem;
-    backdrop-filter: blur(12px);
-    box-shadow: var(--shadow-lg);
+    padding: 1.25rem 1.45rem 1.35rem 1.45rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 
+        0 24px 60px rgba(0, 0, 0, 0.75),
+        0 0 35px rgba(0, 242, 254, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.22),
+        inset 0 0 30px rgba(0, 242, 254, 0.05);
     z-index: 1;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: space-between;
+    gap: 0.9rem;
+    transition: all var(--transition-normal);
+}
+
+.avatar-card:hover {
+    border-color: rgba(0, 242, 254, 0.75);
+    box-shadow: 
+        0 30px 70px rgba(0, 0, 0, 0.8),
+        0 0 50px rgba(0, 242, 254, 0.35),
+        inset 0 1px 3px rgba(255, 255, 255, 0.3);
 }
 
 .avatar-card.hidden {
     display: none !important;
 }
 
+/* Creative Cyber Matrix Circuit Grid Overlay */
+.avatar-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(to right, rgba(0, 242, 254, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 242, 254, 0.06) 1px, transparent 1px);
+    background-size: 20px 20px;
+    mask-image: radial-gradient(ellipse 95% 85% at 50% 50%, #000 55%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 50%, #000 55%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Dynamic Rotating Holographic Nebula Sweep */
 .avatar-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 120px;
-    background: var(--gradient-card-top);
+    top: -60%;
+    left: -60%;
+    width: 220%;
+    height: 220%;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.12) 0%, rgba(139, 92, 246, 0.08) 35%, transparent 70%);
+    animation: devCardAuroraSpin 16s linear infinite;
     pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes devCardAuroraSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Cyber HUD Status Header in Avatar Card */
+.dev-card-hud {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 242, 254, 0.18);
+    margin-bottom: 0.2rem;
+}
+
+.hud-mono {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #38bdf8;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.hud-status {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: #34d399;
+    letter-spacing: 0.6px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.hud-pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+    animation: pulseBeacon 1.8s infinite ease-in-out;
+}
+
+/* Metallic Neon Corner Brackets */
+.dev-card-corner {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: #00f2fe;
+    z-index: 3;
+    pointer-events: none;
+    filter: drop-shadow(0 0 4px rgba(0, 242, 254, 0.6));
+}
+
+.dev-corner-tl {
+    top: 6px;
+    left: 6px;
+    border-top: 2px solid #00f2fe;
+    border-left: 2px solid #00f2fe;
+}
+
+.dev-corner-tr {
+    top: 6px;
+    right: 6px;
+    border-top: 2px solid #00f2fe;
+    border-right: 2px solid #00f2fe;
+}
+
+.dev-corner-bl {
+    bottom: 6px;
+    left: 6px;
+    border-bottom: 2px solid #00f2fe;
+    border-left: 2px solid #00f2fe;
+}
+
+.dev-corner-br {
+    bottom: 6px;
+    right: 6px;
+    border-bottom: 2px solid #00f2fe;
+    border-right: 2px solid #00f2fe;
+}
+
+/* Ambient Cyber Glow Orb behind Photo */
+.dev-card-ambient-orb {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.28) 0%, rgba(99, 102, 241, 0.15) 50%, transparent 75%);
+    filter: blur(28px);
+    pointer-events: none;
+    z-index: 0;
+    animation: devOrbBreathe 4s ease-in-out infinite alternate;
+}
+
+@keyframes devOrbBreathe {
+    0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+    100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.95; }
 }
 
 .avatar-img-container {
@@ -1480,6 +1697,15 @@ textarea {
 .avatar-img-container:hover {
     transform: scale(1.03);
     box-shadow: 0 0 35px rgba(0, 242, 254, 0.65);
+}
+
+.avatar-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
 }
 
 .avatar-svg {
@@ -1582,15 +1808,850 @@ textarea {
 }
 
 @keyframes blink {
-
     0%,
     100% {
         opacity: 1;
     }
-
     50% {
         opacity: 0;
     }
+}
+
+/* 2. HANGING ID CARD WITH LANYARD HOLDER & SWAYING MOVEMENT ANIMATION (COMPACT SLEEK SIZE) */
+.id-hanging-container {
+    position: relative;
+    width: 100%;
+    max-width: 375px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    perspective: 1200px;
+    z-index: 2;
+    transform-style: preserve-3d;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.id-hanging-container.active {
+    display: flex !important;
+}
+
+/* Realistic Pendulum Hanging Sway */
+.id-swaying-hanger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    transform-origin: 50% 0%;
+    animation: idHolderNaturalSway 4.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+
+@keyframes idHolderNaturalSway {
+    0% {
+        transform: rotate(0deg) translateX(0px) rotateY(0deg);
+    }
+    22% {
+        transform: rotate(2.5deg) translateX(4px) rotateY(3.5deg) translateY(1.5px);
+    }
+    50% {
+        transform: rotate(-0.5deg) translateX(-1px) rotateY(-1deg) translateY(0px);
+    }
+    78% {
+        transform: rotate(-2.5deg) translateX(-4px) rotateY(-3.5deg) translateY(1.5px);
+    }
+    100% {
+        transform: rotate(0deg) translateX(0px) rotateY(0deg);
+    }
+}
+
+/* Realistic Lanyard Strap from Top (Compact Sizing) */
+.id-lanyard-strap {
+    position: relative;
+    width: 36px;
+    height: 38px;
+    background: linear-gradient(180deg, rgba(6, 12, 26, 0.98) 0%, rgba(14, 165, 233, 0.92) 65%, rgba(0, 242, 254, 0.95) 100%);
+    border-left: 2px solid rgba(0, 242, 254, 0.45);
+    border-right: 2px solid rgba(0, 242, 254, 0.45);
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: -8px;
+    z-index: 4;
+    border-radius: 3px 3px 0 0;
+}
+
+.id-strap-weave {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(255, 255, 255, 0.12) 3px, rgba(255, 255, 255, 0.12) 6px);
+}
+
+.id-strap-text {
+    font-family: var(--font-mono);
+    font-size: 0.48rem;
+    font-weight: 800;
+    color: #ffffff;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    opacity: 0.9;
+}
+
+/* Metallic ID Holder Hardware (Clip & Buckle) */
+.id-holder-hardware {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+    margin-top: -2px;
+    margin-bottom: -8px;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
+}
+
+.id-metal-buckle {
+    width: 26px;
+    height: 8px;
+    background: linear-gradient(180deg, #f8fafc 0%, #cbd5e1 45%, #64748b 100%);
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6), inset 0 1px 1px #ffffff;
+}
+
+.id-metal-clasp {
+    width: 12px;
+    height: 11px;
+    background: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 50%, #475569 100%);
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: -1px;
+}
+
+.id-metal-ring {
+    width: 16px;
+    height: 10px;
+    border: 2.5px solid #cbd5e1;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    margin-top: -3px;
+}
+
+/* ==========================================================================
+   CYBER ENGINEERING IDENTITY CARD (HERO VISUAL - COMPACT)
+   ========================================================================== */
+.cyber-id-card-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 375px;
+    perspective: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    transition: transform var(--transition-normal);
+}
+
+/* Ambient Holographic Glow Aura */
+.id-card-ambient-glow {
+    position: absolute;
+    inset: -10px;
+    border-radius: 28px;
+    background: radial-gradient(circle at 50% 25%, rgba(0, 242, 254, 0.25) 0%, rgba(99, 102, 241, 0.16) 45%, rgba(217, 70, 239, 0.08) 75%, transparent 90%);
+    filter: blur(20px);
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: 0;
+    animation: idGlowPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes idGlowPulse {
+    0% {
+        opacity: 0.65;
+        transform: scale(0.97);
+        filter: blur(18px);
+    }
+    100% {
+        opacity: 0.95;
+        transform: scale(1.02);
+        filter: blur(24px);
+    }
+}
+
+/* Main Cyber ID Card Surface (Compact) */
+.cyber-id-card {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    background:
+        radial-gradient(rgba(0, 242, 254, 0.07) 1px, transparent 1px),
+        linear-gradient(150deg, rgba(14, 22, 42, 0.96) 0%, rgba(7, 12, 26, 0.98) 55%, rgba(15, 23, 42, 0.97) 100%);
+    background-size: 14px 14px, 100% 100%;
+    border: 1px solid rgba(0, 242, 254, 0.38);
+    border-radius: 20px;
+    padding: 0.95rem 1.15rem 0.85rem 1.15rem;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.65),
+        0 0 30px rgba(0, 242, 254, 0.16),
+        inset 0 1px 1px rgba(255, 255, 255, 0.18),
+        inset 0 0 20px rgba(0, 242, 254, 0.04);
+    z-index: 1;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.cyber-id-card:hover {
+    border-color: rgba(0, 242, 254, 0.65);
+    box-shadow:
+        0 24px 55px rgba(0, 0, 0, 0.7),
+        0 0 40px rgba(0, 242, 254, 0.28),
+        inset 0 1px 2px rgba(255, 255, 255, 0.25);
+}
+
+/* Top Lanyard Mount Slot & Metallic Clip */
+.id-lanyard-slot-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: -0.5rem auto 0.5rem auto;
+    pointer-events: none;
+}
+
+.id-lanyard-band {
+    width: 26px;
+    height: 8px;
+    background: linear-gradient(180deg, rgba(0, 242, 254, 0.75) 0%, rgba(14, 165, 233, 0.9) 100%);
+    border-radius: 2px 2px 0 0;
+    box-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+    margin-bottom: -1px;
+}
+
+.id-lanyard-clip {
+    width: 20px;
+    height: 6px;
+    background: linear-gradient(180deg, #e2e8f0 0%, #94a3b8 50%, #475569 100%);
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2px;
+}
+
+.id-lanyard-hole {
+    width: 42px;
+    height: 9px;
+    border-radius: 8px;
+    background: rgba(3, 7, 18, 0.92);
+    border: 1.2px solid rgba(255, 255, 255, 0.22);
+    box-shadow:
+        inset 0 2px 5px rgba(0, 0, 0, 0.85),
+        0 0 8px rgba(0, 242, 254, 0.15);
+}
+
+/* ID Card Header: Institution & Accreditation */
+.id-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.55rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid rgba(0, 242, 254, 0.18);
+}
+
+.id-header-emblem {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-width: 0;
+}
+
+.id-crest-svg {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 6px rgba(0, 242, 254, 0.5));
+}
+
+.id-inst-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.id-inst-name {
+    font-family: var(--font-heading);
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #f8fafc;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.id-inst-univ {
+    font-family: var(--font-mono);
+    font-size: 0.54rem;
+    font-weight: 600;
+    color: #38bdf8;
+    letter-spacing: 0.35px;
+    margin-top: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.id-live-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(16, 185, 129, 0.45);
+    padding: 0.18rem 0.48rem;
+    border-radius: 999px;
+    flex-shrink: 0;
+}
+
+.id-chip-pulse {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 6px #10b981;
+    animation: pulseBeacon 1.8s infinite ease-in-out;
+}
+
+.id-chip-text {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: #34d399;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Security Ribbon / Category Title Bar */
+.id-security-ribbon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    background: linear-gradient(90deg, rgba(0, 242, 254, 0.16) 0%, rgba(99, 102, 241, 0.16) 55%, rgba(217, 70, 239, 0.12) 100%);
+    border-left: 2.5px solid #00f2fe;
+    border-radius: 3px;
+    padding: 0.24rem 0.52rem;
+    margin: 0.45rem 0 0.65rem 0;
+}
+
+.id-ribbon-title {
+    font-family: var(--font-heading);
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.id-ribbon-title i {
+    color: #00f2fe;
+    font-size: 0.65rem;
+}
+
+.id-ribbon-code {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 700;
+    color: #38bdf8;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Main Grid Layout (Compact) */
+.id-card-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0.85rem;
+    align-items: start;
+}
+
+/* Left Column: Photo Frame & Hardware Elements */
+.id-left-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.id-photo-frame {
+    position: relative;
+    width: 98px;
+    height: 116px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #060a14;
+    border: 2px solid rgba(0, 242, 254, 0.5);
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.6),
+        0 0 16px rgba(0, 242, 254, 0.22);
+}
+
+.id-bracket {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-color: #00f2fe;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.b-tl {
+    top: 3px;
+    left: 3px;
+    border-top: 2px solid #00f2fe;
+    border-left: 2px solid #00f2fe;
+}
+
+.b-tr {
+    top: 3px;
+    right: 3px;
+    border-top: 2px solid #00f2fe;
+    border-right: 2px solid #00f2fe;
+}
+
+.b-bl {
+    bottom: 3px;
+    left: 3px;
+    border-bottom: 2px solid #00f2fe;
+    border-left: 2px solid #00f2fe;
+}
+
+.b-br {
+    bottom: 3px;
+    right: 3px;
+    border-bottom: 2px solid #00f2fe;
+    border-right: 2px solid #00f2fe;
+}
+
+.id-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: contrast(1.04) brightness(1.02);
+    transition: transform 0.4s ease;
+}
+
+.id-photo-frame:hover .id-photo-img {
+    transform: scale(1.04);
+}
+
+.id-photo-scanline {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 242, 254, 0.35) 50%, transparent 100%);
+    height: 38%;
+    animation: idScanlineRoll 3.2s linear infinite;
+    pointer-events: none;
+    opacity: 0.65;
+    z-index: 2;
+}
+
+@keyframes idScanlineRoll {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(320%);
+    }
+}
+
+.id-photo-overlay-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(4, 9, 22, 0.92);
+    backdrop-filter: blur(4px);
+    font-family: var(--font-mono);
+    font-size: 0.54rem;
+    font-weight: 800;
+    color: #38bdf8;
+    text-align: center;
+    padding: 2.5px 0;
+    border-top: 1px solid rgba(0, 242, 254, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    letter-spacing: 0.6px;
+    z-index: 3;
+}
+
+.id-photo-overlay-badge i {
+    color: #10b981;
+    font-size: 0.58rem;
+}
+
+/* Golden EMV Smart Microcontroller Chip (Compact) */
+.id-smart-chip {
+    width: 38px;
+    height: 26px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #d4af37 0%, #fef08a 40%, #b45309 75%, #fde047 100%);
+    border: 1px solid #78350f;
+    position: relative;
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.45),
+        inset 0 0 4px rgba(255, 255, 255, 0.45);
+    overflow: hidden;
+    cursor: help;
+}
+
+.chip-wire {
+    position: absolute;
+    background: rgba(120, 53, 15, 0.65);
+}
+
+.wire-left {
+    top: 50%;
+    left: 0;
+    width: 12px;
+    height: 1px;
+}
+
+.wire-right {
+    top: 50%;
+    right: 0;
+    width: 12px;
+    height: 1px;
+}
+
+.wire-top {
+    left: 50%;
+    top: 0;
+    height: 8px;
+    width: 1px;
+}
+
+.wire-bottom {
+    left: 50%;
+    bottom: 0;
+    height: 8px;
+    width: 1px;
+}
+
+.chip-core-contact {
+    position: absolute;
+    inset: 5px 9px;
+    border: 1px solid rgba(120, 53, 15, 0.7);
+    border-radius: 2px;
+    background: rgba(254, 240, 138, 0.3);
+}
+
+/* Biometric & Hardware Pill Tags */
+.id-bio-tags {
+    display: flex;
+    gap: 0.28rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.id-bio-pill {
+    background: rgba(15, 23, 42, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.52rem;
+    font-weight: 700;
+    color: #cbd5e1;
+    padding: 0.12rem 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.24rem;
+    white-space: nowrap;
+}
+
+.id-bio-pill i {
+    font-size: 0.55rem;
+}
+
+/* Right Column: Credentials Dossier (Compact) */
+.id-right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    min-width: 0;
+}
+
+.id-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+}
+
+.id-label {
+    font-family: var(--font-mono);
+    font-size: 0.52rem;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.id-label i {
+    font-size: 0.58rem;
+}
+
+.id-val-name {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.2px;
+    margin: 0;
+    line-height: 1.15;
+    text-shadow: 0 0 14px rgba(0, 242, 254, 0.35);
+}
+
+.id-name-hindi {
+    font-size: 0.7rem;
+    color: #38bdf8;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    opacity: 0.92;
+    margin-top: 1px;
+}
+
+.id-val-role {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0;
+    line-height: 1.25;
+}
+
+.id-year-badge {
+    font-family: var(--font-mono);
+    font-size: 0.54rem;
+    font-weight: 700;
+    background: rgba(56, 189, 248, 0.16);
+    border: 1px solid rgba(56, 189, 248, 0.45);
+    color: #38bdf8;
+    padding: 0.08rem 0.38rem;
+    border-radius: 4px;
+    letter-spacing: 0.35px;
+}
+
+/* 2-Column Split: DOB & Mobile */
+.id-duo-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.45rem;
+    align-items: start;
+}
+
+.id-val {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin: 0;
+    line-height: 1.25;
+}
+
+.id-link-contact {
+    color: #34d399 !important;
+    text-decoration: none;
+    transition: color 0.2s, text-shadow 0.2s;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.id-link-contact:hover {
+    color: #10b981 !important;
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.65);
+    text-decoration: underline;
+}
+
+.id-link-email {
+    color: #c084fc !important;
+    font-size: 0.62rem;
+    text-decoration: none;
+    word-break: break-all;
+    line-height: 1.3;
+    transition: color 0.2s, text-shadow 0.2s;
+    display: inline-block;
+}
+
+.id-link-email:hover {
+    color: #e879f9 !important;
+    text-shadow: 0 0 10px rgba(217, 70, 239, 0.65);
+    text-decoration: underline;
+}
+
+.id-val-arsenal {
+    font-size: 0.62rem;
+    color: #cbd5e1;
+    line-height: 1.32;
+    margin: 0;
+}
+
+/* ID Card Footer: High-Tech Barcode & Hologram Security Seal (Compact) */
+.id-card-footer {
+    margin-top: 0.6rem;
+    padding-top: 0.52rem;
+    border-top: 1px solid rgba(0, 242, 254, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.65rem;
+}
+
+.id-barcode-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.id-barcode-strip {
+    display: flex;
+    align-items: stretch;
+    height: 16px;
+    gap: 1.5px;
+    opacity: 0.9;
+    overflow: hidden;
+}
+
+.id-barcode-strip span {
+    display: inline-block;
+    background: #e2e8f0;
+    border-radius: 0.5px;
+    flex-shrink: 0;
+}
+
+.id-barcode-strip span:nth-child(2n) {
+    width: 1px;
+    background: #94a3b8;
+}
+
+.id-barcode-strip span:nth-child(2n+1) {
+    width: 2px;
+    background: #f8fafc;
+}
+
+.id-barcode-strip span:nth-child(3n) {
+    width: 2.5px;
+    background: #38bdf8;
+}
+
+.id-barcode-strip span:nth-child(5n) {
+    width: 3.5px;
+    background: #818cf8;
+}
+
+.id-barcode-text {
+    font-size: 0.5rem;
+    color: #64748b;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Iridescent Hologram Security Seal (Compact) */
+.id-hologram-seal {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    flex-shrink: 0;
+    box-shadow:
+        0 0 12px rgba(0, 242, 254, 0.35),
+        inset 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.id-holo-foil {
+    position: absolute;
+    inset: 0;
+    background: conic-gradient(from 180deg at 50% 50%, #f43f5e 0%, #fbbf24 16%, #34d399 33%, #38bdf8 50%, #818cf8 66%, #d946ef 83%, #f43f5e 100%);
+    animation: idHoloRotate 6s linear infinite;
+}
+
+@keyframes idHoloRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.id-holo-content {
+    position: absolute;
+    inset: 2.5px;
+    border-radius: 50%;
+    background: rgba(5, 10, 24, 0.82);
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgba(255, 255, 255, 0.4);
+    z-index: 2;
+}
+
+.id-holo-crest {
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    line-height: 1;
+    text-shadow: 0 0 6px rgba(0, 242, 254, 0.8);
+}
+
+.id-holo-security {
+    font-family: var(--font-mono);
+    font-size: 0.42rem;
+    font-weight: 800;
+    color: #38bdf8;
+    letter-spacing: 0.8px;
+    line-height: 1;
+    margin-top: 1px;
+}
+
+/* Dynamic Glossy Light Reflection Sheen */
+.id-glossy-sheen {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, 0.08) 46%, rgba(0, 242, 254, 0.16) 50%, transparent 60%);
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    z-index: 4;
 }
 
 /* Floating Badges */
@@ -3018,8 +4079,10 @@ textarea {
     }
 
     /* Hero Responsive */
-    .avatar-card-wrapper {
-        max-width: 320px;
+    .avatar-card-wrapper,
+    .id-hanging-container,
+    .cyber-id-card-wrapper {
+        max-width: 340px;
     }
 
     .floating-badge {
@@ -3119,6 +4182,36 @@ textarea {
         width: 100%;
     }
 
+    /* Hero Cards Mobile Compact */
+    .avatar-card-wrapper,
+    .id-hanging-container,
+    .cyber-id-card-wrapper {
+        max-width: 315px !important;
+    }
+
+    .id-card-grid {
+        grid-template-columns: 88px 1fr !important;
+        gap: 0.65rem !important;
+    }
+
+    .id-photo-frame {
+        width: 86px !important;
+        height: 104px !important;
+    }
+
+    .id-smart-chip {
+        width: 32px !important;
+        height: 22px !important;
+    }
+
+    .id-val-name {
+        font-size: 0.96rem !important;
+    }
+
+    .cyber-id-card {
+        padding: 0.8rem 0.95rem 0.75rem 0.95rem !important;
+    }
+
     .projects-grid {
         grid-template-columns: 1fr;
     }
@@ -3155,16 +4248,9 @@ textarea {
    13. 3D WEBGL ENGINE & IMMERSIVE CYBER SPACE
    ========================================================================== */
 
-/* Fullscreen 3D Background Canvas */
+/* Fullscreen 3D Background Canvas - Replaced with High-Performance CSS Liquid Glass */
 .bg-3d-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 1;
+    display: none !important;
 }
 
 /* 3D Cyber Cursor Follower */
@@ -3218,155 +4304,149 @@ textarea {
     }
 }
 
-/* Floating 3D Geometric Space (CSS 3D Cubes & Rings) */
+/* Floating 3D Geometric Space - Disabled for Silky-Smooth 120 FPS Scrolling */
 .floating-3d-space {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-    perspective: 1200px;
+    display: none !important;
 }
 
-.geom-3d {
-    position: absolute;
-    transform-style: preserve-3d;
+/* ==========================================================================
+   MASTER LIQUID GLASS DESIGN SYSTEM (Universal High-End Styling & 120 FPS Performance)
+   ========================================================================== */
+
+/* Liquid Glass Header (Single Fixed Layer - Silky Smooth Compositing) */
+.header {
+    background: rgba(6, 10, 24, 0.78) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 -1px 0 rgba(0, 242, 254, 0.18) !important;
 }
 
-/* 3D Cube 1 (Top-Right cyber floating cube) */
-.cube-3d-1 {
-    top: 18%;
-    right: 7%;
-    width: 55px;
-    height: 55px;
-    animation: rotateCube3D1 28s infinite linear;
-    opacity: 0.35;
+.header.scrolled {
+    background: rgba(4, 7, 18, 0.92) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65), inset 0 -1px 0 rgba(0, 242, 254, 0.25) !important;
 }
 
-/* 3D Cube 2 (Bottom-Left cyber floating cube) */
-.cube-3d-2 {
-    bottom: 25%;
-    left: 5%;
-    width: 42px;
-    height: 42px;
-    animation: rotateCube3D2 32s infinite linear reverse;
-    opacity: 0.25;
+/* Universal Liquid Glass Cards & Surfaces (Layered Glass, Specular Rim, 120 FPS Native) */
+.glass-card,
+.project-card,
+.skill-card,
+.pillar-card,
+.education-card,
+.contact-info-card,
+.contact-intro-card,
+.about-card-primary,
+.dossier-card,
+.stat-card,
+.cert-card,
+.gh-repo-card,
+.li-post-card,
+.avatar-card,
+.academic-drawer-card,
+.contact-form,
+.edu-doc-viewer,
+.dossier-header,
+.dossier-metrics-grid,
+.dossier-footer,
+.hud-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(13, 21, 42, 0.82) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.10) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.22) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 0 16px 42px -10px rgba(0, 0, 0, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.28), inset 0 -1px 2px 0 rgba(0, 0, 0, 0.4), inset 0 0 24px 0 rgba(0, 242, 254, 0.04) !important;
+    contain: layout style;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal), background var(--transition-normal) !important;
 }
 
-.c-face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 1px solid rgba(0, 242, 254, 0.6);
-    background: rgba(0, 242, 254, 0.04);
-    box-shadow: inset 0 0 18px rgba(0, 242, 254, 0.12);
+/* Liquid Glass Hover Elevation & Chromatic Specular Flare */
+.glass-card:hover,
+.project-card:hover,
+.skill-card:hover,
+.pillar-card:hover,
+.education-card:hover,
+.contact-info-card:hover,
+.dossier-card:hover,
+.cert-card:hover,
+.gh-repo-card:hover,
+.li-post-card:hover,
+.hud-card:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(18, 30, 60, 0.90) 100%) !important;
+    border-color: rgba(0, 242, 254, 0.55) !important;
+    border-top-color: rgba(255, 255, 255, 0.65) !important;
+    border-left-color: rgba(255, 255, 255, 0.42) !important;
+    border-bottom-color: rgba(0, 0, 0, 0.6) !important;
+    box-shadow: 0 24px 55px -10px rgba(0, 0, 0, 0.75), 0 0 35px rgba(0, 242, 254, 0.25), inset 0 1px 2px 0 rgba(255, 255, 255, 0.45) !important;
 }
 
-.cube-3d-1 .c-front {
-    transform: translateZ(27.5px);
+/* Liquid Glass Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, #00f2fe 0%, #38bdf8 45%, #6366f1 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.32) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.7) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.45) !important;
+    box-shadow: 0 8px 24px rgba(0, 242, 254, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.55) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
-.cube-3d-1 .c-back {
-    transform: rotateY(180deg) translateZ(27.5px);
+.btn-secondary {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.38) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.24) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
-.cube-3d-1 .c-right {
-    transform: rotateY(90deg) translateZ(27.5px);
+.btn-secondary:hover {
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.20) 0%, rgba(56, 189, 248, 0.10) 100%) !important;
+    border-color: rgba(0, 242, 254, 0.55) !important;
+    border-top-color: rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 242, 254, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
 }
 
-.cube-3d-1 .c-left {
-    transform: rotateY(-90deg) translateZ(27.5px);
+/* Liquid Glass Pills, Tags & Badges */
+.tech-pill,
+.skill-pill,
+.project-tag,
+.project-badge,
+.hero-badge,
+.mode-tab {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.38) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.28), 0 3px 10px rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
-.cube-3d-1 .c-top {
-    transform: rotateX(90deg) translateZ(27.5px);
+/* Form Controls Liquid Glass */
+.form-input,
+.form-textarea {
+    background: rgba(7, 12, 26, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.10) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.24) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transition: all var(--transition-fast) !important;
 }
 
-.cube-3d-1 .c-bottom {
-    transform: rotateX(-90deg) translateZ(27.5px);
-}
-
-.cube-3d-2 .c-front {
-    transform: translateZ(21px);
-}
-
-.cube-3d-2 .c-back {
-    transform: rotateY(180deg) translateZ(21px);
-}
-
-.cube-3d-2 .c-right {
-    transform: rotateY(90deg) translateZ(21px);
-}
-
-.cube-3d-2 .c-left {
-    transform: rotateY(-90deg) translateZ(21px);
-}
-
-.cube-3d-2 .c-top {
-    transform: rotateX(90deg) translateZ(21px);
-}
-
-.cube-3d-2 .c-bottom {
-    transform: rotateX(-90deg) translateZ(21px);
-}
-
-/* 3D Floating Cyber Rings */
-.ring-3d {
-    position: absolute;
-    border: 2px dashed rgba(56, 189, 248, 0.35);
-    border-radius: 50%;
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
-}
-
-.ring-3d-1 {
-    top: 55%;
-    right: 10%;
-    width: 130px;
-    height: 130px;
-    animation: rotateRing3D 20s infinite linear;
-    opacity: 0.3;
-}
-
-.ring-3d-2 {
-    top: 35%;
-    left: 8%;
-    width: 90px;
-    height: 90px;
-    animation: rotateRing3D 24s infinite linear reverse;
-    opacity: 0.25;
-}
-
-@keyframes rotateCube3D1 {
-    0% {
-        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-    }
-
-    100% {
-        transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
-    }
-}
-
-@keyframes rotateCube3D2 {
-    0% {
-        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-    }
-
-    100% {
-        transform: rotateX(-360deg) rotateY(360deg) rotateZ(-360deg);
-    }
-}
-
-@keyframes rotateRing3D {
-    0% {
-        transform: rotateX(68deg) rotateZ(0deg);
-    }
-
-    100% {
-        transform: rotateX(68deg) rotateZ(360deg);
-    }
+.form-input:focus,
+.form-textarea:focus {
+    background: rgba(10, 18, 36, 0.90) !important;
+    border-color: var(--accent-cyan) !important;
+    border-top-color: rgba(255, 255, 255, 0.45) !important;
+    box-shadow: 0 0 22px rgba(0, 242, 254, 0.32), inset 0 1px 1px rgba(255, 255, 255, 0.22) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -3375,13 +4455,13 @@ textarea {
 .visual-mode-toggle {
     display: inline-flex;
     align-items: center;
-    background: rgba(11, 18, 34, 0.85);
-    border: 1px solid var(--border-medium);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(11, 18, 34, 0.92) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: var(--radius-full);
     padding: 0.32rem;
     margin-bottom: 1.25rem;
-    backdrop-filter: blur(12px);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
     z-index: 5;
     position: relative;
 }
@@ -3421,8 +4501,8 @@ textarea {
     box-sizing: border-box;
     background: radial-gradient(ellipse at center, rgba(0, 242, 254, 0.05) 0%, rgba(6, 12, 26, 0.85) 60%, var(--bg-card) 100%);
     border: 1px solid var(--border-medium);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: var(--radius-lg);
-    backdrop-filter: blur(14px);
     box-shadow: var(--shadow-lg), inset 0 0 50px rgba(0, 242, 254, 0.08), 0 0 30px rgba(99, 102, 241, 0.08);
     overflow: hidden;
     display: none;
@@ -3587,12 +4667,12 @@ textarea {
     flex-direction: column;
     gap: 0.4rem;
     z-index: 6;
-    background: rgba(6, 12, 26, 0.9);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(6, 12, 26, 0.94) 100%);
     border: 1px solid rgba(0, 242, 254, 0.35);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: var(--radius-md);
     padding: 0.5rem 0.6rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65), inset 0 0 14px rgba(0, 242, 254, 0.1);
-    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.2), inset 0 0 14px rgba(0, 242, 254, 0.1);
 }
 
 .hud-sidebar-title {
@@ -3709,13 +4789,13 @@ textarea {
     right: 0.75rem;
     top: 3.2rem;
     z-index: 6;
-    background: rgba(6, 12, 26, 0.9);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(6, 12, 26, 0.94) 100%);
     border: 1px solid rgba(0, 242, 254, 0.35);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: var(--radius-md);
     padding: 0.5rem 0.65rem;
     min-width: 124px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65), inset 0 0 14px rgba(0, 242, 254, 0.1);
-    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.2), inset 0 0 14px rgba(0, 242, 254, 0.1);
 }
 
 .hud-intel-title {
@@ -3781,12 +4861,12 @@ textarea {
     right: 0.75rem;
     display: flex;
     flex-direction: column;
-    background: rgba(6, 12, 26, 0.94);
-    border: 1px solid rgba(0, 242, 254, 0.32);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(6, 12, 26, 0.96) 100%);
+    border: 1px solid rgba(0, 242, 254, 0.35);
+    border-top: 1px solid rgba(255, 255, 255, 0.42);
     padding: 0.5rem 0.75rem;
     border-radius: var(--radius-md);
-    backdrop-filter: blur(14px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7), inset 0 0 16px rgba(0, 242, 254, 0.08);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.2), inset 0 0 16px rgba(0, 242, 254, 0.08);
     gap: 0.3rem;
     z-index: 6;
 }
@@ -5838,7 +6918,6 @@ textarea {
 /* ==========================================================================
    18. 3D ROYAL SANDESH PATRA (शाही संदेश पत्र) - HK LOGO SPOTLIGHT
    ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Marcellus&family=Rozha+One&family=Yatra+One&display=swap');
 
 /* Sandesh Patra Modal Overlay */
 .sandesh-modal-overlay,
@@ -8257,20 +9336,16 @@ textarea {
    "thoda desktop jesa dikhe" - dense, crisp, proportional, lag-free scrolling
    ========================================================================== */
 @media (max-width: 768px) {
-    html,
-    body {
-        max-width: 100%;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
-    }
-
     html {
         font-size: 14.5px;
         -webkit-text-size-adjust: 100%;
     }
 
-    /* Disable heavy continuous Three.js background canvas and CSS 3D cubes on mobile to free GPU and guarantee 60/120fps touch scroll */
-    .bg-3d-canvas,
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Disable heavy continuous CSS 3D cubes on mobile to free GPU and guarantee 60fps */
     .floating-3d-space,
     .geom-3d,
     .cube-3d-1,
@@ -8290,7 +9365,10 @@ textarea {
     .modal-dialog {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
-        background: rgba(11, 18, 34, 0.94) !important;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(13, 21, 42, 0.88) 100%) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.35) !important;
+        border-left: 1px solid rgba(255, 255, 255, 0.20) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
         transform: translateZ(0);
     }
 
@@ -8385,17 +9463,33 @@ textarea {
         height: 16px !important;
     }
 
-    /* 3D Visual in Hero - Compact size so it feels like a desktop side-widget */
+    /* Cyber Engineering ID Card in Hero (<= 768px) */
     .hero-visual {
         width: 100% !important;
-        max-width: 340px !important;
+        max-width: 445px !important;
         margin: 0 auto !important;
     }
 
-    #hero3dContainer,
-    .tab3d-visual-container {
-        height: 280px !important;
-        max-height: 280px !important;
+    .cyber-id-card-wrapper {
+        width: 100% !important;
+        max-width: 445px !important;
+    }
+
+    .cyber-id-card {
+        padding: 1.15rem 1.15rem 1rem 1.15rem !important;
+        border-radius: 20px !important;
+    }
+
+    .floating-badge.badge-top-right {
+        top: -10px !important;
+        right: -8px !important;
+        transform: scale(0.9);
+    }
+
+    .floating-badge.badge-bottom-left {
+        bottom: -10px !important;
+        left: -8px !important;
+        transform: scale(0.9);
     }
 
     /* Cards & Grids: Sleek, compact and desktop-proportional */
@@ -8496,9 +9590,68 @@ textarea {
         letter-spacing: -0.01em !important;
     }
 
-    #hero3dContainer,
-    .tab3d-visual-container {
-        height: 250px !important;
+    /* Cyber ID Card Compact Mobile View (<= 480px) */
+    .cyber-id-card {
+        padding: 1rem 0.85rem 0.9rem 0.85rem !important;
+        border-radius: 18px !important;
+    }
+
+    .id-card-grid {
+        grid-template-columns: 100px 1fr !important;
+        gap: 0.75rem !important;
+    }
+
+    .id-photo-frame {
+        width: 98px !important;
+        height: 120px !important;
+    }
+
+    .id-smart-chip {
+        width: 40px !important;
+        height: 28px !important;
+    }
+
+    .id-val-name {
+        font-size: 1.05rem !important;
+    }
+
+    .id-name-hindi {
+        font-size: 0.7rem !important;
+    }
+
+    .id-val-role {
+        font-size: 0.72rem !important;
+    }
+
+    .id-duo-row {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.35rem !important;
+    }
+
+    .id-val,
+    .id-link-contact {
+        font-size: 0.68rem !important;
+    }
+
+    .id-link-email {
+        font-size: 0.6rem !important;
+    }
+
+    .id-val-arsenal {
+        font-size: 0.62rem !important;
+    }
+
+    .id-barcode-text {
+        font-size: 0.5rem !important;
+    }
+
+    .id-hologram-seal {
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+    .floating-badge {
+        display: none !important;
     }
 
     .project-card,

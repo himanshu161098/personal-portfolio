@@ -33,39 +33,17 @@
 </head>
 
 <body>
-    <!-- Interactive 3D WebGL Background Canvas -->
-    <canvas id="bg3dCanvas" class="bg-3d-canvas" aria-hidden="true"></canvas>
+    <!-- High-Performance Liquid Glass Ambient Background (Zero-Lag, 120 FPS Silky-Smooth Scroll) -->
+    <div class="liquid-glass-background" aria-hidden="true">
+        <div class="glass-ambient-orb glass-orb-1"></div>
+        <div class="glass-ambient-orb glass-orb-2"></div>
+        <div class="glass-ambient-orb glass-orb-3"></div>
+        <div class="liquid-grid-overlay"></div>
+    </div>
 
     <!-- 3D Futuristic Cyber Cursor -->
     <div class="cursor-3d-dot" id="cursor3dDot" aria-hidden="true"></div>
     <div class="cursor-3d-ring" id="cursor3dRing" aria-hidden="true"></div>
-
-    <!-- Floating 3D Geometric Scene in Background Space -->
-    <div class="floating-3d-space" aria-hidden="true">
-        <div class="geom-3d cube-3d cube-3d-1">
-            <div class="c-face c-front"></div>
-            <div class="c-face c-back"></div>
-            <div class="c-face c-right"></div>
-            <div class="c-face c-left"></div>
-            <div class="c-face c-top"></div>
-            <div class="c-face c-bottom"></div>
-        </div>
-        <div class="geom-3d cube-3d cube-3d-2">
-            <div class="c-face c-front"></div>
-            <div class="c-face c-back"></div>
-            <div class="c-face c-right"></div>
-            <div class="c-face c-left"></div>
-            <div class="c-face c-top"></div>
-            <div class="c-face c-bottom"></div>
-        </div>
-        <div class="geom-3d ring-3d ring-3d-1"></div>
-        <div class="geom-3d ring-3d ring-3d-2"></div>
-    </div>
-
-    <!-- Subtle Background Ambient Glows & Grid Pattern -->
-    <div class="cyber-grid-overlay" aria-hidden="true"></div>
-    <div class="ambient-glow ambient-glow-1" aria-hidden="true"></div>
-    <div class="ambient-glow ambient-glow-2" aria-hidden="true"></div>
 
     <!-- ========================================================================= -->
     <!-- 1. NAVIGATION BAR                                                         -->
@@ -74,7 +52,8 @@
         <nav class="nav-container" aria-label="Main Navigation">
             <!-- Logo / Brand Name -->
             <!-- Logo / Brand Name (Click opens Sandesh Patra Review) -->
-            <a href="#home" class="nav-brand" id="navBrandLogo" aria-label="Himanshu Kumar Homepage" title="Himanshu Kumar">
+            <a href="#home" class="nav-brand" id="navBrandLogo" aria-label="Himanshu Kumar Homepage"
+                title="Himanshu Kumar">
                 <span class="brand-logo-badge" aria-hidden="true">
                     <svg class="brand-logo-svg" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
@@ -169,22 +148,27 @@
 
                 <!-- Mobile Drawer Action CTAs -->
                 <div class="nav-mobile-cta">
-                    <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm nav-mobile-resume-btn" title="View Resume PDF">
+                    <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-outline btn-sm nav-mobile-resume-btn" title="View Resume PDF">
                         <i class="fa-solid fa-eye"></i> View Resume
                     </a>
-                    <a href="prachi/index.html" class="btn btn-primary btn-sm nav-mobile-prachi-btn" title="Launch Prachi AI Companion">
-                        <img src="assets/prachi-logo.png" alt="Prachi Logo" class="btn-prachi-logo"> Prachi AI <span class="nav-badge-pill">Live</span>
+                    <a href="prachi/index.html" class="btn btn-primary btn-sm nav-mobile-prachi-btn"
+                        title="Launch Prachi AI Companion">
+                        <img src="assets/prachi-logo.png" alt="Prachi Logo" class="btn-prachi-logo"> Prachi AI <span
+                            class="nav-badge-pill">Live</span>
                     </a>
                 </div>
             </div>
 
             <!-- Right Actions: Resume View & Prachi AI CTA + Mobile Toggle -->
             <div class="nav-actions">
-                <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm nav-resume-btn" title="View Resume PDF">
+                <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-outline btn-sm nav-resume-btn" title="View Resume PDF">
                     <i class="fa-solid fa-eye"></i>
                     <span>Resume</span>
                 </a>
-                <a href="prachi/index.html" class="btn btn-primary btn-sm btn-prachi-nav" title="Launch Prachi AI Companion">
+                <a href="prachi/index.html" class="btn btn-primary btn-sm btn-prachi-nav"
+                    title="Launch Prachi AI Companion">
                     <img src="assets/prachi-logo.png" alt="Prachi AI Logo" class="btn-prachi-logo">
                     <span>Prachi AI</span>
                     <span class="nav-badge-pill">Live</span>
@@ -215,7 +199,8 @@
                             <span class="status-pulse"></span>
                             <span class="badge-text">Available for Opportunities &amp; Projects</span>
                         </div>
-                        <div class="badge-hud-intel" id="hudIntelBadge" title="Interactive Overview Active: Move cursor over front page components to view quick intel">
+                        <div class="badge-hud-intel" id="hudIntelBadge"
+                            title="Interactive Overview Active: Move cursor over front page components to view quick intel">
                             <i class="fa-solid fa-crosshairs text-cyan"></i>
                             <span class="hud-intel-pulse"></span>
                             <span>Hover Intel: Active</span>
@@ -224,7 +209,8 @@
 
                     <!-- Intro Tag -->
                     <p class="hero-greeting">
-                        <span class="terminal-prompt">$</span> <span class="term-keyword">echo</span> <span class="term-string">"Hello, World! I am"</span>
+                        <span class="terminal-prompt">$</span> <span class="term-keyword">echo</span> <span
+                            class="term-string">"Hello, World! I am"</span>
                     </p>
 
                     <!-- Main Name Heading -->
@@ -244,7 +230,11 @@
 
                     <!-- Short Introduction -->
                     <p class="hero-description">
-                        Hands-on experience in <span class="hl-tag hl-py"><i class="fa-brands fa-python"></i> Python</span>, <span class="hl-tag hl-data">data analysis</span>, <span class="hl-tag hl-ai">machine learning</span>, and <span class="hl-tag hl-web">full-stack web development</span>. Passionate about <span class="hl-tag hl-eng">structured data handling</span>, API integrations, and scalable engineering.
+                        Hands-on experience in <span class="hl-tag hl-py"><i class="fa-brands fa-python"></i>
+                            Python</span>, <span class="hl-tag hl-data">data analysis</span>, <span
+                            class="hl-tag hl-ai">machine learning</span>, and <span class="hl-tag hl-web">full-stack web
+                            development</span>. Passionate about <span class="hl-tag hl-eng">structured data
+                            handling</span>, API integrations, and scalable engineering.
                     </p>
 
                     <!-- CTA Buttons -->
@@ -253,7 +243,8 @@
                             <img src="assets/prachi-logo.png" alt="Prachi AI Logo" class="hero-prachi-logo">
                             <span>Prachi AI</span>
                         </a>
-                        <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" download="Himanshu_Kumar_Resume.pdf" class="btn btn-primary btn-resume-hero" id="heroResumeBtn" title="Download Resume PDF">
+                        <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" download="Himanshu_Kumar_Resume.pdf"
+                            class="btn btn-primary btn-resume-hero" id="heroResumeBtn" title="Download Resume PDF">
                             <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
                             <span>Download Resume</span>
                         </a>
@@ -271,19 +262,27 @@
                     <div class="hero-social-strip">
                         <span class="hero-social-label">// Connect:</span>
                         <div class="hero-social-icons">
-                            <a href="https://github.com/himanshu161098" target="_blank" rel="noopener noreferrer" class="social-link social-github" aria-label="GitHub Profile" title="GitHub: @himanshu161098">
+                            <a href="https://github.com/himanshu161098" target="_blank" rel="noopener noreferrer"
+                                class="social-link social-github" aria-label="GitHub Profile"
+                                title="GitHub: @himanshu161098">
                                 <i class="fa-brands fa-github" aria-hidden="true"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/himanshu-kumar-1618hks/" target="_blank" rel="noopener noreferrer" class="social-link social-linkedin" aria-label="LinkedIn Profile" title="LinkedIn: /in/himanshu-kumar-1618hks">
+                            <a href="https://www.linkedin.com/in/himanshu-kumar-1618hks/" target="_blank"
+                                rel="noopener noreferrer" class="social-link social-linkedin"
+                                aria-label="LinkedIn Profile" title="LinkedIn: /in/himanshu-kumar-1618hks">
                                 <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
                             </a>
-                            <a href="https://www.instagram.com/himanshu_singh1610/" target="_blank" rel="noopener noreferrer" class="social-link instagram-link social-instagram" aria-label="Instagram Profile" title="Instagram: @himanshu_singh1610">
+                            <a href="https://www.instagram.com/himanshu_singh1610/" target="_blank"
+                                rel="noopener noreferrer" class="social-link instagram-link social-instagram"
+                                aria-label="Instagram Profile" title="Instagram: @himanshu_singh1610">
                                 <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                             </a>
-                            <a href="mailto:himanshukumarsingh1610@gmail.com" class="social-link social-email" aria-label="Send Email" title="Email: himanshukumarsingh1610@gmail.com">
+                            <a href="mailto:himanshukumarsingh1610@gmail.com" class="social-link social-email"
+                                aria-label="Send Email" title="Email: himanshukumarsingh1610@gmail.com">
                                 <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                             </a>
-                            <a href="tel:+919341112974" class="social-link social-phone" aria-label="Call or WhatsApp" title="Phone: +91 9341112974">
+                            <a href="tel:+919341112974" class="social-link social-phone" aria-label="Call or WhatsApp"
+                                title="Phone: +91 9341112974">
                                 <i class="fa-solid fa-phone" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -295,137 +294,53 @@
                         <div class="tech-pills">
                             <span class="tech-pill pill-python"><i class="fa-brands fa-python"></i> Python</span>
                             <span class="tech-pill pill-ml"><i class="fa-solid fa-brain"></i> Machine Learning</span>
-                            <span class="tech-pill pill-powerbi"><i class="fa-solid fa-chart-pie"></i> Power BI &amp; Analytics</span>
+                            <span class="tech-pill pill-powerbi"><i class="fa-solid fa-chart-pie"></i> Power BI &amp;
+                                Analytics</span>
                             <span class="tech-pill pill-js"><i class="fa-brands fa-js"></i> JavaScript</span>
                             <span class="tech-pill pill-sql"><i class="fa-solid fa-database"></i> SQL / MySQL</span>
-                            <span class="tech-pill pill-github"><i class="fa-brands fa-github"></i> <span class="live-dot-green"></span> GitHub Live</span>
+                            <span class="tech-pill pill-github"><i class="fa-brands fa-github"></i> <span
+                                    class="live-dot-green"></span> GitHub Live</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Hero Visual / 3D Cyber Core & Avatar Card -->
+                <!-- Hero Visual / Developer Profile & Hanging ID Card -->
                 <div class="hero-visual">
-                    <!-- 3D View Mode Switcher -->
+                    <!-- View Mode Switcher -->
                     <div class="visual-mode-toggle" id="visualModeToggle" role="tablist"
-                        aria-label="3D Visual View Selector">
+                        aria-label="Hero Visual View Selector">
                         <button class="mode-tab active" id="tabAvatar" data-mode="avatar" role="tab"
-                            aria-selected="true">
+                            aria-selected="true" title="Switch to Developer Profile View">
                             <i class="fa-solid fa-user-tie"></i>
                             <span>Developer Profile</span>
                         </button>
-                        <button class="mode-tab" id="tab3dCore" data-mode="3d" role="tab" aria-selected="false">
-                            <i class="fa-solid fa-cube"></i>
-                            <span>3D Quantum Core</span>
+                        <button class="mode-tab" id="tabIdCard" data-mode="idcard" role="tab"
+                            aria-selected="false" title="Switch to Hanging Student ID Card View">
+                            <i class="fa-solid fa-id-card-clip"></i>
+                            <span>Student ID Card</span>
                         </button>
                     </div>
 
                     <div class="avatar-card-wrapper" id="heroCardWrapper" data-tilt="true">
                         <!-- Holographic Ring & Glow -->
-                        <div class="avatar-glow-ring"></div>
+                        <div class="avatar-glow-ring" aria-hidden="true"></div>
 
-                        <!-- 3D Interactive Cyber Core Container -->
-                        <div class="hero-3d-container" id="hero3dContainer">
-                            <canvas id="hero3dCanvas" aria-label="Interactive 3D Cyber Core Model"></canvas>
-                            <div class="hologram-hud-overlay">
-                                <!-- Scanline sweep effect -->
-                                <div class="hud-scanline"></div>
-
-                                <!-- Top Bar: Engine tag + FPS + Uptime -->
-                                <div class="hud-top">
-                                    <span class="hud-tag"><i class="fa-solid fa-satellite-dish"></i> HK_ENGINE // v3.0.1</span>
-                                    <div class="hud-top-right">
-                                        <span class="hud-uptime font-mono" id="hudUptime">00:00:00</span>
-                                        <span class="hud-fps" id="hudFps">60 FPS</span>
-                                    </div>
-                                </div>
-
-                                <!-- Left Sidebar: Telemetry Gauges -->
-                                <div class="hud-sidebar-left">
-                                    <div class="hud-sidebar-title"><i class="fa-solid fa-chart-simple"></i> METRICS</div>
-                                    <div class="hud-gauge" title="CPU Core Load">
-                                        <span class="gauge-label gauge-lbl-cpu">CPU</span>
-                                        <div class="gauge-ring-container">
-                                            <svg viewBox="0 0 36 36" class="gauge-ring">
-                                                <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                                <path class="gauge-fill gauge-cpu" stroke-dasharray="72, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                            </svg>
-                                            <span class="gauge-val gauge-val-cpu" id="gaugeCpuVal">72%</span>
-                                        </div>
-                                    </div>
-                                    <div class="hud-gauge" title="Memory Allocation">
-                                        <span class="gauge-label gauge-lbl-mem">MEM</span>
-                                        <div class="gauge-ring-container">
-                                            <svg viewBox="0 0 36 36" class="gauge-ring">
-                                                <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                                <path class="gauge-fill gauge-mem" stroke-dasharray="58, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                            </svg>
-                                            <span class="gauge-val gauge-val-mem" id="gaugeMemVal">58%</span>
-                                        </div>
-                                    </div>
-                                    <div class="hud-gauge" title="Network Throughput">
-                                        <span class="gauge-label gauge-lbl-net">NET</span>
-                                        <div class="gauge-ring-container">
-                                            <svg viewBox="0 0 36 36" class="gauge-ring">
-                                                <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                                <path class="gauge-fill gauge-net" stroke-dasharray="89, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                            </svg>
-                                            <span class="gauge-val gauge-val-net" id="gaugeNetVal">89%</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Right Sidebar: Live Skill Telemetry Feed -->
-                                <div class="hud-sidebar-right">
-                                    <div class="hud-intel-title"><i class="fa-solid fa-wave-square"></i> SKILL_NODES</div>
-                                    <div class="hud-intel-feed" id="hudIntelFeed">
-                                        <div class="intel-line active"><span class="il-dot"></span> Python <span class="il-pct">92%</span></div>
-                                        <div class="intel-line"><span class="il-dot"></span> Machine Learning <span class="il-pct">88%</span></div>
-                                        <div class="intel-line"><span class="il-dot"></span> Data Science <span class="il-pct">85%</span></div>
-                                        <div class="intel-line"><span class="il-dot"></span> SQL / BigQuery <span class="il-pct">90%</span></div>
-                                        <div class="intel-line"><span class="il-dot"></span> IoT Systems <span class="il-pct">78%</span></div>
-                                        <div class="intel-line"><span class="il-dot"></span> Web Dev <span class="il-pct">82%</span></div>
-                                    </div>
-                                </div>
-
-                                <!-- Center Drag Hint (fades on interaction) -->
-                                <div class="hud-center-hint" id="hudCenterHint">
-                                    <i class="fa-solid fa-arrows-spin"></i>
-                                    <span>DRAG TO ROTATE 3D MODEL</span>
-                                </div>
-
-                                <!-- Bottom Panel: System Metrics Dashboard -->
-                                <div class="hud-bottom">
-                                    <div class="hud-metric-row">
-                                        <div class="hud-stat stat-readiness">
-                                            <div class="stat-hdr">
-                                                <span class="stat-label"><i class="fa-solid fa-brain text-cyan"></i> AI READINESS</span>
-                                                <span class="stat-pct font-mono">95%</span>
-                                            </div>
-                                            <div class="hud-bar">
-                                                <div class="hud-bar-fill" style="width: 95%;"></div>
-                                            </div>
-                                        </div>
-                                        <div class="hud-stat stat-mini">
-                                            <span class="stat-label"><i class="fa-solid fa-code-branch text-purple"></i> PROJECTS</span>
-                                            <span class="stat-val font-mono hud-count-up" data-target="12">12</span>
-                                        </div>
-                                        <div class="hud-stat stat-mini">
-                                            <span class="stat-label"><i class="fa-solid fa-certificate text-emerald"></i> CERTS</span>
-                                            <span class="stat-val font-mono hud-count-up" data-target="7">7</span>
-                                        </div>
-                                        <div class="hud-stat stat-mini">
-                                            <span class="stat-label"><i class="fa-brands fa-github text-cyan"></i> GITHUB</span>
-                                            <span class="stat-val-sync font-mono" id="hudGithubStatus"><span class="sync-live-dot"></span> SYNCED</span>
-                                        </div>
-                                    </div>
-                                    <!-- Neural Waveform -->
-                                    <canvas class="hud-waveform" id="hudWaveform" height="20"></canvas>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Classic Avatar Profile Card (Switchable) -->
+                        <!-- 1. Classic Developer Profile Card (Active Default) -->
                         <div class="avatar-card" id="heroAvatarCard">
+                            <!-- Cyber Tech HUD Header -->
+                            <div class="dev-card-hud" aria-hidden="true">
+                                <span class="hud-mono"><i class="fa-solid fa-code-commit"></i> DEV_ENGINE // v3.2</span>
+                                <span class="hud-status"><span class="hud-pulse"></span>ACTIVE</span>
+                            </div>
+
+                            <!-- Cyber Corner Brackets -->
+                            <div class="dev-card-corner dev-corner-tl" aria-hidden="true"></div>
+                            <div class="dev-card-corner dev-corner-tr" aria-hidden="true"></div>
+                            <div class="dev-card-corner dev-corner-bl" aria-hidden="true"></div>
+                            <div class="dev-card-corner dev-corner-br" aria-hidden="true"></div>
+
+                            <!-- Ambient Cyber Glow Orb -->
+                            <div class="dev-card-ambient-orb" aria-hidden="true"></div>
+
                             <!-- Visual Avatar / Profile Placeholder -->
                             <div class="avatar-img-container">
                                 <img src="assets/profile.jpg" alt="Himanshu Kumar" class="avatar-photo"
@@ -486,14 +401,208 @@
                             </div>
                         </div>
 
-                        <!-- Floating Badges for visual depth -->
-                        <div class="floating-badge badge-top-right">
-                            <i class="fa-solid fa-microchip text-cyan"></i>
-                            <span>AI / ML Dev</span>
+                        <!-- 2. Hanging Cyber ID Card (Replacing 3D Quantum Core, with Lanyard Holder & Swaying Movement) -->
+                        <div class="id-hanging-container" id="heroIdCardContainer" style="display: none;">
+                            <div class="id-swaying-hanger">
+                                <!-- Lanyard Strap extending from top -->
+                                <div class="id-lanyard-strap" aria-hidden="true">
+                                    <div class="id-strap-weave"></div>
+                                    <span class="id-strap-text">HK • AKTU • IIMT</span>
+                                </div>
+
+                                <!-- Metallic ID Holder Clip & Clasp -->
+                                <div class="id-holder-hardware" aria-hidden="true">
+                                    <div class="id-metal-buckle"></div>
+                                    <div class="id-metal-clasp"></div>
+                                    <div class="id-metal-ring"></div>
+                                </div>
+
+                                <!-- 3D Futuristic Cyber ID Card Wrapper -->
+                                <div class="cyber-id-card-wrapper" id="heroIdCardInnerWrapper">
+                                    <!-- Holographic Ambient Glow Aura -->
+                                    <div class="id-card-ambient-glow" aria-hidden="true"></div>
+
+                                    <!-- 3D Futuristic Cyber ID Card -->
+                                    <div class="cyber-id-card" id="cyberIdCard" role="region"
+                                        aria-label="Himanshu Kumar Engineering Identity Card">
+                                        <!-- Top Lanyard Mount Slot & Card Hole -->
+                                        <div class="id-lanyard-slot-wrap" aria-hidden="true">
+                                            <div class="id-lanyard-band"></div>
+                                            <div class="id-lanyard-clip"></div>
+                                            <div class="id-lanyard-hole"></div>
+                                        </div>
+
+                                        <!-- ID Card Header: Institution & Accreditation -->
+                                        <div class="id-card-header">
+                                            <div class="id-header-emblem">
+                                                <svg class="id-crest-svg" viewBox="0 0 34 34" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                    <circle cx="17" cy="17" r="15" stroke="url(#idGradCrest)" stroke-width="2"
+                                                        stroke-dasharray="4 2" />
+                                                    <path d="M17 5L26 10.5V23.5L17 29L8 23.5V10.5L17 5Z"
+                                                        fill="rgba(0, 242, 254, 0.12)" stroke="#00f2fe" stroke-width="1.8" />
+                                                    <circle cx="17" cy="17" r="4" fill="#00f2fe" />
+                                                    <path d="M13 17H21M17 13V21" stroke="#050a18" stroke-width="1.5"
+                                                        stroke-linecap="round" />
+                                                    <defs>
+                                                        <linearGradient id="idGradCrest" x1="0" y1="0" x2="34" y2="34"
+                                                            gradientUnits="userSpaceOnUse">
+                                                            <stop stop-color="#00f2fe" />
+                                                            <stop offset="0.5" stop-color="#38bdf8" />
+                                                            <stop offset="1" stop-color="#818cf8" />
+                                                        </linearGradient>
+                                                    </defs>
+                                                </svg>
+                                                <div class="id-inst-text">
+                                                    <span class="id-inst-name">IIMT COLLEGE OF ENGINEERING</span>
+                                                    <span class="id-inst-univ">DR. A.P.J. ABDUL KALAM TECHNICAL UNIVERSITY (AKTU)</span>
+                                                </div>
+                                            </div>
+                                            <div class="id-live-chip">
+                                                <span class="id-chip-pulse"></span>
+                                                <span class="id-chip-text">ACTIVE // 2026</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Security Ribbon / Title Bar -->
+                                        <div class="id-security-ribbon">
+                                            <span class="id-ribbon-title"><i class="fa-solid fa-id-card-clip"></i> STUDENT &amp; DEVELOPER CREDENTIAL</span>
+                                            <span class="id-ribbon-code font-mono">Roll No.-2302160130020</span>
+                                        </div>
+
+                                        <!-- ID Card Main Grid: Left Photo & Right Dossier -->
+                                        <div class="id-card-grid">
+                                            <!-- Left Column: Holographic Photo & Security Hardware -->
+                                            <div class="id-left-col">
+                                                <!-- Photo Frame with Tech Brackets & Scanline -->
+                                                <div class="id-photo-frame">
+                                                    <span class="id-bracket b-tl"></span>
+                                                    <span class="id-bracket b-tr"></span>
+                                                    <span class="id-bracket b-bl"></span>
+                                                    <span class="id-bracket b-br"></span>
+                                                    <img src="assets/profile.jpg" alt="Himanshu Kumar" class="id-photo-img"
+                                                        id="idCardProfileImg" onerror="this.src='assets/profile.png';">
+                                                    <div class="id-photo-scanline" aria-hidden="true"></div>
+                                                    <div class="id-photo-overlay-badge">
+                                                        <i class="fa-solid fa-shield-halved"></i>
+                                                        <span>VERIFIED</span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Golden EMV Cryptographic Smart Chip -->
+                                                <div class="id-smart-chip" title="Cryptographic Microcontroller Hardware Token"
+                                                    aria-hidden="true">
+                                                    <div class="chip-wire wire-left"></div>
+                                                    <div class="chip-wire wire-right"></div>
+                                                    <div class="chip-wire wire-top"></div>
+                                                    <div class="chip-wire wire-bottom"></div>
+                                                    <div class="chip-core-contact"></div>
+                                                </div>
+
+                                                <!-- Biometric Tags Row -->
+                                                <div class="id-bio-tags">
+                                                    <span class="id-bio-pill" title="Blood Group"><i
+                                                            class="fa-solid fa-droplet text-red"></i> B+</span>
+                                                    <span class="id-bio-pill" title="Contactless Wireless NFC/RFID Enabled"><i
+                                                            class="fa-solid fa-wifi text-cyan"></i> RFID</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Right Column: Personal & Academic Credentials -->
+                                            <div class="id-right-col">
+                                                <!-- Full Name Section -->
+                                                <div class="id-field id-name-field">
+                                                    <span class="id-label">STUDENT NAME</span>
+                                                    <h3 class="id-val-name">Himanshu Kumar</h3>
+                                                    <span class="id-name-hindi">हिमांशु कुमार</span>
+                                                </div>
+
+                                                <!-- Degree & Academic Branch -->
+                                                <div class="id-field">
+                                                    <span class="id-label">BRANCH &amp; PROGRAM</span>
+                                                    <p class="id-val-role">
+                                                        B.Tech — IT
+                                                        <span class="id-year-badge">Final Year</span>
+                                                    </p>
+                                                </div>
+
+                                                <!-- 2-Column Split: Date of Birth & Mobile Number -->
+                                                <div class="id-duo-row">
+                                                    <div class="id-field">
+                                                        <span class="id-label"><i class="fa-regular fa-calendar-days text-cyan"></i>
+                                                            DATE OF BIRTH</span>
+                                                        <p class="id-val font-mono text-cyan">30/04/2006</p>
+                                                    </div>
+                                                    <div class="id-field">
+                                                        <span class="id-label"><i class="fa-solid fa-phone text-emerald"></i> MOBILE
+                                                            NUMBER</span>
+                                                        <a href="tel:+919341112974" class="id-val font-mono id-link-contact"
+                                                            title="Call or WhatsApp: +91 93411 12974">
+                                                            +91 93411 12974
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Email Address -->
+                                                <div class="id-field">
+                                                    <span class="id-label"><i class="fa-regular fa-envelope text-purple"></i>
+                                                        OFFICIAL EMAIL</span>
+                                                    <a href="mailto:himanshukumarsingh161098@gmail.com"
+                                                        class="id-val font-mono id-link-email" title="Send Email">
+                                                        himanshukumarsingh161098@gmail.com
+                                                    </a>
+                                                </div>
+
+                                                <!-- Technical Core Arsenal Summary -->
+                                                <div class="id-field id-arsenal-field">
+                                                    <span class="id-label"><i class="fa-solid fa-laptop-code text-cyan"></i> CORE
+                                                        SKILLS</span>
+                                                    <p class="id-val-arsenal">Python • Data Analytics • Machine Learning • Full-Stack</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- ID Card Footer: Digital Barcode & Hologram Security Seal -->
+                                        <div class="id-card-footer">
+                                            <!-- High-Tech 2D Barcode Strip -->
+                                            <div class="id-barcode-box" title="Unique Digital Credential Security Code">
+                                                <div class="id-barcode-strip" aria-hidden="true">
+                                                    <span></span><span></span><span></span><span></span><span></span>
+                                                    <span></span><span></span><span></span><span></span><span></span>
+                                                    <span></span><span></span><span></span><span></span><span></span>
+                                                    <span></span><span></span><span></span><span></span><span></span>
+                                                    <span></span><span></span><span></span><span></span><span></span>
+                                                    <span></span><span></span><span></span><span></span><span></span>
+                                                </div>
+                                                <span class="id-barcode-text font-mono">HK//AKTU//IT//9341112974//2302160130020</span>
+                                            </div>
+
+                                            <!-- Iridescent Hologram Security Seal -->
+                                            <div class="id-hologram-seal" title="Authentic Cyber-Encrypted Security Seal"
+                                                aria-hidden="true">
+                                                <div class="id-holo-foil"></div>
+                                                <div class="id-holo-content">
+                                                    <span class="id-holo-crest">HK</span>
+                                                    <span class="id-holo-security">SECURE</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dynamic Glossy Light Reflection Sheen -->
+                                        <div class="id-glossy-sheen" aria-hidden="true"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="floating-badge badge-bottom-left">
-                            <i class="fa-solid fa-chart-line text-blue"></i>
-                            <span>Data Analytics</span>
+
+                        <!-- Floating Badges for Visual Depth -->
+                        <div class="floating-badge badge-top-right" title="Verified Engineering Student & Developer">
+                            <i class="fa-solid fa-graduation-cap text-cyan"></i>
+                            <span>AKTU CSE-IT</span>
+                        </div>
+                        <div class="floating-badge badge-bottom-left" title="AI/ML & Data Analytics Specialist">
+                            <i class="fa-solid fa-microchip text-emerald"></i>
+                            <span>AI / ML Dev</span>
                         </div>
                     </div>
                 </div>
@@ -527,7 +636,8 @@
                                 Final-year <strong>B.Tech (CSE-IT)</strong> student at <strong>IIMT College of
                                     Engineering, AKTU</strong> with hands-on experience in <strong>Python, data
                                     analysis, machine learning, and full-stack web development</strong>. Completed
-                                <strong>7 industry-recognized certifications</strong> spanning data analytics, SQL, IoT, and AI/ML.
+                                <strong>7 industry-recognized certifications</strong> spanning data analytics, SQL, IoT,
+                                and AI/ML.
                             </p>
 
                             <p class="about-secondary">
@@ -628,7 +738,9 @@
                                 </div>
                                 <div class="dossier-row">
                                     <span class="dossier-label"><i class="fa-brands fa-instagram"></i> Instagram:</span>
-                                    <a href="https://www.instagram.com/himanshu_singh1610/" target="_blank" rel="noopener noreferrer" class="dossier-val font-mono text-pink" title="Instagram: @himanshu_singh1610">@himanshu_singh1610</a>
+                                    <a href="https://www.instagram.com/himanshu_singh1610/" target="_blank"
+                                        rel="noopener noreferrer" class="dossier-val font-mono text-pink"
+                                        title="Instagram: @himanshu_singh1610">@himanshu_singh1610</a>
                                 </div>
                             </div>
 
@@ -650,7 +762,10 @@
 
                             <!-- Dossier Resume Action CTA -->
                             <div class="dossier-cta-wrapper">
-                                <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" download="Himanshu_Kumar_Resume.pdf" class="btn btn-outline btn-sm w-100 dossier-resume-btn" title="Download Verified Resume PDF">
+                                <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank"
+                                    download="Himanshu_Kumar_Resume.pdf"
+                                    class="btn btn-outline btn-sm w-100 dossier-resume-btn"
+                                    title="Download Verified Resume PDF">
                                     <i class="fa-solid fa-file-arrow-down"></i> Download Resume (PDF)
                                 </a>
                             </div>
@@ -671,8 +786,10 @@
                     <span class="section-tag">// 02. TECHNICAL SKILLS</span>
                     <h2 class="section-title">Technical Skills &amp; Proficiencies</h2>
                     <p class="section-subtitle">
-                        Directly aligned with my technical competencies. Click on any skill card below to view its complete
-                        <strong>Learning Roadmap</strong>, top <strong>YouTube Tutorials</strong> for beginners, <strong>Official Documentation</strong>, and in-depth <strong>Architectural Knowledge</strong>.
+                        Directly aligned with my technical competencies. Click on any skill card below to view its
+                        complete
+                        <strong>Learning Roadmap</strong>, top <strong>YouTube Tutorials</strong> for beginners,
+                        <strong>Official Documentation</strong>, and in-depth <strong>Architectural Knowledge</strong>.
                     </p>
                     <div class="section-bar"></div>
                 </div>
@@ -701,7 +818,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 90%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card" data-category="languages" data-skill="cpp">
@@ -714,7 +832,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 85%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card" data-category="languages" data-skill="java">
@@ -727,7 +846,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 82%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card" data-category="languages" data-skill="javascript">
@@ -740,7 +860,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 88%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <!-- WEB TECHNOLOGIES -->
@@ -754,7 +875,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 94%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card" data-category="web" data-skill="css3">
@@ -767,7 +889,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 90%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card" data-category="web" data-skill="bootstrap">
@@ -780,7 +903,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 86%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card" data-category="web" data-skill="tailwind">
@@ -793,7 +917,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 85%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <!-- DATABASES & QUERY -->
@@ -807,7 +932,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 86%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card" data-category="database" data-skill="mongodb">
@@ -820,7 +946,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 80%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card" data-category="database" data-skill="sql">
@@ -833,7 +960,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 88%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <!-- DATA & BI TOOLS -->
@@ -847,7 +975,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 86%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card highlight-skill" data-category="data" data-skill="powerbi">
@@ -860,7 +989,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 85%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card highlight-skill" data-category="data" data-skill="excel">
@@ -873,7 +1003,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 88%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card" data-category="data" data-skill="data_analysis">
@@ -886,7 +1017,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 88%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <!-- TOOLS & PLATFORMS -->
@@ -900,7 +1032,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 90%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card" data-category="tools" data-skill="vscode">
@@ -913,7 +1046,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 92%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card" data-category="tools" data-skill="colab">
@@ -926,7 +1060,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 88%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card" data-category="tools" data-skill="dom">
@@ -939,7 +1074,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 90%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <!-- SOFT SKILLS -->
@@ -953,7 +1089,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 94%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card" data-category="soft" data-skill="collaboration">
@@ -966,7 +1103,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 90%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
 
                     <article class="skill-card" data-category="soft" data-skill="pressure_handling">
@@ -979,7 +1117,8 @@
                         <div class="skill-level-bar">
                             <div class="skill-fill" style="width: 92%;"></div>
                         </div>
-                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp; Guides</span>
+                        <span class="skill-card-explore-pill"><i class="fa-solid fa-compass"></i> Roadmap &amp;
+                            Guides</span>
                     </article>
                 </div>
             </div>
@@ -1009,7 +1148,8 @@
                         <div class="project-banner project-banner-chatgpt">
                             <div class="project-banner-overlay"></div>
                             <div class="project-badge">
-                                <i class="fa-solid fa-sparkles text-cyan" aria-hidden="true"></i> Google Gemini &amp; Prachi Voice
+                                <i class="fa-solid fa-sparkles text-cyan" aria-hidden="true"></i> Google Gemini &amp;
+                                Prachi Voice
                             </div>
                             <div class="project-icon-preview">
                                 <img src="assets/prachi-logo.png" alt="Prachi AI Logo" class="project-prachi-logo-img">
@@ -1025,7 +1165,9 @@
                             <h3 class="project-title">Prachi AI — Universal STEM Tutor &amp; Assistant</h3>
 
                             <p class="project-description">
-                                Full-featured personal AI web application with conversation history, multi-model selection (Gemini 1.5 Flash &amp; Claude), 5-point step-by-step academic problem solver, and hands-free Hindi/English female voice assistant ("Prachi").
+                                Full-featured personal AI web application with conversation history, multi-model
+                                selection (Gemini 1.5 Flash &amp; Claude), 5-point step-by-step academic problem solver,
+                                and hands-free Hindi/English female voice assistant ("Prachi").
                             </p>
 
                             <!-- Key Technical Highlights -->
@@ -1059,8 +1201,8 @@
                                     <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                                     <span>Launch Prachi AI</span>
                                 </a>
-                                <a href="https://github.com/himanshu161098/personal-portfolio" target="_blank" rel="noopener noreferrer"
-                                    class="btn btn-outline btn-sm">
+                                <a href="https://github.com/himanshu161098/personal-portfolio" target="_blank"
+                                    rel="noopener noreferrer" class="btn btn-outline btn-sm">
                                     <i class="fa-brands fa-github" aria-hidden="true"></i>
                                     <span>Source Code</span>
                                 </a>
@@ -1348,7 +1490,8 @@
                     <span class="section-tag">// 04. INDUSTRY CREDENTIALS</span>
                     <h2 class="section-title">Certifications &amp; Technical Accreditations</h2>
                     <p class="section-subtitle">
-                        Completed 7 industry-recognized certifications spanning Data Analytics, SQL, IoT, Python, Machine
+                        Completed 7 industry-recognized certifications spanning Data Analytics, SQL, IoT, Python,
+                        Machine
                         Learning, and Cybersecurity foundations.
                     </p>
                     <div class="section-bar"></div>
@@ -1364,14 +1507,19 @@
                             </div>
                             <span class="cert-badge">Security</span>
                         </div>
-                        <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> April 5, 2026 | Google</span>
+                        <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> April 5, 2026 |
+                            Google</span>
                         <h3 class="cert-title">
-                            <a href="Certificates/Coursera H05WGT537YHR.pdf" target="_blank" class="cert-link" title="View Certificate">Foundations of Cybersecurity <i class="fa-solid fa-arrow-up-right-from-square cert-link-icon"></i></a>
+                            <a href="Certificates/Coursera H05WGT537YHR.pdf" target="_blank" class="cert-link"
+                                title="View Certificate">Foundations of Cybersecurity <i
+                                    class="fa-solid fa-arrow-up-right-from-square cert-link-icon"></i></a>
                         </h3>
-                        <p class="cert-desc">Core security principles, threat identification, network vulnerabilities, and defensive protocols by Google.</p>
+                        <p class="cert-desc">Core security principles, threat identification, network vulnerabilities,
+                            and defensive protocols by Google.</p>
                         <div class="cert-footer">
                             <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> ID: H05WGT537YHR</span>
-                            <a href="Certificates/Coursera H05WGT537YHR.pdf" target="_blank" class="cert-view-btn"><i class="fa-solid fa-eye"></i> View Certificate</a>
+                            <a href="Certificates/Coursera H05WGT537YHR.pdf" target="_blank" class="cert-view-btn"><i
+                                    class="fa-solid fa-eye"></i> View Certificate</a>
                         </div>
                     </article>
 
@@ -1383,14 +1531,19 @@
                             </div>
                             <span class="cert-badge">Python Analytics</span>
                         </div>
-                        <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> April 4, 2026 | IBM</span>
+                        <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> April 4, 2026 |
+                            IBM</span>
                         <h3 class="cert-title">
-                            <a href="Certificates/Coursera LYGRX4SKE168.pdf" target="_blank" class="cert-link" title="View Certificate">Data Analysis with Python <i class="fa-solid fa-arrow-up-right-from-square cert-link-icon"></i></a>
+                            <a href="Certificates/Coursera LYGRX4SKE168.pdf" target="_blank" class="cert-link"
+                                title="View Certificate">Data Analysis with Python <i
+                                    class="fa-solid fa-arrow-up-right-from-square cert-link-icon"></i></a>
                         </h3>
-                        <p class="cert-desc">Data wrangling, statistical analysis, exploratory visualization, and mathematical operations with Python by IBM.</p>
+                        <p class="cert-desc">Data wrangling, statistical analysis, exploratory visualization, and
+                            mathematical operations with Python by IBM.</p>
                         <div class="cert-footer">
                             <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> ID: LYGRX4SKE168</span>
-                            <a href="Certificates/Coursera LYGRX4SKE168.pdf" target="_blank" class="cert-view-btn"><i class="fa-solid fa-eye"></i> View Certificate</a>
+                            <a href="Certificates/Coursera LYGRX4SKE168.pdf" target="_blank" class="cert-view-btn"><i
+                                    class="fa-solid fa-eye"></i> View Certificate</a>
                         </div>
                     </article>
 
@@ -1402,14 +1555,19 @@
                             </div>
                             <span class="cert-badge">Data Lifecycle</span>
                         </div>
-                        <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> March 29, 2026 | Google</span>
+                        <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> March 29, 2026 |
+                            Google</span>
                         <h3 class="cert-title">
-                            <a href="Certificates/Foundations- Data, Data, Everywhere.pdf" target="_blank" class="cert-link" title="View Certificate">Foundations: Data, Data, Everywhere <i class="fa-solid fa-arrow-up-right-from-square cert-link-icon"></i></a>
+                            <a href="Certificates/Foundations- Data, Data, Everywhere.pdf" target="_blank"
+                                class="cert-link" title="View Certificate">Foundations: Data, Data, Everywhere <i
+                                    class="fa-solid fa-arrow-up-right-from-square cert-link-icon"></i></a>
                         </h3>
-                        <p class="cert-desc">Data ecosystems, data-driven decision frameworks, structured transformations, and analytical workflows by Google.</p>
+                        <p class="cert-desc">Data ecosystems, data-driven decision frameworks, structured
+                            transformations, and analytical workflows by Google.</p>
                         <div class="cert-footer">
                             <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> ID: TAMOZZSUFLCL</span>
-                            <a href="Certificates/Foundations- Data, Data, Everywhere.pdf" target="_blank" class="cert-view-btn"><i class="fa-solid fa-eye"></i> View Certificate</a>
+                            <a href="Certificates/Foundations- Data, Data, Everywhere.pdf" target="_blank"
+                                class="cert-view-btn"><i class="fa-solid fa-eye"></i> View Certificate</a>
                         </div>
                     </article>
 
@@ -1421,14 +1579,19 @@
                             </div>
                             <span class="cert-badge">Business Intel</span>
                         </div>
-                        <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> March 28, 2026 | IBM</span>
+                        <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> March 28, 2026 |
+                            IBM</span>
                         <h3 class="cert-title">
-                            <a href="Certificates/Coursera 7FIRUG7U39V4.pdf" target="_blank" class="cert-link" title="View Certificate">Introduction to Data Analytics <i class="fa-solid fa-arrow-up-right-from-square cert-link-icon"></i></a>
+                            <a href="Certificates/Coursera 7FIRUG7U39V4.pdf" target="_blank" class="cert-link"
+                                title="View Certificate">Introduction to Data Analytics <i
+                                    class="fa-solid fa-arrow-up-right-from-square cert-link-icon"></i></a>
                         </h3>
-                        <p class="cert-desc">Understanding structured querying, ETL processes, dashboarding, business metrics, and presentation insights by IBM.</p>
+                        <p class="cert-desc">Understanding structured querying, ETL processes, dashboarding, business
+                            metrics, and presentation insights by IBM.</p>
                         <div class="cert-footer">
                             <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> ID: 7FIRUG7U39V4</span>
-                            <a href="Certificates/Coursera 7FIRUG7U39V4.pdf" target="_blank" class="cert-view-btn"><i class="fa-solid fa-eye"></i> View Certificate</a>
+                            <a href="Certificates/Coursera 7FIRUG7U39V4.pdf" target="_blank" class="cert-view-btn"><i
+                                    class="fa-solid fa-eye"></i> View Certificate</a>
                         </div>
                     </article>
 
@@ -1440,14 +1603,19 @@
                             </div>
                             <span class="cert-badge">SQL &amp; Databases</span>
                         </div>
-                        <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> 12th October 2025 | Simplilearn</span>
+                        <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> 12th October 2025 |
+                            Simplilearn</span>
                         <h3 class="cert-title">
-                            <a href="Certificates/WhatsApp Image 2026-10-03 at 6.03.56 PM.jpeg" target="_blank" class="cert-link" title="View Certificate">Introduction to SQL <i class="fa-solid fa-arrow-up-right-from-square cert-link-icon"></i></a>
+                            <a href="Certificates/WhatsApp Image 2026-10-03 at 6.03.56 PM.jpeg" target="_blank"
+                                class="cert-link" title="View Certificate">Introduction to SQL <i
+                                    class="fa-solid fa-arrow-up-right-from-square cert-link-icon"></i></a>
                         </h3>
-                        <p class="cert-desc">Relational database querying, multi-table joins, aggregations, filtering, and structured data manipulation by Simplilearn SkillUp.</p>
+                        <p class="cert-desc">Relational database querying, multi-table joins, aggregations, filtering,
+                            and structured data manipulation by Simplilearn SkillUp.</p>
                         <div class="cert-footer">
                             <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> Code: 9150621</span>
-                            <a href="Certificates/WhatsApp Image 2026-10-03 at 6.03.56 PM.jpeg" target="_blank" class="cert-view-btn"><i class="fa-solid fa-eye"></i> View Certificate</a>
+                            <a href="Certificates/WhatsApp Image 2026-10-03 at 6.03.56 PM.jpeg" target="_blank"
+                                class="cert-view-btn"><i class="fa-solid fa-eye"></i> View Certificate</a>
                         </div>
                     </article>
 
@@ -1459,14 +1627,20 @@
                             </div>
                             <span class="cert-badge">IoT &amp; Embedded</span>
                         </div>
-                        <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> Sept 2024 – June 2025 | Technoledge</span>
+                        <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> Sept 2024 – June 2025
+                            | Technoledge</span>
                         <h3 class="cert-title">
-                            <a href="Certificates/IOT Certificates.pdf" target="_blank" class="cert-link" title="View Certificate">Smart Embedded Systems &amp; IoT <i class="fa-solid fa-arrow-up-right-from-square cert-link-icon"></i></a>
+                            <a href="Certificates/IOT Certificates.pdf" target="_blank" class="cert-link"
+                                title="View Certificate">Smart Embedded Systems &amp; IoT <i
+                                    class="fa-solid fa-arrow-up-right-from-square cert-link-icon"></i></a>
                         </h3>
-                        <p class="cert-desc">Comprehensive training in Smart Embedded Systems &amp; Advance IoT at IIMT College of Engineering in association with Technoledge Eduresearch.</p>
+                        <p class="cert-desc">Comprehensive training in Smart Embedded Systems &amp; Advance IoT at IIMT
+                            College of Engineering in association with Technoledge Eduresearch.</p>
                         <div class="cert-footer">
-                            <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> No: T/IOT/929270/26</span>
-                            <a href="Certificates/IOT Certificates.pdf" target="_blank" class="cert-view-btn"><i class="fa-solid fa-eye"></i> View Certificate</a>
+                            <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> No:
+                                T/IOT/929270/26</span>
+                            <a href="Certificates/IOT Certificates.pdf" target="_blank" class="cert-view-btn"><i
+                                    class="fa-solid fa-eye"></i> View Certificate</a>
                         </div>
                     </article>
 
@@ -1478,11 +1652,14 @@
                             </div>
                             <span class="cert-badge">AI / ML</span>
                         </div>
-                        <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> Academic &amp; Applied AI</span>
+                        <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> Academic &amp; Applied
+                            AI</span>
                         <h3 class="cert-title">Fundamentals of Machine Learning &amp; AI</h3>
-                        <p class="cert-desc">Supervised and unsupervised algorithms, neural foundations, predictive model evaluation, and AI applications.</p>
+                        <p class="cert-desc">Supervised and unsupervised algorithms, neural foundations, predictive
+                            model evaluation, and AI applications.</p>
                         <div class="cert-footer">
-                            <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> Certified Credential</span>
+                            <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> Certified
+                                Credential</span>
                         </div>
                     </article>
                 </div>
@@ -1501,14 +1678,22 @@
                                 </div>
                                 <span class="cert-badge">AKTU &amp; Softpro Workshop</span>
                             </div>
-                            <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> 02-12-2025 | AKTU Lucknow</span>
+                            <span class="cert-date-meta"><i class="fa-regular fa-calendar-check"></i> 02-12-2025 | AKTU
+                                Lucknow</span>
                             <h3 class="cert-title">
-                                <a href="Certificates/Machine Learning Workshop.pdf" target="_blank" class="cert-link" title="View Workshop Certificate">Machine Learning Workshop — &ldquo;A Journey from Beginner to Expert&rdquo; <i class="fa-solid fa-arrow-up-right-from-square cert-link-icon"></i></a>
+                                <a href="Certificates/Machine Learning Workshop.pdf" target="_blank" class="cert-link"
+                                    title="View Workshop Certificate">Machine Learning Workshop — &ldquo;A Journey from
+                                    Beginner to Expert&rdquo; <i
+                                        class="fa-solid fa-arrow-up-right-from-square cert-link-icon"></i></a>
                             </h3>
-                            <p class="cert-desc">Participated in the specialized Machine Learning workshop organized by Softpro India Computer Technologies in collaboration with Dr. A.P.J. Abdul Kalam Technical University (AKTU), Lucknow.</p>
+                            <p class="cert-desc">Participated in the specialized Machine Learning workshop organized by
+                                Softpro India Computer Technologies in collaboration with Dr. A.P.J. Abdul Kalam
+                                Technical University (AKTU), Lucknow.</p>
                             <div class="cert-footer">
-                                <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> Verified Certificate</span>
-                                <a href="Certificates/Machine Learning Workshop.pdf" target="_blank" class="cert-view-btn"><i class="fa-solid fa-eye"></i> View Certificate</a>
+                                <span class="cert-verified"><i class="fa-solid fa-circle-check"></i> Verified
+                                    Certificate</span>
+                                <a href="Certificates/Machine Learning Workshop.pdf" target="_blank"
+                                    class="cert-view-btn"><i class="fa-solid fa-eye"></i> View Certificate</a>
                             </div>
                         </article>
                     </div>
@@ -1590,7 +1775,8 @@
                         </div>
 
                         <div class="education-content">
-                            <div class="education-header-row" onclick="toggleEduDocs('docs-12th')" style="cursor: pointer;" title="Click to view marksheet and certificates">
+                            <div class="education-header-row" onclick="toggleEduDocs('docs-12th')"
+                                style="cursor: pointer;" title="Click to view marksheet and certificates">
                                 <div>
                                     <h3 class="education-degree">Class XII — BSEB Board</h3>
                                     <p class="education-college">
@@ -1615,7 +1801,8 @@
                                 </p>
 
                                 <div class="edu-doc-toggle-wrapper">
-                                    <button type="button" class="btn-doc-toggle" data-target="docs-12th" onclick="toggleEduDocs('docs-12th')">
+                                    <button type="button" class="btn-doc-toggle" data-target="docs-12th"
+                                        onclick="toggleEduDocs('docs-12th')">
                                         <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
                                         <span>View Verified Marksheet &amp; Certificates</span>
                                         <i class="fa-solid fa-chevron-down toggle-icon" aria-hidden="true"></i>
@@ -1626,7 +1813,8 @@
                                     <!-- 12th Marksheet -->
                                     <div class="doc-file-card">
                                         <div class="doc-file-header">
-                                            <i class="fa-solid fa-file-invoice text-cyan doc-file-icon" aria-hidden="true"></i>
+                                            <i class="fa-solid fa-file-invoice text-cyan doc-file-icon"
+                                                aria-hidden="true"></i>
                                             <div class="doc-file-info">
                                                 <h4 class="doc-file-name">12th Marks Statement (Senior Secondary)</h4>
                                                 <div class="doc-file-date">
@@ -1638,7 +1826,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="Certificates/Class_12/12th_Marks_Statement_21-03-2023.jpg" target="_blank" rel="noopener noreferrer" class="doc-action-btn">
+                                        <a href="Certificates/Class_12/12th_Marks_Statement_21-03-2023.jpg"
+                                            target="_blank" rel="noopener noreferrer" class="doc-action-btn">
                                             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                                             <span>View Marksheet</span>
                                         </a>
@@ -1647,7 +1836,8 @@
                                     <!-- 12th Provisional Certificate -->
                                     <div class="doc-file-card">
                                         <div class="doc-file-header">
-                                            <i class="fa-solid fa-certificate text-cyan doc-file-icon" aria-hidden="true"></i>
+                                            <i class="fa-solid fa-certificate text-cyan doc-file-icon"
+                                                aria-hidden="true"></i>
                                             <div class="doc-file-info">
                                                 <h4 class="doc-file-name">12th Provisional Passing Certificate</h4>
                                                 <div class="doc-file-date">
@@ -1659,7 +1849,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="Certificates/Class_12/12th_Provisional_Certificate_21-03-2023.jpg" target="_blank" rel="noopener noreferrer" class="doc-action-btn">
+                                        <a href="Certificates/Class_12/12th_Provisional_Certificate_21-03-2023.jpg"
+                                            target="_blank" rel="noopener noreferrer" class="doc-action-btn">
                                             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                                             <span>View Certificate</span>
                                         </a>
@@ -1668,7 +1859,8 @@
                                     <!-- 12th Registration Certificate -->
                                     <div class="doc-file-card">
                                         <div class="doc-file-header">
-                                            <i class="fa-solid fa-id-card text-cyan doc-file-icon" aria-hidden="true"></i>
+                                            <i class="fa-solid fa-id-card text-cyan doc-file-icon"
+                                                aria-hidden="true"></i>
                                             <div class="doc-file-info">
                                                 <h4 class="doc-file-name">12th Registration Certificate</h4>
                                                 <div class="doc-file-date">
@@ -1680,7 +1872,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="Certificates/Class_12/12th_Registration_Certificate_2021-2023.jpg" target="_blank" rel="noopener noreferrer" class="doc-action-btn">
+                                        <a href="Certificates/Class_12/12th_Registration_Certificate_2021-2023.jpg"
+                                            target="_blank" rel="noopener noreferrer" class="doc-action-btn">
                                             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                                             <span>View Certificate</span>
                                         </a>
@@ -1701,7 +1894,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="Certificates/Class_12/12th_College_Leaving_Certificate_26-06-2023.jpg" target="_blank" rel="noopener noreferrer" class="doc-action-btn">
+                                        <a href="Certificates/Class_12/12th_College_Leaving_Certificate_26-06-2023.jpg"
+                                            target="_blank" rel="noopener noreferrer" class="doc-action-btn">
                                             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                                             <span>View Document</span>
                                         </a>
@@ -1710,7 +1904,8 @@
                                     <!-- Complete PDF Dossier -->
                                     <div class="doc-file-card">
                                         <div class="doc-file-header">
-                                            <i class="fa-solid fa-file-pdf text-cyan doc-file-icon" aria-hidden="true"></i>
+                                            <i class="fa-solid fa-file-pdf text-cyan doc-file-icon"
+                                                aria-hidden="true"></i>
                                             <div class="doc-file-info">
                                                 <h4 class="doc-file-name">Complete 12th Academic Dossier</h4>
                                                 <div class="doc-file-date">
@@ -1722,7 +1917,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="Certificates/12th Documents.pdf" target="_blank" rel="noopener noreferrer" class="doc-action-btn">
+                                        <a href="Certificates/12th Documents.pdf" target="_blank"
+                                            rel="noopener noreferrer" class="doc-action-btn">
                                             <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
                                             <span>Open Dossier PDF</span>
                                         </a>
@@ -1739,7 +1935,8 @@
                         </div>
 
                         <div class="education-content">
-                            <div class="education-header-row" onclick="toggleEduDocs('docs-10th')" style="cursor: pointer;" title="Click to view marksheet and certificate">
+                            <div class="education-header-row" onclick="toggleEduDocs('docs-10th')"
+                                style="cursor: pointer;" title="Click to view marksheet and certificate">
                                 <div>
                                     <h3 class="education-degree">Class X — BSEB Board</h3>
                                     <p class="education-college">
@@ -1765,7 +1962,8 @@
                                 </p>
 
                                 <div class="edu-doc-toggle-wrapper">
-                                    <button type="button" class="btn-doc-toggle" data-target="docs-10th" onclick="toggleEduDocs('docs-10th')">
+                                    <button type="button" class="btn-doc-toggle" data-target="docs-10th"
+                                        onclick="toggleEduDocs('docs-10th')">
                                         <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
                                         <span>View Verified Marksheet &amp; Certificate</span>
                                         <i class="fa-solid fa-chevron-down toggle-icon" aria-hidden="true"></i>
@@ -1776,7 +1974,8 @@
                                     <!-- 10th Marksheet -->
                                     <div class="doc-file-card">
                                         <div class="doc-file-header">
-                                            <i class="fa-solid fa-file-invoice text-cyan doc-file-icon" aria-hidden="true"></i>
+                                            <i class="fa-solid fa-file-invoice text-cyan doc-file-icon"
+                                                aria-hidden="true"></i>
                                             <div class="doc-file-info">
                                                 <h4 class="doc-file-name">10th Matriculation Marksheet</h4>
                                                 <div class="doc-file-date">
@@ -1788,7 +1987,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="Certificates/Class_10/10th_Marksheet_05-04-2021.jpg" target="_blank" rel="noopener noreferrer" class="doc-action-btn">
+                                        <a href="Certificates/Class_10/10th_Marksheet_05-04-2021.jpg" target="_blank"
+                                            rel="noopener noreferrer" class="doc-action-btn">
                                             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                                             <span>View Marksheet</span>
                                         </a>
@@ -1797,7 +1997,8 @@
                                     <!-- 10th Passing Certificate -->
                                     <div class="doc-file-card">
                                         <div class="doc-file-header">
-                                            <i class="fa-solid fa-certificate text-cyan doc-file-icon" aria-hidden="true"></i>
+                                            <i class="fa-solid fa-certificate text-cyan doc-file-icon"
+                                                aria-hidden="true"></i>
                                             <div class="doc-file-info">
                                                 <h4 class="doc-file-name">10th Matriculation Passing Certificate</h4>
                                                 <div class="doc-file-date">
@@ -1809,7 +2010,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="Certificates/Class_10/10th_Passing_Certificate_30-10-2021.jpg" target="_blank" rel="noopener noreferrer" class="doc-action-btn">
+                                        <a href="Certificates/Class_10/10th_Passing_Certificate_30-10-2021.jpg"
+                                            target="_blank" rel="noopener noreferrer" class="doc-action-btn">
                                             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                                             <span>View Certificate</span>
                                         </a>
@@ -1818,7 +2020,8 @@
                                     <!-- Complete PDF Dossier -->
                                     <div class="doc-file-card">
                                         <div class="doc-file-header">
-                                            <i class="fa-solid fa-file-pdf text-cyan doc-file-icon" aria-hidden="true"></i>
+                                            <i class="fa-solid fa-file-pdf text-cyan doc-file-icon"
+                                                aria-hidden="true"></i>
                                             <div class="doc-file-info">
                                                 <h4 class="doc-file-name">Complete 10th Academic Dossier</h4>
                                                 <div class="doc-file-date">
@@ -1830,7 +2033,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="Certificates/10th Marksheet, Provisional Certificate and Certificate.pdf" target="_blank" rel="noopener noreferrer" class="doc-action-btn">
+                                        <a href="Certificates/10th Marksheet, Provisional Certificate and Certificate.pdf"
+                                            target="_blank" rel="noopener noreferrer" class="doc-action-btn">
                                             <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
                                             <span>Open Dossier PDF</span>
                                         </a>
@@ -2087,8 +2291,9 @@
                             </a>
 
                             <!-- Instagram -->
-                            <a href="https://www.instagram.com/himanshu_singh1610/" target="_blank" rel="noopener noreferrer"
-                                class="contact-info-card" id="contactInstagramLink" title="View Instagram Profile">
+                            <a href="https://www.instagram.com/himanshu_singh1610/" target="_blank"
+                                rel="noopener noreferrer" class="contact-info-card" id="contactInstagramLink"
+                                title="View Instagram Profile">
                                 <div class="contact-icon-box instagram-box">
                                     <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                                 </div>
@@ -2100,8 +2305,9 @@
                             </a>
 
                             <!-- Resume PDF Direct Download -->
-                            <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" download="Himanshu_Kumar_Resume.pdf"
-                                class="contact-info-card resume-card" id="contactResumeLink" title="Download Verified Resume PDF">
+                            <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank"
+                                download="Himanshu_Kumar_Resume.pdf" class="contact-info-card resume-card"
+                                id="contactResumeLink" title="Download Verified Resume PDF">
                                 <div class="contact-icon-box resume-box">
                                     <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
                                 </div>
@@ -2265,7 +2471,8 @@
     <!-- ========================================================================= -->
     <!-- INTERACTIVE SKILL INTELLIGENCE MODAL (Roadmap, Tutorials, YouTube)        -->
     <!-- ========================================================================= -->
-    <div class="custom-modal-overlay skill-modal-overlay" id="skillDetailModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="skillModalName">
+    <div class="custom-modal-overlay skill-modal-overlay" id="skillDetailModal" role="dialog" aria-modal="true"
+        aria-hidden="true" aria-labelledby="skillModalName">
         <div class="custom-modal-card skill-modal-card">
             <!-- Modal Header -->
             <div class="modal-header skill-modal-header">
@@ -2279,7 +2486,8 @@
                             <span class="skill-cat-pill" id="skillModalCategoryBadge">Languages</span>
                             <span class="skill-prof-pill" id="skillModalProficiencyBadge">90%</span>
                         </div>
-                        <p class="skill-modal-tagline" id="skillModalTagline">High-Level Programming for Data Analytics &amp; ML</p>
+                        <p class="skill-modal-tagline" id="skillModalTagline">High-Level Programming for Data Analytics
+                            &amp; ML</p>
                     </div>
                 </div>
                 <button class="modal-close-btn" id="closeSkillModalBtn" aria-label="Close modal">&times;</button>
@@ -2332,11 +2540,13 @@
             <!-- Modal Footer -->
             <div class="modal-footer skill-modal-footer">
                 <div class="skill-footer-actions">
-                    <a href="prachi/index.html" id="skillModalPrachiBtn" class="btn btn-primary btn-sm btn-prachi-nav" title="Ask Prachi AI About This Skill">
+                    <a href="prachi/index.html" id="skillModalPrachiBtn" class="btn btn-primary btn-sm btn-prachi-nav"
+                        title="Ask Prachi AI About This Skill">
                         <img src="assets/prachi-logo.png" alt="Prachi Logo" class="btn-prachi-logo">
                         <span>Ask Prachi AI</span>
                     </a>
-                    <a href="#projects" class="btn btn-outline btn-sm skill-view-projects-btn" id="closeSkillModalProjectsBtn">
+                    <a href="#projects" class="btn btn-outline btn-sm skill-view-projects-btn"
+                        id="closeSkillModalProjectsBtn">
                         <i class="fa-solid fa-code"></i> View Related Projects
                     </a>
                 </div>
@@ -2348,7 +2558,8 @@
     <!-- ========================================================================= -->
     <!-- 3D ROYAL SANDESH PATRA (शाही संदेश पत्र) MODAL - HK LOGO SPOTLIGHT        -->
     <!-- ========================================================================= -->
-    <div class="custom-modal-overlay sandesh-modal-overlay" id="hkReviewModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sandeshPatraTitle">
+    <div class="custom-modal-overlay sandesh-modal-overlay" id="hkReviewModal" role="dialog" aria-modal="true"
+        aria-hidden="true" aria-labelledby="sandeshPatraTitle">
         <!-- 3D Perspective Scene Container -->
         <div class="sandesh-3d-scene" id="hk3dScene">
 
@@ -2388,12 +2599,15 @@
                         <div class="parchment-crease crease-bottom"></div>
                         <!-- Watermark of brand emblem -->
                         <div class="parchment-watermark">
-                            <svg class="brand-logo-svg watermark-logo-svg" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="brand-logo-svg watermark-logo-svg" viewBox="0 0 42 42" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 11V31" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
                                 <path d="M12 21H20.5" stroke="currentColor" stroke-width="2.0" stroke-linecap="round" />
                                 <path d="M20.5 11V31" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
-                                <path d="M20.5 21L29.5 11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
-                                <path d="M20.5 21L30 31" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                                <path d="M20.5 21L29.5 11" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round" />
+                                <path d="M20.5 21L30 31" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round" />
                                 <circle cx="20.5" cy="21" r="1.8" fill="currentColor" />
                                 <circle cx="31.5" cy="9" r="1.2" fill="currentColor" />
                             </svg>
@@ -2409,7 +2623,8 @@
                     </div>
 
                     <!-- Parchment Close Seal Button -->
-                    <button class="sandesh-close-btn" id="closeHkReviewModalBtn" aria-label="Close Royal Scroll" title="संदेश पत्र बंद करें">
+                    <button class="sandesh-close-btn" id="closeHkReviewModalBtn" aria-label="Close Royal Scroll"
+                        title="संदेश पत्र बंद करें">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
 
@@ -2418,7 +2633,8 @@
 
                     <!-- Live Writing Status Badge (Click to Skip) -->
                     <div class="sandesh-writing-indicator" id="sandeshWritingIndicator" aria-hidden="true">
-                        <i class="fa-solid fa-feather-pointed"></i> <span>शाही आलेखन जारी है...</span> <small>(तुरंत देखने हेतु क्लिक करें)</small>
+                        <i class="fa-solid fa-feather-pointed"></i> <span>शाही आलेखन जारी है...</span> <small>(तुरंत
+                            देखने हेतु क्लिक करें)</small>
                     </div>
 
                     <!-- Dynamic Floating Calligraphy Feather Quill -->
@@ -2433,19 +2649,23 @@
                         <!-- SACRED VEDIC CREST: ॐ (TOP), श्री गणेश (LEFT), शाही राजमुद्रा (CENTER), स्वास्तिक (RIGHT) -->
                         <div class="sandesh-crest-trio-container">
                             <!-- Topmost: Sacred Om Symbol (ॐ) -->
-                            <div class="sandesh-top-om sandesh-anim-item" id="sandeshTopOm" title="ॐ (परम पावन ओंकार / The Sacred Om)">
+                            <div class="sandesh-top-om sandesh-anim-item" id="sandeshTopOm"
+                                title="ॐ (परम पावन ओंकार / The Sacred Om)">
                                 <span class="om-sacred-symbol">ॐ</span>
                             </div>
 
                             <!-- Auspicious Trio Row: Shree Ganesh | HK Royal Seal | Swastik -->
                             <div class="sandesh-auspicious-trio">
                                 <!-- Left: Shree Ganesh Divine Photo & Mantra -->
-                                <div class="sandesh-auspicious-flank ganesh-flank sandesh-anim-item" id="sandeshGaneshFlank" title="भगवान श्री गणेश">
+                                <div class="sandesh-auspicious-flank ganesh-flank sandesh-anim-item"
+                                    id="sandeshGaneshFlank" title="भगवान श्री गणेश">
                                     <div class="divine-medallion ganesh-medallion">
-                                        <img src="assets/shree-ganesh.jpg" alt="भगवान श्री गणेश" class="ganesh-divine-photo">
+                                        <img src="assets/shree-ganesh.jpg" alt="भगवान श्री गणेश"
+                                            class="ganesh-divine-photo">
                                         <div class="medallion-gold-rim"></div>
                                     </div>
-                                    <span class="auspicious-mantra-label" id="sandeshGaneshMantra">॥ श्री गणेशाय नमः ॥</span>
+                                    <span class="auspicious-mantra-label" id="sandeshGaneshMantra">॥ श्री गणेशाय नमः
+                                        ॥</span>
                                 </div>
 
                                 <!-- Center: Royal 3D Lacquer Wax Seal with HK Logo & Ribbons -->
@@ -2455,27 +2675,37 @@
                                         <div class="wax-seal-inner-well"></div>
                                         <div class="wax-seal-logo-core">
                                             <!-- HK BRAND LOGO EMBOSSED IN GOLD LEAF -->
-                                            <svg class="brand-logo-svg sandesh-seal-logo" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="HK Logo Seal">
+                                            <svg class="brand-logo-svg sandesh-seal-logo" viewBox="0 0 42 42"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                aria-label="HK Logo Seal">
                                                 <defs>
-                                                    <linearGradient id="seal-gold-foil" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+                                                    <linearGradient id="seal-gold-foil" x1="0" y1="0" x2="42" y2="42"
+                                                        gradientUnits="userSpaceOnUse">
                                                         <stop offset="0%" stop-color="#fffbeb" />
                                                         <stop offset="25%" stop-color="#fef08a" />
                                                         <stop offset="55%" stop-color="#fbbf24" />
                                                         <stop offset="85%" stop-color="#f59e0b" />
                                                         <stop offset="100%" stop-color="#b45309" />
                                                     </linearGradient>
-                                                    <linearGradient id="seal-gold-sub" x1="20" y1="21" x2="31" y2="10" gradientUnits="userSpaceOnUse">
+                                                    <linearGradient id="seal-gold-sub" x1="20" y1="21" x2="31" y2="10"
+                                                        gradientUnits="userSpaceOnUse">
                                                         <stop offset="0%" stop-color="#fffbeb" />
                                                         <stop offset="50%" stop-color="#fde047" />
                                                         <stop offset="100%" stop-color="#d97706" />
                                                     </linearGradient>
                                                 </defs>
-                                                <path d="M5 14H37M5 28H37M14 5V37M28 5V37" stroke="rgba(254, 240, 138, 0.25)" stroke-width="0.9" />
-                                                <path d="M12 11V31" stroke="url(#seal-gold-foil)" stroke-width="3.5" stroke-linecap="round" />
-                                                <path d="M12 21H20.5" stroke="url(#seal-gold-foil)" stroke-width="3.2" stroke-linecap="round" />
-                                                <path d="M20.5 11V31" stroke="url(#seal-gold-foil)" stroke-width="3.5" stroke-linecap="round" />
-                                                <path d="M20.5 21L29.5 11" stroke="url(#seal-gold-sub)" stroke-width="3.5" stroke-linecap="round" />
-                                                <path d="M20.5 21L30 31" stroke="url(#seal-gold-sub)" stroke-width="3.5" stroke-linecap="round" />
+                                                <path d="M5 14H37M5 28H37M14 5V37M28 5V37"
+                                                    stroke="rgba(254, 240, 138, 0.25)" stroke-width="0.9" />
+                                                <path d="M12 11V31" stroke="url(#seal-gold-foil)" stroke-width="3.5"
+                                                    stroke-linecap="round" />
+                                                <path d="M12 21H20.5" stroke="url(#seal-gold-foil)" stroke-width="3.2"
+                                                    stroke-linecap="round" />
+                                                <path d="M20.5 11V31" stroke="url(#seal-gold-foil)" stroke-width="3.5"
+                                                    stroke-linecap="round" />
+                                                <path d="M20.5 21L29.5 11" stroke="url(#seal-gold-sub)"
+                                                    stroke-width="3.5" stroke-linecap="round" />
+                                                <path d="M20.5 21L30 31" stroke="url(#seal-gold-sub)" stroke-width="3.5"
+                                                    stroke-linecap="round" />
                                                 <circle cx="20.5" cy="21" r="2.4" fill="#fffbeb" />
                                                 <circle cx="31.5" cy="9" r="1.6" fill="#fef08a" />
                                             </svg>
@@ -2487,7 +2717,8 @@
                                 </div>
 
                                 <!-- Right: Sacred Swastik Symbol & Mantra -->
-                                <div class="sandesh-auspicious-flank swastik-flank sandesh-anim-item" id="sandeshSwastikFlank" title="शुभ स्वास्तिक">
+                                <div class="sandesh-auspicious-flank swastik-flank sandesh-anim-item"
+                                    id="sandeshSwastikFlank" title="शुभ स्वास्तिक">
                                     <div class="divine-medallion swastik-medallion">
                                         <div class="swastik-disc-inner">
                                             <span class="swastik-sacred-symbol">卐</span>
@@ -2517,10 +2748,12 @@
                             <h3 class="honoree-name" id="sandeshHonoreeName">हिमांशु कुमार</h3>
                             <p class="honoree-english-name">Himanshu Kumar</p>
                             <p class="honoree-designation">
-                                <i class="fa-solid fa-feather-pointed"></i> सॉफ्टवेयर शिल्पी एवं डेटा विश्लेषक &bull; Full Stack Engineer &amp; Data Analytics Architect
+                                <i class="fa-solid fa-feather-pointed"></i> सॉफ्टवेयर शिल्पी एवं डेटा विश्लेषक &bull;
+                                Full Stack Engineer &amp; Data Analytics Architect
                             </p>
                             <span class="honoree-credentials">
-                                <i class="fa-solid fa-landmark"></i> B.Tech (CSE-IT) [Final Year] &bull; डॉ. ए.पी.जे. अब्दुल कलाम प्राविधिक विश्वविद्यालय (AKTU)
+                                <i class="fa-solid fa-landmark"></i> B.Tech (CSE-IT) [Final Year] &bull; डॉ. ए.पी.जे.
+                                अब्दुल कलाम प्राविधिक विश्वविद्यालय (AKTU)
                             </span>
                         </div>
 
@@ -2533,8 +2766,10 @@
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                             </div>
-                            <span class="sandesh-rating-grade">५.० / ५.० सर्वोत्कृष्ट योग्यता (Top-Tier Royal Standard)</span>
-                            <span class="sandesh-grade-badge"><i class="fa-solid fa-crown"></i> राजकीय मान्यता प्राप्त</span>
+                            <span class="sandesh-rating-grade">५.० / ५.० सर्वोत्कृष्ट योग्यता (Top-Tier Royal
+                                Standard)</span>
+                            <span class="sandesh-grade-badge"><i class="fa-solid fa-crown"></i> राजकीय मान्यता
+                                प्राप्त</span>
                         </div>
 
                         <!-- PROCLAMATION / DECREE (REVIEW CONTENT) -->
@@ -2542,13 +2777,21 @@
                             <div class="proclamation-hindi-block">
                                 <span class="proclamation-quote-mark">❝</span>
                                 <p class="proclamation-hindi-text" id="sandeshHindiText">
-                                    प्रमाणित किया जाता है कि हिमांशु कुमार आधुनिक डिजिटल शिल्प व डेटा विज्ञान के एक निष्ठावान, नवोन्मेषी व अद्वितीय शिल्पी हैं। जटिल तकनीकी चुनौतियों को अत्यंत सुरुचिपूर्ण, तीव्र और सशक्त प्रणालियों में रूपांतरित करने में इनकी दक्षता सर्वोत्कृष्ट है। पूर्ण निष्ठा, शुचिता एवं अटूट समर्पण के साथ निर्मित इनकी कृतियाँ उच्च तकनीकी मानदंडों का जीवंत प्रमाण हैं।
+                                    प्रमाणित किया जाता है कि हिमांशु कुमार आधुनिक डिजिटल शिल्प व डेटा विज्ञान के एक
+                                    निष्ठावान, नवोन्मेषी व अद्वितीय शिल्पी हैं। जटिल तकनीकी चुनौतियों को अत्यंत
+                                    सुरुचिपूर्ण, तीव्र और सशक्त प्रणालियों में रूपांतरित करने में इनकी दक्षता
+                                    सर्वोत्कृष्ट है। पूर्ण निष्ठा, शुचिता एवं अटूट समर्पण के साथ निर्मित इनकी कृतियाँ
+                                    उच्च तकनीकी मानदंडों का जीवंत प्रमाण हैं।
                                 </p>
                             </div>
                             <div class="sandesh-text-divider"></div>
                             <div class="proclamation-english-block">
                                 <p class="proclamation-english-text" id="sandeshEnglishText">
-                                    &ldquo;Himanshu stands as an exceptional modern craftsman in software engineering and data intelligence. Demonstrating extraordinary mastery across scalable full-stack architectures, automated pipelines, and human-centric interfaces, his work embodies unwavering dedication, analytical precision, and engineering purity.&rdquo;
+                                    &ldquo;Himanshu stands as an exceptional modern craftsman in software engineering
+                                    and data intelligence. Demonstrating extraordinary mastery across scalable
+                                    full-stack architectures, automated pipelines, and human-centric interfaces, his
+                                    work embodies unwavering dedication, analytical precision, and engineering
+                                    purity.&rdquo;
                                 </p>
                             </div>
                         </div>
@@ -2595,7 +2838,8 @@
                             <div class="sandesh-section-divider-banner">
                                 <span class="knot-bar"></span>
                                 <span class="section-banner-badge">
-                                    <i class="fa-solid fa-compass-drafting"></i> प्रमुख अभियांत्रिकी स्तम्भ &bull; CORE PILLARS
+                                    <i class="fa-solid fa-compass-drafting"></i> प्रमुख अभियांत्रिकी स्तम्भ &bull; CORE
+                                    PILLARS
                                 </span>
                                 <span class="knot-bar"></span>
                             </div>
@@ -2604,7 +2848,8 @@
                                 <h3 class="page2-hero-title">Developer Vision &amp; Quality Standard</h3>
                                 <p class="page2-hero-subtitle">शिल्पी का दृष्टिकोण एवं गुणवत्ता मानक</p>
                                 <p class="page2-hero-desc" id="sandeshVisionText">
-                                    &ldquo;Architecting robust digital solutions that bridge modern human-centric interfaces with scalable data intelligence.&rdquo;
+                                    &ldquo;Architecting robust digital solutions that bridge modern human-centric
+                                    interfaces with scalable data intelligence.&rdquo;
                                 </p>
                             </div>
 
@@ -2615,8 +2860,10 @@
                                         <i class="fa-solid fa-cubes"></i>
                                     </div>
                                     <div class="d-pillar-info">
-                                        <h4 class="d-pillar-name">Clean Architecture <span class="d-pillar-hindi">(शुद्ध वास्तुशिल्प)</span></h4>
-                                        <p class="d-pillar-desc">Modular OOP design, minimal technical debt, and optimized algorithm complexity.</p>
+                                        <h4 class="d-pillar-name">Clean Architecture <span class="d-pillar-hindi">(शुद्ध
+                                                वास्तुशिल्प)</span></h4>
+                                        <p class="d-pillar-desc">Modular OOP design, minimal technical debt, and
+                                            optimized algorithm complexity.</p>
                                     </div>
                                 </div>
 
@@ -2625,8 +2872,10 @@
                                         <i class="fa-solid fa-chart-line"></i>
                                     </div>
                                     <div class="d-pillar-info">
-                                        <h4 class="d-pillar-name">Data-Driven Precision <span class="d-pillar-hindi">(डेटा-संचालित सटीकता)</span></h4>
-                                        <p class="d-pillar-desc">Automated pipelines, high-fidelity business dashboards, and predictive insights.</p>
+                                        <h4 class="d-pillar-name">Data-Driven Precision <span
+                                                class="d-pillar-hindi">(डेटा-संचालित सटीकता)</span></h4>
+                                        <p class="d-pillar-desc">Automated pipelines, high-fidelity business dashboards,
+                                            and predictive insights.</p>
                                     </div>
                                 </div>
 
@@ -2635,26 +2884,36 @@
                                         <i class="fa-solid fa-palette"></i>
                                     </div>
                                     <div class="d-pillar-info">
-                                        <h4 class="d-pillar-name">Futuristic Aesthetics <span class="d-pillar-hindi">(आधुनिक सौंदर्यशास्त्र)</span></h4>
-                                        <p class="d-pillar-desc">Immersive 3D depth, responsive glassmorphism, and pixel-perfect ergonomics.</p>
+                                        <h4 class="d-pillar-name">Futuristic Aesthetics <span
+                                                class="d-pillar-hindi">(आधुनिक सौंदर्यशास्त्र)</span></h4>
+                                        <p class="d-pillar-desc">Immersive 3D depth, responsive glassmorphism, and
+                                            pixel-perfect ergonomics.</p>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- 2nd Page Direct Access Channels -->
                             <div class="sandesh-direct-access-panel">
-                                <span class="direct-access-title"><i class="fa-solid fa-network-wired"></i> प्रत्यक्ष संपर्क एवं व्यावसायिक प्रोफाइल (Direct Connect &amp; Profiles):</span>
+                                <span class="direct-access-title"><i class="fa-solid fa-network-wired"></i> प्रत्यक्ष
+                                    संपर्क एवं व्यावसायिक प्रोफाइल (Direct Connect &amp; Profiles):</span>
                                 <div class="direct-access-links-row">
-                                    <a href="https://www.linkedin.com/in/himanshu-kumar-1618hks" target="_blank" rel="noopener noreferrer" class="direct-link-pill link-linkedin" title="LinkedIn Profile">
+                                    <a href="https://www.linkedin.com/in/himanshu-kumar-1618hks" target="_blank"
+                                        rel="noopener noreferrer" class="direct-link-pill link-linkedin"
+                                        title="LinkedIn Profile">
                                         <i class="fa-brands fa-linkedin"></i> <span>LinkedIn</span>
                                     </a>
-                                    <a href="https://github.com/himanshu161098" target="_blank" rel="noopener noreferrer" class="direct-link-pill link-github" title="GitHub Codebase">
+                                    <a href="https://github.com/himanshu161098" target="_blank"
+                                        rel="noopener noreferrer" class="direct-link-pill link-github"
+                                        title="GitHub Codebase">
                                         <i class="fa-brands fa-github"></i> <span>GitHub</span>
                                     </a>
-                                    <a href="https://www.instagram.com/himanshu_singh1610/" target="_blank" rel="noopener noreferrer" class="direct-link-pill link-instagram" title="Instagram Profile">
+                                    <a href="https://www.instagram.com/himanshu_singh1610/" target="_blank"
+                                        rel="noopener noreferrer" class="direct-link-pill link-instagram"
+                                        title="Instagram Profile">
                                         <i class="fa-brands fa-instagram"></i> <span>Instagram</span>
                                     </a>
-                                    <a href="mailto:himanshukumarsingh1610@gmail.com" class="direct-link-pill link-email" title="Send Official Email">
+                                    <a href="mailto:himanshukumarsingh1610@gmail.com"
+                                        class="direct-link-pill link-email" title="Send Official Email">
                                         <i class="fa-solid fa-envelope"></i> <span>Email Directly</span>
                                     </a>
                                 </div>
@@ -2675,11 +2934,13 @@
 
                         <!-- SCROLL ACTIONS -->
                         <div class="sandesh-actions-group sandesh-anim-item">
-                            <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer" class="sandesh-btn sandesh-btn-resume" title="प्रमाण पत्र / View Resume">
+                            <a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer"
+                                class="sandesh-btn sandesh-btn-resume" title="प्रमाण पत्र / View Resume">
                                 <i class="fa-solid fa-scroll"></i>
                                 <span>प्रमाण पत्र (View Resume)</span>
                             </a>
-                            <a href="prachi/index.html" class="sandesh-btn sandesh-btn-prachi" title="प्राची एआई से विमर्श करें">
+                            <a href="prachi/index.html" class="sandesh-btn sandesh-btn-prachi"
+                                title="प्राची एआई से विमर्श करें">
                                 <img src="assets/prachi-logo.png" alt="Prachi Logo" class="sandesh-btn-prachi-icon">
                                 <span>प्राची एआई से विमर्श</span>
                             </a>
@@ -2803,7 +3064,9 @@
                         <li><a href="#education">Education</a></li>
                         <li><a href="#live-feed">Live Feed</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank" download="Himanshu_Kumar_Resume.pdf" class="footer-resume-link"><i class="fa-solid fa-file-arrow-down"></i> Resume PDF</a></li>
+                        <li><a href="assets/Himanshu_Kumar_Resume.pdf" target="_blank"
+                                download="Himanshu_Kumar_Resume.pdf" class="footer-resume-link"><i
+                                    class="fa-solid fa-file-arrow-down"></i> Resume PDF</a></li>
                     </ul>
                 </div>
 
@@ -2816,17 +3079,21 @@
                             <i class="fa-brands fa-github" aria-hidden="true"></i>
                         </a>
                         <a href="https://www.linkedin.com/in/himanshu-kumar-1618hks/" target="_blank"
-                            rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile" title="LinkedIn Profile">
+                            rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile"
+                            title="LinkedIn Profile">
                             <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
                         </a>
                         <a href="https://www.instagram.com/himanshu_singh1610/" target="_blank"
-                            rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram Profile" title="Instagram Profile">
+                            rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram Profile"
+                            title="Instagram Profile">
                             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                         </a>
-                        <a href="mailto:himanshukumarsingh1610@gmail.com" class="social-link" aria-label="Send Email" title="Send Email">
+                        <a href="mailto:himanshukumarsingh1610@gmail.com" class="social-link" aria-label="Send Email"
+                            title="Send Email">
                             <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                         </a>
-                        <a href="tel:+919341112974" class="social-link" aria-label="Call or WhatsApp" title="Call or WhatsApp">
+                        <a href="tel:+919341112974" class="social-link" aria-label="Call or WhatsApp"
+                            title="Call or WhatsApp">
                             <i class="fa-solid fa-phone" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -2869,7 +3136,8 @@
             </div>
         </div>
         <div class="hud-insp-footer">
-            <span class="hud-insp-action" id="hudInspAction"><i class="fa-regular fa-hand-pointer"></i> Click to interact</span>
+            <span class="hud-insp-action" id="hudInspAction"><i class="fa-regular fa-hand-pointer"></i> Click to
+                interact</span>
             <span class="hud-insp-tag" id="hudInspTag">HK_OS // v2.6</span>
         </div>
     </div>
