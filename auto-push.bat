@@ -22,6 +22,10 @@ git add -A
 git commit -m "%MSG%"
 
 echo.
+echo [2.5/3] Rebasing with latest remote commits...
+git pull --rebase origin main
+
+echo.
 echo [3/3] Pushing to GitHub (origin main)...
 git push origin main
 

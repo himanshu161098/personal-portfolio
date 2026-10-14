@@ -103,6 +103,9 @@ try {
                 git add -A
                 git commit -m "auto(portfolio): update files ($timestamp)"
                 
+                Write-Host "[Auto-Push] Rebasing with remote origin main..." -ForegroundColor Yellow
+                git pull --rebase origin main
+
                 Write-Host "[Auto-Push] Pushing to GitHub origin main..." -ForegroundColor Yellow
                 git push origin main
 
