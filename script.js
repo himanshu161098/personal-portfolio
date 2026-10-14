@@ -386,6 +386,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroCardWrapper = document.getElementById('heroCardWrapper');
     const swayingHanger = document.querySelector('.id-swaying-hanger');
 
+    // Card Paper Scroll Unroll Controller (Simulates fold at top & downward rolling cylinder open)
+    function triggerCardUnrollAnimation() {
+        const wrapper = document.getElementById('heroIdCardInnerWrapper');
+        const card = document.getElementById('cyberIdCard');
+        const roller = document.getElementById('idPaperRoller');
+        if (!wrapper || !card) return;
+
+        // Reset inline transforms so keyframes take full effect
+        card.style.transform = '';
+        card.style.transition = '';
+
+        // Reset classes
+        wrapper.classList.remove('unrolling');
+        card.classList.remove('id-unrolling');
+        if (roller) roller.classList.remove('rolling');
+
+        // Trigger reflow to restart animation
+        void wrapper.offsetWidth;
+
+        // Apply unrolling keyframe animations
+        wrapper.classList.add('unrolling');
+        card.classList.add('id-unrolling');
+        if (roller) roller.classList.add('rolling');
+
+        // After unrolling finishes (~1.4s), remove the class so 3D tilt is 100% active
+        setTimeout(() => {
+            card.classList.remove('id-unrolling');
+            wrapper.classList.remove('unrolling');
+            if (roller) roller.classList.remove('rolling');
+        }, 1450);
+    }
+
     if (tabAvatar && tabIdCard) {
         function switchHeroMode(mode) {
             if (mode === 'idcard') {
@@ -402,6 +434,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     heroIdCardContainer.style.display = 'flex';
                     heroIdCardContainer.classList.add('active');
                 }
+
+                // Trigger paper roll downward unrolling motion
+                triggerCardUnrollAnimation();
             } else {
                 tabAvatar.classList.add('active');
                 tabAvatar.setAttribute('aria-selected', 'true');
@@ -429,8 +464,20 @@ document.addEventListener('DOMContentLoaded', () => {
             switchHeroMode('idcard');
         });
 
-        // Initialize Student ID Card view first by default
+        // Initialize Student ID Card view first by default and play downward roll open
         switchHeroMode('idcard');
+        setTimeout(() => {
+            triggerCardUnrollAnimation();
+        }, 150);
+    }
+
+    // Optional click on lanyard or hanger to replay roll motion
+    const lanyardHanger = document.querySelector('.id-swaying-hanger');
+    if (lanyardHanger) {
+        lanyardHanger.addEventListener('dblclick', (e) => {
+            if (e.target.closest('a') || e.target.closest('button')) return;
+            triggerCardUnrollAnimation();
+        });
     }
 
     // Interactive 3D Tilt & Chain Physics for Cyber ID Card
@@ -442,6 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         heroCardWrapper.addEventListener('mouseenter', () => {
             if (heroIdCardContainer && heroIdCardContainer.style.display !== 'none') {
+                if (cyberIdCard.classList.contains('id-unrolling')) return;
                 cardHovered = true;
                 if (swayingHanger) {
                     swayingHanger.style.animationPlayState = 'paused';
@@ -454,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         heroCardWrapper.addEventListener('mousemove', (e) => {
-            if (!cardHovered) return;
+            if (!cardHovered || cyberIdCard.classList.contains('id-unrolling')) return;
             const rect = heroCardWrapper.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
@@ -2593,6 +2641,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const scene = document.getElementById('hk3dScene') || (modal ? modal.querySelector('.sandesh-3d-scene') : null);
         const scrollCard = document.getElementById('sandeshScrollCard') || document.getElementById('hk3dCard');
         const parchmentSheet = scrollCard ? scrollCard.querySelector('.sandesh-parchment-sheet') : null;
+        const sandeshPaperRoller = document.getElementById('sandeshPaperRoller');
         const activeQuill = document.getElementById('sandeshActiveQuill');
         const writingIndicator = document.getElementById('sandeshWritingIndicator');
         const navBrandLogo = document.getElementById('navBrandLogo');
@@ -2681,6 +2730,9 @@ document.addEventListener('DOMContentLoaded', () => {
             clearAllSandeshTimers();
             scrollCard.classList.remove('is-writing');
             scrollCard.classList.remove('is-unfolding');
+            if (sandeshPaperRoller) {
+                sandeshPaperRoller.classList.remove('rolling');
+            }
             if (activeQuill) activeQuill.style.opacity = '0';
 
             animItems.forEach(item => {
@@ -2707,14 +2759,23 @@ document.addEventListener('DOMContentLoaded', () => {
             // 1. Prepare elements in unwritten state & scroll to top
             if (parchmentSheet) parchmentSheet.scrollTop = 0;
             scrollCard.classList.remove('is-unfolding');
+            if (sandeshPaperRoller) {
+                sandeshPaperRoller.classList.remove('rolling');
+            }
             void scrollCard.offsetWidth; // Reflow to restart fold animation
             scrollCard.classList.add('is-unfolding');
+            if (sandeshPaperRoller) {
+                sandeshPaperRoller.classList.add('rolling');
+            }
             scrollCard.classList.add('is-writing');
 
-            // Free scrolling after unfold animation ends (850ms)
+            // Free scrolling after unfold animation ends (1350ms)
             sandeshAnimationTimeouts.push(setTimeout(() => {
                 scrollCard.classList.remove('is-unfolding');
-            }, 850));
+                if (sandeshPaperRoller) {
+                    sandeshPaperRoller.classList.remove('rolling');
+                }
+            }, 1350));
 
             animItems.forEach(item => item.classList.remove('written'));
             stars.forEach(s => s.classList.remove('star-lit'));
@@ -2883,6 +2944,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = '';
             scrollCard.classList.remove('is-unfolding');
             scrollCard.classList.remove('is-writing');
+            if (sandeshPaperRoller) {
+                sandeshPaperRoller.classList.remove('rolling');
+            }
             setTimeout(() => {
                 scrollCard.style.transform = '';
             }, 300);

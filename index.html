@@ -360,6 +360,7 @@
                                 </div>
 
                                 <!-- 3D Liquid Bubble Glass ID Card Wrapper (Bubble Shape Border) -->
+                                <!-- 3D Liquid Bubble Glass ID Card Wrapper (Bubble Shape Border) -->
                                 <div class="cyber-id-card-wrapper" id="heroIdCardInnerWrapper">
                                     <!-- 1. Attached Badge: AKTU CSE-IT (Affixed directly at top of ID card) -->
                                     <div class="card-attached-badge badge-aktu-top" title="Verified Engineering Student & Developer">
@@ -367,10 +368,21 @@
                                         <span>AKTU CSE-IT</span>
                                     </div>
 
-                                    <!-- 2. Attached Badge: AI / ML Dev (Affixed at ID card bottom-right corner, offset) -->
+                                    <!-- 2. Attached Badge: AI / ML Dev (Affixed below the ID card bottom border) -->
                                     <div class="card-attached-badge badge-aiml-right" title="AI/ML & Data Analytics Specialist">
                                         <i class="fa-solid fa-microchip text-emerald"></i>
                                         <span>AI / ML Dev</span>
+                                    </div>
+
+                                    <!-- 3. Dynamic Paper Scroll Roller (Simulates rolling bottom edge opening downward like a paper roll) -->
+                                    <div class="id-paper-roller" id="idPaperRoller" aria-hidden="true">
+                                        <div class="roller-cylinder">
+                                            <span class="roller-cap cap-left"></span>
+                                            <span class="roller-core-pattern"></span>
+                                            <span class="roller-sheen"></span>
+                                            <span class="roller-shadow"></span>
+                                            <span class="roller-cap cap-right"></span>
+                                        </div>
                                     </div>
 
                                     <!-- 3D Liquid Bubble Glass ID Card (Bubble Shape Border) -->
@@ -425,7 +437,7 @@
                                             <span class="id-ribbon-code font-mono">Roll No.-2302160130020</span>
                                         </div>
 
-                                        <!-- ID Card Main Grid: Left Photo & Right Dossier -->
+                                        <!-- ID Card Main Grid: Left Photo/Hardware & Right Dossier -->
                                         <div class="id-card-grid">
                                             <!-- Left Column: Holographic Photo & Security Hardware -->
                                             <div class="id-left-col">
@@ -461,6 +473,41 @@
                                                     <span class="id-bio-pill" title="Contactless Wireless NFC/RFID Enabled"><i
                                                             class="fa-solid fa-wifi text-cyan"></i> RFID</span>
                                                 </div>
+
+                                                <!-- High-Tech QR Code Matrix for Quick Verification -->
+                                                <div class="id-qr-box" title="Scan to verify student credential">
+                                                    <div class="id-qr-code" aria-hidden="true">
+                                                        <svg class="qr-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect width="36" height="36" rx="4" fill="rgba(4, 9, 22, 0.95)" stroke="rgba(0, 242, 254, 0.4)" stroke-width="1"/>
+                                                            <rect x="3" y="3" width="9" height="9" rx="1.5" stroke="#00f2fe" stroke-width="1.5" fill="rgba(0, 242, 254, 0.15)"/>
+                                                            <rect x="5.5" y="5.5" width="4" height="4" fill="#00f2fe"/>
+                                                            <rect x="24" y="3" width="9" height="9" rx="1.5" stroke="#00f2fe" stroke-width="1.5" fill="rgba(0, 242, 254, 0.15)"/>
+                                                            <rect x="26.5" y="5.5" width="4" height="4" fill="#00f2fe"/>
+                                                            <rect x="3" y="24" width="9" height="9" rx="1.5" stroke="#00f2fe" stroke-width="1.5" fill="rgba(0, 242, 254, 0.15)"/>
+                                                            <rect x="5.5" y="26.5" width="4" height="4" fill="#00f2fe"/>
+                                                            <rect x="14" y="4" width="2" height="4" fill="#38bdf8"/>
+                                                            <rect x="18" y="4" width="3" height="2" fill="#38bdf8"/>
+                                                            <rect x="14" y="10" width="4" height="2" fill="#38bdf8"/>
+                                                            <rect x="15" y="14" width="6" height="6" rx="1.5" fill="rgba(16, 185, 129, 0.3)" stroke="#10b981" stroke-width="1"/>
+                                                            <circle cx="18" cy="17" r="1.5" fill="#10b981"/>
+                                                            <rect x="4" y="15" width="3" height="2" fill="#38bdf8"/>
+                                                            <rect x="9" y="15" width="2" height="4" fill="#38bdf8"/>
+                                                            <rect x="24" y="14" width="3" height="2" fill="#38bdf8"/>
+                                                            <rect x="29" y="16" width="3" height="3" fill="#38bdf8"/>
+                                                            <rect x="14" y="24" width="3" height="3" fill="#38bdf8"/>
+                                                            <rect x="19" y="25" width="3" height="2" fill="#38bdf8"/>
+                                                            <rect x="14" y="29" width="4" height="3" fill="#38bdf8"/>
+                                                            <rect x="25" y="25" width="2" height="4" fill="#38bdf8"/>
+                                                            <rect x="29" y="27" width="3" height="3" fill="#38bdf8"/>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="id-qr-txt font-mono">SCAN • VERIFY</span>
+                                                </div>
+
+                                                <!-- Academic Validity Term Pill -->
+                                                <div class="id-validity-pill" title="Academic Validity Term">
+                                                    <span class="id-val-term font-mono"><i class="fa-regular fa-clock text-cyan"></i> 2022–2026</span>
+                                                </div>
                                             </div>
 
                                             <!-- Right Column: Personal & Academic Credentials -->
@@ -472,13 +519,19 @@
                                                     <span class="id-name-hindi">हिमांशु कुमार</span>
                                                 </div>
 
-                                                <!-- Degree & Academic Branch -->
-                                                <div class="id-field">
-                                                    <span class="id-label">BRANCH &amp; PROGRAM</span>
-                                                    <p class="id-val-role">
-                                                        B.Tech — IT
-                                                        <span class="id-year-badge">Final Year</span>
-                                                    </p>
+                                                <!-- Degree, Program & College Code -->
+                                                <div class="id-duo-row">
+                                                    <div class="id-field">
+                                                        <span class="id-label"><i class="fa-solid fa-graduation-cap text-cyan"></i> PROGRAM</span>
+                                                        <p class="id-val-role font-mono">
+                                                            B.Tech — IT
+                                                            <span class="id-year-badge">Final Yr</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="id-field">
+                                                        <span class="id-label"><i class="fa-solid fa-building-columns text-purple"></i> INST CODE</span>
+                                                        <p class="id-val font-mono">0133 (AKTU)</p>
+                                                    </div>
                                                 </div>
 
                                                 <!-- 2-Column Split: Date of Birth & Mobile Number -->
@@ -489,8 +542,7 @@
                                                         <p class="id-val font-mono text-cyan">30/04/2006</p>
                                                     </div>
                                                     <div class="id-field">
-                                                        <span class="id-label"><i class="fa-solid fa-phone text-emerald"></i> MOBILE
-                                                            NUMBER</span>
+                                                        <span class="id-label"><i class="fa-solid fa-phone text-emerald"></i> CONTACT NO.</span>
                                                         <a href="tel:+919341112974" class="id-val font-mono id-link-contact"
                                                             title="Call or WhatsApp: +91 93411 12974">
                                                             +91 93411 12974
@@ -510,11 +562,22 @@
 
                                                 <!-- Technical Core Arsenal Summary -->
                                                 <div class="id-field id-arsenal-field">
-                                                    <span class="id-label"><i class="fa-solid fa-laptop-code text-cyan"></i> CORE
-                                                        SKILLS</span>
-                                                    <p class="id-val-arsenal">Python • Data Analytics • Machine Learning • Full-Stack</p>
+                                                    <span class="id-label"><i class="fa-solid fa-laptop-code text-cyan"></i> SPECIALIZATION</span>
+                                                    <p class="id-val-arsenal">AI/ML • Data Analytics • Python • Web Dev</p>
+                                                </div>
+
+                                                <!-- Campus Location & Academic Authority -->
+                                                <div class="id-field id-campus-field">
+                                                    <span class="id-label"><i class="fa-solid fa-location-dot text-cyan"></i> CAMPUS &amp; AFFILIATION</span>
+                                                    <p class="id-val-campus font-mono">Knowledge Park III, Gr. Noida • AKTU</p>
                                                 </div>
                                             </div>
+                                        </div>
+
+                                        <!-- Cyber Security Status Strip (Fills middle gap cleanly) -->
+                                        <div class="id-security-strip">
+                                            <span class="id-sec-badge"><i class="fa-solid fa-shield-check text-emerald"></i> SYSTEM VERIFIED</span>
+                                            <span class="id-sec-badge"><i class="fa-solid fa-fingerprint text-cyan"></i> BIOMETRIC MATCHED</span>
                                         </div>
 
                                         <!-- ID Card Footer: Digital Barcode & Hologram Security Seal -->
@@ -2611,6 +2674,17 @@
                         <div class="finial-ridge"></div>
                         <div class="finial-collar"></div>
                         <div class="finial-dome"></div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Royal Paper Scroll Roller (Simulates rolling bottom edge opening downward like a paper roll) -->
+                <div class="sandesh-paper-roller" id="sandeshPaperRoller" aria-hidden="true">
+                    <div class="sandesh-roller-cylinder">
+                        <span class="sandesh-roller-cap cap-left"></span>
+                        <span class="sandesh-roller-core-pattern"></span>
+                        <span class="sandesh-roller-sheen"></span>
+                        <span class="sandesh-roller-shadow"></span>
+                        <span class="sandesh-roller-cap cap-right"></span>
                     </div>
                 </div>
 

@@ -7280,11 +7280,11 @@
   });
 
   // src/main.tsx
-  var import_react19 = __toESM(require_react(), 1);
+  var import_react17 = __toESM(require_react(), 1);
   var import_client = __toESM(require_client(), 1);
 
   // src/App.tsx
-  var import_react18 = __toESM(require_react(), 1);
+  var import_react16 = __toESM(require_react(), 1);
 
   // node_modules/lucide-react/dist/esm/createLucideIcon.js
   var import_react2 = __toESM(require_react());
@@ -7551,18 +7551,6 @@
     ["path", { d: "m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21", key: "1xmnt7" }]
   ]);
 
-  // node_modules/lucide-react/dist/esm/icons/key-round.js
-  var KeyRound = createLucideIcon("KeyRound", [
-    [
-      "path",
-      {
-        d: "M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z",
-        key: "1s6t7t"
-      }
-    ],
-    ["circle", { cx: "16.5", cy: "7.5", r: ".5", fill: "currentColor", key: "w0ekpg" }]
-  ]);
-
   // node_modules/lucide-react/dist/esm/icons/layers.js
   var Layers = createLucideIcon("Layers", [
     [
@@ -7582,31 +7570,6 @@
     ["rect", { width: "7", height: "5", x: "14", y: "3", rx: "1", key: "16une8" }],
     ["rect", { width: "7", height: "9", x: "14", y: "12", rx: "1", key: "1hutg5" }],
     ["rect", { width: "7", height: "5", x: "3", y: "16", rx: "1", key: "ldoo1y" }]
-  ]);
-
-  // node_modules/lucide-react/dist/esm/icons/loader-circle.js
-  var LoaderCircle = createLucideIcon("LoaderCircle", [
-    ["path", { d: "M21 12a9 9 0 1 1-6.219-8.56", key: "13zald" }]
-  ]);
-
-  // node_modules/lucide-react/dist/esm/icons/lock.js
-  var Lock = createLucideIcon("Lock", [
-    ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
-    ["path", { d: "M7 11V7a5 5 0 0 1 10 0v4", key: "fwvmzm" }]
-  ]);
-
-  // node_modules/lucide-react/dist/esm/icons/log-in.js
-  var LogIn = createLucideIcon("LogIn", [
-    ["path", { d: "M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4", key: "u53s6r" }],
-    ["polyline", { points: "10 17 15 12 10 7", key: "1ail0h" }],
-    ["line", { x1: "15", x2: "3", y1: "12", y2: "12", key: "v6grx8" }]
-  ]);
-
-  // node_modules/lucide-react/dist/esm/icons/log-out.js
-  var LogOut = createLucideIcon("LogOut", [
-    ["path", { d: "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4", key: "1uf3rs" }],
-    ["polyline", { points: "16 17 21 12 16 7", key: "1gabdz" }],
-    ["line", { x1: "21", x2: "9", y1: "12", y2: "12", key: "1uyos4" }]
   ]);
 
   // node_modules/lucide-react/dist/esm/icons/menu.js
@@ -7765,18 +7728,6 @@
     ],
     ["path", { d: "M12 8v4", key: "1got3b" }],
     ["path", { d: "M12 16h.01", key: "1drbdi" }]
-  ]);
-
-  // node_modules/lucide-react/dist/esm/icons/shield-check.js
-  var ShieldCheck = createLucideIcon("ShieldCheck", [
-    [
-      "path",
-      {
-        d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
-        key: "oel41y"
-      }
-    ],
-    ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
   ]);
 
   // node_modules/lucide-react/dist/esm/icons/shield.js
@@ -8242,48 +8193,45 @@
   // src/context/AuthContext.tsx
   var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
   var AuthContext = (0, import_react3.createContext)(void 0);
+  var DEFAULT_GUEST_USER = {
+    id: "usr-guest-001",
+    email: "guest@prachi.ai",
+    fullName: "Guest User",
+    role: "admin",
+    preferences: { theme: "dark", defaultModel: "gemini" }
+  };
   var AuthProvider = ({ children }) => {
-    const [user, setUser] = (0, import_react3.useState)(null);
-    const [token, setToken] = (0, import_react3.useState)(() => localStorage.getItem("prachi_auth_token"));
-    const [loading, setLoading] = (0, import_react3.useState)(true);
-    (0, import_react3.useEffect)(() => {
-      async function loadUser() {
-        if (!token) {
-          setLoading(false);
-          return;
-        }
+    const [user, setUser] = (0, import_react3.useState)(() => {
+      const cached = localStorage.getItem("prachi_local_user");
+      if (cached) {
         try {
-          const u = await api.getMe();
-          setUser(u);
-          localStorage.setItem("prachi_local_user", JSON.stringify(u));
-        } catch (err) {
-          console.warn("[Auth] Remote session check failed, inspecting local cache:", err);
-          const cached = localStorage.getItem("prachi_local_user");
-          if (cached) {
-            try {
-              setUser(JSON.parse(cached));
-            } catch {
-              setUser(null);
-              localStorage.removeItem("prachi_auth_token");
-              setToken(null);
+          const parsed = JSON.parse(cached);
+          if (parsed && parsed.fullName) return parsed;
+        } catch {
+        }
+      }
+      return DEFAULT_GUEST_USER;
+    });
+    const [token, setToken] = (0, import_react3.useState)(() => localStorage.getItem("prachi_auth_token") || "local-guest-token");
+    const [loading, setLoading] = (0, import_react3.useState)(false);
+    (0, import_react3.useEffect)(() => {
+      if (!localStorage.getItem("prachi_auth_token")) {
+        localStorage.setItem("prachi_auth_token", "local-guest-token");
+      }
+      if (!localStorage.getItem("prachi_local_user")) {
+        localStorage.setItem("prachi_local_user", JSON.stringify(DEFAULT_GUEST_USER));
+      }
+      async function loadUser() {
+        if (token && !token.startsWith("local-")) {
+          try {
+            const u = await api.getMe();
+            if (u) {
+              setUser(u);
+              localStorage.setItem("prachi_local_user", JSON.stringify(u));
             }
-          } else if (token.startsWith("local-")) {
-            const fallbackUser = {
-              id: token.includes("admin") ? "usr-admin-001" : "usr-demo-001",
-              email: token.includes("admin") ? "admin@prachi.ai" : "demo@prachi.ai",
-              fullName: token.includes("admin") ? "System Administrator" : "Pari (Demo User)",
-              role: token.includes("admin") ? "admin" : "user",
-              preferences: { theme: "dark", defaultModel: "local_heuristic" }
-            };
-            setUser(fallbackUser);
-          } else {
-            console.warn("[Auth] Token invalid or expired, resetting session");
-            localStorage.removeItem("prachi_auth_token");
-            setToken(null);
-            setUser(null);
+          } catch {
+            setUser((prev) => prev || DEFAULT_GUEST_USER);
           }
-        } finally {
-          setLoading(false);
         }
       }
       loadUser();
@@ -8464,8 +8412,8 @@
     const logout = () => {
       localStorage.removeItem("prachi_auth_token");
       localStorage.removeItem("prachi_local_user");
-      setToken(null);
-      setUser(null);
+      setToken("local-guest-token");
+      setUser(DEFAULT_GUEST_USER);
     };
     const updatePreferences = async (prefs) => {
       try {
@@ -8509,13 +8457,12 @@
     currentModel,
     onModelChange,
     onOpenVoice,
-    onOpenAuth,
     onOpenTour,
     theme,
     onToggleTheme,
     onToggleMobileSidebar
   }) => {
-    const { user, logout } = useAuth();
+    const { user } = useAuth();
     return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("header", { className: "top-navbar", children: [
       /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
         onToggleMobileSidebar && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
@@ -8642,23 +8589,45 @@
             children: theme === "dark" ? /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Sun, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Moon, { size: 16 })
           }
         ),
-        user ? /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { style: { textAlign: "right" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: { fontSize: "0.86rem", fontWeight: 600 }, children: user.fullName }),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: { fontSize: "0.72rem", color: user.role === "admin" ? "var(--accent-amber)" : "var(--text-muted)" }, children: user.role === "admin" ? "Administrator" : "Verified Member" })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
-            "button",
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+            "div",
             {
-              className: "btn btn-secondary btn-sm",
-              onClick: logout,
-              title: "Sign Out",
-              children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(LogOut, { size: 15 })
+              className: "status-pill",
+              style: {
+                background: "rgba(16, 185, 129, 0.12)",
+                border: "1px solid rgba(16, 185, 129, 0.35)",
+                color: "var(--accent-emerald)",
+                padding: "4px 10px",
+                fontSize: "0.74rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                borderRadius: "999px"
+              },
+              title: "Instant Open Access \u2014 Anyone can explore Prachi AI freely",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+                  "span",
+                  {
+                    className: "status-dot",
+                    style: {
+                      width: "6px",
+                      height: "6px",
+                      borderRadius: "50%",
+                      background: "var(--accent-emerald)",
+                      boxShadow: "0 0 8px var(--accent-emerald)"
+                    }
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "Open Access" })
+              ]
             }
-          )
-        ] }) : /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("button", { className: "btn btn-primary btn-sm", onClick: onOpenAuth, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(LogIn, { size: 15 }),
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "Sign In" })
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { style: { textAlign: "right" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: { fontSize: "0.86rem", fontWeight: 600, color: "var(--text-primary)" }, children: user?.fullName || "Guest User" }),
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: { fontSize: "0.70rem", color: "var(--accent-cyan)" }, children: "Ready to Chat" })
+          ] })
         ] })
       ] })
     ] });
@@ -8794,771 +8763,8 @@
     ] });
   };
 
-  // src/components/AuthModal.tsx
-  var import_react5 = __toESM(require_react(), 1);
-
-  // src/components/common/RobotCaptcha.tsx
-  var import_react4 = __toESM(require_react(), 1);
-  var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
-  var RobotCaptcha = ({ onVerify, isVerified: externalVerified }) => {
-    const [status, setStatus] = (0, import_react4.useState)("idle");
-    const isChecked = externalVerified !== void 0 ? externalVerified : status === "verified";
-    const handleClick = () => {
-      if (status === "verifying" || isChecked) {
-        return;
-      }
-      setStatus("verifying");
-      setTimeout(() => {
-        setStatus("verified");
-        const token = `robot-verified-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-        onVerify(token);
-      }, 650);
-    };
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-      "div",
-      {
-        className: "captcha-container",
-        onClick: handleClick,
-        style: {
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "10px 14px",
-          background: "var(--bg-secondary, rgba(255, 255, 255, 0.04))",
-          border: isChecked ? "1px solid rgba(16, 185, 129, 0.4)" : status === "verifying" ? "1px solid rgba(99, 102, 241, 0.5)" : "1px solid var(--border-subtle, rgba(255, 255, 255, 0.12))",
-          borderRadius: "10px",
-          cursor: isChecked ? "default" : "pointer",
-          userSelect: "none",
-          transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
-          boxShadow: isChecked ? "0 0 14px rgba(16, 185, 129, 0.15)" : "0 2px 8px rgba(0, 0, 0, 0.15)",
-          margin: "6px 0"
-        },
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-              "div",
-              {
-                role: "checkbox",
-                "aria-checked": isChecked,
-                tabIndex: 0,
-                onKeyDown: (e) => {
-                  if (e.key === " " || e.key === "Enter") {
-                    e.preventDefault();
-                    handleClick();
-                  }
-                },
-                style: {
-                  width: "26px",
-                  height: "26px",
-                  borderRadius: "6px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background: isChecked ? "#10b981" : "var(--bg-tertiary, rgba(255, 255, 255, 0.06))",
-                  border: isChecked ? "2px solid #10b981" : "2px solid var(--border-subtle, rgba(255, 255, 255, 0.3))",
-                  transition: "all 0.2s ease",
-                  color: "#ffffff",
-                  boxShadow: isChecked ? "0 0 8px rgba(16, 185, 129, 0.5)" : "none"
-                },
-                children: status === "verifying" ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(LoaderCircle, { size: 16, className: "spin", style: { color: "var(--accent-indigo, #6366f1)" } }) : isChecked ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Check, { size: 18, strokeWidth: 3 }) : null
-              }
-            ),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-                "div",
-                {
-                  style: {
-                    fontSize: "0.88rem",
-                    fontWeight: 600,
-                    color: "var(--text-primary, #ffffff)",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "6px"
-                  },
-                  children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "I'm not a robot" }),
-                    isChecked && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-                      "span",
-                      {
-                        style: {
-                          fontSize: "0.68rem",
-                          fontWeight: 700,
-                          color: "#10b981",
-                          background: "rgba(16, 185, 129, 0.15)",
-                          padding: "1px 6px",
-                          borderRadius: "4px",
-                          textTransform: "uppercase"
-                        },
-                        children: "Verified"
-                      }
-                    )
-                  ]
-                }
-              ),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { style: { fontSize: "0.72rem", color: isChecked ? "#10b981" : "var(--text-muted, #94a3b8)" }, children: status === "verifying" ? "Analyzing human interaction..." : isChecked ? "Human verification passed" : "Click checkbox to verify" })
-            ] })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-            "div",
-            {
-              style: {
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                opacity: 0.8,
-                textAlign: "center",
-                paddingLeft: "10px",
-                borderLeft: "1px solid var(--border-subtle, rgba(255, 255, 255, 0.08))"
-              },
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ShieldCheck, { size: 20, style: { color: isChecked ? "#10b981" : "var(--accent-indigo, #818cf8)" } }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { style: { fontSize: "0.62rem", fontWeight: 600, color: "var(--text-secondary, #cbd5e1)", marginTop: "2px" }, children: "Prachi Guard" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { style: { fontSize: "0.55rem", color: "var(--text-muted, #64748b)" }, children: "Privacy - Terms" })
-              ]
-            }
-          )
-        ]
-      }
-    );
-  };
-
-  // src/components/AuthModal.tsx
-  var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
-  var AuthModal = ({ isOpen, onClose }) => {
-    const { login, register, quickDemoLogin, sendOtp } = useAuth();
-    const [isRegister, setIsRegister] = (0, import_react5.useState)(false);
-    const [loginMethod, setLoginMethod] = (0, import_react5.useState)("password");
-    const [identifier, setIdentifier] = (0, import_react5.useState)("");
-    const [fullName, setFullName] = (0, import_react5.useState)("");
-    const [password, setPassword] = (0, import_react5.useState)("");
-    const [otp, setOtp] = (0, import_react5.useState)("");
-    const [captchaToken, setCaptchaToken] = (0, import_react5.useState)(null);
-    const [otpSent, setOtpSent] = (0, import_react5.useState)(false);
-    const [otpLoading, setOtpLoading] = (0, import_react5.useState)(false);
-    const [devOtp, setDevOtp] = (0, import_react5.useState)(null);
-    const [otpTimer, setOtpTimer] = (0, import_react5.useState)(0);
-    const [error, setError] = (0, import_react5.useState)(null);
-    const [successMsg, setSuccessMsg] = (0, import_react5.useState)(null);
-    const [loading, setLoading] = (0, import_react5.useState)(false);
-    const fillDemoCredentials = (role) => {
-      setError(null);
-      setIsRegister(false);
-      setLoginMethod("password");
-      setCaptchaToken(`robot-verified-demo-${Date.now()}`);
-      if (role === "admin") {
-        setIdentifier("admin@prachi.ai");
-        setPassword("AdminPass2026!");
-        setSuccessMsg('Admin credentials auto-filled! Click "Sign In with Password" or 1-Click login.');
-      } else {
-        setIdentifier("demo@prachi.ai");
-        setPassword("PrachiAI2026!");
-        setSuccessMsg('Demo credentials auto-filled! Click "Sign In with Password" or 1-Click login.');
-      }
-    };
-    (0, import_react5.useEffect)(() => {
-      let interval = null;
-      if (otpTimer > 0) {
-        interval = setInterval(() => {
-          setOtpTimer((prev) => prev > 0 ? prev - 1 : 0);
-        }, 1e3);
-      }
-      return () => {
-        if (interval) clearInterval(interval);
-      };
-    }, [otpTimer]);
-    const switchMode = (toRegister) => {
-      setIsRegister(toRegister);
-      setError(null);
-      setSuccessMsg(null);
-      setOtp("");
-      setOtpSent(false);
-      setDevOtp(null);
-      setCaptchaToken(null);
-    };
-    const handleSendOtp = async (purpose) => {
-      setError(null);
-      setSuccessMsg(null);
-      const cleanId = identifier.trim() || "demo@prachi.ai";
-      if (!identifier.trim()) {
-        setIdentifier("demo@prachi.ai");
-      }
-      setOtpLoading(true);
-      try {
-        const res = await sendOtp(cleanId, purpose);
-        setOtpSent(true);
-        setOtpTimer(60);
-        const code = res.devOtp || "123456";
-        setDevOtp(code);
-        setOtp(code);
-        setCaptchaToken(`robot-verified-otp-${Date.now()}`);
-        setSuccessMsg(res.message || `Verification code ready: ${code} (Auto-filled)`);
-      } catch (err) {
-        const fallbackCode = "123456";
-        setDevOtp(fallbackCode);
-        setOtp(fallbackCode);
-        setOtpSent(true);
-        setCaptchaToken(`robot-verified-otp-${Date.now()}`);
-        setSuccessMsg(`Test verification code generated: ${fallbackCode} (Auto-filled)`);
-      } finally {
-        setOtpLoading(false);
-      }
-    };
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      setError(null);
-      setSuccessMsg(null);
-      const activeCaptcha = captchaToken || `robot-verified-session-${Date.now()}`;
-      if (!captchaToken) {
-        setCaptchaToken(activeCaptcha);
-      }
-      const cleanId = identifier.trim() || "demo@prachi.ai";
-      setLoading(true);
-      try {
-        if (isRegister) {
-          const finalOtp = otp.trim() || devOtp || "123456";
-          const finalPass = password || "PrachiAI2026!";
-          await register({
-            identifier: cleanId,
-            fullName: fullName.trim() || cleanId.split("@")[0] || "User",
-            password: finalPass,
-            otp: finalOtp,
-            captchaToken: activeCaptcha
-          });
-          onClose();
-        } else {
-          if (loginMethod === "otp") {
-            const finalOtp = otp.trim() || devOtp || "123456";
-            await login({
-              identifier: cleanId,
-              otp: finalOtp,
-              captchaToken: activeCaptcha
-            });
-          } else {
-            const finalPass = password || (cleanId.includes("admin") ? "AdminPass2026!" : "PrachiAI2026!");
-            await login({
-              identifier: cleanId,
-              password: finalPass,
-              captchaToken: activeCaptcha
-            });
-          }
-          onClose();
-        }
-      } catch (err) {
-        setError(err.message || 'Authentication failed. Click "Instant Demo" to bypass.');
-      } finally {
-        setLoading(false);
-      }
-    };
-    const handleDemoClick = async (role) => {
-      setError(null);
-      setLoading(true);
-      try {
-        await quickDemoLogin(role);
-        onClose();
-      } catch (err) {
-        setError(err.message || "Demo login failed");
-      } finally {
-        setLoading(false);
-      }
-    };
-    if (!isOpen) return null;
-    const isEmail = identifier.includes("@");
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "modal-backdrop", style: { zIndex: 1100 }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "modal-dialog", style: { maxWidth: "440px", width: "92%", maxHeight: "90vh", overflowY: "auto" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
-          "a",
-          {
-            href: "../index.html",
-            onClick: (e) => {
-              e.preventDefault();
-              if (window.history.length > 1 && document.referrer && (document.referrer.includes("index.html") || document.referrer.includes("portfolio") || document.referrer.includes("Level%201") || document.referrer.includes("Level 1"))) {
-                window.history.back();
-              } else {
-                try {
-                  window.location.href = new URL("../index.html", window.location.href).href;
-                } catch {
-                  window.location.href = "../index.html";
-                }
-              }
-            },
-            title: "Return to Personal Portfolio",
-            style: {
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "6px",
-              color: "var(--accent-indigo, #818cf8)",
-              fontSize: "0.78rem",
-              fontWeight: 600,
-              textDecoration: "none",
-              cursor: "pointer",
-              padding: "4px 10px",
-              borderRadius: "6px",
-              background: "rgba(99, 102, 241, 0.1)",
-              border: "1px solid rgba(99, 102, 241, 0.25)",
-              transition: "all 0.2s ease"
-            },
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ArrowLeft, { size: 13 }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "\u2190 Return to Portfolio" })
-            ]
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-          "button",
-          {
-            onClick: onClose,
-            "aria-label": "Close",
-            style: { background: "transparent", border: "none", color: "var(--text-muted)", cursor: "pointer", padding: "4px" },
-            children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(X, { size: 18 })
-          }
-        )
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "10px", marginBottom: "6px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "brand-logo-icon", style: { width: "34px", height: "34px", padding: "2px", background: "transparent", boxShadow: "none" }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-          "img",
-          {
-            src: "./assets/prachi-logo.png",
-            alt: "Prachi AI",
-            style: { width: "100%", height: "100%", objectFit: "contain" },
-            onError: (e) => {
-              const el = e.target;
-              if (!el.src.includes("prachi-logo.svg")) {
-                el.src = "./assets/prachi-logo.svg";
-              }
-            }
-          }
-        ) }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h2", { style: { fontSize: "1.25rem", fontWeight: 700 }, children: isRegister ? "Create Prachi AI Account" : "Sign in to Prachi AI" })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { style: { fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: "16px" }, children: isRegister ? "Sign up with your mobile number or email ID with instant OTP verification." : "Access your private AI assistant using password or OTP verification." }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
-        "div",
-        {
-          style: {
-            background: "linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15))",
-            border: "1px solid rgba(99, 102, 241, 0.3)",
-            borderRadius: "10px",
-            padding: "12px 14px",
-            marginBottom: "16px",
-            boxShadow: "0 4px 16px rgba(99, 102, 241, 0.1)"
-          },
-          children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "8px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { style: { fontSize: "0.8rem", fontWeight: 700, color: "#a5b4fc", display: "flex", alignItems: "center", gap: "6px" }, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Sparkles, { size: 14, style: { color: "#c084fc" } }),
-                " 1-Click Instant Access"
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { style: { fontSize: "0.68rem", color: "var(--text-muted)" }, children: "Zero setup required" })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
-                "button",
-                {
-                  type: "button",
-                  onClick: () => handleDemoClick("user"),
-                  disabled: loading,
-                  style: {
-                    padding: "9px 10px",
-                    borderRadius: "8px",
-                    border: "1px solid rgba(99, 102, 241, 0.45)",
-                    background: "rgba(99, 102, 241, 0.25)",
-                    color: "#ffffff",
-                    fontSize: "0.8rem",
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "6px",
-                    transition: "all 0.2s ease"
-                  },
-                  children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(User, { size: 13, style: { color: "#a5b4fc" } }),
-                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Pari (User)" })
-                  ]
-                }
-              ),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
-                "button",
-                {
-                  type: "button",
-                  onClick: () => handleDemoClick("admin"),
-                  disabled: loading,
-                  style: {
-                    padding: "9px 10px",
-                    borderRadius: "8px",
-                    border: "1px solid rgba(245, 158, 11, 0.45)",
-                    background: "rgba(245, 158, 11, 0.2)",
-                    color: "#ffffff",
-                    fontSize: "0.8rem",
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "6px",
-                    transition: "all 0.2s ease"
-                  },
-                  children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ShieldCheck, { size: 13, style: { color: "#fbbf24" } }),
-                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Admin Demo" })
-                  ]
-                }
-              )
-            ] })
-          ]
-        }
-      ),
-      error && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { padding: "10px 14px", background: "rgba(244, 63, 94, 0.12)", border: "1px solid rgba(244, 63, 94, 0.3)", borderRadius: "8px", color: "var(--accent-rose)", fontSize: "0.82rem", marginBottom: "14px", lineHeight: 1.4 }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { marginBottom: "6px" }, children: error }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-          "button",
-          {
-            type: "button",
-            onClick: () => handleDemoClick("user"),
-            style: {
-              background: "rgba(244, 63, 94, 0.2)",
-              border: "1px solid rgba(244, 63, 94, 0.4)",
-              color: "#ffffff",
-              padding: "3px 10px",
-              borderRadius: "4px",
-              fontSize: "0.74rem",
-              fontWeight: 600,
-              cursor: "pointer"
-            },
-            children: "\u26A1 Bypass & Sign In as Pari (Demo)"
-          }
-        )
-      ] }),
-      successMsg && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { padding: "10px 14px", background: "rgba(16, 185, 129, 0.12)", border: "1px solid rgba(16, 185, 129, 0.3)", borderRadius: "8px", color: "#10b981", fontSize: "0.82rem", marginBottom: "14px", display: "flex", alignItems: "center", justifyContent: "space-between" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(CircleCheck, { size: 16 }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: successMsg })
-        ] }),
-        devOtp && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-          "button",
-          {
-            type: "button",
-            onClick: () => setOtp(devOtp),
-            style: {
-              background: "rgba(16, 185, 129, 0.25)",
-              border: "1px solid rgba(16, 185, 129, 0.4)",
-              color: "#ffffff",
-              borderRadius: "4px",
-              padding: "2px 8px",
-              fontSize: "0.72rem",
-              fontWeight: 600,
-              cursor: "pointer"
-            },
-            children: "Auto-Fill"
-          }
-        )
-      ] }),
-      !isRegister && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px", background: "var(--bg-tertiary, rgba(255, 255, 255, 0.05))", padding: "4px", borderRadius: "8px", marginBottom: "16px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
-          "button",
-          {
-            type: "button",
-            onClick: () => {
-              setLoginMethod("password");
-              setError(null);
-            },
-            style: {
-              padding: "8px 10px",
-              borderRadius: "6px",
-              border: "none",
-              background: loginMethod === "password" ? "var(--accent-indigo, #6366f1)" : "transparent",
-              color: loginMethod === "password" ? "#ffffff" : "var(--text-secondary)",
-              fontSize: "0.82rem",
-              fontWeight: 600,
-              cursor: "pointer",
-              transition: "all 0.2s ease",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "6px",
-              boxShadow: loginMethod === "password" ? "0 2px 8px rgba(99, 102, 241, 0.3)" : "none"
-            },
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Lock, { size: 14 }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "\u{1F511} Password Login" })
-            ]
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
-          "button",
-          {
-            type: "button",
-            onClick: () => {
-              setLoginMethod("otp");
-              setError(null);
-            },
-            style: {
-              padding: "8px 10px",
-              borderRadius: "6px",
-              border: "none",
-              background: loginMethod === "otp" ? "var(--accent-indigo, #6366f1)" : "transparent",
-              color: loginMethod === "otp" ? "#ffffff" : "var(--text-secondary)",
-              fontSize: "0.82rem",
-              fontWeight: 600,
-              cursor: "pointer",
-              transition: "all 0.2s ease",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "6px",
-              boxShadow: loginMethod === "otp" ? "0 2px 8px rgba(99, 102, 241, 0.3)" : "none"
-            },
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(KeyRound, { size: 14 }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "\u{1F4F1} OTP Login" })
-            ]
-          }
-        )
-      ] }),
-      !isRegister && loginMethod === "password" && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", padding: "6px 10px", background: "rgba(255, 255, 255, 0.03)", border: "1px dashed rgba(255, 255, 255, 0.15)", borderRadius: "6px", marginBottom: "12px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { style: { fontSize: "0.72rem", color: "var(--text-muted)" }, children: "Quick Credentials:" }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", gap: "6px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-            "button",
-            {
-              type: "button",
-              onClick: () => fillDemoCredentials("user"),
-              style: {
-                background: "rgba(99, 102, 241, 0.15)",
-                border: "1px solid rgba(99, 102, 241, 0.35)",
-                color: "#a5b4fc",
-                borderRadius: "4px",
-                padding: "2px 8px",
-                fontSize: "0.72rem",
-                fontWeight: 600,
-                cursor: "pointer"
-              },
-              children: "\u{1F464} Fill Demo"
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-            "button",
-            {
-              type: "button",
-              onClick: () => fillDemoCredentials("admin"),
-              style: {
-                background: "rgba(245, 158, 11, 0.15)",
-                border: "1px solid rgba(245, 158, 11, 0.35)",
-                color: "#fcd34d",
-                borderRadius: "4px",
-                padding: "2px 8px",
-                fontSize: "0.72rem",
-                fontWeight: 600,
-                cursor: "pointer"
-              },
-              children: "\u{1F6E1}\uFE0F Fill Admin"
-            }
-          )
-        ] })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("form", { onSubmit: handleSubmit, style: { display: "flex", flexFlow: "column", gap: "12px" }, children: [
-        isRegister && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { style: { display: "block", fontSize: "0.78rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "5px" }, children: "Full Name" }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { position: "relative" }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-            "input",
-            {
-              type: "text",
-              required: true,
-              className: "input-control",
-              placeholder: "e.g. Pari Verma",
-              value: fullName,
-              onChange: (e) => setFullName(e.target.value)
-            }
-          ) })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "5px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { style: { fontSize: "0.78rem", fontWeight: 600, color: "var(--text-secondary)" }, children: "Mobile Number or Email" }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { style: { fontSize: "0.7rem", color: "var(--accent-indigo, #818cf8)" }, children: isEmail ? "\u2709 Email Mode" : "\u{1F4F1} Mobile Mode" })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { position: "relative" }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-            "input",
-            {
-              type: "text",
-              required: true,
-              className: "input-control",
-              placeholder: "e.g. +91 98765 43210 or pari@example.com",
-              value: identifier,
-              onChange: (e) => {
-                setIdentifier(e.target.value);
-                setOtpSent(false);
-              }
-            }
-          ) })
-        ] }),
-        (isRegister || loginMethod === "password") && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "5px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { style: { fontSize: "0.78rem", fontWeight: 600, color: "var(--text-secondary)" }, children: isRegister ? "Set Password" : "Password" }),
-            isRegister && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { style: { fontSize: "0.7rem", color: "var(--text-muted)" }, children: "Min. 6 chars" })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-            "input",
-            {
-              type: "password",
-              required: true,
-              className: "input-control",
-              placeholder: "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022",
-              value: password,
-              onChange: (e) => setPassword(e.target.value)
-            }
-          )
-        ] }),
-        (isRegister || loginMethod === "otp") && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { background: "var(--bg-tertiary, rgba(255, 255, 255, 0.03))", padding: "10px 12px", borderRadius: "8px", border: "1px solid var(--border-subtle, rgba(255, 255, 255, 0.08))" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { style: { fontSize: "0.78rem", fontWeight: 600, color: "var(--text-secondary)" }, children: isRegister ? "Mandatory OTP Verification" : "6-Digit Verification Code" }),
-            otpSent && devOtp && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
-              "button",
-              {
-                type: "button",
-                onClick: () => setOtp(devOtp),
-                title: "Click to fill code",
-                style: {
-                  background: "rgba(16, 185, 129, 0.15)",
-                  border: "1px solid rgba(16, 185, 129, 0.4)",
-                  color: "#10b981",
-                  borderRadius: "6px",
-                  fontSize: "0.72rem",
-                  fontWeight: 600,
-                  padding: "2px 8px",
-                  cursor: "pointer"
-                },
-                children: [
-                  "Code: ",
-                  devOtp,
-                  " (Click to fill)"
-                ]
-              }
-            )
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", gap: "8px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-              "input",
-              {
-                type: "text",
-                maxLength: 6,
-                required: true,
-                className: "input-control",
-                placeholder: "Enter 6-digit OTP",
-                value: otp,
-                onChange: (e) => setOtp(e.target.value.replace(/[^0-9]/g, "")),
-                style: { letterSpacing: "2px", fontWeight: 600, fontSize: "0.95rem" }
-              }
-            ),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-              "button",
-              {
-                type: "button",
-                onClick: () => handleSendOtp(isRegister ? "register" : "login"),
-                disabled: otpLoading || otpTimer > 0,
-                className: "btn btn-secondary",
-                style: { whiteSpace: "nowrap", fontSize: "0.78rem", padding: "0 12px" },
-                children: otpLoading ? "Sending..." : otpTimer > 0 ? `Resend (${otpTimer}s)` : otpSent ? "Resend OTP" : "Get OTP"
-              }
-            )
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { style: { fontSize: "0.7rem", color: "var(--text-muted)", marginTop: "6px", marginBottom: 0 }, children: isRegister ? 'Click "Get OTP" to receive a verification code on your mobile/email.' : "Enter the code sent to your registered mobile number or email." })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-          RobotCaptcha,
-          {
-            onVerify: (token) => {
-              setCaptchaToken(token);
-              if (token) setError(null);
-            },
-            isVerified: Boolean(captchaToken)
-          }
-        ) }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-          "button",
-          {
-            type: "submit",
-            className: "btn btn-primary",
-            disabled: loading,
-            style: {
-              marginTop: "4px",
-              padding: "10px 14px",
-              fontWeight: 600,
-              fontSize: "0.88rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "8px"
-            },
-            children: loading ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Authenticating..." }) : isRegister ? /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Complete Registration & Sign In" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ArrowRight, { size: 15 })
-            ] }) : loginMethod === "otp" ? /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Verify OTP & Sign In" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ArrowRight, { size: 15 })
-            ] }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Sign In with Password" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ArrowRight, { size: 15 })
-            ] })
-          }
-        )
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", margin: "16px 0", gap: "10px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { flex: 1, height: "1px", background: "var(--border-subtle)" } }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { style: { fontSize: "0.72rem", color: "var(--text-muted)" }, children: "OR INSTANT DEMO LOGIN" }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { flex: 1, height: "1px", background: "var(--border-subtle)" } })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
-          "button",
-          {
-            type: "button",
-            className: "btn btn-secondary",
-            onClick: () => handleDemoClick("user"),
-            disabled: loading,
-            style: { fontSize: "0.78rem", padding: "8px" },
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(User, { size: 13, style: { color: "var(--accent-indigo)" } }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Pari (User)" })
-            ]
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
-          "button",
-          {
-            type: "button",
-            className: "btn btn-secondary",
-            onClick: () => handleDemoClick("admin"),
-            disabled: loading,
-            style: { fontSize: "0.78rem", padding: "8px" },
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ShieldCheck, { size: 13, style: { color: "var(--accent-amber)" } }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Admin Demo" })
-            ]
-          }
-        )
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { textAlign: "center", marginTop: "16px" }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-        "button",
-        {
-          type: "button",
-          onClick: () => switchMode(!isRegister),
-          style: {
-            background: "transparent",
-            border: "none",
-            color: "var(--accent-indigo)",
-            fontSize: "0.82rem",
-            cursor: "pointer",
-            textDecoration: "underline"
-          },
-          children: isRegister ? "Already have an account? Sign In" : "Don't have an account? Create one with OTP"
-        }
-      ) })
-    ] }) });
-  };
-
   // src/components/views/VoiceModal.tsx
-  var import_react6 = __toESM(require_react(), 1);
+  var import_react4 = __toESM(require_react(), 1);
 
   // src/utils/speechVoiceHelper.ts
   var cachedVoices = [];
@@ -9708,16 +8914,16 @@
   }
 
   // src/components/views/VoiceModal.tsx
-  var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
   var VoiceModal = ({ isOpen, onClose, currentModel }) => {
-    const [isListening, setIsListening] = (0, import_react6.useState)(false);
-    const [transcript, setTranscript] = (0, import_react6.useState)("");
-    const [assistantReply, setAssistantReply] = (0, import_react6.useState)("");
-    const [isSpeaking, setIsSpeaking] = (0, import_react6.useState)(false);
-    const [processing, setProcessing] = (0, import_react6.useState)(false);
-    const [voiceLang, setVoiceLang] = (0, import_react6.useState)("hi-IN");
-    const [autoSend, setAutoSend] = (0, import_react6.useState)(true);
-    const recognitionRef = (0, import_react6.useRef)(null);
+    const [isListening, setIsListening] = (0, import_react4.useState)(false);
+    const [transcript, setTranscript] = (0, import_react4.useState)("");
+    const [assistantReply, setAssistantReply] = (0, import_react4.useState)("");
+    const [isSpeaking, setIsSpeaking] = (0, import_react4.useState)(false);
+    const [processing, setProcessing] = (0, import_react4.useState)(false);
+    const [voiceLang, setVoiceLang] = (0, import_react4.useState)("hi-IN");
+    const [autoSend, setAutoSend] = (0, import_react4.useState)(true);
+    const recognitionRef = (0, import_react4.useRef)(null);
     const stopListening = () => {
       if (recognitionRef.current) {
         try {
@@ -9811,7 +9017,7 @@
         }, 1200);
       }
     };
-    (0, import_react6.useEffect)(() => {
+    (0, import_react4.useEffect)(() => {
       if (!isOpen) {
         stopListening();
         stopSpeaking();
@@ -9839,25 +9045,25 @@
       "What is the stock price of TSLA?",
       "Give me a productivity routine"
     ];
-    return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "modal-backdrop", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "modal-dialog", style: { maxWidth: "540px", textAlign: "center", padding: "32px 28px" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "modal-backdrop", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "modal-dialog", style: { maxWidth: "540px", textAlign: "center", padding: "32px 28px" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
         "button",
         {
           onClick: onClose,
           style: { position: "absolute", top: "16px", right: "16px", background: "transparent", border: "none", color: "var(--text-muted)", cursor: "pointer" },
-          children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(X, { size: 20 })
+          children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(X, { size: 20 })
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: { display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", marginBottom: "14px" }, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "inline-flex", alignItems: "center", gap: "5px", padding: "4px 10px", background: "rgba(99, 102, 241, 0.12)", border: "1px solid var(--border-active)", borderRadius: "20px", fontSize: "0.74rem", color: "var(--text-accent)" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Radio, { size: 12, style: { animation: isListening ? "pulse 1s infinite" : "none" } }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: "Interactive Voice Agent (Girls Voice)" })
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { style: { display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", marginBottom: "14px" }, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { style: { display: "inline-flex", alignItems: "center", gap: "5px", padding: "4px 10px", background: "rgba(99, 102, 241, 0.12)", border: "1px solid var(--border-active)", borderRadius: "20px", fontSize: "0.74rem", color: "var(--text-accent)" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Radio, { size: 12, style: { animation: isListening ? "pulse 1s infinite" : "none" } }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "Interactive Voice Agent (Girls Voice)" })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "center", gap: "6px", marginBottom: "18px", flexWrap: "wrap" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { style: { fontSize: "0.75rem", color: "var(--text-muted)", display: "inline-flex", alignItems: "center", gap: "4px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Globe, { size: 12 }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: "Lang:" })
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "center", gap: "6px", marginBottom: "18px", flexWrap: "wrap" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { style: { fontSize: "0.75rem", color: "var(--text-muted)", display: "inline-flex", alignItems: "center", gap: "4px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Globe, { size: 12 }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "Lang:" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
           "button",
           {
             type: "button",
@@ -9869,7 +9075,7 @@
             children: "\u0939\u093F\u0902\u0926\u0940 / Hinglish"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
           "button",
           {
             type: "button",
@@ -9881,7 +9087,7 @@
             children: "English"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
           "button",
           {
             type: "button",
@@ -9893,7 +9099,7 @@
             children: "\u0627\u0631\u062F\u0648 (Urdu)"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
           "button",
           {
             type: "button",
@@ -9906,9 +9112,9 @@
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h3", { style: { fontSize: "1.35rem", fontWeight: 800, marginBottom: "6px" }, children: "Prachi Voice Assistant" }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { style: { fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: "20px" }, children: "Speak in Hindi, English, Urdu, or Bhojpuri. Speech automatically sends on silence!" }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: { height: "110px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px", position: "relative" }, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h3", { style: { fontSize: "1.35rem", fontWeight: 800, marginBottom: "6px" }, children: "Prachi Voice Assistant" }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { style: { fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: "20px" }, children: "Speak in Hindi, English, Urdu, or Bhojpuri. Speech automatically sends on silence!" }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { style: { height: "110px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px", position: "relative" }, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
         "div",
         {
           style: {
@@ -9926,40 +9132,40 @@
           },
           onClick: isListening ? stopListening : startListening,
           title: isListening ? "Click to stop listening" : "Click to start speaking",
-          children: isListening ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(MicOff, { size: 32, color: "#ffffff" }) : isSpeaking ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Volume2, { size: 32, color: "#ffffff" }) : /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Mic, { size: 30, color: "#ffffff" })
+          children: isListening ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(MicOff, { size: 32, color: "#ffffff" }) : isSpeaking ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Volume2, { size: 32, color: "#ffffff" }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Mic, { size: 30, color: "#ffffff" })
         }
       ) }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: { fontSize: "0.84rem", color: isListening ? "#f43f5e" : isSpeaking ? "var(--accent-cyan)" : "var(--text-muted)", fontWeight: 600, marginBottom: "16px" }, children: isListening ? "\u{1F399}\uFE0F Listening to you... speak now" : isSpeaking ? "\u{1F50A} Prachi AI is speaking..." : processing ? "\u{1F9E0} Processing cognitive response..." : "Push button below or click the glowing orb to speak" }),
-      transcript && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { padding: "12px 16px", background: "var(--bg-surface)", borderRadius: "10px", border: "1px solid var(--border-subtle)", marginBottom: "14px", fontSize: "0.88rem", textAlign: "left" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { style: { color: "var(--text-muted)", fontSize: "0.72rem", display: "block", marginBottom: "4px", fontWeight: 700 }, children: "YOU SAID:" }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { style: { fontSize: "0.84rem", color: isListening ? "#f43f5e" : isSpeaking ? "var(--accent-cyan)" : "var(--text-muted)", fontWeight: 600, marginBottom: "16px" }, children: isListening ? "\u{1F399}\uFE0F Listening to you... speak now" : isSpeaking ? "\u{1F50A} Prachi AI is speaking..." : processing ? "\u{1F9E0} Processing cognitive response..." : "Push button below or click the glowing orb to speak" }),
+      transcript && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { style: { padding: "12px 16px", background: "var(--bg-surface)", borderRadius: "10px", border: "1px solid var(--border-subtle)", marginBottom: "14px", fontSize: "0.88rem", textAlign: "left" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { style: { color: "var(--text-muted)", fontSize: "0.72rem", display: "block", marginBottom: "4px", fontWeight: 700 }, children: "YOU SAID:" }),
         '"',
         transcript,
         '"'
       ] }),
-      assistantReply && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { padding: "14px 16px", background: "rgba(99, 102, 241, 0.08)", borderRadius: "10px", border: "1px solid var(--border-active)", marginBottom: "18px", textAlign: "left", fontSize: "0.86rem", maxHeight: "160px", overflowY: "auto" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { style: { color: "var(--accent-indigo)", fontSize: "0.72rem", fontWeight: 700, display: "block", marginBottom: "4px" }, children: "PRACHI AI:" }),
+      assistantReply && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { style: { padding: "14px 16px", background: "rgba(99, 102, 241, 0.08)", borderRadius: "10px", border: "1px solid var(--border-active)", marginBottom: "18px", textAlign: "left", fontSize: "0.86rem", maxHeight: "160px", overflowY: "auto" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { style: { color: "var(--accent-indigo)", fontSize: "0.72rem", fontWeight: 700, display: "block", marginBottom: "4px" }, children: "PRACHI AI:" }),
         assistantReply
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "flex", justifyContent: "center", gap: "10px", flexWrap: "wrap", marginBottom: "20px" }, children: [
-        isListening ? /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("button", { className: "btn btn-outline-danger", onClick: stopListening, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(MicOff, { size: 16 }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: "Stop Listening" })
-        ] }) : /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("button", { className: "btn btn-primary", onClick: startListening, disabled: processing, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Mic, { size: 16 }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: processing ? "Thinking..." : "Push to Talk" })
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { style: { display: "flex", justifyContent: "center", gap: "10px", flexWrap: "wrap", marginBottom: "20px" }, children: [
+        isListening ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("button", { className: "btn btn-outline-danger", onClick: stopListening, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(MicOff, { size: 16 }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "Stop Listening" })
+        ] }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("button", { className: "btn btn-primary", onClick: startListening, disabled: processing, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Mic, { size: 16 }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: processing ? "Thinking..." : "Push to Talk" })
         ] }),
-        transcript && !isListening && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("button", { className: "btn btn-secondary", onClick: () => handleSubmitVoice(), disabled: processing, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Sparkles, { size: 16 }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: "Submit Query" })
+        transcript && !isListening && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("button", { className: "btn btn-secondary", onClick: () => handleSubmitVoice(), disabled: processing, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Sparkles, { size: 16 }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "Submit Query" })
         ] }),
-        isSpeaking && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("button", { className: "btn btn-secondary", onClick: stopSpeaking, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(VolumeX, { size: 16 }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: "Mute Voice" })
+        isSpeaking && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("button", { className: "btn btn-secondary", onClick: stopSpeaking, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(VolumeX, { size: 16 }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "Mute Voice" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { borderTop: "1px solid var(--border-subtle)", paddingTop: "16px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { style: { fontSize: "0.74rem", color: "var(--text-muted)", display: "block", marginBottom: "8px" }, children: "OR TRY ASKING ONE OF THESE BY VOICE:" }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: { display: "flex", flexWrap: "wrap", gap: "6px", justifyContent: "center" }, children: quickVoicePrompts.map((p, idx) => /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { style: { borderTop: "1px solid var(--border-subtle)", paddingTop: "16px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { style: { fontSize: "0.74rem", color: "var(--text-muted)", display: "block", marginBottom: "8px" }, children: "OR TRY ASKING ONE OF THESE BY VOICE:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { style: { display: "flex", flexWrap: "wrap", gap: "6px", justifyContent: "center" }, children: quickVoicePrompts.map((p, idx) => /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
           "button",
           {
             className: "btn btn-secondary btn-sm",
@@ -9981,31 +9187,31 @@
   };
 
   // src/components/views/ChatView.tsx
-  var import_react7 = __toESM(require_react(), 1);
-  var import_jsx_runtime7 = __toESM(require_jsx_runtime(), 1);
+  var import_react5 = __toESM(require_react(), 1);
+  var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
   var ChatView = ({ currentModel, onNavigateToView }) => {
     const { user } = useAuth();
-    const [conversations, setConversations] = (0, import_react7.useState)([]);
-    const [activeConvId, setActiveConvId] = (0, import_react7.useState)(null);
-    const [messages, setMessages] = (0, import_react7.useState)([]);
-    const [input, setInput] = (0, import_react7.useState)("");
-    const [loading, setLoading] = (0, import_react7.useState)(false);
-    const [mode, setMode] = (0, import_react7.useState)("general");
-    const [enableMemory, setEnableMemory] = (0, import_react7.useState)(true);
-    const [enableRAG, setEnableRAG] = (0, import_react7.useState)(true);
-    const [isRecording, setIsRecording] = (0, import_react7.useState)(false);
-    const [selectedLang, setSelectedLang] = (0, import_react7.useState)("hi-IN");
-    const [speakingMsgId, setSpeakingMsgId] = (0, import_react7.useState)(null);
-    const [showHistory, setShowHistory] = (0, import_react7.useState)(() => {
+    const [conversations, setConversations] = (0, import_react5.useState)([]);
+    const [activeConvId, setActiveConvId] = (0, import_react5.useState)(null);
+    const [messages, setMessages] = (0, import_react5.useState)([]);
+    const [input, setInput] = (0, import_react5.useState)("");
+    const [loading, setLoading] = (0, import_react5.useState)(false);
+    const [mode, setMode] = (0, import_react5.useState)("general");
+    const [enableMemory, setEnableMemory] = (0, import_react5.useState)(true);
+    const [enableRAG, setEnableRAG] = (0, import_react5.useState)(true);
+    const [isRecording, setIsRecording] = (0, import_react5.useState)(false);
+    const [selectedLang, setSelectedLang] = (0, import_react5.useState)("hi-IN");
+    const [speakingMsgId, setSpeakingMsgId] = (0, import_react5.useState)(null);
+    const [showHistory, setShowHistory] = (0, import_react5.useState)(() => {
       if (typeof window !== "undefined") {
         return window.innerWidth > 768;
       }
       return true;
     });
-    const [selectedFile, setSelectedFile] = (0, import_react7.useState)(null);
-    const fileInputRef = (0, import_react7.useRef)(null);
-    const messagesEndRef = (0, import_react7.useRef)(null);
-    const recognitionRef = (0, import_react7.useRef)(null);
+    const [selectedFile, setSelectedFile] = (0, import_react5.useState)(null);
+    const fileInputRef = (0, import_react5.useRef)(null);
+    const messagesEndRef = (0, import_react5.useRef)(null);
+    const recognitionRef = (0, import_react5.useRef)(null);
     const loadConversations = async () => {
       if (!user) return;
       try {
@@ -10027,15 +9233,15 @@
         console.warn("Failed to load messages", e);
       }
     };
-    (0, import_react7.useEffect)(() => {
+    (0, import_react5.useEffect)(() => {
       loadConversations();
     }, [user]);
-    (0, import_react7.useEffect)(() => {
+    (0, import_react5.useEffect)(() => {
       if (activeConvId) {
         loadMessages(activeConvId);
       }
     }, [activeConvId]);
-    (0, import_react7.useEffect)(() => {
+    (0, import_react5.useEffect)(() => {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages, loading]);
     const handleNewChat = () => {
@@ -10295,14 +9501,14 @@
         onError: () => setSpeakingMsgId(null)
       });
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "chat-container", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: `chat-history-sidebar ${showHistory ? "open" : "collapsed"}`, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "chat-history-header", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px", fontSize: "0.88rem", fontWeight: 600 }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Clock, { size: 16, style: { color: "var(--accent-indigo)" } }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "Recent Chats" })
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "chat-container", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: `chat-history-sidebar ${showHistory ? "open" : "collapsed"}`, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "chat-history-header", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px", fontSize: "0.88rem", fontWeight: 600 }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Clock, { size: 16, style: { color: "var(--accent-indigo)" } }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Recent Chats" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
             "button",
             {
               className: "btn btn-secondary btn-sm",
@@ -10320,28 +9526,28 @@
               onClick: handleNewChat,
               title: "Start a new conversation",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Plus, { size: 13 }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "New Chat" })
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Plus, { size: 13 }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "New Chat" })
               ]
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "chat-history-list", children: conversations.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { padding: "20px 12px", textAlign: "center", color: "var(--text-muted)", fontSize: "0.8rem" }, children: "No past conversations yet. Start chatting with Prachi AI!" }) : conversations.map((c) => {
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "chat-history-list", children: conversations.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { padding: "20px 12px", textAlign: "center", color: "var(--text-muted)", fontSize: "0.8rem" }, children: "No past conversations yet. Start chatting with Prachi AI!" }) : conversations.map((c) => {
           const isActive = c.id === activeConvId;
           const formattedTime = new Date(c.updated_at || c.created_at).toLocaleDateString([], {
             month: "short",
             day: "numeric"
           });
-          return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+          return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
             "div",
             {
               className: `chat-history-item ${isActive ? "active" : ""}`,
               onClick: () => handleSelectConv(c.id),
               title: c.title,
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px", overflow: "hidden", flex: 1 }, children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(MessageSquare, { size: 14, style: { flexShrink: 0, opacity: isActive ? 1 : 0.6 } }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px", overflow: "hidden", flex: 1 }, children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(MessageSquare, { size: 14, style: { flexShrink: 0, opacity: isActive ? 1 : 0.6 } }),
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                     "span",
                     {
                       style: {
@@ -10354,16 +9560,16 @@
                     }
                   )
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { style: { fontSize: "0.7rem", color: "var(--text-muted)" }, children: formattedTime }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { style: { fontSize: "0.7rem", color: "var(--text-muted)" }, children: formattedTime }),
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                     "button",
                     {
                       type: "button",
                       className: "chat-history-delete-btn",
                       onClick: (e) => handleDeleteConv(e, c.id),
                       title: "Delete conversation",
-                      children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Trash2, { size: 13 })
+                      children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Trash2, { size: 13 })
                     }
                   )
                 ] })
@@ -10372,7 +9578,7 @@
             c.id
           );
         }) }),
-        conversations.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "chat-history-footer", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+        conversations.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "chat-history-footer", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
           "button",
           {
             type: "button",
@@ -10380,16 +9586,16 @@
             onClick: handleClearAllHistory,
             title: "Delete all past conversation history",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Trash2, { size: 13 }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "Clear All History" })
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Trash2, { size: 13 }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Clear All History" })
             ]
           }
         ) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "chat-main-area", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "chat-header", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "chat-main-area", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "chat-header", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "button",
               {
                 type: "button",
@@ -10397,12 +9603,12 @@
                 style: { padding: "6px", display: "flex", alignItems: "center", borderRadius: "6px" },
                 onClick: () => setShowHistory((prev) => !prev),
                 title: showHistory ? "Collapse History Sidebar" : "Show Recent Chats",
-                children: showHistory ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(PanelLeftClose, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(PanelLeftOpen, { size: 16 })
+                children: showHistory ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(PanelLeftClose, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(PanelLeftOpen, { size: 16 })
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { style: { fontSize: "0.85rem", fontWeight: 600 }, children: "Mode:" }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { style: { fontSize: "0.85rem", fontWeight: 600 }, children: "Mode:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                 "select",
                 {
                   value: mode,
@@ -10416,16 +9622,16 @@
                     fontSize: "0.82rem"
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: "general", children: "\u{1F9E0} General Conversational" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: "research", children: "\u{1F50D} In-depth Research" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: "code", children: "\u{1F4BB} Engineering & Code" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: "vision", children: "\u{1F441}\uFE0F Multimodal & Vision" })
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "general", children: "\u{1F9E0} General Conversational" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "research", children: "\u{1F50D} In-depth Research" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "code", children: "\u{1F4BB} Engineering & Code" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "vision", children: "\u{1F441}\uFE0F Multimodal & Vision" })
                   ]
                 }
               )
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("label", { style: { display: "flex", alignItems: "center", gap: "5px", fontSize: "0.8rem", cursor: "pointer" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("label", { style: { display: "flex", alignItems: "center", gap: "5px", fontSize: "0.8rem", cursor: "pointer" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                 "input",
                 {
                   type: "checkbox",
@@ -10433,10 +9639,10 @@
                   onChange: (e) => setEnableMemory(e.target.checked)
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "Memory Bank" })
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Memory Bank" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("label", { style: { display: "flex", alignItems: "center", gap: "5px", fontSize: "0.8rem", cursor: "pointer" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("label", { style: { display: "flex", alignItems: "center", gap: "5px", fontSize: "0.8rem", cursor: "pointer" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                 "input",
                 {
                   type: "checkbox",
@@ -10444,9 +9650,9 @@
                   onChange: (e) => setEnableRAG(e.target.checked)
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "RAG Knowledge" })
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "RAG Knowledge" })
             ] }),
-            messages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+            messages.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
               "button",
               {
                 type: "button",
@@ -10464,13 +9670,13 @@
                 onClick: handleClearCurrentChat,
                 title: "Clear messages in this chat",
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Trash2, { size: 12 }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "Clear Chat" })
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Trash2, { size: 12 }),
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Clear Chat" })
                 ]
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
             "div",
             {
               style: {
@@ -10485,15 +9691,15 @@
                 color: "#10b981"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { style: { width: "6px", height: "6px", borderRadius: "50%", background: "#10b981", display: "inline-block" } }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "Prachi Online" })
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { style: { width: "6px", height: "6px", borderRadius: "50%", background: "#10b981", display: "inline-block" } }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Prachi Online" })
               ]
             }
           ) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "chat-messages", children: [
-          messages.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { textAlign: "center", margin: "auto", maxWidth: "520px", padding: "20px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "chat-messages", children: [
+          messages.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { textAlign: "center", margin: "auto", maxWidth: "520px", padding: "20px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "div",
               {
                 style: {
@@ -10510,7 +9716,7 @@
                   padding: "6px",
                   overflow: "hidden"
                 },
-                children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                   "img",
                   {
                     src: "./assets/prachi-logo.png",
@@ -10526,10 +9732,10 @@
                 )
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 700, marginBottom: "8px" }, children: "Prachi AI Personal Assistant" }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { style: { color: "var(--text-secondary)", fontSize: "0.88rem", lineHeight: 1.6, marginBottom: "20px" }, children: "Ask questions, open applications (YouTube, Google, Spotify, Notepad, Calculator), attach documents & photos for analysis, or speak naturally with the voice assistant!" }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "center" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 700, marginBottom: "8px" }, children: "Prachi AI Personal Assistant" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { style: { color: "var(--text-secondary)", fontSize: "0.88rem", lineHeight: 1.6, marginBottom: "20px" }, children: "Ask questions, open applications (YouTube, Google, Spotify, Notepad, Calculator), attach documents & photos for analysis, or speak naturally with the voice assistant!" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "center" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                 "button",
                 {
                   className: "btn btn-secondary btn-sm",
@@ -10538,7 +9744,7 @@
                   children: "\u25B6\uFE0F Open YouTube"
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                 "button",
                 {
                   className: "btn btn-secondary btn-sm",
@@ -10547,7 +9753,7 @@
                   children: "\u{1F522} Open Calculator"
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                 "button",
                 {
                   className: "btn btn-secondary btn-sm",
@@ -10556,7 +9762,7 @@
                   children: "\u{1F4DD} Open Notepad"
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                 "button",
                 {
                   className: "btn btn-secondary btn-sm",
@@ -10565,7 +9771,7 @@
                   children: "\u{1F3B5} Open Spotify"
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                 "button",
                 {
                   className: "btn btn-secondary btn-sm",
@@ -10592,8 +9798,8 @@
               } catch (e) {
               }
             }
-            return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: `message-bubble ${isUser ? "message-user" : "message-assistant"}`, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+            return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: `message-bubble ${isUser ? "message-user" : "message-assistant"}`, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                 "div",
                 {
                   style: {
@@ -10605,8 +9811,8 @@
                     opacity: 0.8
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
-                      isUser ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(User, { size: 13 }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
+                      isUser ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(User, { size: 13 }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                         "img",
                         {
                           src: "./assets/prachi-logo.png",
@@ -10620,33 +9826,33 @@
                           }
                         }
                       ),
-                      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: isUser ? user?.fullName || "You" : "Prachi AI" })
+                      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: isUser ? user?.fullName || "You" : "Prachi AI" })
                     ] }),
-                    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                       "button",
                       {
                         type: "button",
                         className: "msg-delete-btn",
                         onClick: () => handleDeleteMessage(msg.id),
                         title: "Delete this message",
-                        children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Trash2, { size: 12 })
+                        children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Trash2, { size: 12 })
                       }
                     )
                   ]
                 }
               ),
-              msg.attachment && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "chat-attachment-bubble", children: [
-                msg.attachment.fileType?.startsWith("image/") ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Image, { size: 16, style: { color: "var(--accent-cyan)" } }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(FileText, { size: 16, style: { color: "var(--accent-indigo)" } }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { fontWeight: 600 }, children: msg.attachment.fileName }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { fontSize: "0.7rem", opacity: 0.8 }, children: [
+              msg.attachment && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "chat-attachment-bubble", children: [
+                msg.attachment.fileType?.startsWith("image/") ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Image, { size: 16, style: { color: "var(--accent-cyan)" } }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(FileText, { size: 16, style: { color: "var(--accent-indigo)" } }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { fontWeight: 600 }, children: msg.attachment.fileName }),
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { fontSize: "0.7rem", opacity: 0.8 }, children: [
                     (msg.attachment.fileSize / 1024).toFixed(1),
                     " KB \u2022 ",
                     msg.attachment.fileType
                   ] })
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { whiteSpace: "pre-wrap", wordBreak: "break-word" }, children: msg.content }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { whiteSpace: "pre-wrap", wordBreak: "break-word" }, children: msg.content }),
               (() => {
                 const appTool = toolCalls.find((tc) => tc.name === "open_application");
                 const fallbackResolution = appTool ? (() => {
@@ -10680,7 +9886,7 @@
                 const action = msg.clientAction || fallbackResolution;
                 if (!action) return null;
                 if (action.type === "call_contact") {
-                  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+                  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                     "div",
                     {
                       className: "chat-client-action-card",
@@ -10698,8 +9904,8 @@
                         boxShadow: "0 4px 12px rgba(16, 185, 129, 0.08)"
                       },
                       children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: {
+                        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: {
                             width: "38px",
                             height: "38px",
                             borderRadius: "50%",
@@ -10708,16 +9914,16 @@
                             alignItems: "center",
                             justifyContent: "center",
                             color: "#10b981"
-                          }, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(PhoneCall, { size: 20 }) }),
-                          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { fontWeight: 600, fontSize: "0.92rem", color: "var(--text-primary)" }, children: [
+                          }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(PhoneCall, { size: 20 }) }),
+                          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { fontWeight: 600, fontSize: "0.92rem", color: "var(--text-primary)" }, children: [
                               "Calling ",
                               action.contactName
                             ] }),
-                            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { fontSize: "0.8rem", color: "var(--text-secondary)" }, children: action.phone || "Phone Contact" })
+                            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { fontSize: "0.8rem", color: "var(--text-secondary)" }, children: action.phone || "Phone Contact" })
                           ] })
                         ] }),
-                        action.target && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+                        action.target && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                           "button",
                           {
                             className: "btn btn-sm",
@@ -10739,8 +9945,8 @@
                               window.location.href = action.target;
                             },
                             children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Phone, { size: 14, fill: "#fff" }),
-                              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "Call Now" })
+                              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Phone, { size: 14, fill: "#fff" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Call Now" })
                             ]
                           }
                         )
@@ -10750,7 +9956,7 @@
                 }
                 if (action.type === "send_message") {
                   const isWa = action.platform !== "sms";
-                  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+                  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                     "div",
                     {
                       className: "chat-client-action-card",
@@ -10766,9 +9972,9 @@
                         boxShadow: `0 4px 12px ${isWa ? "rgba(37, 211, 102, 0.08)" : "rgba(59, 130, 246, 0.08)"}`
                       },
                       children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "10px" }, children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: {
+                        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "10px" }, children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: {
                               width: "38px",
                               height: "38px",
                               borderRadius: "50%",
@@ -10777,17 +9983,17 @@
                               alignItems: "center",
                               justifyContent: "center",
                               color: isWa ? "#25d366" : "#3b82f6"
-                            }, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(MessageCircle, { size: 20 }) }),
-                            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { fontWeight: 600, fontSize: "0.92rem", color: "var(--text-primary)" }, children: [
+                            }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(MessageCircle, { size: 20 }) }),
+                            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+                              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { fontWeight: 600, fontSize: "0.92rem", color: "var(--text-primary)" }, children: [
                                 isWa ? "WhatsApp" : "SMS",
                                 " to ",
                                 action.contactName
                               ] }),
-                              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { fontSize: "0.8rem", color: "var(--text-secondary)" }, children: action.phone || "Phone Contact" })
+                              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { fontSize: "0.8rem", color: "var(--text-secondary)" }, children: action.phone || "Phone Contact" })
                             ] })
                           ] }),
-                          action.target && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+                          action.target && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                             "button",
                             {
                               className: "btn btn-sm",
@@ -10807,17 +10013,17 @@
                               },
                               onClick: () => window.open(action.target, "_blank"),
                               children: [
-                                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(MessageCircle, { size: 14 }),
-                                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { children: [
+                                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(MessageCircle, { size: 14 }),
+                                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
                                   "Open ",
                                   isWa ? "WhatsApp" : "SMS"
                                 ] }),
-                                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ExternalLink, { size: 12 })
+                                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ExternalLink, { size: 12 })
                               ]
                             }
                           )
                         ] }),
-                        action.messageText && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: {
+                        action.messageText && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: {
                           padding: "8px 12px",
                           borderRadius: "8px",
                           background: "rgba(0, 0, 0, 0.15)",
@@ -10835,7 +10041,7 @@
                 }
                 const isPlay = action.action === "play";
                 const isSearch = action.action === "search";
-                return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+                return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                   "div",
                   {
                     className: "chat-client-action-card",
@@ -10850,16 +10056,16 @@
                       border: `1px solid ${isPlay ? "rgba(236, 72, 153, 0.3)" : isSearch ? "rgba(56, 189, 248, 0.3)" : "rgba(16, 185, 129, 0.3)"}`
                     },
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "8px", width: "100%" }, children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px", fontSize: "0.85rem" }, children: [
-                          isPlay ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Play, { size: 16, style: { color: "#ec4899", fill: "#ec4899" } }) : isSearch ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Search, { size: 16, style: { color: "#38bdf8" } }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(CircleCheck, { size: 16, style: { color: "var(--accent-green, #10b981)" } }),
-                          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: action.displayTitle || /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_jsx_runtime7.Fragment, { children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "8px", width: "100%" }, children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px", fontSize: "0.85rem" }, children: [
+                          isPlay ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Play, { size: 16, style: { color: "#ec4899", fill: "#ec4899" } }) : isSearch ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Search, { size: 16, style: { color: "#38bdf8" } }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(CircleCheck, { size: 16, style: { color: "var(--accent-green, #10b981)" } }),
+                          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: action.displayTitle || /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
                             "Action: ",
-                            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("strong", { children: action.appName }),
+                            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: action.appName }),
                             action.type === "open_url" ? " ready in browser" : " desktop launched"
                           ] }) })
                         ] }),
-                        action.type === "open_url" && action.target && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+                        action.type === "open_url" && action.target && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                           "button",
                           {
                             className: "btn btn-secondary btn-sm",
@@ -10879,14 +10085,14 @@
                             },
                             onClick: () => window.open(action.target, "_blank"),
                             children: [
-                              isPlay ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Play, { size: 12, fill: "#fff" }) : isSearch ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Search, { size: 12 }) : null,
-                              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: isPlay ? `Play on ${action.appName}` : isSearch ? `Search on ${action.appName}` : `Open ${action.appName}` }),
-                              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ExternalLink, { size: 12 })
+                              isPlay ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Play, { size: 12, fill: "#fff" }) : isSearch ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Search, { size: 12 }) : null,
+                              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: isPlay ? `Play on ${action.appName}` : isSearch ? `Search on ${action.appName}` : `Open ${action.appName}` }),
+                              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ExternalLink, { size: 12 })
                             ]
                           }
                         )
                       ] }),
-                      action.videoId && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { width: "100%", maxWidth: "480px", borderRadius: "8px", overflow: "hidden", boxShadow: "0 4px 14px rgba(0,0,0,0.3)", marginTop: "4px" }, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+                      action.videoId && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { width: "100%", maxWidth: "480px", borderRadius: "8px", overflow: "hidden", boxShadow: "0 4px 14px rgba(0,0,0,0.3)", marginTop: "4px" }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                         "iframe",
                         {
                           width: "100%",
@@ -10902,7 +10108,7 @@
                   }
                 );
               })(),
-              toolCalls.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { marginTop: "10px", display: "flex", flexWrap: "wrap", gap: "6px" }, children: toolCalls.map((tc, idx) => /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+              toolCalls.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { marginTop: "10px", display: "flex", flexWrap: "wrap", gap: "6px" }, children: toolCalls.map((tc, idx) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                 "div",
                 {
                   style: {
@@ -10917,16 +10123,16 @@
                     color: "var(--text-accent)"
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Wrench, { size: 13 }),
-                    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Wrench, { size: 13 }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
                       "Tool: ",
-                      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("strong", { children: tc.name })
+                      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: tc.name })
                     ] })
                   ]
                 },
                 idx
               )) }),
-              citations.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+              citations.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                 "div",
                 {
                   style: {
@@ -10937,7 +10143,7 @@
                     borderRadius: "8px"
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                       "div",
                       {
                         style: {
@@ -10950,8 +10156,8 @@
                           marginBottom: "4px"
                         },
                         children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(FileText, { size: 13 }),
-                          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(FileText, { size: 13 }),
+                          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
                             "Grounded Citations (",
                             citations.length,
                             "):"
@@ -10959,9 +10165,9 @@
                         ]
                       }
                     ),
-                    citations.map((c, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { fontSize: "0.76rem", color: "var(--text-secondary)", marginBottom: "2px" }, children: [
+                    citations.map((c, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { fontSize: "0.76rem", color: "var(--text-secondary)", marginBottom: "2px" }, children: [
                       "\u2022 ",
-                      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("strong", { children: c.sourceTitle }),
+                      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: c.sourceTitle }),
                       ': "',
                       c.chunkText.slice(0, 90),
                       '..."'
@@ -10969,7 +10175,7 @@
                   ]
                 }
               ),
-              msg.artifact && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+              msg.artifact && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                 "div",
                 {
                   style: {
@@ -10984,17 +10190,17 @@
                     gap: "12px"
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px", fontSize: "0.82rem" }, children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(FileCode, { size: 16, style: { color: "var(--accent-indigo)" } }),
-                      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px", fontSize: "0.82rem" }, children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(FileCode, { size: 16, style: { color: "var(--accent-indigo)" } }),
+                      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
                         "Workspace Artifact: ",
-                        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("strong", { children: msg.artifact.title }),
+                        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: msg.artifact.title }),
                         " (",
                         msg.artifact.type,
                         ")"
                       ] })
                     ] }),
-                    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                       "button",
                       {
                         className: "btn btn-secondary btn-sm",
@@ -11013,7 +10219,7 @@
                   ]
                 }
               ),
-              !isUser && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { marginTop: "10px" }, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+              !isUser && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { style: { marginTop: "10px" }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                 "button",
                 {
                   className: "btn btn-secondary btn-sm",
@@ -11030,23 +10236,23 @@
                   onClick: () => speakMessage(msg.id, msg.content),
                   title: speakingMsgId === msg.id ? "Mute speech" : "Listen with Voice",
                   children: [
-                    speakingMsgId === msg.id ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(VolumeX, { size: 13 }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Volume2, { size: 13 }),
-                    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: speakingMsgId === msg.id ? "Stop Speech" : "Listen with Voice" })
+                    speakingMsgId === msg.id ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(VolumeX, { size: 13 }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Volume2, { size: 13 }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: speakingMsgId === msg.id ? "Stop Speech" : "Listen with Voice" })
                   ]
                 }
               ) })
             ] }, msg.id);
           }),
-          loading && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "message-bubble message-assistant", style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Bot, { size: 15, style: { animation: "floatSoft 1.5s ease-in-out infinite" } }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Prachi AI is reasoning & executing command..." })
+          loading && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "message-bubble message-assistant", style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Bot, { size: 15, style: { animation: "floatSoft 1.5s ease-in-out infinite" } }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Prachi AI is reasoning & executing command..." })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { ref: messagesEndRef })
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { ref: messagesEndRef })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "chat-input-wrapper", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "chat-lang-bar", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { style: { display: "inline-flex", alignItems: "center", gap: "4px", fontSize: "0.75rem" }, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "\u{1F310} Voice & Chat:" }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "chat-input-wrapper", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "chat-lang-bar", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { style: { display: "inline-flex", alignItems: "center", gap: "4px", fontSize: "0.75rem" }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "\u{1F310} Voice & Chat:" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "button",
               {
                 type: "button",
@@ -11056,7 +10262,7 @@
                 children: "\u0939\u093F\u0902\u0926\u0940 / Hinglish"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "button",
               {
                 type: "button",
@@ -11066,7 +10272,7 @@
                 children: "English"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "button",
               {
                 type: "button",
@@ -11076,7 +10282,7 @@
                 children: "\u0627\u0631\u062F\u0648 (Urdu)"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "button",
               {
                 type: "button",
@@ -11087,10 +10293,10 @@
               }
             )
           ] }),
-          selectedFile && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "chat-attachment-preview-dock", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px", overflow: "hidden" }, children: [
-              selectedFile.type.startsWith("image/") ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Image, { size: 15, style: { color: "var(--accent-cyan)" } }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(FileText, { size: 15, style: { color: "var(--accent-indigo)" } }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+          selectedFile && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "chat-attachment-preview-dock", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px", overflow: "hidden" }, children: [
+              selectedFile.type.startsWith("image/") ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Image, { size: 15, style: { color: "var(--accent-cyan)" } }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(FileText, { size: 15, style: { color: "var(--accent-indigo)" } }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                 "span",
                 {
                   style: {
@@ -11102,13 +10308,13 @@
                   children: selectedFile.name
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { style: { fontSize: "0.72rem", color: "var(--text-muted)" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { style: { fontSize: "0.72rem", color: "var(--text-muted)" }, children: [
                 "(",
                 (selectedFile.size / 1024).toFixed(1),
                 " KB)"
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "button",
               {
                 type: "button",
@@ -11123,12 +10329,12 @@
                   alignItems: "center"
                 },
                 title: "Remove attachment",
-                children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(X, { size: 15 })
+                children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(X, { size: 15 })
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "chat-input-bar", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "chat-input-bar", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "input",
               {
                 type: "file",
@@ -11138,17 +10344,17 @@
                 onChange: handleFileSelect
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "button",
               {
                 type: "button",
                 className: "chat-attach-btn",
                 onClick: () => fileInputRef.current?.click(),
                 title: "Attach documents, photos, CSV, code for analysis",
-                children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Paperclip, { size: 16 })
+                children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Paperclip, { size: 16 })
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "input",
               {
                 type: "text",
@@ -11162,23 +10368,23 @@
                 disabled: loading
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "button",
               {
                 className: "chat-send-btn",
                 onClick: () => handleSend(),
                 disabled: loading || !input.trim() && !selectedFile,
                 title: "Send message (Enter)",
-                children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Send, { size: 15 })
+                children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Send, { size: 15 })
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "button",
               {
                 className: `chat-voice-btn ${isRecording ? "recording" : ""}`,
                 onClick: startVoiceDictation,
                 title: isRecording ? "Recording voice... bolna khatam karte hi automatic push ho jayega!" : "Voice Assistant (Girls voice, speech auto-push enabled)",
-                children: isRecording ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(MicOff, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Mic, { size: 16 })
+                children: isRecording ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(MicOff, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Mic, { size: 16 })
               }
             )
           ] })
@@ -11188,15 +10394,15 @@
   };
 
   // src/components/views/AssistantDashboardView.tsx
-  var import_react8 = __toESM(require_react(), 1);
-  var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
+  var import_react6 = __toESM(require_react(), 1);
+  var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
   var AssistantDashboardView = ({ onNavigate }) => {
     const { user } = useAuth();
-    const [tasks, setTasks] = (0, import_react8.useState)([]);
-    const [memories, setMemories] = (0, import_react8.useState)([]);
-    const [newTaskTitle, setNewTaskTitle] = (0, import_react8.useState)("");
-    const [newTaskPriority, setNewTaskPriority] = (0, import_react8.useState)("medium");
-    const [loading, setLoading] = (0, import_react8.useState)(true);
+    const [tasks, setTasks] = (0, import_react6.useState)([]);
+    const [memories, setMemories] = (0, import_react6.useState)([]);
+    const [newTaskTitle, setNewTaskTitle] = (0, import_react6.useState)("");
+    const [newTaskPriority, setNewTaskPriority] = (0, import_react6.useState)("medium");
+    const [loading, setLoading] = (0, import_react6.useState)(true);
     const loadDashboardData = async () => {
       if (!user) {
         setLoading(false);
@@ -11215,7 +10421,7 @@
         setLoading(false);
       }
     };
-    (0, import_react8.useEffect)(() => {
+    (0, import_react6.useEffect)(() => {
       loadDashboardData();
     }, [user]);
     const toggleTask = async (taskId, currentStatus) => {
@@ -11246,8 +10452,8 @@
     const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
     const pendingTasks = tasks.filter((t) => t.status !== "completed");
     const completedTasks = tasks.filter((t) => t.status === "completed");
-    return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "24px" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "glass-card", style: {
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "24px" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "glass-card", style: {
         background: "linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(6, 182, 212, 0.08))",
         border: "1px solid rgba(99, 102, 241, 0.3)",
         display: "flex",
@@ -11256,86 +10462,86 @@
         flexWrap: "wrap",
         gap: "16px"
       }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "badge badge-indigo", children: "Daily Briefing" }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { style: { fontSize: "0.8rem", color: "var(--text-muted)" }, children: (/* @__PURE__ */ new Date()).toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric", year: "numeric" }) })
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "badge badge-indigo", children: "Daily Briefing" }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { style: { fontSize: "0.8rem", color: "var(--text-muted)" }, children: (/* @__PURE__ */ new Date()).toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric", year: "numeric" }) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("h1", { style: { fontSize: "1.65rem", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "4px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("h1", { style: { fontSize: "1.65rem", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "4px" }, children: [
             greeting,
             ", ",
             user?.fullName || "Pari",
             "!"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("p", { style: { color: "var(--text-secondary)", fontSize: "0.92rem" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("p", { style: { color: "var(--text-secondary)", fontSize: "0.92rem" }, children: [
             "Prachi AI is active. You have ",
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("strong", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("strong", { children: [
               pendingTasks.length,
               " pending tasks"
             ] }),
             " and ",
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("strong", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("strong", { children: [
               memories.length,
               " active memory items"
             ] }),
             " synced to your workspace."
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("button", { className: "btn btn-primary", onClick: () => onNavigate("chat"), children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Sparkles, { size: 16 }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: "Launch AI Chat" })
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("button", { className: "btn btn-primary", onClick: () => onNavigate("chat"), children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Sparkles, { size: 16 }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: "Launch AI Chat" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "grid-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "glass-card", style: { cursor: "pointer" }, onClick: () => onNavigate("forecasting"), children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { padding: "8px", borderRadius: "8px", background: "rgba(99, 102, 241, 0.15)", color: "var(--accent-indigo)" }, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(TrendingUp, { size: 20 }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ArrowRight, { size: 16, style: { color: "var(--text-muted)" } })
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "grid-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "glass-card", style: { cursor: "pointer" }, onClick: () => onNavigate("forecasting"), children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: { padding: "8px", borderRadius: "8px", background: "rgba(99, 102, 241, 0.15)", color: "var(--accent-indigo)" }, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(TrendingUp, { size: 20 }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ArrowRight, { size: 16, style: { color: "var(--text-muted)" } })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { style: { fontSize: "0.96rem", fontWeight: 600, marginBottom: "4px" }, children: "ML Forecasting" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { style: { fontSize: "0.8rem", color: "var(--text-muted)" }, children: "Time-series prediction with 95% confidence intervals" })
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h4", { style: { fontSize: "0.96rem", fontWeight: 600, marginBottom: "4px" }, children: "ML Forecasting" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { style: { fontSize: "0.8rem", color: "var(--text-muted)" }, children: "Time-series prediction with 95% confidence intervals" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "glass-card", style: { cursor: "pointer" }, onClick: () => onNavigate("vision"), children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { padding: "8px", borderRadius: "8px", background: "rgba(16, 185, 129, 0.15)", color: "var(--accent-emerald)" }, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Eye, { size: 20 }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ArrowRight, { size: 16, style: { color: "var(--text-muted)" } })
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "glass-card", style: { cursor: "pointer" }, onClick: () => onNavigate("vision"), children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: { padding: "8px", borderRadius: "8px", background: "rgba(16, 185, 129, 0.15)", color: "var(--accent-emerald)" }, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Eye, { size: 20 }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ArrowRight, { size: 16, style: { color: "var(--text-muted)" } })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { style: { fontSize: "0.96rem", fontWeight: 600, marginBottom: "4px" }, children: "Multimodal Vision" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { style: { fontSize: "0.8rem", color: "var(--text-muted)" }, children: "Object detection, OCR & visual document Q&A" })
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h4", { style: { fontSize: "0.96rem", fontWeight: 600, marginBottom: "4px" }, children: "Multimodal Vision" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { style: { fontSize: "0.8rem", color: "var(--text-muted)" }, children: "Object detection, OCR & visual document Q&A" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "glass-card", style: { cursor: "pointer" }, onClick: () => onNavigate("rag"), children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { padding: "8px", borderRadius: "8px", background: "rgba(6, 182, 212, 0.15)", color: "var(--accent-cyan)" }, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(FileText, { size: 20 }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ArrowRight, { size: 16, style: { color: "var(--text-muted)" } })
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "glass-card", style: { cursor: "pointer" }, onClick: () => onNavigate("rag"), children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: { padding: "8px", borderRadius: "8px", background: "rgba(6, 182, 212, 0.15)", color: "var(--accent-cyan)" }, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(FileText, { size: 20 }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ArrowRight, { size: 16, style: { color: "var(--text-muted)" } })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { style: { fontSize: "0.96rem", fontWeight: 600, marginBottom: "4px" }, children: "Document RAG" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { style: { fontSize: "0.8rem", color: "var(--text-muted)" }, children: "Grounded retrieval with citations from your files" })
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h4", { style: { fontSize: "0.96rem", fontWeight: 600, marginBottom: "4px" }, children: "Document RAG" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { style: { fontSize: "0.8rem", color: "var(--text-muted)" }, children: "Grounded retrieval with citations from your files" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "glass-card", style: { cursor: "pointer" }, onClick: () => onNavigate("memory"), children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { padding: "8px", borderRadius: "8px", background: "rgba(245, 158, 11, 0.15)", color: "var(--accent-amber)" }, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Brain, { size: 20 }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ArrowRight, { size: 16, style: { color: "var(--text-muted)" } })
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "glass-card", style: { cursor: "pointer" }, onClick: () => onNavigate("memory"), children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: { padding: "8px", borderRadius: "8px", background: "rgba(245, 158, 11, 0.15)", color: "var(--accent-amber)" }, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Brain, { size: 20 }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ArrowRight, { size: 16, style: { color: "var(--text-muted)" } })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { style: { fontSize: "0.96rem", fontWeight: 600, marginBottom: "4px" }, children: "Memory Bank" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { style: { fontSize: "0.8rem", color: "var(--text-muted)" }, children: "Inspect, edit and govern private AI memories" })
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h4", { style: { fontSize: "0.96rem", fontWeight: 600, marginBottom: "4px" }, children: "Memory Bank" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { style: { fontSize: "0.8rem", color: "var(--text-muted)" }, children: "Inspect, edit and govern private AI memories" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "grid-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "glass-card", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SquareCheckBig, { size: 18, style: { color: "var(--accent-indigo)" } }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { style: { fontSize: "1.05rem", fontWeight: 700 }, children: "Priority Action Items" })
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "grid-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "glass-card", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SquareCheckBig, { size: 18, style: { color: "var(--accent-indigo)" } }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h3", { style: { fontSize: "1.05rem", fontWeight: 700 }, children: "Priority Action Items" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("span", { style: { fontSize: "0.78rem", color: "var(--text-muted)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { style: { fontSize: "0.78rem", color: "var(--text-muted)" }, children: [
               completedTasks.length,
               " / ",
               tasks.length,
               " Completed"
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("form", { onSubmit: handleAddTask, style: { display: "flex", gap: "8px", marginBottom: "16px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("form", { onSubmit: handleAddTask, style: { display: "flex", gap: "8px", marginBottom: "16px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
               "input",
               {
                 type: "text",
@@ -11346,7 +10552,7 @@
                 style: { flex: 1, padding: "8px 12px", fontSize: "0.85rem" }
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
               "select",
               {
                 value: newTaskPriority,
@@ -11361,17 +10567,17 @@
                   outline: "none"
                 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "high", children: "High" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "medium", children: "Medium" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "low", children: "Low" })
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: "high", children: "High" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: "medium", children: "Medium" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: "low", children: "Low" })
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { type: "submit", className: "btn btn-primary btn-sm", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Plus, { size: 16 }) })
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { type: "submit", className: "btn btn-primary btn-sm", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Plus, { size: 16 }) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "8px", maxHeight: "320px", overflowY: "auto" }, children: tasks.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { textAlign: "center", padding: "24px", color: "var(--text-muted)", fontSize: "0.85rem" }, children: "No tasks scheduled. Add one above!" }) : tasks.map((task) => {
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "8px", maxHeight: "320px", overflowY: "auto" }, children: tasks.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: { textAlign: "center", padding: "24px", color: "var(--text-muted)", fontSize: "0.85rem" }, children: "No tasks scheduled. Add one above!" }) : tasks.map((task) => {
             const isDone = task.status === "completed";
-            return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
+            return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
               "div",
               {
                 onClick: () => toggleTask(task.id, task.status),
@@ -11388,34 +10594,34 @@
                   transition: "all 0.15s ease"
                 },
                 children: [
-                  isDone ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SquareCheckBig, { size: 18, style: { color: "var(--accent-emerald)" } }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Square, { size: 18, style: { color: "var(--text-muted)" } }),
-                  /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { flex: 1 }, children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: {
+                  isDone ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SquareCheckBig, { size: 18, style: { color: "var(--accent-emerald)" } }) : /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Square, { size: 18, style: { color: "var(--text-muted)" } }),
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { flex: 1 }, children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: {
                       fontSize: "0.88rem",
                       fontWeight: 500,
                       textDecoration: isDone ? "line-through" : "none",
                       color: isDone ? "var(--text-muted)" : "var(--text-primary)"
                     }, children: task.title }),
-                    task.due_date && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { fontSize: "0.72rem", color: "var(--text-muted)", display: "flex", alignItems: "center", gap: "4px" }, children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Calendar, { size: 11 }),
+                    task.due_date && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { fontSize: "0.72rem", color: "var(--text-muted)", display: "flex", alignItems: "center", gap: "4px" }, children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Calendar, { size: 11 }),
                       " Due ",
                       task.due_date
                     ] })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: `badge ${task.priority === "high" ? "badge-rose" : task.priority === "medium" ? "badge-amber" : "badge-indigo"}`, children: task.priority })
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: `badge ${task.priority === "high" ? "badge-rose" : task.priority === "medium" ? "badge-amber" : "badge-indigo"}`, children: task.priority })
                 ]
               },
               task.id
             );
           }) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "glass-card", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Brain, { size: 18, style: { color: "var(--accent-amber)" } }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { style: { fontSize: "1.05rem", fontWeight: 700 }, children: "Personal Memory Bank" })
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "glass-card", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Brain, { size: 18, style: { color: "var(--accent-amber)" } }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h3", { style: { fontSize: "1.05rem", fontWeight: 700 }, children: "Personal Memory Bank" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
               "button",
               {
                 className: "btn btn-secondary btn-sm",
@@ -11429,8 +10635,8 @@
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { style: { fontSize: "0.8rem", color: "var(--text-secondary)", marginBottom: "14px" }, children: "These long-term facts and preferences are user-approved and strictly isolated to your user ID." }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "10px" }, children: memories.map((m) => /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { style: { fontSize: "0.8rem", color: "var(--text-secondary)", marginBottom: "14px" }, children: "These long-term facts and preferences are user-approved and strictly isolated to your user ID." }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "10px" }, children: memories.map((m) => /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
             "div",
             {
               style: {
@@ -11440,15 +10646,15 @@
                 border: "1px solid var(--border-subtle)"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "4px" }, children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "badge badge-amber", children: m.category }),
-                  /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("span", { style: { fontSize: "0.72rem", color: "var(--text-muted)" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "4px" }, children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "badge badge-amber", children: m.category }),
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { style: { fontSize: "0.72rem", color: "var(--text-muted)" }, children: [
                     "Confidence: ",
                     Math.round(m.confidence * 100),
                     "%"
                   ] })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { fontSize: "0.84rem", color: "var(--text-primary)" }, children: m.content })
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { style: { fontSize: "0.84rem", color: "var(--text-primary)" }, children: m.content })
               ]
             },
             m.id
@@ -11459,19 +10665,19 @@
   };
 
   // src/components/views/MemoryView.tsx
-  var import_react9 = __toESM(require_react(), 1);
-  var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1);
+  var import_react7 = __toESM(require_react(), 1);
+  var import_jsx_runtime7 = __toESM(require_jsx_runtime(), 1);
   var MemoryView = () => {
-    const [memories, setMemories] = (0, import_react9.useState)([]);
-    const [search, setSearch] = (0, import_react9.useState)("");
-    const [filterCategory, setFilterCategory] = (0, import_react9.useState)("all");
-    const [loading, setLoading] = (0, import_react9.useState)(true);
-    const [isAddModalOpen, setIsAddModalOpen] = (0, import_react9.useState)(false);
-    const [newContent, setNewContent] = (0, import_react9.useState)("");
-    const [newCategory, setNewCategory] = (0, import_react9.useState)("fact");
-    const [newTags, setNewTags] = (0, import_react9.useState)("");
-    const [editingId, setEditingId] = (0, import_react9.useState)(null);
-    const [editContent, setEditContent] = (0, import_react9.useState)("");
+    const [memories, setMemories] = (0, import_react7.useState)([]);
+    const [search, setSearch] = (0, import_react7.useState)("");
+    const [filterCategory, setFilterCategory] = (0, import_react7.useState)("all");
+    const [loading, setLoading] = (0, import_react7.useState)(true);
+    const [isAddModalOpen, setIsAddModalOpen] = (0, import_react7.useState)(false);
+    const [newContent, setNewContent] = (0, import_react7.useState)("");
+    const [newCategory, setNewCategory] = (0, import_react7.useState)("fact");
+    const [newTags, setNewTags] = (0, import_react7.useState)("");
+    const [editingId, setEditingId] = (0, import_react7.useState)(null);
+    const [editContent, setEditContent] = (0, import_react7.useState)("");
     const loadMemories = async () => {
       try {
         const res = await api.getMemories();
@@ -11482,7 +10688,7 @@
         setLoading(false);
       }
     };
-    (0, import_react9.useEffect)(() => {
+    (0, import_react7.useEffect)(() => {
       loadMemories();
     }, []);
     const handleCreate = async (e) => {
@@ -11535,24 +10741,24 @@
       const matchesCat = filterCategory === "all" || m.category === filterCategory;
       return matchesSearch && matchesCat;
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "20px" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "14px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(245, 158, 11, 0.15)", color: "var(--accent-amber)" }, children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Brain, { size: 22 }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "User-Approved Memory Bank" }),
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Inspect, modify, or delete long-term context that Prachi AI uses to personalize interactions." })
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "20px" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "14px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(245, 158, 11, 0.15)", color: "var(--accent-amber)" }, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Brain, { size: 22 }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "User-Approved Memory Bank" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Inspect, modify, or delete long-term context that Prachi AI uses to personalize interactions." })
           ] })
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("button", { className: "btn btn-primary", onClick: () => setIsAddModalOpen(true), children: [
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Plus, { size: 16 }),
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: "Add Memory" })
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("button", { className: "btn btn-primary", onClick: () => setIsAddModalOpen(true), children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Plus, { size: 16 }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "Add Memory" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "glass-card", style: { padding: "14px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px", background: "var(--bg-surface)", padding: "6px 12px", borderRadius: "8px", border: "1px solid var(--border-subtle)", minWidth: "260px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Search, { size: 15, style: { color: "var(--text-muted)" } }),
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "glass-card", style: { padding: "14px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px", background: "var(--bg-surface)", padding: "6px 12px", borderRadius: "8px", border: "1px solid var(--border-subtle)", minWidth: "260px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Search, { size: 15, style: { color: "var(--text-muted)" } }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             "input",
             {
               type: "text",
@@ -11563,7 +10769,7 @@
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { style: { display: "flex", gap: "6px" }, children: ["all", "fact", "preference", "project", "working"].map((cat) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { display: "flex", gap: "6px" }, children: ["all", "fact", "preference", "project", "working"].map((cat) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
           "button",
           {
             onClick: () => setFilterCategory(cat),
@@ -11574,13 +10780,13 @@
           cat
         )) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "grid-2", children: filtered.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { style: { gridColumn: "1 / -1", textAlign: "center", padding: "48px", color: "var(--text-muted)" }, children: "No memories match your filter." }) : filtered.map((m) => {
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "grid-2", children: filtered.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { gridColumn: "1 / -1", textAlign: "center", padding: "48px", color: "var(--text-muted)" }, children: "No memories match your filter." }) : filtered.map((m) => {
         const isEditing = editingId === m.id;
-        return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "glass-card", style: { opacity: m.is_active ? 1 : 0.6 }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: `badge ${m.category === "preference" ? "badge-indigo" : m.category === "fact" ? "badge-cyan" : m.category === "project" ? "badge-emerald" : "badge-amber"}`, children: m.category }),
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+        return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "glass-card", style: { opacity: m.is_active ? 1 : 0.6 }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: `badge ${m.category === "preference" ? "badge-indigo" : m.category === "fact" ? "badge-cyan" : m.category === "project" ? "badge-emerald" : "badge-amber"}`, children: m.category }),
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
                 "button",
                 {
                   onClick: () => handleToggleActive(m.id, m.is_active),
@@ -11590,8 +10796,8 @@
                 }
               )
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", gap: "6px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", gap: "6px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
                 "button",
                 {
                   onClick: () => {
@@ -11601,23 +10807,23 @@
                   className: "btn btn-secondary btn-sm",
                   style: { padding: "4px 8px" },
                   title: "Edit",
-                  children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Pen, { size: 13 })
+                  children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Pen, { size: 13 })
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
                 "button",
                 {
                   onClick: () => handleDelete(m.id),
                   className: "btn btn-outline-danger btn-sm",
                   style: { padding: "4px 8px" },
                   title: "Delete",
-                  children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Trash2, { size: 13 })
+                  children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Trash2, { size: 13 })
                 }
               )
             ] })
           ] }),
-          isEditing ? /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "8px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+          isEditing ? /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "8px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
               "textarea",
               {
                 className: "input-control",
@@ -11625,53 +10831,53 @@
                 onChange: (e) => setEditContent(e.target.value)
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", gap: "8px", justifyContent: "flex-end" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", { className: "btn btn-secondary btn-sm", onClick: () => setEditingId(null), children: "Cancel" }),
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", { className: "btn btn-primary btn-sm", onClick: () => handleUpdate(m.id), children: "Save" })
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", gap: "8px", justifyContent: "flex-end" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn btn-secondary btn-sm", onClick: () => setEditingId(null), children: "Cancel" }),
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn btn-primary btn-sm", onClick: () => handleUpdate(m.id), children: "Save" })
             ] })
-          ] }) : /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { style: { fontSize: "0.9rem", color: "var(--text-primary)", marginBottom: "12px", lineHeight: 1.5 }, children: m.content }),
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "0.74rem", color: "var(--text-muted)", borderTop: "1px solid var(--border-subtle)", paddingTop: "8px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("span", { children: [
+          ] }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { style: { fontSize: "0.9rem", color: "var(--text-primary)", marginBottom: "12px", lineHeight: 1.5 }, children: m.content }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "0.74rem", color: "var(--text-muted)", borderTop: "1px solid var(--border-subtle)", paddingTop: "8px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { children: [
               "Confidence: ",
               Math.round(m.confidence * 100),
               "%"
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: new Date(m.created_at).toLocaleDateString() })
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: new Date(m.created_at).toLocaleDateString() })
           ] })
         ] }, m.id);
       }) }),
-      isAddModalOpen && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "modal-backdrop", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "modal-dialog", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+      isAddModalOpen && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "modal-backdrop", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "modal-dialog", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
           "button",
           {
             onClick: () => setIsAddModalOpen(false),
             style: { position: "absolute", top: "20px", right: "20px", background: "transparent", border: "none", color: "var(--text-muted)", cursor: "pointer" },
-            children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(X, { size: 20 })
+            children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(X, { size: 20 })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h3", { style: { fontSize: "1.2rem", fontWeight: 700, marginBottom: "6px" }, children: "Add Approved Memory" }),
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)", marginBottom: "16px" }, children: "This fact will be stored in your private memory bank and scoped strictly to your account." }),
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("form", { onSubmit: handleCreate, style: { display: "flex", flexDirection: "column", gap: "14px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("label", { style: { display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: "Category" }),
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h3", { style: { fontSize: "1.2rem", fontWeight: 700, marginBottom: "6px" }, children: "Add Approved Memory" }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)", marginBottom: "16px" }, children: "This fact will be stored in your private memory bank and scoped strictly to your account." }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("form", { onSubmit: handleCreate, style: { display: "flex", flexDirection: "column", gap: "14px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { style: { display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: "Category" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
               "select",
               {
                 value: newCategory,
                 onChange: (e) => setNewCategory(e.target.value),
                 className: "input-control",
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("option", { value: "fact", children: "Fact (Knowledge about you or your work)" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("option", { value: "preference", children: "Preference (Coding style, tone, format)" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("option", { value: "project", children: "Project (Active initiative details)" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("option", { value: "working", children: "Working Context (Temporary working focus)" })
+                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: "fact", children: "Fact (Knowledge about you or your work)" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: "preference", children: "Preference (Coding style, tone, format)" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: "project", children: "Project (Active initiative details)" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: "working", children: "Working Context (Temporary working focus)" })
                 ]
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("label", { style: { display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: "Memory Content" }),
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { style: { display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: "Memory Content" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
               "textarea",
               {
                 required: true,
@@ -11683,9 +10889,9 @@
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("label", { style: { display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: "Tags (comma separated)" }),
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { style: { display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: "Tags (comma separated)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
               "input",
               {
                 type: "text",
@@ -11696,9 +10902,9 @@
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", gap: "10px", justifyContent: "flex-end", marginTop: "8px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", { type: "button", className: "btn btn-secondary", onClick: () => setIsAddModalOpen(false), children: "Cancel" }),
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", { type: "submit", className: "btn btn-primary", children: "Save Memory" })
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", gap: "10px", justifyContent: "flex-end", marginTop: "8px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { type: "button", className: "btn btn-secondary", onClick: () => setIsAddModalOpen(false), children: "Cancel" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { type: "submit", className: "btn btn-primary", children: "Save Memory" })
           ] })
         ] })
       ] }) })
@@ -11706,17 +10912,17 @@
   };
 
   // src/components/views/RAGView.tsx
-  var import_react10 = __toESM(require_react(), 1);
-  var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1);
+  var import_react8 = __toESM(require_react(), 1);
+  var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
   var RAGView = () => {
-    const [documents, setDocuments] = (0, import_react10.useState)([]);
-    const [loading, setLoading] = (0, import_react10.useState)(true);
-    const [docName, setDocName] = (0, import_react10.useState)("");
-    const [docText, setDocText] = (0, import_react10.useState)("");
-    const [uploading, setUploading] = (0, import_react10.useState)(false);
-    const [searchQuery, setSearchQuery] = (0, import_react10.useState)("");
-    const [citations, setCitations] = (0, import_react10.useState)([]);
-    const [querying, setQuerying] = (0, import_react10.useState)(false);
+    const [documents, setDocuments] = (0, import_react8.useState)([]);
+    const [loading, setLoading] = (0, import_react8.useState)(true);
+    const [docName, setDocName] = (0, import_react8.useState)("");
+    const [docText, setDocText] = (0, import_react8.useState)("");
+    const [uploading, setUploading] = (0, import_react8.useState)(false);
+    const [searchQuery, setSearchQuery] = (0, import_react8.useState)("");
+    const [citations, setCitations] = (0, import_react8.useState)([]);
+    const [querying, setQuerying] = (0, import_react8.useState)(false);
     const loadDocuments = async () => {
       try {
         const res = await api.getDocuments();
@@ -11727,7 +10933,7 @@
         setLoading(false);
       }
     };
-    (0, import_react10.useEffect)(() => {
+    (0, import_react8.useEffect)(() => {
       loadDocuments();
     }, []);
     const handleTextIngest = async (e) => {
@@ -11780,21 +10986,21 @@
         console.error(e);
       }
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "24px" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(6, 182, 212, 0.15)", color: "var(--accent-cyan)" }, children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(FileText, { size: 24 }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "Knowledge Base & Grounded RAG" }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Upload documentation, manuals, code, and spreadsheets. Prachi AI indexes them with semantic chunking for verified citations." })
+    return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "24px" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(6, 182, 212, 0.15)", color: "var(--accent-cyan)" }, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(FileText, { size: 24 }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "Knowledge Base & Grounded RAG" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Upload documentation, manuals, code, and spreadsheets. Prachi AI indexes them with semantic chunking for verified citations." })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "grid-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "glass-card", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Upload, { size: 18, style: { color: "var(--accent-indigo)" } }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: "Ingest New Document" })
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "grid-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "glass-card", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Upload, { size: 18, style: { color: "var(--accent-indigo)" } }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: "Ingest New Document" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: {
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: {
             border: "2px dashed var(--border-subtle)",
             borderRadius: "12px",
             padding: "20px",
@@ -11802,7 +11008,7 @@
             marginBottom: "18px",
             background: "var(--bg-surface)"
           }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
               "input",
               {
                 type: "file",
@@ -11812,15 +11018,15 @@
                 accept: ".txt,.md,.csv,.json,.pdf,.docx"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("label", { htmlFor: "file-upload", style: { cursor: "pointer", display: "inline-block" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { color: "var(--accent-indigo)", marginBottom: "6px" }, children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Upload, { size: 28, style: { margin: "0 auto" } }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { fontSize: "0.88rem", fontWeight: 600 }, children: "Click to upload file" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { fontSize: "0.75rem", color: "var(--text-muted)" }, children: "Supported: .txt, .md, .csv, .json, .pdf (Max 15MB)" })
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("label", { htmlFor: "file-upload", style: { cursor: "pointer", display: "inline-block" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { color: "var(--accent-indigo)", marginBottom: "6px" }, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Upload, { size: 28, style: { margin: "0 auto" } }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { fontSize: "0.88rem", fontWeight: 600 }, children: "Click to upload file" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { fontSize: "0.75rem", color: "var(--text-muted)" }, children: "Supported: .txt, .md, .csv, .json, .pdf (Max 15MB)" })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { textAlign: "center", margin: "10px 0", fontSize: "0.75rem", color: "var(--text-muted)" }, children: "\u2014 OR DIRECT TEXT PASTE \u2014" }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("form", { onSubmit: handleTextIngest, style: { display: "flex", flexDirection: "column", gap: "10px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { textAlign: "center", margin: "10px 0", fontSize: "0.75rem", color: "var(--text-muted)" }, children: "\u2014 OR DIRECT TEXT PASTE \u2014" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("form", { onSubmit: handleTextIngest, style: { display: "flex", flexDirection: "column", gap: "10px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
               "input",
               {
                 type: "text",
@@ -11831,7 +11037,7 @@
                 onChange: (e) => setDocName(e.target.value)
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
               "textarea",
               {
                 required: true,
@@ -11842,17 +11048,17 @@
                 onChange: (e) => setDocText(e.target.value)
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { type: "submit", className: "btn btn-primary", disabled: uploading, children: uploading ? "Chunking & Indexing..." : "Ingest Document" })
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { type: "submit", className: "btn btn-primary", disabled: uploading, children: uploading ? "Chunking & Indexing..." : "Ingest Document" })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "glass-card", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Search, { size: 18, style: { color: "var(--accent-cyan)" } }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: "Semantic Retrieval Tester" })
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "glass-card", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Search, { size: 18, style: { color: "var(--accent-cyan)" } }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: "Semantic Retrieval Tester" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { style: { fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: "14px" }, children: "Test what grounded chunks will be retrieved and injected into the AI context for any prompt." }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("form", { onSubmit: handleTestQuery, style: { display: "flex", gap: "8px", marginBottom: "16px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { style: { fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: "14px" }, children: "Test what grounded chunks will be retrieved and injected into the AI context for any prompt." }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("form", { onSubmit: handleTestQuery, style: { display: "flex", gap: "8px", marginBottom: "16px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
               "input",
               {
                 type: "text",
@@ -11863,17 +11069,17 @@
                 onChange: (e) => setSearchQuery(e.target.value)
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { type: "submit", className: "btn btn-primary", disabled: querying, children: querying ? "Searching..." : "Search" })
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { type: "submit", className: "btn btn-primary", disabled: querying, children: querying ? "Searching..." : "Search" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "10px", maxHeight: "280px", overflowY: "auto" }, children: citations.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { textAlign: "center", padding: "32px", color: "var(--text-muted)", fontSize: "0.85rem" }, children: "Run a query above to inspect retrieved document chunks and relevance scores." }) : citations.map((c, idx) => /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { padding: "12px", background: "var(--bg-surface)", borderRadius: "8px", border: "1px solid var(--border-subtle)" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { style: { fontSize: "0.82rem", fontWeight: 600, color: "var(--accent-cyan)" }, children: c.sourceTitle }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { className: "badge badge-cyan", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "10px", maxHeight: "280px", overflowY: "auto" }, children: citations.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { textAlign: "center", padding: "32px", color: "var(--text-muted)", fontSize: "0.85rem" }, children: "Run a query above to inspect retrieved document chunks and relevance scores." }) : citations.map((c, idx) => /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { padding: "12px", background: "var(--bg-surface)", borderRadius: "8px", border: "1px solid var(--border-subtle)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { style: { fontSize: "0.82rem", fontWeight: 600, color: "var(--accent-cyan)" }, children: c.sourceTitle }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("span", { className: "badge badge-cyan", children: [
                 Math.round((c.relevanceScore || 0) * 100),
                 "% Match"
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("p", { style: { fontSize: "0.82rem", color: "var(--text-secondary)", fontStyle: "italic", lineHeight: 1.4 }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("p", { style: { fontSize: "0.82rem", color: "var(--text-secondary)", fontStyle: "italic", lineHeight: 1.4 }, children: [
               '"',
               c.chunkText,
               '"'
@@ -11881,43 +11087,43 @@
           ] }, idx)) })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "glass-card", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Database, { size: 18, style: { color: "var(--accent-emerald)" } }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "glass-card", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Database, { size: 18, style: { color: "var(--accent-emerald)" } }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("span", { children: [
             "Indexed Knowledge Library (",
             documents.length,
             ")"
           ] })
         ] }),
-        documents.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { textAlign: "center", padding: "32px", color: "var(--text-muted)", fontSize: "0.85rem" }, children: "No documents indexed yet. Upload one above to populate your private knowledge base." }) : /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { overflowX: "auto" }, children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("table", { style: { width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: "0.85rem" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("tr", { style: { borderBottom: "1px solid var(--border-subtle)", color: "var(--text-muted)" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("th", { style: { padding: "10px 14px" }, children: "Document Name" }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("th", { style: { padding: "10px 14px" }, children: "Size" }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("th", { style: { padding: "10px 14px" }, children: "Chunks" }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("th", { style: { padding: "10px 14px" }, children: "Status" }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("th", { style: { padding: "10px 14px" }, children: "Indexed On" }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("th", { style: { padding: "10px 14px", textAlign: "right" }, children: "Actions" })
+        documents.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { textAlign: "center", padding: "32px", color: "var(--text-muted)", fontSize: "0.85rem" }, children: "No documents indexed yet. Upload one above to populate your private knowledge base." }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { style: { overflowX: "auto" }, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("table", { style: { width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: "0.85rem" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("tr", { style: { borderBottom: "1px solid var(--border-subtle)", color: "var(--text-muted)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("th", { style: { padding: "10px 14px" }, children: "Document Name" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("th", { style: { padding: "10px 14px" }, children: "Size" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("th", { style: { padding: "10px 14px" }, children: "Chunks" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("th", { style: { padding: "10px 14px" }, children: "Status" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("th", { style: { padding: "10px 14px" }, children: "Indexed On" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("th", { style: { padding: "10px 14px", textAlign: "right" }, children: "Actions" })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tbody", { children: documents.map((doc) => /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("tr", { style: { borderBottom: "1px solid var(--border-subtle)" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("td", { style: { padding: "12px 14px", fontWeight: 600, color: "var(--text-primary)" }, children: doc.filename }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("td", { style: { padding: "12px 14px", color: "var(--text-secondary)" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("tbody", { children: documents.map((doc) => /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("tr", { style: { borderBottom: "1px solid var(--border-subtle)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { style: { padding: "12px 14px", fontWeight: 600, color: "var(--text-primary)" }, children: doc.filename }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("td", { style: { padding: "12px 14px", color: "var(--text-secondary)" }, children: [
               Math.round(doc.file_size / 1024),
               " KB"
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("td", { style: { padding: "12px 14px" }, children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { className: "badge badge-indigo", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { style: { padding: "12px 14px" }, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("span", { className: "badge badge-indigo", children: [
               doc.chunk_count || 1,
               " chunks"
             ] }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("td", { style: { padding: "12px 14px" }, children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "badge badge-emerald", children: "Ready" }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("td", { style: { padding: "12px 14px", color: "var(--text-muted)", fontSize: "0.78rem" }, children: new Date(doc.created_at).toLocaleDateString() }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("td", { style: { padding: "12px 14px", textAlign: "right" }, children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { style: { padding: "12px 14px" }, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "badge badge-emerald", children: "Ready" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { style: { padding: "12px 14px", color: "var(--text-muted)", fontSize: "0.78rem" }, children: new Date(doc.created_at).toLocaleDateString() }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { style: { padding: "12px 14px", textAlign: "right" }, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
               "button",
               {
                 className: "btn btn-outline-danger btn-sm",
                 onClick: () => handleDelete(doc.id),
                 title: "Delete Document",
-                children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Trash2, { size: 13 })
+                children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Trash2, { size: 13 })
               }
             ) })
           ] }, doc.id)) })
@@ -11927,15 +11133,15 @@
   };
 
   // src/components/views/VisionView.tsx
-  var import_react11 = __toESM(require_react(), 1);
-  var import_jsx_runtime11 = __toESM(require_jsx_runtime(), 1);
+  var import_react9 = __toESM(require_react(), 1);
+  var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1);
   var VisionView = () => {
-    const [selectedPreset, setSelectedPreset] = (0, import_react11.useState)("invoice");
-    const [userPrompt, setUserPrompt] = (0, import_react11.useState)("");
-    const [result, setResult] = (0, import_react11.useState)(null);
-    const [loading, setLoading] = (0, import_react11.useState)(false);
-    const [uploadedFile, setUploadedFile] = (0, import_react11.useState)(null);
-    const [previewUrl, setPreviewUrl] = (0, import_react11.useState)(null);
+    const [selectedPreset, setSelectedPreset] = (0, import_react9.useState)("invoice");
+    const [userPrompt, setUserPrompt] = (0, import_react9.useState)("");
+    const [result, setResult] = (0, import_react9.useState)(null);
+    const [loading, setLoading] = (0, import_react9.useState)(false);
+    const [uploadedFile, setUploadedFile] = (0, import_react9.useState)(null);
+    const [previewUrl, setPreviewUrl] = (0, import_react9.useState)(null);
     const presets = [
       { id: "invoice", label: "Financial Invoice", desc: "Itemized charges, totals, tax metadata" },
       { id: "dashboard", label: "UI Dashboard Mockup", desc: "Components, panels, tables, metrics" },
@@ -11964,17 +11170,17 @@
         setPreviewUrl(URL.createObjectURL(f));
       }
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "24px" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(16, 185, 129, 0.15)", color: "var(--accent-emerald)" }, children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Eye, { size: 24 }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "Multimodal Vision & Document Intelligence" }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Examine images, UI mockups, documents, and charts with localized object detection and OCR text extraction." })
+    return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "24px" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(16, 185, 129, 0.15)", color: "var(--accent-emerald)" }, children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Eye, { size: 24 }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "Multimodal Vision & Document Intelligence" }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Examine images, UI mockups, documents, and charts with localized object detection and OCR text extraction." })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "glass-card", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { style: { fontSize: "1rem", fontWeight: 700, marginBottom: "12px" }, children: "Select Image Source or Upload" }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px", marginBottom: "16px" }, children: presets.map((p) => /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "glass-card", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h3", { style: { fontSize: "1rem", fontWeight: 700, marginBottom: "12px" }, children: "Select Image Source or Upload" }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px", marginBottom: "16px" }, children: presets.map((p) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
           "div",
           {
             onClick: () => {
@@ -11991,25 +11197,25 @@
               transition: "all 0.15s ease"
             },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { style: { fontSize: "0.9rem", fontWeight: 600, color: "var(--text-primary)", marginBottom: "4px" }, children: p.label }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { style: { fontSize: "0.75rem", color: "var(--text-muted)" }, children: p.desc })
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { style: { fontSize: "0.9rem", fontWeight: 600, color: "var(--text-primary)", marginBottom: "4px" }, children: p.label }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { style: { fontSize: "0.75rem", color: "var(--text-muted)" }, children: p.desc })
             ]
           },
           p.id
         )) }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("label", { className: "btn btn-secondary btn-sm", style: { cursor: "pointer" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Upload, { size: 14 }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { children: "Upload Custom Image" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("input", { type: "file", accept: "image/*", style: { display: "none" }, onChange: handleFileChange })
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("label", { className: "btn btn-secondary btn-sm", style: { cursor: "pointer" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Upload, { size: 14 }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: "Upload Custom Image" }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("input", { type: "file", accept: "image/*", style: { display: "none" }, onChange: handleFileChange })
           ] }),
-          uploadedFile && /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("span", { style: { fontSize: "0.8rem", color: "var(--accent-emerald)" }, children: [
+          uploadedFile && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("span", { style: { fontSize: "0.8rem", color: "var(--accent-emerald)" }, children: [
             "Selected: ",
             uploadedFile.name
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: { marginTop: "16px", display: "flex", gap: "10px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { marginTop: "16px", display: "flex", gap: "10px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
             "input",
             {
               type: "text",
@@ -12019,19 +11225,19 @@
               onChange: (e) => setUserPrompt(e.target.value)
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("button", { className: "btn btn-primary", onClick: handleRunAnalysis, disabled: loading, style: { whiteSpace: "nowrap" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Sparkles, { size: 16 }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { children: loading ? "Inspecting..." : "Analyze Visual" })
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("button", { className: "btn btn-primary", onClick: handleRunAnalysis, disabled: loading, style: { whiteSpace: "nowrap" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Sparkles, { size: 16 }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: loading ? "Inspecting..." : "Analyze Visual" })
           ] })
         ] })
       ] }),
-      result && /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "grid-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "glass-card", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("h4", { style: { fontSize: "1rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Scan, { size: 18, style: { color: "var(--accent-indigo)" } }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { children: "Spatial Object Detection" })
+      result && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "grid-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "glass-card", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("h4", { style: { fontSize: "1rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Scan, { size: 18, style: { color: "var(--accent-indigo)" } }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: "Spatial Object Detection" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: {
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: {
             position: "relative",
             width: "100%",
             height: "320px",
@@ -12043,13 +11249,13 @@
             alignItems: "center",
             justifyContent: "center"
           }, children: [
-            previewUrl ? /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("img", { src: previewUrl, alt: "Upload preview", style: { maxWidth: "100%", maxHeight: "100%", objectFit: "contain" } }) : /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: { textAlign: "center", color: "var(--text-muted)" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Eye, { size: 42, style: { opacity: 0.4, margin: "0 auto 8px" } }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: { fontSize: "0.85rem" }, children: [
+            previewUrl ? /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("img", { src: previewUrl, alt: "Upload preview", style: { maxWidth: "100%", maxHeight: "100%", objectFit: "contain" } }) : /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { textAlign: "center", color: "var(--text-muted)" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Eye, { size: 42, style: { opacity: 0.4, margin: "0 auto 8px" } }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { fontSize: "0.85rem" }, children: [
                 "Visual Asset: ",
                 result.filename
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: { fontSize: "0.75rem" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { fontSize: "0.75rem" }, children: [
                 "(",
                 result.dimensions.width,
                 " x ",
@@ -12059,7 +11265,7 @@
             ] }),
             result.detectedObjects.map((obj) => {
               const [ymin, xmin, ymax, xmax] = obj.box;
-              return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+              return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
                 "div",
                 {
                   style: {
@@ -12074,7 +11280,7 @@
                     pointerEvents: "none",
                     transition: "all 0.2s ease"
                   },
-                  children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("span", { style: {
+                  children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("span", { style: {
                     position: "absolute",
                     top: "-20px",
                     left: "0",
@@ -12096,26 +11302,26 @@
               );
             })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { style: { marginTop: "14px", display: "flex", flexWrap: "wrap", gap: "8px" }, children: result.detectedObjects.map((obj) => /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: { display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "0.78rem", background: "var(--bg-surface)", padding: "4px 10px", borderRadius: "6px", border: "1px solid var(--border-subtle)" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { style: { width: "8px", height: "8px", borderRadius: "50%", backgroundColor: obj.color } }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { children: obj.label }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("span", { style: { color: "var(--text-muted)" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { style: { marginTop: "14px", display: "flex", flexWrap: "wrap", gap: "8px" }, children: result.detectedObjects.map((obj) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "0.78rem", background: "var(--bg-surface)", padding: "4px 10px", borderRadius: "6px", border: "1px solid var(--border-subtle)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { style: { width: "8px", height: "8px", borderRadius: "50%", backgroundColor: obj.color } }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: obj.label }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("span", { style: { color: "var(--text-muted)" }, children: [
               Math.round(obj.confidence * 100),
               "%"
             ] })
           ] }, obj.id)) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "glass-card", style: { display: "flex", flexDirection: "column", gap: "16px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h4", { style: { fontSize: "1rem", fontWeight: 700, marginBottom: "6px" }, children: "Contextual Analysis Summary" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { style: { fontSize: "0.88rem", color: "var(--text-primary)", lineHeight: 1.5 }, children: result.summary })
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "glass-card", style: { display: "flex", flexDirection: "column", gap: "16px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h4", { style: { fontSize: "1rem", fontWeight: 700, marginBottom: "6px" }, children: "Contextual Analysis Summary" }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { style: { fontSize: "0.88rem", color: "var(--text-primary)", lineHeight: 1.5 }, children: result.summary })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("h4", { style: { fontSize: "1rem", fontWeight: 700, marginBottom: "8px", display: "flex", alignItems: "center", gap: "8px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(FileText, { size: 16, style: { color: "var(--accent-cyan)" } }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { children: "Extracted OCR Text" })
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("h4", { style: { fontSize: "1rem", fontWeight: 700, marginBottom: "8px", display: "flex", alignItems: "center", gap: "8px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(FileText, { size: 16, style: { color: "var(--accent-cyan)" } }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: "Extracted OCR Text" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("pre", { style: {
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("pre", { style: {
               background: "var(--bg-surface)",
               border: "1px solid var(--border-subtle)",
               borderRadius: "8px",
@@ -12128,9 +11334,9 @@
               overflowY: "auto"
             }, children: result.extractedText })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h4", { style: { fontSize: "0.85rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: "Semantic Classification Tags" }),
-            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { style: { display: "flex", flexWrap: "wrap", gap: "6px" }, children: result.tags.map((t, idx) => /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("span", { className: "badge badge-indigo", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h4", { style: { fontSize: "0.85rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: "Semantic Classification Tags" }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { style: { display: "flex", flexWrap: "wrap", gap: "6px" }, children: result.tags.map((t, idx) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("span", { className: "badge badge-indigo", children: [
               "#",
               t
             ] }, idx)) })
@@ -12141,16 +11347,16 @@
   };
 
   // src/components/views/ForecastingView.tsx
-  var import_react12 = __toESM(require_react(), 1);
-  var import_jsx_runtime12 = __toESM(require_jsx_runtime(), 1);
+  var import_react10 = __toESM(require_react(), 1);
+  var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1);
   var ForecastingView = () => {
-    const [presets, setPresets] = (0, import_react12.useState)([]);
-    const [selectedPreset, setSelectedPreset] = (0, import_react12.useState)("revenue");
-    const [modelType, setModelType] = (0, import_react12.useState)("linear_trend");
-    const [horizon, setHorizon] = (0, import_react12.useState)(6);
-    const [smoothingFactor, setSmoothingFactor] = (0, import_react12.useState)(0.3);
-    const [result, setResult] = (0, import_react12.useState)(null);
-    const [loading, setLoading] = (0, import_react12.useState)(false);
+    const [presets, setPresets] = (0, import_react10.useState)([]);
+    const [selectedPreset, setSelectedPreset] = (0, import_react10.useState)("revenue");
+    const [modelType, setModelType] = (0, import_react10.useState)("linear_trend");
+    const [horizon, setHorizon] = (0, import_react10.useState)(6);
+    const [smoothingFactor, setSmoothingFactor] = (0, import_react10.useState)(0.3);
+    const [result, setResult] = (0, import_react10.useState)(null);
+    const [loading, setLoading] = (0, import_react10.useState)(false);
     const runForecast = async (preset = selectedPreset, mType = modelType, h = horizon) => {
       setLoading(true);
       try {
@@ -12176,7 +11382,7 @@
         console.warn(e);
       }
     };
-    (0, import_react12.useEffect)(() => {
+    (0, import_react10.useEffect)(() => {
       loadPresetsAndInitialForecast();
     }, []);
     const renderChart = () => {
@@ -12205,45 +11411,45 @@
         return `${getX(lastHistIdx + 1 + actualIdx)},${getY(f.lowerBound)}`;
       });
       const uncertaintyArea = `${getX(lastHistIdx)},${getY(historyPoints[lastHistIdx].val)} ${upperPoints.join(" ")} ${lowerPoints.join(" ")} Z`;
-      return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("svg", { viewBox: `0 0 ${width} ${height}`, style: { width: "100%", height: "auto", overflow: "visible" }, children: [
+      return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("svg", { viewBox: `0 0 ${width} ${height}`, style: { width: "100%", height: "auto", overflow: "visible" }, children: [
         [0, 0.25, 0.5, 0.75, 1].map((ratio, idx) => {
           const y = height - padding - ratio * (height - 2 * padding);
           const valLabel = Math.round(minVal + ratio * (maxVal - minVal));
-          return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("g", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("line", { x1: padding, y1: y, x2: width - padding, y2: y, stroke: "rgba(255, 255, 255, 0.08)", strokeDasharray: "3 3" }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("text", { x: padding - 8, y: y + 4, fill: "var(--text-muted)", fontSize: "10", textAnchor: "end", children: valLabel })
+          return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("line", { x1: padding, y1: y, x2: width - padding, y2: y, stroke: "rgba(255, 255, 255, 0.08)", strokeDasharray: "3 3" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("text", { x: padding - 8, y: y + 4, fill: "var(--text-muted)", fontSize: "10", textAnchor: "end", children: valLabel })
           ] }, idx);
         }),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("polygon", { points: uncertaintyArea, fill: "rgba(99, 102, 241, 0.15)", stroke: "rgba(99, 102, 241, 0.3)", strokeDasharray: "2 2" }),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("path", { d: historyPath, fill: "none", stroke: "var(--accent-cyan)", strokeWidth: "3", strokeLinecap: "round" }),
-        historyPoints.map((p, idx) => /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("circle", { cx: getX(idx), cy: getY(p.val), r: "4", fill: "var(--accent-cyan)" }, idx)),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("path", { d: forecastPath, fill: "none", stroke: "var(--accent-indigo)", strokeWidth: "3", strokeDasharray: "5 5", strokeLinecap: "round" }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("polygon", { points: uncertaintyArea, fill: "rgba(99, 102, 241, 0.15)", stroke: "rgba(99, 102, 241, 0.3)", strokeDasharray: "2 2" }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("path", { d: historyPath, fill: "none", stroke: "var(--accent-cyan)", strokeWidth: "3", strokeLinecap: "round" }),
+        historyPoints.map((p, idx) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("circle", { cx: getX(idx), cy: getY(p.val), r: "4", fill: "var(--accent-cyan)" }, idx)),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("path", { d: forecastPath, fill: "none", stroke: "var(--accent-indigo)", strokeWidth: "3", strokeDasharray: "5 5", strokeLinecap: "round" }),
         result.forecast.map((f, idx) => {
           const cx = getX(lastHistIdx + 1 + idx);
           const cy = getY(f.forecast);
-          return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("g", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("circle", { cx, cy, r: "4", fill: "var(--accent-indigo)" }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("text", { x: cx, y: cy - 10, fill: "var(--text-accent)", fontSize: "10", fontWeight: "600", textAnchor: "middle", children: f.forecast })
+          return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("circle", { cx, cy, r: "4", fill: "var(--accent-indigo)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("text", { x: cx, y: cy - 10, fill: "var(--text-accent)", fontSize: "10", fontWeight: "600", textAnchor: "middle", children: f.forecast })
           ] }, idx);
         }),
         allPoints.map((p, idx) => {
           if (idx % 2 !== 0 && idx !== allPoints.length - 1) return null;
-          return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("text", { x: getX(idx), y: height - 15, fill: "var(--text-muted)", fontSize: "10", textAnchor: "middle", children: p.date }, idx);
+          return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("text", { x: getX(idx), y: height - 15, fill: "var(--text-muted)", fontSize: "10", textAnchor: "middle", children: p.date }, idx);
         })
       ] });
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "24px" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(99, 102, 241, 0.15)", color: "var(--accent-indigo)" }, children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(TrendingUp, { size: 24 }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "ML & Statistical Time-Series Forecasting" }),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Predict trends, resource capacity, and metrics with explicit 95% confidence intervals and rigorous model validation." })
+    return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "24px" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(99, 102, 241, 0.15)", color: "var(--accent-indigo)" }, children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(TrendingUp, { size: 24 }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "ML & Statistical Time-Series Forecasting" }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Predict trends, resource capacity, and metrics with explicit 95% confidence intervals and rigorous model validation." })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "glass-card", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px", alignItems: "flex-end" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("label", { style: { display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: "Target Dataset Preset" }),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "glass-card", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px", alignItems: "flex-end" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("label", { style: { display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: "Target Dataset Preset" }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
             "select",
             {
               value: selectedPreset,
@@ -12253,17 +11459,17 @@
               },
               className: "input-control",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("option", { value: "revenue", children: "Monthly Revenue ($K)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("option", { value: "users", children: "Daily Active Users (DAU)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("option", { value: "server_load", children: "Cluster CPU Utilization (%)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("option", { value: "support_tickets", children: "Customer Inquiries" })
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("option", { value: "revenue", children: "Monthly Revenue ($K)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("option", { value: "users", children: "Daily Active Users (DAU)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("option", { value: "server_load", children: "Cluster CPU Utilization (%)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("option", { value: "support_tickets", children: "Customer Inquiries" })
               ]
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("label", { style: { display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: "Model Architecture" }),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("label", { style: { display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: "Model Architecture" }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
             "select",
             {
               value: modelType,
@@ -12273,25 +11479,25 @@
               },
               className: "input-control",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("option", { value: "linear_trend", children: "Linear Regression Trend (OLS)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("option", { value: "polynomial_regression", children: "Polynomial Quadratic Fit (Non-Linear)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("option", { value: "exponential_smoothing", children: "Exponential Smoothing (Holt-Trend)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("option", { value: "weighted_moving_average", children: "Weighted Moving Average (WMA)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("option", { value: "moving_average", children: "Rolling Simple Moving Average" })
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("option", { value: "linear_trend", children: "Linear Regression Trend (OLS)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("option", { value: "polynomial_regression", children: "Polynomial Quadratic Fit (Non-Linear)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("option", { value: "exponential_smoothing", children: "Exponential Smoothing (Holt-Trend)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("option", { value: "weighted_moving_average", children: "Weighted Moving Average (WMA)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("option", { value: "moving_average", children: "Rolling Simple Moving Average" })
               ]
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", fontSize: "0.8rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { children: "Horizon Steps" }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { style: { color: "var(--accent-indigo)" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", fontSize: "0.8rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: "Horizon Steps" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { style: { color: "var(--accent-indigo)" }, children: [
               "+",
               horizon,
               " steps"
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
             "input",
             {
               type: "range",
@@ -12306,66 +11512,66 @@
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("button", { className: "btn btn-primary", onClick: () => runForecast(), disabled: loading, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Sparkles, { size: 16 }),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { children: loading ? "Recalculating..." : "Recalculate" })
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("button", { className: "btn btn-primary", onClick: () => runForecast(), disabled: loading, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Sparkles, { size: 16 }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: loading ? "Recalculating..." : "Recalculate" })
         ] })
       ] }) }),
-      result && /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "20px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "glass-card", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px", flexWrap: "wrap", gap: "10px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { style: { fontSize: "1.1rem", fontWeight: 700 }, children: result.modelName }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { style: { fontSize: "0.78rem", color: "var(--text-muted)" }, children: [
+      result && /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "20px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "glass-card", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px", flexWrap: "wrap", gap: "10px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h3", { style: { fontSize: "1.1rem", fontWeight: 700 }, children: result.modelName }),
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { style: { fontSize: "0.78rem", color: "var(--text-muted)" }, children: [
                 "Algorithm: ",
                 result.provenance.algorithm,
                 " \u2022 Model Version: ",
                 result.version
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "14px", fontSize: "0.8rem" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { style: { width: "12px", height: "3px", backgroundColor: "var(--accent-cyan)" } }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { children: "Historical Data" })
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "14px", fontSize: "0.8rem" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { style: { width: "12px", height: "3px", backgroundColor: "var(--accent-cyan)" } }),
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: "Historical Data" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { style: { width: "12px", height: "3px", backgroundColor: "var(--accent-indigo)", borderTop: "1px dashed" } }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { children: "Forecast Projection" })
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { style: { width: "12px", height: "3px", backgroundColor: "var(--accent-indigo)", borderTop: "1px dashed" } }),
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: "Forecast Projection" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { style: { width: "12px", height: "10px", backgroundColor: "rgba(99, 102, 241, 0.25)" } }),
-                /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { children: "95% Confidence Interval" })
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { style: { width: "12px", height: "10px", backgroundColor: "rgba(99, 102, 241, 0.25)" } }),
+                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: "95% Confidence Interval" })
               ] })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { padding: "10px 0" }, children: renderChart() })
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { padding: "10px 0" }, children: renderChart() })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid-4", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "R\xB2 Goodness of Fit" }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { fontSize: "1.45rem", fontWeight: 800, color: "var(--accent-emerald)" }, children: result.metrics.r2 }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { fontSize: "0.72rem", color: "var(--text-secondary)" }, children: "Variance explained by model" })
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "grid-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "R\xB2 Goodness of Fit" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { fontSize: "1.45rem", fontWeight: 800, color: "var(--accent-emerald)" }, children: result.metrics.r2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { fontSize: "0.72rem", color: "var(--text-secondary)" }, children: "Variance explained by model" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "RMSE (Root Mean Sq Error)" }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { fontSize: "1.45rem", fontWeight: 800, color: "var(--accent-indigo)" }, children: result.metrics.rmse }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { fontSize: "0.72rem", color: "var(--text-secondary)" }, children: "Prediction standard deviation" })
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "RMSE (Root Mean Sq Error)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { fontSize: "1.45rem", fontWeight: 800, color: "var(--accent-indigo)" }, children: result.metrics.rmse }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { fontSize: "0.72rem", color: "var(--text-secondary)" }, children: "Prediction standard deviation" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "MAE (Mean Absolute Error)" }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { fontSize: "1.45rem", fontWeight: 800, color: "var(--accent-cyan)" }, children: result.metrics.mae }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { fontSize: "0.72rem", color: "var(--text-secondary)" }, children: "Average absolute deviation" })
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "MAE (Mean Absolute Error)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { fontSize: "1.45rem", fontWeight: 800, color: "var(--accent-cyan)" }, children: result.metrics.mae }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { fontSize: "0.72rem", color: "var(--text-secondary)" }, children: "Average absolute deviation" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "Standard Error" }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { fontSize: "1.45rem", fontWeight: 800, color: "var(--accent-amber)" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "Standard Error" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: { fontSize: "1.45rem", fontWeight: 800, color: "var(--accent-amber)" }, children: [
               "\xB1",
               result.metrics.standardError
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { fontSize: "0.72rem", color: "var(--text-secondary)" }, children: "95% CI margin factor" })
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { style: { fontSize: "0.72rem", color: "var(--text-secondary)" }, children: "95% CI margin factor" })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: {
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { style: {
           padding: "12px 16px",
           borderRadius: "10px",
           background: "rgba(245, 158, 11, 0.08)",
@@ -12376,24 +11582,24 @@
           fontSize: "0.82rem",
           color: "var(--accent-amber)"
         }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(TriangleAlert, { size: 18, style: { flexShrink: 0 } }),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { children: result.disclaimer })
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(TriangleAlert, { size: 18, style: { flexShrink: 0 } }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: result.disclaimer })
         ] })
       ] })
     ] });
   };
 
   // src/components/views/ToolsView.tsx
-  var import_react13 = __toESM(require_react(), 1);
-  var import_jsx_runtime13 = __toESM(require_jsx_runtime(), 1);
+  var import_react11 = __toESM(require_react(), 1);
+  var import_jsx_runtime11 = __toESM(require_jsx_runtime(), 1);
   var ToolsView = () => {
-    const [tools, setTools] = (0, import_react13.useState)([]);
-    const [selectedTool, setSelectedTool] = (0, import_react13.useState)("calculator");
-    const [toolArgs, setToolArgs] = (0, import_react13.useState)('{"expression": "4500 * 1.18 - 250"}');
-    const [executionResult, setExecutionResult] = (0, import_react13.useState)(null);
-    const [loading, setLoading] = (0, import_react13.useState)(false);
-    const [confirmationToken, setConfirmationToken] = (0, import_react13.useState)(null);
-    const [confirmationPrompt, setConfirmationPrompt] = (0, import_react13.useState)(null);
+    const [tools, setTools] = (0, import_react11.useState)([]);
+    const [selectedTool, setSelectedTool] = (0, import_react11.useState)("calculator");
+    const [toolArgs, setToolArgs] = (0, import_react11.useState)('{"expression": "4500 * 1.18 - 250"}');
+    const [executionResult, setExecutionResult] = (0, import_react11.useState)(null);
+    const [loading, setLoading] = (0, import_react11.useState)(false);
+    const [confirmationToken, setConfirmationToken] = (0, import_react11.useState)(null);
+    const [confirmationPrompt, setConfirmationPrompt] = (0, import_react11.useState)(null);
     const loadTools = async () => {
       try {
         const res = await api.getTools();
@@ -12402,7 +11608,7 @@
         console.warn(e);
       }
     };
-    (0, import_react13.useEffect)(() => {
+    (0, import_react11.useEffect)(() => {
       loadTools();
     }, []);
     const handleToolSelect = (toolName) => {
@@ -12476,15 +11682,15 @@
       }
     };
     const currentToolMeta = tools.find((t) => t.name === selectedTool);
-    return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "24px" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(99, 102, 241, 0.15)", color: "var(--accent-indigo)" }, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Wrench, { size: 24 }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "Tool Registry & Policy Governance" }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Controlled external tool routing. High-impact operations (e.g. messaging, outbound mutation) are blocked until explicit confirmation is granted." })
+    return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "24px" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(99, 102, 241, 0.15)", color: "var(--accent-indigo)" }, children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Wrench, { size: 24 }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "Tool Registry & Policy Governance" }),
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Controlled external tool routing. High-impact operations (e.g. messaging, outbound mutation) are blocked until explicit confirmation is granted." })
         ] })
       ] }),
-      confirmationToken && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: {
+      confirmationToken && /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: {
         padding: "18px 24px",
         background: "rgba(244, 63, 94, 0.12)",
         border: "1px solid var(--accent-rose)",
@@ -12493,25 +11699,25 @@
         flexDirection: "column",
         gap: "12px"
       }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(ShieldAlert, { size: 22, style: { color: "var(--accent-rose)" } }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { style: { fontSize: "1.05rem", fontWeight: 700, color: "var(--accent-rose)" }, children: "Explicit Authorization Gate Triggered" })
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(ShieldAlert, { size: 22, style: { color: "var(--accent-rose)" } }),
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h4", { style: { fontSize: "1.05rem", fontWeight: 700, color: "var(--accent-rose)" }, children: "Explicit Authorization Gate Triggered" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { style: { fontSize: "0.88rem", color: "var(--text-primary)" }, children: confirmationPrompt }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", gap: "12px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { className: "btn btn-primary", onClick: handleConfirmAction, disabled: loading, style: { background: "var(--accent-rose)" }, children: "Confirm & Execute Action" }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { className: "btn btn-secondary", onClick: () => {
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { style: { fontSize: "0.88rem", color: "var(--text-primary)" }, children: confirmationPrompt }),
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: { display: "flex", gap: "12px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "btn btn-primary", onClick: handleConfirmAction, disabled: loading, style: { background: "var(--accent-rose)" }, children: "Confirm & Execute Action" }),
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "btn btn-secondary", onClick: () => {
             setConfirmationToken(null);
             setConfirmationPrompt(null);
           }, children: "Cancel" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "grid-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "glass-card", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px" }, children: "Select Tool & Arguments" }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "8px", marginBottom: "16px" }, children: tools.map((t) => {
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "grid-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "glass-card", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px" }, children: "Select Tool & Arguments" }),
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "8px", marginBottom: "16px" }, children: tools.map((t) => {
             const isSelected = selectedTool === t.name;
-            return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
+            return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(
               "div",
               {
                 onClick: () => handleToolSelect(t.name),
@@ -12527,19 +11733,19 @@
                   transition: "all 0.15s ease"
                 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { style: { fontSize: "0.9rem", fontWeight: 600, color: "var(--text-primary)" }, children: t.displayName }),
-                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { style: { fontSize: "0.76rem", color: "var(--text-muted)" }, children: t.description })
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { style: { fontSize: "0.9rem", fontWeight: 600, color: "var(--text-primary)" }, children: t.displayName }),
+                    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { style: { fontSize: "0.76rem", color: "var(--text-muted)" }, children: t.description })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: `badge ${t.requiresConfirmation ? "badge-rose" : "badge-emerald"}`, children: t.requiresConfirmation ? "Approval Required" : "Autonomous" })
+                  /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: `badge ${t.requiresConfirmation ? "badge-rose" : "badge-emerald"}`, children: t.requiresConfirmation ? "Approval Required" : "Autonomous" })
                 ]
               },
               t.name
             );
           }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("label", { style: { display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: "Execution Parameters (JSON)" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("label", { style: { display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: "6px" }, children: "Execution Parameters (JSON)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
               "textarea",
               {
                 rows: 5,
@@ -12550,17 +11756,17 @@
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("button", { className: "btn btn-primary", onClick: handleExecute, disabled: loading, style: { marginTop: "14px", width: "100%" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Play, { size: 16 }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: loading ? "Executing..." : `Execute ${currentToolMeta?.displayName || "Tool"}` })
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("button", { className: "btn btn-primary", onClick: handleExecute, disabled: loading, style: { marginTop: "14px", width: "100%" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Play, { size: 16 }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { children: loading ? "Executing..." : `Execute ${currentToolMeta?.displayName || "Tool"}` })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "glass-card", style: { display: "flex", flexDirection: "column" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Terminal, { size: 18, style: { color: "var(--accent-cyan)" } }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: "Execution Sandbox Output" })
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "glass-card", style: { display: "flex", flexDirection: "column" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Terminal, { size: 18, style: { color: "var(--accent-cyan)" } }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { children: "Execution Sandbox Output" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: {
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { style: {
             flex: 1,
             background: "var(--bg-surface)",
             border: "1px solid var(--border-subtle)",
@@ -12572,9 +11778,9 @@
             maxHeight: "420px",
             color: "var(--text-primary)"
           }, children: [
-            !executionResult && !loading && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { style: { color: "var(--text-muted)", textAlign: "center", padding: "40px 20px" }, children: "Tool output and audit telemetry will appear here after execution." }),
-            loading && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { style: { color: "var(--accent-indigo)" }, children: "Running tool verification and parameter policy check..." }),
-            executionResult && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("pre", { style: { whiteSpace: "pre-wrap", wordBreak: "break-word" }, children: JSON.stringify(executionResult, null, 2) })
+            !executionResult && !loading && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { style: { color: "var(--text-muted)", textAlign: "center", padding: "40px 20px" }, children: "Tool output and audit telemetry will appear here after execution." }),
+            loading && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { style: { color: "var(--accent-indigo)" }, children: "Running tool verification and parameter policy check..." }),
+            executionResult && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("pre", { style: { whiteSpace: "pre-wrap", wordBreak: "break-word" }, children: JSON.stringify(executionResult, null, 2) })
           ] })
         ] })
       ] })
@@ -12582,12 +11788,12 @@
   };
 
   // src/components/views/ResearchView.tsx
-  var import_react14 = __toESM(require_react(), 1);
-  var import_jsx_runtime14 = __toESM(require_jsx_runtime(), 1);
+  var import_react12 = __toESM(require_react(), 1);
+  var import_jsx_runtime12 = __toESM(require_jsx_runtime(), 1);
   var ResearchView = () => {
-    const [topic, setTopic] = (0, import_react14.useState)("Production Autonomous AI Agent Workspace Standards 2026");
-    const [loading, setLoading] = (0, import_react14.useState)(false);
-    const [report, setReport] = (0, import_react14.useState)(null);
+    const [topic, setTopic] = (0, import_react12.useState)("Production Autonomous AI Agent Workspace Standards 2026");
+    const [loading, setLoading] = (0, import_react12.useState)(false);
+    const [report, setReport] = (0, import_react12.useState)(null);
     const handleResearch = async (e) => {
       e.preventDefault();
       if (!topic.trim()) return;
@@ -12613,16 +11819,16 @@
         setLoading(false);
       }
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "24px" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(99, 102, 241, 0.15)", color: "var(--accent-indigo)" }, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Compass, { size: 24 }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "Grounded Deep Research Studio" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Formulate multi-perspective queries, collect live evidence, and synthesize cited research dossiers." })
+    return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "24px" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(99, 102, 241, 0.15)", color: "var(--accent-indigo)" }, children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Compass, { size: 24 }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "Grounded Deep Research Studio" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Formulate multi-perspective queries, collect live evidence, and synthesize cited research dossiers." })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "glass-card", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("form", { onSubmit: handleResearch, style: { display: "flex", gap: "12px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { flex: 1, position: "relative" }, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "glass-card", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("form", { onSubmit: handleResearch, style: { display: "flex", gap: "12px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { flex: 1, position: "relative" }, children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
           "input",
           {
             type: "text",
@@ -12633,43 +11839,43 @@
             onChange: (e) => setTopic(e.target.value)
           }
         ) }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("button", { type: "submit", className: "btn btn-primary", disabled: loading, style: { whiteSpace: "nowrap" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Sparkles, { size: 16 }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: loading ? "Synthesizing Dossier..." : "Synthesize Research" })
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("button", { type: "submit", className: "btn btn-primary", disabled: loading, style: { whiteSpace: "nowrap" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Sparkles, { size: 16 }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { children: loading ? "Synthesizing Dossier..." : "Synthesize Research" })
         ] })
       ] }) }),
-      report && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "20px" }, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "glass-card", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "14px", flexWrap: "wrap", gap: "8px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "badge badge-indigo", children: "Synthesized Dossier" }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { style: { fontSize: "1.25rem", fontWeight: 700, marginTop: "4px" }, children: report.topic })
+      report && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "20px" }, children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "glass-card", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "14px", flexWrap: "wrap", gap: "8px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "badge badge-indigo", children: "Synthesized Dossier" }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { style: { fontSize: "1.25rem", fontWeight: 700, marginTop: "4px" }, children: report.topic })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { style: { fontSize: "0.8rem", color: "var(--text-muted)" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { style: { fontSize: "0.8rem", color: "var(--text-muted)" }, children: [
             "Synthesized on ",
             report.completedAt
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h4", { style: { fontSize: "0.95rem", fontWeight: 600, color: "var(--text-accent)", marginBottom: "6px" }, children: "Executive Summary" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { style: { fontSize: "0.9rem", color: "var(--text-primary)", lineHeight: 1.6, marginBottom: "20px" }, children: report.executiveSummary }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h4", { style: { fontSize: "0.95rem", fontWeight: 600, color: "var(--accent-emerald)", marginBottom: "10px" }, children: "Key Structural Findings" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "8px", marginBottom: "20px" }, children: report.keyFindings.map((finding, idx) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { display: "flex", gap: "10px", alignItems: "flex-start" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(CircleCheck, { size: 16, style: { color: "var(--accent-emerald)", marginTop: "3px", flexShrink: 0 } }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { style: { fontSize: "0.88rem", color: "var(--text-primary)", lineHeight: 1.5 }, children: finding })
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { style: { fontSize: "0.95rem", fontWeight: 600, color: "var(--text-accent)", marginBottom: "6px" }, children: "Executive Summary" }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { style: { fontSize: "0.9rem", color: "var(--text-primary)", lineHeight: 1.6, marginBottom: "20px" }, children: report.executiveSummary }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h4", { style: { fontSize: "0.95rem", fontWeight: 600, color: "var(--accent-emerald)", marginBottom: "10px" }, children: "Key Structural Findings" }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "8px", marginBottom: "20px" }, children: report.keyFindings.map((finding, idx) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "flex", gap: "10px", alignItems: "flex-start" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(CircleCheck, { size: 16, style: { color: "var(--accent-emerald)", marginTop: "3px", flexShrink: 0 } }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { style: { fontSize: "0.88rem", color: "var(--text-primary)", lineHeight: 1.5 }, children: finding })
         ] }, idx)) }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("h4", { style: { fontSize: "0.95rem", fontWeight: 600, color: "var(--accent-cyan)", marginBottom: "10px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("h4", { style: { fontSize: "0.95rem", fontWeight: 600, color: "var(--accent-cyan)", marginBottom: "10px" }, children: [
           "Grounded Evidence & Citations (",
           report.sources.length,
           ")"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "8px" }, children: report.sources.map((s, idx) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { padding: "12px 14px", background: "var(--bg-surface)", borderRadius: "8px", border: "1px solid var(--border-subtle)" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "4px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { style: { fontSize: "0.85rem", fontWeight: 600, color: "var(--text-primary)" }, children: s.title }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "badge badge-emerald", children: "Verified Source" })
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "8px" }, children: report.sources.map((s, idx) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { padding: "12px 14px", background: "var(--bg-surface)", borderRadius: "8px", border: "1px solid var(--border-subtle)" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "4px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { style: { fontSize: "0.85rem", fontWeight: 600, color: "var(--text-primary)" }, children: s.title }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "badge badge-emerald", children: "Verified Source" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { style: { fontSize: "0.8rem", color: "var(--text-secondary)", marginBottom: "6px" }, children: s.snippet }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("a", { href: s.url, target: "_blank", rel: "noreferrer", style: { fontSize: "0.75rem", color: "var(--accent-indigo)", display: "inline-flex", alignItems: "center", gap: "4px", textDecoration: "none" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: s.url }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ExternalLink, { size: 12 })
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { style: { fontSize: "0.8rem", color: "var(--text-secondary)", marginBottom: "6px" }, children: s.snippet }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("a", { href: s.url, target: "_blank", rel: "noreferrer", style: { fontSize: "0.75rem", color: "var(--accent-indigo)", display: "inline-flex", alignItems: "center", gap: "4px", textDecoration: "none" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { children: s.url }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(ExternalLink, { size: 12 })
           ] })
         ] }, idx)) })
       ] }) })
@@ -12677,20 +11883,20 @@
   };
 
   // src/components/views/ArtifactsView.tsx
-  var import_react15 = __toESM(require_react(), 1);
-  var import_jsx_runtime15 = __toESM(require_jsx_runtime(), 1);
+  var import_react13 = __toESM(require_react(), 1);
+  var import_jsx_runtime13 = __toESM(require_jsx_runtime(), 1);
   var ArtifactsView = () => {
-    const [artifacts, setArtifacts] = (0, import_react15.useState)([]);
-    const [selectedId, setSelectedId] = (0, import_react15.useState)(null);
-    const [title, setTitle] = (0, import_react15.useState)("");
-    const [content, setContent] = (0, import_react15.useState)("");
-    const [type, setType] = (0, import_react15.useState)("markdown");
-    const [copied, setCopied] = (0, import_react15.useState)(false);
-    const [loading, setLoading] = (0, import_react15.useState)(false);
-    const [showImageModal, setShowImageModal] = (0, import_react15.useState)(false);
-    const [imagePrompt, setImagePrompt] = (0, import_react15.useState)("");
-    const [imageStyle, setImageStyle] = (0, import_react15.useState)("cyberpunk_vector");
-    const [generatingImage, setGeneratingImage] = (0, import_react15.useState)(false);
+    const [artifacts, setArtifacts] = (0, import_react13.useState)([]);
+    const [selectedId, setSelectedId] = (0, import_react13.useState)(null);
+    const [title, setTitle] = (0, import_react13.useState)("");
+    const [content, setContent] = (0, import_react13.useState)("");
+    const [type, setType] = (0, import_react13.useState)("markdown");
+    const [copied, setCopied] = (0, import_react13.useState)(false);
+    const [loading, setLoading] = (0, import_react13.useState)(false);
+    const [showImageModal, setShowImageModal] = (0, import_react13.useState)(false);
+    const [imagePrompt, setImagePrompt] = (0, import_react13.useState)("");
+    const [imageStyle, setImageStyle] = (0, import_react13.useState)("cyberpunk_vector");
+    const [generatingImage, setGeneratingImage] = (0, import_react13.useState)(false);
     const selectArtifact = (art) => {
       setSelectedId(art.id);
       setTitle(art.title);
@@ -12725,7 +11931,7 @@
         console.warn(e);
       }
     };
-    (0, import_react15.useEffect)(() => {
+    (0, import_react13.useEffect)(() => {
       loadArtifacts();
     }, []);
     const handleSave = async (bumpVersion = false) => {
@@ -12789,29 +11995,29 @@
       URL.revokeObjectURL(url);
     };
     const currentArtifact = artifacts.find((a) => a.id === selectedId);
-    return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "20px" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(99, 102, 241, 0.15)", color: "var(--accent-indigo)" }, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(FileCode, { size: 24 }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "Workspace Artifacts & Versioning" }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Create, edit, version, and export generated code modules, technical documentation, and schemas." })
+    return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "20px" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(99, 102, 241, 0.15)", color: "var(--accent-indigo)" }, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FileCode, { size: 24 }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "Workspace Artifacts & Versioning" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "Create, edit, version, and export generated code modules, technical documentation, and schemas." })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", gap: "8px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", gap: "8px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
             "button",
             {
               className: "btn btn-secondary",
               onClick: () => setShowImageModal(true),
               style: { display: "inline-flex", alignItems: "center", gap: "6px" },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Sparkles, { size: 16, style: { color: "var(--accent-indigo)" } }),
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "Generate Image/SVG" })
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Sparkles, { size: 16, style: { color: "var(--accent-indigo)" } }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: "Generate Image/SVG" })
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
             "button",
             {
               className: "btn btn-primary",
@@ -12822,23 +12028,23 @@
                 setType("markdown");
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Plus, { size: 16 }),
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "New Artifact" })
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Plus, { size: 16 }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: "New Artifact" })
               ]
             }
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "grid", gridTemplateColumns: "280px 1fr", gap: "20px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "glass-card", style: { display: "flex", flexDirection: "column", gap: "8px", maxHeight: "560px", overflowY: "auto" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("h4", { style: { fontSize: "0.9rem", fontWeight: 700, color: "var(--text-secondary)", marginBottom: "8px" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "grid", gridTemplateColumns: "280px 1fr", gap: "20px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "glass-card", style: { display: "flex", flexDirection: "column", gap: "8px", maxHeight: "560px", overflowY: "auto" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("h4", { style: { fontSize: "0.9rem", fontWeight: 700, color: "var(--text-secondary)", marginBottom: "8px" }, children: [
             "SAVED ARTIFACTS (",
             artifacts.length,
             ")"
           ] }),
-          artifacts.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { style: { color: "var(--text-muted)", fontSize: "0.82rem", textAlign: "center", padding: "24px" }, children: "No artifacts saved yet." }) : artifacts.map((a) => {
+          artifacts.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { style: { color: "var(--text-muted)", fontSize: "0.82rem", textAlign: "center", padding: "24px" }, children: "No artifacts saved yet." }) : artifacts.map((a) => {
             const isSelected = a.id === selectedId;
-            return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+            return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
               "div",
               {
                 onClick: () => selectArtifact(a),
@@ -12851,14 +12057,14 @@
                   transition: "all 0.15s ease"
                 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "4px" }, children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { style: { fontSize: "0.86rem", fontWeight: 600, color: "var(--text-primary)" }, children: a.title }),
-                    /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { className: "badge badge-indigo", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "4px" }, children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { style: { fontSize: "0.86rem", fontWeight: 600, color: "var(--text-primary)" }, children: a.title }),
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "badge badge-indigo", children: [
                       "v",
                       a.version
                     ] })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { fontSize: "0.72rem", color: "var(--text-muted)" }, children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { fontSize: "0.72rem", color: "var(--text-muted)" }, children: [
                     a.type.toUpperCase(),
                     " \u2022 ",
                     new Date(a.updated_at).toLocaleDateString()
@@ -12869,9 +12075,9 @@
             );
           })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "glass-card", style: { display: "flex", flexDirection: "column", gap: "14px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "10px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "glass-card", style: { display: "flex", flexDirection: "column", gap: "14px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "10px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
               "input",
               {
                 type: "text",
@@ -12882,8 +12088,8 @@
                 placeholder: "Artifact Title..."
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", gap: "8px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", gap: "8px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
                 "select",
                 {
                   value: type,
@@ -12898,25 +12104,25 @@
                     outline: "none"
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "markdown", children: "Markdown" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "code", children: "TypeScript / Code" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "json", children: "JSON" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "table", children: "Table Data" })
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "markdown", children: "Markdown" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "code", children: "TypeScript / Code" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "json", children: "JSON" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "table", children: "Table Data" })
                   ]
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("button", { className: "btn btn-secondary btn-sm", onClick: handleCopy, title: "Copy Content", children: [
-                copied ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Check, { size: 14, style: { color: "var(--accent-emerald)" } }) : /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Copy, { size: 14 }),
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: copied ? "Copied" : "Copy" })
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("button", { className: "btn btn-secondary btn-sm", onClick: handleCopy, title: "Copy Content", children: [
+                copied ? /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Check, { size: 14, style: { color: "var(--accent-emerald)" } }) : /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Copy, { size: 14 }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: copied ? "Copied" : "Copy" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("button", { className: "btn btn-secondary btn-sm", onClick: handleDownload, title: "Download File", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Download, { size: 14 }),
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "Export" })
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("button", { className: "btn btn-secondary btn-sm", onClick: handleDownload, title: "Download File", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Download, { size: 14 }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: "Export" })
               ] }),
-              selectedId && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("button", { className: "btn btn-outline-danger btn-sm", onClick: handleDelete, title: "Delete Artifact", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Trash2, { size: 14 }) })
+              selectedId && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { className: "btn btn-outline-danger btn-sm", onClick: handleDelete, title: "Delete Artifact", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Trash2, { size: 14 }) })
             ] })
           ] }),
-          content.trim().startsWith("<svg") && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: {
+          content.trim().startsWith("<svg") && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: {
             marginBottom: "14px",
             padding: "24px",
             borderRadius: "10px",
@@ -12929,11 +12135,11 @@
             minHeight: "220px",
             overflow: "hidden"
           }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "12px", display: "flex", alignItems: "center", gap: "6px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Sparkles, { size: 14, style: { color: "var(--accent-indigo)" } }),
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "Rendered Vector Illustration" })
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "12px", display: "flex", alignItems: "center", gap: "6px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Sparkles, { size: 14, style: { color: "var(--accent-indigo)" } }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: "Rendered Vector Illustration" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
               "div",
               {
                 style: { width: "100%", display: "flex", justifyContent: "center" },
@@ -12941,7 +12147,7 @@
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
             "textarea",
             {
               value: content,
@@ -12956,23 +12162,23 @@
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid var(--border-subtle)", paddingTop: "12px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { style: { fontSize: "0.78rem", color: "var(--text-muted)" }, children: currentArtifact ? `Version: v${currentArtifact.version} \u2022 Created: ${new Date(currentArtifact.created_at).toLocaleDateString()}` : "New Draft" }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", gap: "8px" }, children: [
-              selectedId && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("button", { className: "btn btn-secondary btn-sm", onClick: () => handleSave(true), disabled: loading, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Layers, { size: 14 }),
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid var(--border-subtle)", paddingTop: "12px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { style: { fontSize: "0.78rem", color: "var(--text-muted)" }, children: currentArtifact ? `Version: v${currentArtifact.version} \u2022 Created: ${new Date(currentArtifact.created_at).toLocaleDateString()}` : "New Draft" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", gap: "8px" }, children: [
+              selectedId && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("button", { className: "btn btn-secondary btn-sm", onClick: () => handleSave(true), disabled: loading, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Layers, { size: 14 }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { children: [
                   "Bump Version (v",
                   (currentArtifact?.version || 1) + 1,
                   ")"
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("button", { className: "btn btn-primary btn-sm", onClick: () => handleSave(false), disabled: loading, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: loading ? "Saving..." : "Save Changes" }) })
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { className: "btn btn-primary btn-sm", onClick: () => handleSave(false), disabled: loading, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: loading ? "Saving..." : "Save Changes" }) })
             ] })
           ] })
         ] })
       ] }),
-      showImageModal && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { style: {
+      showImageModal && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { style: {
         position: "fixed",
         top: 0,
         left: 0,
@@ -12985,17 +12191,17 @@
         justifyContent: "center",
         zIndex: 1e3,
         padding: "20px"
-      }, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "glass-card", style: { maxWidth: "500px", width: "100%", padding: "24px", display: "flex", flexDirection: "column", gap: "16px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { style: { padding: "8px", borderRadius: "8px", background: "rgba(99, 102, 241, 0.15)", color: "var(--accent-indigo)" }, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Sparkles, { size: 20 }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { style: { fontSize: "1.2rem", fontWeight: 700 }, children: "Generate Vector / SVG Artifact" }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { style: { fontSize: "0.82rem", color: "var(--text-secondary)" }, children: "Creates scalable SVG diagrams, architecture charts, or cyber illustrations." })
+      }, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "glass-card", style: { maxWidth: "500px", width: "100%", padding: "24px", display: "flex", flexDirection: "column", gap: "16px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "10px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { style: { padding: "8px", borderRadius: "8px", background: "rgba(99, 102, 241, 0.15)", color: "var(--accent-indigo)" }, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Sparkles, { size: 20 }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { style: { fontSize: "1.2rem", fontWeight: 700 }, children: "Generate Vector / SVG Artifact" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { style: { fontSize: "0.82rem", color: "var(--text-secondary)" }, children: "Creates scalable SVG diagrams, architecture charts, or cyber illustrations." })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { style: { fontSize: "0.82rem", fontWeight: 600, display: "block", marginBottom: "6px" }, children: "Prompt Description" }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("label", { style: { fontSize: "0.82rem", fontWeight: 600, display: "block", marginBottom: "6px" }, children: "Prompt Description" }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
             "input",
             {
               type: "text",
@@ -13007,24 +12213,24 @@
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { style: { fontSize: "0.82rem", fontWeight: 600, display: "block", marginBottom: "6px" }, children: "Visual Style" }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("label", { style: { fontSize: "0.82rem", fontWeight: 600, display: "block", marginBottom: "6px" }, children: "Visual Style" }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
             "select",
             {
               className: "input-control",
               value: imageStyle,
               onChange: (e) => setImageStyle(e.target.value),
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "cyberpunk_vector", children: "Cyberpunk / Neon Shield Vector" }),
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "minimalist_flowchart", children: "Minimalist Tech Pipeline Diagram" }),
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "blueprint", children: "Cyber Defense Blueprint" })
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "cyberpunk_vector", children: "Cyberpunk / Neon Shield Vector" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "minimalist_flowchart", children: "Minimalist Tech Pipeline Diagram" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "blueprint", children: "Cyber Defense Blueprint" })
               ]
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", justifyContent: "flex-end", gap: "10px", marginTop: "8px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { style: { display: "flex", justifyContent: "flex-end", gap: "10px", marginTop: "8px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
             "button",
             {
               className: "btn btn-secondary",
@@ -13033,7 +12239,7 @@
               children: "Cancel"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
             "button",
             {
               className: "btn btn-primary",
@@ -13041,8 +12247,8 @@
               disabled: generatingImage || !imagePrompt.trim(),
               style: { display: "inline-flex", alignItems: "center", gap: "6px" },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Sparkles, { size: 15 }),
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: generatingImage ? "Generating..." : "Generate Artifact" })
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Sparkles, { size: 15 }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: generatingImage ? "Generating..." : "Generate Artifact" })
               ]
             }
           )
@@ -13052,13 +12258,13 @@
   };
 
   // src/components/views/AdminView.tsx
-  var import_react16 = __toESM(require_react(), 1);
-  var import_jsx_runtime16 = __toESM(require_jsx_runtime(), 1);
+  var import_react14 = __toESM(require_react(), 1);
+  var import_jsx_runtime14 = __toESM(require_jsx_runtime(), 1);
   var AdminView = () => {
-    const [metrics, setMetrics] = (0, import_react16.useState)(null);
-    const [health, setHealth] = (0, import_react16.useState)(null);
-    const [logs, setLogs] = (0, import_react16.useState)([]);
-    const [loading, setLoading] = (0, import_react16.useState)(true);
+    const [metrics, setMetrics] = (0, import_react14.useState)(null);
+    const [health, setHealth] = (0, import_react14.useState)(null);
+    const [logs, setLogs] = (0, import_react14.useState)([]);
+    const [loading, setLoading] = (0, import_react14.useState)(true);
     const loadAdminData = async () => {
       try {
         const [mRes, hRes, lRes] = await Promise.all([
@@ -13075,7 +12281,7 @@
         setLoading(false);
       }
     };
-    (0, import_react16.useEffect)(() => {
+    (0, import_react14.useEffect)(() => {
       loadAdminData();
     }, []);
     const handleToggleFlag = async (key, currentStatus) => {
@@ -13090,47 +12296,47 @@
         console.error(e);
       }
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "24px" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(244, 63, 94, 0.15)", color: "var(--accent-rose)" }, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Shield, { size: 24 }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "Admin Console & Observability" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "System telemetry, memory utilization, real-time audit logs, and runtime feature flags." })
+    return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "24px" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { padding: "8px", borderRadius: "10px", background: "rgba(244, 63, 94, 0.15)", color: "var(--accent-rose)" }, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Shield, { size: 24 }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { style: { fontSize: "1.4rem", fontWeight: 800 }, children: "Admin Console & Observability" }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { style: { fontSize: "0.85rem", color: "var(--text-secondary)" }, children: "System telemetry, memory utilization, real-time audit logs, and runtime feature flags." })
         ] })
       ] }),
-      metrics && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "grid-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "Registered Accounts" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { fontSize: "1.6rem", fontWeight: 800, color: "var(--text-primary)" }, children: metrics.summary.totalUsers }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { fontSize: "0.72rem", color: "var(--accent-emerald)" }, children: "Multi-Tenant Scoped" })
+      metrics && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "grid-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "Registered Accounts" }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { fontSize: "1.6rem", fontWeight: 800, color: "var(--text-primary)" }, children: metrics.summary.totalUsers }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { fontSize: "0.72rem", color: "var(--accent-emerald)" }, children: "Multi-Tenant Scoped" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "AI Messages Processed" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { fontSize: "1.6rem", fontWeight: 800, color: "var(--accent-indigo)" }, children: metrics.summary.totalMessages }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { fontSize: "0.72rem", color: "var(--text-secondary)" }, children: "Orchestrator Routed" })
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "AI Messages Processed" }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { fontSize: "1.6rem", fontWeight: 800, color: "var(--accent-indigo)" }, children: metrics.summary.totalMessages }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { fontSize: "0.72rem", color: "var(--text-secondary)" }, children: "Orchestrator Routed" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "Private Memories" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { fontSize: "1.6rem", fontWeight: 800, color: "var(--accent-amber)" }, children: metrics.summary.totalMemories }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { fontSize: "0.72rem", color: "var(--text-secondary)" }, children: "User Governed" })
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "Private Memories" }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { fontSize: "1.6rem", fontWeight: 800, color: "var(--accent-amber)" }, children: metrics.summary.totalMemories }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { fontSize: "0.72rem", color: "var(--text-secondary)" }, children: "User Governed" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "System Uptime" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { fontSize: "1.6rem", fontWeight: 800, color: "var(--accent-cyan)" }, children: health ? `${health.uptimeSeconds}s` : "Active" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { style: { fontSize: "0.72rem", color: "var(--text-secondary)" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "glass-card", style: { padding: "16px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: "4px" }, children: "System Uptime" }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { fontSize: "1.6rem", fontWeight: 800, color: "var(--accent-cyan)" }, children: health ? `${health.uptimeSeconds}s` : "Active" }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { fontSize: "0.72rem", color: "var(--text-secondary)" }, children: [
             "Heap: ",
             metrics.memoryUsageMB,
             " MB"
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "grid-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "glass-card", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Activity, { size: 18, style: { color: "var(--accent-indigo)" } }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Dynamic Feature Flags" })
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "grid-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "glass-card", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Activity, { size: 18, style: { color: "var(--accent-indigo)" } }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "Dynamic Feature Flags" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "10px" }, children: metrics?.flags?.map((flag) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "10px" }, children: metrics?.flags?.map((flag) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
             "div",
             {
               style: {
@@ -13143,16 +12349,16 @@
                 justifyContent: "space-between"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { fontSize: "0.88rem", fontWeight: 600, color: "var(--text-primary)" }, children: flag.key }),
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { fontSize: "0.76rem", color: "var(--text-muted)" }, children: flag.description })
+                /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { fontSize: "0.88rem", fontWeight: 600, color: "var(--text-primary)" }, children: flag.key }),
+                  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { fontSize: "0.76rem", color: "var(--text-muted)" }, children: flag.description })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
                   "button",
                   {
                     onClick: () => handleToggleFlag(flag.key, flag.is_enabled),
                     style: { background: "transparent", border: "none", cursor: "pointer", color: flag.is_enabled ? "var(--accent-emerald)" : "var(--text-muted)" },
-                    children: flag.is_enabled ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ToggleRight, { size: 28 }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ToggleLeft, { size: 28 })
+                    children: flag.is_enabled ? /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ToggleRight, { size: 28 }) : /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ToggleLeft, { size: 28 })
                   }
                 )
               ]
@@ -13160,64 +12366,64 @@
             flag.key
           )) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "glass-card", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Database, { size: 18, style: { color: "var(--accent-cyan)" } }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Server Diagnostics" })
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "glass-card", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Database, { size: 18, style: { color: "var(--accent-cyan)" } }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "Server Diagnostics" })
           ] }),
-          health ? /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "10px", fontSize: "0.85rem" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", padding: "8px 12px", background: "var(--bg-surface)", borderRadius: "6px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { style: { color: "var(--text-secondary)" }, children: "Service Name" }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { style: { fontWeight: 600 }, children: health.service })
+          health ? /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "10px", fontSize: "0.85rem" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", padding: "8px 12px", background: "var(--bg-surface)", borderRadius: "6px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { style: { color: "var(--text-secondary)" }, children: "Service Name" }),
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { style: { fontWeight: 600 }, children: health.service })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", padding: "8px 12px", background: "var(--bg-surface)", borderRadius: "6px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { style: { color: "var(--text-secondary)" }, children: "Host Platform" }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { style: { fontWeight: 600 }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", padding: "8px 12px", background: "var(--bg-surface)", borderRadius: "6px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { style: { color: "var(--text-secondary)" }, children: "Host Platform" }),
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { style: { fontWeight: 600 }, children: [
                 health.system.platform,
                 " (",
                 health.system.arch,
                 ")"
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", padding: "8px 12px", background: "var(--bg-surface)", borderRadius: "6px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { style: { color: "var(--text-secondary)" }, children: "Node Engine" }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { style: { fontWeight: 600 }, children: health.system.nodeVersion })
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", padding: "8px 12px", background: "var(--bg-surface)", borderRadius: "6px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { style: { color: "var(--text-secondary)" }, children: "Node Engine" }),
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { style: { fontWeight: 600 }, children: health.system.nodeVersion })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", padding: "8px 12px", background: "var(--bg-surface)", borderRadius: "6px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { style: { color: "var(--text-secondary)" }, children: "Physical Memory" }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { style: { fontWeight: 600 }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", padding: "8px 12px", background: "var(--bg-surface)", borderRadius: "6px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { style: { color: "var(--text-secondary)" }, children: "Physical Memory" }),
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { style: { fontWeight: 600 }, children: [
                 health.system.freeMemoryMB,
                 " MB free / ",
                 health.system.totalMemoryMB,
                 " MB"
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", padding: "8px 12px", background: "var(--bg-surface)", borderRadius: "6px" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { style: { color: "var(--text-secondary)" }, children: "Database Durability" }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { style: { color: "var(--accent-emerald)", fontWeight: 600 }, children: "WAL Mode & Foreign Keys Active" })
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", padding: "8px 12px", background: "var(--bg-surface)", borderRadius: "6px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { style: { color: "var(--text-secondary)" }, children: "Database Durability" }),
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { style: { color: "var(--accent-emerald)", fontWeight: 600 }, children: "WAL Mode & Foreign Keys Active" })
             ] })
-          ] }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { color: "var(--text-muted)" }, children: "Loading system diagnostics..." })
+          ] }) : /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { color: "var(--text-muted)" }, children: "Loading system diagnostics..." })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "glass-card", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Shield, { size: 18, style: { color: "var(--accent-amber)" } }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Security Audit Trail (Secret Scrubbing Enforced)" })
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "glass-card", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("h3", { style: { fontSize: "1.05rem", fontWeight: 700, marginBottom: "14px", display: "flex", alignItems: "center", gap: "8px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Shield, { size: 18, style: { color: "var(--accent-amber)" } }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "Security Audit Trail (Secret Scrubbing Enforced)" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { style: { overflowX: "auto" }, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("table", { style: { width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: "0.82rem" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("tr", { style: { borderBottom: "1px solid var(--border-subtle)", color: "var(--text-muted)" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("th", { style: { padding: "8px 12px" }, children: "Timestamp" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("th", { style: { padding: "8px 12px" }, children: "Action" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("th", { style: { padding: "8px 12px" }, children: "Resource" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("th", { style: { padding: "8px 12px" }, children: "User ID" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("th", { style: { padding: "8px 12px" }, children: "Status" })
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { overflowX: "auto" }, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("table", { style: { width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: "0.82rem" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("tr", { style: { borderBottom: "1px solid var(--border-subtle)", color: "var(--text-muted)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("th", { style: { padding: "8px 12px" }, children: "Timestamp" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("th", { style: { padding: "8px 12px" }, children: "Action" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("th", { style: { padding: "8px 12px" }, children: "Resource" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("th", { style: { padding: "8px 12px" }, children: "User ID" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("th", { style: { padding: "8px 12px" }, children: "Status" })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("tbody", { children: logs.map((log) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("tr", { style: { borderBottom: "1px solid var(--border-subtle)" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("td", { style: { padding: "10px 12px", color: "var(--text-muted)" }, children: new Date(log.created_at).toLocaleTimeString() }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("td", { style: { padding: "10px 12px", fontWeight: 600 }, children: log.action }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("td", { style: { padding: "10px 12px", color: "var(--text-secondary)", fontFamily: "var(--font-mono)" }, children: log.resource }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("td", { style: { padding: "10px 12px", color: "var(--text-muted)" }, children: log.user_id || "System" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("td", { style: { padding: "10px 12px" }, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: `badge ${log.status === "success" ? "badge-emerald" : log.status === "warning" ? "badge-amber" : "badge-rose"}`, children: log.status }) })
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("tbody", { children: logs.map((log) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("tr", { style: { borderBottom: "1px solid var(--border-subtle)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("td", { style: { padding: "10px 12px", color: "var(--text-muted)" }, children: new Date(log.created_at).toLocaleTimeString() }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("td", { style: { padding: "10px 12px", fontWeight: 600 }, children: log.action }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("td", { style: { padding: "10px 12px", color: "var(--text-secondary)", fontFamily: "var(--font-mono)" }, children: log.resource }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("td", { style: { padding: "10px 12px", color: "var(--text-muted)" }, children: log.user_id || "System" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("td", { style: { padding: "10px 12px" }, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: `badge ${log.status === "success" ? "badge-emerald" : log.status === "warning" ? "badge-amber" : "badge-rose"}`, children: log.status }) })
           ] }, log.id)) })
         ] }) })
       ] })
@@ -13225,8 +12431,8 @@
   };
 
   // src/components/TourModal.tsx
-  var import_react17 = __toESM(require_react(), 1);
-  var import_jsx_runtime17 = __toESM(require_jsx_runtime(), 1);
+  var import_react15 = __toESM(require_react(), 1);
+  var import_jsx_runtime15 = __toESM(require_jsx_runtime(), 1);
   var TOUR_STEPS = [
     {
       title: "1. AI Conversational Workspace",
@@ -13314,7 +12520,7 @@
     }
   ];
   var TourModal = ({ isOpen, onClose, onNavigateToView }) => {
-    const [currentStep, setCurrentStep] = (0, import_react17.useState)(0);
+    const [currentStep, setCurrentStep] = (0, import_react15.useState)(0);
     const step = TOUR_STEPS[currentStep] || TOUR_STEPS[0];
     const Icon2 = step.icon;
     const handleNext = () => {
@@ -13334,36 +12540,36 @@
       onClose();
     };
     if (!isOpen) return null;
-    return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "modal-backdrop", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "modal-dialog", style: { maxWidth: "640px" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "modal-backdrop", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "modal-dialog", style: { maxWidth: "640px" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
         "button",
         {
           onClick: onClose,
           style: { position: "absolute", top: "20px", right: "20px", background: "transparent", border: "none", color: "var(--text-muted)", cursor: "pointer" },
-          children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(X, { size: 20 })
+          children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(X, { size: 20 })
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { style: { padding: "10px", borderRadius: "12px", background: `rgba(99, 102, 241, 0.15)`, color: step.color }, children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Icon2, { size: 26 }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "badge badge-indigo", children: "Feature Guide" }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { style: { fontSize: "0.78rem", color: "var(--text-muted)" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { style: { padding: "10px", borderRadius: "12px", background: `rgba(99, 102, 241, 0.15)`, color: step.color }, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Icon2, { size: 26 }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "8px" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "badge badge-indigo", children: "Feature Guide" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { style: { fontSize: "0.78rem", color: "var(--text-muted)" }, children: [
               "Step ",
               currentStep + 1,
               " of ",
               TOUR_STEPS.length
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h3", { style: { fontSize: "1.25rem", fontWeight: 700, marginTop: "2px" }, children: step.title })
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { style: { fontSize: "1.25rem", fontWeight: 700, marginTop: "2px" }, children: step.title })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { style: { fontSize: "0.92rem", color: "var(--text-secondary)", lineHeight: 1.6, marginBottom: "20px" }, children: step.description }),
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "10px", marginBottom: "24px", background: "var(--bg-surface)", padding: "16px", borderRadius: "10px", border: "1px solid var(--border-subtle)" }, children: step.bulletPoints.map((pt, idx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { style: { display: "flex", alignItems: "flex-start", gap: "10px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(CircleCheck, { size: 16, style: { color: step.color, marginTop: "2px", flexShrink: 0 } }),
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { style: { fontSize: "0.86rem", color: "var(--text-primary)", lineHeight: 1.45 }, children: pt })
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { style: { fontSize: "0.92rem", color: "var(--text-secondary)", lineHeight: 1.6, marginBottom: "20px" }, children: step.description }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { style: { display: "flex", flexDirection: "column", gap: "10px", marginBottom: "24px", background: "var(--bg-surface)", padding: "16px", borderRadius: "10px", border: "1px solid var(--border-subtle)" }, children: step.bulletPoints.map((pt, idx) => /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", alignItems: "flex-start", gap: "10px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(CircleCheck, { size: 16, style: { color: step.color, marginTop: "2px", flexShrink: 0 } }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { style: { fontSize: "0.86rem", color: "var(--text-primary)", lineHeight: 1.45 }, children: pt })
       ] }, idx)) }),
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { style: { display: "flex", justifyContent: "center", gap: "6px", marginBottom: "20px" }, children: TOUR_STEPS.map((_, idx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { style: { display: "flex", justifyContent: "center", gap: "6px", marginBottom: "20px" }, children: TOUR_STEPS.map((_, idx) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
         "button",
         {
           onClick: () => setCurrentStep(idx),
@@ -13379,24 +12585,24 @@
         },
         idx
       )) }),
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "10px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "10px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
           "button",
           {
             onClick: handleGoToView,
             className: "btn btn-secondary btn-sm",
             style: { color: "var(--accent-indigo)", borderColor: "var(--border-active)" },
-            children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Open This Feature Now" })
+            children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "Open This Feature Now" })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { style: { display: "flex", gap: "8px" }, children: [
-          currentStep > 0 && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("button", { onClick: handlePrev, className: "btn btn-secondary btn-sm", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ArrowLeft, { size: 14 }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Previous" })
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { style: { display: "flex", gap: "8px" }, children: [
+          currentStep > 0 && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("button", { onClick: handlePrev, className: "btn btn-secondary btn-sm", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ArrowLeft, { size: 14 }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "Previous" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("button", { onClick: handleNext, className: "btn btn-primary btn-sm", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: currentStep === TOUR_STEPS.length - 1 ? "Finish Tour" : "Next Step" }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ArrowRight, { size: 14 })
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("button", { onClick: handleNext, className: "btn btn-primary btn-sm", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: currentStep === TOUR_STEPS.length - 1 ? "Finish Tour" : "Next Step" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ArrowRight, { size: 14 })
           ] })
         ] })
       ] })
@@ -13404,58 +12610,50 @@
   };
 
   // src/App.tsx
-  var import_jsx_runtime18 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime16 = __toESM(require_jsx_runtime(), 1);
   var MainLayout = () => {
-    const { user, loading } = useAuth();
-    const [currentView, setCurrentView] = (0, import_react18.useState)("chat");
-    const [sidebarCollapsed, setSidebarCollapsed] = (0, import_react18.useState)(false);
-    const [mobileSidebarOpen, setMobileSidebarOpen] = (0, import_react18.useState)(false);
-    const [currentModel, setCurrentModel] = (0, import_react18.useState)("gemini");
-    const [isVoiceOpen, setIsVoiceOpen] = (0, import_react18.useState)(false);
-    const [isAuthOpen, setIsAuthOpen] = (0, import_react18.useState)(false);
-    const [isTourOpen, setIsTourOpen] = (0, import_react18.useState)(false);
-    const [theme, setTheme] = (0, import_react18.useState)("dark");
-    (0, import_react18.useEffect)(() => {
+    const { user } = useAuth();
+    const [currentView, setCurrentView] = (0, import_react16.useState)("chat");
+    const [sidebarCollapsed, setSidebarCollapsed] = (0, import_react16.useState)(false);
+    const [mobileSidebarOpen, setMobileSidebarOpen] = (0, import_react16.useState)(false);
+    const [currentModel, setCurrentModel] = (0, import_react16.useState)("gemini");
+    const [isVoiceOpen, setIsVoiceOpen] = (0, import_react16.useState)(false);
+    const [isTourOpen, setIsTourOpen] = (0, import_react16.useState)(false);
+    const [theme, setTheme] = (0, import_react16.useState)("dark");
+    (0, import_react16.useEffect)(() => {
       document.documentElement.setAttribute("data-theme", theme);
     }, [theme]);
-    (0, import_react18.useEffect)(() => {
-      if (!loading && !user) {
-        setIsAuthOpen(true);
-      } else if (user) {
-        setIsAuthOpen(false);
-      }
-    }, [user, loading]);
     const toggleTheme = () => {
       setTheme((prev) => prev === "dark" ? "light" : "dark");
     };
     const renderActiveView = () => {
       switch (currentView) {
         case "chat":
-          return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ChatView, { currentModel, onNavigateToView: setCurrentView });
+          return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ChatView, { currentModel, onNavigateToView: setCurrentView });
         case "dashboard":
-          return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(AssistantDashboardView, { onNavigate: setCurrentView });
+          return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(AssistantDashboardView, { onNavigate: setCurrentView });
         case "memory":
-          return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(MemoryView, {});
+          return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(MemoryView, {});
         case "rag":
-          return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(RAGView, {});
+          return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(RAGView, {});
         case "vision":
-          return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(VisionView, {});
+          return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(VisionView, {});
         case "forecasting":
-          return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ForecastingView, {});
+          return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ForecastingView, {});
         case "tools":
-          return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ToolsView, {});
+          return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ToolsView, {});
         case "research":
-          return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ResearchView, {});
+          return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ResearchView, {});
         case "artifacts":
-          return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ArtifactsView, {});
+          return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ArtifactsView, {});
         case "admin":
-          return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(AdminView, {});
+          return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(AdminView, {});
         default:
-          return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ChatView, { currentModel, onNavigateToView: setCurrentView });
+          return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ChatView, { currentModel, onNavigateToView: setCurrentView });
       }
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "app-container", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "app-container", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
         Sidebar,
         {
           currentView,
@@ -13466,23 +12664,22 @@
           onCloseMobile: () => setMobileSidebarOpen(false)
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "main-content", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "main-content", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
           Navbar,
           {
             currentModel,
             onModelChange: setCurrentModel,
             onOpenVoice: () => setIsVoiceOpen(true),
-            onOpenAuth: () => setIsAuthOpen(true),
             onOpenTour: () => setIsTourOpen(true),
             theme,
             onToggleTheme: toggleTheme,
             onToggleMobileSidebar: () => setMobileSidebarOpen((prev) => !prev)
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("main", { className: "view-scroll-area", children: renderActiveView() })
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("main", { className: "view-scroll-area", children: renderActiveView() })
       ] }),
-      isVoiceOpen && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+      isVoiceOpen && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
         VoiceModal,
         {
           isOpen: isVoiceOpen,
@@ -13490,14 +12687,7 @@
           currentModel
         }
       ),
-      isAuthOpen && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
-        AuthModal,
-        {
-          isOpen: isAuthOpen,
-          onClose: () => setIsAuthOpen(false)
-        }
-      ),
-      isTourOpen && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+      isTourOpen && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
         TourModal,
         {
           isOpen: isTourOpen,
@@ -13505,7 +12695,7 @@
           onNavigateToView: setCurrentView
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
         "button",
         {
           onClick: () => setIsVoiceOpen(true),
@@ -13530,19 +12720,19 @@
             transition: "transform 0.2s ease, box-shadow 0.2s ease",
             animation: "floatSoft 3s ease-in-out infinite"
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Mic, { size: 24 })
+          children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Mic, { size: 24 })
         }
       )
     ] });
   };
   var App = () => {
-    return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(AuthProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(MainLayout, {}) });
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(AuthProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(MainLayout, {}) });
   };
   var App_default = App;
 
   // src/main.tsx
-  var import_jsx_runtime19 = __toESM(require_jsx_runtime(), 1);
-  var ErrorBoundary = class extends import_react19.Component {
+  var import_jsx_runtime17 = __toESM(require_jsx_runtime(), 1);
+  var ErrorBoundary = class extends import_react17.Component {
     constructor(props) {
       super(props);
       this.state = { hasError: false, error: null };
@@ -13555,7 +12745,7 @@
     }
     render() {
       if (this.state.hasError) {
-        return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { style: {
+        return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { style: {
           minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
@@ -13567,9 +12757,9 @@
           textAlign: "center",
           fontFamily: "sans-serif"
         }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h2", { style: { fontSize: "1.5rem", marginBottom: "12px", color: "#06b6d4" }, children: "Prachi AI Workspace" }),
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { style: { color: "#94a3b8", maxWidth: "500px", marginBottom: "24px" }, children: this.state.error?.message || "Recovering workspace components..." }),
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h2", { style: { fontSize: "1.5rem", marginBottom: "12px", color: "#06b6d4" }, children: "Prachi AI Workspace" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { style: { color: "#94a3b8", maxWidth: "500px", marginBottom: "24px" }, children: this.state.error?.message || "Recovering workspace components..." }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
             "button",
             {
               onClick: () => {
@@ -13597,7 +12787,7 @@
   if (container) {
     const root = (0, import_client.createRoot)(container);
     root.render(
-      /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_react19.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ErrorBoundary, { children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(App_default, {}) }) })
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(import_react17.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ErrorBoundary, { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(App_default, {}) }) })
     );
   } else {
     console.error("Critical: Could not find '#root' element in DOM");
@@ -13676,13 +12866,8 @@ lucide-react/dist/esm/icons/file-code.js:
 lucide-react/dist/esm/icons/file-text.js:
 lucide-react/dist/esm/icons/globe.js:
 lucide-react/dist/esm/icons/image.js:
-lucide-react/dist/esm/icons/key-round.js:
 lucide-react/dist/esm/icons/layers.js:
 lucide-react/dist/esm/icons/layout-dashboard.js:
-lucide-react/dist/esm/icons/loader-circle.js:
-lucide-react/dist/esm/icons/lock.js:
-lucide-react/dist/esm/icons/log-in.js:
-lucide-react/dist/esm/icons/log-out.js:
 lucide-react/dist/esm/icons/menu.js:
 lucide-react/dist/esm/icons/message-circle.js:
 lucide-react/dist/esm/icons/message-square.js:
@@ -13702,7 +12887,6 @@ lucide-react/dist/esm/icons/scan.js:
 lucide-react/dist/esm/icons/search.js:
 lucide-react/dist/esm/icons/send.js:
 lucide-react/dist/esm/icons/shield-alert.js:
-lucide-react/dist/esm/icons/shield-check.js:
 lucide-react/dist/esm/icons/shield.js:
 lucide-react/dist/esm/icons/sparkles.js:
 lucide-react/dist/esm/icons/square-check-big.js:

@@ -92,7 +92,9 @@
 html {
     font-size: 16px;
     color-scheme: dark;
-    /* Native 120 FPS hardware scroll (programmatic navigation handled via JS scrollTo) */
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 body {
@@ -101,6 +103,7 @@ body {
     color: var(--text-secondary);
     line-height: 1.65;
     overflow-x: hidden;
+    overflow-y: visible;
     position: relative;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
@@ -1428,7 +1431,7 @@ textarea {
     justify-self: end;
     width: 445px;
     max-width: 445px;
-    margin-top: -3.2rem;
+    margin-top: -4.8rem; /* Raised higher up per user request */
     transition: transform var(--transition-normal);
 }
 
@@ -1440,7 +1443,7 @@ textarea {
     border-top: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: var(--radius-full);
     padding: 0.32rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.65rem; /* Tightened spacing to bring ID card higher up */
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
     z-index: 5;
     position: relative;
@@ -2066,11 +2069,204 @@ textarea {
     display: none !important;
 }
 
-/* Main Cyber ID Card Surface (Distinctive 3D Inflated Liquid Bubble Shape Border) */
+/* ==========================================================================
+   PAPER ROLL UNROLLING SYSTEM (TOP FOLD -> ROLLING CYLINDER DOWNWARD OPEN)
+   ========================================================================== */
+.cyber-id-card.id-unrolling {
+    animation: paperScrollUnrollCard 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+    transform-origin: 50% 0% !important;
+    will-change: clip-path, transform, opacity;
+}
+
+@keyframes paperScrollUnrollCard {
+    0% {
+        clip-path: inset(0 0 96% 0 round 44px 44px 18px 18px);
+        transform: perspective(1200px) rotateX(-55deg) scaleY(0.85);
+        opacity: 0.35;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+    18% {
+        clip-path: inset(0 0 76% 0 round 44px 44px 20px 20px);
+        transform: perspective(1200px) rotateX(-34deg) scaleY(0.92);
+        opacity: 0.85;
+    }
+    45% {
+        clip-path: inset(0 0 44% 0 round 44px 44px 24px 24px);
+        transform: perspective(1200px) rotateX(-16deg) scaleY(0.97);
+        opacity: 1;
+    }
+    75% {
+        clip-path: inset(0 0 12% 0 round 44px 44px 30px 30px);
+        transform: perspective(1200px) rotateX(-4deg) scaleY(0.995);
+    }
+    90% {
+        clip-path: inset(0 0 0% 0 round 44px 44px 38px 38px);
+        transform: perspective(1200px) rotateX(4.5deg) scaleY(1.008);
+    }
+    96% {
+        clip-path: inset(0 0 0% 0 round 44px 44px 38px 38px);
+        transform: perspective(1200px) rotateX(-1.8deg) scaleY(0.998);
+    }
+    100% {
+        clip-path: inset(0 0 0% 0 round 44px 44px 38px 38px);
+        transform: perspective(1200px) rotateX(0deg) scaleY(1);
+        opacity: 1;
+    }
+}
+
+/* Dynamic Paper Scroll Roller Bar (Rolling motion from top under logo downwards) */
+.id-paper-roller {
+    position: absolute;
+    left: 50%;
+    width: calc(100% + 14px);
+    height: 22px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 25;
+    opacity: 0;
+}
+
+.id-paper-roller.rolling {
+    animation: paperRollerMoveDown 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes paperRollerMoveDown {
+    0% {
+        top: 2%;
+        opacity: 0;
+        transform: translateX(-50%) scale(0.92, 1.3);
+    }
+    6% {
+        top: 4%;
+        opacity: 1;
+        transform: translateX(-50%) scale(1, 1);
+    }
+    18% {
+        top: 22%;
+        transform: translateX(-50%) scale(1.02, 1);
+    }
+    45% {
+        top: 54%;
+        transform: translateX(-50%) scale(1.03, 1);
+        opacity: 1;
+    }
+    75% {
+        top: 86%;
+        transform: translateX(-50%) scale(1.02, 0.95);
+        opacity: 1;
+    }
+    90% {
+        top: calc(100% - 12px);
+        transform: translateX(-50%) scale(1.01, 0.75);
+        opacity: 0.9;
+    }
+    98% {
+        top: calc(100% - 2px);
+        transform: translateX(-50%) scale(1, 0.2);
+        opacity: 0.3;
+    }
+    100% {
+        top: 100%;
+        transform: translateX(-50%) scale(1, 0);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.roller-cylinder {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 11px;
+    background: linear-gradient(180deg,
+        #ffffff 0%,
+        #e0f2fe 18%,
+        #38bdf8 40%,
+        #0f172a 68%,
+        #00f2fe 88%,
+        #020617 100%
+    );
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.8),
+        0 2px 8px rgba(0, 242, 254, 0.7),
+        inset 0 2px 3px #ffffff,
+        inset 0 -2px 3px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+.roller-core-pattern {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg,
+        transparent 0px,
+        transparent 6px,
+        rgba(255, 255, 255, 0.3) 6px,
+        rgba(255, 255, 255, 0.3) 10px,
+        rgba(0, 242, 254, 0.25) 10px,
+        rgba(0, 242, 254, 0.25) 14px
+    );
+    animation: rollerSpinRoll 0.2s linear infinite;
+}
+
+@keyframes rollerSpinRoll {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 14px 0;
+    }
+}
+
+.roller-sheen {
+    position: absolute;
+    top: 1px;
+    left: 5%;
+    right: 5%;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.95) 50%, transparent 100%);
+}
+
+.roller-shadow {
+    position: absolute;
+    top: 100%;
+    left: 3%;
+    right: 3%;
+    height: 12px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(0, 0, 0, 0.85) 0%, transparent 80%);
+    filter: blur(3px);
+    pointer-events: none;
+}
+
+.roller-cap {
+    position: absolute;
+    top: 1.5px;
+    bottom: 1.5px;
+    width: 9px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, #00f2fe 0%, #0284c7 65%, #020617 100%);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 6px rgba(0, 242, 254, 0.85);
+    z-index: 2;
+}
+
+.roller-cap.cap-left {
+    left: 2px;
+}
+
+.roller-cap.cap-right {
+    right: 2px;
+}
+
+/* Main Cyber ID Card Surface (Distinctive 3D Inflated Liquid Bubble Shape Border & Length Increased) */
 .cyber-id-card {
     position: relative;
     width: 100%;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     /* Translucent liquid water-clear glassmorphism with high refractive depth */
     background:
         radial-gradient(ellipse at 30% 12%, rgba(255, 255, 255, 0.2) 0%, transparent 55%),
@@ -2079,8 +2275,8 @@ textarea {
     /* Distinctive 3D Inflated Liquid Bubble Shape Border Profile */
     border: 2.2px solid rgba(255, 255, 255, 0.46);
     border-radius: 44px 44px 38px 38px / 48px 48px 42px 42px;
-    padding: 0.85rem 0.95rem 0.85rem 0.95rem;
-    min-height: 428px; /* Vertical portrait badge */
+    padding: 0.82rem 0.95rem 0.75rem 0.95rem;
+    min-height: 454px; /* Length increased modestly per user request so card is well-proportioned */
     backdrop-filter: blur(28px) saturate(200%) contrast(108%);
     -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(108%);
     box-shadow:
@@ -2111,7 +2307,7 @@ textarea {
         0 0 2px 1.5px rgba(255, 255, 255, 0.5);
 }
 
-/* ID Card Attached Badges (Directly Affixed to ID Card per user request) */
+/* ID Card Attached Badges */
 .card-attached-badge {
     position: absolute;
     z-index: 10;
@@ -2152,11 +2348,30 @@ textarea {
     animation: attachedBadgeGently 4s ease-in-out infinite alternate;
 }
 
-/* 2. AI / ML Dev: Affixed at the ID Card's Bottom Right Corner, slightly separated */
+/* 2. AI / ML Dev: Affixed PAST/BELOW the ID card bottom border per user request */
 .badge-aiml-right {
-    bottom: 14px;
-    right: -32px;
+    bottom: -16px; /* Moved down past the bottom border */
+    right: -20px;
     animation: attachedBadgeGently 4s ease-in-out 2s infinite alternate;
+}
+
+.cyber-id-card-wrapper.unrolling .badge-aiml-right {
+    animation: aimlBadgeUnrollPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 1.05s both, attachedBadgeGently 4s ease-in-out 1.55s infinite alternate;
+}
+
+@keyframes aimlBadgeUnrollPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(20px);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.15) translateY(-3px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 @keyframes attachedBadgeGently {
@@ -2592,11 +2807,83 @@ textarea {
     font-size: 0.46rem;
 }
 
+/* High-Tech QR Code Matrix for Left Column (Eliminates bottom vacancy) */
+.id-qr-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.12rem;
+    margin-top: 0.25rem;
+    width: 100%;
+}
+
+.id-qr-code {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: rgba(3, 7, 18, 0.88);
+    border: 1.2px solid rgba(0, 242, 254, 0.35);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+    padding: 2px;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    cursor: help;
+}
+
+.id-qr-code:hover {
+    transform: scale(1.08);
+    border-color: rgba(0, 242, 254, 0.8);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.5);
+}
+
+.qr-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.id-qr-txt {
+    font-size: 0.36rem;
+    font-weight: 800;
+    color: #38bdf8;
+    letter-spacing: 0.6px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Academic Validity Term Pill */
+.id-validity-pill {
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 4px;
+    padding: 0.08rem 0.28rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0.12rem;
+}
+
+.id-val-term {
+    font-size: 0.4rem;
+    font-weight: 700;
+    color: #cbd5e1;
+    letter-spacing: 0.25px;
+    white-space: nowrap;
+}
+
+.id-val-term i {
+    font-size: 0.42rem;
+}
+
 /* Right Column: Credentials Dossier (Extra Compact & Clean Spacing) */
 .id-right-col {
     display: flex;
     flex-direction: column;
-    gap: 0.32rem;
+    gap: 0.38rem;
     min-width: 0;
 }
 
@@ -2720,12 +3007,51 @@ textarea {
     margin: 0;
 }
 
-/* ID Card Footer: High-Tech Barcode & Hologram Security Seal (Extra Compact) */
+.id-val-campus {
+    font-size: 0.48rem;
+    color: #94a3b8;
+    line-height: 1.25;
+    margin: 0;
+    letter-spacing: 0.15px;
+}
+
+/* Cyber Security Status Strip (Fills middle gap cleanly so card never looks empty) */
+.id-security-strip {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.3rem;
+    margin-top: 0.38rem;
+    padding: 0.18rem 0.45rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+}
+
+.id-sec-badge {
+    font-family: var(--font-mono);
+    font-size: 0.42rem;
+    font-weight: 700;
+    color: #cbd5e1;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    gap: 0.22rem;
+}
+
+.id-sec-badge i {
+    font-size: 0.46rem;
+}
+
+/* ID Card Footer: High-Tech Barcode & Hologram Security Seal (Cleanly Anchored at Bottom) */
 .id-card-footer {
     position: relative;
     z-index: 2;
-    margin-top: 0.45rem;
-    padding-top: 0.38rem;
+    margin-top: auto; /* Anchors cleanly to the bottom rim */
+    padding-top: 0.45rem;
     border-top: 1px solid rgba(255, 255, 255, 0.16);
     display: flex;
     align-items: center;
@@ -2744,9 +3070,9 @@ textarea {
 .id-barcode-strip {
     display: flex;
     align-items: stretch;
-    height: 12px;
+    height: 15px; /* Taller, high-tech barcode representation */
     gap: 1.5px;
-    opacity: 0.9;
+    opacity: 0.92;
     overflow: hidden;
 }
 
@@ -6502,18 +6828,32 @@ textarea {
     background: rgba(4, 7, 16, 0.85);
     backdrop-filter: blur(10px);
     z-index: 9999;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
     transition: opacity var(--transition-normal);
 }
 
+.custom-modal-overlay:not(.open) {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+}
+
+.custom-modal-overlay:not(.open) * {
+    pointer-events: none !important;
+}
+
 .custom-modal-overlay.open {
-    opacity: 1;
-    pointer-events: auto;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
 }
 
 .custom-modal-card {
@@ -7537,21 +7877,37 @@ textarea {
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     z-index: 99999;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     padding: 1.5rem 1rem;
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
     transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     overflow-y: auto;
     overscroll-behavior: contain;
 }
 
+.sandesh-modal-overlay:not(.open),
+.hk-3d-review-overlay:not(.open) {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+}
+
+.sandesh-modal-overlay:not(.open) *,
+.hk-3d-review-overlay:not(.open) * {
+    pointer-events: none !important;
+}
+
 .sandesh-modal-overlay.open,
 .hk-3d-review-overlay.open {
-    opacity: 1;
-    pointer-events: auto;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
 }
 
 /* 3D Scene Container */
@@ -7588,18 +7944,18 @@ textarea {
 }
 
 /* ==========================================================================
-   ROYAL SCROLL FOLD & UNFOLD ANIMATION + LIVE CALLIGRAPHY SEQUENTIAL REVEAL
+   ROYAL SCROLL PAPER ROLL UNROLLING SYSTEM (TOP FOLD -> ROLLING DOWNWARD OPEN)
    ========================================================================== */
 
 /* 1. Fold-to-Unfold Animation */
 .sandesh-scroll-card.is-unfolding {
-    animation: royalScrollPop 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: royalScrollPop 1.35s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes royalScrollPop {
     0% {
-        transform: perspective(1600px) scale(0.88) translateY(-25px);
-        opacity: 0.2;
+        transform: perspective(1600px) scale(0.9) translateY(-18px);
+        opacity: 0.3;
     }
     100% {
         transform: perspective(1600px) scale(1) translateY(0);
@@ -7607,62 +7963,225 @@ textarea {
     }
 }
 
-.sandesh-scroll-card.is-unfolding .sandesh-parchment-sheet {
-    animation: royalParchmentUnfold 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
-    transform-origin: top center;
-    position: relative;
+/* Dynamic Antique Royal Paper Scroll Roller Bar (Exact ID Card unrolling motion with Royal Gold/Wood Styling) */
+.sandesh-paper-roller {
+    position: absolute;
+    left: 50%;
+    width: calc(100% + 22px);
+    height: 26px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 40;
+    opacity: 0;
 }
 
-@keyframes royalParchmentUnfold {
+.sandesh-paper-roller.rolling {
+    animation: sandeshPaperRollerMoveDown 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes sandeshPaperRollerMoveDown {
     0% {
-        clip-path: inset(0 0 98% 0 round 4px);
-        opacity: 0.3;
-        filter: brightness(0.7) contrast(1.25);
+        top: 2%;
+        opacity: 0;
+        transform: translateX(-50%) scale(0.94, 1.3);
     }
-    35% {
-        clip-path: inset(0 0 65% 0 round 4px);
-        opacity: 0.9;
-        filter: brightness(0.92);
-    }
-    70% {
-        clip-path: inset(0 0 12% 0 round 4px);
+    6% {
+        top: 4%;
         opacity: 1;
-        filter: brightness(1.02);
+        transform: translateX(-50%) scale(1, 1);
+    }
+    18% {
+        top: 22%;
+        transform: translateX(-50%) scale(1.02, 1);
+    }
+    45% {
+        top: 54%;
+        transform: translateX(-50%) scale(1.03, 1);
+        opacity: 1;
+    }
+    75% {
+        top: 86%;
+        transform: translateX(-50%) scale(1.02, 0.95);
+        opacity: 1;
+    }
+    90% {
+        top: calc(100% - 14px);
+        transform: translateX(-50%) scale(1.01, 0.75);
+        opacity: 0.9;
+    }
+    98% {
+        top: calc(100% - 2px);
+        transform: translateX(-50%) scale(1, 0.2);
+        opacity: 0.3;
     }
     100% {
-        clip-path: inset(0 0 0% 0 round 4px);
+        top: 100%;
+        transform: translateX(-50%) scale(1, 0);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.sandesh-roller-cylinder {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 13px;
+    background: linear-gradient(180deg,
+        #fffbeb 0%,
+        #fef08a 16%,
+        #f59e0b 38%,
+        #78350f 68%,
+        #d97706 88%,
+        #290d01 100%
+    );
+    border: 1.8px solid rgba(254, 240, 138, 0.95);
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.9),
+        0 2px 10px rgba(245, 158, 11, 0.75),
+        inset 0 2px 3px #ffffff,
+        inset 0 -2px 3px rgba(0, 0, 0, 0.85);
+    overflow: hidden;
+}
+
+.sandesh-roller-core-pattern {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg,
+        transparent 0px,
+        transparent 6px,
+        rgba(254, 240, 138, 0.4) 6px,
+        rgba(254, 240, 138, 0.4) 10px,
+        rgba(217, 119, 6, 0.3) 10px,
+        rgba(217, 119, 6, 0.3) 14px
+    );
+    animation: rollerSpinRoll 0.2s linear infinite;
+}
+
+.sandesh-roller-sheen {
+    position: absolute;
+    top: 1.5px;
+    left: 4%;
+    right: 4%;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.95) 50%, transparent 100%);
+}
+
+.sandesh-roller-shadow {
+    position: absolute;
+    top: 100%;
+    left: 2%;
+    right: 2%;
+    height: 16px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(0, 0, 0, 0.9) 0%, transparent 80%);
+    filter: blur(4px);
+    pointer-events: none;
+}
+
+.sandesh-roller-cap {
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    width: 12px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, #fffbeb 0%, #fde047 30%, #b45309 70%, #290d01 100%);
+    border: 1px solid rgba(254, 240, 138, 0.9);
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.85);
+    z-index: 2;
+}
+
+.sandesh-roller-cap.cap-left {
+    left: 2px;
+}
+
+.sandesh-roller-cap.cap-right {
+    right: 2px;
+}
+
+/* Parchment Sheet Unrolling Animation */
+.sandesh-scroll-card.is-unfolding .sandesh-parchment-sheet {
+    animation: sandeshPaperScrollUnrollSheet 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    transform-origin: 50% 0%;
+    position: relative;
+    will-change: clip-path, transform, opacity;
+}
+
+@keyframes sandeshPaperScrollUnrollSheet {
+    0% {
+        clip-path: inset(0 0 96% 0 round 6px);
+        transform: perspective(1400px) rotateX(-55deg) scaleY(0.85);
+        opacity: 0.35;
+        filter: brightness(0.7) contrast(1.25);
+    }
+    18% {
+        clip-path: inset(0 0 76% 0 round 6px);
+        transform: perspective(1400px) rotateX(-34deg) scaleY(0.92);
+        opacity: 0.85;
+        filter: brightness(0.85);
+    }
+    45% {
+        clip-path: inset(0 0 44% 0 round 6px);
+        transform: perspective(1400px) rotateX(-16deg) scaleY(0.97);
+        opacity: 1;
+        filter: brightness(0.95);
+    }
+    75% {
+        clip-path: inset(0 0 12% 0 round 6px);
+        transform: perspective(1400px) rotateX(-4deg) scaleY(0.995);
+        filter: brightness(1.02);
+    }
+    90% {
+        clip-path: inset(0 0 0% 0 round 6px);
+        transform: perspective(1400px) rotateX(4.5deg) scaleY(1.008);
+    }
+    96% {
+        clip-path: inset(0 0 0% 0 round 6px);
+        transform: perspective(1400px) rotateX(-1.8deg) scaleY(0.998);
+    }
+    100% {
+        clip-path: inset(0 0 0% 0 round 6px);
+        transform: perspective(1400px) rotateX(0deg) scaleY(1);
         opacity: 1;
         filter: brightness(1);
     }
 }
 
 .sandesh-scroll-card.is-unfolding .rod-bottom {
-    animation: royalRodRollDown 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: royalRodRollDown 1.35s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes royalRodRollDown {
     0% {
-        transform: translateY(-80px) rotate(-180deg);
-        opacity: 0.7;
+        opacity: 0;
+        transform: translateY(-40px) scale(0.92);
+    }
+    75% {
+        opacity: 0.4;
+        transform: translateY(-12px) scale(0.96);
+    }
+    90% {
+        opacity: 0.85;
+        transform: translateY(2px) scale(1.01);
     }
     100% {
-        transform: translateY(0) rotate(0deg);
         opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
 .sandesh-scroll-card.is-unfolding .rod-top {
-    animation: royalRodRollTop 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: royalRodRollTop 1.35s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes royalRodRollTop {
     0% {
-        transform: translateY(20px) rotate(180deg);
-        opacity: 0.7;
+        transform: translateY(6px) scale(0.96);
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.7));
     }
     100% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.85));
     }
 }
 
@@ -7680,7 +8199,7 @@ textarea {
 }
 
 .sandesh-scroll-card.is-unfolding .sandesh-unfold-sheen {
-    animation: sheenSweepDown 0.95s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
+    animation: sheenSweepDown 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes sheenSweepDown {
@@ -7705,8 +8224,8 @@ textarea {
                 filter 0.55s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.sandesh-scroll-card.is-writing .sandesh-anim-item.written,
-.sandesh-scroll-card:not(.is-writing) .sandesh-anim-item {
+.sandesh-modal-overlay.open .sandesh-scroll-card.is-writing .sandesh-anim-item.written,
+.sandesh-modal-overlay.open .sandesh-scroll-card:not(.is-writing) .sandesh-anim-item {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
@@ -9719,7 +10238,7 @@ textarea {
     box-shadow: 0 16px 45px rgba(0, 0, 0, 0.78), 0 0 28px rgba(0, 240, 255, 0.22);
     padding: 1.05rem 1.15rem;
     z-index: 999999;
-    pointer-events: none;
+    pointer-events: none !important;
     opacity: 0;
     visibility: hidden;
     transform: scale(0.94) translateY(6px);
@@ -9730,7 +10249,18 @@ textarea {
     will-change: transform, opacity, left, top;
 }
 
+.cyber-hud-inspector:not(.active) {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+.cyber-hud-inspector * {
+    pointer-events: none !important;
+}
+
 .cyber-hud-inspector.active {
+    display: block !important;
     opacity: 1;
     visibility: visible;
     transform: scale(1) translateY(0);
@@ -10088,7 +10618,7 @@ textarea {
     .cyber-id-card {
         padding: 0.75rem 0.85rem !important;
         border-radius: 40px 40px 34px 34px !important;
-        min-height: 420px !important;
+        min-height: 445px !important;
     }
 
     .card-attached-badge.badge-aktu-top {
@@ -10098,9 +10628,9 @@ textarea {
     }
 
     .card-attached-badge.badge-aiml-right {
-        bottom: 12px !important;
+        bottom: -14px !important;
         top: auto !important;
-        right: -16px !important;
+        right: -12px !important;
         transform: scale(0.92);
     }
 
@@ -10209,9 +10739,9 @@ textarea {
     }
 
     .card-attached-badge.badge-aiml-right {
-        bottom: 8px !important;
+        bottom: -12px !important;
         top: auto !important;
-        right: -12px !important;
+        right: -8px !important;
         transform: scale(0.88);
     }
 
@@ -10222,7 +10752,7 @@ textarea {
     .cyber-id-card {
         padding: 0.62rem 0.75rem !important;
         border-radius: 18px !important;
-        min-height: 410px !important;
+        min-height: 435px !important;
     }
 
     .id-card-grid {

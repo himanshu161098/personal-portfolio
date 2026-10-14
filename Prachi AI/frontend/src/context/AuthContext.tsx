@@ -32,49 +32,49 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+export const DEFAULT_GUEST_USER: User = {
+  id: 'usr-guest-001',
+  email: 'guest@prachi.ai',
+  fullName: 'Guest User',
+  role: 'admin',
+  preferences: { theme: 'dark', defaultModel: 'gemini' }
+};
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [token, setToken] = useState<string | null>(() => localStorage.getItem('prachi_auth_token'));
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User>(() => {
+    const cached = localStorage.getItem('prachi_local_user');
+    if (cached) {
+      try {
+        const parsed = JSON.parse(cached);
+        if (parsed && parsed.fullName) return parsed;
+      } catch {}
+    }
+    return DEFAULT_GUEST_USER;
+  });
+  const [token, setToken] = useState<string>(() => localStorage.getItem('prachi_auth_token') || 'local-guest-token');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    // Ensure storage is seeded with instant guest session
+    if (!localStorage.getItem('prachi_auth_token')) {
+      localStorage.setItem('prachi_auth_token', 'local-guest-token');
+    }
+    if (!localStorage.getItem('prachi_local_user')) {
+      localStorage.setItem('prachi_local_user', JSON.stringify(DEFAULT_GUEST_USER));
+    }
+
     async function loadUser() {
-      if (!token) {
-        setLoading(false);
-        return;
-      }
-      try {
-        const u = await api.getMe();
-        setUser(u);
-        localStorage.setItem('prachi_local_user', JSON.stringify(u));
-      } catch (err) {
-        console.warn('[Auth] Remote session check failed, inspecting local cache:', err);
-        const cached = localStorage.getItem('prachi_local_user');
-        if (cached) {
-          try {
-            setUser(JSON.parse(cached));
-          } catch {
-            setUser(null);
-            localStorage.removeItem('prachi_auth_token');
-            setToken(null);
+      if (token && !token.startsWith('local-')) {
+        try {
+          const u = await api.getMe();
+          if (u) {
+            setUser(u);
+            localStorage.setItem('prachi_local_user', JSON.stringify(u));
           }
-        } else if (token.startsWith('local-')) {
-          const fallbackUser: User = {
-            id: token.includes('admin') ? 'usr-admin-001' : 'usr-demo-001',
-            email: token.includes('admin') ? 'admin@prachi.ai' : 'demo@prachi.ai',
-            fullName: token.includes('admin') ? 'System Administrator' : 'Pari (Demo User)',
-            role: token.includes('admin') ? 'admin' : 'user',
-            preferences: { theme: 'dark', defaultModel: 'local_heuristic' }
-          };
-          setUser(fallbackUser);
-        } else {
-          console.warn('[Auth] Token invalid or expired, resetting session');
-          localStorage.removeItem('prachi_auth_token');
-          setToken(null);
-          setUser(null);
+        } catch {
+          // If remote verification fails, remain seamlessly logged in as guest
+          setUser(prev => prev || DEFAULT_GUEST_USER);
         }
-      } finally {
-        setLoading(false);
       }
     }
     loadUser();
@@ -278,8 +278,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const logout = () => {
     localStorage.removeItem('prachi_auth_token');
     localStorage.removeItem('prachi_local_user');
-    setToken(null);
-    setUser(null);
+    setToken('local-guest-token');
+    setUser(DEFAULT_GUEST_USER);
   };
 
   const updatePreferences = async (prefs: Record<string, any>) => {

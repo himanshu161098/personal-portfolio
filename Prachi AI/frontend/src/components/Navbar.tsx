@@ -1,12 +1,12 @@
 import React from 'react';
-import { Sparkles, Mic, Sun, Moon, LogIn, LogOut, ShieldAlert, Cpu, HelpCircle, ArrowLeft, Menu } from 'lucide-react';
+import { Sparkles, Mic, Sun, Moon, ShieldAlert, Cpu, HelpCircle, ArrowLeft, Menu } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 interface NavbarProps {
   currentModel: string;
   onModelChange: (model: string) => void;
   onOpenVoice: () => void;
-  onOpenAuth: () => void;
+  onOpenAuth?: () => void;
   onOpenTour: () => void;
   theme: string;
   onToggleTheme: () => void;
@@ -17,13 +17,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   currentModel,
   onModelChange,
   onOpenVoice,
-  onOpenAuth,
   onOpenTour,
   theme,
   onToggleTheme,
   onToggleMobileSidebar,
 }) => {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
   return (
     <header className="top-navbar">
@@ -145,29 +144,44 @@ export const Navbar: React.FC<NavbarProps> = ({
           {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
         </button>
 
-        {/* User Account / Auth */}
-        {user ? (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: '0.86rem', fontWeight: 600 }}>{user.fullName}</div>
-              <div style={{ fontSize: '0.72rem', color: user.role === 'admin' ? 'var(--accent-amber)' : 'var(--text-muted)' }}>
-                {user.role === 'admin' ? 'Administrator' : 'Verified Member'}
-              </div>
-            </div>
-            <button
-              className="btn btn-secondary btn-sm"
-              onClick={logout}
-              title="Sign Out"
-            >
-              <LogOut size={15} />
-            </button>
+        {/* Open Access Workspace Badge (No login barrier required) */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div
+            className="status-pill"
+            style={{
+              background: 'rgba(16, 185, 129, 0.12)',
+              border: '1px solid rgba(16, 185, 129, 0.35)',
+              color: 'var(--accent-emerald)',
+              padding: '4px 10px',
+              fontSize: '0.74rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              borderRadius: '999px'
+            }}
+            title="Instant Open Access — Anyone can explore Prachi AI freely"
+          >
+            <span
+              className="status-dot"
+              style={{
+                width: '6px',
+                height: '6px',
+                borderRadius: '50%',
+                background: 'var(--accent-emerald)',
+                boxShadow: '0 0 8px var(--accent-emerald)'
+              }}
+            ></span>
+            <span>Open Access</span>
           </div>
-        ) : (
-          <button className="btn btn-primary btn-sm" onClick={onOpenAuth}>
-            <LogIn size={15} />
-            <span>Sign In</span>
-          </button>
-        )}
+          <div style={{ textAlign: 'right' }}>
+            <div style={{ fontSize: '0.86rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+              {user?.fullName || 'Guest User'}
+            </div>
+            <div style={{ fontSize: '0.70rem', color: 'var(--accent-cyan)' }}>
+              Ready to Chat
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   );

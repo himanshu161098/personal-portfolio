@@ -1,7 +1,10 @@
 $ErrorActionPreference = 'Stop'
 Write-Host "Building Prachi AI Frontend with esbuild.exe..."
 
-$esbuild = "d:\Level 1\Personal Portfolio\Prachi AI\backend\node_modules\@esbuild\win32-x64\esbuild.exe"
+$esbuild = Join-Path $PSScriptRoot "node_modules\@esbuild\win32-x64\esbuild.exe"
+if (-not (Test-Path $esbuild)) {
+  $esbuild = Join-Path $PSScriptRoot "..\backend\node_modules\@esbuild\win32-x64\esbuild.exe"
+}
 
 & $esbuild src/main.tsx `
   --bundle `
