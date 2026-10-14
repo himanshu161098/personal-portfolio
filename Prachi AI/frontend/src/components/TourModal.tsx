@@ -28,7 +28,7 @@ const TOUR_STEPS = [
     view: 'chat',
     description: 'Interact with Prachi AI through natural conversation. The orchestrator automatically routes calculations, web searches, and reminders to the appropriate specialized tools.',
     bulletPoints: [
-      'Multi-model switcher in top navbar: Gemini, Claude, OpenAI, and Local Heuristic offline fallback.',
+      'Multi-model switcher in top navbar: Prachi AI Cognitive Core, Claude, OpenAI, and Local Heuristic offline fallback.',
       'Grounded citations appear automatically when documents or research sources are utilized.',
       'Prompt quick-starters help trigger daily summaries, scheduling, and data analysis in one click.'
     ]
@@ -102,7 +102,7 @@ const TOUR_STEPS = [
     bulletPoints: [
       'Real-time heap memory usage, uptime tracking, and registered user counters.',
       'Toggle platform feature flags (RAG, Vision, Tools, Memory) without restarting the server.',
-      'Configure Gemini, OpenAI, or Claude API keys directly from the UI or via .env.'
+      'Configure Prachi AI Core, OpenAI, or Claude API keys directly from the UI or via .env.'
     ]
   }
 ];

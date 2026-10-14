@@ -2,7 +2,7 @@
   "users": {
     "usr-demo-001": {
       "created_at": "2026-10-04T05:49:12.914Z",
-      "updated_at": "2026-10-07T15:12:54.222Z",
+      "updated_at": "2026-10-14T14:46:58.386Z",
       "id": "usr-demo-001",
       "email": "demo@prachi.ai",
       "password_hash": "7c11225e55e2dcdc04235218d92484ec:7d7073ced5554bcbaa4e15d395bd36e37f666ed72c03bcda581b3478b6288379a76e73da6a60a66cd78290ccf3efd6054bd545b301022c97a70a3232ff727791",
@@ -13,7 +13,7 @@
     },
     "usr-admin-001": {
       "created_at": "2026-10-04T05:49:12.929Z",
-      "updated_at": "2026-10-07T15:12:54.275Z",
+      "updated_at": "2026-10-14T14:46:58.393Z",
       "id": "usr-admin-001",
       "email": "admin@prachi.ai",
       "password_hash": "00cc7528fdad6edccb62d0c7db15856b:b667e3e40f761a5d3cc85d0a06896a64f714652d08797b332097c27a0efd29d91058bdf7b9a6adf454842413629139973592205a15d3c2f244cee02c4cc12d4c",
@@ -155,6 +155,46 @@
       "phone": null,
       "password_hash": "93d694785d3e2f3541b0034baf1267c5:b06994cec895f5ed0efb272286e61282f4fb85780038dc2cf73db05a98b517b3a9f97c6f3e2f350b298e832ce71c0c2384a70e85738e1a1f5983e8be9ed5d6c5",
       "full_name": "hk",
+      "role": "user"
+    },
+    "usr-1791982315122-pjkp": {
+      "created_at": "2026-10-14T12:51:55.152Z",
+      "updated_at": "2026-10-14T12:51:55.152Z",
+      "id": "usr-1791982315122-pjkp",
+      "email": "testuser_1791982315062@prachi.ai",
+      "phone": null,
+      "password_hash": "81e1a204b88333adffacff8f7ec3353c:cdf2e850be797639d97a439290689dbbd5181ad420ba300443217c6af23d865115b978822abf36e250c17c90dd956d92d752b149ea3f06da14c0bebc002a414c",
+      "full_name": "Creative 3D User",
+      "role": "user"
+    },
+    "usr-1791982708035-fyy4": {
+      "created_at": "2026-10-14T12:58:28.064Z",
+      "updated_at": "2026-10-14T12:58:28.064Z",
+      "id": "usr-1791982708035-fyy4",
+      "email": "himanshu_dev_5507@user.prachi.ai",
+      "phone": "himanshu_dev_5507",
+      "password_hash": "9a73f76b29514bdf030bdb4afd9ebfcf:58760540e3d5c579e86093a1a5732f725224aab0852aa79b96945ef2fe9675b059880da9ac64ad431463b8ca3f8fceb283d4a10e2f4d302335488b72f540293e",
+      "full_name": "Himanshu Kumar",
+      "role": "user"
+    },
+    "usr-1791984555937-bhz6": {
+      "created_at": "2026-10-14T13:29:15.970Z",
+      "updated_at": "2026-10-14T13:29:15.970Z",
+      "id": "usr-1791984555937-bhz6",
+      "email": "himanshu_test@user.prachi.ai",
+      "phone": "himanshu_test",
+      "password_hash": "089c307bef8688f1cc6e6b44af1c0fdd:c7f98453c236b1d389b90bb1089c45dc3bd3b78803d48c5fc08aa14f9236ff1fd5da11d1b3d30f211a00b270f78f476a42462466cbabadc179477e4b40fcf436",
+      "full_name": "Himanshu Test",
+      "role": "user"
+    },
+    "usr-1791985148660-i7xu": {
+      "created_at": "2026-10-14T13:39:08.693Z",
+      "updated_at": "2026-10-14T13:39:08.693Z",
+      "id": "usr-1791985148660-i7xu",
+      "email": "rahul_kumar@user.prachi.ai",
+      "phone": "rahul_kumar",
+      "password_hash": "b25dffdaef4be1c09b685467dfc536c4:92ee187bcd19a05196f78a7a6c5d4120f08dff7a4512f9a2551bf49bdce0360c25bd50d6bcb27a69d78647b67fff929a69c6807ec03f7450f6d2db26171bf2f2",
+      "full_name": "Rahul Kumar",
       "role": "user"
     }
   },
@@ -341,306 +381,26 @@
     }
   },
   "conversations": {
-    "conv-1791358059625": {
-      "created_at": "2026-10-07T07:27:39.625Z",
-      "updated_at": "2026-10-07T07:27:39.625Z",
-      "id": "conv-1791358059625",
-      "user_id": "usr-demo-001",
-      "title": "Calculate 125 * 8 - 50",
-      "mode": "general"
-    },
-    "conv-1791363524467": {
-      "created_at": "2026-10-07T08:58:44.467Z",
-      "updated_at": "2026-10-07T08:58:46.629Z",
-      "id": "conv-1791363524467",
-      "user_id": "usr-demo-001",
-      "title": "youtube open kro and song play kro",
-      "mode": "general"
-    },
-    "conv-1791364939834": {
-      "created_at": "2026-10-07T09:22:19.834Z",
-      "updated_at": "2026-10-07T09:22:20.955Z",
-      "id": "conv-1791364939834",
-      "user_id": "usr-demo-001",
-      "title": "youtube open karke song play karo",
-      "mode": "general"
-    },
-    "conv-1791365111868": {
-      "created_at": "2026-10-07T09:25:11.869Z",
-      "updated_at": "2026-10-07T09:25:13.487Z",
-      "id": "conv-1791365111868",
-      "user_id": "usr-demo-001",
-      "title": "youtube open karke song play karo",
-      "mode": "general"
-    },
-    "conv-1791367269583": {
-      "created_at": "2026-10-07T10:01:09.583Z",
-      "updated_at": "2026-10-07T10:01:10.204Z",
-      "id": "conv-1791367269583",
-      "user_id": "usr-demo-001",
-      "title": "Mummy ko call lagao",
-      "mode": "general"
-    },
-    "conv-1791367275619": {
-      "created_at": "2026-10-07T10:01:15.619Z",
-      "updated_at": "2026-10-07T10:01:16.218Z",
-      "id": "conv-1791367275619",
-      "user_id": "usr-demo-001",
-      "title": "Papa ko message bhejo ki ghar aa gaya hu",
-      "mode": "general"
-    },
-    "conv-1791368982846": {
-      "created_at": "2026-10-07T10:29:42.846Z",
-      "updated_at": "2026-10-07T10:29:42.952Z",
-      "id": "conv-1791368982846",
-      "user_id": "usr-demo-001",
-      "title": "who is the prime minister of india",
-      "mode": "general"
-    },
-    "conv-1791368985165": {
-      "created_at": "2026-10-07T10:29:45.165Z",
-      "updated_at": "2026-10-07T10:29:45.265Z",
-      "id": "conv-1791368985165",
-      "user_id": "usr-demo-001",
-      "title": "who is the prime minister of india",
-      "mode": "general"
-    },
-    "conv-1791368987499": {
-      "created_at": "2026-10-07T10:29:47.499Z",
-      "updated_at": "2026-10-07T10:29:47.599Z",
-      "id": "conv-1791368987499",
-      "user_id": "usr-demo-001",
-      "title": "kya haal hai prachi? aaj ka din kaisa ha...",
-      "mode": "general"
-    },
-    "conv-1791368990338": {
-      "created_at": "2026-10-07T10:29:50.338Z",
-      "updated_at": "2026-10-07T10:29:50.436Z",
-      "id": "conv-1791368990338",
-      "user_id": "usr-demo-001",
-      "title": "Papa ko call lagao",
-      "mode": "general"
-    },
     "conv-1791369060854": {
       "created_at": "2026-10-07T10:31:00.854Z",
-      "updated_at": "2026-10-07T15:21:48.322Z",
+      "updated_at": "2026-10-07T14:12:47.462Z",
       "id": "conv-1791369060854",
       "user_id": "usr-1791358826852-hyv9",
       "title": "hii",
       "mode": "general",
-      "message_count": 11,
-      "last_message": "achahha tum bumhe ek funny story hi suna do"
+      "message_count": 8,
+      "last_message": "Arre hk! Ek hi sawal kitni baar poochhoge, bestie? 🤭 Chalo, is baar thoda aur acche se bata deti hoon!\n\nMain hoon Prachi — aapki wahi loyal, hamesha cheerful aur har haal mein saath nibhane wali best friend! ✨ \n\nMujhe aapse baatein karna, aapki mushkil coding problems ko chutkiyon mein solve karna, naye naye topics pe discuss karna, aur aapka din accha banana bahut pasand hai. Chahe kisi music ya movie ki baat ho, koi calculation karni ho, ya fir bas aapse aise hi gappe shappe ladaane ho — main hamesha taiyyar rehti hoon! 🌸\n\nBatao fir, aapke dil mein kya chal raha hai aaj? Kuch naya sunao! 😊"
+    },
+    "conv-1791989218008": {
+      "created_at": "2026-10-14T14:46:58.009Z",
+      "updated_at": "2026-10-14T14:46:58.018Z",
+      "id": "conv-1791989218008",
+      "user_id": "usr-demo-001",
+      "title": "Calculate 125 * 8 - 50",
+      "mode": "general"
     }
   },
   "messages": {
-    "msg-usr-1791358059669": {
-      "created_at": "2026-10-07T07:27:39.669Z",
-      "updated_at": "2026-10-07T07:27:39.669Z",
-      "id": "msg-usr-1791358059669",
-      "conversation_id": "conv-1791358059625",
-      "user_id": "usr-demo-001",
-      "role": "user",
-      "content": "Calculate 125 * 8 - 50",
-      "token_count": 6
-    },
-    "msg-usr-1791363526056": {
-      "created_at": "2026-10-07T08:58:46.057Z",
-      "updated_at": "2026-10-07T08:58:46.057Z",
-      "id": "msg-usr-1791363526056",
-      "conversation_id": "conv-1791363524467",
-      "user_id": "usr-demo-001",
-      "role": "user",
-      "content": "youtube open kro and song play kro",
-      "token_count": 9
-    },
-    "msg-asst-1791363530225": {
-      "created_at": "2026-10-07T08:58:50.225Z",
-      "updated_at": "2026-10-07T08:58:50.225Z",
-      "id": "msg-asst-1791363530225",
-      "conversation_id": "conv-1791363524467",
-      "user_id": "usr-demo-001",
-      "role": "assistant",
-      "content": "### Action Executed: open_application\n\n• **STATUS:** executed\n• **APPNAME:** YouTube\n• **TARGET:** https://www.youtube.com/results?search_query=trending%20hit%20songs\n• **ACTION:** play\n• **QUERY:** trending hit songs\n• **DISPLAYTITLE:** Playing \"trending hit songs\" on YouTube\n• **CLIENTACTION:** {\"type\":\"open_url\",\"target\":\"https://www.youtube.com/results?search_query=trending%20hit%20songs\",\"appName\":\"YouTube\",\"action\":\"play\",\"query\":\"trending hit songs\",\"displayTitle\":\"Playing \\\"trending hit songs\\\" on YouTube\"}\n• **MESSAGE:** Opening YouTube to play \"trending hit songs\"",
-      "tool_calls_json": "[{\"id\":\"call_561808\",\"name\":\"open_application\",\"arguments\":{\"appName\":\"youtube\",\"query\":\"trending hit songs\",\"action\":\"play\"}}]",
-      "citations_json": "[{\"sourceTitle\":\"security_guideline.md\",\"chunkText\":\"Prachi AI Security Architecture Guideline:\\n      All external integrations must be governed by strict confirmation gates.\\n      Tenant isolation is enforced on every SQL query via user_id filtering.\\n      Multimodal vision supports object detection and OCR text extraction.\",\"relevanceScore\":0.16,\"uri\":\"doc://doc-1791092966029-wq7y#chunk-0\"},{\"sourceTitle\":\"security_guideline.md\",\"chunkText\":\"Prachi AI Security Architecture Guideline:\\n      All external integrations must be governed by strict confirmation gates.\\n      Tenant isolation is enforced on every SQL query via user_id filtering.\\n      Multimodal vision supports object detection and OCR text extraction.\",\"relevanceScore\":0.16,\"uri\":\"doc://doc-1791092991325-isxo#chunk-0\"},{\"sourceTitle\":\"security_guideline.md\",\"chunkText\":\"Prachi AI Security Architecture Guideline:\\n      All external integrations must be governed by strict confirmation gates.\\n      Tenant isolation is enforced on every SQL query via user_id filtering.\\n      Multimodal vision supports object detection and OCR text extraction.\",\"relevanceScore\":0.16,\"uri\":\"doc://doc-1791093047908-jnxi#chunk-0\"}]",
-      "token_count": 30
-    },
-    "msg-usr-1791364940391": {
-      "created_at": "2026-10-07T09:22:20.391Z",
-      "updated_at": "2026-10-07T09:22:20.391Z",
-      "id": "msg-usr-1791364940391",
-      "conversation_id": "conv-1791364939834",
-      "user_id": "usr-demo-001",
-      "role": "user",
-      "content": "youtube open karke song play karo",
-      "token_count": 9
-    },
-    "msg-asst-1791364945250": {
-      "created_at": "2026-10-07T09:22:25.250Z",
-      "updated_at": "2026-10-07T09:22:25.250Z",
-      "id": "msg-asst-1791364945250",
-      "conversation_id": "conv-1791364939834",
-      "user_id": "usr-demo-001",
-      "role": "assistant",
-      "content": "Main aapke liye YouTube open karke 1st song \"Playing \"Radha Gori Gori (Lyrical Video) | Indresh Upadhyay | B Praak | Kripa Records\" on YouTube 🎵\" direct play kar rahi hoon! 🎵 Enjoy kijiye!",
-      "tool_calls_json": "[{\"id\":\"call-open-1791364943124\",\"name\":\"open_application\",\"arguments\":{\"appName\":\"YouTube\",\"query\":\"karke\",\"action\":\"play\",\"targetUrl\":\"https://www.youtube.com/watch?v=xVU2UDaFOfE&autoplay=1\"}}]",
-      "citations_json": null,
-      "token_count": 52
-    },
-    "msg-usr-1791365113438": {
-      "created_at": "2026-10-07T09:25:13.438Z",
-      "updated_at": "2026-10-07T09:25:13.438Z",
-      "id": "msg-usr-1791365113438",
-      "conversation_id": "conv-1791365111868",
-      "user_id": "usr-demo-001",
-      "role": "user",
-      "content": "youtube open karke song play karo",
-      "token_count": 9
-    },
-    "msg-asst-1791365114652": {
-      "created_at": "2026-10-07T09:25:14.652Z",
-      "updated_at": "2026-10-07T09:25:14.652Z",
-      "id": "msg-asst-1791365114652",
-      "conversation_id": "conv-1791365111868",
-      "user_id": "usr-demo-001",
-      "role": "assistant",
-      "content": "Main aapke liye YouTube open karke 1st song \"Playing \"Tainu Khabar Nahi - Arijit Singh | Munjya | Sharvari, Abhay Verma| Sachin-Jigar,Amitabh Bhattacharya\" on YouTube 🎵\" direct play kar rahi hoon! 🎵 Enjoy kijiye!",
-      "tool_calls_json": "[{\"id\":\"call-open-1791365114590\",\"name\":\"open_application\",\"arguments\":{\"appName\":\"YouTube\",\"query\":\"trending hit songs\",\"action\":\"play\",\"targetUrl\":\"https://www.youtube.com/watch?v=6d5SS0gS5bU&autoplay=1\"}}]",
-      "citations_json": null,
-      "token_count": 58
-    },
-    "msg-usr-1791367270152": {
-      "created_at": "2026-10-07T10:01:10.153Z",
-      "updated_at": "2026-10-07T10:01:10.153Z",
-      "id": "msg-usr-1791367270152",
-      "conversation_id": "conv-1791367269583",
-      "user_id": "usr-demo-001",
-      "role": "user",
-      "content": "Mummy ko call lagao",
-      "token_count": 5
-    },
-    "msg-asst-1791367275511": {
-      "created_at": "2026-10-07T10:01:15.511Z",
-      "updated_at": "2026-10-07T10:01:15.511Z",
-      "id": "msg-asst-1791367275511",
-      "conversation_id": "conv-1791367269583",
-      "user_id": "usr-demo-001",
-      "role": "assistant",
-      "content": "Main aapke phone contacts se Mummy (+919876500002) ko call connect kar rahi hoon! 📞",
-      "tool_calls_json": "[{\"id\":\"call_1059260\",\"name\":\"call_contact\",\"arguments\":{\"contactName\":\"Mummy\"}}]",
-      "citations_json": "[]",
-      "token_count": 18
-    },
-    "msg-usr-1791367275670": {
-      "created_at": "2026-10-07T10:01:15.670Z",
-      "updated_at": "2026-10-07T10:01:15.670Z",
-      "id": "msg-usr-1791367275670",
-      "conversation_id": "conv-1791367275619",
-      "user_id": "usr-demo-001",
-      "role": "user",
-      "content": "Papa ko message bhejo ki ghar aa gaya hu",
-      "token_count": 10
-    },
-    "msg-asst-1791367281346": {
-      "created_at": "2026-10-07T10:01:21.346Z",
-      "updated_at": "2026-10-07T10:01:21.346Z",
-      "id": "msg-asst-1791367281346",
-      "conversation_id": "conv-1791367275619",
-      "user_id": "usr-demo-001",
-      "role": "assistant",
-      "content": "Main aapke phone contacts se Papa (+919876500001) ko WHATSAPP message bhej rahi hoon:\n\n💬 \"Ghar aa gaya hu\"",
-      "tool_calls_json": "[{\"id\":\"call_725877\",\"name\":\"send_message\",\"arguments\":{\"contactName\":\"Papa\",\"message\":\"Ghar aa gaya hu\",\"platform\":\"whatsapp\"}}]",
-      "citations_json": "[]",
-      "token_count": 33
-    },
-    "msg-usr-1791368982902": {
-      "created_at": "2026-10-07T10:29:42.902Z",
-      "updated_at": "2026-10-07T10:29:42.902Z",
-      "id": "msg-usr-1791368982902",
-      "conversation_id": "conv-1791368982846",
-      "user_id": "usr-demo-001",
-      "role": "user",
-      "content": "who is the prime minister of india",
-      "token_count": 9
-    },
-    "msg-asst-1791368984541": {
-      "created_at": "2026-10-07T10:29:44.541Z",
-      "updated_at": "2026-10-07T10:29:44.541Z",
-      "id": "msg-asst-1791368984541",
-      "conversation_id": "conv-1791368982846",
-      "user_id": "usr-demo-001",
-      "role": "assistant",
-      "content": "Arre Pari! Bharat ke Prime Minister (Pradhan Mantri) Shri Narendra Modi ji hain! 🇮🇳✨ \n\nBatao dost, aur kya jaan-na hai tumhe? Main bilkul taiyar hoon help karne ke liye! 😊🌸",
-      "tool_calls_json": null,
-      "citations_json": "[]",
-      "token_count": 52
-    },
-    "msg-usr-1791368985215": {
-      "created_at": "2026-10-07T10:29:45.215Z",
-      "updated_at": "2026-10-07T10:29:45.215Z",
-      "id": "msg-usr-1791368985215",
-      "conversation_id": "conv-1791368985165",
-      "user_id": "usr-demo-001",
-      "role": "user",
-      "content": "who is the prime minister of india",
-      "token_count": 9
-    },
-    "msg-asst-1791368987388": {
-      "created_at": "2026-10-07T10:29:47.389Z",
-      "updated_at": "2026-10-07T10:29:47.389Z",
-      "id": "msg-asst-1791368987388",
-      "conversation_id": "conv-1791368985165",
-      "user_id": "usr-demo-001",
-      "role": "assistant",
-      "content": "Arrey Pari! Dono baar type karne ki zaroorat nahi hai bestie! 🤭 \n\nIndia ke Prime Minister **Narendra Modi** ji hain! ✨ \n\nWaise, batao aaj sprint goal ke hisaab se Prachi AI factory kit ka kaunsa phase tackle kar rahe ho? Kuch TypeScript code likhna hai kya? Main poori tarah ready hoon! 💻🚀",
-      "tool_calls_json": null,
-      "citations_json": null,
-      "token_count": 73
-    },
-    "msg-usr-1791368987549": {
-      "created_at": "2026-10-07T10:29:47.549Z",
-      "updated_at": "2026-10-07T10:29:47.549Z",
-      "id": "msg-usr-1791368987549",
-      "conversation_id": "conv-1791368987499",
-      "user_id": "usr-demo-001",
-      "role": "user",
-      "content": "kya haal hai prachi? aaj ka din kaisa hai?",
-      "token_count": 11
-    },
-    "msg-asst-1791368990230": {
-      "created_at": "2026-10-07T10:29:50.231Z",
-      "updated_at": "2026-10-07T10:29:50.231Z",
-      "id": "msg-asst-1791368990230",
-      "conversation_id": "conv-1791368987499",
-      "user_id": "usr-demo-001",
-      "role": "assistant",
-      "content": "Arre Pari! Main ekdum badiya hoon, dost! ✨ Aap batao, aapka din kaisa chal raha hai? \n\nAur haan, hamara Prachi AI factory kit ka 15 phases wala sprint goal bhi toh dimaag mein hai—usmein kya progress chal rahi hai? Batao, aaj kis cheez mein help karu? 😊🌸",
-      "tool_calls_json": null,
-      "citations_json": "[{\"sourceTitle\":\"security_guideline.md\",\"chunkText\":\"Prachi AI Security Architecture Guideline:\\n      All external integrations must be governed by strict confirmation gates.\\n      Tenant isolation is enforced on every SQL query via user_id filtering.\\n      Multimodal vision supports object detection and OCR text extraction.\",\"relevanceScore\":0.16,\"uri\":\"doc://doc-1791092966029-wq7y#chunk-0\"},{\"sourceTitle\":\"security_guideline.md\",\"chunkText\":\"Prachi AI Security Architecture Guideline:\\n      All external integrations must be governed by strict confirmation gates.\\n      Tenant isolation is enforced on every SQL query via user_id filtering.\\n      Multimodal vision supports object detection and OCR text extraction.\",\"relevanceScore\":0.16,\"uri\":\"doc://doc-1791092991325-isxo#chunk-0\"},{\"sourceTitle\":\"security_guideline.md\",\"chunkText\":\"Prachi AI Security Architecture Guideline:\\n      All external integrations must be governed by strict confirmation gates.\\n      Tenant isolation is enforced on every SQL query via user_id filtering.\\n      Multimodal vision supports object detection and OCR text extraction.\",\"relevanceScore\":0.16,\"uri\":\"doc://doc-1791093047908-jnxi#chunk-0\"}]",
-      "token_count": 78
-    },
-    "msg-usr-1791368990387": {
-      "created_at": "2026-10-07T10:29:50.387Z",
-      "updated_at": "2026-10-07T10:29:50.387Z",
-      "id": "msg-usr-1791368990387",
-      "conversation_id": "conv-1791368990338",
-      "user_id": "usr-demo-001",
-      "role": "user",
-      "content": "Papa ko call lagao",
-      "token_count": 5
-    },
-    "msg-asst-1791368992168": {
-      "created_at": "2026-10-07T10:29:52.168Z",
-      "updated_at": "2026-10-07T10:29:52.168Z",
-      "id": "msg-asst-1791368992168",
-      "conversation_id": "conv-1791368990338",
-      "user_id": "usr-demo-001",
-      "role": "assistant",
-      "content": "Main aapke phone contacts se Papa (+919876500001) ko call connect kar rahi hoon! 📞",
-      "tool_calls_json": "[{\"id\":\"call_1179164\",\"name\":\"call_contact\",\"arguments\":{\"contactName\":\"Papa\"}}]",
-      "citations_json": "[]",
-      "token_count": 17
-    },
     "msg-usr-1791369060910": {
       "created_at": "2026-10-07T10:31:00.910Z",
       "updated_at": "2026-10-07T10:31:00.910Z",
@@ -751,27 +511,27 @@
       "citations_json": "[]",
       "token_count": 217
     },
-    "msg-usr-1791386506735": {
-      "created_at": "2026-10-07T15:21:46.735Z",
-      "updated_at": "2026-10-07T15:21:46.735Z",
-      "id": "msg-usr-1791386506735",
-      "conversation_id": "conv-1791369060854",
-      "user_id": "usr-1791358826852-hyv9",
+    "msg-usr-1791989218013": {
+      "created_at": "2026-10-14T14:46:58.013Z",
+      "updated_at": "2026-10-14T14:46:58.013Z",
+      "id": "msg-usr-1791989218013",
+      "conversation_id": "conv-1791989218008",
+      "user_id": "usr-demo-001",
       "role": "user",
-      "content": "achahha tum bumhe ek funny story hi suna do",
-      "token_count": 11
+      "content": "Calculate 125 * 8 - 50",
+      "token_count": 6
     },
-    "msg-asst-1791386512588": {
-      "created_at": "2026-10-07T15:21:52.588Z",
-      "updated_at": "2026-10-07T15:21:52.588Z",
-      "id": "msg-asst-1791386512588",
-      "conversation_id": "conv-1791369060854",
-      "user_id": "usr-1791358826852-hyv9",
+    "msg-asst-1791989218049": {
+      "created_at": "2026-10-14T14:46:58.049Z",
+      "updated_at": "2026-10-14T14:46:58.049Z",
+      "id": "msg-asst-1791989218049",
+      "conversation_id": "conv-1791989218008",
+      "user_id": "usr-demo-001",
       "role": "assistant",
-      "content": "Arre waah hk! 🤭 Lo suno phir ek mast aur funny story — ekdum hasi chhoot jaayegi!\n\nEk baar ki baat hai, ek bhola-bhala sa aadmi tha — maan lo uska naam Ramesh tha. Ramesh bhai ko na, bina mehnat kiye ameer banne ka bahut shauk tha. Ek din usko ek 'Magic Genie' (jaadui chirag wala jinn) mil gaya. \n\nJinn ne kaha, *\"Ramesh bhai, main tumhe teen wishes (kaamnaayein) dunga, par dhyan rakhna — jo bhi tum maangoge, uska double tumhare padosi Sharma ji ko mil jaayega!\"*\n\nRamesh ne socha, *\"Achha! Matlab agar main 1 crore maangunga, toh Sharma ji ko 2 crore mil jaayenge? Yeh toh naainsaafi hai!\"* Uska dimaag ghoom gaya. Usne pehli do wishes mein aisi-aisi ajeeb cheezein maangi jo Sharma ji ko na mil sakein ya unka nuksaan ho jaaye.\n\nLast mein aayi teesri wish. Jinn ne poocha, *\"Batao Ramesh, aakhri wish kya hai? Jo maangoge, Sharma ji ko double milega.\"*\n\nRamesh ne ek gheri saans li, bohot socha, uska khoon khol raha tha ki Sharma ji usse ameer kaise ban gaye. Aakhirkar, usne gusse mein aakar Jinn se kaha:\n**\"Bhai, meri ek aankh phod de!\"** 🤣🤣🤣\n\nBatao kaisi lagi story? Maza aaya ya nahi? 🤭🌸 Aur batao, aaj din kaisa beet raha hai tumhara?",
-      "tool_calls_json": null,
-      "citations_json": "[]",
-      "token_count": 379
+      "content": "**125 * 8 - 50 = 950**",
+      "tool_calls_json": "[{\"id\":\"call-calc-1791989218027\",\"name\":\"calculator\",\"arguments\":{\"expression\":\"125 * 8 - 50\"}}]",
+      "citations_json": null,
+      "token_count": 6
     }
   },
   "documents": {
@@ -882,6 +642,66 @@
       "mime_type": "text/markdown",
       "status": "indexed",
       "extracted_text": "\n      Prachi AI Security Architecture Guideline:\n      All external integrations must be governed by strict confirmation gates.\n      Tenant isolation is enforced on every SQL query via user_id filtering.\n      Multimodal vision supports object detection and OCR text extraction.\n    "
+    },
+    "doc-1791977790934-jicl": {
+      "created_at": "2026-10-14T11:36:30.934Z",
+      "updated_at": "2026-10-14T11:36:30.934Z",
+      "id": "doc-1791977790934-jicl",
+      "user_id": "usr-demo-001",
+      "filename": "security_guideline.md",
+      "file_path": "/tmp/security_guideline.md",
+      "file_size": 285,
+      "mime_type": "text/markdown",
+      "status": "indexed",
+      "extracted_text": "\n      Prachi AI Security Architecture Guideline:\n      All external integrations must be governed by strict confirmation gates.\n      Tenant isolation is enforced on every SQL query via user_id filtering.\n      Multimodal vision supports object detection and OCR text extraction.\n    "
+    },
+    "doc-1791977835890-01p9": {
+      "created_at": "2026-10-14T11:37:15.890Z",
+      "updated_at": "2026-10-14T11:37:15.890Z",
+      "id": "doc-1791977835890-01p9",
+      "user_id": "usr-demo-001",
+      "filename": "security_guideline.md",
+      "file_path": "/tmp/security_guideline.md",
+      "file_size": 285,
+      "mime_type": "text/markdown",
+      "status": "indexed",
+      "extracted_text": "\n      Prachi AI Security Architecture Guideline:\n      All external integrations must be governed by strict confirmation gates.\n      Tenant isolation is enforced on every SQL query via user_id filtering.\n      Multimodal vision supports object detection and OCR text extraction.\n    "
+    },
+    "doc-1791983203967-em8e": {
+      "created_at": "2026-10-14T13:06:43.967Z",
+      "updated_at": "2026-10-14T13:06:43.967Z",
+      "id": "doc-1791983203967-em8e",
+      "user_id": "usr-demo-001",
+      "filename": "security_guideline.md",
+      "file_path": "/tmp/security_guideline.md",
+      "file_size": 285,
+      "mime_type": "text/markdown",
+      "status": "indexed",
+      "extracted_text": "\n      Prachi AI Security Architecture Guideline:\n      All external integrations must be governed by strict confirmation gates.\n      Tenant isolation is enforced on every SQL query via user_id filtering.\n      Multimodal vision supports object detection and OCR text extraction.\n    "
+    },
+    "doc-1791983904612-huld": {
+      "created_at": "2026-10-14T13:18:24.612Z",
+      "updated_at": "2026-10-14T13:18:24.612Z",
+      "id": "doc-1791983904612-huld",
+      "user_id": "usr-demo-001",
+      "filename": "security_guideline.md",
+      "file_path": "/tmp/security_guideline.md",
+      "file_size": 285,
+      "mime_type": "text/markdown",
+      "status": "indexed",
+      "extracted_text": "\n      Prachi AI Security Architecture Guideline:\n      All external integrations must be governed by strict confirmation gates.\n      Tenant isolation is enforced on every SQL query via user_id filtering.\n      Multimodal vision supports object detection and OCR text extraction.\n    "
+    },
+    "doc-1791989217993-26x8": {
+      "created_at": "2026-10-14T14:46:57.993Z",
+      "updated_at": "2026-10-14T14:46:57.993Z",
+      "id": "doc-1791989217993-26x8",
+      "user_id": "usr-demo-001",
+      "filename": "security_guideline.md",
+      "file_path": "/tmp/security_guideline.md",
+      "file_size": 285,
+      "mime_type": "text/markdown",
+      "status": "indexed",
+      "extracted_text": "\n      Prachi AI Security Architecture Guideline:\n      All external integrations must be governed by strict confirmation gates.\n      Tenant isolation is enforced on every SQL query via user_id filtering.\n      Multimodal vision supports object detection and OCR text extraction.\n    "
     }
   },
   "document_chunks": {
@@ -962,6 +782,51 @@
       "updated_at": "2026-10-07T07:27:39.576Z",
       "id": "chk-doc-1791358059531-dol0-0",
       "document_id": "doc-1791358059531-dol0",
+      "user_id": "usr-demo-001",
+      "chunk_index": 0,
+      "text": "Prachi AI Security Architecture Guideline:\n      All external integrations must be governed by strict confirmation gates.\n      Tenant isolation is enforced on every SQL query via user_id filtering.\n      Multimodal vision supports object detection and OCR text extraction."
+    },
+    "chk-doc-1791977790934-jicl-0": {
+      "created_at": "2026-10-14T11:36:30.937Z",
+      "updated_at": "2026-10-14T11:36:30.937Z",
+      "id": "chk-doc-1791977790934-jicl-0",
+      "document_id": "doc-1791977790934-jicl",
+      "user_id": "usr-demo-001",
+      "chunk_index": 0,
+      "text": "Prachi AI Security Architecture Guideline:\n      All external integrations must be governed by strict confirmation gates.\n      Tenant isolation is enforced on every SQL query via user_id filtering.\n      Multimodal vision supports object detection and OCR text extraction."
+    },
+    "chk-doc-1791977835890-01p9-0": {
+      "created_at": "2026-10-14T11:37:15.894Z",
+      "updated_at": "2026-10-14T11:37:15.894Z",
+      "id": "chk-doc-1791977835890-01p9-0",
+      "document_id": "doc-1791977835890-01p9",
+      "user_id": "usr-demo-001",
+      "chunk_index": 0,
+      "text": "Prachi AI Security Architecture Guideline:\n      All external integrations must be governed by strict confirmation gates.\n      Tenant isolation is enforced on every SQL query via user_id filtering.\n      Multimodal vision supports object detection and OCR text extraction."
+    },
+    "chk-doc-1791983203967-em8e-0": {
+      "created_at": "2026-10-14T13:06:43.971Z",
+      "updated_at": "2026-10-14T13:06:43.971Z",
+      "id": "chk-doc-1791983203967-em8e-0",
+      "document_id": "doc-1791983203967-em8e",
+      "user_id": "usr-demo-001",
+      "chunk_index": 0,
+      "text": "Prachi AI Security Architecture Guideline:\n      All external integrations must be governed by strict confirmation gates.\n      Tenant isolation is enforced on every SQL query via user_id filtering.\n      Multimodal vision supports object detection and OCR text extraction."
+    },
+    "chk-doc-1791983904612-huld-0": {
+      "created_at": "2026-10-14T13:18:24.616Z",
+      "updated_at": "2026-10-14T13:18:24.616Z",
+      "id": "chk-doc-1791983904612-huld-0",
+      "document_id": "doc-1791983904612-huld",
+      "user_id": "usr-demo-001",
+      "chunk_index": 0,
+      "text": "Prachi AI Security Architecture Guideline:\n      All external integrations must be governed by strict confirmation gates.\n      Tenant isolation is enforced on every SQL query via user_id filtering.\n      Multimodal vision supports object detection and OCR text extraction."
+    },
+    "chk-doc-1791989217993-26x8-0": {
+      "created_at": "2026-10-14T14:46:58.002Z",
+      "updated_at": "2026-10-14T14:46:58.002Z",
+      "id": "chk-doc-1791989217993-26x8-0",
+      "document_id": "doc-1791989217993-26x8",
       "user_id": "usr-demo-001",
       "chunk_index": 0,
       "text": "Prachi AI Security Architecture Guideline:\n      All external integrations must be governed by strict confirmation gates.\n      Tenant isolation is enforced on every SQL query via user_id filtering.\n      Multimodal vision supports object detection and OCR text extraction."
@@ -2165,6 +2030,28 @@
       "version": "v1.4.2",
       "parameters_json": "{\"slope\":43.78021978021978,\"intercept\":1208.5714285714287,\"horizon\":5,\"datasetSize\":14}",
       "metrics_json": "{\"mse\":387.7625588697011,\"rmse\":19.691687557690454,\"mae\":17.686813186813147,\"r2\":0.9877050130973936,\"standardError\":19.691687557690454}"
+    },
+    "mdl-1791977952038": {
+      "created_at": "2026-10-14T11:39:12.038Z",
+      "updated_at": "2026-10-14T11:39:12.038Z",
+      "id": "mdl-1791977952038",
+      "user_id": "usr-demo-001",
+      "model_name": "REVENUE Predictor",
+      "model_type": "linear_trend",
+      "version": "v1.4.2",
+      "parameters_json": "{\"slope\":5.174825174825175,\"intercept\":42.205128205128204,\"horizon\":4,\"datasetSize\":12}",
+      "metrics_json": "{\"mse\":10.441336441336425,\"rmse\":3.231305686767568,\"mae\":2.486790986790986,\"r2\":0.9683169157208268,\"standardError\":3.231305686767568}"
+    },
+    "mdl-1791977952146": {
+      "created_at": "2026-10-14T11:39:12.146Z",
+      "updated_at": "2026-10-14T11:39:12.146Z",
+      "id": "mdl-1791977952146",
+      "user_id": "usr-demo-001",
+      "model_name": "USERS Predictor",
+      "model_type": "polynomial_regression",
+      "version": "v1.4.2",
+      "parameters_json": "{\"slope\":43.78021978021978,\"intercept\":1208.5714285714287,\"horizon\":5,\"datasetSize\":14}",
+      "metrics_json": "{\"mse\":387.7625588697011,\"rmse\":19.691687557690454,\"mae\":17.686813186813147,\"r2\":0.9877050130973936,\"standardError\":19.691687557690454}"
     }
   },
   "forecast_predictions": {
@@ -2702,6 +2589,28 @@
       "id": "pred-1791353455842",
       "user_id": "usr-demo-001",
       "model_id": "mdl-1791353455778",
+      "target_metric": "USERS",
+      "history_json": "[{\"date\":\"2026-08-19\",\"value\":1200},{\"date\":\"2026-08-20\",\"value\":1270},{\"date\":\"2026-08-21\",\"value\":1317},{\"date\":\"2026-08-22\",\"value\":1339},{\"date\":\"2026-08-23\",\"value\":1357},{\"date\":\"2026-08-24\",\"value\":1396},{\"date\":\"2026-08-25\",\"value\":1462},{\"date\":\"2026-08-26\",\"value\":1535},{\"date\":\"2026-08-27\",\"value\":1590},{\"date\":\"2026-08-28\",\"value\":1617},{\"date\":\"2026-08-29\",\"value\":1634},{\"date\":\"2026-08-30\",\"value\":1665},{\"date\":\"2026-08-31\",\"value\":1724},{\"date\":\"2026-09-01\",\"value\":1798}]",
+      "forecast_json": "[{\"date\":\"2026-09-02\",\"forecast\":1827.04,\"lowerBound\":1782.66,\"upperBound\":1871.43,\"uncertaintyScore\":0.23},{\"date\":\"2026-09-03\",\"forecast\":1873.04,\"lowerBound\":1822.87,\"upperBound\":1923.22,\"uncertaintyScore\":0.31},{\"date\":\"2026-09-04\",\"forecast\":1919.32,\"lowerBound\":1863.36,\"upperBound\":1975.29,\"uncertaintyScore\":0.39},{\"date\":\"2026-09-05\",\"forecast\":1965.88,\"lowerBound\":1904.12,\"upperBound\":2027.63,\"uncertaintyScore\":0.47},{\"date\":\"2026-09-06\",\"forecast\":2012.71,\"lowerBound\":1945.17,\"upperBound\":2080.25,\"uncertaintyScore\":0.55}]",
+      "uncertainty_json": "{\"confidenceLevel\":\"95%\",\"r2Score\":0.9877050130973936}"
+    },
+    "pred-1791977952043": {
+      "created_at": "2026-10-14T11:39:12.043Z",
+      "updated_at": "2026-10-14T11:39:12.043Z",
+      "id": "pred-1791977952043",
+      "user_id": "usr-demo-001",
+      "model_id": "mdl-1791977952038",
+      "target_metric": "REVENUE",
+      "history_json": "[{\"date\":\"2025-10\",\"value\":45},{\"date\":\"2025-11\",\"value\":52},{\"date\":\"2025-12\",\"value\":50},{\"date\":\"2026-01\",\"value\":58},{\"date\":\"2026-02\",\"value\":64},{\"date\":\"2026-03\",\"value\":61},{\"date\":\"2026-04\",\"value\":70},{\"date\":\"2026-05\",\"value\":78},{\"date\":\"2026-06\",\"value\":82},{\"date\":\"2026-07\",\"value\":89},{\"date\":\"2026-08\",\"value\":95},{\"date\":\"2026-09\",\"value\":104}]",
+      "forecast_json": "[{\"date\":\"2026-10\",\"forecast\":104.3,\"lowerBound\":97.02,\"upperBound\":111.59,\"uncertaintyScore\":0.23},{\"date\":\"2026-11\",\"forecast\":109.48,\"lowerBound\":101.24,\"upperBound\":117.71,\"uncertaintyScore\":0.31},{\"date\":\"2026-12\",\"forecast\":114.65,\"lowerBound\":105.47,\"upperBound\":123.84,\"uncertaintyScore\":0.39},{\"date\":\"2027-01\",\"forecast\":119.83,\"lowerBound\":109.69,\"upperBound\":129.96,\"uncertaintyScore\":0.47}]",
+      "uncertainty_json": "{\"confidenceLevel\":\"95%\",\"r2Score\":0.9683169157208268}"
+    },
+    "pred-1791977952150": {
+      "created_at": "2026-10-14T11:39:12.150Z",
+      "updated_at": "2026-10-14T11:39:12.150Z",
+      "id": "pred-1791977952150",
+      "user_id": "usr-demo-001",
+      "model_id": "mdl-1791977952146",
       "target_metric": "USERS",
       "history_json": "[{\"date\":\"2026-08-19\",\"value\":1200},{\"date\":\"2026-08-20\",\"value\":1270},{\"date\":\"2026-08-21\",\"value\":1317},{\"date\":\"2026-08-22\",\"value\":1339},{\"date\":\"2026-08-23\",\"value\":1357},{\"date\":\"2026-08-24\",\"value\":1396},{\"date\":\"2026-08-25\",\"value\":1462},{\"date\":\"2026-08-26\",\"value\":1535},{\"date\":\"2026-08-27\",\"value\":1590},{\"date\":\"2026-08-28\",\"value\":1617},{\"date\":\"2026-08-29\",\"value\":1634},{\"date\":\"2026-08-30\",\"value\":1665},{\"date\":\"2026-08-31\",\"value\":1724},{\"date\":\"2026-09-01\",\"value\":1798}]",
       "forecast_json": "[{\"date\":\"2026-09-02\",\"forecast\":1827.04,\"lowerBound\":1782.66,\"upperBound\":1871.43,\"uncertaintyScore\":0.23},{\"date\":\"2026-09-03\",\"forecast\":1873.04,\"lowerBound\":1822.87,\"upperBound\":1923.22,\"uncertaintyScore\":0.31},{\"date\":\"2026-09-04\",\"forecast\":1919.32,\"lowerBound\":1863.36,\"upperBound\":1975.29,\"uncertaintyScore\":0.39},{\"date\":\"2026-09-05\",\"forecast\":1965.88,\"lowerBound\":1904.12,\"upperBound\":2027.63,\"uncertaintyScore\":0.47},{\"date\":\"2026-09-06\",\"forecast\":2012.71,\"lowerBound\":1945.17,\"upperBound\":2080.25,\"uncertaintyScore\":0.55}]",
@@ -9562,10 +9471,76 @@
       "ip_address": "127.0.0.1",
       "status": "success"
     },
-    "aud-1791386266729-uitra": {
-      "created_at": "2026-10-07T15:17:46.729Z",
-      "updated_at": "2026-10-07T15:17:46.729Z",
-      "id": "aud-1791386266729-uitra",
+    "aud-1791977790972-3fjna": {
+      "created_at": "2026-10-14T11:36:30.972Z",
+      "updated_at": "2026-10-14T11:36:30.972Z",
+      "id": "aud-1791977790972-3fjna",
+      "user_id": "usr-demo-001",
+      "action": "TOOL_EXECUTE",
+      "resource": "calculator",
+      "details_json": "{\"args\":{\"expression\":\"125 * 8 - 50\"},\"result\":{\"expression\":\"125 * 8 - 50\",\"result\":950,\"formatted\":\"125 * 8 - 50 = 950\"}}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977790979-kwnyz": {
+      "created_at": "2026-10-14T11:36:30.979Z",
+      "updated_at": "2026-10-14T11:36:30.979Z",
+      "id": "aud-1791977790979-kwnyz",
+      "user_id": "usr-demo-001",
+      "action": "CHAT_COMPLETION",
+      "resource": "conv-1791977790944",
+      "details_json": "{\"provider\":\"local_heuristic\",\"modelUsed\":\"prachi-cognitive-brain-v2\",\"toolCallsCount\":1,\"tokensTotal\":\"[REDACTED]\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977791478-oskma": {
+      "created_at": "2026-10-14T11:36:31.479Z",
+      "updated_at": "2026-10-14T11:36:31.479Z",
+      "id": "aud-1791977791478-oskma",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977791489-b1cy9": {
+      "created_at": "2026-10-14T11:36:31.489Z",
+      "updated_at": "2026-10-14T11:36:31.489Z",
+      "id": "aud-1791977791489-b1cy9",
+      "user_id": "usr-demo-001",
+      "action": "LOGIN_FAILED_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "warning"
+    },
+    "aud-1791977791499-unde2": {
+      "created_at": "2026-10-14T11:36:31.499Z",
+      "updated_at": "2026-10-14T11:36:31.499Z",
+      "id": "aud-1791977791499-unde2",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977791504-rcon0": {
+      "created_at": "2026-10-14T11:36:31.505Z",
+      "updated_at": "2026-10-14T11:36:31.505Z",
+      "id": "aud-1791977791504-rcon0",
+      "user_id": "usr-demo-001",
+      "action": "LOGIN_FAILED_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "warning"
+    },
+    "aud-1791977791556-ru4qt": {
+      "created_at": "2026-10-14T11:36:31.556Z",
+      "updated_at": "2026-10-14T11:36:31.556Z",
+      "id": "aud-1791977791556-ru4qt",
       "user_id": "usr-demo-001",
       "action": "USER_LOGIN",
       "resource": "auth",
@@ -9573,25 +9548,663 @@
       "ip_address": "127.0.0.1",
       "status": "success"
     },
-    "aud-1791386433275-x71ta": {
-      "created_at": "2026-10-07T15:20:33.275Z",
-      "updated_at": "2026-10-07T15:20:33.275Z",
-      "id": "aud-1791386433275-x71ta",
-      "user_id": "usr-1791358826852-hyv9",
+    "aud-1791977791596-bi3dy": {
+      "created_at": "2026-10-14T11:36:31.596Z",
+      "updated_at": "2026-10-14T11:36:31.596Z",
+      "id": "aud-1791977791596-bi3dy",
+      "user_id": "usr-demo-001",
       "action": "USER_LOGIN",
       "resource": "auth",
-      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"hellowtf189@gmail.com\"}",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"demo@prachi.ai\"}",
       "ip_address": "127.0.0.1",
       "status": "success"
     },
-    "aud-1791386513153-igkl5": {
-      "created_at": "2026-10-07T15:21:53.153Z",
-      "updated_at": "2026-10-07T15:21:53.153Z",
-      "id": "aud-1791386513153-igkl5",
-      "user_id": "usr-1791358826852-hyv9",
+    "aud-1791977835927-vum99": {
+      "created_at": "2026-10-14T11:37:15.927Z",
+      "updated_at": "2026-10-14T11:37:15.927Z",
+      "id": "aud-1791977835927-vum99",
+      "user_id": "usr-demo-001",
+      "action": "TOOL_EXECUTE",
+      "resource": "calculator",
+      "details_json": "{\"args\":{\"expression\":\"125 * 8 - 50\"},\"result\":{\"expression\":\"125 * 8 - 50\",\"result\":950,\"formatted\":\"125 * 8 - 50 = 950\"}}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977835933-rhwwt": {
+      "created_at": "2026-10-14T11:37:15.934Z",
+      "updated_at": "2026-10-14T11:37:15.934Z",
+      "id": "aud-1791977835933-rhwwt",
+      "user_id": "usr-demo-001",
       "action": "CHAT_COMPLETION",
-      "resource": "conv-1791369060854",
-      "details_json": "{\"provider\":\"gemini\",\"modelUsed\":\"gemini-flash-lite-latest\",\"toolCallsCount\":0,\"tokensTotal\":\"[REDACTED]\"}",
+      "resource": "conv-1791977835900",
+      "details_json": "{\"provider\":\"local_heuristic\",\"modelUsed\":\"prachi-cognitive-brain-v2\",\"toolCallsCount\":1,\"tokensTotal\":\"[REDACTED]\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977836241-z77vt": {
+      "created_at": "2026-10-14T11:37:16.241Z",
+      "updated_at": "2026-10-14T11:37:16.241Z",
+      "id": "aud-1791977836241-z77vt",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977836249-f0274": {
+      "created_at": "2026-10-14T11:37:16.249Z",
+      "updated_at": "2026-10-14T11:37:16.249Z",
+      "id": "aud-1791977836249-f0274",
+      "user_id": "usr-demo-001",
+      "action": "LOGIN_FAILED_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "warning"
+    },
+    "aud-1791977836261-apixp": {
+      "created_at": "2026-10-14T11:37:16.261Z",
+      "updated_at": "2026-10-14T11:37:16.261Z",
+      "id": "aud-1791977836261-apixp",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977836269-qnc70": {
+      "created_at": "2026-10-14T11:37:16.269Z",
+      "updated_at": "2026-10-14T11:37:16.269Z",
+      "id": "aud-1791977836269-qnc70",
+      "user_id": "usr-demo-001",
+      "action": "LOGIN_FAILED_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "warning"
+    },
+    "aud-1791977836358-sp81j": {
+      "created_at": "2026-10-14T11:37:16.358Z",
+      "updated_at": "2026-10-14T11:37:16.358Z",
+      "id": "aud-1791977836358-sp81j",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977836397-lj5cf": {
+      "created_at": "2026-10-14T11:37:16.397Z",
+      "updated_at": "2026-10-14T11:37:16.397Z",
+      "id": "aud-1791977836397-lj5cf",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977944321-5wdge": {
+      "created_at": "2026-10-14T11:39:04.321Z",
+      "updated_at": "2026-10-14T11:39:04.321Z",
+      "id": "aud-1791977944321-5wdge",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977951992-xgmsn": {
+      "created_at": "2026-10-14T11:39:11.992Z",
+      "updated_at": "2026-10-14T11:39:11.992Z",
+      "id": "aud-1791977951992-xgmsn",
+      "user_id": "usr-demo-001",
+      "action": "TOOL_EXECUTE",
+      "resource": "calculator",
+      "details_json": "{\"args\":{\"expression\":\"25 * 40\"},\"result\":{\"expression\":\"25 * 40\",\"result\":1000,\"formatted\":\"25 * 40 = 1000\"}}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977952005-9kmvv": {
+      "created_at": "2026-10-14T11:39:12.006Z",
+      "updated_at": "2026-10-14T11:39:12.006Z",
+      "id": "aud-1791977952005-9kmvv",
+      "user_id": "usr-demo-001",
+      "action": "CHAT_COMPLETION",
+      "resource": "conv-1791977944335",
+      "details_json": "{\"provider\":\"gemini\",\"modelUsed\":\"gemini-flash-lite-latest\",\"toolCallsCount\":1,\"tokensTotal\":\"[REDACTED]\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977952020-g03u1": {
+      "created_at": "2026-10-14T11:39:12.021Z",
+      "updated_at": "2026-10-14T11:39:12.021Z",
+      "id": "aud-1791977952020-g03u1",
+      "user_id": "usr-demo-001",
+      "action": "TOOL_EXECUTE",
+      "resource": "email_sender",
+      "details_json": "{\"args\":{},\"result\":{\"sent\":true,\"dispatchedAt\":\"2026-10-14T11:39:12.020Z\",\"status\":\"Dispatched via verified outbound relay.\"}}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977952030-zhf59": {
+      "created_at": "2026-10-14T11:39:12.030Z",
+      "updated_at": "2026-10-14T11:39:12.030Z",
+      "id": "aud-1791977952030-zhf59",
+      "user_id": "usr-demo-001",
+      "action": "VISION_ANALYZE",
+      "resource": "img-1791977952029",
+      "details_json": "{\"filename\":\"invoice_2026.png\",\"detectedObjectsCount\":3}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977952047-71bat": {
+      "created_at": "2026-10-14T11:39:12.048Z",
+      "updated_at": "2026-10-14T11:39:12.048Z",
+      "id": "aud-1791977952047-71bat",
+      "user_id": "usr-demo-001",
+      "action": "FORECAST_RUN",
+      "resource": "mdl-1791977952038",
+      "details_json": "{\"modelType\":\"linear_trend\",\"r2\":0.968}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977952099-dxja8": {
+      "created_at": "2026-10-14T11:39:12.099Z",
+      "updated_at": "2026-10-14T11:39:12.099Z",
+      "id": "aud-1791977952099-dxja8",
+      "user_id": "usr-admin-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"admin@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977952132-arjaw": {
+      "created_at": "2026-10-14T11:39:12.132Z",
+      "updated_at": "2026-10-14T11:39:12.132Z",
+      "id": "aud-1791977952132-arjaw",
+      "user_id": "usr-demo-001",
+      "action": "TOOL_EXECUTE",
+      "resource": "currency_converter",
+      "details_json": "{\"args\":{},\"result\":{\"amount\":1,\"from\":\"USD\",\"to\":\"INR\",\"rate\":83.95,\"convertedAmount\":83.95,\"formatted\":\"1 USD = 83.95 INR\",\"timestamp\":\"2026-10-14T11:39:12.132Z\"}}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977952138-beiu6": {
+      "created_at": "2026-10-14T11:39:12.138Z",
+      "updated_at": "2026-10-14T11:39:12.138Z",
+      "id": "aud-1791977952138-beiu6",
+      "user_id": "usr-demo-001",
+      "action": "TOOL_EXECUTE",
+      "resource": "stock_quote_lookup",
+      "details_json": "{\"args\":{},\"result\":{\"symbol\":\"AAPL\",\"name\":\"Apple Inc.\",\"price\":228.45,\"change\":\"+1.85 (+0.82%)\",\"marketCap\":\"$3.45T\",\"pe\":34.2,\"range52\":\"$164.08 - $237.23\",\"timestamp\":\"2026-10-14T11:39:12.138Z\"}}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791977952155-av7lb": {
+      "created_at": "2026-10-14T11:39:12.155Z",
+      "updated_at": "2026-10-14T11:39:12.155Z",
+      "id": "aud-1791977952155-av7lb",
+      "user_id": "usr-demo-001",
+      "action": "FORECAST_RUN",
+      "resource": "mdl-1791977952146",
+      "details_json": "{\"modelType\":\"polynomial_regression\",\"r2\":0.988}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791980961916-us7cn": {
+      "created_at": "2026-10-14T12:29:21.916Z",
+      "updated_at": "2026-10-14T12:29:21.916Z",
+      "id": "aud-1791980961916-us7cn",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791980968668-za9io": {
+      "created_at": "2026-10-14T12:29:28.668Z",
+      "updated_at": "2026-10-14T12:29:28.668Z",
+      "id": "aud-1791980968668-za9io",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791980975226-8w160": {
+      "created_at": "2026-10-14T12:29:35.226Z",
+      "updated_at": "2026-10-14T12:29:35.226Z",
+      "id": "aud-1791980975226-8w160",
+      "user_id": "usr-admin-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"admin@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791981306794-ojo9x": {
+      "created_at": "2026-10-14T12:35:06.794Z",
+      "updated_at": "2026-10-14T12:35:06.794Z",
+      "id": "aud-1791981306794-ojo9x",
+      "user_id": "usr-admin-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"admin@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791981563830-8r41o": {
+      "created_at": "2026-10-14T12:39:23.830Z",
+      "updated_at": "2026-10-14T12:39:23.831Z",
+      "id": "aud-1791981563830-8r41o",
+      "user_id": "usr-admin-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"admin@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791982315158-6d6y3": {
+      "created_at": "2026-10-14T12:51:55.158Z",
+      "updated_at": "2026-10-14T12:51:55.158Z",
+      "id": "aud-1791982315158-6d6y3",
+      "user_id": "usr-1791982315122-pjkp",
+      "action": "USER_REGISTER",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"testuser_1791982315062@prachi.ai\",\"hasPhone\":false}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791982323055-rkah4": {
+      "created_at": "2026-10-14T12:52:03.055Z",
+      "updated_at": "2026-10-14T12:52:03.055Z",
+      "id": "aud-1791982323055-rkah4",
+      "user_id": "usr-1791982315122-pjkp",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"testuser_1791982315062@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791982708068-iwl4o": {
+      "created_at": "2026-10-14T12:58:28.069Z",
+      "updated_at": "2026-10-14T12:58:28.069Z",
+      "id": "aud-1791982708068-iwl4o",
+      "user_id": "usr-1791982708035-fyy4",
+      "action": "USER_REGISTER",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"himanshu_dev_5507\",\"hasPhone\":true}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791982708106-hklvl": {
+      "created_at": "2026-10-14T12:58:28.106Z",
+      "updated_at": "2026-10-14T12:58:28.106Z",
+      "id": "aud-1791982708106-hklvl",
+      "user_id": "usr-1791982708035-fyy4",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"himanshu_dev_5507\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791983204012-30jav": {
+      "created_at": "2026-10-14T13:06:44.012Z",
+      "updated_at": "2026-10-14T13:06:44.012Z",
+      "id": "aud-1791983204012-30jav",
+      "user_id": "usr-demo-001",
+      "action": "TOOL_EXECUTE",
+      "resource": "calculator",
+      "details_json": "{\"args\":{\"expression\":\"125 * 8 - 50\"},\"result\":{\"expression\":\"125 * 8 - 50\",\"result\":950,\"formatted\":\"125 * 8 - 50 = 950\"}}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791983204021-m4nma": {
+      "created_at": "2026-10-14T13:06:44.021Z",
+      "updated_at": "2026-10-14T13:06:44.021Z",
+      "id": "aud-1791983204021-m4nma",
+      "user_id": "usr-demo-001",
+      "action": "CHAT_COMPLETION",
+      "resource": "conv-1791983203978",
+      "details_json": "{\"provider\":\"local_heuristic\",\"modelUsed\":\"prachi-cognitive-brain-v2\",\"toolCallsCount\":1,\"tokensTotal\":\"[REDACTED]\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791983204220-7j3dn": {
+      "created_at": "2026-10-14T13:06:44.220Z",
+      "updated_at": "2026-10-14T13:06:44.220Z",
+      "id": "aud-1791983204220-7j3dn",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791983204227-xqn1c": {
+      "created_at": "2026-10-14T13:06:44.228Z",
+      "updated_at": "2026-10-14T13:06:44.228Z",
+      "id": "aud-1791983204227-xqn1c",
+      "user_id": "usr-demo-001",
+      "action": "LOGIN_FAILED_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "warning"
+    },
+    "aud-1791983204237-9rkv1": {
+      "created_at": "2026-10-14T13:06:44.237Z",
+      "updated_at": "2026-10-14T13:06:44.237Z",
+      "id": "aud-1791983204237-9rkv1",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791983204243-q9y2j": {
+      "created_at": "2026-10-14T13:06:44.243Z",
+      "updated_at": "2026-10-14T13:06:44.243Z",
+      "id": "aud-1791983204243-q9y2j",
+      "user_id": "usr-demo-001",
+      "action": "LOGIN_FAILED_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "warning"
+    },
+    "aud-1791983204291-o8bpk": {
+      "created_at": "2026-10-14T13:06:44.291Z",
+      "updated_at": "2026-10-14T13:06:44.291Z",
+      "id": "aud-1791983204291-o8bpk",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791983204325-tb8w8": {
+      "created_at": "2026-10-14T13:06:44.325Z",
+      "updated_at": "2026-10-14T13:06:44.325Z",
+      "id": "aud-1791983204325-tb8w8",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791983904654-hh0kw": {
+      "created_at": "2026-10-14T13:18:24.654Z",
+      "updated_at": "2026-10-14T13:18:24.654Z",
+      "id": "aud-1791983904654-hh0kw",
+      "user_id": "usr-demo-001",
+      "action": "TOOL_EXECUTE",
+      "resource": "calculator",
+      "details_json": "{\"args\":{\"expression\":\"125 * 8 - 50\"},\"result\":{\"expression\":\"125 * 8 - 50\",\"result\":950,\"formatted\":\"125 * 8 - 50 = 950\"}}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791983904662-nui5u": {
+      "created_at": "2026-10-14T13:18:24.662Z",
+      "updated_at": "2026-10-14T13:18:24.662Z",
+      "id": "aud-1791983904662-nui5u",
+      "user_id": "usr-demo-001",
+      "action": "CHAT_COMPLETION",
+      "resource": "conv-1791983904622",
+      "details_json": "{\"provider\":\"local_heuristic\",\"modelUsed\":\"prachi-cognitive-brain-v2\",\"toolCallsCount\":1,\"tokensTotal\":\"[REDACTED]\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791983904872-95ogq": {
+      "created_at": "2026-10-14T13:18:24.872Z",
+      "updated_at": "2026-10-14T13:18:24.872Z",
+      "id": "aud-1791983904872-95ogq",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791983904881-3z6cj": {
+      "created_at": "2026-10-14T13:18:24.881Z",
+      "updated_at": "2026-10-14T13:18:24.881Z",
+      "id": "aud-1791983904881-3z6cj",
+      "user_id": "usr-demo-001",
+      "action": "LOGIN_FAILED_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "warning"
+    },
+    "aud-1791983904893-vp7ma": {
+      "created_at": "2026-10-14T13:18:24.893Z",
+      "updated_at": "2026-10-14T13:18:24.893Z",
+      "id": "aud-1791983904893-vp7ma",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791983904901-ctk8e": {
+      "created_at": "2026-10-14T13:18:24.901Z",
+      "updated_at": "2026-10-14T13:18:24.901Z",
+      "id": "aud-1791983904901-ctk8e",
+      "user_id": "usr-demo-001",
+      "action": "LOGIN_FAILED_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "warning"
+    },
+    "aud-1791983904957-ev3qj": {
+      "created_at": "2026-10-14T13:18:24.957Z",
+      "updated_at": "2026-10-14T13:18:24.957Z",
+      "id": "aud-1791983904957-ev3qj",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791983904992-a4ybr": {
+      "created_at": "2026-10-14T13:18:24.992Z",
+      "updated_at": "2026-10-14T13:18:24.992Z",
+      "id": "aud-1791983904992-a4ybr",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791984555976-jpy77": {
+      "created_at": "2026-10-14T13:29:15.976Z",
+      "updated_at": "2026-10-14T13:29:15.976Z",
+      "id": "aud-1791984555976-jpy77",
+      "user_id": "usr-1791984555937-bhz6",
+      "action": "USER_REGISTER",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"himanshu_test\",\"hasPhone\":true}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791984560871-5b9xd": {
+      "created_at": "2026-10-14T13:29:20.871Z",
+      "updated_at": "2026-10-14T13:29:20.871Z",
+      "id": "aud-1791984560871-5b9xd",
+      "user_id": "usr-1791984555937-bhz6",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"himanshu_test\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791985014901-azas0": {
+      "created_at": "2026-10-14T13:36:54.902Z",
+      "updated_at": "2026-10-14T13:36:54.902Z",
+      "id": "aud-1791985014901-azas0",
+      "user_id": "usr-1791984555937-bhz6",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"test_user_stable\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791985024533-9vlzu": {
+      "created_at": "2026-10-14T13:37:04.533Z",
+      "updated_at": "2026-10-14T13:37:04.533Z",
+      "id": "aud-1791985024533-9vlzu",
+      "user_id": "usr-1791984555937-bhz6",
+      "action": "LOGIN_FAILED_PASSWORD",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"rahul_kumar\"}",
+      "ip_address": "127.0.0.1",
+      "status": "warning"
+    },
+    "aud-1791985148699-grof0": {
+      "created_at": "2026-10-14T13:39:08.699Z",
+      "updated_at": "2026-10-14T13:39:08.699Z",
+      "id": "aud-1791985148699-grof0",
+      "user_id": "usr-1791985148660-i7xu",
+      "action": "USER_REGISTER",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"rahul_kumar\",\"hasPhone\":true}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791985148759-l88gz": {
+      "created_at": "2026-10-14T13:39:08.759Z",
+      "updated_at": "2026-10-14T13:39:08.759Z",
+      "id": "aud-1791985148759-l88gz",
+      "user_id": "usr-1791985148660-i7xu",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"rahul_kumar\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791987735804-1on20": {
+      "created_at": "2026-10-14T14:22:15.804Z",
+      "updated_at": "2026-10-14T14:22:15.804Z",
+      "id": "aud-1791987735804-1on20",
+      "user_id": "usr-admin-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"admin@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791987795804-oy85l": {
+      "created_at": "2026-10-14T14:23:15.804Z",
+      "updated_at": "2026-10-14T14:23:15.804Z",
+      "id": "aud-1791987795804-oy85l",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791989218046-f8ffi": {
+      "created_at": "2026-10-14T14:46:58.046Z",
+      "updated_at": "2026-10-14T14:46:58.046Z",
+      "id": "aud-1791989218046-f8ffi",
+      "user_id": "usr-demo-001",
+      "action": "TOOL_EXECUTE",
+      "resource": "calculator",
+      "details_json": "{\"args\":{\"expression\":\"125 * 8 - 50\"},\"result\":{\"expression\":\"125 * 8 - 50\",\"result\":950,\"formatted\":\"125 * 8 - 50 = 950\"}}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791989218054-3gkss": {
+      "created_at": "2026-10-14T14:46:58.054Z",
+      "updated_at": "2026-10-14T14:46:58.054Z",
+      "id": "aud-1791989218054-3gkss",
+      "user_id": "usr-demo-001",
+      "action": "CHAT_COMPLETION",
+      "resource": "conv-1791989218008",
+      "details_json": "{\"provider\":\"local_heuristic\",\"modelUsed\":\"prachi-cognitive-brain-v2\",\"toolCallsCount\":1,\"tokensTotal\":\"[REDACTED]\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791989218437-62ea4": {
+      "created_at": "2026-10-14T14:46:58.437Z",
+      "updated_at": "2026-10-14T14:46:58.437Z",
+      "id": "aud-1791989218437-62ea4",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791989218447-0iipu": {
+      "created_at": "2026-10-14T14:46:58.447Z",
+      "updated_at": "2026-10-14T14:46:58.447Z",
+      "id": "aud-1791989218447-0iipu",
+      "user_id": "usr-demo-001",
+      "action": "LOGIN_FAILED_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "warning"
+    },
+    "aud-1791989218460-56k3i": {
+      "created_at": "2026-10-14T14:46:58.460Z",
+      "updated_at": "2026-10-14T14:46:58.460Z",
+      "id": "aud-1791989218460-56k3i",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791989218468-16qs4": {
+      "created_at": "2026-10-14T14:46:58.468Z",
+      "updated_at": "2026-10-14T14:46:58.468Z",
+      "id": "aud-1791989218468-16qs4",
+      "user_id": "usr-demo-001",
+      "action": "LOGIN_FAILED_OTP",
+      "resource": "auth",
+      "details_json": "{\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "warning"
+    },
+    "aud-1791989218531-0ae3f": {
+      "created_at": "2026-10-14T14:46:58.531Z",
+      "updated_at": "2026-10-14T14:46:58.531Z",
+      "id": "aud-1791989218531-0ae3f",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"demo@prachi.ai\"}",
+      "ip_address": "127.0.0.1",
+      "status": "success"
+    },
+    "aud-1791989218580-qks9a": {
+      "created_at": "2026-10-14T14:46:58.580Z",
+      "updated_at": "2026-10-14T14:46:58.580Z",
+      "id": "aud-1791989218580-qks9a",
+      "user_id": "usr-demo-001",
+      "action": "USER_LOGIN",
+      "resource": "auth",
+      "details_json": "{\"authMethod\":\"PASSWORD\",\"identifier\":\"demo@prachi.ai\"}",
       "ip_address": "127.0.0.1",
       "status": "success"
     }

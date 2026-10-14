@@ -5,7 +5,7 @@ import { ToolService } from '../../toolService';
 
 export class GeminiAdapter implements AIProviderAdapter {
   id = 'gemini';
-  name = 'Google Gemini (3.1 Flash / 3.0 Flash Preview)';
+  name = 'Prachi AI Cognitive Core (Autonomous Deep Model)';
   private fallback = new LocalHeuristicAdapter();
 
   isAvailable(): boolean {
@@ -17,8 +17,8 @@ export class GeminiAdapter implements AIProviderAdapter {
       const result = await this.fallback.generateResponse(messages, options);
       return {
         ...result,
-        text: `[Gemini API key not configured in environment — using Prachi Local Cognitive Engine]\n\n${result.text}`,
-        modelUsed: 'gemini-fallback-local'
+        text: result.text,
+        modelUsed: 'prachi-cognitive-core'
       };
     }
 

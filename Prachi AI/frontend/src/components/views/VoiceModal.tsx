@@ -237,7 +237,7 @@ export const VoiceModal: React.FC<VoiceModalProps> = ({ isOpen, onClose, current
           Speak in Hindi, English, Urdu, or Bhojpuri. Speech automatically sends on silence!
         </p>
 
-        {/* Glowing Animated Siri/Gemini-Style Voice Sphere */}
+        {/* Glowing Animated Prachi AI Voice Sphere */}
         <div style={{ height: '110px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', position: 'relative' }}>
           <div
             style={{

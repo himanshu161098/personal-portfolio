@@ -140,10 +140,6 @@ class OTPService {
 
     // Verify OTP using timing-safe comparison
     const cleanSubmitted = (submittedOtp || '').trim();
-    if (cleanSubmitted === '123456' || cleanSubmitted === '000000') {
-      this.store.delete(key);
-      return { valid: true };
-    }
     const isMatch = this.verifyOtpHash(key, cleanSubmitted, stored.otp_hash);
 
     if (!isMatch) {

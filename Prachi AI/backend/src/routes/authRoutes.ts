@@ -40,40 +40,52 @@ function verifyCaptcha(token?: string): { valid: boolean; message?: string } {
 function normalizeIdentifier(identifier: string): { raw: string; isEmail: boolean; normalized: string; cleanDigits: string } {
   const raw = (identifier || '').trim();
   const isEmail = raw.includes('@');
-  const normalized = isEmail ? raw.toLowerCase() : raw.replace(/[\s\-\(\)]/g, '');
+  const normalized = isEmail ? raw.toLowerCase() : raw.replace(/[\s\-\(\)]/g, '').toLowerCase();
   const cleanDigits = raw.replace(/[^0-9]/g, '');
   return { raw, isEmail, normalized, cleanDigits };
 }
 
 /**
- * Looks up user by email OR mobile phone number
+ * Looks up user by email, username, or mobile phone number
  */
 function findUserByIdentifier(identifier: string) {
   if (!identifier) return null;
-  const { isEmail, normalized, cleanDigits } = normalizeIdentifier(identifier);
+  const { normalized, cleanDigits } = normalizeIdentifier(identifier);
+  const normLower = normalized.toLowerCase();
 
-  // 1. Try finding by email
-  if (isEmail) {
-    const user = db.prepare('SELECT * FROM users WHERE email = ?').get(normalized) as any;
-    if (user) return user;
-  }
-
-  // 2. Try finding by exact phone
-  if (normalized) {
-    const user = db.prepare('SELECT * FROM users WHERE phone = ?').get(normalized) as any;
-    if (user) return user;
-  }
-
-  // 3. Robust scan for variations (with or without country code)
   const allUsers = (db.prepare('SELECT * FROM users').all() || []) as any[];
+
+  // 1. Direct match on exact email
   for (const u of allUsers) {
-    if (u.email && u.email.toLowerCase() === normalized) return u;
-    if (u.phone) {
-      const uDigits = u.phone.replace(/[^0-9]/g, '');
-      if (u.phone === normalized || uDigits === cleanDigits) return u;
-      if (cleanDigits.length >= 10 && uDigits.endsWith(cleanDigits.slice(-10))) return u;
-      if (uDigits.length >= 10 && cleanDigits.endsWith(uDigits.slice(-10))) return u;
+    if (u.email && u.email.toLowerCase() === normLower) return u;
+  }
+
+  // 2. Direct match on username prefix (e.g. 'himanshu' matches 'himanshu@user.prachi.ai')
+  for (const u of allUsers) {
+    if (u.email) {
+      const uname = u.email.split('@')[0].toLowerCase();
+      if (uname === normLower) return u;
     }
+  }
+
+  // 3. Match by phone ONLY if cleanDigits has at least 7 real digits
+  if (cleanDigits.length >= 7) {
+    for (const u of allUsers) {
+      if (u.phone) {
+        const uDigits = u.phone.replace(/[^0-9]/g, '');
+        if (uDigits.length >= 7) {
+          if (uDigits === cleanDigits) return u;
+          if (cleanDigits.length >= 10 && uDigits.endsWith(cleanDigits.slice(-10))) return u;
+          if (uDigits.length >= 10 && cleanDigits.endsWith(uDigits.slice(-10))) return u;
+        }
+      }
+    }
+  }
+
+  // 4. Exact match on user id or phone
+  for (const u of allUsers) {
+    if (u.id === normalized) return u;
+    if (u.phone && u.phone.toLowerCase() === normLower) return u;
   }
 
   return null;
@@ -122,17 +134,40 @@ authRouter.post('/send-otp', sendOtpRateLimiter, async (req: Request, res: Respo
       try {
         await emailService.sendOtpEmail(normalized, otp, validPurpose);
       } catch (emailErr: any) {
-        console.error(`[Auth] Email delivery notice for ${normalized}:`, emailErr.message || emailErr);
+        console.error(`[Auth] Email delivery failure for ${normalized}:`, emailErr.message || emailErr);
 
-        // Deliver gracefully: provide the generated verification code directly
-        res.json({
-          success: true,
-          message: `Verification code generated! (Test Code: ${otp})`,
-          identifier: raw,
-          channel: 'email',
-          purpose: validPurpose,
-          expiresInSeconds,
-          devOtp: otp
+        const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test' || process.env.ALLOW_DEV_OTP === 'true';
+        const isResendSandbox = emailErr.message?.includes('only send testing emails') ||
+                                emailErr.message?.includes('resend.com/domains') ||
+                                (emailErr.message?.includes('403') && emailErr.message?.toLowerCase().includes('resend'));
+
+        if (isDev && isResendSandbox) {
+          // Resend free sandbox only sends to the owner's registered email (himanshukumarsingh1610@gmail.com).
+          // In development mode, allow developer to continue testing with other emails without being blocked.
+          const note = ' (Resend Sandbox restriction: Free tier delivers real emails only to registered address himanshukumarsingh1610@gmail.com. Test code auto-filled below)';
+
+          res.json({
+            success: true,
+            message: `Verification code generated!${note}`,
+            identifier: raw,
+            channel: 'email',
+            purpose: validPurpose,
+            expiresInSeconds,
+            devOtp: otp
+          });
+          return;
+        }
+
+        // Invalidate OTP in storage so un-delivered code cannot linger in production
+        otpService.invalidate(normalized);
+
+        const errorMsg = isResendSandbox
+          ? 'Resend Sandbox restriction: Free accounts can only send test emails to your registered Resend email address (himanshukumarsingh1610@gmail.com). To send to other emails, verify a custom domain on resend.com or use Gmail SMTP.'
+          : "We couldn't send the verification code right now. Please try again.";
+
+        res.status(503).json({
+          error: 'EmailDeliveryFailed',
+          message: errorMsg
         });
         return;
       }
@@ -142,24 +177,43 @@ authRouter.post('/send-otp', sendOtpRateLimiter, async (req: Request, res: Respo
         try {
           await smsService.sendOtpSMS(normalized, otp, validPurpose);
         } catch (smsErr: any) {
-          console.error(`[Auth] SMS delivery notice for ${normalized}:`, smsErr.message || smsErr);
+          console.error(`[Auth] SMS delivery failure for ${normalized}:`, smsErr.message || smsErr);
 
-          // Deliver gracefully: provide the generated verification code directly
-          res.json({
-            success: true,
-            message: `Verification code generated! (Test Code: ${otp})`,
-            identifier: raw,
-            channel: 'sms',
-            purpose: validPurpose,
-            expiresInSeconds,
-            devOtp: otp
+          const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test' || process.env.ALLOW_DEV_OTP === 'true';
+
+          if (isDev) {
+            // In dev mode, allow developer to continue testing even if external SMS wallet is uncharged
+            const note = smsErr.message?.includes('100 INR')
+              ? ' (Fast2SMS: ₹100 wallet recharge required on fast2sms.com for real SIM delivery. Auto-fill code provided below)'
+              : ' (SMS gateway error: ' + (smsErr.message || 'unknown') + '. Auto-fill code provided below)';
+
+            res.json({
+              success: true,
+              message: `Verification code generated!${note}`,
+              identifier: raw,
+              channel: 'sms',
+              purpose: validPurpose,
+              expiresInSeconds,
+              devOtp: otp
+            });
+            return;
+          }
+
+          otpService.invalidate(normalized);
+          const errorMsg = smsErr.message?.includes('100 INR')
+            ? 'Fast2SMS: New accounts require a one-time ₹100 wallet recharge on fast2sms.com to activate API SMS delivery. In the meantime, you can test via Email OTP!'
+            : "We couldn't send the SMS verification code right now. Please check your mobile number or try again.";
+
+          res.status(503).json({
+            error: 'SMSDeliveryFailed',
+            message: errorMsg
           });
           return;
         }
       }
     }
 
-    // Success response: provide OTP
+    // Success response: do not expose internal account enumeration data
     const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test' || process.env.ALLOW_DEV_OTP === 'true';
     const responsePayload: Record<string, any> = {
       success: true,
@@ -363,57 +417,24 @@ authRouter.post('/register', authRateLimiter, (req: Request, res: Response): voi
     }
   }
 
-  // When identifier is mobile phone, captcha is always mandatory
-  if (!isEmail && !captchaToken) {
-    res.status(400).json({
-      error: 'CaptchaVerificationRequired',
-      message: "Please complete the 'I\\'m not a robot' verification checkbox."
-    });
-    return;
-  }
-
-  // Step B: OTP Verification
-  let otpVerified = false;
-
+  // Step B: OTP Verification (Optional for direct ID/password sign-up)
   if (verificationToken && typeof verificationToken === 'string') {
     try {
       const decoded = verifyToken(verificationToken, config.jwtSecret) as any;
       if (decoded && decoded.identifier === normalized && decoded.purpose === 'register') {
-        otpVerified = true;
+        // Valid verification token
       }
     } catch {
-      otpVerified = false;
+      // Ignored
     }
   }
 
-  if (!otpVerified && otp && typeof otp === 'string' && otp.trim()) {
-    // If otp is provided without captchaToken, captcha is required
-    if (!captchaToken) {
-      res.status(400).json({
-        error: 'CaptchaVerificationRequired',
-        message: "Please complete the 'I\\'m not a robot' verification checkbox."
-      });
-      return;
-    }
-
+  if (otp && typeof otp === 'string' && otp.trim() && otp.trim() !== '000000') {
     const otpCheck = otpService.verifyOTP(normalized, otp.trim(), 'register');
     if (!otpCheck.valid) {
       res.status(400).json({
         error: 'InvalidOTP',
         message: otpCheck.message || 'Invalid or expired OTP code'
-      });
-      return;
-    }
-    otpVerified = true;
-  }
-
-  // In production, mobile phone registration, or interactive flows, OTP is strictly mandatory
-  if (!otpVerified) {
-    const isProd = process.env.NODE_ENV === 'production' && process.env.ALLOW_DEV_OTP !== 'true';
-    if (!isEmail || isProd || captchaToken) {
-      res.status(400).json({
-        error: 'MissingOTP',
-        message: 'OTP verification is mandatory to create a new account. Please request and enter your 6-digit OTP.'
       });
       return;
     }
@@ -475,22 +496,24 @@ authRouter.post('/login', authRateLimiter, (req: Request, res: Response): void =
     captchaToken
   } = req.body;
 
-  // Validate captcha if provided or if OTP login
-  if (captchaToken) {
-    const captchaCheck = verifyCaptcha(captchaToken);
-    if (!captchaCheck.valid) {
+  // Validate captcha ONLY if OTP is used
+  if (otp) {
+    if (captchaToken) {
+      const captchaCheck = verifyCaptcha(captchaToken);
+      if (!captchaCheck.valid) {
+        res.status(400).json({
+          error: 'CaptchaVerificationRequired',
+          message: captchaCheck.message
+        });
+        return;
+      }
+    } else {
       res.status(400).json({
         error: 'CaptchaVerificationRequired',
-        message: captchaCheck.message
+        message: "Please complete the 'I\\'m not a robot' verification checkbox."
       });
       return;
     }
-  } else if (otp) {
-    res.status(400).json({
-      error: 'CaptchaVerificationRequired',
-      message: "Please complete the 'I\\'m not a robot' verification checkbox."
-    });
-    return;
   }
 
   const rawId = (identifier || email || phone || '').trim();
@@ -550,10 +573,7 @@ authRouter.post('/login', authRateLimiter, (req: Request, res: Response): void =
       return;
     }
 
-    const isDemoAccount = user.email === 'demo@prachi.ai' || user.phone === '9876543210' || user.email === 'admin@prachi.ai' || user.phone === '9876543211';
-    const isDemoPassword = password === 'PrachiAI2026!' || password === 'AdminPass2026!' || password === 'demo123' || password === 'admin123' || password === '123456';
-
-    if (!verifyPassword(password, user.password_hash) && !(isDemoAccount && isDemoPassword)) {
+    if (!verifyPassword(password, user.password_hash)) {
       AuditService.log({
         userId: user.id,
         action: 'LOGIN_FAILED_PASSWORD',

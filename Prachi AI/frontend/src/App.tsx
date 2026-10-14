@@ -3,6 +3,7 @@ import { Mic } from 'lucide-react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { Navbar } from './components/Navbar';
 import { Sidebar, NavView } from './components/Sidebar';
+import { AuthModal } from './components/AuthModal';
 import { VoiceModal } from './components/views/VoiceModal';
 import { ChatView } from './components/views/ChatView';
 import { AssistantDashboardView } from './components/views/AssistantDashboardView';
@@ -14,21 +15,29 @@ import { ToolsView } from './components/views/ToolsView';
 import { ResearchView } from './components/views/ResearchView';
 import { ArtifactsView } from './components/views/ArtifactsView';
 import { AdminView } from './components/views/AdminView';
+import { OmniBrainView } from './components/views/OmniBrainView';
 import { TourModal } from './components/TourModal';
 
 const MainLayout: React.FC = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const [currentView, setCurrentView] = useState<NavView>('chat');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [currentModel, setCurrentModel] = useState('gemini');
   const [isVoiceOpen, setIsVoiceOpen] = useState(false);
+  const [isAuthOpen, setIsAuthOpen] = useState(() => !localStorage.getItem('prachi_auth_token'));
   const [isTourOpen, setIsTourOpen] = useState(false);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
+
+  useEffect(() => {
+    if (user) {
+      setIsAuthOpen(false);
+    }
+  }, [user]);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
@@ -38,6 +47,8 @@ const MainLayout: React.FC = () => {
     switch (currentView) {
       case 'chat':
         return <ChatView currentModel={currentModel} onNavigateToView={setCurrentView} />;
+      case 'omnibrain':
+        return <OmniBrainView />;
       case 'dashboard':
         return <AssistantDashboardView onNavigate={setCurrentView} />;
       case 'memory':
@@ -79,6 +90,7 @@ const MainLayout: React.FC = () => {
           currentModel={currentModel}
           onModelChange={setCurrentModel}
           onOpenVoice={() => setIsVoiceOpen(true)}
+          onOpenAuth={() => setIsAuthOpen(true)}
           onOpenTour={() => setIsTourOpen(true)}
           theme={theme}
           onToggleTheme={toggleTheme}
@@ -96,6 +108,14 @@ const MainLayout: React.FC = () => {
           isOpen={isVoiceOpen}
           onClose={() => setIsVoiceOpen(false)}
           currentModel={currentModel}
+        />
+      )}
+
+      {/* Sign In / Sign Up Modal */}
+      {isAuthOpen && (
+        <AuthModal
+          isOpen={isAuthOpen}
+          onClose={() => setIsAuthOpen(false)}
         />
       )}
 

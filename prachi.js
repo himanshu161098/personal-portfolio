@@ -26,7 +26,7 @@ const WORKER_URL = "https://portfolio-chatbot-proxy.your-subdomain.workers.dev/a
 // -----------------------------------------------------------------------------
 let conversations = [];
 let activeConversationId = null;
-let currentModel = 'prachi-gemini';
+let currentModel = 'prachi-core';
 let isVoiceModeEnabled = false;
 let isStreaming = false;
 let abortController = null;
@@ -248,7 +248,7 @@ function generateTutorResponse(userQuery, model) {
 
   // Prachi Identity / Girl Voice
   if (q.includes('prachi') || q.includes('girl') || q.includes('voice') || q.includes('who are you') || q.includes('tum kaun') || q.includes('ladki')) {
-    return `Namaste! 👋 Main **Prachi** hoon — Himanshu Kumar ki **Human-like AI Companion & Universal Problem Solver**, powered by **Google Gemini & Cloud AI**.
+    return `Namaste! 👋 Main **Prachi** hoon — Himanshu Kumar ki **Human-like AI Companion & Universal Problem Solver**, powered by **Prachi AI Autonomous Cognitive Core**.
 
 🌸 **Human-like Emotional & Friendly Companion**:
 - Main sirf machine nahi, ek sachhe dost ki tarah feelings samajhti hoon, baat karti hoon, aur dukh-sukh me saath deti hoon.
@@ -449,7 +449,7 @@ The **Constitution of India** was drafted under **Dr. B.R. Ambedkar** (Drafting 
   }
 
   // Default Prachi Response
-  return `I am **Prachi**, your Personal AI Tutor powered by **Google Gemini & Cloud AI**.
+  return `I am **Prachi**, your Personal AI Tutor powered by **Prachi AI Autonomous Cognitive Core**.
 
 You can ask me to:
 - 📐 **Solve Math Problems** (Calculus, Linear Algebra, Probability, Equations)
@@ -554,9 +554,9 @@ class PrachiAIApp {
     }
 
     try {
-      currentModel = localStorage.getItem(STORAGE_KEY_MODEL) || 'prachi-gemini';
+      currentModel = localStorage.getItem(STORAGE_KEY_MODEL) || 'prachi-core';
     } catch (e) {
-      currentModel = 'prachi-gemini';
+      currentModel = 'prachi-core';
     }
 
     try {
@@ -676,20 +676,21 @@ class PrachiAIApp {
 
   updateModelUI() {
     const titles = {
-      'prachi-gemini': 'Prachi Human AI',
+      'prachi-core': 'Prachi AI Cognitive Core',
+      'prachi-gemini': 'Prachi AI Cognitive Core',
       'claude-sonnet': 'Claude 3.7 Sonnet',
       'stem-tutor': 'STEM & Academic Solver',
       'portfolio-dossier': "Himanshu's Portfolio Dossier"
     };
 
     if (this.dom.currentModelName) {
-      this.dom.currentModelName.textContent = titles[currentModel] || 'Prachi Human AI';
+      this.dom.currentModelName.textContent = titles[currentModel] || 'Prachi AI Cognitive Core';
     }
 
     if (this.dom.modelItems) {
       this.dom.modelItems.forEach(item => {
         const m = item.getAttribute('data-model');
-        const isActive = (m === currentModel) || (currentModel === 'maya-gemini' && m === 'prachi-gemini');
+        const isActive = (m === currentModel) || (currentModel === 'prachi-core' && (m === 'prachi-gemini' || m === 'prachi-core')) || (currentModel === 'prachi-gemini' && (m === 'prachi-gemini' || m === 'prachi-core'));
         item.classList.toggle('active', isActive);
         item.setAttribute('aria-selected', isActive ? 'true' : 'false');
       });

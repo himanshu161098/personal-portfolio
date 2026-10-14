@@ -53,14 +53,9 @@ export const ChatView: React.FC<ChatViewProps> = ({ currentModel, onNavigateToVi
   const [enableMemory, setEnableMemory] = useState(true);
   const [enableRAG, setEnableRAG] = useState(true);
   const [isRecording, setIsRecording] = useState(false);
-  const [selectedLang, setSelectedLang] = useState<string>('hi-IN');
   const [speakingMsgId, setSpeakingMsgId] = useState<string | null>(null);
-  const [showHistory, setShowHistory] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth > 768;
-    }
-    return true;
-  });
+  const [selectedLang, setSelectedLang] = useState<'hi-IN' | 'en-US' | 'ur-PK' | 'bho-IN'>('hi-IN');
+  const [showHistory, setShowHistory] = useState(true);
   const [selectedFile, setSelectedFile] = useState<{
     name: string;
     type: string;
@@ -583,21 +578,53 @@ export const ChatView: React.FC<ChatViewProps> = ({ currentModel, onNavigateToVi
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {/* Official Prachi AI Cognitive Core Stamp */}
             <div
+              className="prachi-ai-header-stamp"
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '6px',
-                padding: '4px 10px',
-                background: 'rgba(16, 185, 129, 0.1)',
-                border: '1px solid rgba(16, 185, 129, 0.25)',
+                gap: '8px',
+                padding: '5px 14px',
+                background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.16) 0%, rgba(99, 102, 241, 0.2) 100%)',
+                border: '1px solid rgba(6, 182, 212, 0.45)',
                 borderRadius: '20px',
-                fontSize: '0.76rem',
-                color: '#10b981'
+                boxShadow: '0 0 16px rgba(6, 182, 212, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.15)',
+                userSelect: 'none'
               }}
+              title="Prachi AI Cognitive Core v3.0 Active"
             >
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }}></span>
-              <span>Prachi Online</span>
+              <img
+                src="./assets/prachi-logo.png"
+                alt="Prachi AI"
+                style={{
+                  width: '18px',
+                  height: '18px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  boxShadow: '0 0 8px rgba(6, 182, 212, 0.5)'
+                }}
+                onError={(e) => {
+                  const el = e.target as HTMLImageElement;
+                  if (!el.src.includes('prachi-logo.svg')) {
+                    el.src = './assets/prachi-logo.svg';
+                  }
+                }}
+              />
+              <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#ffffff', letterSpacing: '0.4px' }}>
+                PRACHI <span style={{ color: '#38bdf8' }}>AI</span>
+              </span>
+              <span
+                style={{
+                  display: 'inline-block',
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  background: '#10b981',
+                  boxShadow: '0 0 8px #10b981'
+                }}
+                title="Online & Ready"
+              />
             </div>
           </div>
         </div>

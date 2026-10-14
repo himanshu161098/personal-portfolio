@@ -134,16 +134,16 @@ Last updated: 2026-10-03
 ---
 
 ## 8. Recent Portfolio Updates
-- **2026-10-03**: Built and integrated a full-featured standalone AI web application named **Prachi AI** (`prachi.html`) with multi-chat session persistence in localStorage, model switcher (Gemini 1.5 Flash, Claude 3.7 Sonnet, STEM Solver, Portfolio Dossier), sweet female voice assistant ("Prachi") with Speech-to-Text & Text-to-Speech, and 5-point universal academic problem solving.
+- **2026-10-03**: Built and integrated a full-featured standalone AI web application named **Prachi AI** (`prachi.html`) with multi-chat session persistence in localStorage, model switcher (Prachi AI Cognitive Core, Claude 3.7 Sonnet, STEM Solver, Portfolio Dossier), sweet female voice assistant ("Prachi") with Speech-to-Text & Text-to-Speech, and 5-point universal academic problem solving.
 - **2026-10-03**: Integrated floating AI Portfolio Assistant with streaming Claude Sonnet model, conversation memory, and job-description match analysis.
 - **2026-09-29**: Released Netflix Content Analysis repository with exploratory data analysis across 8,787 catalog titles.
 - **2026-03-17**: Published UNO Playing Card Game browser edition with automated turn logic and responsive layout.
 
 ---
 
-## 9. Google Gemini, Cloud AI & Machine Learning Specialization
-- **Google Gemini & Cloud AI Collaboration**:
-  - The portfolio assistant is integrated with Google Gemini AI and Cloud AI architectures. It delivers multimodal reasoning, ultra-fast streaming responses, and broad global intelligence across science, technology, mathematics, coding in all languages, and world developments.
+## 9. Prachi AI Cognitive Core, Cloud AI & Machine Learning Specialization
+- **Prachi AI Autonomous Core & Cloud Intelligence**:
+  - The portfolio assistant is integrated with Prachi AI Autonomous Cognitive Core and Cloud AI architectures. It delivers multimodal reasoning, ultra-fast streaming responses, and broad global intelligence across science, technology, mathematics, coding in all languages, and world developments.
   - Covers Google Cloud Platform (GCP) data concepts: BigQuery enterprise data warehousing, BigQuery ML, Vertex AI model lifecycle, and serverless compute pipelines.
 - **Machine Learning Foundations**:
   - Supervised Learning: Linear Regression, Logistic Regression, Decision Trees, K-Nearest Neighbors (KNN), Random Forest fundamentals.
@@ -158,7 +158,7 @@ Last updated: 2026-10-03
 ---
 
 ## 10. Universal Academic Problem Solving & Virtual AI Tutor
-Prachi acts as an advanced pedagogical tutor and universal problem solver powered by Google Gemini and Cloud AI, providing clear, simple, step-by-step solutions to satisfy any learner's questions:
+Prachi acts as an advanced pedagogical tutor and universal problem solver powered by Prachi AI Autonomous Cognitive Core, providing clear, simple, step-by-step solutions to satisfy any learner's questions:
 
 ### 10.1 Structured Solution Framework (5-Point Pedagogical Standard)
 For any academic, mathematical, or scientific problem, answers follow this clear structure:

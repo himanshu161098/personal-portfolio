@@ -1,7 +1,6 @@
 # Dependencies
 node_modules/
-backend/dist/
-!frontend/dist/
+dist/
 build/
 .cache/
 

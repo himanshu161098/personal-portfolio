@@ -14,6 +14,7 @@ import {
   ChevronRight,
   X,
   Database,
+  Cpu,
   ArrowLeft
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -28,7 +29,8 @@ export type NavView =
   | 'tools'
   | 'research'
   | 'artifacts'
-  | 'admin';
+  | 'admin'
+  | 'omnibrain';
 
 interface SidebarProps {
   currentView: NavView;
@@ -51,6 +53,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   const navItems: Array<{ id: NavView; label: string; icon: React.ReactNode; badge?: string; adminOnly?: boolean }> = [
     { id: 'chat', label: 'AI Chat & Assistant', icon: <MessageSquare size={18} /> },
+    { id: 'omnibrain', label: 'OmniCognitive Brain', icon: <Cpu size={18} />, badge: 'GraphRAG' },
     { id: 'dashboard', label: 'Personal Dashboard', icon: <LayoutDashboard size={18} /> },
     { id: 'memory', label: 'Memory Bank', icon: <Brain size={18} />, badge: 'Isolated' },
     { id: 'rag', label: 'Knowledge Base (RAG)', icon: <FileText size={18} /> },
@@ -126,6 +129,63 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </button>
           );
         })}
+
+        {/* Back to Personal Portfolio */}
+        <a
+          href="../index.html"
+          onClick={(e) => {
+            e.preventDefault();
+            if (window.opener && !window.opener.closed) {
+              try { window.opener.focus(); return; } catch (err) {}
+            }
+            if (document.referrer && (document.referrer.includes('index.html') || document.referrer.includes('Personal') || document.referrer.includes('portfolio'))) {
+              if (document.referrer !== window.location.href) {
+                window.location.href = document.referrer;
+                return;
+              }
+            }
+            const loc = window.location;
+            const path = loc.pathname;
+            if (path.includes('Personal%20Portfolio') || path.includes('Personal Portfolio')) {
+              const isEncoded = path.includes('Personal%20Portfolio');
+              const folderName = isEncoded ? 'Personal%20Portfolio' : 'Personal Portfolio';
+              const basePath = path.substring(0, path.indexOf(folderName) + folderName.length);
+              loc.href = `${loc.origin}${basePath}/index.html`;
+              return;
+            }
+            if (path.includes('/prachi/') || path.endsWith('/prachi')) {
+              loc.href = '../index.html';
+              return;
+            }
+            if (path.includes('/frontend/')) {
+              loc.href = '../../index.html';
+              return;
+            }
+            if (window.history.length > 1) {
+              window.history.back();
+              return;
+            }
+            loc.href = '../index.html';
+          }}
+          className="nav-item"
+          title="Return to Personal Portfolio"
+          style={{
+            marginTop: '8px',
+            textDecoration: 'none',
+            borderTop: '1px solid var(--border-subtle)',
+            color: 'var(--accent-indigo)',
+            fontWeight: 600
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <ArrowLeft size={18} style={{ color: 'var(--accent-indigo)' }} />
+          </div>
+          {!collapsed && (
+            <span style={{ flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              Back to Portfolio
+            </span>
+          )}
+        </a>
       </nav>
 
       {!collapsed && (
@@ -140,46 +200,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
         </div>
       )}
-      {/* Return to Portfolio Link */}
-      <div style={{ marginTop: 'auto', padding: '10px 12px', borderTop: '1px solid var(--border-subtle)' }}>
-        <a
-          href="../index.html"
-          onClick={(e) => {
-            e.preventDefault();
-            if (window.history.length > 1 && document.referrer && (document.referrer.includes('index.html') || document.referrer.includes('portfolio') || document.referrer.includes('Level%201') || document.referrer.includes('Level 1'))) {
-              window.history.back();
-            } else {
-              try {
-                window.location.href = new URL('../index.html', window.location.href).href;
-              } catch {
-                window.location.href = '../index.html';
-              }
-            }
-          }}
-          className="nav-item"
-          title="Return to Personal Portfolio"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            color: 'var(--accent-indigo, #818cf8)',
-            textDecoration: 'none',
-            fontWeight: 600,
-            fontSize: '0.82rem',
-            padding: '8px 12px',
-            borderRadius: '8px',
-            background: 'rgba(99, 102, 241, 0.08)',
-            border: '1px solid rgba(99, 102, 241, 0.25)',
-            transition: 'all 0.2s ease',
-            cursor: 'pointer'
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <ArrowLeft size={16} />
-          </div>
-          {!collapsed && <span>← Return to Portfolio</span>}
-        </a>
-      </div>
       </aside>
     </>
   );

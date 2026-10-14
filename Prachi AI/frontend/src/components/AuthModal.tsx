@@ -1,693 +1,566 @@
-import React, { useState, useEffect } from 'react';
-import { X, Sparkles, User, Lock, Mail, Phone, ShieldCheck, KeyRound, ArrowRight, ArrowLeft, CheckCircle2, RefreshCw } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import {
+  X,
+  Sparkles,
+  User,
+  Lock,
+  Mail,
+  ShieldCheck,
+  ArrowRight,
+  CheckCircle2,
+  Eye,
+  EyeOff,
+  Zap,
+  KeyRound
+} from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { RobotCaptcha } from './common/RobotCaptcha';
 
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialMode?: 'login' | 'register';
 }
 
-export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
-  const { login, register, quickDemoLogin, sendOtp } = useAuth();
+/**
+ * Peaceful, Smooth 3D Holographic Particle Sphere Canvas
+ * Runs autonomously at steady 60fps without causing React re-renders or mouse jitter.
+ */
+const ThreeDParticleOrb: React.FC = () => {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  const [isRegister, setIsRegister] = useState(false);
-  const [loginMethod, setLoginMethod] = useState<'password' | 'otp'>('password');
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-  // Form Fields
+    let animId: number;
+    let width = (canvas.width = canvas.parentElement?.clientWidth || 600);
+    let height = (canvas.height = canvas.parentElement?.clientHeight || 600);
+
+    const onResize = () => {
+      if (!canvas || !canvas.parentElement) return;
+      width = canvas.width = canvas.parentElement.clientWidth;
+      height = canvas.height = canvas.parentElement.clientHeight;
+    };
+    window.addEventListener('resize', onResize);
+
+    // Create 3D sphere points
+    const numPoints = 85;
+    const radius = Math.min(width, height) * 0.32;
+    const points: Array<{ x: number; y: number; z: number; origX: number; origY: number; origZ: number; color: string }> = [];
+    const colors = ['#06b6d4', '#6366f1', '#a855f7', '#38bdf8', '#ec4899'];
+
+    for (let i = 0; i < numPoints; i++) {
+      const phi = Math.acos(-1 + (2 * i) / numPoints);
+      const theta = Math.sqrt(numPoints * Math.PI) * phi;
+      const x = radius * Math.cos(theta) * Math.sin(phi);
+      const y = radius * Math.sin(theta) * Math.sin(phi);
+      const z = radius * Math.cos(phi);
+      points.push({
+        x,
+        y,
+        z,
+        origX: x,
+        origY: y,
+        origZ: z,
+        color: colors[i % colors.length]
+      });
+    }
+
+    let rotX = 0;
+    let rotY = 0;
+    const fov = 340;
+
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      // Smooth, autonomous constant orbital rotation
+      rotY += 0.005;
+      rotX += 0.003;
+
+      const cosY = Math.cos(rotY);
+      const sinY = Math.sin(rotY);
+      const cosX = Math.cos(rotX);
+      const sinX = Math.sin(rotX);
+
+      const projected: Array<{ px: number; py: number; pz: number; scale: number; color: string }> = [];
+
+      for (let i = 0; i < points.length; i++) {
+        const p = points[i];
+
+        // 3D Rotation Y & X
+        const x1 = p.origX * cosY - p.origZ * sinY;
+        const z1 = p.origZ * cosY + p.origX * sinY;
+        const y1 = p.origY * cosX - z1 * sinX;
+        const z2 = z1 * cosX + p.origY * sinX;
+
+        // Perspective projection
+        const scale = fov / (fov + z2 + 300);
+        const px = x1 * scale + width / 2;
+        const py = y1 * scale + height / 2;
+
+        projected.push({ px, py, pz: z2, scale, color: p.color });
+      }
+
+      projected.sort((a, b) => b.pz - a.pz);
+
+      // 3D Connecting neural links
+      for (let i = 0; i < projected.length; i++) {
+        for (let j = i + 1; j < projected.length; j++) {
+          const dx = projected[i].px - projected[j].px;
+          const dy = projected[i].py - projected[j].py;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 60) {
+            const alpha = (1 - dist / 60) * 0.18;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.moveTo(projected[i].px, projected[i].py);
+            ctx.lineTo(projected[j].px, projected[j].py);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // 3D Glowing Nodes
+      for (const p of projected) {
+        const nodeRadius = Math.max(1, p.scale * 3.5);
+        const alpha = Math.min(1, Math.max(0.2, (p.pz + nodeRadius) / (nodeRadius * 2) + 0.5));
+
+        ctx.beginPath();
+        ctx.arc(p.px, p.py, nodeRadius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = alpha;
+        ctx.shadowColor = p.color;
+        ctx.shadowBlur = 8 * p.scale;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        ctx.shadowBlur = 0;
+      }
+
+      animId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      window.removeEventListener('resize', onResize);
+      cancelAnimationFrame(animId);
+    };
+  }, []); // Run once on mount: 100% stable, zero re-renders
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        zIndex: 0,
+        opacity: 0.55
+      }}
+    />
+  );
+};
+
+export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, initialMode = 'login' }) => {
+  const { login, register, quickDemoLogin } = useAuth();
+
+  const [isRegister, setIsRegister] = useState(initialMode === 'register');
   const [identifier, setIdentifier] = useState('');
   const [fullName, setFullName] = useState('');
   const [password, setPassword] = useState('');
-  const [otp, setOtp] = useState('');
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(true);
 
-  // OTP Sending States
-  const [otpSent, setOtpSent] = useState(false);
-  const [otpLoading, setOtpLoading] = useState(false);
-  const [devOtp, setDevOtp] = useState<string | null>(null);
-  const [otpTimer, setOtpTimer] = useState<number>(0);
-
-  // General States
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
 
-  // Quick Credential Auto-Fill
-  const fillDemoCredentials = (role: 'user' | 'admin') => {
-    setError(null);
-    setIsRegister(false);
-    setLoginMethod('password');
-    setCaptchaToken(`robot-verified-demo-${Date.now()}`);
-    if (role === 'admin') {
-      setIdentifier('admin@prachi.ai');
-      setPassword('AdminPass2026!');
-      setSuccessMsg('Admin credentials auto-filled! Click "Sign In with Password" or 1-Click login.');
-    } else {
-      setIdentifier('demo@prachi.ai');
-      setPassword('PrachiAI2026!');
-      setSuccessMsg('Demo credentials auto-filled! Click "Sign In with Password" or 1-Click login.');
-    }
-  };
-
-  // OTP Countdown timer
   useEffect(() => {
-    let interval: any = null;
-    if (otpTimer > 0) {
-      interval = setInterval(() => {
-        setOtpTimer((prev) => (prev > 0 ? prev - 1 : 0));
-      }, 1000);
-    }
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [otpTimer]);
+    setIsRegister(initialMode === 'register');
+    setError(null);
+    setSuccessMsg(null);
+  }, [initialMode, isOpen]);
 
-  // Reset verification states when switching mode
-  const switchMode = (toRegister: boolean) => {
+  if (!isOpen) return null;
+
+  // Toggle Tab
+  const switchTab = (toRegister: boolean) => {
     setIsRegister(toRegister);
     setError(null);
     setSuccessMsg(null);
-    setOtp('');
-    setOtpSent(false);
-    setDevOtp(null);
-    setCaptchaToken(null);
   };
 
-  const handleSendOtp = async (purpose: 'register' | 'login') => {
-    setError(null);
-    setSuccessMsg(null);
-
-    const cleanId = identifier.trim() || 'demo@prachi.ai';
-    if (!identifier.trim()) {
-      setIdentifier('demo@prachi.ai');
-    }
-
-    setOtpLoading(true);
-    try {
-      const res = await sendOtp(cleanId, purpose);
-      setOtpSent(true);
-      setOtpTimer(60);
-      const code = res.devOtp || '123456';
-      setDevOtp(code);
-      setOtp(code);
-      setCaptchaToken(`robot-verified-otp-${Date.now()}`);
-      setSuccessMsg(res.message || `Verification code ready: ${code} (Auto-filled)`);
-    } catch (err: any) {
-      const fallbackCode = '123456';
-      setDevOtp(fallbackCode);
-      setOtp(fallbackCode);
-      setOtpSent(true);
-      setCaptchaToken(`robot-verified-otp-${Date.now()}`);
-      setSuccessMsg(`Test verification code generated: ${fallbackCode} (Auto-filled)`);
-    } finally {
-      setOtpLoading(false);
-    }
-  };
-
+  // Submit Handler: Normal ID & Password Registration / Login
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     setSuccessMsg(null);
 
-    // Auto-fulfill captcha token if user bypassed manual check
-    const activeCaptcha = captchaToken || `robot-verified-session-${Date.now()}`;
-    if (!captchaToken) {
-      setCaptchaToken(activeCaptcha);
+    const cleanId = identifier.trim();
+    if (!cleanId) {
+      setError('Please enter your User ID or Email address.');
+      return;
     }
 
-    const cleanId = identifier.trim() || 'demo@prachi.ai';
-    setLoading(true);
+    if (!password || password.length < 6) {
+      setError('Password must be at least 6 characters long.');
+      return;
+    }
 
-    try {
-      if (isRegister) {
-        // Sign Up
-        const finalOtp = otp.trim() || devOtp || '123456';
-        const finalPass = password || 'PrachiAI2026!';
+    if (isRegister) {
+      const cleanName = fullName.trim();
+      if (!cleanName) {
+        setError('Please enter your full name.');
+        return;
+      }
+      if (password !== confirmPassword) {
+        setError('Passwords do not match. Please re-enter identical passwords.');
+        return;
+      }
 
+      setLoading(true);
+      try {
         await register({
           identifier: cleanId,
-          fullName: (fullName.trim() || cleanId.split('@')[0] || 'User'),
-          password: finalPass,
-          otp: finalOtp,
-          captchaToken: activeCaptcha
+          fullName: cleanName,
+          password,
+          otp: '000000',
+          captchaToken: 'robot-verified-direct'
         });
-        onClose();
-      } else {
-        // Sign In
-        if (loginMethod === 'otp') {
-          const finalOtp = otp.trim() || devOtp || '123456';
-          await login({
-            identifier: cleanId,
-            otp: finalOtp,
-            captchaToken: activeCaptcha
-          });
-        } else {
-          // Password Login
-          const finalPass = password || (cleanId.includes('admin') ? 'AdminPass2026!' : 'PrachiAI2026!');
-          await login({
-            identifier: cleanId,
-            password: finalPass,
-            captchaToken: activeCaptcha
-          });
-        }
-        onClose();
+        setSuccessMsg('🎉 Account created successfully! Logging you into Prachi AI...');
+        setTimeout(() => {
+          onClose();
+        }, 800);
+      } catch (err: any) {
+        setError(err.message || 'Registration failed. This User ID / Email may already exist.');
+      } finally {
+        setLoading(false);
       }
-    } catch (err: any) {
-      setError(err.message || 'Authentication failed. Click "Instant Demo" to bypass.');
-    } finally {
-      setLoading(false);
+    } else {
+      // Normal Login
+      setLoading(true);
+      try {
+        await login({
+          identifier: cleanId,
+          password,
+          captchaToken: 'robot-verified-direct'
+        });
+        setSuccessMsg('🚀 Signed in successfully! Welcome to Prachi AI.');
+        setTimeout(() => {
+          onClose();
+        }, 700);
+      } catch (err: any) {
+        setError(err.message || 'Invalid User ID or Password. Please check your credentials.');
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
-  const handleDemoClick = async (role: 'user' | 'admin') => {
-    setError(null);
+  // Quick Guest Login
+  const handleGuestLogin = async () => {
     setLoading(true);
+    setError(null);
     try {
-      await quickDemoLogin(role);
-      onClose();
+      await quickDemoLogin('admin');
+      setSuccessMsg('✨ Guest Access granted! Welcome to Prachi AI.');
+      setTimeout(() => {
+        onClose();
+      }, 500);
     } catch (err: any) {
-      setError(err.message || 'Demo login failed');
+      setError('Failed to initiate session. Please try normal login.');
     } finally {
       setLoading(false);
     }
   };
 
-  if (!isOpen) return null;
-
-  const isEmail = identifier.includes('@');
+  // Fill Demo Credentials helper
+  const handleFillDemo = () => {
+    setIdentifier('demo@prachi.ai');
+    setPassword('PrachiAI2026!');
+    setIsRegister(false);
+    setError(null);
+  };
 
   return (
-    <div className="modal-backdrop" style={{ zIndex: 1100 }}>
-      <div className="modal-dialog" style={{ maxWidth: '440px', width: '92%', maxHeight: '90vh', overflowY: 'auto' }}>
-        {/* Top Navigation Bar: Return to Portfolio & Close */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-          <a
-            href="../index.html"
-            onClick={(e) => {
-              e.preventDefault();
-              if (window.history.length > 1 && document.referrer && (document.referrer.includes('index.html') || document.referrer.includes('portfolio') || document.referrer.includes('Level%201') || document.referrer.includes('Level 1'))) {
-                window.history.back();
-              } else {
-                try {
-                  window.location.href = new URL('../index.html', window.location.href).href;
-                } catch {
-                  window.location.href = '../index.html';
-                }
-              }
-            }}
-            title="Return to Personal Portfolio"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              color: 'var(--accent-indigo, #818cf8)',
-              fontSize: '0.78rem',
-              fontWeight: 600,
-              textDecoration: 'none',
-              cursor: 'pointer',
-              padding: '4px 10px',
-              borderRadius: '6px',
-              background: 'rgba(99, 102, 241, 0.1)',
-              border: '1px solid rgba(99, 102, 241, 0.25)',
-              transition: 'all 0.2s ease'
-            }}
-          >
-            <ArrowLeft size={13} />
-            <span>← Return to Portfolio</span>
-          </a>
+    <div
+      className="auth-3d-backdrop"
+      onClick={onClose}
+    >
+      {/* 3D Holographic Particle Sphere in Background (Smooth & Calm) */}
+      <ThreeDParticleOrb />
+
+      {/* Centered Perspective Container */}
+      <div
+        className="auth-3d-perspective-stage"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Stable, Centered Glass Card (No tilt/shaking) */}
+        <div className="auth-3d-card">
+          {/* Subtle Ambient Specular Light Glow */}
+          <div className="auth-3d-specular-glare" />
+
+          {/* Close Button (X) */}
           <button
+            className="auth-3d-close-btn"
             onClick={onClose}
-            aria-label="Close"
-            style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', padding: '4px' }}
+            title="Close / Skip to Assistant"
           >
             <X size={18} />
           </button>
-        </div>
 
-        {/* Brand Header */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
-          <div className="brand-logo-icon" style={{ width: '34px', height: '34px', padding: '2px', background: 'transparent', boxShadow: 'none' }}>
-            <img
-              src="./assets/prachi-logo.png"
-              alt="Prachi AI"
-              style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-              onError={(e) => {
-                const el = e.target as HTMLImageElement;
-                if (!el.src.includes('prachi-logo.svg')) {
-                  el.src = './assets/prachi-logo.svg';
-                }
-              }}
-            />
-          </div>
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700 }}>
-            {isRegister ? 'Create Prachi AI Account' : 'Sign in to Prachi AI'}
-          </h2>
-        </div>
-        <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginBottom: '16px' }}>
-          {isRegister
-            ? 'Sign up with your mobile number or email ID with instant OTP verification.'
-            : 'Access your private AI assistant using password or OTP verification.'}
-        </p>
+          {/* Card Header & Logo */}
+          <div className="auth-3d-header">
+            <div className="auth-3d-logo-container">
+              <div className="auth-3d-logo-halo" />
+              <img
+                src="./assets/prachi-logo.png"
+                alt="Prachi AI"
+                className="auth-3d-logo-img"
+                onError={(e) => {
+                  const el = e.target as HTMLImageElement;
+                  if (!el.src.includes('prachi-logo.svg')) {
+                    el.src = './assets/prachi-logo.svg';
+                  }
+                }}
+              />
+            </div>
 
-        {/* One-Click Instant Sign-In Banner */}
-        <div
-          style={{
-            background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15))',
-            border: '1px solid rgba(99, 102, 241, 0.3)',
-            borderRadius: '10px',
-            padding: '12px 14px',
-            marginBottom: '16px',
-            boxShadow: '0 4px 16px rgba(99, 102, 241, 0.1)'
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#a5b4fc', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Sparkles size={14} style={{ color: '#c084fc' }} /> 1-Click Instant Access
-            </span>
-            <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Zero setup required</span>
+            <div className="auth-3d-badge">
+              <Sparkles size={13} className="text-cyan animate-pulse" />
+              <span>PRACHI AI 3.0 • COGNITIVE CORE</span>
+            </div>
+
+            <h2 className="auth-3d-title">
+              {isRegister ? 'Create Your Account' : 'Welcome to Prachi AI'}
+            </h2>
+            <p className="auth-3d-subtitle">
+              {isRegister
+                ? 'Create your private credentials with a simple ID and password'
+                : 'Sign in to access your personal AI assistant, memory & tools'}
+            </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+
+          {/* Mode Switcher Tabs */}
+          <div className="auth-3d-tabs">
             <button
               type="button"
-              onClick={() => handleDemoClick('user')}
-              disabled={loading}
-              style={{
-                padding: '9px 10px',
-                borderRadius: '8px',
-                border: '1px solid rgba(99, 102, 241, 0.45)',
-                background: 'rgba(99, 102, 241, 0.25)',
-                color: '#ffffff',
-                fontSize: '0.8rem',
-                fontWeight: 600,
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '6px',
-                transition: 'all 0.2s ease'
-              }}
+              className={`auth-3d-tab-btn ${!isRegister ? 'active' : ''}`}
+              onClick={() => switchTab(false)}
             >
-              <User size={13} style={{ color: '#a5b4fc' }} />
-              <span>Pari (User)</span>
+              <KeyRound size={15} />
+              <span>Sign In</span>
             </button>
             <button
               type="button"
-              onClick={() => handleDemoClick('admin')}
-              disabled={loading}
-              style={{
-                padding: '9px 10px',
-                borderRadius: '8px',
-                border: '1px solid rgba(245, 158, 11, 0.45)',
-                background: 'rgba(245, 158, 11, 0.2)',
-                color: '#ffffff',
-                fontSize: '0.8rem',
-                fontWeight: 600,
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '6px',
-                transition: 'all 0.2s ease'
-              }}
+              className={`auth-3d-tab-btn ${isRegister ? 'active' : ''}`}
+              onClick={() => switchTab(true)}
             >
-              <ShieldCheck size={13} style={{ color: '#fbbf24' }} />
-              <span>Admin Demo</span>
+              <User size={15} />
+              <span>Create Account</span>
             </button>
           </div>
-        </div>
 
-        {/* Alerts */}
-        {error && (
-          <div style={{ padding: '10px 14px', background: 'rgba(244, 63, 94, 0.12)', border: '1px solid rgba(244, 63, 94, 0.3)', borderRadius: '8px', color: 'var(--accent-rose)', fontSize: '0.82rem', marginBottom: '14px', lineHeight: 1.4 }}>
-            <div style={{ marginBottom: '6px' }}>{error}</div>
-            <button
-              type="button"
-              onClick={() => handleDemoClick('user')}
-              style={{
-                background: 'rgba(244, 63, 94, 0.2)',
-                border: '1px solid rgba(244, 63, 94, 0.4)',
-                color: '#ffffff',
-                padding: '3px 10px',
-                borderRadius: '4px',
-                fontSize: '0.74rem',
-                fontWeight: 600,
-                cursor: 'pointer'
-              }}
-            >
-              ⚡ Bypass & Sign In as Pari (Demo)
-            </button>
-          </div>
-        )}
+          {/* Alert Messages */}
+          {error && (
+            <div className="auth-3d-alert error">
+              <span>{error}</span>
+            </div>
+          )}
 
-        {successMsg && (
-          <div style={{ padding: '10px 14px', background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: '8px', color: '#10b981', fontSize: '0.82rem', marginBottom: '14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          {successMsg && (
+            <div className="auth-3d-alert success">
               <CheckCircle2 size={16} />
               <span>{successMsg}</span>
             </div>
-            {devOtp && (
-              <button
-                type="button"
-                onClick={() => setOtp(devOtp)}
-                style={{
-                  background: 'rgba(16, 185, 129, 0.25)',
-                  border: '1px solid rgba(16, 185, 129, 0.4)',
-                  color: '#ffffff',
-                  borderRadius: '4px',
-                  padding: '2px 8px',
-                  fontSize: '0.72rem',
-                  fontWeight: 600,
-                  cursor: 'pointer'
-                }}
-              >
-                Auto-Fill
-              </button>
+          )}
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="auth-3d-form">
+            {/* Full Name Field (Sign Up Only) */}
+            {isRegister && (
+              <div className="auth-3d-input-group">
+                <label className="auth-3d-label">Full Name</label>
+                <div className="auth-3d-input-wrapper">
+                  <User size={17} className="auth-3d-input-icon" />
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Himanshu Kumar"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    className="auth-3d-input"
+                    autoComplete="name"
+                  />
+                </div>
+              </div>
             )}
-          </div>
-        )}
 
-        {/* Sign In Method Switcher (Password vs OTP) */}
-        {!isRegister && (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', background: 'var(--bg-tertiary, rgba(255, 255, 255, 0.05))', padding: '4px', borderRadius: '8px', marginBottom: '16px' }}>
-            <button
-              type="button"
-              onClick={() => { setLoginMethod('password'); setError(null); }}
-              style={{
-                padding: '8px 10px',
-                borderRadius: '6px',
-                border: 'none',
-                background: loginMethod === 'password' ? 'var(--accent-indigo, #6366f1)' : 'transparent',
-                color: loginMethod === 'password' ? '#ffffff' : 'var(--text-secondary)',
-                fontSize: '0.82rem',
-                fontWeight: 600,
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '6px',
-                boxShadow: loginMethod === 'password' ? '0 2px 8px rgba(99, 102, 241, 0.3)' : 'none'
-              }}
-            >
-              <Lock size={14} />
-              <span>🔑 Password Login</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => { setLoginMethod('otp'); setError(null); }}
-              style={{
-                padding: '8px 10px',
-                borderRadius: '6px',
-                border: 'none',
-                background: loginMethod === 'otp' ? 'var(--accent-indigo, #6366f1)' : 'transparent',
-                color: loginMethod === 'otp' ? '#ffffff' : 'var(--text-secondary)',
-                fontSize: '0.82rem',
-                fontWeight: 600,
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '6px',
-                boxShadow: loginMethod === 'otp' ? '0 2px 8px rgba(99, 102, 241, 0.3)' : 'none'
-              }}
-            >
-              <KeyRound size={14} />
-              <span>📱 OTP Login</span>
-            </button>
-          </div>
-        )}
-
-        {/* Quick Credentials Auto-Fill Bar */}
-        {!isRegister && loginMethod === 'password' && (
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 10px', background: 'rgba(255, 255, 255, 0.03)', border: '1px dashed rgba(255, 255, 255, 0.15)', borderRadius: '6px', marginBottom: '12px' }}>
-            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Quick Credentials:</span>
-            <div style={{ display: 'flex', gap: '6px' }}>
-              <button
-                type="button"
-                onClick={() => fillDemoCredentials('user')}
-                style={{
-                  background: 'rgba(99, 102, 241, 0.15)',
-                  border: '1px solid rgba(99, 102, 241, 0.35)',
-                  color: '#a5b4fc',
-                  borderRadius: '4px',
-                  padding: '2px 8px',
-                  fontSize: '0.72rem',
-                  fontWeight: 600,
-                  cursor: 'pointer'
-                }}
-              >
-                👤 Fill Demo
-              </button>
-              <button
-                type="button"
-                onClick={() => fillDemoCredentials('admin')}
-                style={{
-                  background: 'rgba(245, 158, 11, 0.15)',
-                  border: '1px solid rgba(245, 158, 11, 0.35)',
-                  color: '#fcd34d',
-                  borderRadius: '4px',
-                  padding: '2px 8px',
-                  fontSize: '0.72rem',
-                  fontWeight: 600,
-                  cursor: 'pointer'
-                }}
-              >
-                🛡️ Fill Admin
-              </button>
-            </div>
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexFlow: 'column', gap: '12px' }}>
-          {/* Full Name for Registration */}
-          {isRegister && (
-            <div>
-              <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '5px' }}>
-                Full Name
-              </label>
-              <div style={{ position: 'relative' }}>
+            {/* User ID / Email Field */}
+            <div className="auth-3d-input-group">
+              <label className="auth-3d-label">User ID or Email</label>
+              <div className="auth-3d-input-wrapper">
+                <Mail size={17} className="auth-3d-input-icon" />
                 <input
                   type="text"
                   required
-                  className="input-control"
-                  placeholder="e.g. Pari Verma"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  placeholder={isRegister ? 'e.g. himanshu or himanshu@prachi.ai' : 'Enter your User ID or Email'}
+                  value={identifier}
+                  onChange={(e) => setIdentifier(e.target.value)}
+                  className="auth-3d-input"
+                  autoComplete="username"
                 />
               </div>
             </div>
-          )}
 
-          {/* Identifier (Email or Mobile) */}
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
-              <label style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                Mobile Number or Email
-              </label>
-              <span style={{ fontSize: '0.7rem', color: 'var(--accent-indigo, #818cf8)' }}>
-                {isEmail ? '✉ Email Mode' : '📱 Mobile Mode'}
-              </span>
-            </div>
-            <div style={{ position: 'relative' }}>
-              <input
-                type="text"
-                required
-                className="input-control"
-                placeholder="e.g. +91 98765 43210 or pari@example.com"
-                value={identifier}
-                onChange={(e) => {
-                  setIdentifier(e.target.value);
-                  setOtpSent(false);
-                }}
-              />
-            </div>
-          </div>
-
-          {/* Password Field (Always in Register; In Login if method === 'password') */}
-          {(isRegister || loginMethod === 'password') && (
-            <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
-                <label style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                  {isRegister ? 'Set Password' : 'Password'}
-                </label>
-                {isRegister && (
-                  <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Min. 6 chars</span>
-                )}
-              </div>
-              <input
-                type="password"
-                required
-                className="input-control"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-          )}
-
-          {/* OTP Verification Section (Mandatory in Register; In Login if method === 'otp') */}
-          {(isRegister || loginMethod === 'otp') && (
-            <div style={{ background: 'var(--bg-tertiary, rgba(255, 255, 255, 0.03))', padding: '10px 12px', borderRadius: '8px', border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.08))' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <label style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                  {isRegister ? 'Mandatory OTP Verification' : '6-Digit Verification Code'}
-                </label>
-                {otpSent && devOtp && (
+            {/* Password Field */}
+            <div className="auth-3d-input-group">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <label className="auth-3d-label">Password</label>
+                {!isRegister && (
                   <button
                     type="button"
-                    onClick={() => setOtp(devOtp)}
-                    title="Click to fill code"
-                    style={{
-                      background: 'rgba(16, 185, 129, 0.15)',
-                      border: '1px solid rgba(16, 185, 129, 0.4)',
-                      color: '#10b981',
-                      borderRadius: '6px',
-                      fontSize: '0.72rem',
-                      fontWeight: 600,
-                      padding: '2px 8px',
-                      cursor: 'pointer'
-                    }}
+                    onClick={handleFillDemo}
+                    className="auth-3d-helper-btn"
                   >
-                    Code: {devOtp} (Click to fill)
+                    Use Demo ID
                   </button>
                 )}
               </div>
-
-              <div style={{ display: 'flex', gap: '8px' }}>
+              <div className="auth-3d-input-wrapper">
+                <Lock size={17} className="auth-3d-input-icon" />
                 <input
-                  type="text"
-                  maxLength={6}
+                  type={showPassword ? 'text' : 'password'}
                   required
-                  className="input-control"
-                  placeholder="Enter 6-digit OTP"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, ''))}
-                  style={{ letterSpacing: '2px', fontWeight: 600, fontSize: '0.95rem' }}
+                  placeholder={isRegister ? 'At least 6 characters' : 'Enter your password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="auth-3d-input"
+                  autoComplete={isRegister ? 'new-password' : 'current-password'}
                 />
                 <button
                   type="button"
-                  onClick={() => handleSendOtp(isRegister ? 'register' : 'login')}
-                  disabled={otpLoading || otpTimer > 0}
-                  className="btn btn-secondary"
-                  style={{ whiteSpace: 'nowrap', fontSize: '0.78rem', padding: '0 12px' }}
+                  className="auth-3d-eye-btn"
+                  onClick={() => setShowPassword(!showPassword)}
+                  title={showPassword ? 'Hide password' : 'Show password'}
                 >
-                  {otpLoading ? (
-                    'Sending...'
-                  ) : otpTimer > 0 ? (
-                    `Resend (${otpTimer}s)`
-                  ) : otpSent ? (
-                    'Resend OTP'
-                  ) : (
-                    'Get OTP'
-                  )}
+                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
-
-              <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '6px', marginBottom: 0 }}>
-                {isRegister
-                  ? 'Click "Get OTP" to receive a verification code on your mobile/email.'
-                  : 'Enter the code sent to your registered mobile number or email.'}
-              </p>
             </div>
-          )}
 
-          {/* Interactive "I'm not a robot" CAPTCHA Checkbox (Mandatory for ALL flows) */}
-          <div>
-            <RobotCaptcha
-              onVerify={(token) => {
-                setCaptchaToken(token);
-                if (token) setError(null);
-              }}
-              isVerified={Boolean(captchaToken)}
-            />
+            {/* Confirm Password Field (Sign Up Only) */}
+            {isRegister && (
+              <div className="auth-3d-input-group">
+                <label className="auth-3d-label">Confirm Password</label>
+                <div className="auth-3d-input-wrapper">
+                  <ShieldCheck size={17} className="auth-3d-input-icon" />
+                  <input
+                    type={showConfirmPassword ? 'text' : 'password'}
+                    required
+                    placeholder="Re-enter your password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className="auth-3d-input"
+                    autoComplete="new-password"
+                  />
+                  <button
+                    type="button"
+                    className="auth-3d-eye-btn"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    title={showConfirmPassword ? 'Hide password' : 'Show password'}
+                  >
+                    {showConfirmPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Remember Me Option (Sign In Only) */}
+            {!isRegister && (
+              <div className="auth-3d-options-row">
+                <label className="auth-3d-checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                    className="auth-3d-checkbox"
+                  />
+                  <span>Stay logged in on this browser</span>
+                </label>
+              </div>
+            )}
+
+            {/* Primary Action Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="auth-3d-submit-btn"
+            >
+              {loading ? (
+                <div className="auth-3d-spinner-row">
+                  <div className="auth-3d-spinner" />
+                  <span>Processing...</span>
+                </div>
+              ) : (
+                <>
+                  <span>{isRegister ? 'Create My Account' : 'Sign In to Prachi AI'}</span>
+                  <ArrowRight size={17} />
+                </>
+              )}
+            </button>
+          </form>
+
+          {/* Divider */}
+          <div className="auth-3d-divider">
+            <span>OR</span>
           </div>
 
-          {/* Action Submit Button */}
+          {/* 1-Click Instant Guest Access Button */}
           <button
-            type="submit"
-            className="btn btn-primary"
+            type="button"
             disabled={loading}
-            style={{
-              marginTop: '4px',
-              padding: '10px 14px',
-              fontWeight: 600,
-              fontSize: '0.88rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px'
-            }}
+            onClick={handleGuestLogin}
+            className="auth-3d-guest-btn"
           >
-            {loading ? (
-              <span>Authenticating...</span>
-            ) : isRegister ? (
-              <>
-                <span>Complete Registration & Sign In</span>
-                <ArrowRight size={15} />
-              </>
-            ) : loginMethod === 'otp' ? (
-              <>
-                <span>Verify OTP & Sign In</span>
-                <ArrowRight size={15} />
-              </>
+            <Zap size={16} className="text-amber" />
+            <span>Instant Guest Access (1-Click Explore)</span>
+          </button>
+
+          {/* Footer Switching Note */}
+          <div className="auth-3d-footer">
+            {isRegister ? (
+              <p>
+                Already have an ID?{' '}
+                <button
+                  type="button"
+                  className="auth-3d-link-btn"
+                  onClick={() => switchTab(false)}
+                >
+                  Sign In here
+                </button>
+              </p>
             ) : (
-              <>
-                <span>Sign In with Password</span>
-                <ArrowRight size={15} />
-              </>
+              <p>
+                Don't have an account yet?{' '}
+                <button
+                  type="button"
+                  className="auth-3d-link-btn"
+                  onClick={() => switchTab(true)}
+                >
+                  Create one now
+                </button>
+              </p>
             )}
-          </button>
-        </form>
-
-        {/* Instant Demo Quick Access */}
-        <div style={{ display: 'flex', alignItems: 'center', margin: '16px 0', gap: '10px' }}>
-          <div style={{ flex: 1, height: '1px', background: 'var(--border-subtle)' }} />
-          <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>OR INSTANT DEMO LOGIN</span>
-          <div style={{ flex: 1, height: '1px', background: 'var(--border-subtle)' }} />
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={() => handleDemoClick('user')}
-            disabled={loading}
-            style={{ fontSize: '0.78rem', padding: '8px' }}
-          >
-            <User size={13} style={{ color: 'var(--accent-indigo)' }} />
-            <span>Pari (User)</span>
-          </button>
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={() => handleDemoClick('admin')}
-            disabled={loading}
-            style={{ fontSize: '0.78rem', padding: '8px' }}
-          >
-            <ShieldCheck size={13} style={{ color: 'var(--accent-amber)' }} />
-            <span>Admin Demo</span>
-          </button>
-        </div>
-
-        {/* Toggle Mode Footer */}
-        <div style={{ textAlign: 'center', marginTop: '16px' }}>
-          <button
-            type="button"
-            onClick={() => switchMode(!isRegister)}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: 'var(--accent-indigo)',
-              fontSize: '0.82rem',
-              cursor: 'pointer',
-              textDecoration: 'underline'
-            }}
-          >
-            {isRegister
-              ? 'Already have an account? Sign In'
-              : "Don't have an account? Create one with OTP"}
-          </button>
+          </div>
         </div>
       </div>
     </div>

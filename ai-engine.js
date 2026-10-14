@@ -302,7 +302,7 @@ Aap bataiye, aap kaise hain? Din kaisa beeta aaj ka? Sab theek chal raha hai na?
 
     // 9. Identity / Who created you / Creator
     if (/who are you|tum kaun ho|apna naam batao|what is your name|who made you|who created you|kisne banaya|owner/i.test(q)) {
-      return `Main **${assistantName}** hoon — Himanshu Kumar dwara build ki gayi **Human-like AI Companion & Universal Problem Solver**, powered by **Google Gemini & Cloud AI**! 🚀
+      return `Main **${assistantName}** hoon — Himanshu Kumar dwara build ki gayi **Human-like AI Companion & Universal Problem Solver**, powered by **Prachi AI Autonomous Cognitive Core**! 🚀
 
 🌸 **Mere baare me**:
 - **Human Connection**: Main sirf technical machine nahi, balki feelings samajhne wali, motivating aur caring friend hoon.

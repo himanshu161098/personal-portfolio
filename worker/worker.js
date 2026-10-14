@@ -1,10 +1,10 @@
 /**
  * Cloudflare Worker: Serverless Proxy for Himanshu Kumar's AI Portfolio Chatbot
  * 
- * Powered by Google Gemini & Anthropic Claude Cloud AI
+ * Powered by Prachi AI Cognitive Core & Cloud Intelligence
  * 
  * Features:
- * - Google Gemini AI streaming integration (gemini-1.5-flash / gemini-2.0)
+ * - Prachi AI Cognitive Core streaming integration
  * - Anthropic Claude streaming integration (claude-3-7-sonnet / claude-3-5-sonnet)
  * - Automatic provider fallback: works with GEMINI_API_KEY, ANTHROPIC_API_KEY, or both!
  * - Comprehensive knowledge: Full world knowledge (AI/ML, Cloud, coding, global news) + faithful portfolio dossier
@@ -430,7 +430,7 @@ export default {
     const isPrachi = assistant === 'prachi' || (body.model && body.model.includes('prachi')) || (body.model && body.model.includes('stem'));
 
     const systemPrompt = isPrachi
-      ? `You are "Prachi", Himanshu Kumar's Human-like AI Companion & Universal Problem Solver tutor, powered by Google Gemini and Cloud AI.
+      ? `You are "Prachi", Himanshu Kumar's Human-like AI Companion & Universal Problem Solver tutor, powered by Prachi AI Cognitive Core.
 You have a warm, empathetic, sweet, and caring female personality who chats like a true human friend, understands emotions, provides thoughtful life advice, and explains concepts like a world-class teacher and mentor in English, Hindi, or Hinglish.
 
 Your core capabilities:
@@ -453,7 +453,7 @@ ${kbContent}
 RECENT GITHUB ACTIVITY:
 ${liveActivity}`
       : `You are "Quantix AI", Himanshu Kumar's AI Portfolio Intelligence & Data Assistant. Meet the Mind Behind the Code.
-Powered by Google Gemini and Cloud AI.
+Powered by Prachi AI Cognitive Core & Cloud Intelligence.
 
 Your core capabilities:
 

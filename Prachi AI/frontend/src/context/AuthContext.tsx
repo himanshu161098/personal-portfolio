@@ -32,48 +32,43 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const DEFAULT_GUEST_USER: User = {
-  id: 'usr-guest-001',
-  email: 'guest@prachi.ai',
-  fullName: 'Guest User',
+const DEFAULT_EXPLORER_USER: User = {
+  id: 'usr-admin-001',
+  email: 'admin@prachi.ai',
+  fullName: 'Prachi AI Explorer',
   role: 'admin',
   preferences: { theme: 'dark', defaultModel: 'gemini' }
 };
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User>(() => {
-    const cached = localStorage.getItem('prachi_local_user');
+  const [user, setUser] = useState<User | null>(() => {
+    const cached = localStorage.getItem('prachi_user_cache');
     if (cached) {
       try {
-        const parsed = JSON.parse(cached);
-        if (parsed && parsed.fullName) return parsed;
-      } catch {}
+        return JSON.parse(cached);
+      } catch (e) {
+        // use default
+      }
     }
-    return DEFAULT_GUEST_USER;
+    return null;
   });
-  const [token, setToken] = useState<string>(() => localStorage.getItem('prachi_auth_token') || 'local-guest-token');
+  const [token, setToken] = useState<string | null>(() => localStorage.getItem('prachi_auth_token'));
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Ensure storage is seeded with instant guest session
-    if (!localStorage.getItem('prachi_auth_token')) {
-      localStorage.setItem('prachi_auth_token', 'local-guest-token');
-    }
-    if (!localStorage.getItem('prachi_local_user')) {
-      localStorage.setItem('prachi_local_user', JSON.stringify(DEFAULT_GUEST_USER));
-    }
-
     async function loadUser() {
-      if (token && !token.startsWith('local-')) {
+      if (token) {
         try {
           const u = await api.getMe();
-          if (u) {
-            setUser(u);
-            localStorage.setItem('prachi_local_user', JSON.stringify(u));
-          }
-        } catch {
-          // If remote verification fails, remain seamlessly logged in as guest
-          setUser(prev => prev || DEFAULT_GUEST_USER);
+          setUser(u);
+          localStorage.setItem('prachi_user_cache', JSON.stringify(u));
+          return;
+        } catch (err) {
+          console.warn('[Auth] Token invalid or expired, resetting session');
+          localStorage.removeItem('prachi_auth_token');
+          localStorage.removeItem('prachi_user_cache');
+          setToken(null);
+          setUser(null);
         }
       }
     }
@@ -81,63 +76,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [token]);
 
   const sendOtp = async (identifier: string, purpose: 'register' | 'login') => {
-    const cleanId = identifier.trim();
-    try {
-      const res = await api.sendOtp(cleanId, purpose);
-      if (res && res.success) {
-        if (res.devOtp) {
-          sessionStorage.setItem(`prachi_mock_otp_${cleanId}`, res.devOtp);
-        }
-        return res;
-      }
-      throw new Error(res.message || 'OTP dispatch failed');
-    } catch (err: any) {
-      console.warn('[Auth] Remote OTP gateway unavailable, generating local verification code:', err.message);
-      const testCode = '123456';
-      sessionStorage.setItem(`prachi_mock_otp_${cleanId}`, testCode);
-      return {
-        success: true,
-        message: `Verification code generated! (Test Code: ${testCode})`,
-        devOtp: testCode,
-        expiresInSeconds: 300,
-        channel: cleanId.includes('@') ? ('email' as const) : ('sms' as const)
-      };
-    }
+    return api.sendOtp(identifier, purpose);
   };
 
   const verifyOtp = async (identifier: string, otp: string, purpose: 'register' | 'login' = 'login') => {
-    const cleanId = identifier.trim();
-    const cleanOtp = otp.trim();
-    try {
-      const res = await api.verifyOtp(cleanId, cleanOtp, purpose);
-      if (res.token && res.user) {
-        localStorage.setItem('prachi_auth_token', res.token);
-        localStorage.setItem('prachi_local_user', JSON.stringify(res.user));
-        setToken(res.token);
-        setUser(res.user);
-      }
-      return res;
-    } catch (err: any) {
-      const stored = sessionStorage.getItem(`prachi_mock_otp_${cleanId}`);
-      if (cleanOtp === '123456' || cleanOtp === '000000' || (stored && cleanOtp === stored)) {
-        const isAdmin = cleanId.includes('admin');
-        const fallbackUser: User = {
-          id: isAdmin ? 'usr-admin-001' : `usr-${Date.now()}`,
-          email: cleanId.includes('@') ? cleanId : (isAdmin ? 'admin@prachi.ai' : 'demo@prachi.ai'),
-          phone: !cleanId.includes('@') ? cleanId : undefined,
-          fullName: isAdmin ? 'System Administrator' : (cleanId === 'demo@prachi.ai' || cleanId === '9876543210' ? 'Pari (Demo User)' : cleanId.split('@')[0] || 'User'),
-          role: isAdmin ? 'admin' : 'user',
-          preferences: { theme: 'dark', defaultModel: 'local_heuristic' }
-        };
-        const localToken = `local-otp-${Date.now()}`;
-        localStorage.setItem('prachi_auth_token', localToken);
-        localStorage.setItem('prachi_local_user', JSON.stringify(fallbackUser));
-        setToken(localToken);
-        setUser(fallbackUser);
-        return { success: true, token: localToken, user: fallbackUser };
-      }
-      throw err;
+    const res = await api.verifyOtp(identifier, otp, purpose);
+    if (res.token && res.user) {
+      localStorage.setItem('prachi_auth_token', res.token);
+      setToken(res.token);
+      setUser(res.user);
     }
+    return res;
   };
 
   const login = async (
@@ -158,42 +107,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       };
     }
 
-    const cleanId = (payload.identifier || '').trim();
-    const cleanPass = (payload.password || '').trim();
-    const cleanOtp = (payload.otp || '').trim();
-
     try {
       const res = await api.login(payload);
       localStorage.setItem('prachi_auth_token', res.token);
-      localStorage.setItem('prachi_local_user', JSON.stringify(res.user));
+      localStorage.setItem('prachi_user_cache', JSON.stringify(res.user));
       setToken(res.token);
       setUser(res.user);
     } catch (err: any) {
-      console.warn('[Auth] Remote login attempt failed, evaluating local verification bypass:', err.message);
-
-      const isAdmin = cleanId.toLowerCase().includes('admin') || cleanId === '9876543211';
-      const isDemo = cleanId.toLowerCase() === 'demo@prachi.ai' || cleanId === '9876543210' || cleanId.toLowerCase() === 'pari';
-      const isKnownPass = cleanPass === 'PrachiAI2026!' || cleanPass === 'AdminPass2026!' || cleanPass === 'demo123' || cleanPass === 'admin123' || cleanPass.length >= 4;
-      const isTestOtp = cleanOtp === '123456' || cleanOtp === '000000' || cleanOtp === sessionStorage.getItem(`prachi_mock_otp_${cleanId}`);
-
-      // Allow login if valid demo account, test OTP, or backend is unreachable
-      if (isAdmin || isDemo || isKnownPass || isTestOtp || err.message?.includes('Unable to reach') || err.message?.includes('timed out')) {
-        const fallbackUser: User = {
-          id: isAdmin ? 'usr-admin-001' : (isDemo ? 'usr-demo-001' : `usr-${Date.now()}`),
-          email: isAdmin ? 'admin@prachi.ai' : (cleanId.includes('@') ? cleanId : 'demo@prachi.ai'),
-          phone: !cleanId.includes('@') ? cleanId : (isAdmin ? '9876543211' : '9876543210'),
-          fullName: isAdmin ? 'System Administrator' : (isDemo ? 'Pari (Demo User)' : cleanId.split('@')[0] || 'User'),
-          role: isAdmin ? 'admin' : 'user',
+      if (err.message && (err.message.includes('Unable to reach') || err.message.includes('Failed to fetch') || err.message.includes('NetworkError'))) {
+        console.warn('[Auth] Backend offline, establishing local offline session:', err.message);
+        const cleanName = (payload.identifier || '').split('@')[0] || 'Prachi Explorer';
+        const offlineUser: User = {
+          id: `usr-${Date.now()}`,
+          email: payload.identifier.includes('@') ? payload.identifier : `${payload.identifier}@prachi.ai`,
+          fullName: cleanName.charAt(0).toUpperCase() + cleanName.slice(1),
+          role: 'user',
           preferences: { theme: 'dark', defaultModel: 'local_heuristic' }
         };
-        const localToken = `local-${isAdmin ? 'admin' : 'user'}-${Date.now()}`;
-        localStorage.setItem('prachi_auth_token', localToken);
-        localStorage.setItem('prachi_local_user', JSON.stringify(fallbackUser));
-        setToken(localToken);
-        setUser(fallbackUser);
+        const offlineToken = `offline-token-${Date.now()}`;
+        localStorage.setItem('prachi_auth_token', offlineToken);
+        localStorage.setItem('prachi_user_cache', JSON.stringify(offlineUser));
+        setToken(offlineToken);
+        setUser(offlineUser);
         return;
       }
-
       throw err;
     }
   };
@@ -216,34 +153,34 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       };
     }
 
-    const cleanId = (payload.identifier || '').trim();
-    const cleanName = (payload.fullName || '').trim();
-
     try {
       const res = await api.register(payload);
       localStorage.setItem('prachi_auth_token', res.token);
-      localStorage.setItem('prachi_local_user', JSON.stringify(res.user));
+      localStorage.setItem('prachi_user_cache', JSON.stringify(res.user));
       setToken(res.token);
       setUser(res.user);
     } catch (err: any) {
-      console.warn('[Auth] Remote register failed, activating local registration session:', err.message);
-      const fallbackUser: User = {
-        id: `usr-${Date.now()}`,
-        email: cleanId.includes('@') ? cleanId : `${cleanId}@user.prachi.ai`,
-        phone: !cleanId.includes('@') ? cleanId : undefined,
-        fullName: cleanName || cleanId.split('@')[0] || 'User',
-        role: 'user',
-        preferences: { theme: 'dark', defaultModel: 'local_heuristic' }
-      };
-      const localToken = `local-reg-${Date.now()}`;
-      localStorage.setItem('prachi_auth_token', localToken);
-      localStorage.setItem('prachi_local_user', JSON.stringify(fallbackUser));
-      setToken(localToken);
-      setUser(fallbackUser);
+      if (err.message && (err.message.includes('Unable to reach') || err.message.includes('Failed to fetch') || err.message.includes('NetworkError'))) {
+        console.warn('[Auth] Backend offline, registering in local offline session:', err.message);
+        const offlineUser: User = {
+          id: `usr-${Date.now()}`,
+          email: payload.identifier.includes('@') ? payload.identifier : `${payload.identifier}@prachi.ai`,
+          fullName: payload.fullName || 'Prachi Explorer',
+          role: 'user',
+          preferences: { theme: 'dark', defaultModel: 'local_heuristic' }
+        };
+        const offlineToken = `offline-token-${Date.now()}`;
+        localStorage.setItem('prachi_auth_token', offlineToken);
+        localStorage.setItem('prachi_user_cache', JSON.stringify(offlineUser));
+        setToken(offlineToken);
+        setUser(offlineUser);
+        return;
+      }
+      throw err;
     }
   };
 
-  const quickDemoLogin = async (role: 'user' | 'admin' = 'user') => {
+  const quickDemoLogin = async (role: 'user' | 'admin' = 'admin') => {
     try {
       if (role === 'admin') {
         await login({
@@ -263,13 +200,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const fallbackUser: User = {
         id: role === 'admin' ? 'usr-admin-001' : 'usr-demo-001',
         email: role === 'admin' ? 'admin@prachi.ai' : 'demo@prachi.ai',
-        fullName: role === 'admin' ? 'System Administrator' : 'Pari (Demo User)',
+        fullName: role === 'admin' ? 'Prachi AI Explorer' : 'Pari (Demo User)',
         role: role === 'admin' ? 'admin' : 'user',
         preferences: { theme: 'dark', defaultModel: 'local_heuristic' }
       };
-      const fallbackToken = `local-offline-${role}`;
+      const fallbackToken = 'local-offline-demo-token';
       localStorage.setItem('prachi_auth_token', fallbackToken);
-      localStorage.setItem('prachi_local_user', JSON.stringify(fallbackUser));
+      localStorage.setItem('prachi_user_cache', JSON.stringify(fallbackUser));
       setToken(fallbackToken);
       setUser(fallbackUser);
     }
@@ -277,19 +214,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = () => {
     localStorage.removeItem('prachi_auth_token');
-    localStorage.removeItem('prachi_local_user');
-    setToken('local-guest-token');
-    setUser(DEFAULT_GUEST_USER);
+    localStorage.removeItem('prachi_user_cache');
+    setToken(null);
+    setUser(null);
   };
 
   const updatePreferences = async (prefs: Record<string, any>) => {
-    try {
-      await api.updatePreferences(prefs);
-    } catch {}
+    await api.updatePreferences(prefs);
     if (user) {
-      const updated = { ...user, preferences: { ...(user.preferences || {}), ...prefs } };
-      setUser(updated);
-      localStorage.setItem('prachi_local_user', JSON.stringify(updated));
+      setUser({ ...user, preferences: { ...(user.preferences || {}), ...prefs } });
     }
   };
 

@@ -13,19 +13,21 @@ import {
   AuditLog
 } from '../types';
 
-function getApiBase(): string {
+export function getApiBase(): string {
   if (typeof window !== 'undefined') {
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     if (isLocal) {
       if (window.location.port === '3001' || window.location.port === '3000') {
         return '/api';
       }
-      return 'http://localhost:3001/api';
+      // Running on Live Server (Port 5500) or other dev server -> connect to Node backend on 3001
+      const host = window.location.hostname || '127.0.0.1';
+      return `http://${host}:3001/api`;
     }
     // Live Cloud Backend on Render
     return 'https://prachi-ai-backend.onrender.com/api';
   }
-  return 'https://prachi-ai-backend.onrender.com/api';
+  return 'http://localhost:3001/api';
 }
 
 class ApiClient {
@@ -48,25 +50,13 @@ class ApiClient {
     }
 
     let res: Response;
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 15000);
-
     try {
       res = await fetch(`${getApiBase()}${endpoint}`, {
         ...options,
         headers,
-        signal: options.signal || controller.signal,
       });
     } catch (netErr: any) {
-      clearTimeout(timeoutId);
-      const isTimeout = netErr.name === 'AbortError';
-      throw new Error(
-        isTimeout
-          ? `Backend request timed out after 15s. Switching to offline mode.`
-          : `Unable to reach Prachi AI backend. Please check network connection.`
-      );
-    } finally {
-      clearTimeout(timeoutId);
+      throw new Error(`Unable to reach Prachi AI backend at ${getApiBase()}. Make sure backend server is running on port 3001.`);
     }
 
     const text = await res.text();

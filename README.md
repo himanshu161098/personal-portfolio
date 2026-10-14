@@ -97,14 +97,14 @@ Personal Portfolio/
 
 ## 🤖 Prachi: AI + Universal Academic Tutor & Female Voice Assistant
 
-The portfolio features **Prachi**, an advanced dark glassmorphic AI Assistant & Universal Tutor powered by **Google Gemini & Cloud AI** (with Anthropic Claude failover) via a dedicated Cloudflare Worker serverless proxy:
+The portfolio features **Prachi**, an advanced dark glassmorphic AI Assistant & Universal Tutor powered by **Prachi AI Cognitive Core & Cloud Intelligence** (with Anthropic Claude failover) via a dedicated Cloudflare Worker serverless proxy:
 
 ```
 [Portfolio Visitor] ◄──(Voice / STT / Female TTS)──► [chatbot.js Widget / prachi.html] ◄──► [Cloudflare Worker Proxy]
                                                                                                   │
                                                                                    ┌──────────────┴──────────────┐
                                                                                    ▼                             ▼
-                                                                          [Google Gemini AI]            [Anthropic Claude]
+                                                                          [Prachi AI Core]              [Anthropic Claude]
                                                                                    │
                                                          ┌─────────────────────── Fetch & 5-min Cache ───────────┴──────────────────────┐
                                                          ▼                                                                               ▼

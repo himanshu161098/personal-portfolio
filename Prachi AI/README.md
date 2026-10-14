@@ -66,6 +66,13 @@ You can log in instantly or click the 1-click quick-fill buttons in the Auth Mod
    - Live feature flag toggles (enable/disable RAG, vision, web search, memory on the fly).
    - Security audit trail with automatic secret scrubbing.
 
+9. **OmniCognitive Brain & GraphRAG Studio (`/omnibrain` & `/api/brain`)**:
+   - Attached from the `Updated Prachi Ai` build kit (`Build kit 2/Updated Prachi Ai` & `./brain`).
+   - **LangGraph Stateful Graph**: Features hybrid GraphRAG context retriever (Neo4j + ChromaDB), Actor reasoner, and Critic reflection gateway.
+   - **Confidence Policy Gate**: Enforces strict confidence threshold ($\ge 0.85$) with automated reflection retries and polite human-in-the-loop escalation (`CLARIFY`).
+   - **Multimodal Verification**: Real-time camera image ingestion and verification (brand, authenticity, state, defects) with structured JSON responses.
+   - **Continuous Alignment (DPO)**: Logs preference pairs (`prompt`, `chosen`, `rejected`) for weekly LoRA fine-tuning.
+
 ---
 
 ## 🏗️ Architecture & Technical Stack

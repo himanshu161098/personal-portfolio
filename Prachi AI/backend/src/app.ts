@@ -16,6 +16,7 @@ import { artifactRouter } from './routes/artifactRoutes';
 import { adminRouter } from './routes/adminRoutes';
 import { voiceRouter } from './routes/voiceRoutes';
 import { contactRouter } from './routes/contactRoutes';
+import { omniBrainRouter } from './routes/omniBrainRoutes';
 
 export const app = express();
 
@@ -40,6 +41,7 @@ app.use('/api/artifacts', artifactRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/voice', voiceRouter); // V2 Voice STT/TTS Contract
 app.use('/api/contacts', contactRouter);
+app.use('/api/brain', omniBrainRouter); // Updated Prachi AI OmniCognitive LangGraph Brain
 
 // Root health probe
 app.get('/health', (req: Request, res: Response) => {
