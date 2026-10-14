@@ -1,5 +1,5 @@
 {
-  "last_synced": "2026-10-14T11:17:21.180Z",
+  "last_synced": "2026-10-14T16:37:45.559Z",
   "github": {
     "username": "himanshu161098",
     "profile_url": "https://github.com/himanshu161098",
@@ -11,22 +11,22 @@
     "following": 0,
     "featured_repos": [
       {
+        "name": "Prachi-AI",
+        "description": "Repository created on GitHub",
+        "html_url": "https://github.com/himanshu161098/Prachi-AI",
+        "language": "TypeScript",
+        "stargazers_count": 0,
+        "forks_count": 0,
+        "updated_at": "2026-10-14T14:51:55Z"
+      },
+      {
         "name": "personal-portfolio",
         "description": "Himanshu Kumar - Personal Developer Portfolio with 3D WebGL visuals and automated GitHub activity sync",
         "html_url": "https://github.com/himanshu161098/personal-portfolio",
         "language": "JavaScript",
         "stargazers_count": 0,
         "forks_count": 0,
-        "updated_at": "2026-10-14T06:34:57Z"
-      },
-      {
-        "name": "Prachi-AI",
-        "description": "Repository created on GitHub",
-        "html_url": "https://github.com/himanshu161098/Prachi-AI",
-        "language": "HTML/CSS/JS",
-        "stargazers_count": 0,
-        "forks_count": 0,
-        "updated_at": "2026-10-08T12:55:37Z"
+        "updated_at": "2026-10-14T14:51:53Z"
       },
       {
         "name": "Netfix-Sales",
@@ -58,6 +58,26 @@
     ],
     "recent_events": [
       {
+        "type": "CreateEvent",
+        "repo": "himanshu161098/Prachi-AI",
+        "created_at": "2026-10-14T14:48:55Z"
+      },
+      {
+        "type": "PushEvent",
+        "repo": "himanshu161098/Prachi-AI",
+        "created_at": "2026-10-14T14:51:50Z"
+      },
+      {
+        "type": "PushEvent",
+        "repo": "himanshu161098/personal-portfolio",
+        "created_at": "2026-10-14T14:51:46Z"
+      },
+      {
+        "type": "PushEvent",
+        "repo": "himanshu161098/personal-portfolio",
+        "created_at": "2026-10-14T14:48:10Z"
+      },
+      {
         "type": "PushEvent",
         "repo": "himanshu161098/personal-portfolio",
         "created_at": "2026-10-14T06:34:52Z"
@@ -66,26 +86,6 @@
         "type": "PushEvent",
         "repo": "himanshu161098/personal-portfolio",
         "created_at": "2026-10-14T06:33:10Z"
-      },
-      {
-        "type": "PushEvent",
-        "repo": "himanshu161098/personal-portfolio",
-        "created_at": "2026-10-13T17:19:58Z"
-      },
-      {
-        "type": "PushEvent",
-        "repo": "himanshu161098/personal-portfolio",
-        "created_at": "2026-10-09T12:55:58Z"
-      },
-      {
-        "type": "PushEvent",
-        "repo": "himanshu161098/personal-portfolio",
-        "created_at": "2026-10-09T13:34:00Z"
-      },
-      {
-        "type": "PushEvent",
-        "repo": "himanshu161098/personal-portfolio",
-        "created_at": "2026-10-09T14:30:13Z"
       }
     ]
   },
