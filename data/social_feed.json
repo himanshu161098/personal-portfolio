@@ -1,5 +1,5 @@
 {
-  "last_synced": "2026-10-14T16:37:45.559Z",
+  "last_synced": "2026-10-14T21:19:05.201Z",
   "github": {
     "username": "himanshu161098",
     "profile_url": "https://github.com/himanshu161098",
@@ -11,6 +11,15 @@
     "following": 0,
     "featured_repos": [
       {
+        "name": "personal-portfolio",
+        "description": "Himanshu Kumar - Personal Developer Portfolio with 3D WebGL visuals and automated GitHub activity sync",
+        "html_url": "https://github.com/himanshu161098/personal-portfolio",
+        "language": "JavaScript",
+        "stargazers_count": 0,
+        "forks_count": 0,
+        "updated_at": "2026-10-14T16:37:51Z"
+      },
+      {
         "name": "Prachi-AI",
         "description": "Repository created on GitHub",
         "html_url": "https://github.com/himanshu161098/Prachi-AI",
@@ -18,15 +27,6 @@
         "stargazers_count": 0,
         "forks_count": 0,
         "updated_at": "2026-10-14T14:51:55Z"
-      },
-      {
-        "name": "personal-portfolio",
-        "description": "Himanshu Kumar - Personal Developer Portfolio with 3D WebGL visuals and automated GitHub activity sync",
-        "html_url": "https://github.com/himanshu161098/personal-portfolio",
-        "language": "JavaScript",
-        "stargazers_count": 0,
-        "forks_count": 0,
-        "updated_at": "2026-10-14T14:51:53Z"
       },
       {
         "name": "Netfix-Sales",
