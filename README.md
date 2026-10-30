@@ -5,7 +5,7 @@
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
 
-### Interactive 3D Futuristic Portfolio & Developer Dossier
+## Interactive 3D Futuristic Portfolio & Developer Dossier
 
 [🌐 View Live Site](https://himanshu161098.github.io/personal-portfolio/) • [💼 LinkedIn Profile](https://www.linkedin.com/in/himanshu-kumar-1618hks/) • [📧 Get in Touch](mailto:himanshukumarsingh161098@gmail.com)
 
