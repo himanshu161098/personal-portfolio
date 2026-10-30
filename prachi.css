@@ -241,8 +241,6 @@ body.gpt-body::after {
   flex: 1;
   overflow-y: auto;
   padding: 4px 10px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
 .gpt-history-section::-webkit-scrollbar {
@@ -693,8 +691,6 @@ body.gpt-body::after {
   position: relative;
   display: flex;
   flex-direction: column;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
 }
 
 .gpt-chat-container::-webkit-scrollbar {
@@ -1290,7 +1286,6 @@ body.gpt-body::after {
   align-items: center;
   gap: 7px;
   overflow-x: auto;
-  scrollbar-width: none;
   -ms-overflow-style: none;
   padding: 2px 2px 4px 2px;
 }

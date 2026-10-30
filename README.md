@@ -114,7 +114,7 @@ The portfolio features **Prachi**, an advanced dark glassmorphic AI Assistant & 
                                (Portfolio + STEM + GK/GS Academic Knowledge)                                                  (Auto-synced GitHub data)
 ```
 
-### 🌟 Key Superpowers:
+### 🌟 Key Superpowers
 
 - 👧 **Female Voice Assistant ("Prachi")**: Features sweet, articulate female voice synthesis (pitch 1.18, rate 0.98, tuned for Hindi & English) plus real-time hands-free microphone speech-to-text.
 - 📐 **Universal Subject Problem Solver**:
@@ -177,7 +177,7 @@ Use this checklist to verify that all functional, academic, stylistic, edge-case
 
 ## 👤 Author
 
-**Himanshu Kumar**
+### Himanshu Kumar
 
 - 🎓 Final-year B.Tech (CSE-IT) at IIMT College of Engineering, AKTU
 - 💼 LinkedIn: [@himanshu-kumar-1618hks](https://www.linkedin.com/in/himanshu-kumar-1618hks/)

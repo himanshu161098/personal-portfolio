@@ -6945,8 +6945,6 @@ textarea {
     padding: 3rem 1.5rem 4rem 1.5rem;
     overflow-y: auto;
     overscroll-behavior: contain;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(56, 189, 248, 0.4) rgba(8, 13, 26, 0.7);
 }
 
 .skill-modal-overlay::-webkit-scrollbar {
@@ -8597,8 +8595,6 @@ textarea {
         inset 0 0 45px rgba(138, 77, 20, 0.45),
         inset 0 0 95px rgba(78, 38, 5, 0.35),
         0 15px 40px rgba(0, 0, 0, 0.8);
-    scrollbar-width: thin;
-    scrollbar-color: #b45309 rgba(250, 237, 208, 0.6);
     box-sizing: border-box;
     z-index: 5;
 }

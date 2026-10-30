@@ -342,8 +342,6 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(56, 189, 248, 0.25) transparent;
 }
 
 .cb-body::-webkit-scrollbar {
@@ -670,7 +668,6 @@
     max-height: 110px;
     min-height: 24px;
     padding: 4px 0;
-    scrollbar-width: thin;
 }
 
 .cb-textarea::placeholder {
