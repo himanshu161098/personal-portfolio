@@ -187,4 +187,5 @@ Use this checklist to verify that all functional, academic, stylistic, edge-case
 ---
 
 ## 📄 License
+
 This project is open-source and available under the [MIT License](LICENSE).
