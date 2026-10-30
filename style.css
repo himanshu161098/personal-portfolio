@@ -10562,7 +10562,7 @@ textarea {
 
     /* Hero Section: Proportional & Compact */
     .hero-section {
-        min-height: auto !important;
+        min-height: 0 !important;
         padding-top: calc(var(--nav-height) + 1.25rem) !important;
         padding-bottom: 2rem !important;
     }
