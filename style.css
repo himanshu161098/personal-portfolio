@@ -8607,6 +8607,10 @@ textarea {
     width: 6px;
 }
 
+.sandesh-parchment-sheet::-webkit-scrollbar-track {
+    background: rgba(250, 237, 208, 0.6);
+}
+
 .sandesh-parchment-sheet::-webkit-scrollbar-thumb {
     background: #b45309;
     border-radius: 4px;
