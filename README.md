@@ -70,6 +70,7 @@ Personal Portfolio/
 ## 🚀 Getting Started
 
 ### Local Setup
+
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/himanshu161098/personal-portfolio.git
@@ -109,6 +110,7 @@ The portfolio features **Prachi**, an advanced dark glassmorphic AI Assistant & 
 ```
 
 ### 🌟 Key Superpowers:
+
 - 👧 **Female Voice Assistant ("Prachi")**: Features sweet, articulate female voice synthesis (pitch 1.18, rate 0.98, tuned for Hindi & English) plus real-time hands-free microphone speech-to-text.
 - 📐 **Universal Subject Problem Solver**:
   - **Mathematics**: Calculus (derivatives, integrals), Algebra, Quadratic equations, Trigonometry, Probability, Percentages.
@@ -169,6 +171,7 @@ Use this checklist to verify that all functional, academic, stylistic, edge-case
 ## 👤 Author
 
 **Himanshu Kumar**
+
 - 🎓 Final-year B.Tech (CSE-IT) at IIMT College of Engineering, AKTU
 - 💼 LinkedIn: [@himanshu-kumar-1618hks](https://www.linkedin.com/in/himanshu-kumar-1618hks/)
 - 💻 GitHub: [@himanshu161098](https://github.com/himanshu161098)
