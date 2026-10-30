@@ -35,7 +35,7 @@ A state-of-the-art interactive developer portfolio engineered with modern vanill
 
 ## 📂 Project Architecture
 
-```
+```text
 Personal Portfolio/
 │
 ├── .github/
@@ -101,7 +101,7 @@ Personal Portfolio/
 
 The portfolio features **Prachi**, an advanced dark glassmorphic AI Assistant & Universal Tutor powered by **Prachi AI Cognitive Core & Cloud Intelligence** (with Anthropic Claude failover) via a dedicated Cloudflare Worker serverless proxy:
 
-```
+```text
 [Portfolio Visitor] ◄──(Voice / STT / Female TTS)──► [chatbot.js Widget / prachi.html] ◄──► [Cloudflare Worker Proxy]
                                                                                                   │
                                                                                    ┌──────────────┴──────────────┐
