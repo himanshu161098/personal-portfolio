@@ -72,20 +72,25 @@ Personal Portfolio/
 ### Local Setup
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/himanshu161098/personal-portfolio.git
    cd personal-portfolio
    ```
 
 2. **Open in browser:**
+
    Open `index.html` in your favorite web browser or run using a lightweight local server:
+
    ```bash
    # Using VS Code Live Server extension OR Python:
    python -m http.server 8000
    ```
+
    Navigate to `http://localhost:8000`.
 
 3. **Manually Sync GitHub Activity & Knowledge Base:**
+
    ```bash
    node scripts/sync-activity.js
    ```
@@ -131,6 +136,7 @@ The chatbot automatically stays updated with your latest achievements, projects,
 1. **Step 1: Edit `data/knowledge.md`**  
    Add your new project, skill, certification, or update under the corresponding section. Update the `Last updated: YYYY-MM-DD` date at the top.
 2. **Step 2: Commit and Push to GitHub**  
+
    ```bash
    git add data/knowledge.md
    git commit -m "docs: add new project and update skills in knowledge base"
