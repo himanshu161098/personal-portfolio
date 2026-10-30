@@ -177,8 +177,8 @@ body {
         linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
     background-size: 48px 48px;
-    mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 40%, transparent 95%);
     -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 40%, transparent 95%);
+    mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 40%, transparent 95%);
 }
 
 /* Container Utility */
@@ -358,6 +358,7 @@ textarea {
     background: rgba(16, 25, 45, 0.85);
     color: var(--text-primary);
     border: 1px solid var(--border-medium);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
 }
 
@@ -401,8 +402,8 @@ textarea {
     width: 100%;
     height: var(--nav-height);
     background: rgba(6, 9, 19, 0.75);
-    backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border-subtle);
     z-index: 1000;
     transition: all var(--transition-normal);
@@ -821,6 +822,7 @@ textarea {
     border: 1px solid rgba(52, 211, 153, 0.45);
     padding: 0.4rem 0.95rem;
     border-radius: var(--radius-full);
+    -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     box-shadow: 0 0 20px rgba(16, 185, 129, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.18);
     transition: all var(--transition-fast);
@@ -877,6 +879,7 @@ textarea {
     font-family: var(--font-mono);
     font-size: 0.78rem;
     color: var(--accent-cyan);
+    -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     box-shadow: 0 0 20px rgba(0, 240, 255, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     transition: all var(--transition-fast);
@@ -994,6 +997,7 @@ textarea {
     border-radius: var(--radius-full);
     font-size: 0.82rem;
     font-weight: 700;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     transition: all var(--transition-fast);
 }
@@ -1035,6 +1039,7 @@ textarea {
     border-left: 3px solid var(--accent-cyan);
     padding: 0.9rem 1.2rem;
     border-radius: var(--radius-md);
+    -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 240, 255, 0.03);
 }
@@ -1254,6 +1259,7 @@ textarea {
     justify-content: center;
     background: rgba(11, 18, 34, 0.8);
     border: 1px solid rgba(56, 189, 248, 0.25);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     transition: all var(--transition-fast);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -1341,6 +1347,7 @@ textarea {
     background: rgba(16, 25, 45, 0.75);
     border: 1px solid var(--border-subtle);
     color: var(--text-secondary);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     transition: all var(--transition-fast);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -1516,8 +1523,8 @@ textarea {
     border: 1px solid rgba(0, 242, 254, 0.42);
     border-radius: var(--radius-lg);
     padding: 1.25rem 1.45rem 1.35rem 1.45rem;
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     box-shadow: 
         0 24px 60px rgba(0, 0, 0, 0.75),
         0 0 35px rgba(0, 242, 254, 0.2),
@@ -1553,8 +1560,8 @@ textarea {
         linear-gradient(to right, rgba(0, 242, 254, 0.06) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(0, 242, 254, 0.06) 1px, transparent 1px);
     background-size: 20px 20px;
-    mask-image: radial-gradient(ellipse 95% 85% at 50% 50%, #000 55%, transparent 100%);
     -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 50%, #000 55%, transparent 100%);
+    mask-image: radial-gradient(ellipse 95% 85% at 50% 50%, #000 55%, transparent 100%);
     pointer-events: none;
     z-index: 0;
 }
@@ -2277,8 +2284,8 @@ textarea {
     border-radius: 44px 44px 38px 38px / 48px 48px 42px 42px;
     padding: 0.82rem 0.95rem 0.75rem 0.95rem;
     min-height: 454px; /* Length increased modestly per user request so card is well-proportioned */
-    backdrop-filter: blur(28px) saturate(200%) contrast(108%);
     -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(108%);
+    backdrop-filter: blur(28px) saturate(200%) contrast(108%);
     box-shadow:
         0 25px 50px -10px rgba(0, 0, 0, 0.75),
         0 10px 22px -6px rgba(0, 0, 0, 0.45),
@@ -2321,8 +2328,8 @@ textarea {
     letter-spacing: 0.3px;
     color: #f8fafc;
     background: rgba(10, 18, 36, 0.88);
-    backdrop-filter: blur(14px) saturate(180%);
     -webkit-backdrop-filter: blur(14px) saturate(180%);
+    backdrop-filter: blur(14px) saturate(180%);
     border: 1.4px solid rgba(255, 255, 255, 0.38);
     box-shadow:
         0 8px 20px -4px rgba(0, 0, 0, 0.65),
@@ -2565,8 +2572,8 @@ textarea {
     border-radius: 4px;
     padding: 0.22rem 0.45rem;
     margin: 0.38rem 0 0.52rem 0;
-    backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
 
@@ -2705,6 +2712,7 @@ textarea {
     left: 0;
     right: 0;
     background: rgba(4, 9, 22, 0.92);
+    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     font-family: var(--font-mono);
     font-size: 0.44rem;
@@ -2798,8 +2806,8 @@ textarea {
     align-items: center;
     gap: 0.18rem;
     white-space: nowrap;
-    backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3);
 }
 
@@ -3151,6 +3159,7 @@ textarea {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
 }
 
@@ -3160,6 +3169,7 @@ textarea {
     font-weight: 900;
     background: linear-gradient(135deg, #00f2fe, #f472b6);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 1;
 }
@@ -3215,6 +3225,7 @@ textarea {
     left: 0;
     right: 0;
     background: rgba(4, 9, 22, 0.92);
+    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     font-family: var(--font-mono);
     font-size: 0.5rem;
@@ -3546,6 +3557,7 @@ textarea {
     inset: 2.5px;
     border-radius: 50%;
     background: rgba(5, 10, 24, 0.82);
+    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
     display: flex;
     flex-direction: column;
@@ -3599,6 +3611,7 @@ textarea {
     font-weight: 600;
     color: var(--text-primary);
     box-shadow: var(--shadow-md);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     z-index: 2;
     animation: floatUpDown 4s ease-in-out infinite;
@@ -4015,6 +4028,7 @@ textarea {
 /* Clickable Skill Card Interactive Cue */
 .skill-card-clickable {
     cursor: pointer;
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -4235,6 +4249,7 @@ textarea {
     align-items: center;
     gap: 0.4rem;
     z-index: 1;
+    -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
 }
 
@@ -4957,8 +4972,8 @@ textarea {
         max-width: 320px;
         height: calc(100vh - var(--nav-height));
         background: rgba(6, 9, 19, 0.98);
-        backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
+        backdrop-filter: blur(18px);
         border-left: 1px solid var(--border-medium);
         flex-direction: column;
         align-items: flex-start;
@@ -5251,16 +5266,16 @@ textarea {
 /* Liquid Glass Header (Single Fixed Layer - Silky Smooth Compositing) */
 .header {
     background: rgba(6, 10, 24, 0.78) !important;
-    backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 -1px 0 rgba(0, 242, 254, 0.18) !important;
 }
 
 .header.scrolled {
     background: rgba(4, 7, 18, 0.92) !important;
-    backdrop-filter: blur(24px) !important;
     -webkit-backdrop-filter: blur(24px) !important;
+    backdrop-filter: blur(24px) !important;
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65), inset 0 -1px 0 rgba(0, 242, 254, 0.25) !important;
 }
 
@@ -5294,8 +5309,8 @@ textarea {
     border-bottom: 1px solid rgba(0, 0, 0, 0.5) !important;
     box-shadow: 0 16px 42px -10px rgba(0, 0, 0, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.28), inset 0 -1px 2px 0 rgba(0, 0, 0, 0.4), inset 0 0 24px 0 rgba(0, 242, 254, 0.04) !important;
     contain: layout style;
-    backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
     transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal), background var(--transition-normal) !important;
 }
 
@@ -5326,8 +5341,8 @@ textarea {
     border-top: 1px solid rgba(255, 255, 255, 0.7) !important;
     border-left: 1px solid rgba(255, 255, 255, 0.45) !important;
     box-shadow: 0 8px 24px rgba(0, 242, 254, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.55) !important;
-    backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
 }
 
 .btn-secondary {
@@ -5336,8 +5351,8 @@ textarea {
     border-top: 1px solid rgba(255, 255, 255, 0.38) !important;
     border-left: 1px solid rgba(255, 255, 255, 0.24) !important;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
-    backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
 }
 
 .btn-secondary:hover {
@@ -5359,8 +5374,8 @@ textarea {
     border-top: 1px solid rgba(255, 255, 255, 0.38) !important;
     border-left: 1px solid rgba(255, 255, 255, 0.22) !important;
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.28), 0 3px 10px rgba(0, 0, 0, 0.3) !important;
-    backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
 }
 
 /* Form Controls Liquid Glass */
@@ -5371,8 +5386,8 @@ textarea {
     border-top: 1px solid rgba(255, 255, 255, 0.24) !important;
     border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
     box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-    backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
     transition: all var(--transition-fast) !important;
 }
 
@@ -6826,6 +6841,7 @@ textarea {
     position: fixed;
     inset: 0;
     background: rgba(4, 7, 16, 0.85);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 9999;
     display: none;
@@ -7241,6 +7257,7 @@ textarea {
     transition: all var(--transition-fast);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
     cursor: default;
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -7874,8 +7891,8 @@ textarea {
     position: fixed;
     inset: 0;
     background: radial-gradient(circle at 50% 50%, rgba(20, 11, 4, 0.92) 0%, rgba(8, 4, 1, 0.97) 100%);
-    backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
     z-index: 99999;
     display: none;
     align-items: center;
@@ -8362,6 +8379,7 @@ textarea {
     transform: translateY(-8px);
     transition: opacity 0.35s ease, transform 0.35s ease;
     cursor: pointer;
+    -webkit-user-select: none;
     user-select: none;
     pointer-events: none;
 }
@@ -8466,6 +8484,7 @@ textarea {
     align-items: center;
     justify-content: space-between;
     z-index: 10;
+    -webkit-user-select: none;
     user-select: none;
     pointer-events: none;
 }
@@ -8779,6 +8798,7 @@ textarea {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    -webkit-user-select: none;
     user-select: none;
     margin: 0 auto;
 }
@@ -8899,6 +8919,7 @@ textarea {
         0 0 8px rgba(239, 68, 68, 0.45);
     display: inline-block;
     transform: translateY(-1px);
+    -webkit-user-select: none;
     user-select: none;
     transition: transform 0.4s ease;
 }
@@ -10191,6 +10212,7 @@ textarea {
     box-shadow: 0 0 14px rgba(0, 240, 255, 0.15);
     cursor: default;
     transition: all var(--transition-fast, 0.25s ease);
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -10231,8 +10253,8 @@ textarea {
     width: 320px;
     max-width: calc(100vw - 32px);
     background: rgba(10, 16, 32, 0.94);
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     border: 1px solid rgba(0, 240, 255, 0.45);
     border-radius: 12px;
     box-shadow: 0 16px 45px rgba(0, 0, 0, 0.78), 0 0 28px rgba(0, 240, 255, 0.22);
@@ -10502,8 +10524,8 @@ textarea {
     .dossier-card,
     .cert-card,
     .modal-dialog {
-        backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(13, 21, 42, 0.88) 100%) !important;
         border-top: 1px solid rgba(255, 255, 255, 0.35) !important;
         border-left: 1px solid rgba(255, 255, 255, 0.20) !important;
