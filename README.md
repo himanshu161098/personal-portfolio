@@ -142,6 +142,7 @@ The chatbot automatically stays updated with your latest achievements, projects,
    git commit -m "docs: add new project and update skills in knowledge base"
    git push origin main
    ```
+
 3. **Step 3: Auto-Refresh within 5 Minutes**  
    Once pushed, GitHub Pages serves the updated markdown file. The Cloudflare Worker cache automatically expires after 5 minutes and immediately streams answers incorporating your latest updates!
 
