@@ -1,17 +1,13 @@
 # 🚀 Himanshu Kumar - Personal Developer Portfolio
 
-<div align="center">
-
 ![GitHub stars](https://img.shields.io/github/stars/himanshu161098/personal-portfolio?style=for-the-badge&color=00f2fe)
 ![GitHub forks](https://img.shields.io/github/forks/himanshu161098/personal-portfolio?style=for-the-badge&color=4facfe)
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
 
-**Interactive 3D Futuristic Portfolio & Developer Dossier**
+### Interactive 3D Futuristic Portfolio & Developer Dossier
 
 [🌐 View Live Site](https://himanshu161098.github.io/personal-portfolio/) • [💼 LinkedIn Profile](https://www.linkedin.com/in/himanshu-kumar-1618hks/) • [📧 Get in Touch](mailto:himanshukumarsingh161098@gmail.com)
-
-</div>
 
 ---
 
