@@ -1,0 +1,38 @@
+name: Code & Security Review CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  validate-and-security-audit:
+    name: Validate Scripts & Security Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate JavaScript Syntax
+        run: |
+          node -c script.js
+          node -c chatbot.js
+          node -c prachi.js
+          node -c ai-engine.js
+          node -c worker/worker.js
+
+      - name: Check for Uncommitted Sensitive Files
+        run: |
+          if [ -f .env ]; then
+            echo "Error: .env file found in repo!"
+            exit 1
+          fi
+          echo "No sensitive .env files in git tracking."
