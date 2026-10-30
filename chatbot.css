@@ -61,6 +61,7 @@
     position: relative;
     transition: var(--cb-transition);
     outline: none;
+    -webkit-user-select: none;
     user-select: none;
     overflow: hidden;
     padding: 0;
@@ -126,6 +127,7 @@
 /* Chat Prompt Teaser Tooltip */
 .cb-teaser-tooltip {
     background: rgba(11, 18, 34, 0.92);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--cb-border-subtle);
     border-radius: var(--cb-radius-md);
@@ -193,8 +195,8 @@
     height: 620px;
     max-height: calc(100vh - 120px);
     background: var(--cb-bg-glass);
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     border: 1px solid var(--cb-border-subtle);
     border-radius: var(--cb-radius-lg);
     box-shadow: var(--cb-shadow-panel);

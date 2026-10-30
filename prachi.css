@@ -89,6 +89,7 @@ body.gpt-body::after {
   height: 100%;
   transition: var(--gpt-transition);
   z-index: 100;
+  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -476,6 +477,7 @@ body.gpt-body::after {
   justify-content: space-between;
   padding: 0 20px;
   background: rgba(9, 13, 22, 0.85);
+  -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   z-index: 50;
 }
@@ -1309,6 +1311,7 @@ body.gpt-body::after {
   cursor: pointer;
   white-space: nowrap;
   transition: var(--gpt-transition);
+  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -1470,6 +1473,7 @@ body.gpt-body::after {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.65);
+    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     z-index: 90;
   }
