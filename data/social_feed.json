@@ -1,5 +1,5 @@
 {
-  "last_synced": "2026-11-03T22:56:33.215Z",
+  "last_synced": "2026-11-04T04:58:47.912Z",
   "github": {
     "username": "himanshu161098",
     "profile_url": "https://github.com/himanshu161098",
@@ -17,7 +17,7 @@
         "language": "JavaScript",
         "stargazers_count": 0,
         "forks_count": 0,
-        "updated_at": "2026-11-03T13:42:10Z"
+        "updated_at": "2026-11-03T22:56:38Z"
       },
       {
         "name": "Prachi-AI",
@@ -59,6 +59,11 @@
     "recent_events": [
       {
         "type": "PushEvent",
+        "repo": "himanshu161098/Prachi-AI",
+        "created_at": "2026-11-02T10:13:25Z"
+      },
+      {
+        "type": "PushEvent",
         "repo": "himanshu161098/personal-portfolio",
         "created_at": "2026-11-02T10:13:52Z"
       },
@@ -81,11 +86,6 @@
         "type": "PushEvent",
         "repo": "himanshu161098/Prachi-AI",
         "created_at": "2026-10-30T14:50:34Z"
-      },
-      {
-        "type": "PushEvent",
-        "repo": "himanshu161098/personal-portfolio",
-        "created_at": "2026-10-30T18:25:05Z"
       }
     ]
   },
